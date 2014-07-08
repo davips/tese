@@ -311,7 +311,7 @@ archive=true
 column=0
 encoding=ISO-8859-15
 highlight=LaTeX
-line=120
+line=165
 mode=LaTeX
 open=true
 order=1
@@ -412,6 +412,6 @@ ViMarks=
 
 [view-settings,view=0,item:tese.tex]
 CursorColumn=0
-CursorLine=120
+CursorLine=165
 JumpList=
 ViMarks=
