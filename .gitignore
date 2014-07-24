@@ -1,3 +1,5 @@
+*.backup
+*~
 *.kate-swp
 tese.pdf
 

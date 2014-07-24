@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=tese.tex
+lastDocument=revsistematica.tex
 masterDocument=
 name=tese
 pkg_extIsRegExp=false
@@ -291,7 +291,7 @@ archive=true
 column=0
 encoding=ISO-8859-15
 highlight=LaTeX
-line=16
+line=13
 mode=LaTeX
 open=true
 order=0
@@ -400,7 +400,7 @@ ViMarks=
 
 [view-settings,view=0,item:revsistematica.tex]
 CursorColumn=0
-CursorLine=16
+CursorLine=13
 JumpList=
 ViMarks=
 
