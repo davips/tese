@@ -1,0 +1,249 @@
+\inputencoding{latin1}
+\chapter{Cenários}\label{cenarios}
+\section*{Cenários}\label{sec:cenarios}
+Existem três principais cenários na literatura de aprendizado ativo \citep{settles2010active}:
+\textit{membership query synthesis}\footnote{[síntese de consulta por associação ou consulta de
+exemplos sintetizados]};
+\textit{pool-based sampling}\footnote{[amostragem baseada em exemplos reservados]}; e
+\textit{amostragem seletiva baseada em fluxo}\footnote{[\textit{stream-based selective sampling}]}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\textit{Membership query synthesis}}
+No cenário de \textit{membership query synthesis}, exemplos são criados pelo algoritmo de
+aprendizado \citep{angluin1988queries}.
+A criação de um exemplo é ilustrada na Figura \ref{fig:memquerysyn}.
+Ele é feito de maneira a otimizar a busca da hipótese ideal dentro do
+\textit{version space}\footnote{[espaço de versões]} conforme definido por
+\cite{mitchell1997machine} embora nem
+sempre sejam criados exemplos que efetivamente ocorreriam na aplicação - alguns não seriam
+pertencentes à distribuição natural dos dados.
+Trata-se de uma abordagem viável para problemas de domínio finito cujos atributos tenham valores
+semanticamente interpretáveis pelo oráculo.
+A interpretabilidade é importante para que um oráculo humano seja capaz de ponderar a respeito
+dos
+exemplos que lhe são apresentados.
+Assim, aplicações como reconhecimento de escrita ou processamento de linguagem natural podem ser
+inadequadas para um aprendizado baseado na síntese de exemplos.
+No caso do reconhecimento de escrita, há pelo menos um relato de caracteres híbridos terem sido
+gerados pelo aprendiz ativo de forma que não pudessem ser reconhecidos - e eventualmente
+rotulados
+- por humanos \citep{settles2010active,baum1992query}. Em outros domínios em que o oráculo não é
+humano, como um teste químico ou um robô seguindo coordenadas, \textit{membership querysynthesis}
+mostra-se uma abordagem promissora \citep{cohn1996active}.
+
+\begin{figure} %[H]
+    \centering
+    \scalebox{.75}{\input{imagens/memquerysyn-esquema.tex}}
+    \caption{\textit{Membership query synthesis}: as consultas ao oráculo são criadas sobmedida.}
+    \label{fig:memquerysyn}
+\end{figure}
+
+\subsection*{\textit{Pool-based sampling}}
+Muitos problemas proveem grande quantidade de exemplos de uma só vez. Eles são a motivação da
+\textit{pool-based sampling} \citep{lewis1994heterogeneous}.
+Esse tipo de amostragem assume que há apenas uma pequena parcela de exemplos rotulados e que
+normalmente é possível analisar todos os exemplos não rotulados a qualquer momento, pois estariam
+disponíveis num repositório conforme pode ser visto na Figura \ref{fig:poolbased}.
+Uma análise típica consiste em extrair alguma medida informativa de cada exemplo.
+
+\begin{figure} %[H]
+    \centering
+    \input{imagens/poolbased-esquema.tex}
+    \caption{\textit{Pool-based sampling}: o aprendiz ativo tem livre acesso ao repositório.}
+    \label{fig:poolbased}
+\end{figure}
+
+Muitas aplicações são adequadas a esse cenário, sendo que a classificação de textos
+\citep{mccallum1998employing} tem recebido maior destaque por requerer esforço humano na
+rotulação
+dos textos.
+Um exemplo de aplicação em que o oráculo é uma máquina, é caso do meta-aprendizado para escolha
+do
+melhor classificador para cada tipo de base de dados.
+Nesse caso, cada base corresponde a um meta-exemplo e o rótulo indica qual o classificador mais
+adequado para ela.
+Por isso, o rótulo é obtido apenas depois de todos os classificadores terem sido treinados e
+testados nela.
+Além disso, essas bases podem ser muito volumosas, reforçando a necessidade de aplicação do
+aprendizado ativo
+na seleção dos metaexemplos tal como feito por \cite{prudencio2007active}.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\subsection*{Amostragem seletiva baseada em fluxo} \label{sec:cenario_fluxo}
+Os fluxos de dados, conforme definição da Seção \ref{sec:fluxo:def}, precisam ser tratados dentro
+de limitações de tempo de processamento e de espaço em memória.
+Logo, a manipulação de um repositório, ainda que ajustado à memória disponível, pode ser inviável
+devido à necessidade de uma rápida resposta a cada um dos exemplos que chegam incessantemente.
+Nesse tipo de configuração se situa a amostragem seletiva baseada em fluxo
+\citep{cohn1994improving}. %essa citacao do settles não faz lá muito sentido
+Nela, exemplos são obtidos um a um de um fluxo e imediatamente descartados ou enviados para o
+oráculo.
+Optou-se neste documento por complementar o nome desse cenário com o termo \textit{estrito}.
+A consequência dessa política de consulta ``agora ou nunca'' é um uso minimalista de recursos
+computacionais durante o processo decisório a respeito da necessidade de rotulação de cada
+exemplo.
+A amostragem baseada em fluxo é ilustrada na Figura \ref{fig:fluxoquery}.
+
+\begin{figure} %[H]
+    \centering
+    \input{imagens/fluxo-esquema.tex}
+    \caption{Amostragem seletiva baseada em fluxo: todo novo exemplo não consultado precisa ser
+descartado.}
+    \label{fig:fluxoquery}
+\end{figure}
+
+É importante observar a diferenciação feita por \cite{zliobaite2011active} entre
+\textit{aprendizado ativo online}\footnote{[\textit{online active learning}]
+}
+ e \textit{aprendizado ativo em fluxo de dados}\footnote{[\textit{active learning in
+datastreams}]
+}
+- embora ambos sejam aplicáveis em ambientes com
+\underline{relevantes restrições}\footnote{As restrições são relevantes conforme explicado na
+Seção
+\ref{sec:fluxo:def}.
+} de recursos:
+em fluxos de dados é esperada a ocorrência de mudanças de conceito.
+
+Uma variação da amostragem baseada em fluxo
+é o cenário em que ele é composto por \textit{blocos de dados}\footnote{[\textit{data chunks}]
+} (ou seja, \textit{não estrito}).
+Isso permite o tratamento de cada bloco com uma \textit{pool-based sampling}.
+É o caso do trabalho de \cite{zhu2007active}.
+Esse cenário exige adaptações nas formas convencionais de consulta e juntamente com elas é
+apresentado na Seção \ref{sec:panorama}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Máquinas Extremas}\label{elm}
+As máquinas extremas (\textit{Extreme Learning Machines} - ELMs) são redes - não
+necessariamente neurais - com treinamento diferenciado que têm recebido crescente atenção devido à
+sua simplicidade e performance, comparável com o estado da arte \citep{journals/tsmc/HuangZDZ12}.
+Trata-se de um algoritmo adequado para AA porque, ainda que pertença a um grupo de algoritmos
+complexos, com a capacidade de aproximação universal \citep{journals/tsmc/HuangZDZ12} - por
+exemplo,
+ela tem um ajuste de parâmetros que pode ser simplificado de uma forma que não ocorre com outros
+algoritmos similares em complexidade e nichos de aplicação como a máquina de vetores de suporte e o
+Perceptron multicamadas \citep{haykin2004comprehensive}.
+Esse último requer, por exemplo, algum critério de parada no treinamento e um processo de seleção
+de modelo que envolve o ajuste de topologia e parâmetros.
+Essa característica da ELM permite um rápido treinamento, algo necessário num ambiente interativo.
+O motivo para a baixa necessidade ou ausência de iterações é explicado a seguir.
+
+Fixado o tipo de nó como o neurônio artificial convencional, seus parâmetros a ajustar são os
+valores e quantidade de neurônios/conexões sinápticas da camada oculta.
+Dada uma função geradora de pesos aleatórios ou pseudo-aleatórios incluída sua semente geradora e
+adotada a restrição de sempre se manter os pesos na ordem em que são gerados, a quantidade de
+neurônios $L$ na camada oculta pode ser vista como o único parâmetro a se ajustar.
+Embora possa ser otimizado, esse parâmetro frequentemente não é crítico
+\citep{conf/esann/FrenayV10}.
+Essa possível não-criticidade torna a ELM, dentro das restrições apresentadas,
+capaz de aprender num passo único e rápido quando comparada a outros algoritmos similares
+\citep{journals/tsmc/HuangZDZ12}.
+
+% descrever ELM básica
+Uma ELM é uma rede com uma única camada oculta que transmite os sinais apenas na direção
+entrada-saída (\textit{Single Hidden Layer Feedforward Network} - SLFN),
+cujos nós podem ser neurais (aditivo logístico sigmoidal) - como neste trabalho -
+ou de diversos outros tipos, como as também frequentemente usadas funções de base radial
+\citep{journals/tsmc/HuangZDZ12}.
+
+Dados $Y$ o conjunto de vetores que representam os todos rótulos possíveis;
+$\bm{x}_{(t)}$, um vetor de atributos descritivos pertencentes a um exemplo cuja classe se deseja
+descobrir no instante $t \in \mathbb{N}$;
+e $\bm{y}_{(t)} \in Y$, seu vetor associado de atributos preditivos que é uma representação binária
+em que os valores respeitam a restrição de que para um rótulo com índice correspondente $o$,
+$y_o=1$ e $y_p=0 \forall o \neq p, 1 \leq p \leq |Y|$;
+a função preditiva de uma SLFN com $L$ neurônios ocultos pode ser representada como segue:
+\begin{equation} \label{eqelm}
+f(\bm{x}_{(t)})= \argmax_{\bm{y} \in Y}{\displaystyle\mathop{\sum} _{l=1}^{L}\beta_{l,c(\bm{y})}
+g(\bm{a}_l \bm{x}_{(t)} + b_l)} = \bm{y}_{(t)}
+\end{equation}
+% }, \quad j=1, \cdots, {\it N}.
+
+onde $\beta_{l,o}$ é o peso da sinapse que conecta o neurônio oculto $l$ ao neurônio de saída $o$;
+$c(\bm{z})$ é uma função auxiliar que retorna o índice correspondente ao rótulo representado pelo
+vetor $\bm{z} \in Y$;
+$g$ é, neste trabalho, a função sigmoide logística;
+$\bm{a}_l$ é o vetor de pesos do neurônio $l$ com cada valor $a_i$ representando o peso entre a
+entrada $i$ e o neurônio $l$ e, sendo o produto interno deste neurônio uma equação de reta no
+espaço de parâmetros, $b_l$ é o valor de seu viés de deslocamento em relação à origem.
+Mais detalhes da formulação da primeira camada oculta podem ser consultados na literatura sobre o
+Perceptron multicamadas convencional \citep{haykin2004comprehensive}.
+Se $\beta$ for adotada como uma matriz, a equação \ref{eqelm} pode ser escrita compactamente da
+forma:
+\begin{equation} \label{eq2}
+H \beta = T
+\end{equation}
+
+onde $H$ é a matriz de saídas da camada oculta (\textit{hidden layer output matrix}) da SLFN,
+ou seja, cada coluna corresponde à saída de um neurônio oculto e cada linha corresponde a um
+exemplo do conjunto de treinamento;
+$\beta$ é a matriz contendo os pesos que conectam a camada oculta à camada de saída, ou seja, cada
+coluna corresponde a um neurônio de saída e cada linha corresponde a um neurônio oculto;
+e $T$ é a matriz objetivo, que contém em cada linha a representação binária $\bm{y}$ do rótulo de
+cada exemplo.
+
+Calcular $\beta$, que é análogo a treinar a rede,
+pode ser feito por meio do cálculo da pseudo-inversa $H^{\dagger}$ de $H$
+\cite{rao1971generalized}:
+\begin{equation} \label{eq3}
+\beta = H^{\dagger} T
+\end{equation}
+
+Uma formulação mais detalhada da ELM pode ser encontrada na literatura
+\citep{journals/tsmc/HuangZDZ12}.
+
+\subsection{Máquinas Extremas Incrementais}\label{oselm}
+Em sistemas interativos, frequentemente é adotado o esquema incremental de aprendizado.
+O tempo de treinamento é reduzido quando é possível aproveitar o resultado de cálculos prévios
+durante todo o processo.
+No caso da ELM, isso é possível por meio da ``máquina extrema incremental''\footnote{A nomenclatura
+usada na literatura de ELMs é inconsistente com a nomenclatura usual em aprendizado de máquina.
+Aqui optou-se pela segunda.} (\textit{On-line Sequential Extreme Learning Machine} - OS-ELM)
+\cite{journals/tnn/LiangHSS06}.
+
+A técnica é baseada no algoritmo dos mínimos quadrados recursivo \cite{chong2013introduction}.
+$H$ passa a ser considerada em função do tempo - com subscrito para melhor legibilidade: $H_{(t)}$.
+Para ser possível encontrar a solução dos mínimos quadrados de $H_{(0)} \beta_{(0)} = T_{(0)}$,
+que se refere ao conjunto inicial de dados rotulados (instante $t=0$),
+a pseudo-inversa esquerda $H^\dagger_{(0)}$ deve ser calculada por:
+
+\begin{equation} \label{eq4}
+P_{(0)}=(H^\top_{(0)}H_{(0)})^{-1}
+\end{equation}
+\begin{equation} \label{eq5}
+H^{\dagger}_{(0)} = P_{(0)}H^\top_{(0)}
+\end{equation}
+
+Assim, é possível realizar um treinamento inicial da rede.
+Para os lotes de dados subsequentes, ou seja,
+quando $t>0$, apenas $\beta_{(t)}$ e $P_{(t)}$ precisam ser mantidos, onde:
+
+\begin{equation} \label{eq6}
+P(t) = P_{(t-1)} - P_{(t-1)} H^{\top}_{(t)} (I + H_{(t)} P_{(t-1)} H^{\top}_{(t)})^{-1} H_{(t)}
+P_{(t-1)}
+\end{equation}
+\begin{equation} \label{eq7}
+\beta_{(t)} = \beta_{(t-1)} + P_{(t)} H^{\top}_{(t)} (T_{(t)} - H_{(t)} \beta_{(t-1)})
+\end{equation}
+
+O cálculo incremental de $\beta_{(t)}$ e $P_{(t)}$ evita os custos de se recalcular a
+pseudo-inversa para cada novo lote de dados.
+
+Além da OS-ELM, outras variantes da ELM têm sido propostas:
+ROS-ELM, que evita matrizes mal-condicionadas por meio do ajuste dos vieses $b_i$ \cite
+{conf/isnn/HoangHVW07};
+EI-ELM ou EM-ELM, não-incrementais, que fazem a rede crescer \textit{congelando}
+\cite{huang2008enhanced} ou \textit{atualizando} \cite{journals/tnn/FengHLG09} nós antigos;
+e, CEOS-ELM, que faz a rede crescer durante aprendizado \textit{on-line} \cite{conf/ijcnn/LanSH09}.
+
+Para o presente trabalho, a OS-ELM ``canônica'' foi adotada, pois cada variante tem seus próprias
+vicissitudes e o propósito deste trabalho é apenas dar uma primeira impressão a respeito da
+performance da ELM com diferentes estratégias.
+Também é importante lembrar que, na presença de uma matriz $H_{(0)}$ mal-condicionada,
+OS-ELM não converge para ELM.

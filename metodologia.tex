@@ -1,0 +1,35 @@
+\chapter{Experimentos e Resultados}\label{cap:experimentos}
+
+.
+mahala, DW que usam mahala e ELMs necessitaram aplicação de filtro nominal para binário e z-score nos atributos
+para evitar matrizes mal condicionadas
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Metodologia}\label{sec:metodologia}
+\subsection{Cenário}\label{sec:cenario}
+
+O cenário detalhado adotado neste trabalho é baseado em \pool;
+de consulta por classe monorrótulo; com amostragem um a um de uma distribuição estacionária com
+custos uniformes; com oráculo único e consistente,
+sendo um rótulo inicial por classe simuladamente obtido via
+\engl{aprendizado guiado}{guided learning} \citep{conf/kdd/AttenbergP10};
+com atributos sem valores faltantes;
+e, sem redução do tamanho das bases de dados originais\footnote{Exceto para a estratégia de \eer,
+para ser computacionalmente tratável.}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ferramentas}\label{sec:ferramentas}
+\green{descrever hardware, mysql}
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+% algoritmos prontos
+Adicionalmente, diversos classificadores base são oferecidos como
+extensão da classe \textit{Classifier}.
+Um conjunto mais abrangente de classificadores está disponível na
+ferramenta Weka \citep{hall2009weka}.
+
+Para complementar os testes estatísticos das ferramentas citadas, o
+programa R \citep{team2010r} foi adotado.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input experimentos %small; big

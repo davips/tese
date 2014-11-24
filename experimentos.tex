@@ -1,0 +1,52 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Experimentos}\label{sec:ferramentas}
+
+> 1 - que nao tem free lunch, pois cada estrategia eh a melhor para
+> alguns datasets, nao para todos
+>
+> 2 - explicar pela arvore quais os nichos de cada estrategia. Voce pde
+> tambem usar clustering para mostrar que estrategias se adequam a
+> nichos parecidos
+>
+> 3 usar meta-learning (usando a arvore do item 2) para prever a melhor
+> estrategia para um novo conjunto de dados
+>
+> A ordem dos itens 2 e 3 pode mudar. O normal eh o 3 vir antes do 2
+
+
+
+
+\green{baseline p/ AccBal é $¬1/|Y|$}
+
+\green{manter apenas estratégias que ganharam em algum momento/nicho?}
+
+\red{o tempo ficou sempre abaixo de 1s, então está dentro do tolerable waiting time.
+Posso adotar uma única base enorme só para a comparação de tempo}
+
+\blue{manter apenas a melhor combinação learner-dataset, assim é possível o avaliar estratégias num cenário em que se sabe de antemão qual é o melhor learner.
+manter todas as combinações serve para o cenário em que nada se sabe do dataset, ou seja, é o mais esperado, pois normalmente é preciso ter rótulos suficientes para se testar classificadores;
+além disso, quand ose sabe o melhor classificador (a não ser por propriedades dos dados: ex.: nominal->NB, muitos atributos->SVM etc.)
+é por meio de um problema parecido onde as estratégias podem ser testadas}
+
+\blue{plotar (log?) rnd (e clu?) p/ nb,c45 e 5nn até o fim do pool ou até atingir passiva, assim serve de panorama do qto as outras estrategias/learners atingiram da ALC possivel)}
+
+\green{rodar eeg-eye-state pra medir tempo nas principais estrategias/learners, pra ser a unica com nintera; rodar como todas as outras: 5x5-fold}
+
+\subsubsection{Afinidade estratégia-aprendiz}
+\green{árvore do vencedor accbal e variancia}
+
+\green{árvore do perdedor accbal e variancia}
+
+\subsubsection{Comparativo}
+\green{friedmenyi de  accbal e variancia}
+
+\green{plotar accBal X budgets p/ cada uma das 15 bases com menos de 200 exemplos?}
+
+\green{plotar p/ accBal (apenas nas 85 bases com mais de 200 exemplos?)): \#topos-de-rank X budgets $[10;200]$}
+
+\subsubsection{Aprendizado meta-ativo}
+\green{árvores do vencedor com empate 1-vs-n accbal e variancia}
+
+\red{uma base não pode aparecer no cjt de treino e tb no de teste}
+
+

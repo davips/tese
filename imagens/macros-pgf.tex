@@ -1,0 +1,193 @@
+\usepackage[latin1]{inputenc}
+\usepackage{pgfplots,bm}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{scopes,shapes,shadows,calc,arrows,shapes.symbols,automata,decorations.pathmorphing,backgrounds,fit,positioning}
+
+% styles for flowcharts
+\tikzstyle{d} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, text width=3em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{s} = [-triangle 60,thick]
+\tikzstyle{b} = [rectangle, thick, draw, aspect=3, shape border rotate=90, minimum height=1, rounded corners, minimum width=1, outer sep=-0.5\pgflinewidth, color=black, top color=black!10, bottom color=black!10, middle color=white]
+\tikzstyle{ensemble} = [text height=1, rectangle, thick, draw, aspect=3, shape border rotate=90, minimum height=100, rounded corners, minimum width=100, outer sep=-0.5\pgflinewidth, color=black, top color=black!10, bottom color=black!10, middle color=white]
+\tikzstyle{aprendizst} = [text height=1, rectangle, thick, draw, aspect=3, shape border rotate=90, minimum height=10, rounded corners, minimum width=10, outer sep=-0.5\pgflinewidth, color=black, top color=black!15, bottom color=white]
+\tikzstyle{bdtr} = [cylinder, thick, draw, aspect=1, shape border rotate=90, minimum height=45, minimum width=40, outer sep=-0.5\pgflinewidth, color=black, left color=blue!40, right color=blue!40, middle  color=white]
+\tikzstyle{bdts} = [cylinder, thick, draw, aspect=1, shape border rotate=90, minimum height=45, minimum width=40, outer sep=-0.5\pgflinewidth, color=black, left color=orange!40, right color=orange!40, middle  color=white]
+
+\def\ctr [#1,#2]#3{
+  \node (#1) [bdtr, #3] #2 {$\mathcal{L}$} ;
+}
+
+\def\cts [#1,#2]#3{
+  \node (#1) [bdts, #3] #2 {$\mathcal{U}$} ;
+}
+
+\tikzstyle{nuvem}=[cloud, thick, draw, cloud puffs=12, aspect=5, alias=cyl, shape border rotate=90, minimum height=50, minimum width=60, outer sep=-0.5\pgflinewidth, color=black, top color=orange!40, bottom color=orange!40, middle  color=white]
+\def\fluxo [#1,#2]#3{
+  \node (#1) [nuvem, #3] #2 {fluxo de dados};
+}
+\pgfdeclarelayer{ss3} \pgfdeclarelayer{ss2} \pgfdeclarelayer{ss1}
+\pgfdeclarelayer{pi3} \pgfdeclarelayer{pi2} \pgfdeclarelayer{pi1}
+\pgfdeclarelayer{main}
+\pgfsetlayers{ss3,ss2,ss1,main,pi1,pi2,pi3}
+
+\tikzset{seta/.style={solid, ultra thick, black}}
+\tikzset{setatr/.style={solid, ultra thick, blue}}
+\tikzset{setats/.style={dashed, ultra thick, orange}}
+
+\newcommand*\C[1]{
+  \begin{tikzpicture}
+      \node[draw,circle,inner sep=1pt] {#1};
+  \end{tikzpicture}
+}
+\newcommand*\Q[1]{
+  \begin{tikzpicture}
+      \node[draw,rectangle,inner sep=2pt] {#1};
+  \end{tikzpicture}
+}
+\newcommand*\T[1]{
+  \begin{tikzpicture}
+%       \node[draw,circle,inner sep=2pt] {#1};
+      \node[draw,circle,inner sep=1.5pt] {#1};
+      \node[draw,circle,inner sep=2.5pt] {#1};
+       \node[black, thick, inner sep=2pt] {#1};
+  \end{tikzpicture}
+}
+
+\def\estrutura [#1,#2]#3{
+	\node (#1) [#3] #2{
+	\begin{tikzpicture}[node distance=90, auto, >=stealth, scale=0.15, transform shape]
+	  \node (ei#1) [d, thick] {};
+	  \node (ei2#1) [below right of=ei#1, block, thick] {};
+	  \node (ei3#1) [below left of=ei#1, block, thick] {};
+	  \draw[->, seta] (ei#1.south east)  -- node[left=1] {} (ei2#1.west);
+	  \draw[->, seta] (ei#1.south west)  -- node[left=1] {} (ei3#1.east);
+	  \begin{pgfonlayer}{ss1}
+	    \node (ax#1)  [draw, circle, fit=(ei#1) (ei2#1) (ei3#1), inner sep=1, scale=1, thick, top color=white, bottom color=white, middle color=black!10] {};
+	  \end{pgfonlayer}
+	\end{tikzpicture}
+	};
+}
+
+\def\fronteira [#1,#2]#3{
+	\node (#1) [#3] #2{
+	\begin{tikzpicture}[node distance=0, auto, >=stealth, scale=0.2, transform shape]
+		      \pgfplotsset{width=7cm}
+		      \pgfplotsset{samples at={30.1,30.2,...,65}}
+					\begin{axis} [name=ei#1,xmin=30, xmax=70, ymin=1.5, ymax=1.85, axis y line=left, axis x line=bottom] %,xlabel=peso (kg),   ylabel=altura (m)]
+					\addplot[only marks,mark=*,mark options={blue, ultra thick, scale=5}] plot coordinates {				  (65,1.8) (54,1.75) (63,1.6) (72,1.65) (50,1.8) (62,1.68)  (77,1.71)				      };
+					\addplot[only marks,mark=o,mark options={ultra thick,red,scale=5}] plot coordinates {				  (35,1.7) (39,1.60) (50,1.60) (58,1.54) (46,1.67) (43,1.55)				      };
+					\addplot [only marks, mark=*, mark options={teal, ultra thick,scale=2}] {2.36 -x/(131/1.7)};
+					\end{axis}
+		\begin{pgfonlayer}{ss1}
+			  \node (ax#1)  [draw, circle, fit=(ei#1), inner sep=1, scale=1, thick, top color=white, bottom color=white, middle color=black!10] {};
+		\end{pgfonlayer}
+	\end{tikzpicture}
+	};
+}
+
+
+\def\algtrein[#1,#2,#3]#4{
+		\node (#1) [b, label=-90:
+% \begin{tabular}{c}
+  alg. trein.#3
+% \end{tabular}
+, #4] #2{
+			$a_{#3}( \theta_#3^{(t-1)}, \langle \bm{x},y \rangle )$
+		};
+}
+
+\def\classificador[#1,#2,#3]#4{
+		\node (#1) [b, label=-90:$h_#3^{(t)}$, #4] #2{
+				$\argmax_y\{ P_{\theta_#3} (y|\bm{x})\}$
+		};
+}
+
+\def\classificadorprob[#1,#2,#3]#4{
+		\node (#1) [b, label=-90:${ }_#3$, #4] #2{
+				$\max_{y \in Y}\{P_{\theta_#3} (y|\bm{x})\}$
+		};
+}
+
+\def\aprendiz [#1,#2,#3]#4{
+	\node (#1) [label distance=-2, #4,label=-90:aprendiz passivo #3] #2{
+	\begin{tikzpicture}[node distance=0, auto, scale=1, transform shape,remember picture, text centered]
+				\algtrein [a#1,  , #3] {}
+				\tikzset{label distance=-8, node distance=85}
+				\estrutura [f#1, ] {label=-90:$\theta_{#3}^{(t)}$, right of=a#1}
+				\tikzset{label distance=-2, node distance=100}
+				\classificador [c#1, , #3] {right of=f#1}
+				\draw[->,setatr] (a#1) -- node (1,1)[] {} (f#1);
+ 			   \draw[<->, setats] (f#1)  -- node[left=1] {} (c#1);
+%  			   \draw[->, ultra thick] (c#1)  to [out=110,in=60] node[] {} (f#1);
+			\begin{pgfonlayer}{ss2}
+			\node (aa#1) [aprendizst, fit = (a#1) (f#1)(c#1), inner sep=10] {} ;
+			\end{pgfonlayer}
+%  		   \draw[->, ultra thick] (aa#1.west)  -- node[] {} (a#1);
+	\end{tikzpicture}
+	};
+}
+
+\def\homem [#1,#2]#3{
+  \node (#1) [#3] #2{
+  \begin{tikzpicture}[node distance=0, auto, >=stealth, scale=0.77, transform shape]
+    \node (cabeca) [draw, circle, inner sep=3, ultra thick] {. .};
+    \node (umbigo) [circle,below=1.2 of cabeca] {};
+    \node (tronco) [circle,below=0.3 of cabeca] {};
+    \draw[-, seta] (cabeca.south)  to [out=-90,in=90] node[] {} (umbigo);
+    \node (pesq) [circle,below left=0.5 of umbigo] {};
+    \node (pdir) [circle,below right=0.5 of umbigo] {};
+    \draw[-, seta] (pesq)  to  node[] {} (umbigo.north);
+    \draw[-, seta] (pdir)  to  node[] {} (umbigo.north);
+    \node (mesq) [circle,below left=0.5 of cabeca] {};
+    \node (mdir) [circle,below right=0.5 of cabeca] {};
+    \draw[-, seta] (mesq)  to  node[] {} (tronco.north);
+    \draw[-, seta] (mdir)  to  node[] {} (tronco.north);
+    \begin{pgfonlayer}{ss2}
+      \node (fit#1) [b, draw, fit = (cabeca) (pesq) (pdir)] {};
+    \end{pgfonlayer}
+  \end{tikzpicture}
+  };
+}
+
+\def\modeloprob [#1,#2,#3]#4{
+	\node (#1) [label distance=-2, #4,label=-90:aprendiz #3] #2{
+	\begin{tikzpicture}[node distance=0, auto, scale=1, transform shape,remember picture, text centered]
+				\algtrein [a#1,  , #3] {}
+				\tikzset{label distance=-8, node distance=85}
+				\estrutura [f#1, ] {label=-90:$\theta_#3^{(t)}$, right of=a#1}
+				\tikzset{label distance=-2, node distance=100}
+				\classificadorprob [c#1, , #3] {right of=f#1}
+				\draw[->,setatr] (a#1) -- node (1,1)[] {} (f#1);
+ 			   \draw[<->, setats] (f#1)  -- node[left=1] {} (c#1);
+%  			   \draw[->, ultra thick] (c#1)  to [out=110,in=60] node[] {} (f#1);
+			\begin{pgfonlayer}{ss2}
+					\node (aa#1) [aprendizst, fit = (a#1) (f#1)(c#1), inner sep=12] {} ;
+			\end{pgfonlayer}
+%  		   \draw[->, ultra thick] (aa#1.west)  -- node[] {} (a#1);
+	\end{tikzpicture}
+	};
+}
+
+% version space
+\def\modelovs [#1,#2,#3]#4{
+	\node (#1) [label distance=-2, #4,label=-90:aprendiz #3] #2{
+	\begin{tikzpicture}[node distance=0, auto, scale=1, transform shape,remember picture, text centered]
+				\algtrein [a#1,  , #3] {}
+				\tikzset{label distance=-8, node distance=85}
+				\estrutura [f#1, ] {label=-90:$\theta_#3^{(t)}$, right of=a#1}
+				\tikzset{label distance=-2, node distance=100}
+				\node (c#1) [b, right of=f#1, label=-90:$\textit{version space}$] {
+  \begin{tabular}{ll}
+    $\bf{x}$ que melhor define \\
+    hipóteses válidas
+  \end{tabular}
+};
+				\draw[->,setatr] (a#1) -- node (1,1)[] {} (f#1);
+%  			   \draw[->, ultra thick] (c#1)  to [out=110,in=60] node[] {} (f#1);
+			\begin{pgfonlayer}{ss2}
+					\node (aa#1) [aprendizst, fit = (a#1) (f#1)(c#1), inner sep=12] {} ;
+			\end{pgfonlayer}
+%  		   \draw[->, ultra thick] (aa#1.west)  -- node[] {} (a#1);
+	\end{tikzpicture}
+	};
+}

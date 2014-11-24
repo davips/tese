@@ -1,0 +1,244 @@
+\documentclass[12pt,twoside]{book}
+% \usepackage{cite}
+% \usepackage[pdftex]{graphicx}
+% \usepackage{array}
+\usepackage{amsmath}
+% \usepackage{bm}
+% \usepackage{stmaryrd}
+% \usepackage[tight,footnotesize]{subfigure}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\meutitulo}{Aprendizado ativo ... }
+\newcommand{\meunome}{Davi Pereira dos Santos}
+\newcommand{\meuorientador}{Prof. Dr. André Carlos Ponce de Leon Ferreira de Carvalho}
+\newcommand{\minhadata}{Dezembro/2014}
+\newcommand{\minhabolsa}{Trabalho realizado com o apoio da CAPES.}
+\newcommand{\meugrau}{Doutor}
+
+%portugues
+\usepackage[ruled,linesnumbered,vlined]{algorithm2e}
+\usepackage{fancyhdr}
+
+%\renewcommand{\listalgorithmcfname}{Lista de Algoritmos}%
+%\renewcommand{\algorithmcfname}{Algoritmo}%
+\usepackage[english,brazil]{babel}
+\usepackage{subfigure}
+%%\usepackage{epigraph}
+%%\usepackage{endnotes}
+%\renewcommand{\notesname}{Comentários}
+\usepackage{natbib}
+\usepackage{latexsym}
+\usepackage{setspace}
+\usepackage{xspace}
+% \usepackage[nohyperlinks]
+%%% referencias com página \vref
+\usepackage[brazil]{varioref}
+\usepackage{indentfirst}
+%%% figuras um ao lado do outro
+\usepackage{subfigure}
+%%% definir títulos de seção
+\usepackage[sf,sl,outermarks]{titlesec}
+\titleformat{\section}{\color{black}\normalfont\Large\bfseries}{\color{darkgray}\thesection}{1em}{}
+\titleformat{\subsection}{\color{black}\normalfont\bfseries}{\color{darkgray}\thesubsection}{1em}{}
+
+%%% boxes
+\usepackage{fancybox}
+\usepackage{fancyvrb}
+\usepackage[usenames,dvipsnames]{color}
+%\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
+\usepackage[pdftex]{geometry}
+  \geometry{a4paper,left=3cm,right=2cm,top=2.0cm,bottom=2cm,twoside}
+
+%%% cria links no arquivo .pdf
+%%% comentar as linhas na versão para impressao
+\usepackage[pdftex,pdfpagelabels,pagebackref,pageanchor=false]{hyperref}
+
+% % Para imprimir PDFs com offset
+% \begin{document}
+% \begin{figure} %[H]
+%     \centering
+%     \includegraphics[bb=640 0 0 850]{/home/davi/12.pdf}
+% %     \caption{\textit{Generative ensembles}}
+% %     \label{gen}
+% \end{figure}
+% \end{document}
+
+
+\usepackage{pdfpages}
+\usepackage{multirow}
+\hypersetup{
+    pdftitle = {\meutitulo},
+    pdfsubject = {},
+    pdfkeywords = {},
+    pdfauthor = {\meunome}
+    }
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,hypertexnames=false}
+% \usepackage[adobe-utopia]{mathdesign} %pacote texlive-fonts-extra no ubuntu
+\usepackage{ae}
+% \usepackage{bookman}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\DeclareFixedFont{\numberfont}{T1}{phv}{bx}{n}{2cm}
+\titleformat{\chapter}[display]
+  {\normalfont\Large\sffamily
+  }
+  {%\titlerule[3pt]%
+   \filright
+   \rule[32pt]{.7\linewidth}{4pt}
+   \hspace{-11pt}
+   \shadowbox{
+   \begin{minipage}{.18\linewidth}
+     \begin{center}
+       \textsc{\Large\chaptertitlename}\\
+       \vspace{1ex}
+       {\numberfont\color[gray]{0.5} \thechapter}\\
+       \vspace{1ex}
+     \end{center}
+   \end{minipage}}
+  }
+  {0pt}
+  {\filcenter
+   \Huge
+   }
+  [\hfill\rule{.8\textwidth}{0.5pt}\\
+     \vskip-1.8ex\hfill\rule{.7\textwidth}{3pt}]
+
+\newcommand{\versal}[1]{{\noindent
+    \setbox0\hbox{\largefont #1 }%
+    \count0=\ht0                   % height of versal
+    \count1=\baselineskip          % baselineskip
+    \divide\count0 by \count1      % versal height/baselineskip
+    \dimen1 = \count0\baselineskip % distance to drop versal
+    \advance\count0 by 1\relax     % no of indented lines
+    \dimen0=\wd0                   % width of versal
+    \global\hangindent\dimen0      % set indentation distance
+    \global\hangafter-\count0      % set no of indented lines
+    \hskip-\dimen0\setbox0\hbox to\dimen0{\raise-\dimen1\box0\hss}%
+    \dp0=0in\ht0=0in\box0}}
+
+\include{macros}
+% \usepackage{parallel} % para as equações de medidas multilabel
+
+%%%%%%%%%%%%%%%% FORMATACAO DE PALAVRAS %%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\nf }[1] % nome de ferramenta
+    {\textsc{#1}}
+\newcommand{\pe }[1] % termo em inglês
+    {\textit{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{ctable}
+\newcommand{\RAKEL}{{\emph {RAKEL}}\/\xspace}
+\newcommand{\win}{{+}\/\xspace}
+\newcommand{\lose}{{-}\/\xspace}
+\usepackage{amsmath}
+
+% \usepackage[usenames,dvipsnames]{xcolor}
+\definecolor{cinzaclaro}{rgb}{0.84,0.84,0.84}
+\newcommand{\e}{\colorbox{cinzaclaro}}
+
+
+%inkscape svg auto refresh - adicionar -shell-escape na chamada de pdflatex
+% \newcommand{\executeiffilenewer}[3]{
+% \ifnum\pdfstrcmp{\pdffilemoddate{#1}}
+% {\pdffilemoddate{#2}}>0
+% {\immediate\write18{#3}}\fi
+% }
+% \newcommand{\includesvg}[1]{
+% \executeiffilenewer{#1.svg}{#1.pdf}
+% {inkscape -z -D --file=#1.svg
+% --export-pdf=#1.pdf --export-latex}
+% \input{#1.pdf_tex}
+% }
+
+% \pgfdeclareplotmark{v}{%
+%   \pgfpathmoveto{\pgfpoint{-\pgfplotmarksize}{\pgfplotmarksize}}
+%   \pgfpathlineto{\pgfpoint{0pt}{0pt}}
+%   \pgfpathlineto{\pgfpoint{\pgfplotmarksize}{\pgfplotmarksize}}
+%   \pgfusepathqstroke
+% }
+% \pgfdeclareplotmark{^}{%
+%   \pgfpathmoveto{\pgfpoint{-\pgfplotmarksize}{-\pgfplotmarksize}}
+%   \pgfpathlineto{\pgfpoint{0pt}{0pt}}
+%   \pgfpathlineto{\pgfpoint{\pgfplotmarksize}{-\pgfplotmarksize}}
+%   \pgfusepathqstroke
+% }
+
+\usepackage{amssymb}
+\input{imagens/macros-pgf.tex}
+% \usepackage{glosstex}
+\usepackage[printonlyused,withpage]{acronym}
+
+\begin{document}
+\input tarefas
+\pagestyle{empty}
+\pagenumbering{roman}
+\newcommand{\titulo}{\meutitulo}
+\newcommand{\autor}{\meunome}
+\newcommand{\orientador}{\meuorientador}
+\newcommand{\nota}{Tese apresentada ao Instituto de Ciências Matemáticas e de Computação - ICMC-USP, para o Exame de Qualificação, como parte dos requisitos necessários à obtenção do título de \meugrau\xspace em Ciências de Computação e Matemática Computacional.}
+%\newcommand{\nota}{Monografia apresentada à disciplina de Metodologia de Pesquisa Científica em Inteligência Artificial, no Instituto de Ciências Matemáticas e de Computação - ICMC-USP, como parte dos requisitos necessários à obtenção dos créditos relacionados à disciplina.}
+
+\newcommand{\data}{\minhadata}
+\newcommand{\comentario}{\minhabolsa}
+\input{capa}
+\pagestyle{plain}
+\onehalfspacing
+\input{resumo}
+\cleardoublepage
+
+\tableofcontents
+\cleardoublepage
+
+\listoffigures
+\addcontentsline{toc}{section}{Lista de Figuras}
+\cleardoublepage
+
+\listoftables
+\addcontentsline{toc}{section}{Lista de Tabelas}
+\cleardoublepage
+
+\chapter*{Abreviaturas}
+\addcontentsline{toc}{section}{Abreviaturas} %ver comando do rigolin para criar links e outras
+\begin{acronym}
+\acro{SMOOTE}{Synthetic Minority Over-sampling TEchnique} \acro{QoS }{Quality of Service}
+\acro{DDM}{\textit{Drift Detection Method}}
+\acro{AWE}{\textit{Drift Detection Method}}
+\acro{SEA}{\textit{Streaming Ensemble Algorithm}}
+\end{acronym}
+\cleardoublepage
+
+\listofalgorithms
+\addcontentsline{toc}{section}{Lista de Algoritmos}
+\cleardoublepage
+
+\hypersetup{pageanchor=true}
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter \ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}}
+
+%Capitulos
+\include{introducao} %overview AL, (ELM?)
+% % \include{al} %estrats, experimentos de exemplo, limitações (que vou superar)
+% % \include{elm} %review; instab. etc.; p/ ap. interativo; exps mostrando runtime
+% % \include{SG-multi}
+% % \include{conclusao}
+\input active-learning
+\input propostas
+\input metodologia
+\input conclusao
+\appendix
+\input apendice1
+\input apendice2
+\input apendice3
+\input apendice4
+\input apendice5
+\bibliographystyle{apalike-br}
+% \bibliographystyle{abnt-alf}
+\bibliography{bibliografia}
+\addcontentsline{toc}{chapter}{Referências Bibliográficas}
+\end{document}
