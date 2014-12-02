@@ -1,12 +1,28 @@
 \chapter{Experimentos e Resultados}\label{cap:experimentos}
+Foi empreendida uma avaliação experimental para comprovação empírica das contribuições
+citadas no Capítulo \ref{cap:contrib}.
 
-.
-mahala, DW que usam mahala e ELMs necessitaram aplicação de filtro nominal para binário e z-score nos atributos
-para evitar matrizes mal condicionadas
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Metodologia}\label{sec:metodologia}
+Para haver solidez estatística e também para uma boa representatividade dos variados domínios
+existentes em aplicações reais, foram selecionadas as cem bases de dados mais diversas
+do projeto \red{ucipp <- refenciar como?}.
+O critério de diversidade envolveu manter apenas uma dentre cada grupo de bases de um mesmo domínio.
+Com exceção de algumas que tivessem características (atributos, classes e número de exemplos)
+suficientemente diferentes ou cuja acurácia passiva fosse suficientemente distinta para pelo
+menos três classificadores.
+
+As \elms e as estratégias baseadas na métrica de distância de Mahalanobis precisaram ser transformadas com a
+substituição de atributos nominais por numéricos e pela aplicação do \engl{filtro de padronização}{z-score}
+para possibilitar os cálculos e para evitar matrizes mal condicionadas - respectivamente.
+Os demais algoritmos de aprendizado fizeram eventual uso de seus próprios filtros internos
+providos pela ferramenta Weka \citep{journals/sigkdd/HallFHPRW09}.
+
 \subsection{Cenário}\label{sec:cenario}
+
+kappa:\citep{conf/pkdd/Shah11}
+accbal: \citep{journals/bmcbi/MassoV10}
 
 O cenário detalhado adotado neste trabalho é baseado em \pool;
 de consulta por classe monorrótulo; com amostragem um a um de uma distribuição estacionária com
@@ -21,12 +37,16 @@ para ser computacionalmente tratável.}.
 \subsection{Ferramentas}\label{sec:ferramentas}
 \green{descrever hardware, mysql}
 
+\green{descrever parâmetros dos learners}
+
+\green{descrever parâmetros das estratégias}
+
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 % algoritmos prontos
 Adicionalmente, diversos classificadores base são oferecidos como
 extensão da classe \textit{Classifier}.
 Um conjunto mais abrangente de classificadores está disponível na
-ferramenta Weka \citep{hall2009weka}.
+ferramenta Weka .
 
 Para complementar os testes estatísticos das ferramentas citadas, o
 programa R \citep{team2010r} foi adotado.

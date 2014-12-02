@@ -2,14 +2,13 @@
 O \engl{aprendizado ativo}{active learning} é o estudo de máquinas
 de aprendizado capazes de se aprimorar fazendo perguntas \citep{series/synthesis/2012Settles}.
 A origem do termo remete à Pedagogia, especificamente à forma didática centrada no aluno.
-A ideia básica é a individualidade de cada aluno em relação a seu próprio ritmo de aprendizado.
-Ele pode ser auxiliado pelo professor nos aspectos em que experimenta maior dificuldade.
+A ideia básica é a individualidade de cada aluno em relação a seu próprio ritmo de aprendizado, assim ele pode ser auxiliado pelo professor nos aspectos em que experimenta maior dificuldade.
 Esse tipo ativo de aprendizado humano - com foco no aluno - tem mostrado evidências
 de sua eficácia \citep{michael2006s}.
 Analogamente, guardadas as devidas proporções,
 pode-se traçar um paralelo com o aprendizado de máquina:
 um algoritmo pode usufruir de uma atenção seletiva que
-prioriza os exemplos mais difíceis para ele em um dado momento.
+priorize os exemplos mais difíceis para ele em um dado momento.
 
 Em sua forma mais geral, como esboçado por \cite{forman2012programmer},
 o aprendizado de máquina ativo pode lançar mão de todo conhecimento que um professor
@@ -48,7 +47,24 @@ atenção humana/movimento mecânico.
 Assim, um direcionamento adequado do esforço de aprendizado tem como resultado um
 processo de rotulação mais econômico.
 
+Na literatura de aprendizado ativo há diversas propostas.
+Elas são frequentemente baseadas em diferentes concepções de relevância de exemplos
+ou mesmo diferentes teorias do aprendizado.
+A amostragem por incerteza, por exemplo, assume que os exemplos e suas classes pertencem a uma
+distribuição de probabilidades - em linha com a teoria do aprendizado
+estatístico \citep{books/daglib/0097035};\red{( <- verificar)}
+a amostragem por busca no espaço de hipóteses, por sua vez, assume a existência
+de hipóteses integrantes de um \engl{espaço de versões}{version space} \citep{books/daglib/0087929}
+que enquadram ou não cada exemplo. \red{( <- verificar)}
+Estratégias agnósticas \citep{journals/jcss/BalcanBL09}, por outro lado,
+são independentes de algoritmo de aprendizado. \red{( <- verificar)}
+Essa diversidade de embasamentos configura-se praticamente como um conjunto de paradigmas
+de amostragem ativa cujos principais representantes são apresentados na seção seguinte.
 
+
+\section{Estratégias de consulta}\label{sec:estrategias}
+
+\red{xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx}
 % Esses problemas se dividem nos cenários apresentados com as respectivas estratégias na Tabela
 % \ref{tab:compara-cenarios-ativos}.
 % % \setlength{\tabcolsep}{0pt}
@@ -86,7 +102,7 @@ processo de rotulação mais econômico.
 % \end{table}
 
 
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 
 
 % Retomando na Figura \ref{fig:fronteira-vs-aleatoria} o exemplo de espaço de atributos de duas dimensões do Capítulo \ref{cap:intro}, é possível observar o efeito esperado do aprendizado ativo: apenas os exemplos mais difíceis são consultados - aqueles mais próximos da fronteira de decisão.
@@ -95,17 +111,17 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 % \begin{tikzpicture}
 % \begin{axis}[axis y line=left, xmin=20, xmax=72, ymin=1.45, ymax=1.9, axis x line=bottom, grid, xlabel=peso (kg),   ylabel=altura (m),
 % legend style={at={(1.3,1)}},]
-% 
+%
 % \addplot[only marks,mark=text,text mark=\C{$+$},mark options={blue,scale=1}] plot coordinates {(47.5,1.62) (50,1.5) (55.1,1.52) (63.2,1.58) (60.2,1.71) (67,1.73) (59,1.51)};\addlegendentry{positivo}
-% 
+%
 % \addplot[only marks,mark=text,text mark=\Q{$-$},mark options={red,scale=1}] plot coordinates {(30,1.60) (25,1.47) (26.55,1.85) (23,1.64) (24,1.7) (31,1.69) (32,1.76) (50,1.78)(33,1.53)}; \addlegendentry{negativo}
-% 
+%
 % \addplot[thick, only marks,mark=text,text mark=\C{\phantom{\Q{$-$}}},mark options={black, scale=1.1}] plot coordinates {(59,1.51) (50,1.78)}; \addlegendentry{consultados}
-% 
+%
 % \addplot[thick, mark=none, teal] plot coordinates {(20,1.5) (70,1.7)}; \addlegendentry{fronteira}
-% 
+%
 % \addplot[thick, dashed, only marks,mark=text,text mark=\C{\phantom{\Q{$-$}}},mark options={black, scale=1.1}] plot coordinates {(47.5,1.62) (33,1.53)}; \addlegendentry{a consultar}
-% 
+%
 % \addplot[thick, mark=none, teal, dashed] plot coordinates {(34,1.45) (59,1.9)}; \addlegendentry{futura fronteira}
 % \end{axis}
 % \end{tikzpicture}
@@ -134,21 +150,21 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 % }
 % % $C_{selected} \leftarrow \emptyset$
 % $B \leftarrow \emptyset$
-% 
+%
 % \lParaCada{$c \in C$} {
 %     $A(c) \leftarrow \emptyset$
 % }
-% 
+%
 % \ParaCada{$\langle x,y \rangle \in D$}{
 %     \lParaCada{$c \in C$}{
 %         $treina(c,\langle x,y \rangle)$
 %     }
-% 
+%
 %     $B \leftarrow \langle x,y \rangle \cup B$
-% 
+%
 %     \Se{$|B| > w$}{
 %         $B \leftarrow B - ultimo(B)$
-% 
+%
 %         \lParaCada{$c \in C$}{
 %             $A(c) \leftarrow A(c) - ultimo[A(c)]$
 %         }
@@ -159,16 +175,16 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 %     $C_{selected} \leftarrow \argmax_c\{   \displaystyle\sum\limits_{}^{}A(c)\}$
 % }
 % \end{algorithm}
-% 
+%
 % Uma consequência imediata é a menor necessidade de \textit{consultas} ao mecanismo rotulador e, possivelmente, uma maior acurácia.
 % Dessa maneira, o aprendizado ativo é indicado nas situações em que o processo de rotulação é custoso em termos de tempo ou de recursos físicos.
 % Isso é desejável quando existe uma \textbf{cota}\footnote{[\textit{budget}]}: somente uma parcela do conjunto pode ser rotulada, ela normalmente é definida como um percentual do total de exemplos disponíveis.
-% 
-% 
-% 
-% 
-% 
-% 
+%
+%
+%
+%
+%
+%
 % É possível observar na Figura \ref{fig:ap-ativo} um esquema de aprendizado ativo.
 % \begin{figure} %[H]
 %     \centering
@@ -180,15 +196,15 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 % $\mathcal{U}$ e apresentado a um modelo $\theta$ que seja probabilístico, que gere saídas similares diretamente proporcionais a probabilidades ou que forneça alguma outra maneira de se estimar seu grau de confiança.
 % Com base no grau de confiança, é possível calcular a medida de informatividade de cada exemplo.
 % Esse grau de confiança permite o cálculo da medida de \textit{informatividade}.
-% 
-% A medida de \textbf{informatividade} $m(\bm{x})$ é a base da tomada de decisão da estratégia de consulta e pode ser implementada de diversas maneiras conforme explicado na Seção \ref{sec:isolada}. 
+%
+% A medida de \textbf{informatividade} $m(\bm{x})$ é a base da tomada de decisão da estratégia de consulta e pode ser implementada de diversas maneiras conforme explicado na Seção \ref{sec:isolada}.
 % Uma vez definida a medida de informatividade, uma estratégia de consulta precisa ser definida; diferentes estratégias são estudadas na Seção \ref{sec:estrategias}.
 
 % \section{Medidas de informatividade}\label{sec:informatividade}
 % \subsection{Máxima probabilidade a posteriori}
 % \subsection{Margem}
 % \subsection{Entropia}
-\section{Estratégias de consulta}\label{sec:estrategias}
+
 
 Todas as estratégias são apresentadas juntamente com suas ordens de complexidade características.
 O número de classes permanece indicado por $|Y|$ e a quantidade inicial de exemplos é
@@ -222,8 +238,38 @@ usual de os símbolos $\mathcal{U}$ e $\mathcal{L}$ representarem a reserva de ex
 % Isso significa que ela requer apenas um treinamento por consulta.
 
 \subsection{Busca no espaço de hipóteses}
- \red{procurar infos dos txts sobre SG-network}
+ \red{infos dos txts sobre SG-network cohn1994improving:}
+Se concentra em membership queries, cita angluin86 e valiant84.
+Em problemas formais, como encontrar uma fronteira no "unit line interval" requer O(1/e ln(1/e)) exemplos de treinamento aleatórios para se atingir um erro 'e'.
+Se for permitida a síntese de membership queries, 'e' pode ser atingido em O(ln(1/e)).
 
+Formaliza o aprendiz capaz de determinar a região de incerteza e nomeia como Selective Sampling.
+Pode-se calcular a região de inc. em lotes para reduzir a complexidade.
+
+Apresenta primeiro "a naive neural network querying algorithm":
+0.1 < o < 0.9 = exemplo na região de incerteza
+judd88 diferencia configuração de arquitetura da MLP.
+Uma única rede pode descrever apenas um conceito, ou seja, uma pequena parte da região de incerteza, principalmente porque a MLP tende a ser excessivamente confiante em diversas partes do espaço de atributos.
+Os tamanhos dos conjuntos S e G crescem exponencialmente com o número de exemplos. O mesmo é válida para a quantidade de configurações de redes.
+
+Propõe a SG-network baseado em busca do version-space do mitchel82.
+Usa o conceito de "partial ordering in generality of the concepts".
+The version space (space of plausible queries) is reduced with every query.
+Ver algoritmo na página 10.
+Eles propõe mesclar s e G numa só rede.
+Na prática, em conjuntos grandes, é mais eficiente retreinar a rede do zero quando novos exemplos são adicionados.
+
+Experimentos:
+o problema do (par de) triângulo
+--------------------
+topologia 2-8-3-1
+12 redes treinadas inicialmente com 10, 20, ..., 150 pontos.
+Compara com random e com naive mlp.
+Plota o espaço de parâmetros com a fronteira de decisão criada pela rede comparada com a fronteira real (há também os exemplos + e - espalhados inutilmente).
+Plota error X queries.
+Compararou erros com diferença significativa com mais de 90% de confiança.
+
+\red{-------------------------- fim das info}
 
 % Duas estratégias que exploram o espaço de hipóteses são \textit{SGmulti} e \textit{SGmultiJS}
 % \cite{conf/hais/SantosDP14}.
@@ -623,3 +669,11 @@ Mais detalhes são apresentados no apêndice \ref{apa}.
 % % Igualmente, todos os problemas aqui citados afetam as \textit{estratégias de consulta} que são
 % abordadas no Capítulo \ref{cap:aprendizado-ativo}.
 
+
+
+\red{filosofia roy2001toward:}
+Note that this process is not first-order Markov - the optimal query
+depends on how many more queries can be made before testing time;
+for example, if this is the last query before testing,
+the optimal current query may be different than it
+is if there are fifty more queries available.
