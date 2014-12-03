@@ -1,15 +1,22 @@
 \chapter{Introdução} \label{cap:intro}
 
+\esb{azul: esboço de texto}
+
+\ano{vermelho: anotação}
+
+\tar{verde: tarefa}
+
+
 \input{aprendizado-supervisionado}
 
-\section{Revisão sistemática}
-\blue{a revisão sist. não chegou a lugar algum, talvez não compense dedicar um capítulo inteiro a
+\subsection{Revisão sistemática\ano{excluir?}}
+\ano{a revisão sist. não chegou a lugar algum, não compensaria dedicar um capítulo inteiro a
 ela}
 
-\blue{tenho uns 50 artigos de uma busca sem foco no tema que a tese passou a ter; pode ser útil
+\ano{tenho uns 50 artigos de uma busca sem foco no tema que a tese passou a ter; pode ser útil
 pra mostrar uma busca sistemática de estratégias na literatura}
 
-Revisão bibliográfica sistemática é um procedimento de identificação,
+\blue{Revisão bibliográfica sistemática é um procedimento de identificação,
 avaliação e interpretação de toda pesquisa relevante disponível a respeito
 de uma particular questão ou assunto de interesse \citep{Kitchenham2007}.
 O intento original da revisão sistemática era suportar a medicina baseada em evidência.
@@ -21,7 +28,7 @@ e com poucas publicações como é o caso do trabalho de \cite{journals/jbcs/Pisani
 Na base de dados Scopus\footnote{\textit{http://www.scopus.com} - 02/06/2014}, por exemplo,
 há apenas 16 trabalhos na área sobre ou que apliquem revisão sistemática
 enquanto que, para engenharia de \textit{software}, há 203.
-
+}
 
 % Neste capítulo são apresentados os ?? e resultados da revisão bibliográfica.
 %
@@ -314,7 +321,7 @@ enquanto que, para engenharia de \textit{software}, há 203.
 % 
 % Finalmente, no Capítulo \ref{cap:experimentos}, são mostrados experimentos ilustrativos da mudança de conceito e da diversidade de comportamento entre diferentes classificadores.
 
-tema: active learning
+\ano{tema: active learning
 problema: há várias estratégias, como escolher uma delas?
 protocolo de revisão:
         background: framework teórico; problemática e objetivo
@@ -324,4 +331,39 @@ protocolo de revisão:
         seleção: etapas, plano
         avaliação da qualidade: critérios
         extração de dados: como, o quê
-        calendário: 
+        calendário: }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Cenário}\label{sec:cenarios}
+Existem três principais cenários na literatura de aprendizado ativo \citep{settles2010active}:
+\textit{síntese de consulta por associação} ou
+\ing{consulta de exemplos sintetizados}{membership query synthesis};
+\ing{amostragem baseada em \pool}{pool-based sampling}; e
+\ing{amostragem seletiva baseada em fluxo}{stream-based selective sampling}.
+Mais detalhes são apresentados no Apêndice \ref{cenarios}.
+
+O cenário detalhado adotado neste trabalho é o baseado em \pool.
+Mais detalhadamente, há as seguintes restrições de escopo:
+\begin{itemize}
+ \item consulta pela classe (não por valores de atributos, por exemplo);
+monorrótulo;
+ \item distribuição estacionária;
+ \item com custos uniformes;
+ \item com oráculo único e consistente (sempre a mesma resposta para um mesmo ex.);
+ \item atributos sem valores faltantes;
+\end{itemize}
+e as seguintes condições que visam rigor experimental, replicabilidade e verossimilhança com aplicações reais:
+\begin{itemize}
+ \item consulta \ing{um a um}{on-line};
+ \item toda\footnote{Exceto exemplos duplicados.} a base de dados original é utilizada no processo de
+validação cruzada\footnote{Algumas estratégias fazem uma amostragem interna; ela se renova a cada consulta.}.
+ \item um rótulo inicial por classe - simulando \ing{aprendizado guiado}{guided learning} \citep{conf/kdd/AttenbergP10};
+\end{itemize}
+
+\section{Notação}\label{notacao}
+\esb{O número de classes permanece indicado por $|Y|$ e a quantidade inicial de exemplos é
+$|\mathcal{U}|$ - mantendo a notação
+usual de os símbolos $\mathcal{U}$ e $\mathcal{L}$ representarem a reserva de exemplos
+\citep{series/synthesis/2012Settles} e o conjunto de exemplos já rotulados, respectivamente.}

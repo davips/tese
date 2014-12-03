@@ -1,5 +1,5 @@
 \chapter{Aprendizado Ativo} \label{cap:aprendizado-ativo}
-O \engl{aprendizado ativo}{active learning} é o estudo de máquinas
+O \ing{aprendizado ativo}{active learning} é o estudo de máquinas
 de aprendizado capazes de se aprimorar fazendo perguntas \citep{series/synthesis/2012Settles}.
 A origem do termo remete à Pedagogia, especificamente à forma didática centrada no aluno.
 A ideia básica é a individualidade de cada aluno em relação a seu próprio ritmo de aprendizado, assim ele pode ser auxiliado pelo professor nos aspectos em que experimenta maior dificuldade.
@@ -32,7 +32,7 @@ o cenário baseado em \pool - respectivamente.
 Esses exemplos seriam, na analogia com o aprendizado humano, aqueles a respeito dos quais o aluno é
 mais hesitante e necessita maior esclarecimento.
 Dessa forma, apenas uma parcela criteriosamente escolhida dos exemplos precisa ser
-rotulada - em oposição ao \engl{aprendizado por exemplos}{learning by example} convencional
+rotulada - em oposição ao \ing{aprendizado por exemplos}{learning by example} convencional
 \citep{journals/cacm/Valiant84}, também chamado de passivo.
 No aprendizado passivo, procura-se pelo maior conjunto de treinamento possível ou por uma amostragem aleatória.
 No primeiro caso, o custo de rotulação pode se tornar proibitivo; no segundo caso,
@@ -54,7 +54,7 @@ A amostragem por incerteza, por exemplo, assume que os exemplos e suas classes p
 distribuição de probabilidades - em linha com a teoria do aprendizado
 estatístico \citep{books/daglib/0097035};\red{( <- verificar)}
 a amostragem por busca no espaço de hipóteses, por sua vez, assume a existência
-de hipóteses integrantes de um \engl{espaço de versões}{version space} \citep{books/daglib/0087929}
+de hipóteses integrantes de um \ing{espaço de versões}{version space} \citep{books/daglib/0087929}
 que enquadram ou não cada exemplo. \red{( <- verificar)}
 Estratégias agnósticas \citep{journals/jcss/BalcanBL09}, por outro lado,
 são independentes de algoritmo de aprendizado. \red{( <- verificar)}
@@ -64,7 +64,8 @@ de amostragem ativa cujos principais representantes são apresentados na seção se
 
 \section{Estratégias de consulta}\label{sec:estrategias}
 
-\red{xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx}
+\red{xxxxx até aqui o capítulo está feito xxxxx}
+
 % Esses problemas se dividem nos cenários apresentados com as respectivas estratégias na Tabela
 % \ref{tab:compara-cenarios-ativos}.
 % % \setlength{\tabcolsep}{0pt}
@@ -206,11 +207,9 @@ de amostragem ativa cujos principais representantes são apresentados na seção se
 % \subsection{Entropia}
 
 
-Todas as estratégias são apresentadas juntamente com suas ordens de complexidade características.
-O número de classes permanece indicado por $|Y|$ e a quantidade inicial de exemplos é
-$|\mathcal{U}|$ - mantendo a notação
-usual de os símbolos $\mathcal{U}$ e $\mathcal{L}$ representarem a reserva de exemplos
-\cite{series/synthesis/2012Settles} e o conjunto de exemplos já rotulados, respectivamente.
+Nesta seção são elencadas as estratégias investigadas neste trabalho.
+São apresentados suas ordens de complexidade espaciais e temporais,
+suas principais características e seus princípios de funcionamento.
 
 \subsection{Amostragem por incerteza}
 % Provavelmente a mais simples medida de informatividade para se decidir quando selecionar um exemplo
@@ -641,18 +640,6 @@ is considered.
 % 
 % A forma de obtenção das medidas de informatividade é afetada pelas particularidades de cada cenário.
 % Eles são descritos na Seção \ref{sec:cenarios}.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Cenário}\label{sec:cenarios}
-Existem três principais cenários na literatura de aprendizado ativo \citep{settles2010active}:
-\textit{membership query synthesis}\footnote{[síntese de consulta por associação ou consulta de exemplos sintetizados]
-};
-\textit{pool-based sampling}\footnote{[amostragem baseada em exemplos reservados]
-}; e
-\textit{amostragem seletiva baseada em fluxo}\footnote{[\textit{stream-based selective sampling}]
-}.
-Mais detalhes são apresentados no apêndice \ref{apa}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

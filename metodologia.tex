@@ -13,25 +13,20 @@ Com exceção de algumas que tivessem características (atributos, classes e número
 suficientemente diferentes ou cuja acurácia passiva fosse suficientemente distinta para pelo
 menos três classificadores.
 
-As \elms e as estratégias baseadas na métrica de distância de Mahalanobis precisaram ser transformadas com a
-substituição de atributos nominais por numéricos e pela aplicação do \engl{filtro de padronização}{z-score}
+As \elms e as estratégias baseadas na métrica de distância de Mahalanobis precisaram ser
+transformadas com a substituição de atributos nominais por numéricos e pela aplicação do
+\ing{filtro de padronização}{z-score}
 para possibilitar os cálculos e para evitar matrizes mal condicionadas - respectivamente.
 Os demais algoritmos de aprendizado fizeram eventual uso de seus próprios filtros internos
 providos pela ferramenta Weka \citep{journals/sigkdd/HallFHPRW09}.
 
-\subsection{Cenário}\label{sec:cenario}
+\subsection{Avaliação}\label{sec:cenario}
 
+\subsubsection{Métricas}
 kappa:\citep{conf/pkdd/Shah11}
 accbal: \citep{journals/bmcbi/MassoV10}
 
-O cenário detalhado adotado neste trabalho é baseado em \pool;
-de consulta por classe monorrótulo; com amostragem um a um de uma distribuição estacionária com
-custos uniformes; com oráculo único e consistente,
-sendo um rótulo inicial por classe simuladamente obtido via
-\engl{aprendizado guiado}{guided learning} \citep{conf/kdd/AttenbergP10};
-com atributos sem valores faltantes;
-e, sem redução do tamanho das bases de dados originais\footnote{Exceto para a estratégia de \eer,
-para ser computacionalmente tratável.}.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Ferramentas}\label{sec:ferramentas}
@@ -47,6 +42,8 @@ Adicionalmente, diversos classificadores base são oferecidos como
 extensão da classe \textit{Classifier}.
 Um conjunto mais abrangente de classificadores está disponível na
 ferramenta Weka .
+
+\ano{exemplos repetidos foram removidos, mas mantido um deles com a moda dos rótulos}
 
 Para complementar os testes estatísticos das ferramentas citadas, o
 programa R \citep{team2010r} foi adotado.
