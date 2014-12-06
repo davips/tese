@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=introducao.tex
+lastDocument=propostas.tex
 masterDocument=
 name=Tese
 pkg_extIsRegExp=false
@@ -140,6 +140,16 @@ Indentation Mode=
 Mode=LaTeX
 ReadWrite=true
 
+[document-settings,item:propostas.tex]
+Bookmarks=
+Encoding=ISO-8859-15
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
 [document-settings,item:resumo.tex]
 Bookmarks=
 Encoding=ISO-8859-1
@@ -175,37 +185,37 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=644
+line=271
 mode=LaTeX
-open=false
-order=5
+open=true
+order=4
 
 [item:apendices.tex]
 archive=true
 column=0
 encoding=ISO-8859-15
 highlight=LaTeX
-line=0
+line=169
 mode=LaTeX
-open=false
-order=1
+open=true
+order=5
 
 [item:aprendizado-supervisionado.tex]
 archive=true
-column=7
+column=17
 encoding=ISO-8859-1
 highlight=LaTeX
-line=2
+line=22
 mode=LaTeX
-open=false
-order=2
+open=true
+order=3
 
 [item:bibliografia.bib]
 archive=true
-column=0
+column=29
 encoding=ISO-8859-1
 highlight=BibTeX
-line=220
+line=658
 mode=BibTeX
 open=false
 order=4
@@ -272,10 +282,10 @@ order=3
 
 [item:introducao.tex]
 archive=true
-column=72
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=360
+line=9
 mode=LaTeX
 open=true
 order=1
@@ -299,6 +309,16 @@ line=45
 mode=LaTeX
 open=true
 order=2
+
+[item:propostas.tex]
+archive=true
+column=0
+encoding=ISO-8859-15
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=true
+order=6
 
 [item:resumo.tex]
 archive=true
@@ -325,32 +345,32 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=90
+line=231
 mode=LaTeX
 open=true
 order=0
 
 [view-settings,view=0,item:active-learning.tex]
 CursorColumn=0
-CursorLine=644
+CursorLine=271
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:apendices.tex]
 CursorColumn=0
-CursorLine=0
+CursorLine=169
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:aprendizado-supervisionado.tex]
-CursorColumn=7
-CursorLine=2
+CursorColumn=17
+CursorLine=22
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:bibliografia.bib]
-CursorColumn=0
-CursorLine=220
+CursorColumn=29
+CursorLine=658
 JumpList=
 ViMarks=
 
@@ -385,8 +405,8 @@ CursorColumn=20
 CursorLine=12
 
 [view-settings,view=0,item:introducao.tex]
-CursorColumn=72
-CursorLine=360
+CursorColumn=0
+CursorLine=9
 JumpList=
 ViMarks=
 
@@ -399,6 +419,12 @@ ViMarks=
 [view-settings,view=0,item:metodologia.tex]
 CursorColumn=84
 CursorLine=45
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:propostas.tex]
+CursorColumn=0
+CursorLine=0
 JumpList=
 ViMarks=
 
@@ -416,6 +442,6 @@ ViMarks=
 
 [view-settings,view=0,item:tese.tex]
 CursorColumn=0
-CursorLine=90
+CursorLine=231
 JumpList=
 ViMarks=

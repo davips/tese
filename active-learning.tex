@@ -54,7 +54,7 @@ A amostragem por incerteza, por exemplo, assume que os exemplos e suas classes p
 distribuição de probabilidades - em linha com a teoria do aprendizado
 estatístico \citep{books/daglib/0097035};\red{( <- verificar)}
 a amostragem por busca no espaço de hipóteses, por sua vez, assume a existência
-de hipóteses integrantes de um \ing{espaço de versões}{version space} \citep{books/daglib/0087929}
+de hipóteses integrantes de um \ing{\versionspace}{version space} \citep{books/daglib/0087929}
 que enquadram ou não cada exemplo. \red{( <- verificar)}
 Estratégias agnósticas \citep{journals/jcss/BalcanBL09}, por outro lado,
 são independentes de algoritmo de aprendizado. \red{( <- verificar)}
@@ -212,281 +212,218 @@ São apresentados suas ordens de complexidade espaciais e temporais,
 suas principais características e seus princípios de funcionamento.
 
 \subsection{Amostragem por incerteza}
-% Provavelmente a mais simples medida de informatividade para se decidir quando selecionar um exemplo
-% (ou grupo de exemplos, na proposta original) é a máxima probabilidade a posteriori dada por um
-% modelo probabilístico \cite{journals/sigir/Lewis95a}:
-% \begin{equation}
-% P_{max}(\bm{x})=\max_{\bm{y}\in Y}{P(\bm{y}|\bm{x})}
-% \end{equation}
-% 
-% 
-% % Para ELMs e outras redes neurais, o achatamento da saída é uma forma comum e simples de se simular
-% % uma distribuição de probabilidades.
-% % Trata-se do primeiro exemplo de adaptação necessária para se adequar a ELM a uma estratégia de AA.
-% Neste trabalho,
-% a mesma função logística $g$ aplicada no cálculo das saídas da camada oculta é adotada na fase
-% preditiva da camada de saída:
-% \begin{equation} \label{eqprob}
-%  P(y_o=1|\bm{x}) = \frac{g(f(\bm{x})_o)}{\sum_{1 \leq p \leq |Y|}g(f(\bm{x})_p) }
-% \end{equation}
-% 
-% A estratégia de amostragem por incerteza consiste em consultar o exemplo mais informativo,
-% ou seja, aquele com a menor $P_{max}(\bm{x})$,
-% com o intuito de se explorar a fronteira de decisão no espaço de exemplos.
-% A complexidade dessa estratégia é $\mathcal{O}(1)$.
-% Isso significa que ela requer apenas um treinamento por consulta.
+Provavelmente a mais simples medida de informatividade \ano{definir infor.} para se decidir quando selecionar um exemplo $\bm{x}$
+(ou grupo de exemplos, na proposta original) é a máxima probabilidade a posteriori dada por um
+modelo probabilístico \citep{journals/sigir/Lewis95a}:
+
+\tar{definir yo Y e f}
+
+\begin{equation}
+P_{max}(\bm{x})=\max_{\bm{y}\in Y}{P(\bm{y}|\bm{x})}
+\end{equation}
+
+Classificadores não probabilísticos e com saídas numéricas podem simular uma
+distribuição de probabilidades por meio da aplicação da função sigmoide logística
+$g=\frac{1}{1+e^{-\bm{x}}}$:
+\begin{equation} \label{eqprob}
+ P(y_o=1|\bm{x}) = \frac{g(f_o(\bm{x}))}{\sum_{1 \leq p \leq |Y|}g(f_p(\bm{x})) }
+\end{equation}
+
+A estratégia de amostragem por incerteza consiste em consultar o exemplo mais informativo,
+ou seja, aquele com a menor $P_{max}(\bm{x})$,
+com o intuito de se explorar a fronteira de decisão no espaço de exemplos.
+A complexidade dessa estratégia é $\mathcal{O}(1)$ - equivalente a apenas um treinamento por consulta.
 
 \subsection{Busca no espaço de hipóteses}
- \red{infos dos txts sobre SG-network cohn1994improving:}
-Se concentra em membership queries, cita angluin86 e valiant84.
-Em problemas formais, como encontrar uma fronteira no "unit line interval" requer O(1/e ln(1/e)) exemplos de treinamento aleatórios para se atingir um erro 'e'.
-Se for permitida a síntese de membership queries, 'e' pode ser atingido em O(ln(1/e)).
+É possível fazer uma amostragem ativa baseada na perspectiva do espaço de hipóteses.
+A intuição dessa abordagem é que os exemplos mais importantes residem na região onde
+as hipóteses se contradizem.
+Isso equivale a consultar os exemplos que reduziriam o \versionspace 
+\citep{books/daglib/0087929} depois de inseridos no conjunto de treinamento.
+A busca no espaço de hipóteses é feita pelo acompanhamento das hipóteses
+mais específicas e as mais gerais pertencentes aos conjuntos $S$ e $G$ de todas as hipóteses possíveis,
+denominadas $h_S \in S$ e $h_G \in G$, respectivamente.
+\tar{colocar figura? para esse texto confuso fazer sentido e evitar formalismo do mittchel}
+Uma característica distintiva deste paradigma com relação aos demais neste capítulo é
+seu \textbf{modelo de decisão binário}: todos os exemplos controversos são considerados
+igualmente informativos,
+podendo ser consultados em qualquer ordem ou em lotes.
 
-Formaliza o aprendiz capaz de determinar a região de incerteza e nomeia como Selective Sampling.
-Pode-se calcular a região de inc. em lotes para reduzir a complexidade.
+\textit{SG-network} \cite{journals/ml/CohnAL94},
+também chamado de CAL \citep{journals/tcs/Dasgupta11} em referência a seus proponentes,
+é baseado na busca no espaço de hipóteses e foi um dos primeiros algoritmos de aprendizado ativo.
+Ele faz uma aproximação para ser capaz de induzir os modelos específico
+$\theta_S$ e geral $\theta_G$, pois a quantidade de hipóteses possível pode ser infinita.
+A aproximação é feita pela geração ou amostragem de \ing{exemplos de fundo}{background instances}
+e rotulação artificial deles de acordo com a meta desejada de treinamento:
+especificidade ou generalidade.
+Depois de criados os modelos iniciais, eventuais exemplos que causem desacordo entre $\theta_S$ e $\theta_G$
+são selecionados para consulta.
+Duas redes \ing{perceptron multicamadas}{multilayer perceptron} \citep{haykin2004comprehensive}
+foram empregadas no trabalho original,
+mas qualquer classificador apto a lidar com exemplos ponderados poderia ser usado.
+A ordem de complexidade das estratégias desse paradigma é $\mathcal{O}(|Y|)$.
 
-Apresenta primeiro "a naive neural network querying algorithm":
-0.1 < o < 0.9 = exemplo na região de incerteza
-judd88 diferencia configuração de arquitetura da MLP.
-Uma única rede pode descrever apenas um conceito, ou seja, uma pequena parte da região de incerteza, principalmente porque a MLP tende a ser excessivamente confiante em diversas partes do espaço de atributos.
-Os tamanhos dos conjuntos S e G crescem exponencialmente com o número de exemplos. O mesmo é válida para a quantidade de configurações de redes.
+Existem outras três abordagens, baseadas em \svm que podem ser interpretadas como
+uma busca de sucessivas divisões no \versionspace \cite{tong2002support}:
+\ing{margem simples}{simple margin}, \ing{margem maxmin}{maxmin margin} e
+\ing{margem razão}{ratio margin}.
+Sob outra ótica, elas podem também serem vistas como um tipo de
+amostragem por incerteza, vista na seção anterior.
 
-Propõe a SG-network baseado em busca do version-space do mitchel82.
-Usa o conceito de "partial ordering in generality of the concepts".
-The version space (space of plausible queries) is reduced with every query.
-Ver algoritmo na página 10.
-Eles propõe mesclar s e G numa só rede.
-Na prática, em conjuntos grandes, é mais eficiente retreinar a rede do zero quando novos exemplos são adicionados.
 
-Experimentos:
-o problema do (par de) triângulo
---------------------
-topologia 2-8-3-1
-12 redes treinadas inicialmente com 10, 20, ..., 150 pontos.
-Compara com random e com naive mlp.
-Plota o espaço de parâmetros com a fronteira de decisão criada pela rede comparada com a fronteira real (há também os exemplos + e - espalhados inutilmente).
-Plota error X queries.
-Compararou erros com diferença significativa com mais de 90% de confiança.
 
-\red{-------------------------- fim das info}
+%  \red{infos dos txts sobre SG-network cohn1994improving:}
+% \esb{Se concentra em membership queries, cita angluin86 e valiant84.
+% Em problemas formais, como encontrar uma fronteira no "unit line interval" requer O(1/e ln(1/e))
+% exemplos de treinamento aleatórios para se atingir um erro 'e'.
+% Se for permitida a síntese de membership queries, 'e' pode ser atingido em O(ln(1/e)).
+% Formaliza o aprendiz capaz de determinar a região de incerteza e nomeia como Selective Sampling.
+% Pode-se calcular a região de inc. em lotes para reduzir a complexidade.
+% Apresenta primeiro "a naive neural network querying algorithm":
+% 0.1 < o < 0.9 = exemplo na região de incerteza
+% judd88 diferencia configuração de arquitetura da MLP.
+% Uma única rede pode descrever apenas um conceito, ou seja, uma pequena parte da região de incerteza,
+% principalmente porque a MLP tende a ser excessivamente confiante em diversas partes do espaço de
+% atributos.
+% Os tamanhos dos conjuntos S e G crescem exponencialmente com o número de exemplos. O mesmo é válida
+% para a quantidade de configurações de redes.
+% Propõe a SG-network baseado em busca do version-space do mitchel82.
+% Usa o conceito de "partial ordering in generality of the concepts".
+% The version space (space of plausible queries) is reduced with every query.
+% Ver algoritmo na página 10.
+% Eles propõe mesclar s e G numa só rede.
+% Na prática, em conjuntos grandes, é mais eficiente retreinar a rede do zero quando novos exemplos
+% são adicionados.
+% Experimentos:
+% o problema do (par de) triângulo
+% --------------------
+% topologia 2-8-3-1
+% 
+% 12 redes treinadas inicialmente com 10, 20, ..., 150 pontos.
+% Compara com random e com naive mlp.
+% Plota o espaço de parâmetros com a fronteira de decisão criada pela rede comparada com a
+%  fronteira real (há também os exemplos + e - espalhados inutilmente).
+% Plota error X queries.
+% Compararou erros com diferença significativa com mais de 90% de confiança.
+% }
+% \red{-------------------------- fim das info}
 
-% Duas estratégias que exploram o espaço de hipóteses são \textit{SGmulti} e \textit{SGmultiJS}
-% \cite{conf/hais/SantosDP14}.
-% Elas induzem modelos específicos para cada rótulo.
-% Cada modelo, assim, tem uma aproximação das hipótese mais geral ($\theta_G$) e a conjunção de todos
-% os modelos contém uma aproximação das hipóteses mais específicas de cada rótulo ($\theta_S$).
-% Isso feito por meio da rotulação artificial de todos os exemplos presentes na reserva de acordo com
-% a meta de cada modelo,
-% que é a representar a hipótese mais geral para um dado rótulo.
-% Uma vez gerados os modelos com os exemplos artificiais,
-% os exemplos para consulta passam a ser amostrados da região de desacordo entre todos os modelos.
-% A ordem de complexidade do \textit{SG-multi} é $\mathcal{O}(|Y|)$.
-
-It is possible to perform active learning directly from the hypothesis space perspective.
-The rationale is to query the most controversial instances when different valid hypotheses are
-compared with each other, i.e. to query instances that would reduce the \textit{version space}
-\cite{books/daglib/0087929} after its inclusion in the training set.
-One way to search through the hypothesis space is to track the sets $S$ and $G$ of specific and
-general hypotheses during learning and consider only the most specific $h_S \in S$ and the most
-general $h_G \in G$ hypotheses.
-
-One important feature of this family of strategies is its \textbf{binary decision model}: all
-instances for which the hypotheses disagree can be queried at once or in any arbitrary order, i.e.
-there is no precedence among them.
-
-One of the first active learning algorithms is a \textit{query by disagreement}, called
-\textit{SG-network} \cite{journals/ml/CohnAL94}.
-It approximately induces specific/general models $\theta_S$ and $\theta_G$ by means of generating
-or sampling random ``background'' instances and labeling them artificially according to the desired
-training goal: specificity or generality.
-Instances are sampled from the region of disagreement between $\theta_S$ and $\theta_G$.
-%Two MLP networks are used as classifiers in the original work,
-%but any classification algorithm able to handle weighted instances apply.
-
-% There are also three SVM-based approaches that can be interpreted as a version space search
-\cite{tong2002support}: \textit{simple margin}, \textit{maxmix margin} and \textit{ratio margin};
-however, they can also be seen as a type of uncertainty measure as in the previous section.
-
-The comparison performed in this work is delimited by the pool-based setting,
-independent on the learning algorithm and the number of classes.
-Therefore, to fit \textit{SG-network} into the experimental requirements,
-two sensible adaptations were adopted,
-\textit{SG-multi} and \textit{SG-multiJS}.
-The order of complexity of the original work (only binary problems)
-and the following adaptations is $\mathcal{O}(|Y|)$.
-
-\subsubsection{SG-multi}
-For each class $c \in Y$, there is a pair model/training set  $\langle\theta_c,
-\mathcal{L}_c\rangle$ properly designed to represent the most general hypothesis $h^c_G$ w.r.t. the
-class $c$.
-Initially, all instances $\langle\bm{x},y,w\rangle \in \mathcal{L}_c$ are the same instances
-present in the pool, except for two differences:
-they are labeled as ``positive'' to the corresponding class ($y=c$) and weighted to have only a
-small fraction of the importance of the real labeled instances ($w << 1$),
-as suggested in the literature \cite{series/synthesis/2012Settles}.
-The weight value adopted in this work is $w=\frac{1}{|Y||\mathcal{U}|}$,
-since it ensures that the summed influence of all background instances is no larger than a single
-real instance.
-This measure avoids misleadings due to the scarce initial real training instances.
-
-The prediction function $f(\theta_c, \bm{x})$ returns the most probable class to a given instance
-$\bm{x}$ according to the provided model $\theta_c$.
-It is possible to determine an instance under disagreement $\bm{x}^*$
-by comparing the outcomes from all different prediction functions.
-Each prediction function represents the most general concept of each class:
-\[
-  \forall a,b \in Y, a \neq b, \exists \bm{x}^* \mid f(\theta_a,\bm{x}^*) \neq f(\theta_b,\bm{x}^*)
-\]
-
-As soon as the instances from the region of disagreement $\bm{x}^*$,
-i.e. those with no consensus, are sampled and queried,
- they replace their counterparts in all training sets with the real labels and integral weights:
- \[
-  \mathcal{L}_c \leftarrow (\mathcal{L}_c - \{\langle\bm{x}^*,c,w\rangle\}) \cup
-\{\langle\bm{x}^*,c,1\rangle\} \forall c \in Y
- \]
-
-In this adapted strategy (\textit{SG-multi}),
-the decisions based on disagreement were kept binary, i.e. there is no ordering in the sequence of
-queries,
-except the precedence of the group of controversial instances over the rest.
-% This implementation decision is not optimized for tiny budgets,
-% % since the first queried instances are no different from the last controversial ones,
-% but it has the some margin for randomness like in the \textit{randomized uncertainty} approach
-suggested for use in data streams \cite{zliobaite2011active}.
-% Beyond data streams,
-% the injection of randomness is well suited for pools,
-% because the learner can be overly confident about instances inside a region of the decision space
-which in reality is a non-contiguous concept.
-
-\subsubsection{SG-multiJS}
-A real-valued measure of disagreement can be adopted to soften
-%smooth
-the binary querying criterion of \textit{SG-multi}.
-It assumes that the  probability distributions $P(\theta_c, \bm{x})$ can be estimated from the
-models $\theta_c \forall c \in Y$.
-Besides the constraint on the classification algorithm being able to output probabilities,
-\textit{SG-multiJS} differs from \textit{SG-multi} in the querying criterion: the Jensen-Shannon
-divergence \cite{journals/tit/Lin91}.
-It is an information theoretic measure that compares probability distributions, commonly used in
-ensembles to assess the degree of agreement between their members.
-The non-weighted Jensen-Shannon divergence is defined by the entropy of the distributions:
-\[
- JS(\{\theta_c \forall c \in Y\}) = E(\sum_{c \in Y}{P(\theta_c,\bm{x})}) -
-\sum_c{E(P(\theta_c,\bm{x})})
-\]
-The higher the $JS$, the further the members are from a consensus.
-Therefore, the instance with the highest value should be queried first.
-This criterion disrupts with the binary decision model underlying its theoretical background
-inspiration and may be more adequate to select instances from the disagreement area.
-
-\subsection{Query by Committee}
-Committees, also called ensemble-based classifiers,
-are combinations of models whose united predictions are meant to achieve better accuracy than a
-single model.
-Query by Bagging and Query by Boosting are two examples of active learning committees
-\cite{conf/icml/AbeM98}.
-Depending on the member models output,
-several measures of disagreement are possible.
-% The possibility to take measures about the \textbf{disagreement between concurrent hypotheses},
-% rather than a single model probability output, is the main feature of this strategy.
-
-% In data-based ensembles, subsampling techniques are the most popular,
-% specifically \textit{boosting} and \textit{bagging}.
-% While boosting \cite{schapire1990strength} explores instances uncovered
-% (incorrectly classified) by previous models to generate the next one,
-% bagging \cite{breiman1996bagging} tries to force different biases by randomly
-% selecting considerably different subsets of instances for each classifier.
-% In the active learning context,
-% the several flavors of Query by Committee are similar to both uncertainty sampling and
-\textit{query by disagreement}.
-% They unite the localized notion of uncertainty from the former with the multiple opinions from
-the latter into a single measure.
-% Due to its enforced diversity, \textit{Decorate} ensembles are also worth to mention.
-%
-In this paper,
-% \textit{soft vote entropy} \cite{settles2012active} is considered when generating queries from
-committees apart from the fact that non-probabilistic classifiers like decision trees are adopted
-instead of probabilistic ones.
-since the base learning algorithms of all strategies are not ensembles,
-a comparison that includes \textit{Query by Committee} is deferred to future work.
-Moreover, a fair comparison between strategies requires the same base learner,
-otherwise accuracies of classifiers trained on the actively sampled instances could not be
-compared.
-% Additionally, JS-divergence is implemented for Random Forest.
-
-% More elaborate measures quantify the difference/spread between the probability distribution of
-the ensemble as a whole and its members;
-% two such measures are \textit{JS-divergence} and \textit{KL-divergence}.
-% They have been described as good measures to achieve accurate class probability estimates
-\cite{melville2004diverse}. %mccallum1998employing}.
-
-The complexity of Query by Committee is considered here as $\mathcal{O}(1)$,
-if the ensemble is seen as a single base learner or $\mathcal{O}(M)$, if the number of members $M$
-is considered.
+% 
+% \subsection{Query by Committee}
+% Committees, also called ensemble-based classifiers,
+% are combinations of models whose united predictions are meant to achieve better accuracy than a
+% single model.
+% Query by Bagging and Query by Boosting are two examples of active learning committees
+% \cite{conf/icml/AbeM98}.
+% Depending on the member models output,
+% several measures of disagreement are possible.
+% % The possibility to take measures about the \textbf{disagreement between concurrent hypotheses},
+% % rather than a single model probability output, is the main feature of this strategy.
+% 
+% % In data-based ensembles, subsampling techniques are the most popular,
+% % specifically \textit{boosting} and \textit{bagging}.
+% % While boosting \cite{schapire1990strength} explores instances uncovered
+% % (incorrectly classified) by previous models to generate the next one,
+% % bagging \cite{breiman1996bagging} tries to force different biases by randomly
+% % selecting considerably different subsets of instances for each classifier.
+% % In the active learning context,
+% % the several flavors of Query by Committee are similar to both uncertainty sampling and
+% \textit{query by disagreement}.
+% % They unite the localized notion of uncertainty from the former with the multiple opinions from
+% the latter into a single measure.
+% % Due to its enforced diversity, \textit{Decorate} ensembles are also worth to mention.
+% %
+% In this paper,
+% % \textit{soft vote entropy} \cite{settles2012active} is considered when generating queries from
+% committees apart from the fact that non-probabilistic classifiers like decision trees are adopted
+% instead of probabilistic ones.
+% since the base learning algorithms of all strategies are not ensembles,
+% a comparison that includes \textit{Query by Committee} is deferred to future work.
+% Moreover, a fair comparison between strategies requires the same base learner,
+% otherwise accuracies of classifiers trained on the actively sampled instances could not be
+% compared.
+% % Additionally, JS-divergence is implemented for Random Forest.
+% 
+% % More elaborate measures quantify the difference/spread between the probability distribution of
+% the ensemble as a whole and its members;
+% % two such measures are \textit{JS-divergence} and \textit{KL-divergence}.
+% % They have been described as good measures to achieve accurate class probability estimates
+% \cite{melville2004diverse}. %mccallum1998employing}.
+% 
+% The complexity of Query by Committee is considered here as $\mathcal{O}(1)$,
+% if the ensemble is seen as a single base learner or $\mathcal{O}(M)$, if the number of members $M$
+% is considered.
 
 
 \subsection{\eer}
-% A estratégia de redução de erro adotada neste trabalho é baseada na \textit{Entropy Reduction
-% Example}.
-% É um método que busca pelo exemplo que mais reduz a entropia, e considera implicitamente a
-% informação sobre o agrupamento subjacente, ao invés de depender apenas dos escassos exemplos
-% rotulados \cite{conf/ijcai/GuoG07}.
+A estratégia de redução de erro adotada neste trabalho é baseada no
+\ing{exemplo de redução de entropia}{entropy reduction example} proposto por
+\cite{conf/ijcai/GuoG07}.
+É um método que busca pelo exemplo que mais reduz a entropia na predição geral
+do modelo para todos o conjunto de dados;
+considera, assim, implicitamente a informação sobre eventuais agrupamentos subjacentes,
+evitando depender apenas dos escassos exemplos rotulados.
 % Essa variante de estratégias de redução de erro foi adotada dado que uma performance superior à
 % original foi reportada pelos autores.
+
+Para cada exemplo candidato com vetor descritivo $\bm{x}$ obtido da reserva $\mathcal{U}$,
+seu rótulo mais provável, representado pelo vetor preditivo $\bm{y}'$, é calculado de forma
+otimista:
+\begin{equation}
+ \bm{y}' = \argmin_{\bm{y}}{\sum_{\bm{u} \in \mathcal{U}} O(\bm{x}, \theta_{\mathcal{L}\cup
+\{\langle\bm{u},y\rangle\}})}
+\end{equation}
+onde $O$ é a função objetivo.
+A complexidade computacional é $\mathcal{O}(|\mathcal{U}|^2)$.
+ 
+Neste trabalho, seguindo a escolha do artigo original,
+optou-se pela entropia como função objetivo.
+Adicionalmente, a acurácia balanceada foi adotada como uma variação do método.
 % 
-% Para cada exemplo candidato com vetor descritivo $\bm{x}$ obtido da reserva $\mathcal{U}$,
-% seu rótulo mais provável, representado pelo vetor preditivo $\bm{y}'$, é calculado de forma
-% otimista:
-% \begin{equation}
-%  \bm{y}' = \argmin_{\bm{y}}{\sum_{\bm{u} \in \mathcal{U}} O(\bm{x}, \theta_{\mathcal{L}\cup
-% \{\langle\bm{u},y\rangle\}})}
-% \end{equation}
-% 
-% onde $O$ é a função objetivo.
-% 
-% Seguindo a escolha do artigo original, neste trabalho, optou-se pela entropia como função objetivo.
-% Adicionalmente, a acurácia também foi adotada.
-% 
-% Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteração devido à alta complexidade
-% computacional do método ($\mathcal{O}(|\mathcal{U}|^2)$).
+% Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteração devido à alta
+
 
 \subsection{Amostragem ponderada por densidade}
-% A proposta geral das amostragens ponderadas por densidade é o uso da medida de \textit{densidade de
-% informação} \cite{settles2008curious}:
-% \begin{equation}
-%  ID(\bm{x}) = O(\bm{x})\frac{1}{|\mathcal{U}|} \sum_{\bm{u} \in \mathcal{U}} sim(\bm{x},\bm{u})
-% \end{equation}
-% 
-% ou a \textit{utilidade de treinamento} \cite{journals/coling/FujiiITT98},
-% sua sucessora natural e adotada neste trabalho:
-% \begin{equation}
-%  TU(\bm{x}) = ID(\bm{x}) (\sum_{\bm{l} \in \mathcal{L}} sim(\bm{x},\bm{l}))^{-1}
-% \end{equation}
-% 
-% 
-% Qualquer medida de similaridade $sim(\bm{x},\bm{u})$ e informatividade $H(\bm{x})$ podem ser
-% adotadas.
-% Neste trabalho, duas distâncias $d(\bm{x},\bm{u})$ foram comparadas (euclidiana e Manhattan)
-% e transformadas numa medida de similaridade pela seguinte fórmula:
-% \begin{equation}
-%  sim(\bm{x},\bm{u}) = \frac{1}{1 + d(\bm{x},\bm{u})}
-% \end{equation}
-% 
-% A ordem de complexidade é $\mathcal{O}(1)$, se os $|\mathcal{U}|^2$ cálculos de distância forem
-% devidamente armazenados em memória para futuro acesso rápido.
+A proposta geral das amostragens ponderadas por densidade é o uso da medida de \textit{densidade de
+informação} \citep{settles2008curious}:
+\begin{equation}
+ ID(\bm{x}) = O(\bm{x})\frac{1}{|\mathcal{U}|} \sum_{\bm{u} \in \mathcal{U}} sim(\bm{x},\bm{u})
+\end{equation}
+ou a \textit{utilidade de treinamento} \cite{journals/coling/FujiiITT98},
+seu desdobramento natural:
+\begin{equation}
+ TU(\bm{x}) = ID(\bm{x}) (\sum_{\bm{l} \in \mathcal{L}} sim(\bm{x},\bm{l}))^{-1}
+\end{equation}
+
+
+Qualquer medida de similaridade $sim(\bm{x},\bm{u})$
+e de informatividade $H(\bm{x})$ podem ser adotadas.
+Neste trabalho, três medidas de distância $d(\bm{x},\bm{u})$
+(euclidiana, Manhattan e Mahalanobis) foram transformadas em medidas de similaridade
+$sim(\bm{x},\bm{u})$ pela seguinte fórmula:
+\begin{equation}
+ sim(\bm{x},\bm{u}) = \frac{1}{1 + d(\bm{x},\bm{u})}
+\end{equation}
+
+A ordem de complexidade é $\mathcal{O}(1)$, se os $|\mathcal{U}|^2$ cálculos de distância forem
+devidamente armazenados em memória para futuro acesso rápido.
 
 \subsection{Amostragem por agrupamento}
-% O processo de aprendizado pode explorar agrupamentos naturais na reserva,
-% pois são independentes da existência de rótulos.
-% Essa abordagem é uma alternativa à realização de consultas que enfocam a fronteira de decisão ou
-% o manejo de hipóteses citados anteriormente.
-% Uma tal abordagem é a \textit{amostragem hierárquica} \cite{journals/tcs/Dasgupta11}.
-% Os exemplos têm maior probabilidade de serem consultados se pertencerem aos grupos mais impuros e
-% representativos.
-% A implementação original do autor foi adotada neste trabalho com o mesmo algoritmo de agrupamento:
-% \textit{Ward's average linkage method}\footnote{
-% Implementação disponível no Weka \cite{journals/sigkdd/HallFHPRW09}.}.
+O processo de aprendizado pode explorar agrupamentos naturais na \pool,
+pois são independentes da existência de rótulos.
+Essa abordagem é uma alternativa à realização de consultas que enfocam a fronteira de decisão ou
+o manejo de hipóteses citados anteriormente.
+Uma tal abordagem é a \textit{amostragem hierárquica} \cite{journals/tcs/Dasgupta11}.
+Os exemplos têm maior probabilidade de serem consultados se pertencerem aos grupos mais impuros e
+representativos.
+A implementação original do autor foi adotada neste trabalho com o mesmo algoritmo de agrupamento:
+\textit{Ward's average linkage method}\footnote{
+Implementação disponível no Weka \cite{journals/sigkdd/HallFHPRW09}.}
+
+\ano{como traduzir?}
+
+\tar{dar mais detalhes? essa abordagem é complexa}.
 
 
 % Há diferentes propostas para a determinação de quais exemplos são informativos para consulta.
@@ -640,6 +577,46 @@ is considered.
 % 
 % A forma de obtenção das medidas de informatividade é afetada pelas particularidades de cada cenário.
 % Eles são descritos na Seção \ref{sec:cenarios}.
+
+\subsection{Outras estratégias}
+Os códigos originais dos autores das seguintes estratégias \textit{margem simples},
+\textit{self-conf}, \textit{KFF} e \textit{balancedEE}
+\citep{journals/jmlr/TongK01,journals/jmlr/BaramEL04,conf/icdm/OsugiKS05}
+foram adaptados para contemplar problemas multiclasse por meio da aplicação de
+\ing{rodízio}{round-robin} entre sub-estratégias.
+A cada sub-estratégia foi atribuída uma classe principal, na configuração \textit{um para muitos}.
+Porém tal configuração resultou em estratégias excessivamente piores que a amostragem aleatória.
+Isso poderia ser um indício de problemas na implementação original ou na adaptação,
+ou mesmo da ineficácia do rodízio.
+Por esses motivos elas foram excluídas deste trabalho.
+% os experimentos.
+
+%mais detalhes sobre essas estratégias:
+% Online choice of active learning algorithms
+% A simple active-learning heuristic based on ``farthest-first'' traversal sequences
+%                     in kernel space. Farthest-first (FF) sequences have been previously used for computing provably
+%                     approximate optimal clustering for k-center problems (Hochbaum and Shmoys, 1985). The FF
+%                     traversal of the points in a data set is defined as follows. Start with any point x and find the farthest
+%                     point from x. Then find the farthest point from the first two (where the distance of a point from a set
+%                     is defined to be the minimum distance to a point in the set), etc. In any metric space, FF traversals
+%                     can be used for computing 2-approximation solutions to the k-center clustering problem in which
+%                     one seeks an optimal k-clustering of the data and optimality is measured by the maximum diameter
+%                     of the clusters. In particular, by taking the first k elements in the FF traversal as ``centroids`` and then
+%                     assigning each other point to its closest ``centroid``, one obtains a k-clustering whose cost is within
+%                     a factor 2 of the optimal (Hochbaum and Shmoys, 1985).
+% 
+%                  * Parece que é o sucessor do MAB3.
+%                  * The idea is similar to COMB (by Luz et. al.). We use two learners:
+%                  * SIMPLE and KFF. the latter exploits and the former explores the data.
+%                  * the context switch between the two methods is done randomly using a biased coin.
+%                  * the bias is dynamically chosen and reflects the `effectivness' of exploration,
+%                  * which is measured by a distance function between two hypothesis.
+%                  *
+%                  * the implemention corresponds the paper:
+%                  * Thomas Osugi, Deng Kun, and Stephen Scott.
+%                  * Balancing Exploration and Exploitation: A New Algorithm for Active Machine Learning.
+%                  * In Proceedings of the Fifth IEEE International Conference on Data Mining. November 2005.
+%                  */
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

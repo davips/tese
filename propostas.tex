@@ -1,30 +1,117 @@
 \chapter{Contribuição (ou Proposta?)} \label{cap:contrib}
+\tar{mencionar em cada seção o artigo em que foi ou vai ser publicado o tema}
+
+\ano{agDW* levam vantagem talvez porque com classificadores hard (NB, C45?, ...)
+a estimativa de informatividade fica prejudicada pela presença do learner}
 
 \section{Adaptações de Classificadores}
+\ano{última coisa a escrever}
 \subsection{IELM}
 \subsection{EIELM}
 \subsection{CIELM}
 \subsection{nintera}
-\blue{citar apendice}
+\tar{citar apendice}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 \section{Propostas}
 
 \subsection{Busca no espaço de hipóteses multiclasse}
+Conforme explicado na Seção \ref{sgnet}, é possível fazer uma amostragem ativa dentro
+da perspectiva do espaço de hipóteses.
+
+multiclasse
 SGmulti
+Duas estratégias que exploram o espaço de hipóteses são \textit{SGmulti} e \textit{SGmultiJS}
+\cite{conf/hais/SantosDP14}.
+Elas induzem modelos específicos para cada rótulo.
+Cada modelo, assim, tem uma aproximação das hipótese mais geral ($\theta_G$) e a conjunção de todos
+os modelos contém uma aproximação das hipóteses mais específicas de cada rótulo ($\theta_S$).
+Isso feito por meio da rotulação artificial de todos os exemplos presentes na reserva de acordo com
+a meta de cada modelo,
+que é a representar a hipótese mais geral para um dado rótulo.
+Uma vez gerados os modelos com os exemplos artificiais,
+os exemplos para consulta passam a ser amostrados da região de desacordo entre todos os modelos.
+A ordem de complexidade do \textit{SG-multi} é $\mathcal{O}(|Y|)$.
+
+%
+% \subsubsection{SG-multi}
+% For each class $c \in Y$, there is a pair model/training set  $\langle\theta_c,
+% \mathcal{L}_c\rangle$ properly designed to represent the most general hypothesis $h^c_G$ w.r.t. the
+% class $c$.
+% Initially, all instances $\langle\bm{x},y,w\rangle \in \mathcal{L}_c$ are the same instances
+% present in the pool, except for two differences:
+% they are labeled as ``positive'' to the corresponding class ($y=c$) and weighted to have only a
+% small fraction of the importance of the real labeled instances ($w << 1$),
+% as suggested in the literature \cite{series/synthesis/2012Settles}.
+% The weight value adopted in this work is $w=\frac{1}{|Y||\mathcal{U}|}$,
+% since it ensures that the summed influence of all background instances is no larger than a single
+% real instance.
+% This measure avoids misleadings due to the scarce initial real training instances.
+%
+% The prediction function $f(\theta_c, \bm{x})$ returns the most probable class to a given instance
+% $\bm{x}$ according to the provided model $\theta_c$.
+% It is possible to determine an instance under disagreement $\bm{x}^*$
+% by comparing the outcomes from all different prediction functions.
+% Each prediction function represents the most general concept of each class:
+% \[
+%   \forall a,b \in Y, a \neq b, \exists \bm{x}^* \mid f(\theta_a,\bm{x}^*) \neq f(\theta_b,\bm{x}^*)
+% \]
+%
+% As soon as the instances from the region of disagreement $\bm{x}^*$,
+% i.e. those with no consensus, are sampled and queried,
+%  they replace their counterparts in all training sets with the real labels and integral weights:
+%  \[
+%   \mathcal{L}_c \leftarrow (\mathcal{L}_c - \{\langle\bm{x}^*,c,w\rangle\}) \cup
+% \{\langle\bm{x}^*,c,1\rangle\} \forall c \in Y
+%  \]
+%
+% In this adapted strategy (\textit{SG-multi}),
+% the decisions based on disagreement were kept binary, i.e. there is no ordering in the sequence of
+% queries,
+% except the precedence of the group of controversial instances over the rest.
+% % This implementation decision is not optimized for tiny budgets,
+% % % since the first queried instances are no different from the last controversial ones,
+% % but it has the some margin for randomness like in the \textit{randomized uncertainty} approach
+% suggested for use in data streams \cite{zliobaite2011active}.
+% % Beyond data streams,
+% % the injection of randomness is well suited for pools,
+% % because the learner can be overly confident about instances inside a region of the decision space
+% which in reality is a non-contiguous concept.
+%
+% \subsubsection{SG-multiJS}
+% A real-valued measure of disagreement can be adopted to soften
+% %smooth
+% the binary querying criterion of \textit{SG-multi}.
+% It assumes that the  probability distributions $P(\theta_c, \bm{x})$ can be estimated from the
+% models $\theta_c \forall c \in Y$.
+% Besides the constraint on the classification algorithm being able to output probabilities,
+% \textit{SG-multiJS} differs from \textit{SG-multi} in the querying criterion: the Jensen-Shannon
+% divergence \cite{journals/tit/Lin91}.
+% It is an information theoretic measure that compares probability distributions, commonly used in
+% ensembles to assess the degree of agreement between their members.
+% The non-weighted Jensen-Shannon divergence is defined by the entropy of the distributions:
+% \[
+%  JS(\{\theta_c \forall c \in Y\}) = E(\sum_{c \in Y}{P(\theta_c,\bm{x})}) -
+% \sum_c{E(P(\theta_c,\bm{x})})
+% \]
+% The higher the $JS$, the further the members are from a consensus.
+% Therefore, the instance with the highest value should be queried first.
+% This criterion disrupts with the binary decision model underlying its theoretical background
+% inspiration and may be more adequate to select instances from the disagreement area.
+
 
 % \subsection{SVMmulti} %parece que foi um fiasco quando desbalanceado (pior que random)
 
 \subsection{Extensões da amostragem ponderada por densidade}
 
-\subsubsection{DWLaU}% - Amostragem ponderada por densidade e utilidade do rótulo}
+\subsubsection{AgTU}% - Amostragem agnóstica ponderada por densidade e utilidade do treinamento}
 
-\subsubsection{DWLoU}% - Amostragem ponderada por densidade e utilidade local}
+\subsubsection{DWLU}% - Amostragem ponderada por densidade e utilidade de cada rótulo}
 
-\subsubsection{DWLoLaU}% - Amostragem ponderada por densidade e utilidade local do rótulo}
- \blue{consertar e rodar DWLoLaU, caso DWLoU e DWLaU sejam bons; excluir tópico caso
-negativo}
+\subsubsection{AgLU}% - Amostragem agnóstica ponderada por densidade e utilidade de cada rótulo}
  
+\subsection{Meta-estratégia}
+
 \subsection{Meta-estratégia dinâmica}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
