@@ -2,7 +2,8 @@
 O \ing{aprendizado ativo}{active learning} é o estudo de máquinas
 de aprendizado capazes de se aprimorar fazendo perguntas \citep{series/synthesis/2012Settles}.
 A origem do termo remete à Pedagogia, especificamente à forma didática centrada no aluno.
-A ideia básica é a individualidade de cada aluno em relação a seu próprio ritmo de aprendizado, assim ele pode ser auxiliado pelo professor nos aspectos em que experimenta maior dificuldade.
+A ideia básica é aproveitar a individualidade de cada aluno e seu próprio ritmo de aprendizado,
+assim ele pode ser auxiliado pelo professor nos aspectos em que experimenta maior dificuldade.
 Esse tipo ativo de aprendizado humano - com foco no aluno - tem mostrado evidências
 de sua eficácia \citep{michael2006s}.
 Analogamente, guardadas as devidas proporções,
@@ -14,23 +15,24 @@ Em sua forma mais geral, como esboçado por \cite{forman2012programmer},
 o aprendizado de máquina ativo pode lançar mão de todo conhecimento que um professor
 humano seja capaz de transmitir dentro das limitações de configurabilidade do sistema.
 Alguns pontos de configuração seriam, por exemplo:
-reescrita do código\footnote{\textit{Reescrita do código}, usualmente, na linguagem de
- programação que implementa o sistema.} de extração de atributos visando maior separabilidade entre as
+reescrita do \textit{código}\footnote{\textit{Código} usualmente escrito na linguagem de
+ programação que implementa o sistema ou em alguma linguagem específica de domínio.}
+de extração de atributos visando maior separabilidade entre as
  classes; composição de expressões regulares para extrair termos adequados de textos técnicos;
 e, criação de regras de classificação.
 
 Outras informações, mais diretamente obteníveis do supervisor humano incluiriam
- valores de atributos, rótulos associados com atributos, exemplos completos sob demanda etc.
- Em linhas gerais, sua aquisição deve ser guiada por duas noções
+ valores de atributos, rótulos associados com atributos, exemplos completos sob demanda e outros.
+Em linhas gerais, sua aquisição deve ser guiada por duas noções
  \citep{krishnapuram2011cost}:
 preferir aquela para a qual o estado corrente do modelo é incerto e
-preferir aquela estimada como a mais valorosa de se adquirir.
+preferir aquela estimada como a mais relevante.
 
 O sub-caso e a cenário de aprendizado ativo mais presentes na literatura,
 e onde se situa a presente tese, são a busca por rótulos e
 o cenário baseado em \pool - respectivamente.
-Esses exemplos seriam, na analogia com o aprendizado humano, aqueles a respeito dos quais o aluno é
-mais hesitante e necessita maior esclarecimento.
+A quantidade de exemplos disponíveis pode ser abundante e o esforço humano disponível
+(do professor, no caso da analogia acima) limitado.
 Dessa forma, apenas uma parcela criteriosamente escolhida dos exemplos precisa ser
 rotulada - em oposição ao \ing{aprendizado por exemplos}{learning by example} convencional
 \citep{journals/cacm/Valiant84}, também chamado de passivo.
@@ -58,7 +60,7 @@ de hipóteses integrantes de um \ing{\versionspace}{version space} \citep{books/d
 que enquadram ou não cada exemplo. \red{( <- verificar)}
 Estratégias agnósticas \citep{journals/jcss/BalcanBL09}, por outro lado,
 são independentes de algoritmo de aprendizado. \red{( <- verificar)}
-Essa diversidade de embasamentos configura-se praticamente como um conjunto de paradigmas
+Essa diversidade de embasamentos configura-se praticamente como um \textit{conjunto de paradigmas}
 de amostragem ativa cujos principais representantes são apresentados na seção seguinte.
 
 
@@ -379,7 +381,11 @@ A complexidade computacional é $\mathcal{O}(|\mathcal{U}|^2)$.
  
 Neste trabalho, seguindo a escolha do artigo original,
 optou-se pela entropia como função objetivo.
-Adicionalmente, a acurácia balanceada foi adotada como uma variação do método.
+Adicionalmente, a acurácia balanceada foi adotada como uma variação do método,
+porém devido ao constatado desempenho inferior
+% nas primeiras 50 queries
+e alto custo computacional,
+ela foi excluída dos experimentos.
 % 
 % Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteração devido à alta
 
@@ -387,6 +393,7 @@ Adicionalmente, a acurácia balanceada foi adotada como uma variação do método.
 \subsection{Amostragem ponderada por densidade}
 A proposta geral das amostragens ponderadas por densidade é o uso da medida de \textit{densidade de
 informação} \citep{settles2008curious}:
+\ano{tá certo esse $O$?}
 \begin{equation}
  ID(\bm{x}) = O(\bm{x})\frac{1}{|\mathcal{U}|} \sum_{\bm{u} \in \mathcal{U}} sim(\bm{x},\bm{u})
 \end{equation}
@@ -414,16 +421,16 @@ O processo de aprendizado pode explorar agrupamentos naturais na \pool,
 pois são independentes da existência de rótulos.
 Essa abordagem é uma alternativa à realização de consultas que enfocam a fronteira de decisão ou
 o manejo de hipóteses citados anteriormente.
-Uma tal abordagem é a \textit{amostragem hierárquica} \cite{journals/tcs/Dasgupta11}.
+Uma tal abordagem é a \textit{amostragem hierárquica} proposta por \cite{journals/tcs/Dasgupta11}.
 Os exemplos têm maior probabilidade de serem consultados se pertencerem aos grupos mais impuros e
 representativos.
 A implementação original do autor foi adotada neste trabalho com o mesmo algoritmo de agrupamento:
 \textit{Ward's average linkage method}\footnote{
 Implementação disponível no Weka \cite{journals/sigkdd/HallFHPRW09}.}
-
 \ano{como traduzir?}
 
-\tar{dar mais detalhes? essa abordagem é complexa}.
+\tar{dar mais detalhes? replicar o algoritmo(ele tem formulas por todo o texto))?
+essa abordagem é complexa}.
 
 
 % Há diferentes propostas para a determinação de quais exemplos são informativos para consulta.
@@ -635,9 +642,3 @@ Por esses motivos elas foram excluídas deste trabalho.
 
 
 
-\red{filosofia roy2001toward:}
-Note that this process is not first-order Markov - the optimal query
-depends on how many more queries can be made before testing time;
-for example, if this is the last query before testing,
-the optimal current query may be different than it
-is if there are fifty more queries available.

@@ -313,8 +313,8 @@ Existem três principais cenários na literatura de aprendizado ativo \citep{settl
 \ing{amostragem seletiva baseada em fluxo}{stream-based selective sampling}.
 Mais detalhes são apresentados no Apêndice \ref{cenarios}.
 
-O cenário detalhado adotado neste trabalho é o baseado em \pool.
-Mais detalhadamente, há as seguintes restrições de escopo:
+O cenário adotado neste trabalho é o baseado em \pool.
+Especificamente, há as seguintes restrições de escopo:
 \begin{itemize}
  \item consulta pela classe (não por valores de atributos, por exemplo);
 monorrótulo;
@@ -323,13 +323,23 @@ monorrótulo;
  \item com oráculo único e consistente (sempre a mesma resposta para um mesmo ex.);
  \item atributos sem valores faltantes;
 \end{itemize}
-e as seguintes condições que visam rigor experimental, replicabilidade e verossimilhança com aplicações reais:
+e as seguintes condições que visam rigor experimental, replicabilidade e
+verossimilhança com aplicações reais:
 \begin{itemize}
  \item consulta \ing{um a um}{on-line};
- \item toda\footnote{Exceto exemplos duplicados.} a base de dados original é utilizada no processo de
-validação cruzada\footnote{Algumas estratégias fazem uma amostragem interna; ela se renova a cada consulta.}.
- \item um rótulo inicial por classe - simulando \ing{aprendizado guiado}{guided learning} \citep{conf/kdd/AttenbergP10};
+ \item toda\footnote{Exceto exemplos duplicados.} a base de dados original é utilizada no
+   processo de validação cruzada\footnote{Algumas estratégias fazem uma amostragem interna,
+   que se renova a cada consulta.}.
+ \item um rótulo inicial por classe - simulando
+   \ing{aprendizado guiado}{guided learning} \citep{conf/kdd/AttenbergP10};
 \end{itemize}
+Outra condição é que a sequência de consultas não é necessariamente ótima,
+pois nenhuma das estratégias implementadas
+tira proveito da informação sobre o orçamento disponível.
+Essa possibilidade, mai teórica do que prática,
+decorre do fato do processo ativo de amostragem não ser uma
+\textit{cadeia de Markov} de primeira ordem, ou seja,
+a consulta ótima depende de quantas ainda podem ser feitas \citep{conf/icml/RoyM01}.
 
 \section{Notação}\label{notacao}
 \esb{O número de classes permanece indicado por $|Y|$ e a quantidade inicial de exemplos é

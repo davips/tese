@@ -14,9 +14,15 @@
 > A ordem dos itens 2 e 3 pode mudar. O normal eh o 3 vir antes do 2
 
 
+ \tar{usar nintera na(s) base(s) à parte?}
+
+ \tar{plotar}
+
+ \tar{metafeatures: learner, budget}
 
 
-\green{baseline p/ AccBal é $¬1/|Y|$}
+
+\green{baseline p/ AccBal é $1/|Y|$}
 
 \green{manter apenas estratégias que ganharam em algum momento/nicho?}
 
@@ -32,7 +38,21 @@ além disso, quand ose sabe o melhor classificador (a não ser por propriedades do
 
 \green{rodar eeg-eye-state pra medir tempo nas principais estrategias/learners, pra ser a unica base usando nintera que come memória; rodar como todas as outras, mas em 1x10-fold}
 
-\subsubsection{Afinidade estratégia-aprendiz}
+\subsubsection{Afinidade estratégia-aprendiz, estratégia-budget e outros nichos}
+
+\ano{A primeira árvore é aplicada a todos os datasets; ele servirá apenas para dar algum insight
+sobre o motivo de cada afinidade existir (desbalanceamento, agrupamentos, tipos e qtd de atts etc.).
+Não serve para ML, pois os atributos e o
+claffisifcador devem ser interpretáveis e haverá atributos com informação ``desleal''
+da distribuição de classes}
+
+\ano{possiveis atts: proporção da minor., da maj.; entropia* ou medida melhor para medir o grau de desbalanço}
+
+* -> normalized entropy \citep{journals/bioinformatics/LewinSA0P04}:
+permitiria saber que estratégias são boas p/ bases desbalanceadas.
+
+----------
+
 \green{árvore do vencedor accbal e variancia}
 
 \green{árvore do perdedor accbal e variancia (considerar empates? = uma árvore por estrat.?)}
