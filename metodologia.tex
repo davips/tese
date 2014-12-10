@@ -16,7 +16,7 @@ menos três classificadores.
 
 As \elms e as estratégias baseadas na métrica de distância de Mahalanobis precisaram ser
 transformadas com a substituição de atributos nominais por numéricos e pela aplicação do
-\ing{filtro de padronização}{z-score}
+\ing{filtro de padronização}{z-score} \citep{kreyszig2007advanced}
 para possibilitar os cálculos e para evitar matrizes mal condicionadas - respectivamente.
 Os demais algoritmos de aprendizado fizeram eventual uso de seus próprios filtros internos
 providos pela ferramenta Weka \citep{journals/sigkdd/HallFHPRW09}.
@@ -31,6 +31,20 @@ accbal: \citep{journals/bmcbi/MassoV10}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Ferramentas}\label{sec:ferramentas}
+Foram utilizados um total de 188 núcleos\footnote{\textit{Núcleos} por simplicidade,
+mas na realidade cada computador oferecia diferentes unidades de processamento;
+sendo o outro tipo as \textit{threads} na nomenclatura da Intel.} de processamento:
+\begin{itemize}
+\item 24 núcleos de 2,4GHz da \textit{nuvem} USP;
+\item 108 núcleos de 3,5GHz do \textit{cluster} Biocom;
+\item 24 núcleos de 2,5GHz do servidor GPU do laboratório Biocom;
+\item 8 núcleos de 4GHz da estação de trabalho; e
+\item 8 núcleos de 2,4GHz do \textit{notebook} de trabalho\footnote{Ambos,
+estação e \textit{notebook} vinculados ao orientador do autor deste trabalho.}.
+\end{itemize}
+
+\ano{citar agencias de fomento? quais?}
+
 \green{descrever hardware, mysql}
 
 \green{descrever parâmetros dos learners}
