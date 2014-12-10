@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=experimentos.tex
+lastDocument=active-learning.tex
 masterDocument=
 name=Tese
 pkg_extIsRegExp=false
@@ -237,7 +237,7 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=62
 mode=LaTeX
-open=false
+open=true
 order=2
 
 [item:apendice1.tex]
@@ -302,10 +302,10 @@ order=1
 
 [item:aprendizado-supervisionado.tex]
 archive=true
-column=17
+column=39
 encoding=ISO-8859-1
 highlight=LaTeX
-line=22
+line=16
 mode=LaTeX
 open=false
 order=3
@@ -425,7 +425,7 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=34
+line=1
 mode=LaTeX
 open=false
 order=8
@@ -442,10 +442,10 @@ order=8
 
 [item:tese.tex]
 archive=true
-column=0
+column=18
 encoding=ISO-8859-1
 highlight=LaTeX
-line=231
+line=1
 mode=LaTeX
 open=false
 order=0
@@ -493,8 +493,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:aprendizado-supervisionado.tex]
-CursorColumn=17
-CursorLine=22
+CursorColumn=39
+CursorLine=16
 JumpList=
 ViMarks=
 
@@ -560,7 +560,7 @@ ViMarks=
 
 [view-settings,view=0,item:resumo.tex]
 CursorColumn=0
-CursorLine=34
+CursorLine=1
 JumpList=
 ViMarks=
 
@@ -571,7 +571,7 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:tese.tex]
-CursorColumn=0
-CursorLine=231
+CursorColumn=18
+CursorLine=1
 JumpList=
 ViMarks=
