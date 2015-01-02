@@ -2,14 +2,21 @@
 \tar{mencionar em cada seção o artigo em que foi ou vai ser publicado o tema}
 
 \ano{agDW* levam vantagem talvez porque com classificadores hard (NB, C45?, ...)
-a estimativa de informatividade fica prejudicada pela presença do learner}
+a estimativa de informatividade (a estimativa da distribuição de probabilidade)
+fica prejudicada pela presença do learner.
+É preciso comparar classificador a classifcador.}
 
-\section{Adaptações de Classificadores}
+\section{Adaptações de Classificadores/Viabil. em ELMs?}
 \ano{última coisa a escrever}
 \subsection{IELM}
-\subsection{EIELM}
+As propostas incrementais para IELM e CIELM mostraram-se
+positivamente impactadas pelo aprendizado ativo no experimento principal.
+% \subsection{EIELM}
 \subsection{CIELM}
 \subsection{nintera}
+\ano{foi usado no segundo experimento preliminar para demonstrar viabilidade
+de AL com ELM \citep{santos2014viabilidade};
+e tb foi usado como metaclassificador no último experimento}
 \tar{citar apendice}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
@@ -111,7 +118,20 @@ A ordem de complexidade do \textit{SG-multi} é $\mathcal{O}(|Y|)$.
 \subsubsection{AgLU - Amostragem agnóstica ponderada por densidade e utilidade de cada rótulo}
  
 \subsection{Meta-estratégia}
-\ano{``melhoram`` statlog, tirando log \citep{conf/ijcnn/SoutoPSACLS08}}
+\ano{\citep{conf/ijcnn/SoutoPSACLS08}, sobre clustering,
+usam ranking médio como default:
+Method SRC
+Default 0.59 +- 0.37
+Meta-Leaner 0.75 +- 0.21
+;
+``melhoram`` statlog, tirando log}
+
+\citep{kalousis2002algorithm} pg. 43 tem metafeatures (inclusive histograma,
+mas como as faixas ideais são imprevisíveis, resolvi isso colocando max, min, avg e min/max)
+Posso colocar ou omitir a informação de distribuição das classes; ela normalmente não
+é conhecida na prática.
+
+
 \subsection{Meta-estratégia dinâmica}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %

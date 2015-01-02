@@ -122,7 +122,7 @@ Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
-Indentation Mode=
+Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
@@ -232,10 +232,10 @@ ReadWrite=true
 
 [item:active-learning.tex]
 archive=true
-column=98
+column=14
 encoding=ISO-8859-1
 highlight=LaTeX
-line=62
+line=399
 mode=LaTeX
 open=true
 order=2
@@ -262,13 +262,13 @@ order=10
 
 [item:apendice3.tex]
 archive=true
-column=41
+column=96
 encoding=ISO-8859-1
 highlight=LaTeX
-line=97
+line=22
 mode=LaTeX
-open=false
-order=0
+open=true
+order=4
 
 [item:apendice4.tex]
 archive=true
@@ -295,9 +295,9 @@ archive=true
 column=0
 encoding=ISO-8859-15
 highlight=LaTeX
-line=169
+line=0
 mode=LaTeX
-open=true
+open=false
 order=1
 
 [item:aprendizado-supervisionado.tex]
@@ -312,13 +312,13 @@ order=3
 
 [item:bibliografia.bib]
 archive=true
-column=0
+column=10
 encoding=ISO-8859-1
 highlight=BibTeX
-line=901
+line=920
 mode=BibTeX
 open=true
-order=0
+order=3
 
 [item:capa.tex]
 archive=true
@@ -332,12 +332,12 @@ order=7
 
 [item:experimentos.tex]
 archive=true
-column=26
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=16
+line=0
 mode=LaTeX
-open=true
+open=false
 order=2
 
 [item:imagens/fluxo-esquema.tex]
@@ -427,8 +427,8 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=1
 mode=LaTeX
-open=false
-order=8
+open=true
+order=1
 
 [item:tarefas.tex]
 archive=true
@@ -445,14 +445,14 @@ archive=true
 column=18
 encoding=ISO-8859-1
 highlight=LaTeX
-line=1
+line=233
 mode=LaTeX
-open=false
+open=true
 order=0
 
 [view-settings,view=0,item:active-learning.tex]
-CursorColumn=98
-CursorLine=62
+CursorColumn=14
+CursorLine=399
 JumpList=
 ViMarks=
 
@@ -469,8 +469,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:apendice3.tex]
-CursorColumn=41
-CursorLine=97
+CursorColumn=96
+CursorLine=22
 JumpList=
 ViMarks=
 
@@ -499,8 +499,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:bibliografia.bib]
-CursorColumn=0
-CursorLine=901
+CursorColumn=10
+CursorLine=920
 JumpList=
 ViMarks=
 
@@ -572,6 +572,6 @@ ViMarks=
 
 [view-settings,view=0,item:tese.tex]
 CursorColumn=18
-CursorLine=1
+CursorLine=233
 JumpList=
 ViMarks=

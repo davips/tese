@@ -1,8 +1,34 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Experimento preliminar}\label{sec:pre}
+Um experimento preliminar \citep{conf/hais/SantosC14} foi conduzido visando a construção de um
+panorama geral do desempenho das diversas estratégias
+diante de variadas bases de dados.
+Devido à forte dependência que as estratégias gnósticas têm de seus
+modelos internos de classificação, diferentes algoritmos de aprendizado
+precisam ser adotados quando alguma comparação entre elas é
+pretendida.
+Dessa forma, quatro algoritmos comumente usados foram adotados
+\citep{books/mk/Quinlan93,conf/ecml/Lewis98,conf/kdd/DomingosH00,journals/tit/Hart68}:
+J48\footnote{Implementação do Weka baseada no algoritmo de
+árvore de decisão C4.5.}, NB\footnote{\textit{Naive Bayes}},
+VFDT \footnote{Very Fast Decision Trees} e
+5-NN\footnote{Cinco vizinhos mais próximos.}.
+
+\ano{enumerar bases de dados}
+
+
+
+
 \subsection{Experimentos}\label{sec:ferramentas}
+
 
 > 1 - que nao tem free lunch, pois cada estrategia eh a melhor para
 > alguns datasets, nao para todos
+(acho que NFL se refere à impossibilidade de aprendizado sem viés;
+no caso de ap. ativo trata-se mais de amostragem do que de aprendizado;
+as estrategias agnósticas são um exemplo de pura amostragem;
+elas até poderiam ser enxergadas como um problema de aprendizado:
+classificar cada exemplo como ``consultar'' ou ``não consultar'')
 >
 > 2 - explicar pela arvore quais os nichos de cada estrategia. Voce pde
 > tambem usar clustering para mostrar que estrategias se adequam a

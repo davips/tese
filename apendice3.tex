@@ -19,7 +19,9 @@ O motivo para a baixa necessidade ou ausência de iterações é explicado a seguir.
 Fixado o tipo de nó como o neurônio artificial convencional, seus parâmetros a ajustar são os
 valores e quantidade de neurônios/conexões sinápticas da camada oculta.
 Dada uma função geradora de pesos aleatórios ou pseudo-aleatórios incluída sua semente geradora e
-adotada a restrição de sempre se manter os pesos na ordem em que são gerados, a quantidade de
+adotada a restrição de sempre se manter os pesos na ordem em que são
+gerados\footnote{Do contrário, cada peso deveria ser interpretado como um parâmetro independente.},
+a quantidade de
 neurônios $L$ na camada oculta pode ser vista como o único parâmetro a se ajustar.
 Embora possa ser otimizado, esse parâmetro frequentemente não é crítico
 \citep{conf/esann/FrenayV10}.
@@ -34,7 +36,7 @@ cujos nós podem ser neurais (aditivo logístico sigmoidal) - como neste trabalho 
 ou de diversos outros tipos, como as também frequentemente usadas funções de base radial
 \citep{journals/tsmc/HuangZDZ12}.
 
-Dados $Y$ o conjunto de vetores que representam os todos rótulos possíveis;
+Dados $Y$ o conjunto de vetores que representam todos os rótulos possíveis;
 $\bm{x}_{(t)}$, um vetor de atributos descritivos pertencentes a um exemplo cuja classe se deseja
 descobrir no instante $t \in \mathbb{N}$;
 e $\bm{y}_{(t)} \in Y$, seu vetor associado de atributos preditivos que é uma representação binária
@@ -94,7 +96,9 @@ Aqui optou-se pela segunda.}
 % http://books.google.com.br/books?hl=en&lr=&id=iD5s0iKXHP8C&oi=fnd&pg=PT15&dq=+An+introduction+to+optimization&ots=3PqthZAq8d&sig=Befcr8te239chWT6UOVyVrMIkSo#v=snippet&q=recursive%20least&f=false
 
 
-A técnica é baseada no algoritmo dos mínimos quadrados recursivo \citep{chong2013introduction}.
+A técnica é baseada no algoritmo dos mínimos quadrados recursivo
+que utiliza a fórmula de Sherman-Morrison-Woodbury
+\citep{chong2013introduction}.
 $H$ passa a ser considerada em função do tempo - com subscrito para melhor legibilidade: $H_{(t)}$.
 Para ser possível encontrar a solução dos mínimos quadrados de $H_{(0)} \beta_{(0)} = T_{(0)}$,
 que se refere ao conjunto inicial de dados rotulados (instante $t=0$),
@@ -134,3 +138,5 @@ vicissitudes e o propósito deste trabalho é apenas dar uma primeira impressão a 
 performance da ELM com diferentes estratégias.
 Também é importante lembrar que, na presença de uma matriz $H_{(0)}$ mal-condicionada,
 OS-ELM não converge para ELM.
+
+\ano{PRESS cru é útil pra se ter o erro estatistico (de regressão?)  em vez do quadrado do resíduo}

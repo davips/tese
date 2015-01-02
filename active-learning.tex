@@ -63,6 +63,7 @@ são independentes de algoritmo de aprendizado. \red{( <- verificar)}
 Essa diversidade de embasamentos configura-se praticamente como um \textit{conjunto de paradigmas}
 de amostragem ativa cujos principais representantes são apresentados na seção seguinte.
 
+\ano{explicar que aprendiz não é o classificador, mas isso significa que ele é a estratégia?}
 
 \section{Estratégias de consulta}\label{sec:estrategias}
 
@@ -210,7 +211,7 @@ de amostragem ativa cujos principais representantes são apresentados na seção se
 
 
 Nesta seção são elencadas as estratégias investigadas neste trabalho.
-São apresentados suas ordens de complexidade
+São apresentados suas ordens de complexidade,
 % espaciais e temporais,
 suas principais características e seus princípios de funcionamento.
 
@@ -422,9 +423,11 @@ O processo de aprendizado pode explorar agrupamentos naturais na \pool,
 pois são independentes da existência de rótulos.
 Essa abordagem é uma alternativa à realização de consultas que enfocam a fronteira de decisão ou
 o manejo de hipóteses citados anteriormente.
-Uma tal abordagem é a \textit{amostragem hierárquica} proposta por \cite{journals/tcs/Dasgupta11}.
+Uma importante representante desse paradigma é a \textit{amostragem hierárquica} proposta por \cite{journals/tcs/Dasgupta11}.
+
 Os exemplos têm maior probabilidade de serem consultados se pertencerem aos grupos mais impuros e
 representativos.
+
 A implementação original do autor foi adotada neste trabalho com o mesmo algoritmo de agrupamento:
 \textit{Ward's average linkage method}\footnote{
 Implementação disponível no Weka \cite{journals/sigkdd/HallFHPRW09}.}
@@ -588,7 +591,9 @@ essa abordagem é complexa}.
 
 \subsection{Outras estratégias}
 Os códigos originais dos autores das seguintes estratégias \textit{margem simples},
-\textit{self-conf}, \textit{KFF} e \textit{balancedEE}
+\textit{self-conf}, \textit{KFF} \ano{estou dando mais uma chance pro kff;
+explicar que o rodízio é ponderado pela freq dos rótulos;
+não é claro se a ponderação faz diferença} e \textit{balancedEE}
 \citep{journals/jmlr/TongK01,journals/jmlr/BaramEL04,conf/icdm/OsugiKS05}
 foram adaptados para contemplar problemas multiclasse por meio da aplicação de
 \ing{rodízio}{round-robin} entre sub-estratégias.
@@ -597,6 +602,9 @@ Porém tal configuração resultou em estratégias excessivamente piores que a amost
 Isso poderia ser um indício de problemas na implementação original ou na adaptação,
 ou mesmo da ineficácia do rodízio.
 Por esses motivos elas foram excluídas deste trabalho.
+
+\ano{Não implementei Variance reduction pois exige um sistema muito complexo
+e com otimizações e ainda assim é ordens de magnitude mais lento que  Unc. Sampl.}
 % os experimentos.
 
 %mais detalhes sobre essas estratégias:
