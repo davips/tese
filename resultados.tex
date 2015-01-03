@@ -1,0 +1,218 @@
+\chapter{Experimentos e Resultados}\label{cap:experimentos}
+\ano{outline: preliminar;
+... árvore ...
+fazer tabela de intersecções de metaexemplos (obviamente com empates);
+AG,LU vs DWTU;
+metaap pra decidir entre AG, LU ou TU}
+
+
+Foi empreendida uma avaliação experimental para comprovação empírica das contribuições
+citadas no Capítulo \ref{cap:contrib}.
+
+% Classificadores com boa performance com poucos dados
+% podem ter baixa performance com muitos dados
+% \citep{journals/sigkdd/AttenbergP10,journals/jmlr/PerlichPS03}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Metodologia}\label{sec:metodologia}
+Para haver solidez estatística e também para uma boa representatividade dos
+variados domínios existentes em aplicações reais, foram selecionadas as
+cem \ano{ou 94?} bases de dados mais diversas
+do projeto \ano{ucipp <- refenciar como?} -
+porém apenas noventa e seis \ano{96?} bases foram viáveis com relação a tempo de processamento
+e puderam ter seus experimentos terminados.
+O critério de diversidade envolveu manter apenas uma dentre cada grupo de bases de um mesmo domínio.
+Com exceção de algumas que tivessem características (atributos, classes e número de exemplos)
+suficientemente diferentes ou cuja acurácia passiva fosse suficientemente distinta para pelo
+menos três classificadores.
+
+\subsection{Descrição das bases}
+As bases de dados têm suas características expostas nas tabelas \ref{tab:datasetsa},
+\ref{tab:datasetsb} e \ref{tab:datasetsc}.
+\definecolor{darkgreen}{rgb}{0.0, 0.4, 0.0}
+\begin{table}[h]
+\caption{Características das bases de dados.}
+\begin{center}
+\begin{tabular}{lp{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}}
+ & \rotatebox{60}{\#exemplos ($|\mathcal{U}|$)} & \rotatebox{60}{\#classes ($|Y|$)} & \rotatebox{60}{\#atributos} & \rotatebox{60}{\#nominais} & \rotatebox{60}{\%majoritária} & \rotatebox{60}{\%minoritária} & \rotatebox{60}{entropia da distr. de classes}\\ \hline
+abalone-3class & 3342 & 3 & 8 & 1 & 35 & 32 &  1.00\\ \hline
+arcene & 160 & 2 & 998 & 0 & 56 & 44 &  0.99\\ \hline
+artificial-character & 3890 & 10 & 7 & 0 & 14 & 6 &  0.98\\ \hline
+autoUniv-au1-1000 & 798 & 2 & 20 & 0 & 74 & 26 &  0.82\\ \hline
+autoUniv-au7-300-dri & 880 & 5 & 12 & 4 & 28 & 14 &  0.98\\ \hline
+autoUniv-au7-700 & 560 & 3 & 12 & 4 & 35 & 31 &  1.00\\ \hline
+balance-scale & 500 & 3 & 4 & 0 & 46 & 8 &  0.83\\ \hline
+banana & 4233 & 2 & 2 & 0 & 55 & 45 &  0.99\\ \hline
+banknote-authenticat & 1078 & 2 & 4 & 0 & 55 & 45 &  0.99\\ \hline
+bupa & 273 & 2 & 6 & 0 & 58 & 42 &  0.98\\ \hline
+car-evaluation & 1382 & 4 & 6 & 6 & 70 & 4 &  0.60\\ \hline
+cardiotocography-10c & 1692 & 10 & 35 & 0 & 27 & 2 &  0.88\\ \hline
+cardiotocography-3cl & 1692 & 3 & 35 & 0 & 78 & 8 &  0.61\\ \hline
+climate-simulation-c & 432 & 2 & 20 & 0 & 91 & 9 &  0.42\\ \hline
+connectionist-mines- & 166 & 2 & 60 & 0 & 53 & 47 &  1.00\\ \hline
+connectionist-vowel & 792 & 11 & 13 & 0 & 9 & 9 &  1.00\\ \hline
+connectionist-vowel- & 422 & 11 & 10 & 0 & 9 & 9 &  1.00\\ \hline
+dbworld-subjects & 50 & 2 & 242 & 242 & 56 & 44 &  0.99\\ \hline
+first-order-theorem & 4402 & 6 & 51 & 0 & 42 & 8 &  0.89\\ \hline
+flare & 337 & 6 & 12 & 2 & 31 & 8 &  0.94\\ \hline
+glass & 170 & 6 & 9 & 0 & 36 & 4 &  0.84\\ \hline
+habermans-survival & 226 & 2 & 3 & 0 & 72 & 28 &  0.85\\ \hline
+heart-disease-proces & 242 & 5 & 13 & 2 & 54 & 4 &  0.80\\ \hline
+hepatitis & 124 & 2 & 19 & 13 & 79 & 21 &  0.73\\ \hline
+hill-valley-without- & 970 & 2 & 100 & 0 & 50 & 50 &  1.00\\ \hline
+horse-colic-surgical & 240 & 2 & 27 & 14 & 64 & 36 &  0.95\\ \hline
+indian-liver-patient & 456 & 2 & 10 & 1 & 71 & 29 &  0.87\\ \hline
+ionosphere & 280 & 2 & 33 & 0 & 64 & 36 &  0.94\\ \hline
+iris & 118 & 3 & 4 & 0 & 34 & 33 &  1.00\\ \hline
+kr-vs-kp & 2557 & 2 & 36 & 36 & 52 & 48 &  1.00\\ \hline
+leaf & 272 & 30 & 15 & 0 & 5 & 2 &  1.00\\ \hline
+leukemia-haslinger & 80 & 2 & 50 & 0 & 51 & 49 &  1.00\\ \hline
+mammographic-mass & 514 & 2 & 5 & 0 & 52 & 48 &  1.00
+\end{tabular}
+\label{tab:datasetsa}
+\end{center}
+\end{table}
+\definecolor{darkgreen}{rgb}{0.0, 0.4, 0.0}
+\begin{table}[h]
+\caption{Características das bases de dados.}
+\begin{center}
+\begin{tabular}{lp{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}}
+ & \rotatebox{60}{\#exemplos ($|\mathcal{U}|$)} & \rotatebox{60}{\#classes ($|Y|$)} & \rotatebox{60}{\#atributos} & \rotatebox{60}{\#nominais} & \rotatebox{60}{\%majoritária} & \rotatebox{60}{\%minoritária} & \rotatebox{60}{entropia da distr. de classes}\\ \hline
+mfeat-fourier & 1595 & 10 & 76 & 0 & 10 & 10 &  1.00\\ \hline
+molecular-promotor-g & 85 & 2 & 57 & 57 & 50 & 50 &  1.00\\ \hline
+molecular-splice-jun & 2404 & 3 & 60 & 60 & 55 & 22 &  0.91\\ \hline
+monks1 & 346 & 2 & 6 & 0 & 50 & 50 &  1.00\\ \hline
+monks2 & 346 & 2 & 6 & 6 & 67 & 33 &  0.91\\ \hline
+monks3 & 346 & 2 & 6 & 0 & 53 & 47 &  1.00\\ \hline
+movement-libras & 264 & 15 & 90 & 0 & 7 & 6 &  1.00\\ \hline
+movement-libras-10 & 192 & 15 & 90 & 0 & 8 & 6 &  1.00\\ \hline
+mushroom & 6499 & 2 & 21 & 21 & 52 & 48 &  1.00\\ \hline
+ozone-eighthr & 2021 & 2 & 72 & 0 & 94 & 6 &  0.34\\ \hline
+ozone-onehr & 2022 & 2 & 72 & 0 & 97 & 3 &  0.19\\ \hline
+page-blocks & 4314 & 5 & 10 & 0 & 91 & 1 &  0.26\\ \hline
+parkinsons & 156 & 2 & 22 & 0 & 75 & 25 &  0.81\\ \hline
+phoneme & 4316 & 2 & 5 & 0 & 71 & 29 &  0.87\\ \hline
+pima-indians-diabete & 614 & 2 & 8 & 0 & 65 & 35 &  0.93\\ \hline
+planning-relax & 141 & 2 & 12 & 0 & 72 & 28 &  0.86\\ \hline
+qsar-biodegradation & 842 & 2 & 41 & 0 & 66 & 34 &  0.92\\ \hline
+ringnorm & 5920 & 2 & 20 & 0 & 50 & 50 &  1.00\\ \hline
+robot-failure-lp1 & 70 & 4 & 90 & 0 & 39 & 18 &  0.96\\ \hline
+robot-failure-lp4 & 93 & 3 & 90 & 0 & 61 & 18 &  0.85\\ \hline
+robot-failure-lp5 & 130 & 5 & 90 & 0 & 28 & 13 &  0.97\\ \hline
+robot-nav-sensor-rea & 4142 & 4 & 2 & 0 & 42 & 6 &  0.85\\ \hline
+saheart & 370 & 2 & 9 & 1 & 65 & 35 &  0.93\\ \hline
+seeds & 168 & 3 & 7 & 0 & 33 & 33 &  1.00\\ \hline
+semeion & 1274 & 10 & 256 & 0 & 10 & 10 &  1.00\\ \hline
+spambase & 3366 & 2 & 57 & 0 & 60 & 40 &  0.97\\ \hline
+spect-heart & 178 & 2 & 22 & 22 & 56 & 44 &  0.99\\ \hline
+spectf-heart & 214 & 2 & 44 & 0 & 79 & 21 &  0.73\\ \hline
+statlog-australian-c & 552 & 2 & 14 & 6 & 56 & 44 &  0.99\\ \hline
+statlog-german-credi & 800 & 2 & 24 & 0 & 70 & 30 &  0.88\\ \hline
+statlog-heart & 216 & 2 & 13 & 0 & 56 & 44 &  0.99\\ \hline
+statlog-image-segmen & 1669 & 7 & 18 & 0 & 14 & 14 &  1.00\\ \hline
+statlog-landsat-sate & 2287 & 6 & 36 & 0 & 30 & 10 &  0.95
+\end{tabular}
+\label{tab:datasetsb}
+\end{center}
+\end{table}
+\definecolor{darkgreen}{rgb}{0.0, 0.4, 0.0}
+\begin{table}[h]
+\caption{Características das bases de dados.}
+\begin{center}
+\begin{tabular}{lp{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}}
+ & \rotatebox{60}{\#exemplos ($|\mathcal{U}|$)} & \rotatebox{60}{\#classes ($|Y|$)} & \rotatebox{60}{\#atributos} & \rotatebox{60}{\#nominais} & \rotatebox{60}{\%majoritária} & \rotatebox{60}{\%minoritária} & \rotatebox{60}{entropia da distr. de classes}\\ \hline
+statlog-vehicle-silh & 677 & 4 & 18 & 0 & 26 & 24 &  1.00\\ \hline
+steel-plates-faults & 1553 & 2 & 33 & 0 & 65 & 35 &  0.93\\ \hline
+systhetic-control & 480 & 6 & 60 & 0 & 17 & 17 &  1.00\\ \hline
+teaching-assistant-e & 85 & 3 & 5 & 2 & 36 & 32 &  1.00\\ \hline
+thyroid-ann & 2967 & 3 & 21 & 0 & 92 & 3 &  0.29\\ \hline
+thyroid-hypothyroid & 2468 & 2 & 25 & 18 & 95 & 5 &  0.27\\ \hline
+thyroid-newthyroid & 172 & 3 & 5 & 0 & 70 & 14 &  0.75\\ \hline
+thyroid-sick & 2201 & 5 & 26 & 20 & 58 & 1 &  0.66\\ \hline
+thyroid-sick-euthyro & 2468 & 2 & 25 & 18 & 91 & 9 &  0.44\\ \hline
+tic-tac-toe & 766 & 2 & 9 & 9 & 65 & 35 &  0.93\\ \hline
+turkiye-student & 2667 & 13 & 32 & 0 & 14 & 1 &  0.93\\ \hline
+twonorm & 5920 & 2 & 20 & 0 & 50 & 50 &  1.00\\ \hline
+user-knowledge & 322 & 5 & 5 & 0 & 32 & 6 &  0.88\\ \hline
+vertebra-column-2c & 248 & 2 & 6 & 0 & 68 & 32 &  0.91\\ \hline
+vertebra-column-3c & 248 & 3 & 6 & 0 & 48 & 19 &  0.94\\ \hline
+volcanoes-a3 & 1217 & 5 & 3 & 0 & 90 & 2 &  0.29\\ \hline
+volcanoes-b2 & 8530 & 5 & 3 & 0 & 96 & 0 &  0.12\\ \hline
+volcanoes-d1 & 7002 & 5 & 3 & 0 & 94 & 1 &  0.18\\ \hline
+volcanoes-e2 & 863 & 5 & 3 & 0 & 91 & 1 &  0.25\\ \hline
+voting & 223 & 2 & 16 & 16 & 67 & 33 &  0.91\\ \hline
+waveform-v2 & 4000 & 3 & 40 & 0 & 34 & 33 &  1.00\\ \hline
+wdbc & 455 & 2 & 30 & 0 & 63 & 37 &  0.95\\ \hline
+wholesale-channel & 352 & 2 & 7 & 0 & 68 & 32 &  0.91\\ \hline
+wilt & 3855 & 2 & 5 & 0 & 95 & 5 &  0.30\\ \hline
+wine & 142 & 3 & 13 & 0 & 40 & 27 &  0.99\\ \hline
+wine-quality-white-5 & 3149 & 5 & 11 & 0 & 45 & 3 &  0.79\\ \hline
+yeast-4class & 1015 & 4 & 8 & 0 & 35 & 13 &  0.95
+\end{tabular}
+\label{tab:datasetsc}
+\end{center}
+\end{table}
+
+\ano{outras coisas}
+
+As \elms e as estratégias baseadas na métrica de distância de Mahalanobis precisaram ser
+transformadas com a substituição de atributos nominais por numéricos e pela aplicação do
+\ing{filtro de padronização}{z-score} \citep{kreyszig2007advanced}
+para possibilitar os cálculos e para evitar matrizes mal condicionadas - respectivamente.
+Os demais algoritmos de aprendizado fizeram eventual uso de seus próprios filtros internos
+providos pela ferramenta Weka \citep{journals/sigkdd/HallFHPRW09}.
+
+No experimento preliminar,
+dez execuções de validação cruzada em dez partições totalizaram cem \pools
+para cada base conforme literatura de classificação \cite{conf/pakdd/BouckaertF04}.
+No experimento definitivo,
+para viabilidade computacional e conforme literatura de aprendizado ativo 
+
+\subsection{Avaliação}\label{sec:cenario}
+
+\ano{em algum momento preciso comparar com desempenho
+passivo (todos exemplos)); o experimento poderia continuar rodando até que
+a maior parte das bases tenha todas as estrtégias atingido o dese. passivo.}
+
+\subsubsection{Métricas}
+kappa:\citep{conf/pkdd/Shah11}
+accbal: \citep{journals/bmcbi/MassoV10}
+
+ALC \textit{Area under the Learning Curve} \citep{journals/jmlr/GuyonCDL11}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ferramentas}\label{sec:ferramentas}
+Foram utilizados um total de 188 núcleos\footnote{\textit{Núcleos} por simplicidade,
+mas na realidade cada computador oferecia diferentes unidades de processamento;
+sendo o outro tipo as \textit{threads} na nomenclatura da Intel.} de processamento:
+\begin{itemize}
+\item 24 núcleos de 2,4GHz da \textit{nuvem} USP;
+\item 108 núcleos de 3,5GHz do \textit{cluster} Biocom;
+\item 24 núcleos de 2,5GHz do servidor GPU do laboratório Biocom;
+\item 8 núcleos de 4GHz da estação de trabalho; e
+\item 8 núcleos de 2,4GHz do \textit{notebook} de trabalho\footnote{Ambos,
+estação e \textit{notebook} vinculados ao orientador do autor deste trabalho.}.
+\end{itemize}
+
+\ano{citar agencias de fomento? quais?}
+
+\green{descrever hardware, mysql}
+
+\green{descrever parâmetros dos learners}
+
+\green{descrever parâmetros das estratégias}
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+% algoritmos prontos
+Adicionalmente, diversos classificadores base são oferecidos como
+extensão da classe \textit{Classifier}.
+Um conjunto mais abrangente de classificadores está disponível na
+ferramenta Weka .
+
+\ano{exemplos repetidos foram removidos, mas mantido um deles com a moda dos rótulos}
+
+Para complementar os testes estatísticos das ferramentas citadas, o
+programa R \citep{team2010r} foi adotado.
+Covões
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input experimentos %small; big
