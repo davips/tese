@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Experimento preliminar}\label{sec:pre}
-Um experimento preliminar \citep{conf/hais/SantosC14} foi conduzido visando a construção de um
-panorama geral do desempenho das diversas estratégias
+\subsection{Experimento preliminar}\label{sec:exppre}
+Um experimento preliminar \citep{conf/hais/SantosC14} foi conduzido visando
+a construção de um panorama geral do desempenho das diversas estratégias
 diante de variadas bases de dados.
 Devido à forte dependência que as estratégias gnósticas têm de seus
 modelos internos de classificação, diferentes algoritmos de aprendizado
@@ -14,37 +14,57 @@ J48\footnote{Implementação do Weka baseada no algoritmo de
 VFDT \footnote{Very Fast Decision Trees} e
 5-NN\footnote{Cinco vizinhos mais próximos.}.
 
-\ano{enumerar bases de dados}
+\ano{enumerar bases de dados usadas aqui; referenciar seção}
 
+\subsection{Resultado preliminar}\label{sec:respre}
+\ano{é interessante apresentar os resultados preliminares aqui,
+pois fizeram parte da definição da metodologia;
+assim evita separar exppre de respre e o expprincipal encerra esse capitulo e
+jah emenda o inicio do outro com seus resultados}
 
 
 
 \subsection{Experimentos}\label{sec:ferramentas}
+\ano{para evitar separar as subdescricoes do experimento de seus subresultados,
+essa seção apenas dá um overview explicando o porquê da escolha de cada
+experimento:
+... árvore ...
+fazer para cada learner uma tabela de intersecções de metaexemplos
+(obviamente com empates);
+AG,LU vs DWTU;
+metaap pra decidir entre AG, LU ou TU}
 
 
-> 1 - que nao tem free lunch, pois cada estrategia eh a melhor para
-> alguns datasets, nao para todos
-(acho que NFL se refere à impossibilidade de aprendizado sem viés;
+\ano{Acho que NFL se refere à impossibilidade de aprendizado sem viés
 no caso de ap. ativo trata-se mais de amostragem do que de aprendizado;
 as estrategias agnósticas são um exemplo de pura amostragem;
-elas até poderiam ser enxergadas como um problema de aprendizado:
-classificar cada exemplo como ``consultar'' ou ``não consultar'')
->
-> 2 - explicar pela arvore quais os nichos de cada estrategia. Voce pde
-> tambem usar clustering para mostrar que estrategias se adequam a
-> nichos parecidos
->
-> 3 usar meta-learning (usando a arvore do item 2) para prever a melhor
-> estrategia para um novo conjunto de dados
->
-> A ordem dos itens 2 e 3 pode mudar. O normal eh o 3 vir antes do 2
+para o AL ser enxergado como um problema de aprendizado é
+preciso enxergá-lo como um problema de classificar cada exemplo como
+``consultar'' ou ``não consultar'';}
+\ano{isso acima poderia até se tornar um ensemble de AL que trabalha em cima de exemplos
+transformados pelas diferentes estratégias
+- um classificador único que aprenderia de vários datasets
+quais exemplos são bons de consultar,
+mas infelizmente é totalmente inviável implementar isso agora;
+ele seria treinado com a sequencia otima de exemplos-transformados de
+cada base: os primeiros seriam os positivos e últimos seriam os negativos.
+)}
 
+\ano{explicar pela arvore quais os nichos de cada estrategia}
 
- \tar{usar nintera na(s) base(s) à parte?}
+\ano{usar clustering para mostrar que estrategias se adequam a nichos parecidos
+(a arvore do agrupamento hierarquico pode ilustrar bem isso,
+só falta descobrir como fazer o weka imprimir os nomes das strats,
+provavelm é colocando um atributo string.)}
+
+\ano{como a predição da melhor não vence a majoritaria preciso usar ranking
+(ainda posso testar algumas variações, como fixar
+cada um dos learners possíveis)}
+
+ \tar{usar nintera na(s) base(s) à parte?
+ ou usar em todas, mas sem strats lentas?}
 
  \tar{plotar}
-
- \tar{metafeatures: learner, budget}
 
 
 
@@ -52,17 +72,28 @@ classificar cada exemplo como ``consultar'' ou ``não consultar'')
 
 \green{manter apenas estratégias que ganharam em algum momento/nicho?}
 
-\red{o tempo ficou sempre abaixo de 1s, então está dentro do tolerable waiting time.
-Posso adotar uma única base enorme só para a comparação de tempo}
-
-\blue{manter apenas a melhor combinação learner-dataset, assim é possível o avaliar estratégias num cenário em que se sabe de antemão qual é o melhor learner.
-manter todas as combinações serve para o cenário em que nada se sabe do dataset, ou seja, é o mais esperado, pois normalmente é preciso ter rótulos suficientes para se testar classificadores;
-além disso, quand ose sabe o melhor classificador (a não ser por propriedades dos dados: ex.: nominal->NB, muitos atributos->SVM etc.)
+\blue{assim é possível o avaliar estratégias num cenário em que se sabe de
+antemão qual é o melhor learner.
+manter todas as combinações learner-dataset serve para o cenário em que
+nada se sabe do dataset, ou seja, é o mais esperado,
+pois normalmente é preciso ter rótulos suficientes para se testar classificadores;
+além disso, quando se conhece o melhor classificador
+(a não ser por propriedades dos dados:
+ex.: nominal->NB, muitos atributos->SVM etc.)
 é por meio de um problema parecido onde as estratégias podem ser testadas}
 
-\blue{plotar (log?) rnd (e clu?) p/ nb,c45 e 5nn até o fim do pool ou até atingir passiva, assim serve de panorama do qto as outras estrategias/learners atingiram da ALC possivel)}
+\blue{plotar (log?) rnd (e clu?) p/ nb,c45 e 5nn até o fim do pool ou
+até atingir passiva, assim
+serve de panorama do qto as outras estrategias/learners
+atingiram da ALC possivel)}
 
-\green{rodar eeg-eye-state pra medir tempo nas principais estrategias/learners, pra ser a unica base usando nintera que come memória; rodar como todas as outras, mas em 1x10-fold}
+\green{rodar eeg-eye-state pra medir tempo nas principais estrategias/learners,
+pra ser a unica base usando nintera (nintera come memória);
+rodar como todas as outras, mas em 1x10-fold}
+\red{o tempo ficou sempre abaixo de 1s, então está dentro do tolerable
+waiting time.
+Suponho que a demora do experimento se deva à inicialização das strats
+e não às consultas propriamente ditas.}
 
 \subsubsection{Afinidade estratégia-aprendiz, estratégia-budget e outros nichos}
 
@@ -75,7 +106,7 @@ da distribuição de classes}
 \ano{possiveis atts: proporção da minor., da maj.; entropia* ou medida melhor para medir o grau de desbalanço}
 
 * -> normalized entropy \citep{journals/bioinformatics/LewinSA0P04}:
-permitiria saber que estratégias são boas p/ bases desbalanceadas.
+ajuda a saber que estratégias são boas p/ bases desbalanceadas.
 
 ----------
 
@@ -86,13 +117,19 @@ permitiria saber que estratégias são boas p/ bases desbalanceadas.
 \subsubsection{Comparativo}
 \green{friedmenyi de  accbal e variancia}
 
-\green{plotar accBal X budgets p/ cada uma das 15 bases com menos de 200 exemplos?}
+\green{plotar accBal X budgets p/ cada uma das 15 bases com menos de
+200 exemplos?}
 
-\green{plotar p/ accBal (apenas nas 85 bases com mais de 200 exemplos?)): \#topos-de-rank X budgets $[10;200]$}
+\green{plotar p/ accBal (apenas nas 85 bases com mais de
+200 exemplos?)): \#topos-de-rank X budgets $[10;200]$
+Dois tipos de \#topos-de-rank:
+com empate = \#vezes em que ficou entre os vencedores
+sem empate = \#vezes em que foi o vencedor}
 
 \subsubsection{Aprendizado meta-ativo}
-\green{ELM treinada com acurácias, mas testada como classificador (accbal e variancia)}
+\ano{ainda é preciso ver se ranking supera ranking medio (default)}
 
-\red{uma base não pode aparecer no cjt de treino e tb no de teste}
-
+\ano{possibilidades: um experimento para cada learner separadamente;
+sortear budget no exp acima;
+sortear learners num experimento só;}
 

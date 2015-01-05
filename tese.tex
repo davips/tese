@@ -3,6 +3,7 @@
 % \usepackage[pdftex]{graphicx}
 % \usepackage{array}
 \usepackage{amsmath}
+
 % \usepackage{bm}
 % \usepackage{stmaryrd}
 % \usepackage[tight,footnotesize]{subfigure}
@@ -174,6 +175,7 @@
 % \usepackage{glosstex}
 \usepackage[printonlyused,withpage]{acronym}
 
+\usepackage{doi}
 \begin{document}
 \input tarefas
 \pagestyle{empty}
@@ -224,7 +226,7 @@
 \renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}}
 
 %Capitulos
-\include{introducao} %overview AL, (ELM?)
+\input introducao %overview AL, (ELM?)
 % % \include{al} %estrats, experimentos de exemplo, limitações (que vou superar)
 % % \include{elm} %review; instab. etc.; p/ ap. interativo; exps mostrando runtime
 % % \include{SG-multi}
@@ -232,7 +234,7 @@
 \input active-learning
 \input propostas
 \input metodologia
-\input 
+\input resultados
 \input conclusao
 \appendix
 \input apendice1

@@ -1,4 +1,8 @@
-\chapter{Contribuição (ou Proposta?)} \label{cap:contrib}
+\chapter{Contribuição} \label{cap:contrib}
+Neste capítulo são apresentadas as contribuições e trabalhos derivados da pesquisa realizada.
+Foi desenvolvida uma biblioteca \citep{doi/ml} de interface com o \textit{software} Weka
+que serviu de base para as implementações mencionadas nas próximas seções.
+
 \tar{mencionar em cada seção o artigo em que foi ou vai ser publicado o tema}
 
 \ano{agDW* levam vantagem talvez porque com classificadores hard (NB, C45?, ...)
@@ -8,7 +12,11 @@ fica prejudicada pela presença do learner.
 
 \section{Adaptações de Classificadores/Viabil. em ELMs?}
 \ano{última coisa a escrever}
+A código das adaptações apresentadas nas próximas seções e outras variantes
+está disponível publicamente \citep{doi/elm}.
+
 \subsection{IELM}
+
 As propostas incrementais para IELM e CIELM mostraram-se
 positivamente impactadas pelo aprendizado ativo no experimento principal.
 % \subsection{EIELM}
@@ -21,6 +29,9 @@ e tb foi usado como metaclassificador no último experimento}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 \section{Propostas}
+A implementação dos algoritmos aqui propostos e de existentes na literatura
+culminou em uma biblioteca extensível de código aberto específica para aprendizado ativo.
+Ela está disponível publicamente para fins de pesquisa e replicabilidade \citep{doi/al}.
 
 \subsection{Busca no espaço de hipóteses multiclasse}
 Conforme explicado na Seção \ref{sgnet}, é possível fazer uma amostragem ativa dentro
@@ -49,7 +60,7 @@ A ordem de complexidade do \textit{SG-multi} é $\mathcal{O}(|Y|)$.
 % present in the pool, except for two differences:
 % they are labeled as ``positive'' to the corresponding class ($y=c$) and weighted to have only a
 % small fraction of the importance of the real labeled instances ($w << 1$),
-% as suggested in the literature \cite{series/synthesis/2012Settles}.
+% as suggested in the litera \cite{series/synthesis/2012Settles}.
 % The weight value adopted in this work is $w=\frac{1}{|Y||\mathcal{U}|}$,
 % since it ensures that the summed influence of all background instances is no larger than a single
 % real instance.
@@ -124,7 +135,7 @@ Method SRC
 Default 0.59 +- 0.37
 Meta-Leaner 0.75 +- 0.21
 ;
-``melhoram`` statlog, tirando log}
+``melhoram`` statlog, aplicando log}
 
 \citep{kalousis2002algorithm} pg. 43 tem metafeatures (inclusive histograma,
 mas como as faixas ideais são imprevisíveis, resolvi isso colocando max, min, avg e min/max)
