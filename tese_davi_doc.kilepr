@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=propostas.tex
+lastDocument=tese.tex
 masterDocument=
 name=Tese
 pkg_extIsRegExp=false
@@ -116,6 +116,16 @@ Indentation Mode=
 Mode=LaTeX
 ReadWrite=true
 
+[document-settings,item:dataset-tables.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
 [document-settings,item:experimentos.tex]
 Bookmarks=
 Encoding=ISO-8859-1
@@ -193,6 +203,16 @@ ReadWrite=true
 [document-settings,item:propostas.tex]
 Bookmarks=
 Encoding=ISO-8859-15
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:resultados.tex]
+Bookmarks=
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -312,13 +332,13 @@ order=3
 
 [item:bibliografia.bib]
 archive=true
-column=39
+column=32
 encoding=ISO-8859-1
 highlight=BibTeX
-line=902
+line=1008
 mode=BibTeX
 open=true
-order=2
+order=0
 
 [item:capa.tex]
 archive=true
@@ -330,14 +350,24 @@ mode=LaTeX
 open=false
 order=7
 
-[item:experimentos.tex]
+[item:dataset-tables.tex]
 archive=true
-column=52
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=2
+line=6
 mode=LaTeX
-open=true
+open=false
+order=-1
+
+[item:experimentos.tex]
+archive=true
+column=21
+encoding=ISO-8859-1
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=false
 order=4
 
 [item:imagens/fluxo-esquema.tex]
@@ -402,23 +432,33 @@ order=3
 
 [item:metodologia.tex]
 archive=true
-column=74
+column=38
 encoding=ISO-8859-1
 highlight=LaTeX
-line=167
+line=63
 mode=LaTeX
 open=true
-order=3
+order=2
 
 [item:propostas.tex]
 archive=true
 column=0
 encoding=ISO-8859-15
 highlight=LaTeX
-line=121
+line=16
+mode=LaTeX
+open=false
+order=5
+
+[item:resultados.tex]
+archive=true
+column=0
+encoding=ISO-8859-1
+highlight=LaTeX
+line=4
 mode=LaTeX
 open=true
-order=5
+order=1
 
 [item:resumo.tex]
 archive=true
@@ -427,7 +467,7 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=1
 mode=LaTeX
-open=true
+open=false
 order=1
 
 [item:tarefas.tex]
@@ -442,13 +482,13 @@ order=8
 
 [item:tese.tex]
 archive=true
-column=0
+column=20
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=91
 mode=LaTeX
 open=true
-order=0
+order=3
 
 [view-settings,view=0,item:active-learning.tex]
 CursorColumn=0
@@ -499,8 +539,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:bibliografia.bib]
-CursorColumn=39
-CursorLine=902
+CursorColumn=32
+CursorLine=1008
 JumpList=
 ViMarks=
 
@@ -510,9 +550,15 @@ CursorLine=15
 JumpList=
 ViMarks=
 
+[view-settings,view=0,item:dataset-tables.tex]
+CursorColumn=0
+CursorLine=6
+JumpList=
+ViMarks=
+
 [view-settings,view=0,item:experimentos.tex]
-CursorColumn=52
-CursorLine=2
+CursorColumn=21
+CursorLine=0
 JumpList=
 ViMarks=
 
@@ -547,14 +593,20 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:metodologia.tex]
-CursorColumn=74
-CursorLine=167
+CursorColumn=38
+CursorLine=63
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:propostas.tex]
 CursorColumn=0
-CursorLine=121
+CursorLine=16
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:resultados.tex]
+CursorColumn=0
+CursorLine=4
 JumpList=
 ViMarks=
 
@@ -571,7 +623,7 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:tese.tex]
-CursorColumn=0
-CursorLine=0
+CursorColumn=20
+CursorLine=91
 JumpList=
 ViMarks=
