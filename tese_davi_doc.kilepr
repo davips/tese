@@ -337,7 +337,7 @@ encoding=ISO-8859-1
 highlight=BibTeX
 line=1008
 mode=BibTeX
-open=true
+open=false
 order=0
 
 [item:capa.tex]
@@ -437,7 +437,7 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=63
 mode=LaTeX
-open=true
+open=false
 order=2
 
 [item:propostas.tex]
@@ -457,7 +457,7 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=4
 mode=LaTeX
-open=true
+open=false
 order=1
 
 [item:resumo.tex]
@@ -487,7 +487,7 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=91
 mode=LaTeX
-open=true
+open=false
 order=3
 
 [view-settings,view=0,item:active-learning.tex]

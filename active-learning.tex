@@ -211,14 +211,15 @@ de amostragem ativa cujos principais representantes são apresentados na seção se
 
 
 Nesta seção são elencadas as estratégias investigadas neste trabalho.
-São apresentados suas ordens de complexidade,
+São apresentadas suas ordens de complexidade,
 % espaciais e temporais,
 suas principais características e seus princípios de funcionamento.
 
 \subsection{Amostragem por incerteza}
-Provavelmente a mais simples medida de informatividade \ano{definir infor.} para se decidir quando selecionar um exemplo $\bm{x}$
-(ou grupo de exemplos, na proposta original) é a máxima probabilidade a posteriori dada por um
-modelo probabilístico \citep{journals/sigir/Lewis95a}:
+Provavelmente a mais simples medida de informatividade $Inf(\bm{x})$ para se
+decidir quando selecionar um exemplo $\bm{x}$
+(ou grupo de exemplos, na proposta original) é a máxima probabilidade a posteriori
+dada por um modelo probabilístico \citep{journals/sigir/Lewis95a}:
 
 \tar{definir yo Y e f}
 
@@ -228,7 +229,8 @@ P_{max}(\bm{x})=\max_{\bm{y}\in Y}{P(\bm{y}|\bm{x})}
 
 Classificadores não probabilísticos e com saídas numéricas podem simular uma
 distribuição de probabilidades por meio da aplicação da função sigmoide logística
-$g=\frac{1}{1+e^{-\bm{x}}}$:
+$g=\frac{1}{1+e^{-\bm{x}}}$
+\ano{qual seria uma boa ref para isso?}:
 \begin{equation} \label{eqprob}
  P(y_o=1|\bm{x}) = \frac{g(f_o(\bm{x}))}{\sum_{1 \leq p \leq |Y|}g(f_p(\bm{x})) }
 \end{equation}
@@ -279,10 +281,12 @@ amostragem por incerteza, vista na seção anterior.
 
 %  \red{infos dos txts sobre SG-network cohn1994improving:}
 % \esb{Se concentra em membership queries, cita angluin86 e valiant84.
-% Em problemas formais, como encontrar uma fronteira no "unit line interval" requer O(1/e ln(1/e))
+% Em problemas formais, como encontrar uma fronteira no "unit line interval"
+%  requer O(1/e ln(1/e))
 % exemplos de treinamento aleatórios para se atingir um erro 'e'.
 % Se for permitida a síntese de membership queries, 'e' pode ser atingido em O(ln(1/e)).
-% Formaliza o aprendiz capaz de determinar a região de incerteza e nomeia como Selective Sampling.
+% Formaliza o aprendiz capaz de determinar a região de incerteza e nomeia como
+% Selective Sampling.
 % Pode-se calcular a região de inc. em lotes para reduzir a complexidade.
 % Apresenta primeiro "a naive neural network querying algorithm":
 % 0.1 < o < 0.9 = exemplo na região de incerteza
@@ -388,19 +392,23 @@ porém devido ao constatado desempenho inferior
 % nas primeiras 50 queries
 e alto custo computacional,
 ela foi excluída dos experimentos.
+\ano{foi mesmo?}
 % 
 % Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteração devido à alta
 
 
 \subsection{Amostragem ponderada por densidade}
-A proposta geral das amostragens ponderadas por densidade é o uso da medida de \textit{densidade de
-informação} \citep{settles2008curious}:
-\ano{tá certo esse $O$?}
+A proposta geral das amostragens ponderadas por densidade é o uso da medida de
+\textit{densidade de informação}, que atribui diferentes pesos à medida de
+informatividade conforme o nível de concentração de exemplos não rotulados no entorno de $\bm{x}$
+\citep{settles2008curious}:
 \begin{equation}
- ID(\bm{x}) = O(\bm{x})\frac{1}{|\mathcal{U}|} \sum_{\bm{u} \in \mathcal{U}} sim(\bm{x},\bm{u})
+ ID(\bm{x}) = Inf(\bm{x})\frac{1}{|\mathcal{U}|} \sum_{\bm{u} \in \mathcal{U}} sim(\bm{x},\bm{u})
 \end{equation}
-ou a \textit{utilidade de treinamento} \cite{journals/coling/FujiiITT98},
-seu desdobramento natural:
+Seu desdobramento natural é a \textit{utilidade de treinamento},
+que é a densidade de informação inversamente ponderada pela concentração de exemplos rotulados,
+resultando num afastamento das regiões mais consultadas
+\citep{journals/coling/FujiiITT98}:
 \begin{equation}
  TU(\bm{x}) = ID(\bm{x}) (\sum_{\bm{l} \in \mathcal{L}} sim(\bm{x},\bm{l}))^{-1}
 \end{equation}
@@ -408,7 +416,7 @@ seu desdobramento natural:
 
 Qualquer medida de similaridade $sim(\bm{x},\bm{u})$
 e de informatividade $H(\bm{x})$ podem ser adotadas.
-Neste trabalho, três medidas de distância $d(\bm{x},\bm{u})$
+Neste trabalho, $Inf(\bm{x}) = P_{max}(\bm{x})$ e três medidas de distância $d(\bm{x},\bm{u})$
 (euclidiana, Manhattan e Mahalanobis) foram transformadas em medidas de similaridade
 $sim(\bm{x},\bm{u})$ pela seguinte fórmula:
 \begin{equation}

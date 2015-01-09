@@ -9,9 +9,9 @@ citadas no Capítulo \ref{cap:contrib}.
 
 Para haver solidez estatística e também para uma boa representatividade dos
 variados domínios existentes em aplicações reais, foram selecionadas as
-cem \ano{ou 94?} bases de dados mais diversas
-do projeto \ano{ucipp <- refenciar como?} -
-porém apenas noventa e seis \ano{96?} bases foram viáveis com relação a tempo de processamento
+cem bases de dados mais diversas
+do projeto de \cite{doi/ucipp} que é baseado no repositório UCI \citep{bache2013uci} -
+porém apenas noventa e quatro \ano{conferir} bases foram viáveis com relação a tempo de processamento
 e puderam ter seus experimentos terminados.
 O critério de diversidade envolveu manter apenas uma dentre cada grupo de bases de um mesmo domínio.
 Com exceção de algumas que tivessem características (atributos, classes e número de exemplos)
@@ -21,6 +21,17 @@ menos três classificadores.
 \section{Descrição das bases}
 As bases de dados têm suas características expostas nas tabelas \ref{tab:datasetsa},
 \ref{tab:datasetsb} e \ref{tab:datasetsc}.
+Para maior clareza do tipo de diversidade das bases, alguns grupos especiais foram
+criados da seguinte forma:
+\begin{itemize}
+ \item bases com mais de quatro vezes mais exemplos na classe
+majoritária do que na minoritária (Tabela \ref{tab:imb})
+ \item bases com mais de cinquenta atributos (Tabela \ref{tab:x})
+ \item bases com mais de cinco classes (Tabela \ref{tab:y})
+ \item bases com mais de mil exemplos (Tabela \ref{tab:n})
+\end{itemize}
+
+
 \input dataset-tables
 \ano{outras coisas}
 
