@@ -1,6 +1,16 @@
-\chapter{Contribuição} \label{cap:contrib}
-Neste capítulo são apresentadas as contribuições e trabalhos derivados da pesquisa realizada.
-Foi desenvolvida uma biblioteca \citep{doi/ml} de interface com o \textit{software} Weka
+\chapter{Propostas} \label{cap:contrib}
+\esb{esboça a estrutura conjunta deste e dos próximos 4 capítulos;
+explica que a contribuição se divide em três partes: análise comparativa,
+viabilidade de ap. ativo pra ELM e meta-aprendizado; os detalhes
+são dados em seus respectivos capítulos e a metodologia geral
+vem antes}
+
+\ano{revisar totalmente conforme nova estrutura de capitulos}
+
+Neste capítulo são apresentadas as contribuições e trabalhos derivados da pesquisa
+realizada.
+Foi desenvolvida uma biblioteca \citep{doi/ml} de interface com o
+\textit{software} Weka
 que serviu de base para as implementações mencionadas nas próximas seções.
 
 \tar{mencionar em cada seção o artigo em que foi ou vai ser publicado o tema}
@@ -10,30 +20,14 @@ a estimativa de informatividade (a estimativa da distribuição de probabilidade)
 fica prejudicada pela presença do learner.
 É preciso comparar classificador a classifcador.}
 
-\section{Adaptações de Classificadores/Viabil. em ELMs?}
-\ano{última coisa a escrever}
-A código das adaptações apresentadas nas próximas seções e outras variantes
-está disponível publicamente \citep{doi/elm}.
-
-\subsection{IELM}
-
-As propostas incrementais para IELM e CIELM mostraram-se
-positivamente impactadas pelo aprendizado ativo no experimento principal.
-% \subsection{EIELM}
-\subsection{CIELM}
-\subsection{nintera}
-\ano{foi usado no segundo experimento preliminar para demonstrar viabilidade
-de AL com ELM \citep{santos2014viabilidade};
-e tb foi usado como metaclassificador no último experimento}
-\tar{citar apendice}
-
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
-\section{Propostas}
+\esb{pra onde vai isso?}
 A implementação dos algoritmos aqui propostos e de existentes na literatura
 culminou em uma biblioteca extensível de código aberto específica para aprendizado ativo.
 Ela está disponível publicamente para fins de pesquisa e replicabilidade \citep{doi/al}.
 
-\subsection{Busca no espaço de hipóteses multiclasse}
+
+\section{Busca no espaço de hipóteses multiclasse}
 Conforme explicado na Seção \ref{sgnet}, é possível fazer uma amostragem ativa dentro
 da perspectiva do espaço de hipóteses.
 
@@ -120,45 +114,17 @@ A ordem de complexidade do \textit{SG-multi} é $\mathcal{O}(|Y|)$.
 
 % \subsection{SVMmulti} %parece que foi um fiasco quando desbalanceado (pior que random) mas está rodando kff pra ter certeza do fiasco
 
-\subsection{Extensões da amostragem ponderada por densidade}
+SGmulti
+DWAgnóstica
+Ponderação por Rótulo
+EELMC
+SVMmulti?
 
-\subsubsection{AgTU - Amostragem agnóstica ponderada por densidade e utilidade do treinamento}
+\section{Extensões da amostragem ponderada por densidade}
 
-\subsubsection{DWLU - Amostragem ponderada por densidade e utilidade de cada rótulo}
+\subsection{AgTU - Amostragem agnóstica ponderada por densidade e utilidade do treinamento}
 
-\subsubsection{AgLU - Amostragem agnóstica ponderada por densidade e utilidade de cada rótulo}
+\subsection{DWLU - Amostragem ponderada por densidade e utilidade de cada rótulo}
+
+\subsection{AgLU - Amostragem agnóstica ponderada por densidade e utilidade de cada rótulo}
  
-\subsection{Meta-estratégia}
-\ano{\citep{conf/ijcnn/SoutoPSACLS08}, sobre clustering,
-usam ranking médio como default:
-Method SRC
-Default 0.59 +- 0.37
-Meta-Leaner 0.75 +- 0.21
-;
-``melhoram`` statlog, aplicando log}
-
-\citep{kalousis2002algorithm} pg. 43 tem metafeatures (inclusive histograma,
-mas como as faixas ideais são imprevisíveis, resolvi isso colocando max, min, avg e min/max)
-Posso colocar ou omitir a informação de distribuição das classes; ela normalmente não
-é conhecida na prática.
-
-
-\subsection{Meta-estratégia dinâmica}
-
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-\section{Viabilidade do aprendizado ativo}
-% citar: contra random; comparação 1-a-1; variabilidade (risco); tolerable waiting time
-
-\subsection{Efetividade geral}
-\blue{friedman um a um não está dando nada?}
-\blue{friedman talvez funcione melhor por nicho (metaclusters)}
-
-\subsection{Afinidades estratégia-domínio-classificador-orçamento}
-
-\subsection{Risco}
-\subsection{Tempo de espera tolerável}
-
-
-\section{Metodologia de avaliação}
-\green{A metodologia de avaliação é a mais esperada possivel, mas ainda assim pode ser considerada
-uma contribuição.}

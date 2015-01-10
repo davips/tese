@@ -1,26 +1,4 @@
-\chapter{Aprendizado Ativo} \label{cap:aprendizado-ativo}
-
-% Aprendizado de máquina é a área que engloba algoritmos capazes de aprender
-% sem programação explícita \citep{journals/cacm/Valiant84}.
-% Diversas tarefas como \ano{tarefa 1, tarefa2, ... REFERENCIA} têm sido bem sucedidas atualmente.
-% Entretanto, existe um problema em aberto que é a busca pela melhor maneira de amostragem dos dados
-% na etapa que antecede o treinamento do algoritmo.
-% A motivação para essa busca pode advir, dentre outras, de um excesso de dados
-% ou da escassez de recursos para manutenção de um especialista.
-% Ambos os casos podem se beneficiar do tipo de aprendizado denominado \textit{ativo}.
-
-% Sistemas computacionais têm ajudado em tarefas cotidianas como tomada de decisão, recomendação de
-% filmes ou notícias e detecção de mensagens eletrônicas indesejáveis.
-% Elas são tarefas possíveis devido à existência de algoritmos capazes de aprender (Capítulo \ref{cap:classificacao}) e à abundância de dados disponíveis.
-
-% Algumas habilidades humanas vêm claramente programadas geneticamente e outras são apenas a execução de passos memorizados.
-% Apesar disso, ainda resta um amplo espectro de novas habilidades adquiríveis sem que seja possível identificar tais programações associadas.
-% Assim, pode-se definir \textbf{aprendizado} como o \textit{fenômeno de aquisição de conhecimento na ausência de programação explícita} \citep{valiant1984theory}.
-% Um exemplo de aprendizado é o reconhecimento de objetos comuns por meio do tato ou visão. DEFINIR MAIS TECNICAMENTE?
-% Trata-se de uma habilidade aprendida por humanos em que é difícil identificar o algoritmo no qual se baseia.
-% Essa tarefa é apenas parte das potencialidades de agentes ditos inteligentes e é chamada de \textbf{classificação}.
-
-
+\section{Aprendizado Ativo} \label{aprendizado-ativo}
 O \ing{aprendizado ativo}{active learning} é o estudo de máquinas
 de aprendizado capazes de se aprimorar fazendo perguntas \citep{series/synthesis/2012Settles}.
 A origem do termo remete à Pedagogia, especificamente à forma didática centrada no aluno.
@@ -95,47 +73,19 @@ são independentes de algoritmo de aprendizado. \red{( <- verificar)}
 Essa diversidade de embasamentos configura-se praticamente como um \textit{conjunto de paradigmas}
 de amostragem ativa cujos principais representantes são apresentados na seção seguinte.
 
-\ano{explicar que aprendiz não é o classificador, mas isso significa que ele é a estratégia?}
+\ano{explicar que aprendiz é o classificador? ou não é?}
 
-\section{Estratégias de consulta}\label{sec:estrategias}
+\tar{mencionar algumas adaptações que algumas estratégias requerem para aceitar alguns learners}
+
+\ano{pode ser interessante explicitar que estrategias
+se enquadram em cada teoria de aprendizado: esquema Mitchel e tb
+ o esquema da teoria do aprendizado estatístico; explicando que SG, por ex.,
+se baseia no primeiro}
+
+
+% \section{Estratégias de consulta}\label{sec:estrategias}
 
 \red{xxxxx até aqui o capítulo está feito xxxxx}
-
-% Esses problemas se dividem nos cenários apresentados com as respectivas estratégias na Tabela
-% \ref{tab:compara-cenarios-ativos}.
-% % \setlength{\tabcolsep}{0pt}
-% % \left|{\mathcal{U}}\right|$
-% \begin{table}[h]
-% \begin{center}
-% \begin{tabular}{|l|c|c|}
-% %   \cline{2-13}
-% %   \multicolumn{1}{l|}{} &
-% %   \multicolumn{4}{c|}{2011} &
-% %   \multicolumn{4}{c|}{2012} &
-% %   \multicolumn{4}{c|}{2013} \\
-%   \hline
-%   \textbf{cenário} & \textbf{característica} & \textbf{estratégias} \\
-%                    & \textbf{do repositório} & \textbf{aplicáveis} \\
-%   \hline
-%   \textit{membership query} & $|\mathcal{U}|=0$ & \textit{não há amostragem} \\
-%   \textit{synthesis}        &                   &  \\
-%   \hline
-%   amostragem seletiva baseada & $|\mathcal{U}|=1$ & informatividade isolada \\
-%   em fluxo - estrita          &                   &   \\
-%   \hline
-%   amostragem seletiva baseada & $1 < |\mathcal{U}| < |\mathcal{D}|$ & informatividade isolada \\
-%   em fluxo - em blocos        &                                     & informatividade conjunta \\
-%                               &                               & informativo-representatividade \\
-%   \hline
-%   \textit{pool-based sampling} & $\mathcal{U} = \mathcal{D}$ & informatividade isolada \\
-%                                &                               & informatividade conjunta \\
-%                                &                               & informativo-representatividade \\
-%   \hline
-% \end{tabular}
-% \end{center}
-% \caption{Comparação de cenários de aprendizado ativo.}
-% \label{tab:compara-cenarios-ativos}
-% \end{table}
 
 
 
@@ -235,12 +185,6 @@ de amostragem ativa cujos principais representantes são apresentados na seção se
 %
 % A medida de \textbf{informatividade} $m(\bm{x})$ é a base da tomada de decisão da estratégia de consulta e pode ser implementada de diversas maneiras conforme explicado na Seção \ref{sec:isolada}.
 % Uma vez definida a medida de informatividade, uma estratégia de consulta precisa ser definida; diferentes estratégias são estudadas na Seção \ref{sec:estrategias}.
-
-% \section{Medidas de informatividade}\label{sec:informatividade}
-% \subsection{Máxima probabilidade a posteriori}
-% \subsection{Margem}
-% \subsection{Entropia}
-
 
 Nesta seção são elencadas as estratégias investigadas neste trabalho.
 São apresentadas suas ordens de complexidade,
@@ -427,6 +371,9 @@ ela foi excluída dos experimentos.
 \ano{foi mesmo?}
 % 
 % Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteração devido à alta
+
+
+\subsection{Impacto esperado no modelo}
 
 
 \subsection{Amostragem ponderada por densidade}
@@ -675,15 +622,3 @@ e com otimizações e ainda assim é ordens de magnitude mais lento que  Unc. Sampl
 %                  */
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Considerações}\label{sec:consideracoes-ativo}
-
- \ano{pode ser interessante explicitar que estrategias
-se enquadram em cada teoria de aprendizado: esquema Mitchel e tb
- o esquema da teoria do aprendizado estatístico; explicando que SG, por ex.,
-se baseia no primeiro}
-
-\ano{
- a quantidade global desses dados duplica a cada dois anos \citep{zliobaite2012next} e, por isso,
-requer sistemas cada vez mais eficientes e que exijam intervenção humana mínima.
-}

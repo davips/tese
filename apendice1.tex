@@ -1,16 +1,54 @@
 \inputencoding{latin1}
 \chapter{Cenários}\label{cenarios}
-\section*{Cenários}\label{sec:cenarios}
+\ano{revisar completamente}
+
 Existem três principais cenários na literatura de aprendizado ativo \citep{settles2010active}:
 \textit{membership query synthesis}\footnote{[síntese de consulta por associação ou consulta de
 exemplos sintetizados]};
-\textit{pool-based sampling}\footnote{[amostragem baseada em exemplos reservados]}; e
+amostragem baseada em \textit{\pool}; e
 \textit{amostragem seletiva baseada em fluxo}\footnote{[\textit{stream-based selective sampling}]}.
+Eles se dividem nos cenários apresentados com as respectivas estratégias na Tabela
+\ref{tab:compara-cenarios-ativos}.
+% \setlength{\tabcolsep}{0pt}
+% \left|{\mathcal{U}}\right|$
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+%   \cline{2-13}
+%   \multicolumn{1}{l|}{} &
+%   \multicolumn{4}{c|}{2011} &
+%   \multicolumn{4}{c|}{2012} &
+%   \multicolumn{4}{c|}{2013} \\
+  \hline
+  \textbf{cenário} & \textbf{característica} & \textbf{estratégias} \\
+                   & \textbf{do repositório} & \textbf{aplicáveis} \ano{colocar direto os nomes das estratégias} \\
+  \hline
+  \textit{membership query} & $|\mathcal{U}|=0$ & \textit{não há amostragem} \\
+  \textit{synthesis}        &                   &  \\
+  \hline
+  amostragem seletiva baseada & $|\mathcal{U}|=1$ & informatividade isolada \\
+  em fluxo - estrita          &                   &   \\
+  \hline
+  amostragem seletiva baseada & $1 < |\mathcal{U}| < |\mathcal{D}|$ & informatividade isolada \\
+  em fluxo - em blocos        &                                     & informatividade conjunta \\
+                              &                               & informativo-representatividade \\
+  \hline
+  \textit{pool-based sampling} & $\mathcal{U} = \mathcal{D}$ & informatividade isolada \\
+                               &                               & informatividade conjunta \\
+                               &                               & informativo-representatividade \\
+  \hline
+\end{tabular}
+\end{center}
+\caption{Comparação de cenários de aprendizado ativo.}
+\label{tab:compara-cenarios-ativos}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{\textit{Membership query synthesis}}
-No cenário de \textit{membership query synthesis}, exemplos são criados pelo algoritmo de
-aprendizado \citep{angluin1988queries}.
+\section*{\textit{Membership query synthesis}}
+\ano{procurar por ? em todo o documento}
+
+No cenário de \textit{membership query synthesis}, exemplos são criados pelo
+algoritmo de aprendizado \citep{angluin1988queries}.
 A criação de um exemplo é ilustrada na Figura \ref{fig:memquerysyn}.
 Ele é feito de maneira a otimizar a busca da hipótese ideal dentro do
 \textit{version space}\footnote{[espaço de versões]} conforme definido por
@@ -34,11 +72,11 @@ mostra-se uma abordagem promissora \citep{cohn1996active}.
 \begin{figure} %[H]
     \centering
     \scalebox{.75}{\input{imagens/memquerysyn-esquema.tex}}
-    \caption{\textit{Membership query synthesis}: as consultas ao oráculo são criadas sobmedida.}
+    \caption{\textit{Membership query synthesis}: as consultas ao oráculo são criadas sob medida.}
     \label{fig:memquerysyn}
 \end{figure}
 
-\subsection*{\textit{Pool-based sampling}}
+\section*{\textit{Pool-based sampling}}
 Muitos problemas proveem grande quantidade de exemplos de uma só vez. Eles são a motivação da
 \textit{pool-based sampling} \citep{lewis1994heterogeneous}.
 Esse tipo de amostragem assume que há apenas uma pequena parcela de exemplos rotulados e que
@@ -71,7 +109,7 @@ na seleção dos metaexemplos tal como feito por \cite{prudencio2007active}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-\subsection*{Amostragem seletiva baseada em fluxo} \label{sec:cenario_fluxo}
+\section*{Amostragem seletiva baseada em fluxo} \label{sec:cenario_fluxo}
 Os fluxos de dados, conforme definição da Seção \ref{sec:fluxo:def}, precisam ser tratados dentro
 de limitações de tempo de processamento e de espaço em memória.
 Logo, a manipulação de um repositório, ainda que ajustado à memória disponível, pode ser inviável

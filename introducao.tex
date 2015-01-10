@@ -1,16 +1,7 @@
 \chapter{Introdução} \label{cap:intro}
+\esb{azul: esboço de texto} \ano{vermelho: anotação} \tar{verde: tarefa}
 
-\esb{azul: esboço de texto}
-
-\ano{vermelho: anotação}
-
-\tar{verde: tarefa}
-
-
-\input{aprendizado-supervisionado}
-
-
-\esb{apresenta o custo de rotulação como motivação;
+\esb{Andre+Davi: apresenta o custo de rotulação como motivação;
 explicita que ninguém compara estratégias; comenta possiveis deficiencias ou
 lacunas das estrategias existentes, apresenta melhorias propostas; apresenta
 recomendação de classificador e/ou estratégia; apresenta hipóteses principal e secundárias.
@@ -37,28 +28,10 @@ justificadas em função da contribuição principal}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Contribuição}\label{contribuicao}
 
 
-\ano{referenciar apendice de Formatação e estilo}
-Apêndice \ref{estilo}
-
-% % \newpage
-% \section{Capítulos}
-% Este documento está organizado maneira descrita a seguir.
-% 
-% No Capítulo \ref{cap:classificacao}, é apresentada a notação utilizada neste trabalho juntamente com um texto introdutório sobre aprendizado supervisionado para contextualizar as duas revisões bibliográficas que o seguem: a primeira sobre \textit{ensembles} e a segunda sobre \textit{fluxos de dados}.
-% Ao final, \textit{ensembles} voltados especificamente a fluxos de dados são revisados.
-% 
-% No Capítulo \ref{cap:aprendizado-ativo}, o \textit{aprendizado ativo} é descrito em detalhes a respeito dos cenários mais comuns e das estratégias normalmente adotadas.
-% Os trabalhos recentes nos quais se baseia diretamente a linha investigativa adotada são explicitados na Seção \ref{sec:panorama}.
-% 
-% O plano de trabalho é apresentado no Capítulo \ref{cap:plano} e contempla a situação atual do aluno no programa de doutorado, os recursos disponíveis, as hipóteses formuladas, a metodologia e o cronograma.
-% 
-% Finalmente, no Capítulo \ref{cap:experimentos}, são mostrados experimentos ilustrativos da mudança de conceito e da diversidade de comportamento entre diferentes classificadores.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Cenário}\label{sec:cenarios}
+\section{Cenário}\label{sec:cenarios}
 Existem três principais cenários na literatura de aprendizado ativo \citep{settles2010active}:
 \textit{síntese de consulta por associação} ou
 \ing{consulta de exemplos sintetizados}{membership query synthesis};
@@ -93,19 +66,21 @@ decorre de o fato do processo ativo de amostragem não ser uma
 \textit{cadeia de Markov} de primeira ordem \citep{conf/icml/RoyM01}.
 Uma consulta ótima depende de quantas ainda podem ser feitas.
 
-\section{Contribuição}\label{contribuicao}
+\section{Estrutura do documento}\label{estrutura}
 
-\section{Notação}\label{notacao}
-\esb{O número de classes é indicado por $|Y|$ e a quantidade inicial de exemplos é
-$|\mathcal{U}|$ - mantendo a notação
-usual de os símbolos $\mathcal{U}$ e $\mathcal{L}$ representarem a
-reserva de exemplos \citep{series/synthesis/2012Settles}
-e o conjunto de exemplos já rotulados, respectivamente.}
-$ID$ densidade de informação
-$TU$ utilidade de treinamento
-$Inf(\bm{x})$ medida de informatividade
-$d(\bm{x},\bm{u})$ medida de distância
-$sim(\bm{x},\bm{u})$ medida de similaridade
+\ano{referenciar apendice de Formatação e estilo}
+Apêndice \ref{estilo}
 
-\red{explicar que vai ser adotada uma notação uniforme que compreenda AL, ELM
- e ap. inc.}
+% % \newpage
+% \section{Capítulos}
+% Este documento está organizado maneira descrita a seguir.
+%
+% No Capítulo \ref{cap:classificacao}, é apresentada a notação utilizada neste trabalho juntamente com um texto introdutório sobre aprendizado supervisionado para contextualizar as duas revisões bibliográficas que o seguem: a primeira sobre \textit{ensembles} e a segunda sobre \textit{fluxos de dados}.
+% Ao final, \textit{ensembles} voltados especificamente a fluxos de dados são revisados.
+%
+% No Capítulo \ref{cap:aprendizado-ativo}, o \textit{aprendizado ativo} é descrito em detalhes a respeito dos cenários mais comuns e das estratégias normalmente adotadas.
+% Os trabalhos recentes nos quais se baseia diretamente a linha investigativa adotada são explicitados na Seção \ref{sec:panorama}.
+%
+% O plano de trabalho é apresentado no Capítulo \ref{cap:plano} e contempla a situação atual do aluno no programa de doutorado, os recursos disponíveis, as hipóteses formuladas, a metodologia e o cronograma.
+%
+% Finalmente, no Capítulo \ref{cap:experimentos}, são mostrados experimentos ilustrativos da mudança de conceito e da diversidade de comportamento entre diferentes classificadores.
