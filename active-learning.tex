@@ -1,4 +1,26 @@
 \chapter{Aprendizado Ativo} \label{cap:aprendizado-ativo}
+
+% Aprendizado de máquina é a área que engloba algoritmos capazes de aprender
+% sem programação explícita \citep{journals/cacm/Valiant84}.
+% Diversas tarefas como \ano{tarefa 1, tarefa2, ... REFERENCIA} têm sido bem sucedidas atualmente.
+% Entretanto, existe um problema em aberto que é a busca pela melhor maneira de amostragem dos dados
+% na etapa que antecede o treinamento do algoritmo.
+% A motivação para essa busca pode advir, dentre outras, de um excesso de dados
+% ou da escassez de recursos para manutenção de um especialista.
+% Ambos os casos podem se beneficiar do tipo de aprendizado denominado \textit{ativo}.
+
+% Sistemas computacionais têm ajudado em tarefas cotidianas como tomada de decisão, recomendação de
+% filmes ou notícias e detecção de mensagens eletrônicas indesejáveis.
+% Elas são tarefas possíveis devido à existência de algoritmos capazes de aprender (Capítulo \ref{cap:classificacao}) e à abundância de dados disponíveis.
+
+% Algumas habilidades humanas vêm claramente programadas geneticamente e outras são apenas a execução de passos memorizados.
+% Apesar disso, ainda resta um amplo espectro de novas habilidades adquiríveis sem que seja possível identificar tais programações associadas.
+% Assim, pode-se definir \textbf{aprendizado} como o \textit{fenômeno de aquisição de conhecimento na ausência de programação explícita} \citep{valiant1984theory}.
+% Um exemplo de aprendizado é o reconhecimento de objetos comuns por meio do tato ou visão. DEFINIR MAIS TECNICAMENTE?
+% Trata-se de uma habilidade aprendida por humanos em que é difícil identificar o algoritmo no qual se baseia.
+% Essa tarefa é apenas parte das potencialidades de agentes ditos inteligentes e é chamada de \textbf{classificação}.
+
+
 O \ing{aprendizado ativo}{active learning} é o estudo de máquinas
 de aprendizado capazes de se aprimorar fazendo perguntas \citep{series/synthesis/2012Settles}.
 A origem do termo remete à Pedagogia, especificamente à forma didática centrada no aluno.
@@ -20,7 +42,6 @@ reescrita do \textit{código}\footnote{\textit{Código} usualmente escrito na ling
 de extração de atributos visando maior separabilidade entre as
  classes; composição de expressões regulares para extrair termos adequados de textos técnicos;
 e, criação de regras de classificação.
-
 Outras informações, mais diretamente obteníveis do supervisor humano incluiriam
  valores de atributos, rótulos associados com atributos, exemplos completos sob demanda e outros.
 Em linhas gerais, sua aquisição deve ser guiada por duas noções
@@ -28,18 +49,24 @@ Em linhas gerais, sua aquisição deve ser guiada por duas noções
 preferir aquela para a qual o estado corrente do modelo é incerto e
 preferir aquela estimada como a mais relevante.
 
-O sub-caso e a cenário de aprendizado ativo mais presentes na literatura,
-e onde se situa a presente tese, são a busca por rótulos e
-o cenário baseado em \pool - respectivamente.
-A quantidade de exemplos disponíveis pode ser abundante e o esforço humano disponível
+Dentre as perguntas que as máquinas de aprendizado ativo são capazes de elaborar,
+a mais direta é ``\textit{Qual é o rótulo do exemplo $\bm{x}$?}''.
+Dado que a obtenção de um rótulo confiável normalmente é um processo custoso,
+o problema de se decidir qual seria o melhor $\bm{x}$ é a
+motivação basilar desta tese.
+Adicionalmente,
+a quantidade de exemplos disponíveis pode ser abundante e o esforço humano disponível
 (do professor, no caso da analogia acima) limitado.
 Dessa forma, apenas uma parcela criteriosamente escolhida dos exemplos precisa ser
-rotulada - em oposição ao \ing{aprendizado por exemplos}{learning by example} convencional
-\citep{journals/cacm/Valiant84}, também chamado de passivo.
-No aprendizado passivo, procura-se pelo maior conjunto de treinamento possível ou por uma amostragem aleatória.
+rotulada - em oposição ao
+\ing{aprendizado por exemplos}{learning by example} convencional
+\citep{journals/cacm/Valiant84}, também chamado de \novo{passivo}.
+No aprendizado passivo,
+procura-se pelo maior conjunto de treinamento possível ou por uma amostragem aleatória.
 No primeiro caso, o custo de rotulação pode se tornar proibitivo; no segundo caso,
 a decisão quanto à relevância dos exemplos é deixada ao acaso.
-Em ambos os casos, dependendo da aplicação, a construção do conjunto de treinamento pode ser crítica.
+Em ambos os casos, dependendo da aplicação,
+a construção do conjunto de treinamento pode ser crítica.
 Por exemplo, quando a consulta de um exemplo envolve reações químicas destrutivas,
 é desejável fazer o mínimo possível de consultas visando um reduzido custo material.
 Similarmente, se o mecanismo rotulador, normalmente chamado de \novo{oráculo},
@@ -49,8 +76,13 @@ atenção humana/movimento mecânico.
 Assim, um direcionamento adequado do esforço de aprendizado tem como resultado um
 processo de rotulação mais econômico.
 
-Na literatura de aprendizado ativo há diversas propostas.
-Elas são frequentemente baseadas em diferentes concepções de relevância de
+Na literatura de aprendizado ativo há diversos sub-casos, cenários e estratégias.
+O sub-caso e o cenário de aprendizado ativo mais comuns na literatura,
+e onde se situa a presente tese, são a busca por rótulos e
+o cenário baseado em \pool - respectivamente.
+Os cenários alternativos são apresentados no Apêndice \ref{cenarios}.
+No caso das estratégias,
+elas são frequentemente baseadas em diferentes concepções de relevância de
 exemplos ou mesmo diferentes teorias do aprendizado.
 A amostragem por incerteza, por exemplo, assume que os exemplos e suas classes pertencem a uma
 distribuição de probabilidades - em linha com a teoria do aprendizado
@@ -645,17 +677,13 @@ e com otimizações e ainda assim é ordens de magnitude mais lento que  Unc. Sampl
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Considerações}\label{sec:consideracoes-ativo}
-% Neste capítulo, foram introduzidos os aspectos básicos do aprendizado de máquina,
-% a notação adotada neste documento e os conceitos relevantes para situar o leitor nos próximos
-% capítulos.
-% % Além disso,
-% % uma revisão breve forneceu mais detalhes de como o problema da mudança de conceito tem sido
-% tratado na literatura.
-% %
-% % No geral, o material deste capítulo esboça as particularidades da tarefa que é servida pelo
-% aprendizado ativo em estudo: a classificação em fluxos de dados e o uso de \textit{ensembles}.
-% % Igualmente, todos os problemas aqui citados afetam as \textit{estratégias de consulta} que são
-% abordadas no Capítulo \ref{cap:aprendizado-ativo}.
 
+ \ano{pode ser interessante explicitar que estrategias
+se enquadram em cada teoria de aprendizado: esquema Mitchel e tb
+ o esquema da teoria do aprendizado estatístico; explicando que SG, por ex.,
+se baseia no primeiro}
 
-
+\ano{
+ a quantidade global desses dados duplica a cada dois anos \citep{zliobaite2012next} e, por isso,
+requer sistemas cada vez mais eficientes e que exijam intervenção humana mínima.
+}

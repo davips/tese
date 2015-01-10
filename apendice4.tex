@@ -1,2 +1,148 @@
-\chapter{XXXXXXXXXXXXX}\label{XXXXXXx}
-\section{XXXXXXXX}
+\chapter{Terminologia}\label{terminologia}
+% \textbf{Conceito} é a descrição de uma categoria baseada num conjunto de exemplos.
+% Cada \textbf{exemplo} representa um elemento conhecido ou sob investigação que
+% pode ter uma \textbf{classe} \textbf{positiva} ou \textbf{negativa} que é indicativa
+% de o exemplo pertencer ou não à categoria.
+% Por exemplo, o diagnóstico para uma doença pode ter as classes \textit{positiva}
+% ou \textit{negativa}; ou, mais diretamente, \textit{doente} e \textit{saudável}.
+% A classe positiva é, em geral, a classe de maior interesse.
+% Quando a presença é desigual entre os exemplos de cada classe, diz-se que o
+% conjunto é \textbf{desbalanceado}.
+% Nesse caso a classe positiva normalmente é a \textbf{minoritária} -
+% a de menor ocorrência.
+% \textit{Classe} e \textit{rótulo} são usados de maneira intercambiável neste documento.
+%
+% \blue{vvvvvvvv}
+%
+%
+% A seguinte notação, adaptada do livro de \cite{series/synthesis/2012Settles},
+% foi adotada nesta tese. Com relação a classificação:
+% \begin{itemize}
+%   \item $\X$ - conjunto de tuplas de atributos descritivos (numéricos e nominais),
+%     ou seja, todos os exemplos matematicamente possíveis (sem informação de classe);
+%   \item $\x \in \X$ - tupla de atributos que descrevem um exemplo;
+%   \item $\Y$ - conjunto de vetores em notação \tra{um-de-n}{one-hot encoding}
+%     (\cite{Harris:2007:DDC}) que representa todas as classes possíveis,
+%     por exemplo: $\Y=\{(0,0,1),(0,1,0),(1,0,0)\}$;
+%   \item $\y \in Y$ - vetor de atributos que classificam um exemplo;
+%   \item $\yt$,$\xt$ - o subscrito $t \in \mathbb{N}$ indica que o exemplo
+%     é parte de uma sequência para aprendizado incremental;
+% %  $o$, $y_o=1$ e $y_p=0 \forall o \neq p, 1 \leq p \leq |Y|$;
+% \end{itemize}
+% e especificamente para aprendizado ativo:
+% \begin{itemize}
+%   \item $\U$ - \pool inicial;
+%   \item $\Ut$ - \pool no instante $t$;
+%   \item $\Lt$ - conjunto de exemplos já rotulados no instante $t$.
+% \end{itemize}
+%
+% \blue{----------}
+%
+%
+%
+%
+%
+%
+% Um conceito pode ser definido por uma função.
+% Seja $X$ o conjunto de todos os exemplos possíveis - aqueles que resultam de todas as permutações de valores de atributos;
+% o conceito $c$ é uma função na forma:
+% \begin{equation}
+% c: X \rightarrow \{-,+\}
+% \end{equation}
+% onde ``$-$'' representa a classe negativa (e.g, ``saudável'') e ``$+$'' representa a classe positiva (e.g, ``doente'').
+% Um conceito também pode ser
+% representado
+% % ilustrado
+% por uma fronteira de decisão conforme mostrado na Figura \ref{fig:fronteiras}.
+% Supondo-se uma \textbf{distribuição estacionária}, ou seja, um conceito imutável, pode-se deduzir com certeza o rótulo de qualquer novo exemplo apenas pela sua informação de localização com relação à fronteira: se pertencente à área interna ou externa.
+% Por outro lado, se a fronteira de decisão representasse uma \textit{hipótese} (CONFORME EXPLICADO ADIANTE),
+% não haveria qualquer garantia quanto aos rótulos de novos exemplos com relação à sua localização DESNECESSÁRIO.
+%
+% \pgfplotsset{width=12cm,compat=1.5.1}
+% \begin{figure}
+% \begin{center}
+% \begin{tikzpicture}
+% \begin{axis}[axis y line=left, xmin=35, xmax=100, ymin=1.45, ymax=1.9, axis x line=bottom, grid, xlabel=peso (kg),   ylabel=altura (m)]
+% \addplot[only marks,mark=text,text mark=\C{$+$},mark options={blue,scale=1}] plot coordinates {
+%     (65,1.8) (53,1.7) (63,1.6) (72,1.65) (60,1.55) (62,1.68) (64,1.78) (63.5,1.74) (80,1.7) (77,1.71)
+% }; \addlegendentry{doente}
+% \addplot[only marks,mark=text,text mark=\Q{$-$},mark options={red,scale=1}] plot coordinates {
+%     (40.2,1.6) (41.3,1.65) (42.2,1.70) (50,1.80) (80,1.54) (83,1.66) (85,1.63) (93,1.7)
+% }; \addlegendentry{saudável}
+% \addplot[thick, mark=none, teal] plot coordinates {
+%     (57,1.86) (40,1.5) (70,1.55) (95,1.8) (57,1.86)
+% };
+% \end{axis}
+% \end{tikzpicture}
+% \caption{Exemplo de fronteira de decisão.}
+% \label{fig:fronteiras}
+% \end{center}
+% \end{figure}
+%
+%
+% \textbf{Hipótese} é um conjunto de restrições nos atributos normalmente denominado pela letra $h$ \citep{mitchell1997machine}.
+% %definição do livro, eu acho que pode haver outros tipos de hipoteses, como por exemplo, restrições num espaço de parâmetros.
+% Essas restrições delimitam um subconjunto de todos os exemplos possíveis, pois determinam quais valores cada atributo aceita.
+% As restrições são as necessárias justamente para que o subconjunto seja somente de exemplos positivos.
+% Reunindo-se todas as hipóteses possíveis, tem-se o espaço de hipóteses $H$.
+% Se houver pelo menos um atributo contínuo (ou discreto com um número infinito de valores), infinitas hipóteses são possíveis.
+% Em qualquer caso, evidentemente, podem existir hipóteses diferentes, porém equivalentes.
+% Assim, pode-se dizer que $H = \{h_i | \forall i \in \mathbb{N}^+\}$.
+% % (ou seria  $\mathcal{H}$ ??)
+% Cada $h$ pode ser descrita como uma função do mesmo tipo que $c$, mas que aceita apenas elementos do conjunto $\mathcal{D} \subseteq X$ de todos os exemplos que efetivamente se manifestam em uma determinada aplicação:
+% \begin{equation}
+% h: \mathcal{D} \rightarrow \{-,+\}
+% \end{equation}
+%
+%
+% A tarefa de \textit{aprendizado de conceito}, dado um conjunto de exemplos L CONTIDO EM XxY? $\mathcal{L}:\{\langle \bm{x}_1, c(\bm{x}_1) \rangle, \langle \bm{x}_2, c(\bm{x}_2) \rangle, ... \}$, tem como objetivo encontrar uma hipótese $h \in H,$ tal que
+% \begin{equation}
+%  h(\bm{x}) = c(\bm{x}), \forall \bm{x} \in \mathcal{D}
+% \end{equation}
+% Porém, como tem-se apenas o conjunto $\mathcal{L}$, é preciso assumir que ele é representativo de $\mathcal{D}$.
+% Esse é o princípio do aprendizado indutivo: é possível \textbf{predizer} a classe de novos exemplos baseando-se num conjunto de \textbf{treinamento}.
+% Logo, o resultado da indução é um \textbf{modelo} de representação (DENOMINADO $\theta$) de parte da realidade; capaz de ser usado na generalização de fatos conhecidos para novas situações.
+%
+% Além de depender de $\mathcal{L}$, a hipótese $h$ depende da \textit{linguagem de representação} e do \textit{viés de busca}.
+% Ambas são definidas pelo algoritmo de aprendizado.
+% O modelo $\theta$ é descrito pela linguagem de representação, pois ela é a forma de se representar o conhecimento adquirido -
+% árvores de decisão, neurônios artificiais etc. \citep{quinlan1993c4,haykin1994neural}.
+% O \textit{viés de busca}, por sua vez, é a forma do processo de construção do modelo dentro da linguagem -
+% heurística gulosa, otimização de funções etc.
+% Da mesma forma, os parâmetros do algoritmo também influenciam a elaboração de $h$.
+% Esses fatores fazem com que o aprendizado de qualquer modelo seja enviesado.
+% Na realidade, sem \textit{viés de aprendizado} não há generalização \citep{mitchell1980need}.
+% O viés de aprendizado é uma das fontes de diversidade entre modelos, OU SEJA, é UMA DAS ALTERNATIVAS QUE VIABILIZAM a criação de \textit{ensembles}.
+%
+% Em muitos casos, para se gerar $\mathcal{L}$, pode-se amostrar para rotulação apenas parte de um conjunto de exemplos não rotulados $\mathcal{U}$ tendo em vista restrições de custo.
+% A ordem de escolha dos exemplos de treinamento, quando não é fortuita ou intencionalmente aleatória, também é caracterizada por um viés.
+% Esse viés é característico do aprendizado ativo abordado no Capítulo \ref{cap:aprendizado-ativo} e é um dos pontos de investigação propostos no Capítulo \ref{cap:plano} enquanto influência na construção de $h$.
+% Reserva-se aqui o termo \textbf{aprendiz} para representar o algoritmo que é servido pela amostragem de exemplos com base nesse viés - e reserva-se a expressão \textbf{aprendiz passivo} para cada algoritmo de aprendizado componente de um \textit{ensemble}.
+% Por simplicidade, \textbf{aprendiz ativo} refere-se, consequentemente, ao sistema completo: aprendiz e procedimento de amostragem.
+% Cada escolha de exemplo numa amostragem ativa é chamada de \textbf{consulta} e envolve o processo de \textit{rotulação} - geralmente custoso nos domínios onde se opta pelo aprendizado ativo.
+% A \textbf{rotulação} é a atribuição do rótulo por uma entidade confiável, geralmente humana, mas passível de erro.
+% Os exemplos ainda não consultados são chamados neste trabalho, por simplicidade, de \textbf{candidatos}.
+%
+%
+% % \e{\textbf{preciso definir} conjunto de validação . . .  classificador}
+% %
+% % \e{\textbf{preciso definir} conhecimento . . . }
+% %
+% % \e{\textbf{preciso definir} variância. . .   }
+%
+%
+% Dado um exemplo $\bm{x}$ e supondo que o modelo $\theta$ seja probabilístico, a probabilidade dele ter um rótulo $y$ é denotada nas seções e capítulos seguintes por $P$,
+% sendo que $\hat{y}$ é o rótulo mais provável, ou seja:
+% \begin{equation}
+%   \hat{y} = \argmax_y\{ P_{\theta} (y|\bm{x})\}
+% \end{equation}
+%
+% Adicionalmente, e considerando uma construção incremental da hipótese
+% (de forma a incorporar uma componente temporal $t$ de instante/ordem de chegada),
+% o algoritmo de treinamento do modelo $\theta$ pode ser representado por
+% $a: \langle \{\theta_1, \theta_2, ...\},X,Y \rangle \rightarrow \{\theta_1, \theta_2, ...\}$, de forma que cada novo modelo $\theta^{(t+1)}$ é dado por:
+% \begin{equation}
+%   \theta^{(t+1)} = a(\theta^{(t)}, \langle \bm{x},y \rangle), \forall t \in \mathbb{N^{+}}
+% \end{equation}
+% Note-se que $\bm{x}$ é apresentado, no restante do texto, como $\bm{x}^{(t)}$ quando necessário.
+
