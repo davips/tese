@@ -1,0 +1,139 @@
+\section{Máquinas Extremas}\label{elm}
+As máquinas extremas (\textit{Extreme Learning Machines} - ELMs) são redes - não
+necessariamente neurais - com treinamento diferenciado que têm recebido crescente atenção devido à
+sua simplicidade e performance, comparável com o estado da arte \citep{journals/tsmc/HuangZDZ12}.
+Trata-se de um algoritmo adequado para AA porque, ainda que pertença a um grupo de algoritmos
+complexos, com a capacidade de aproximação universal \citep{journals/tsmc/HuangZDZ12} - por
+exemplo,
+ela tem um ajuste de parâmetros que pode ser simplificado de uma forma que não ocorre com outros
+algoritmos similares em complexidade e nichos de aplicação como a máquina de vetores de suporte e o
+Perceptron multicamadas \citep{haykin2004comprehensive}.
+Esse último requer, por exemplo, algum critério de parada no treinamento e um processo de seleção
+de modelo que envolve o ajuste de topologia e parâmetros.
+Essa característica da ELM permite um rápido treinamento, algo necessário num ambiente interativo.
+O motivo para a baixa necessidade ou ausência de iterações é explicado a seguir.
+
+Fixado o tipo de nó como o neurônio artificial convencional, seus parâmetros a ajustar são os
+valores e quantidade de neurônios/conexões sinápticas da camada oculta.
+Dada uma função geradora de pesos aleatórios ou pseudo-aleatórios incluída sua semente geradora e
+adotada a restrição de sempre se manter os pesos na ordem em que são
+gerados\footnote{Do contrário, cada peso deveria ser interpretado como um parâmetro independente.},
+a quantidade de
+neurônios $L$ na camada oculta pode ser vista como o único parâmetro a se ajustar.
+Embora possa ser otimizado, esse parâmetro frequentemente não é crítico
+\citep{conf/esann/FrenayV10}.
+Essa possível não-criticidade torna a ELM, dentro das restrições apresentadas,
+capaz de aprender num passo único e rápido quando comparada a outros algoritmos similares
+\citep{journals/tsmc/HuangZDZ12}.
+
+% descrever ELM básica
+Uma ELM é uma rede com uma única camada oculta que transmite os sinais apenas na direção
+entrada-saída (\textit{Single Hidden Layer Feedforward Network} - SLFN),
+cujos nós podem ser neurais (aditivo logístico sigmoidal) - como neste trabalho -
+ou de diversos outros tipos, como as também frequentemente usadas funções de base radial
+\citep{journals/tsmc/HuangZDZ12}.
+
+Dados $Y$ o conjunto de vetores que representam todos os rótulos possíveis;
+$\bm{x}_{(t)}$, um vetor de atributos descritivos pertencentes a um exemplo cuja classe se deseja
+descobrir no instante $t \in \mathbb{N}$;
+e $\bm{y}_{(t)} \in Y$, seu vetor associado de atributos preditivos que é uma representação binária
+em que os valores respeitam a restrição de que para um rótulo com índice correspondente $o$,
+$y_o=1$ e $y_p=0 \forall o \neq p, 1 \leq p \leq |Y|$;
+a função preditiva de uma SLFN com $L$ neurônios ocultos pode ser representada como segue:
+\begin{equation} \label{eqelm}
+f(\bm{x}_{(t)})= \argmax_{\bm{y} \in Y}{\displaystyle\mathop{\sum} _{l=1}^{L}\beta_{l,c(\bm{y})}
+g(\bm{a}_l \bm{x}_{(t)} + b_l)} = \bm{y}_{(t)}
+\end{equation}
+% }, \quad j=1, \cdots, {\it N}.
+
+onde $\beta_{l,o}$ é o peso da sinapse que conecta o neurônio oculto $l$ ao neurônio de saída $o$;
+$c(\bm{z})$ é uma função auxiliar que retorna o índice correspondente ao rótulo representado pelo
+vetor $\bm{z} \in Y$;
+$g$ é, neste trabalho, a função sigmoide logística;
+$\bm{a}_l$ é o vetor de pesos do neurônio $l$ com cada valor $a_i$ representando o peso entre a
+entrada $i$ e o neurônio $l$ e, sendo o produto interno deste neurônio uma equação de reta no
+espaço de parâmetros, $b_l$ é o valor de seu viés de deslocamento em relação à origem.
+Mais detalhes da formulação da primeira camada oculta podem ser consultados na literatura sobre o
+Perceptron multicamadas convencional \citep{haykin2004comprehensive}.
+Se $\beta$ for adotada como uma matriz, a equação \ref{eqelm} pode ser escrita compactamente da
+forma:
+\begin{equation} \label{eq2}
+H \beta = T
+\end{equation}
+
+onde $H$ é a matriz de saídas da camada oculta (\textit{hidden layer output matrix}) da SLFN,
+ou seja, cada coluna corresponde à saída de um neurônio oculto e cada linha corresponde a um
+exemplo do conjunto de treinamento;
+$\beta$ é a matriz contendo os pesos que conectam a camada oculta à camada de saída, ou seja, cada
+coluna corresponde a um neurônio de saída e cada linha corresponde a um neurônio oculto;
+e $T$ é a matriz objetivo, que contém em cada linha a representação binária $\bm{y}$ do rótulo de
+cada exemplo.
+
+Calcular $\beta$, que é análogo a treinar a rede,
+pode ser feito por meio do cálculo da pseudo-inversa $H^{\dagger}$ de $H$
+\citep{rao1971generalized}:
+\begin{equation} \label{eq3}
+\beta = H^{\dagger} T
+\end{equation}
+
+Uma formulação mais detalhada da ELM pode ser encontrada na literatura
+\citep{journals/tsmc/HuangZDZ12}.
+
+\subsection{Máquinas Extremas Incrementais}\label{oselm}
+Em sistemas interativos, frequentemente é adotado o esquema incremental de aprendizado.
+O tempo de treinamento é reduzido quando é possível aproveitar o resultado de cálculos
+prévios durante todo o processo.
+No caso da ELM, isso é possível por meio da
+\ing{máquina extrema incremental}{On-line Sequential Extreme Learning Machine}\footnote{A nomenclatura usada na literatura de ELMs
+é inconsistente com a nomenclatura usual em aprendizado de máquina.
+Aqui optou-se pela segunda.}
+- OS-ELM
+\citep{conf/iastedCI/HuangLRSS05}.
+% cite Sherman-Morrison-Woodbury)
+% http://books.google.com.br/books?hl=en&lr=&id=iD5s0iKXHP8C&oi=fnd&pg=PT15&dq=+An+introduction+to+optimization&ots=3PqthZAq8d&sig=Befcr8te239chWT6UOVyVrMIkSo#v=snippet&q=recursive%20least&f=false
+
+
+A técnica é baseada no algoritmo dos mínimos quadrados recursivo
+que utiliza a fórmula de Sherman-Morrison-Woodbury
+\citep{chong2013introduction}.
+$H$ passa a ser considerada em função do tempo - com subscrito para melhor legibilidade: $H_{(t)}$.
+Para ser possível encontrar a solução dos mínimos quadrados de $H_{(0)} \beta_{(0)} = T_{(0)}$,
+que se refere ao conjunto inicial de dados rotulados (instante $t=0$),
+a pseudo-inversa esquerda $H^\dagger_{(0)}$ deve ser calculada por:
+
+\begin{equation} \label{eq4}
+P_{(0)}=(H^\top_{(0)}H_{(0)})^{-1}
+\end{equation}
+\begin{equation} \label{eq5}
+H^{\dagger}_{(0)} = P_{(0)}H^\top_{(0)}
+\end{equation}
+
+Assim, é possível realizar um treinamento inicial da rede.
+Para os lotes de dados subsequentes, ou seja,
+quando $t>0$, apenas $\beta_{(t)}$ e $P_{(t)}$ precisam ser mantidos, onde:
+
+\begin{equation} \label{eq6}
+P(t) = P_{(t-1)} - P_{(t-1)} H^{\top}_{(t)} (I + H_{(t)} P_{(t-1)} H^{\top}_{(t)})^{-1} H_{(t)}
+P_{(t-1)}
+\end{equation}
+\begin{equation} \label{eq7}
+\beta_{(t)} = \beta_{(t-1)} + P_{(t)} H^{\top}_{(t)} (T_{(t)} - H_{(t)} \beta_{(t-1)})
+\end{equation}
+
+O cálculo incremental de $\beta_{(t)}$ e $P_{(t)}$ evita os custos de se recalcular a
+pseudo-inversa para cada novo lote de dados.
+
+Além da OS-ELM, outras variantes da ELM têm sido propostas:
+ROS-ELM, que evita matrizes mal-condicionadas por meio do ajuste dos vieses $b_i$ \cite
+{conf/isnn/HoangHVW07};
+EI-ELM ou EM-ELM, não-incrementais, que fazem a rede crescer \textit{congelando}
+\citep{huang2008enhanced} ou \textit{atualizando} \citep{journals/tnn/FengHLG09} nós antigos;
+e, CEOS-ELM, que faz a rede crescer durante o aprendizado \textit{on-line} \citep{conf/ijcnn/LanSH09}.
+
+Para o presente trabalho, a OS-ELM ``canônica'' foi adotada, pois cada variante tem seus próprias
+vicissitudes e o propósito deste trabalho é apenas dar uma primeira impressão a respeito da
+performance da ELM com diferentes estratégias.
+Também é importante lembrar que, na presença de uma matriz $H_{(0)}$ mal-condicionada,
+OS-ELM não converge para ELM.
+
+\ano{PRESS cru é útil pra se ter o erro estatistico (de regressão?)  em vez do quadrado do resíduo}

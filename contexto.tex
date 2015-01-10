@@ -1,0 +1,44 @@
+\chapter{Contexto} \label{contexto}
+\ano{Aprendizado de máquina é a área que engloba algoritmos capazes de aprender
+sem programação explícita \citep{journals/cacm/Valiant84}.
+Diversas tarefas como \ano{tarefa 1, tarefa2, ... REFERENCIA} têm sido bem sucedidas atualmente.
+Entretanto, existe um problema em aberto que é a busca pela melhor maneira de amostragem dos dados
+na etapa que antecede o treinamento do algoritmo.
+A motivação para essa busca pode advir, dentre outras, de um excesso de dados
+ou da escassez de recursos para manutenção de um especialista.
+Ambos os casos podem se beneficiar do tipo de aprendizado denominado \textit{ativo}.
+}
+
+\ano{Algumas habilidades humanas vêm claramente programadas geneticamente e outras são apenas a execução de passos memorizados.
+Apesar disso, ainda resta um amplo espectro de novas habilidades adquiríveis sem que seja possível identificar tais programações associadas.
+Assim, pode-se definir \textbf{aprendizado} como o \textit{fenômeno de aquisição de conhecimento na ausência de programação explícita} \citep{valiant1984theory}.
+Um exemplo de aprendizado é o reconhecimento de objetos comuns por meio do tato ou visão. DEFINIR MAIS TECNICAMENTE?
+Trata-se de uma habilidade aprendida por humanos em que é difícil identificar o algoritmo no qual se baseia.
+Essa tarefa é apenas parte das potencialidades de agentes ditos inteligentes e é chamada de \textbf{classificação}.
+}
+
+\ano{
+ a quantidade global desses dados duplica a cada dois anos \citep{zliobaite2012next} e, por isso,
+requer sistemas cada vez mais eficientes e que exijam intervenção humana mínima.
+}
+
+\section{Notação}\label{notacao}
+\esb{O número de classes é indicado por $|Y|$ e a quantidade inicial de exemplos é
+$|\mathcal{U}|$ - mantendo a notação
+usual de os símbolos $\mathcal{U}$ e $\mathcal{L}$ representarem a
+reserva de exemplos \citep{series/synthesis/2012Settles}
+e o conjunto de exemplos já rotulados, respectivamente.}
+$ID$ densidade de informação
+$TU$ utilidade de treinamento
+$Inf(\bm{x})$ medida de informatividade
+$d(\bm{x},\bm{u})$ medida de distância
+$sim(\bm{x},\bm{u})$ medida de similaridade
+
+\red{explicar que vai ser adotada uma notação uniforme que compreenda AL, ELM
+ e ap. inc.}
+
+ \input active-learning
+ \input elm
+ \input meta
+\section{Considerações}
+ 
