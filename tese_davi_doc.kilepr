@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=tese.tex
+lastDocument=introducao.tex
 masterDocument=
 name=Tese
 pkg_extIsRegExp=false
@@ -96,7 +96,47 @@ Indentation Mode=
 Mode=LaTeX
 ReadWrite=true
 
+[document-settings,item:conclusao.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
 [document-settings,item:dataset-tables.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:exp-analise.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:exp-elm.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:exp-meta.tex]
 Bookmarks=
 Encoding=ISO-8859-1
 FoldedColumns=
@@ -222,10 +262,10 @@ ReadWrite=true
 
 [item:active-learning.tex]
 archive=true
-column=0
+column=12
 encoding=ISO-8859-1
 highlight=LaTeX
-line=606
+line=377
 mode=LaTeX
 open=false
 order=2
@@ -300,12 +340,52 @@ mode=LaTeX
 open=false
 order=7
 
+[item:conclusao.tex]
+archive=true
+column=0
+encoding=ISO-8859-1
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=false
+order=-1
+
 [item:dataset-tables.tex]
 archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
 line=6
+mode=LaTeX
+open=false
+order=-1
+
+[item:exp-analise.tex]
+archive=true
+column=0
+encoding=ISO-8859-1
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=false
+order=-1
+
+[item:exp-elm.tex]
+archive=true
+column=0
+encoding=ISO-8859-1
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=false
+order=-1
+
+[item:exp-meta.tex]
+archive=true
+column=0
+encoding=ISO-8859-1
+highlight=LaTeX
+line=0
 mode=LaTeX
 open=false
 order=-1
@@ -362,12 +442,12 @@ order=3
 
 [item:introducao.tex]
 archive=true
-column=0
+column=8
 encoding=ISO-8859-1
 highlight=LaTeX
-line=339
+line=77
 mode=LaTeX
-open=false
+open=true
 order=1
 
 [item:macros.tex]
@@ -382,20 +462,20 @@ order=3
 
 [item:metodologia.tex]
 archive=true
-column=38
+column=16
 encoding=ISO-8859-1
 highlight=LaTeX
-line=63
+line=5
 mode=LaTeX
 open=false
 order=2
 
 [item:propostas.tex]
 archive=true
-column=0
+column=36
 encoding=ISO-8859-15
 highlight=LaTeX
-line=16
+line=0
 mode=LaTeX
 open=false
 order=5
@@ -422,17 +502,17 @@ order=8
 
 [item:tese.tex]
 archive=true
-column=20
+column=18
 encoding=ISO-8859-1
 highlight=LaTeX
-line=91
+line=0
 mode=LaTeX
 open=true
 order=0
 
 [view-settings,view=0,item:active-learning.tex]
-CursorColumn=0
-CursorLine=606
+CursorColumn=12
+CursorLine=377
 JumpList=
 ViMarks=
 
@@ -478,9 +558,33 @@ CursorLine=15
 JumpList=
 ViMarks=
 
+[view-settings,view=0,item:conclusao.tex]
+CursorColumn=0
+CursorLine=0
+JumpList=
+ViMarks=
+
 [view-settings,view=0,item:dataset-tables.tex]
 CursorColumn=0
 CursorLine=6
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:exp-analise.tex]
+CursorColumn=0
+CursorLine=0
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:exp-elm.tex]
+CursorColumn=0
+CursorLine=0
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:exp-meta.tex]
+CursorColumn=0
+CursorLine=0
 JumpList=
 ViMarks=
 
@@ -509,8 +613,8 @@ CursorColumn=20
 CursorLine=12
 
 [view-settings,view=0,item:introducao.tex]
-CursorColumn=0
-CursorLine=339
+CursorColumn=8
+CursorLine=77
 JumpList=
 ViMarks=
 
@@ -521,14 +625,14 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:metodologia.tex]
-CursorColumn=38
-CursorLine=63
+CursorColumn=16
+CursorLine=5
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:propostas.tex]
-CursorColumn=0
-CursorLine=16
+CursorColumn=36
+CursorLine=0
 JumpList=
 ViMarks=
 
@@ -545,7 +649,7 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:tese.tex]
-CursorColumn=20
-CursorLine=91
+CursorColumn=18
+CursorLine=0
 JumpList=
 ViMarks=

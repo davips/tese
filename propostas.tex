@@ -1,4 +1,4 @@
-\chapter{Propostas} \label{cap:contrib}
+\chapter{Propostas} \label{propostas}
 \esb{esboça a estrutura conjunta deste e dos próximos 4 capítulos;
 explica que a contribuição se divide em três partes: análise comparativa,
 viabilidade de ap. ativo pra ELM e meta-aprendizado; os detalhes
@@ -31,8 +31,6 @@ Ela está disponível publicamente para fins de pesquisa e replicabilidade \citep{
 Conforme explicado na Seção \ref{sgnet}, é possível fazer uma amostragem ativa dentro
 da perspectiva do espaço de hipóteses.
 
-multiclasse
-SGmulti
 Duas estratégias que exploram o espaço de hipóteses são \textit{SGmulti} e \textit{SGmultiJS}
 \cite{conf/hais/SantosDP14}.
 Elas induzem modelos específicos para cada rótulo.
@@ -108,23 +106,24 @@ A ordem de complexidade do \textit{SG-multi} é $\mathcal{O}(|Y|)$.
 % \]
 % The higher the $JS$, the further the members are from a consensus.
 % Therefore, the instance with the highest value should be queried first.
-% This criterion disrupts with the binary decision model underlying its theoretical background
-% inspiration and may be more adequate to select instances from the disagreement area.
-
-
-% \subsection{SVMmulti} %parece que foi um fiasco quando desbalanceado (pior que random) mas está rodando kff pra ter certeza do fiasco
-
-SGmulti
-DWAgnóstica
-Ponderação por Rótulo
-EELMC
-SVMmulti?
+% This criterion disrupts with the binary decision model underlying its
+% theoretical background inspiration and may be more adequate to
+% select instances from the disagreement area.
 
 \section{Extensões da amostragem ponderada por densidade}
 
-\subsection{AgTU - Amostragem agnóstica ponderada por densidade e utilidade do treinamento}
+\subsection{Agnóstica}
 
-\subsection{DWLU - Amostragem ponderada por densidade e utilidade de cada rótulo}
+\subsection{Ponderada pela utilidade de cada classe}
 
-\subsection{AgLU - Amostragem agnóstica ponderada por densidade e utilidade de cada rótulo}
+% \subsection{Agnóstica e ponderada pela utilidade de cada classe}
+
+\subsection{Impacto esperado na \elm}
+
+\section{KFF multiclasse?}
+%parece que foi um fiasco quando desbalanceado (pior que random)
+% mas está rodando kff e bal pra ter certeza do fiasco
+
+\section{Balanced multiclasse?}
+
  
