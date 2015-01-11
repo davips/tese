@@ -1,4 +1,10 @@
 \chapter{Análise Comparativa}\label{analise}
+\esb{criar boas siglas pras estrats e learners pras tabelas}
+
+\esb{provavelmente o classificador atrapalha quando ele
+não tem uma estimativa de distribuição de probabilidade suave;
+isso afeta a medida de incerteza}
+
 \ano{dizer em algum lugar que demonstra a Viabilidade do Aprendizado Ativo}
 
 \ano{neste e nos outros 2 caps de resultados vão aparecer apenas dados
@@ -7,6 +13,32 @@ as tabelas completam ficarão no apêndice inclusive resultados de kff e balanced-
 outra opção para kff e balanced-ee é ficarem apenas na tabela referente a learner=svm do
 cap de experimentos}
 
+\esb{ilustra diferenças entre estratégias (incluindo as novas)}
+
+\esb{árvore, plot de vitórias vs budget, variabilidade, tempo, comparação com passivo* -
+demonstra que AL é viável em geral e demonstra a efetividade das novas
+estratégias propostas
+(ponderação por rótulo tenta atacar o desbalanceamento, preciso ver se
+é mesmo nessas bases que ela se sobressai)}
+
+\esb{
+agrupar por distância entre acurácias (vetor de ~700 dimensões) -
+inclui tabela 18x18, grupos de estratégias similares e árvore com hierarquia dos grupos
+}
+
+\tar{falta um teste para esse cap. ficar ideal: rodar um classif. rápido de treino e um
+rápido de teste em todas as bases, registrar tempo médio de consulta de cada
+estratégia e gerar friedman (espera-se realçar vantagem dos agnósticos)}
+
+\ano{* -> foram adotadas duas medidas importantes:
+ALCKappa e BalancedAcc (poderia haver tb ALCBalancedAcc e Kappa,
+mas vai duplicar a qtd de dados pra análise);
+por definição, a ALC passiva não é comparável com ALCs ativas.
+A BalancedAcc passiva deve ser calculada num ponto anterior ao término
+dos exemplos em todas as bases, i.e.  200
+(um número grande deixa mais justa a comparação com passivo) ou
+metade do numero de exemplos, o que for menor.
+}
 \ano{Efetividade geral}
 
 \blue{friedman um a um não está dando nada?}
@@ -19,4 +51,6 @@ tolerable waiting time}
 \subsection{Afinidades estratégia-domínio-classificador-orçamento}
 
 \subsection{Risco}
+variabilidade
+
 \subsection{Tempo de espera tolerável}

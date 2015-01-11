@@ -106,7 +106,27 @@ Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
+[document-settings,item:contexto.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
 [document-settings,item:dataset-tables.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:elm.tex]
 Bookmarks=
 Encoding=ISO-8859-1
 FoldedColumns=
@@ -196,7 +216,7 @@ Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
-Indentation Mode=
+Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
@@ -207,6 +227,16 @@ FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
 Indentation Mode=
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:meta.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
@@ -262,13 +292,13 @@ ReadWrite=true
 
 [item:active-learning.tex]
 archive=true
-column=12
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=377
+line=606
 mode=LaTeX
-open=false
-order=2
+open=true
+order=1
 
 [item:apendice1.tex]
 archive=true
@@ -342,13 +372,23 @@ order=7
 
 [item:conclusao.tex]
 archive=true
+column=60
+encoding=ISO-8859-1
+highlight=LaTeX
+line=3
+mode=LaTeX
+open=false
+order=-1
+
+[item:contexto.tex]
+archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
 line=0
 mode=LaTeX
-open=false
-order=-1
+open=true
+order=0
 
 [item:dataset-tables.tex]
 archive=true
@@ -360,22 +400,32 @@ mode=LaTeX
 open=false
 order=-1
 
-[item:exp-analise.tex]
+[item:elm.tex]
 archive=true
-column=0
+column=46
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=12
 mode=LaTeX
-open=false
-order=-1
+open=true
+order=2
+
+[item:exp-analise.tex]
+archive=true
+column=32
+encoding=ISO-8859-1
+highlight=LaTeX
+line=5
+mode=LaTeX
+open=true
+order=6
 
 [item:exp-elm.tex]
 archive=true
-column=0
+column=23
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=10
 mode=LaTeX
 open=false
 order=-1
@@ -385,19 +435,19 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=11
 mode=LaTeX
-open=false
-order=-1
+open=true
+order=5
 
 [item:experimentos.tex]
 archive=true
-column=21
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=36
 mode=LaTeX
-open=false
+open=true
 order=4
 
 [item:imagens/fluxo-esquema.tex]
@@ -442,12 +492,12 @@ order=3
 
 [item:introducao.tex]
 archive=true
-column=8
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=77
+line=0
 mode=LaTeX
-open=true
+open=false
 order=1
 
 [item:macros.tex]
@@ -460,22 +510,32 @@ mode=LaTeX
 open=false
 order=3
 
-[item:metodologia.tex]
+[item:meta.tex]
 archive=true
-column=16
+column=59
 encoding=ISO-8859-1
 highlight=LaTeX
-line=5
+line=18
 mode=LaTeX
 open=false
-order=2
+order=-1
+
+[item:metodologia.tex]
+archive=true
+column=0
+encoding=ISO-8859-1
+highlight=LaTeX
+line=104
+mode=LaTeX
+open=true
+order=3
 
 [item:propostas.tex]
 archive=true
-column=36
+column=0
 encoding=ISO-8859-15
 highlight=LaTeX
-line=0
+line=130
 mode=LaTeX
 open=false
 order=5
@@ -507,12 +567,12 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=0
 mode=LaTeX
-open=true
+open=false
 order=0
 
 [view-settings,view=0,item:active-learning.tex]
-CursorColumn=12
-CursorLine=377
+CursorColumn=0
+CursorLine=606
 JumpList=
 ViMarks=
 
@@ -559,6 +619,12 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:conclusao.tex]
+CursorColumn=60
+CursorLine=3
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:contexto.tex]
 CursorColumn=0
 CursorLine=0
 JumpList=
@@ -570,27 +636,33 @@ CursorLine=6
 JumpList=
 ViMarks=
 
+[view-settings,view=0,item:elm.tex]
+CursorColumn=46
+CursorLine=12
+JumpList=
+ViMarks=
+
 [view-settings,view=0,item:exp-analise.tex]
-CursorColumn=0
-CursorLine=0
+CursorColumn=32
+CursorLine=5
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-elm.tex]
-CursorColumn=0
-CursorLine=0
+CursorColumn=23
+CursorLine=10
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-meta.tex]
 CursorColumn=0
-CursorLine=0
+CursorLine=11
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:experimentos.tex]
-CursorColumn=21
-CursorLine=0
+CursorColumn=0
+CursorLine=36
 JumpList=
 ViMarks=
 
@@ -624,15 +696,21 @@ CursorLine=28
 JumpList=
 ViMarks=
 
+[view-settings,view=0,item:meta.tex]
+CursorColumn=59
+CursorLine=18
+JumpList=
+ViMarks=
+
 [view-settings,view=0,item:metodologia.tex]
-CursorColumn=16
-CursorLine=5
+CursorColumn=0
+CursorLine=104
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:propostas.tex]
-CursorColumn=36
-CursorLine=0
+CursorColumn=0
+CursorLine=130
 JumpList=
 ViMarks=
 

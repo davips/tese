@@ -186,10 +186,13 @@ se baseia no primeiro}
 % A medida de \textbf{informatividade} $m(\bm{x})$ é a base da tomada de decisão da estratégia de consulta e pode ser implementada de diversas maneiras conforme explicado na Seção \ref{sec:isolada}.
 % Uma vez definida a medida de informatividade, uma estratégia de consulta precisa ser definida; diferentes estratégias são estudadas na Seção \ref{sec:estrategias}.
 
-Nesta seção são elencadas as estratégias investigadas neste trabalho.
+Nas próximas seções são elencadas as estratégias investigadas neste trabalho.
 São apresentadas suas ordens de complexidade,
 % espaciais e temporais,
 suas principais características e seus princípios de funcionamento.
+
+\ano{diferencia de aprendizado semisuperv. colocar algoritmos se der tempo;
+apresenta cada uma com uma figura padrão ilustrando sua particularidade}
 
 \subsection{Amostragem por incerteza}
 Provavelmente a mais simples medida de informatividade $Inf(\bm{x})$ para se
@@ -427,6 +430,7 @@ Implementação disponível no Weka \cite{journals/sigkdd/HallFHPRW09}.}
 \tar{dar mais detalhes? replicar o algoritmo(ele tem formulas por todo o texto))?
 essa abordagem é complexa}.
 
+\esb{clust. hierar. - explica o que é agrupamento hierárquico}
 
 % Há diferentes propostas para a determinação de quais exemplos são informativos para consulta.
 % Por conveniência, aqui elas estão separadas entre aquelas baseadas na análise de \textit{informatividade isolada} de cada exemplo, aquelas baseadas na \textit{informatividade conjunta} e aquelas baseadas numa análise que combina \textit{informatividade com representatividade}.
@@ -597,6 +601,10 @@ Por esses motivos elas foram excluídas deste trabalho.
 \ano{Não implementei Variance reduction pois exige um sistema muito complexo
 e com otimizações e ainda assim é ordens de magnitude mais lento que  Unc. Sampl.}
 % os experimentos.
+
+\tar{estrat. baseadas em SVM - explicar uma por seção}
+
+\tar{outras - mencionar as que ficaram de fora (Beygelzimmer)}
 
 %mais detalhes sobre essas estratégias:
 % Online choice of active learning algorithms

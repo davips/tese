@@ -1,4 +1,24 @@
 \chapter{Aprendizado Meta-ativo}\label{aml}
+\ano{resume livro de meta-ap.; cita Marcilio, statlog;
+falar do desafio de nao usar informacoes sobre os rotulos (classes) nas metafeatures}
+
+
+\ano{Acho que NFL se refere à impossibilidade de aprendizado sem viés
+no caso de ap. ativo trata-se mais de amostragem do que de aprendizado;
+as estrategias agnósticas são um exemplo de pura amostragem;
+para o AL ser enxergado como um problema de aprendizado é
+preciso enxergá-lo como um problema de classificar cada exemplo como
+``consultar'' ou ``não consultar'';}
+
+\ano{isso acima poderia até se tornar um ensemble de AL que trabalha em cima de exemplos
+transformados pelas diferentes estratégias
+- um classificador único que aprenderia de vários datasets
+quais exemplos são bons de consultar,
+mas infelizmente é totalmente inviável implementar isso agora;
+ele seria treinado com a sequencia otima de exemplos-transformados de
+cada base: os primeiros seriam os positivos e últimos seriam os negativos.
+)}
+
 \subsection{Meta-estratégia}
 \ano{\citep{conf/ijcnn/SoutoPSACLS08}, sobre clustering,
 usam ranking médio como default:
@@ -13,4 +33,18 @@ mas como as faixas ideais são imprevisíveis, resolvi isso colocando max, min, av
 Posso colocar ou omitir a informação de distribuição das classes; ela normalmente não
 é conhecida na prática.
 
-\ano{vai que o tempo de phd se multiplica: Meta-estratégia dinâmica}
+\ano{vai que o tempo de phd se multiplica:
+testar com outros meta-classificadores; Meta-estratégia dinâmica}
+
+\esb{A quantidade inicial de exemplos rotulados tem sido fixada igual ao número Y de classes.
+Uma meta-feature N interessante seria adicionar uma etapa inicial exploratória
+que sorteia N exemplos para todas as estratégias
+(os valores poderiam ser 0 e 12, pois há um pool com apenas 50 exemplos,
+12 é metade do máximo aceitável pra AL que é 0.5 do total).
+Evita a influência das diferenças ruidosas no início das curvas de aprendizado.
+Ajuda DW e também ajuda ClusterBased, cuja implementação não aproveita os rótulos iniciais (e pode dispensar a etapa inicial).
+Porém, qto maios exemplos, mais as estratégias se aproximam de Random Sampling.}
+
+\section{Considerações}
+liga com próximo capítulo apontando para as propostas de estratégias e de metaap.;
+resumir o motivo da proposta
