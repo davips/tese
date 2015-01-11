@@ -76,26 +76,6 @@ Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:apendices.tex]
-Bookmarks=
-Encoding=ISO-8859-15
-FoldedColumns=
-FoldedLines=
-Highlighting=LaTeX
-Indentation Mode=normal
-Mode=LaTeX
-ReadWrite=true
-
-[document-settings,item:aprendizado-supervisionado.tex]
-Bookmarks=
-Encoding=ISO-8859-1
-FoldedColumns=
-FoldedLines=
-Highlighting=LaTeX
-Indentation Mode=
-Mode=LaTeX
-ReadWrite=true
-
 [document-settings,item:bibliografia.bib]
 Bookmarks=
 Encoding=ISO-8859-1
@@ -210,16 +190,6 @@ Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:resultados.tex]
-Bookmarks=
-Encoding=ISO-8859-1
-FoldedColumns=
-FoldedLines=
-Highlighting=LaTeX
-Indentation Mode=normal
-Mode=LaTeX
-ReadWrite=true
-
 [document-settings,item:resumo.tex]
 Bookmarks=
 Encoding=ISO-8859-1
@@ -309,26 +279,6 @@ line=2
 mode=LaTeX
 open=false
 order=-1
-
-[item:apendices.tex]
-archive=true
-column=0
-encoding=ISO-8859-15
-highlight=LaTeX
-line=0
-mode=LaTeX
-open=false
-order=1
-
-[item:aprendizado-supervisionado.tex]
-archive=true
-column=39
-encoding=ISO-8859-1
-highlight=LaTeX
-line=16
-mode=LaTeX
-open=false
-order=3
 
 [item:bibliografia.bib]
 archive=true
@@ -450,16 +400,6 @@ mode=LaTeX
 open=false
 order=5
 
-[item:resultados.tex]
-archive=true
-column=0
-encoding=ISO-8859-1
-highlight=LaTeX
-line=4
-mode=LaTeX
-open=false
-order=1
-
 [item:resumo.tex]
 archive=true
 column=0
@@ -487,8 +427,8 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=91
 mode=LaTeX
-open=false
-order=3
+open=true
+order=0
 
 [view-settings,view=0,item:active-learning.tex]
 CursorColumn=0
@@ -523,18 +463,6 @@ ViMarks=
 [view-settings,view=0,item:apendice5.tex]
 CursorColumn=0
 CursorLine=2
-JumpList=
-ViMarks=
-
-[view-settings,view=0,item:apendices.tex]
-CursorColumn=0
-CursorLine=169
-JumpList=
-ViMarks=
-
-[view-settings,view=0,item:aprendizado-supervisionado.tex]
-CursorColumn=39
-CursorLine=16
 JumpList=
 ViMarks=
 
@@ -601,12 +529,6 @@ ViMarks=
 [view-settings,view=0,item:propostas.tex]
 CursorColumn=0
 CursorLine=16
-JumpList=
-ViMarks=
-
-[view-settings,view=0,item:resultados.tex]
-CursorColumn=0
-CursorLine=4
 JumpList=
 ViMarks=
 
