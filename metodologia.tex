@@ -1,27 +1,18 @@
 \chapter{Metodologia}\label{metodologia}
-\ano{apresenta dados comuns a todos os experimentos: descrição dos datasets e
-highlights(muitas classes etc.), classificadores empregados, método de validação
-cruzada}
-
-\ano{rever texto}
-Foi empreendida uma avaliação experimental para comprovação empírica das contribuições
-citadas no Capítulo \ref{contrib} \ano{<- rever}.
-
-% Classificadores com boa performance com poucos dados
-% podem ter baixa performance com muitos dados
-% \citep{journals/sigkdd/AttenbergP10,journals/jmlr/PerlichPS03}.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+Foi empreendida uma avaliação experimental para identificar os pontos
+críticos na escolha de estratégias e também para comprovação empírica das propostas
+dos capítulos \ref{propostas} e \ref{aml}.
 Para haver solidez estatística e também para uma boa representatividade dos
 variados domínios existentes em aplicações reais, foram selecionadas as
 cem bases de dados mais diversas
-do projeto de \cite{doi/ucipp} que é baseado no repositório UCI \citep{bache2013uci} -
-porém apenas noventa e quatro \ano{conferir} bases foram viáveis com relação a tempo de processamento
-e puderam ter seus experimentos terminados.
-O critério de diversidade envolveu manter apenas uma dentre cada grupo de bases de um mesmo domínio.
-Com exceção de algumas que tivessem características (atributos, classes e número de exemplos)
+do projeto de \cite{doi/ucipp} que é baseado no repositório UCI \citep{bache2013uci}.
+Porém, apenas noventa e quatro \ano{conferir} bases foram viáveis com relação a
+tempo de processamento e puderam ter seus experimentos terminados.
+O critério de diversidade envolveu manter apenas uma dentre cada grupo de bases de um
+mesmo domínio - com exceção de algumas que tivessem características
+(atributos, classes e número de exemplos)
 suficientemente diferentes ou cuja acurácia passiva fosse suficientemente distinta para pelo
-menos três classificadores.
+menos três dos classificadores mencionados na Seção \ref{learners}.
 
 \section{Descrição das bases}
 As bases de dados têm suas características expostas nas tabelas \ref{tab:datasetsa},
@@ -36,37 +27,89 @@ majoritária do que na minoritária (Tabela \ref{tab:imb})
  \item bases com mais de mil exemplos (Tabela \ref{tab:n})
 \end{itemize}
 
-
 \input dataset-tables
-\ano{outras coisas}
 
-As \elms e as estratégias baseadas na métrica de distância de Mahalanobis precisaram ser
+É possível notar a presença de atributos nominais, por exemplo, na Tabela \ref{tab:datasetsa}.
+Os algoritmos de aprendizado providos pela ferramenta
+Weka \citep{journals/sigkdd/HallFHPRW09}
+fizeram eventual uso de seus próprios filtros internos para lidar com esse tipo de atributo,
+mas as \elms e as estratégias baseadas na métrica de distância de Mahalanobis precisaram ser
 transformadas com a substituição de atributos nominais por numéricos e pela aplicação do
 \ing{filtro de padronização}{z-score} \citep{kreyszig2007advanced}
 para possibilitar os cálculos e para evitar matrizes mal condicionadas - respectivamente.
-Os demais algoritmos de aprendizado fizeram eventual uso de seus próprios filtros internos
-providos pela ferramenta Weka \citep{journals/sigkdd/HallFHPRW09}.
 
-No experimento preliminar,
-dez execuções de validação cruzada em dez partições totalizaram cem \pools
-para cada base conforme literatura de classificação \cite{conf/pakdd/BouckaertF04}.
-No experimento definitivo,
-para viabilidade computacional e conforme literatura de aprendizado ativo 
+\ano{exemplos repetidos foram removidos,
+mas mantido um deles com a moda dos rótulos}
 
-\section{Avaliação}\label{sec:cenario}
+\section{Algoritmos de aprendizado}\label{learners}
+Cada algoritmo de aprendizado tem, intrinsecamente, um viés próprio \ano{REF}.
+É natural esperar que esse viés influencie no desempenho das estratégias gnósticas
+ou que o aprendizado seja afetado pela sequência de consultas gerada por uma
+determinada estratégia agnóstica.
+Também pode ser um fator relevante o fato de que, no aprendizado passivo,
+classificadores com boa performance com poucos dados podem ter baixa
+performance com muitos dados
+\citep{journals/sigkdd/AttenbergP10,journals/jmlr/PerlichPS03}.
+Dessa forma, diferentes algoritmos de aprendizado
+precisam ser adotados quando alguma comparação entre estratégias é pretendida.
 
-\ano{em algum momento preciso comparar com desempenho
-passivo (todos exemplos)); o experimento poderia continuar rodando até que
-a maior parte das bases tenha todas as estrtégias atingido o dese. passivo.}
+Cinco algoritmos comumente usados foram adotados:
+J48\footnote{Implementação do Weka baseada no algoritmo de
+árvore de decisão C4.5.}, NB\footnote{\textit{Naive Bayes}},
+VFDT \footnote{\textit{Very Fast Decision Trees}},
+5-NN\footnote{Cinco vizinhos mais próximos}
+e SVM\footnote{\textit{Support Vector Machines}}
+\citep{books/mk/Quinlan93,conf/ecml/Lewis98,conf/kdd/DomingosH00,journals/tit/Hart68,
+hearst1998support}.
+Adicionalmente, por sua ausência na literatura de aprendizado ativo e características
+distintivas com relação aos outros algoritmos,
+três variantes das \elms também foram adotadas - conforme adaptações descritas
+na Seção \ref{elm}.
+
+\green{descrever parâmetros dos learners}
+
+\section{Experimento preliminar}\label{preliminar}
+Dado o grande número de estratégias, bases de dados e classificadores envolvidos,
+um experimento reduzido \citep{conf/hais/SantosC14} foi conduzido visando
+a construção de um panorama geral do comportamento das estratégias
+e a definição do dimensionamento mais adequado dos experimentos definitivos
+aos recursos computacionais.
+Apenas dez estratégias e os algoritmos mais rápidos (J48, NB, VFDT e 5-NN)
+foram adotados.
+Dez execuções de validação cruzada em dez partições totalizaram cem \pools
+para cada base - conforme sugerido na literatura de classificação
+\cite{conf/pakdd/BouckaertF04}.
+Os \pools foram consultados até o ponto em que a acurácia máxima da
+melhor estratégia havia sido atingida.
+
+Aproximadamente um mês\footnote{Pausas devido a problemas técnicos incluídas.}
+de experimento foi necessário para apenas a conclusão
+nas vinte e oito menores bases de dados.
+Assim, considerando-se o crescimento exponencial do custo computacional em alguns
+pares \textit{algoritmo de aprendizado}-\textit{estratégia} com o aumento do número
+de classes, atributos e/ou exemplos, foi necessário reduzir o procedimento
+de validação conforme descrito na Seção \ref{validacao} e antecipar o término das
+consultas.
+
+\section{Avaliação}\label{avaliacao}
 
 
 \subsection{Métricas}
+\ano{colocar fórmulas}
+
 kappa:\citep{conf/pkdd/Shah11}
+
 accbal: \citep{journals/bmcbi/MassoV10}
 
 ALC \textit{Area under the Learning Curve} \citep{journals/jmlr/GuyonCDL11}
 
-\subsection{Validação}
+\subsection{Validação}\label{validacao}
+Nos experimentos,
+para viabilidade computacional e conforme literatura de aprendizado ativo \ano{REF}
+
+\subsection{Teste estatístico}
+% programa R \citep{team2010r}
+Covões
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -83,22 +126,5 @@ sendo o outro tipo as \textit{threads} na nomenclatura da Intel.} de processamen
 estação e \textit{notebook} vinculados ao orientador do autor deste trabalho.}.
 \end{itemize}
 
-\ano{citar agencias de fomento? quais?}
-
 \green{descrever hardware, mysql}
 
-\green{descrever parâmetros dos learners}
-
-\green{descrever parâmetros das estratégias}
-
-\ano{tudo que for comum a todos os experimentos vem aqui}
-
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-\ano{exemplos repetidos foram removidos,
-mas mantido um deles com a moda dos rótulos}
-
-% programa R \citep{team2010r}
-Covões
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input experimentos %small; big

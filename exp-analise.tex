@@ -29,6 +29,14 @@ agrupar por distância entre acurácias (vetor de ~700 dimensões) -
 inclui tabela 18x18, grupos de estratégias similares e árvore com hierarquia dos grupos
 }
 
+\ano{o experimento poderia continuar rodando para as strats e learns(?) mais importantes
+até que a passiva fosse atingida, assim seria possivel avaliar as mais economicas quando
+perdas na acurácia é inaceitável. (a forma menos codificante de fazer isso
+é fixar um learner no código,
+manter apenas os datasets em que a passiva ainda nao foi atingida visualmente
+na tabela, rodar
+mais 10 queries e repetir o processo até acabarem os datasets)}
+
 \tar{falta um teste para esse cap. ficar ideal: rodar um classif. rápido de treino e um
 rápido de teste em todas as bases, registrar tempo médio de consulta de cada
 estratégia e gerar friedman (espera-se realçar vantagem dos agnósticos)}
@@ -51,9 +59,14 @@ metade do numero de exemplos, o que for menor.
 \esb{citar: contra random; comparação 1-a-1; variabilidade (risco);
 tolerable waiting time}
 
-\subsection{Afinidades estratégia-domínio-classificador-orçamento}
+\section{Determinação da semelhança entre classificadores}
+tabela de passivas: learners nas colunas, datasets nas linhas
+fried de passivas
+tabela de distâncias no espaço R7 para descobrir quais são similares entre si
 
-\subsection{Risco}
+\section{Afinidades estratégia-domínio-classificador-orçamento}
+
+\section{Risco}
 variabilidade
 
-\subsection{Tempo de espera tolerável}
+\section{Tempo de espera tolerável}

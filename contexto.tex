@@ -15,6 +15,7 @@ A identificação da categoria de determinado objeto de interesse
 de agentes inteligentes e é chamada de \textbf{classificação}.
 Essa, por sua vez, depende de um \textit{modelo} baseado nos
 dados fornecidos por um supervisor.
+A indução desse modelo é um processo de aprendizado.
 
 Aprendizado de máquina é a área que engloba algoritmos capazes de aprender
 sem programação explícita \citep{journals/cacm/Valiant84}.
@@ -51,7 +52,12 @@ Dessa forma, uma introdução ao meta-aprendizado é o assunto da
 Seção \ref{meta}.
 
 
-\section{Notação}\label{notacao}
+\section{Terminologia e notação}\label{notacao}
+O termo \textit{algoritmo de aprendizado} é substituído por \textit{classificador}
+quando se trata do produto do processo, isto é, o modelo capaz de classificar exemplos.
+Ele deve ser diferenciado do sistema de aprendizado como um todo -
+que poderia incluir a própria estratégia de aprendizado ativo.
+
 \esb{O número de classes é indicado por $|Y|$ e a quantidade inicial de exemplos é
 $|\mathcal{U}|$ - mantendo a notação
 usual de os símbolos $\mathcal{U}$ e $\mathcal{L}$ representarem a
