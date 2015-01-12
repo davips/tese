@@ -1,32 +1,55 @@
 \chapter{Contexto} \label{contexto}
-\ano{
-explica que aprend. ativo é o foco,
-mas que a comparação conduz ao uso de ELM e ao metaaprendizado
-aprendizado ativo - introduz assunto e 
-}
+Algumas habilidades humanas vêm claramente programadas geneticamente
+e outras são apenas a execução de passos memorizados,
+como é o caso da amamentação e o trabalho efetuado numa
+determinada posição de uma linha de montagem industrial, respectivamente.
+Apesar do amplo escopo de ação desses dois tipos de conhecimento,
+ainda resta um vasto espectro de novas habilidades adquiríveis
+sem que seja necessária uma programação prévia.
+Dois exemplos desse espectro são a alfabetização e
+o reconhecimento de novos objetos.
+Tratam-se de habilidades aprendidas por humanos em que é difícil
+identificar os algoritmos nos quais se baseiam.
+A identificação da categoria de determinado objeto de interesse
+é parte importante das potencialidades
+de agentes inteligentes e é chamada de \textbf{classificação}.
+Essa, por sua vez, depende de um \textit{modelo} baseado nos
+dados fornecidos por um supervisor.
 
-\ano{Aprendizado de máquina é a área que engloba algoritmos capazes de aprender
+Aprendizado de máquina é a área que engloba algoritmos capazes de aprender
 sem programação explícita \citep{journals/cacm/Valiant84}.
-Diversas tarefas como \ano{tarefa 1, tarefa2, ... REFERENCIA} têm sido bem sucedidas atualmente.
-Entretanto, existe um problema em aberto que é a busca pela melhor maneira de amostragem dos dados
+Diversas tarefas como \ano{tarefa de máquina 1, tarefa2, ... REFERENCIA}
+têm sido bem sucedidas atualmente.
+Entretanto, durante a construção do modelo, é preciso saber que
+parte dos dados é relevante.
+Esse é um problema em aberto que pode ser entendido como uma busca
+pela melhor maneira de amostragem dos dados
 na etapa que antecede o treinamento do algoritmo.
-A motivação para essa busca pode advir, dentre outras, de um excesso de dados
-ou da escassez de recursos para manutenção de um especialista.
-Ambos os casos podem se beneficiar do tipo de aprendizado denominado \textit{ativo}.
-}
+A motivação para essa busca pode frequentemente advir
+da intratabilidade de um excesso de dados
+ou da escassez de recursos para manutenção de um especialista no
+papel de supervisor.
+Ambos os casos podem se beneficiar do tipo de
+aprendizado denominado \textit{ativo} - apresentado
+na Seção \ref{aprendizado-ativo}.
 
-\ano{Algumas habilidades humanas vêm claramente programadas geneticamente e outras são apenas a execução de passos memorizados.
-Apesar disso, ainda resta um amplo espectro de novas habilidades adquiríveis sem que seja possível identificar tais programações associadas.
-Assim, pode-se definir \textbf{aprendizado} como o \textit{fenômeno de aquisição de conhecimento na ausência de programação explícita} \citep{valiant1984theory}.
-Um exemplo de aprendizado é o reconhecimento de objetos comuns por meio do tato ou visão. DEFINIR MAIS TECNICAMENTE?
-Trata-se de uma habilidade aprendida por humanos em que é difícil identificar o algoritmo no qual se baseia.
-Essa tarefa é apenas parte das potencialidades de agentes ditos inteligentes e é chamada de \textbf{classificação}.
-}
+O foco deste trabalho está no problema de se lidar com a variedade
+existente de estratégias de aprendizado ativo e suas eventuais
+afinidades com diferentes domínios de aplicação e algoritmos de aprendizado.
+Com esse intuito,
+vários algoritmos comumente usados para classificação foram adotados.
+Adicionalmente,
+um tipo de algoritmo, até onde alcança o conhecimento do autor,
+nunca utilizado para aprendizado ativo foi adotado.
+Esse algoritmo, chamado de \elm, é descrito na Seção \ref{elm}
+juntamente com algumas de suas variações.
+Complementarmente à tarefa de escolha manual da estratégia mais adequada para um
+dado problema, um esquema automático de recomendação de estratégias
+baseado em meta-aprendizado foi empregado - abordagem possivelmente sem
+precedentes na literatura.
+Dessa forma, uma introdução ao meta-aprendizado é o assunto da
+Seção \ref{meta}.
 
-\ano{
- a quantidade global desses dados duplica a cada dois anos \citep{zliobaite2012next} e, por isso,
-requer sistemas cada vez mais eficientes e que exijam intervenção humana mínima.
-}
 
 \section{Notação}\label{notacao}
 \esb{O número de classes é indicado por $|Y|$ e a quantidade inicial de exemplos é

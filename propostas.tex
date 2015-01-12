@@ -28,93 +28,115 @@ Ela está disponível publicamente para fins de pesquisa e replicabilidade \citep{
 
 
 \section{Busca no espaço de hipóteses multiclasse}
-Conforme explicado na Seção \ref{sgnet}, é possível fazer uma amostragem ativa dentro
+Conforme explicado na Seção \ref{sgnet},
+é possível fazer uma amostragem ativa dentro
 da perspectiva do espaço de hipóteses.
+Entretanto, a abordagem original exposta na Seção \ref{sgnet}
+contempla apenas problemas de classificação binária.
+Para contornar essa limitação, uma adaptação chamada \textit{SGmulti}
+foi proposta \citep{conf/hais/SantosC14}.
 
-Duas estratégias que exploram o espaço de hipóteses são \textit{SGmulti} e \textit{SGmultiJS}
-\cite{conf/hais/SantosDP14}.
-Elas induzem modelos específicos para cada rótulo.
-Cada modelo, assim, tem uma aproximação das hipótese mais geral ($\theta_G$) e a conjunção de todos
-os modelos contém uma aproximação das hipóteses mais específicas de cada rótulo ($\theta_S$).
-Isso feito por meio da rotulação artificial de todos os exemplos presentes na reserva de acordo com
-a meta de cada modelo,
-que é a representar a hipótese mais geral para um dado rótulo.
+Diferentemente da abordagem original em que existe uma classe positiva
+que define um modelo mais geral e um mais específico,
+na proposta de adaptação um modelo específico é induzido para cada classe.
+Cada modelo, assim, tem uma aproximação da hipótese mais geral
+($\theta_G$) e a conjunção de todos os modelos contém
+aproximações das hipóteses mais específicas de cada rótulo ($\theta_S$).
+Isso é feito por meio da rotulação artificial de todos os exemplos presentes
+na reserva de acordo com a meta de cada modelo,
+que é apresentar a hipótese mais geral para um dado rótulo.
 Uma vez gerados os modelos com os exemplos artificiais,
-os exemplos para consulta passam a ser amostrados da região de desacordo entre todos os modelos.
+os exemplos para consulta passam a ser amostrados da região de desacordo
+entre todos os modelos.
+
 A ordem de complexidade do \textit{SG-multi} é $\mathcal{O}(|Y|)$.
 
-%
-% \subsubsection{SG-multi}
-% For each class $c \in Y$, there is a pair model/training set  $\langle\theta_c,
-% \mathcal{L}_c\rangle$ properly designed to represent the most general hypothesis $h^c_G$ w.r.t. the
-% class $c$.
-% Initially, all instances $\langle\bm{x},y,w\rangle \in \mathcal{L}_c$ are the same instances
-% present in the pool, except for two differences:
-% they are labeled as ``positive'' to the corresponding class ($y=c$) and weighted to have only a
-% small fraction of the importance of the real labeled instances ($w << 1$),
-% as suggested in the litera \cite{series/synthesis/2012Settles}.
-% The weight value adopted in this work is $w=\frac{1}{|Y||\mathcal{U}|}$,
-% since it ensures that the summed influence of all background instances is no larger than a single
-% real instance.
-% This measure avoids misleadings due to the scarce initial real training instances.
-%
-% The prediction function $f(\theta_c, \bm{x})$ returns the most probable class to a given instance
-% $\bm{x}$ according to the provided model $\theta_c$.
-% It is possible to determine an instance under disagreement $\bm{x}^*$
-% by comparing the outcomes from all different prediction functions.
-% Each prediction function represents the most general concept of each class:
-% \[
-%   \forall a,b \in Y, a \neq b, \exists \bm{x}^* \mid f(\theta_a,\bm{x}^*) \neq f(\theta_b,\bm{x}^*)
-% \]
-%
-% As soon as the instances from the region of disagreement $\bm{x}^*$,
-% i.e. those with no consensus, are sampled and queried,
-%  they replace their counterparts in all training sets with the real labels and integral weights:
-%  \[
-%   \mathcal{L}_c \leftarrow (\mathcal{L}_c - \{\langle\bm{x}^*,c,w\rangle\}) \cup
-% \{\langle\bm{x}^*,c,1\rangle\} \forall c \in Y
-%  \]
-%
-% In this adapted strategy (\textit{SG-multi}),
-% the decisions based on disagreement were kept binary, i.e. there is no ordering in the sequence of
-% queries,
-% except the precedence of the group of controversial instances over the rest.
-% % This implementation decision is not optimized for tiny budgets,
-% % % since the first queried instances are no different from the last controversial ones,
-% % but it has the some margin for randomness like in the \textit{randomized uncertainty} approach
-% suggested for use in data streams \cite{zliobaite2011active}.
-% % Beyond data streams,
-% % the injection of randomness is well suited for pools,
-% % because the learner can be overly confident about instances inside a region of the decision space
-% which in reality is a non-contiguous concept.
-%
-% \subsubsection{SG-multiJS}
-% A real-valued measure of disagreement can be adopted to soften
-% %smooth
-% the binary querying criterion of \textit{SG-multi}.
-% It assumes that the  probability distributions $P(\theta_c, \bm{x})$ can be estimated from the
-% models $\theta_c \forall c \in Y$.
-% Besides the constraint on the classification algorithm being able to output probabilities,
-% \textit{SG-multiJS} differs from \textit{SG-multi} in the querying criterion: the Jensen-Shannon
-% divergence \cite{journals/tit/Lin91}.
-% It is an information theoretic measure that compares probability distributions, commonly used in
-% ensembles to assess the degree of agreement between their members.
-% The non-weighted Jensen-Shannon divergence is defined by the entropy of the distributions:
-% \[
-%  JS(\{\theta_c \forall c \in Y\}) = E(\sum_{c \in Y}{P(\theta_c,\bm{x})}) -
-% \sum_c{E(P(\theta_c,\bm{x})})
-% \]
-% The higher the $JS$, the further the members are from a consensus.
-% Therefore, the instance with the highest value should be queried first.
-% This criterion disrupts with the binary decision model underlying its
-% theoretical background inspiration and may be more adequate to
-% select instances from the disagreement area.
+Para cada classe $c \in Y$, existe um par modelo/conjunto de treinamento
+$\langle\theta_c,\mathcal{L}_c\rangle$
+devidamente projetado para representar a hipótese mais geral
+$h^c_G$ com relação à classe $c$.
+Inicialmente, todos os exemplos
+$\langle\bm{x},y,w\rangle \in \mathcal{L}_c$
+são os mesmos exemplos da reserva, exceto por duas diferenças:
+eles são rotulados como positivos ``positive'' para a classe correspondente
+($y=c$) e lhes são atribuídos pesos com apenas uma pequena fração
+do peso dos exemplos que já têm os rótulos revelados
+($w << 1$),
+como sugerido recentemente na literatura \cite{series/synthesis/2012Settles}.
+O valor adotado para o peso neste trabalho foi
+$w=\frac{1}{|Y||\mathcal{U}|}$,
+pois ele assegura que a soma de toda a influência dos exemplos de fundo
+seja menor que o peso de um único exemplo real.
+Essa medida evita que os exemplos de fundo se sobreponham aos
+exemplos reais no início do processo de rotulação - momento de escassez
+de exemplos reais.
 
-\section{Extensões da amostragem ponderada por densidade}
+A função de predição $f(\theta_c, \bm{x})$ retorna
+a classe mais provável de um dado exemplo $\bm{x}$
+de acordo com o modelo fornecido $\theta_c$.
+É possível encontrar um exemplo controverso $\bm{x}^*$ \ano{sem consenso}
+comparando as saídas de todas as diferentes funções de predição.
+Cada função de predição representa o conceito mais geral
+de cada classe:
+\[
+  \forall a,b \in Y, a \neq b, \exists \bm{x}^* \mid f(\theta_a,\bm{x}^*) \neq f(\theta_b,\bm{x}^*)
+\]
+
+Assim que um exemplo da região de desacordo $\bm{x}^*$ é consultado
+ele substitui seu exemplo de fundo correspondente em todos os conjuntos
+de treinamento com seu rótulo real e peso integral:
+ \[
+  \mathcal{L}_c \leftarrow (\mathcal{L}_c - \{\langle\bm{x}^*,c,w\rangle\}) \cup
+\{\langle\bm{x}^*,c,1\rangle\} \forall c \in Y
+ \]
+
+
+\section{Adaptações da amostragem ponderada por densidade}
 
 \subsection{Agnóstica}
+A estratégia DWTU pondera a incerteza de forma a afastar as consultas
+dos exemplos já rotulados e a aproximá-las das maiores concentrações de exemplos
+não rotulados. Essa característica faz com que os exemplos tendam a ser consultados
+da região de fronteira e arredores, mesmo que todos os exemplos
+estivessem debaixo de um mesmo nível de incerteza.
+Isso significa que o classificador e sua medida de incerteza representam um papel que
+pode ser redundante, de mero ajuste fino ou mesmo atrapalhar em parte dos casos.
+Essa possibilidade de redundância aliada à ideia de agnosticismo da amostragem baseada
+em agrupamento motivou a adaptação da amostragem ponderada por densidade por meio
+da remoção da medida de incerteza da fórmula inicial previamente apresentada nas equações
+\ref{eqid} e \ref{eqtu}. A nova fórmula é apresentada na Equação \ref{agtu}.
+\begin{equation}\label{agtu}
+ TU(\bm{x}) =
+ \frac{1}{|\mathcal{U}|} \sum_{\bm{u} \in \mathcal{U}} sim(\bm{x},\bm{u})
+ (\sum_{\bm{l} \in \mathcal{L}} sim(\bm{x},\bm{l}))^{-1}
+\end{equation}
+Assim, possivelmente sem grande impacto na acurácia,
+pode-se adiar a escolha do algoritmo de aprendizado para depois da obtenção dos rótulos.
+Em determinadas aplicações também pode ser útil a possibilidade de se conhecer toda
+a sequência de consultas antes de começar a interação com o oráculo.
+Frequentemente, o número de consultas é conhecido de antemão \citep{settles2010active};
+isso permite, por exemplo, que elas sejam repartidas entre vários oráculos que podem
+trabalhar de forma independente dos demais.
+Essa possibilidade não existe na estratégia de agrupamento hierárquico,
+pois ela faz uso dos rótulos para determinar a pureza de cada grupo.
+Outra vantagem é a inexistência de tempo de espera interconsultas.
 
 \subsection{Ponderada pela utilidade de cada classe}
+\ano{preciso ver se omito essa e pulo direto pra AgLU, como sendo uma extensão da proposta
+agnóstica; assim a AgLU deixaria de ser fruto da combinação de duas propostas}
+
+Uma possibilidade de extensão da amostragem baseada em densidade é
+ampliar os tipos de grupos de interesse do par original
+\textit{rotulados}/\textit{não rotulados}
+para \textit{um grupo por classe}/\textit{não rotulados}:
+
+\ano{colocar fórmula; preciso escolher se vai ser a 1 ou a 2}
+
+A motivação para tal mudança reside no potencial equilíbrio
+que as densidades por classe possam trazer em bases desbalanceadas.
+Grupos de exemplos da classe majoritária repelem as consultas mais
+fortemente do que grupos da minoritária, possivelmente aumentando
+a quantidade de consultas a exemplos da classe minoritária.
 
 % \subsection{Agnóstica e ponderada pela utilidade de cada classe}
 

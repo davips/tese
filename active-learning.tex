@@ -73,7 +73,10 @@ são independentes de algoritmo de aprendizado. \red{( <- verificar)}
 Essa diversidade de embasamentos configura-se praticamente como um \textit{conjunto de paradigmas}
 de amostragem ativa cujos principais representantes são apresentados na seção seguinte.
 
-\ano{explicar que aprendiz é o classificador? ou não é?}
+\ano{ aprendiz não é sinônimo de algoritmo de aprendizado,
+pois agnóstica ainda tem algo como um aprendiz, que faz perguntas embora não aprenda}
+
+\tar{explicar o que é consultar}
 
 \tar{mencionar algumas adaptações que algumas estratégias requerem para aceitar alguns learners}
 
@@ -194,6 +197,19 @@ suas principais características e seus princípios de funcionamento.
 \ano{diferencia de aprendizado semisuperv. colocar algoritmos se der tempo;
 apresenta cada uma com uma figura padrão ilustrando sua particularidade}
 
+\ano{definir tempo de espera interconsultas e explicitar que é assumida, qnd possível,
+a realização de cache de todos os cálculos pesados antes da primeira consulta}
+
+\subsection{Amostragem aleatória}
+
+\ano{feature: totalmente exploratório}
+
+\ano{feature: agnóstica}
+
+\ano{definição da sequência de consultas é imediata}
+
+\ano{feature: próxima consulta independe dos rótulos anteriores}
+
 \subsection{Amostragem por incerteza}
 Provavelmente a mais simples medida de informatividade $Inf(\bm{x})$ para se
 decidir quando selecionar um exemplo $\bm{x}$
@@ -219,9 +235,15 @@ ou seja, aquele com a menor $P_{max}(\bm{x})$,
 com o intuito de se explorar a fronteira de decisão no espaço de exemplos.
 A complexidade dessa estratégia é $\mathcal{O}(1)$ - equivalente a apenas um treinamento por consulta.
 
-\ano{explicar estrategias margem e entropia}
+\ano{explicar estrategias margem com fórmula M e entropia H(?)}
 
-\subsection{Busca no espaço de hipóteses}
+\ano{feature: dependente de algoritmo de aprendizado}
+
+\ano{definição da sequência de consultas é gradual}
+
+\ano{feature: próxima consulta depende dos rótulos anteriores}
+
+\subsection{Busca no espaço de hipóteses}\label{sgnet}
 É possível fazer uma amostragem ativa baseada na perspectiva do espaço de hipóteses.
 A intuição dessa abordagem é que os exemplos mais importantes residem na região onde
 as hipóteses se contradizem.
@@ -251,6 +273,18 @@ foram empregadas no trabalho original,
 mas qualquer classificador apto a lidar com exemplos ponderados poderia ser usado.
 A ordem de complexidade das estratégias desse paradigma é $\mathcal{O}(|Y|)$.
 
+
+ \ano{feature: decisão de consulta é binária, há o cjt dos consultáveis e o dos não consultáveis
+ sem uma ordem de relevância para os consultáveis}
+
+ \ano{feature: é parcialmente exploratório, pois requer sorteio na área de desacordo}
+
+\ano{feature: dependente de algoritmo de aprendizado}
+
+\ano{definição da sequência de consultas é gradual}
+
+\ano{feature: próxima consulta depende dos rótulos anteriores}
+
 Existem outras três abordagens, baseadas em \svm que podem ser interpretadas como
 uma busca de sucessivas divisões no \versionspace \cite{tong2002support}:
 \ing{margem simples}{simple margin}, \ing{margem maxmin}{maxmin margin} e
@@ -259,7 +293,7 @@ Sob outra ótica, elas podem também serem vistas como um tipo de
 amostragem por incerteza, vista na seção anterior.
 
 
-
+\ano{há mais detalhes de sgnet comentados no arquivo tex}
 %  \red{infos dos txts sobre SG-network cohn1994improving:}
 % \esb{Se concentra em membership queries, cita angluin86 e valiant84.
 % Em problemas formais, como encontrar uma fronteira no "unit line interval"
@@ -350,7 +384,7 @@ A estratégia de redução de erro adotada neste trabalho é baseada no
 \ing{exemplo de redução de entropia}{entropy reduction example} proposto por
 \cite{conf/ijcai/GuoG07}.
 É um método que busca pelo exemplo que mais reduz a entropia na predição geral
-do modelo para todos o conjunto de dados;
+do modelo para todo o conjunto de dados;
 considera, assim, implicitamente a informação sobre eventuais agrupamentos subjacentes,
 evitando depender apenas dos escassos exemplos rotulados.
 % Essa variante de estratégias de redução de erro foi adotada dado que uma performance superior à
@@ -377,30 +411,41 @@ ela foi excluída dos experimentos.
 % 
 % Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteração devido à alta
 
+\ano{feature: dependente de algoritmo de aprendizado}
+
+\ano{definição da sequência de consultas é gradual}
+
+\ano{feature: próxima consulta depende dos rótulos anteriores}
+
 
 \subsection{Impacto esperado no modelo}
 
+\ano{feature: dependente de algoritmo de aprendizado}
+
+\ano{definição da sequência de consultas é gradual}
+
+\ano{feature: próxima consulta depende dos rótulos anteriores}
 
 \subsection{Amostragem ponderada por densidade}
 A proposta geral das amostragens ponderadas por densidade é o uso da medida de
 \textit{densidade de informação}, que atribui diferentes pesos à medida de
 informatividade conforme o nível de concentração de exemplos não rotulados no entorno de $\bm{x}$
 \citep{settles2008curious}:
-\begin{equation}
+\begin{equation}\label{eqid}
  ID(\bm{x}) = Inf(\bm{x})\frac{1}{|\mathcal{U}|} \sum_{\bm{u} \in \mathcal{U}} sim(\bm{x},\bm{u})
 \end{equation}
 Seu desdobramento natural é a \textit{utilidade de treinamento},
 que é a densidade de informação inversamente ponderada pela concentração de exemplos rotulados,
 resultando num afastamento das regiões mais consultadas
 \citep{journals/coling/FujiiITT98}:
-\begin{equation}
+\begin{equation}\label{eqtu}
  TU(\bm{x}) = ID(\bm{x}) (\sum_{\bm{l} \in \mathcal{L}} sim(\bm{x},\bm{l}))^{-1}
 \end{equation}
 
 
 Qualquer medida de similaridade $sim(\bm{x},\bm{u})$
 e de informatividade $H(\bm{x})$ podem ser adotadas.
-Neste trabalho, $Inf(\bm{x}) = P_{max}(\bm{x})$ e três medidas de distância $d(\bm{x},\bm{u})$
+Neste trabalho, $Inf(\bm{x}) = 1 - M$ e três medidas de distância $d(\bm{x},\bm{u})$
 (euclidiana, Manhattan e Mahalanobis) foram transformadas em medidas de similaridade
 $sim(\bm{x},\bm{u})$ pela seguinte fórmula:
 \begin{equation}
@@ -411,6 +456,12 @@ A ordem de complexidade é $\mathcal{O}(1)$, se os $|\mathcal{U}|^2$ cálculos de 
 devidamente armazenados em memória para futuro acesso rápido.
 
 \ano{expoentes ponderadores nem são mencionados}
+
+\ano{feature: dependente de algoritmo de aprendizado}
+
+\ano{definição da sequência de consultas é gradual}
+
+\ano{feature: próxima consulta depende dos rótulos anteriores}
 
 \subsection{Amostragem por agrupamento}
 O processo de aprendizado pode explorar agrupamentos naturais na \pool,
@@ -431,6 +482,12 @@ Implementação disponível no Weka \cite{journals/sigkdd/HallFHPRW09}.}
 essa abordagem é complexa}.
 
 \esb{clust. hierar. - explica o que é agrupamento hierárquico}
+
+\ano{feature: agnóstica}
+
+\ano{definição da sequência de consultas é gradual}
+
+\ano{feature: próxima consulta depende dos rótulos anteriores}
 
 % Há diferentes propostas para a determinação de quais exemplos são informativos para consulta.
 % Por conveniência, aqui elas estão separadas entre aquelas baseadas na análise de \textit{informatividade isolada} de cada exemplo, aquelas baseadas na \textit{informatividade conjunta} e aquelas baseadas numa análise que combina \textit{informatividade com representatividade}.
