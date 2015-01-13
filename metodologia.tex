@@ -56,7 +56,7 @@ precisam ser adotados quando alguma comparação entre estratégias é pretendida.
 Cinco algoritmos comumente usados foram adotados:
 J48\footnote{Implementação do Weka baseada no algoritmo de
 árvore de decisão C4.5.}, NB\footnote{\textit{Naive Bayes}},
-VFDT \footnote{\textit{Very Fast Decision Trees}},
+VFDT\footnote{\textit{Very Fast Decision Trees}},
 5-NN\footnote{Cinco vizinhos mais próximos}
 e SVM\footnote{\textit{Support Vector Machines}}
 \citep{books/mk/Quinlan93,conf/ecml/Lewis98,conf/kdd/DomingosH00,journals/tit/Hart68,
@@ -64,9 +64,11 @@ hearst1998support}.
 Adicionalmente, por sua ausência na literatura de aprendizado ativo e características
 distintivas com relação aos outros algoritmos,
 três variantes das \elms também foram adotadas - conforme adaptações descritas
-na Seção \ref{elm}.
+na Seção \ref{elmnovas}.
 
-\green{descrever parâmetros dos learners}
+\green{descrever parâmetros dos learners:
+5-nn ponderado pelo inverso da distância euclidiana padronizada;
+outros ajustes: vou pegar no código e help do weka}
 
 \section{Experimento preliminar}\label{preliminar}
 Dado o grande número de estratégias, bases de dados e classificadores envolvidos,

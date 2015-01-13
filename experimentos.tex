@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Experimentos}\label{sec:ferramentas}
+\chapter{Experimentos e Resultados}\label{experimentos}
 \ano{para evitar separar as subdescricoes do experimento de seus subresultados,
 essa seção apenas dá um overview explicando o porquê da escolha de cada
 experimento:
@@ -9,16 +9,11 @@ fazer para cada learner uma tabela de intersecções de metaexemplos
 AG,LU vs DWTU;
 metaap pra decidir entre AG, LU ou TU}
 
-\ano{explicar pela arvore quais os nichos de cada estrategia}
+\input exp-analise
 
-\ano{usar clustering para mostrar que estrategias se adequam a nichos parecidos
-(a arvore do agrupamento hierarquico pode ilustrar bem isso,
-só falta descobrir como fazer o weka imprimir os nomes das strats,
-provavelm é colocando um atributo string.)}
 
-\ano{como a predição da melhor não vence a majoritaria preciso usar ranking
-(ainda posso testar algumas variações, como fixar
-cada um dos learners possíveis)}
+
+
 
  \tar{usar nintera na(s) base(s) à parte?
  ou usar em todas, mas sem strats lentas?}
@@ -30,7 +25,6 @@ cada um dos learners possíveis)}
 \green{baseline p/ AccBal é $1/|Y|$}
 
 \green{manter apenas estratégias que ganharam em algum momento/nicho?}
-
 \blue{assim é possível o avaliar estratégias num cenário em que se sabe de
 antemão qual é o melhor learner.
 manter todas as combinações learner-dataset serve para o cenário em que

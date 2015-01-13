@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=metodologia.tex
+lastDocument=introducao.tex
 masterDocument=
 name=Tese
 pkg_extIsRegExp=false
@@ -392,12 +392,12 @@ order=-1
 
 [item:elm.tex]
 archive=true
-column=38
+column=44
 encoding=ISO-8859-1
 highlight=LaTeX
-line=141
+line=56
 mode=LaTeX
-open=false
+open=true
 order=5
 
 [item:exp-analise.tex]
@@ -405,27 +405,27 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=35
+line=68
 mode=LaTeX
-open=false
-order=6
+open=true
+order=2
 
 [item:exp-elm.tex]
 archive=true
-column=36
+column=28
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=31
 mode=LaTeX
-open=false
-order=-1
+open=true
+order=3
 
 [item:exp-meta.tex]
 archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=7
 mode=LaTeX
 open=false
 order=5
@@ -435,10 +435,10 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=28
 mode=LaTeX
-open=false
-order=4
+open=true
+order=1
 
 [item:imagens/fluxo-esquema.tex]
 archive=true
@@ -485,10 +485,10 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=1
+line=89
 mode=LaTeX
-open=false
-order=1
+open=true
+order=6
 
 [item:macros.tex]
 archive=true
@@ -512,10 +512,10 @@ order=-1
 
 [item:metodologia.tex]
 archive=true
-column=0
+column=25
 encoding=ISO-8859-1
 highlight=LaTeX
-line=132
+line=70
 mode=LaTeX
 open=true
 order=0
@@ -525,10 +525,10 @@ archive=true
 column=0
 encoding=ISO-8859-15
 highlight=LaTeX
-line=0
+line=149
 mode=LaTeX
-open=false
-order=6
+open=true
+order=4
 
 [item:resumo.tex]
 archive=true
@@ -545,7 +545,7 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=233
 mode=LaTeX
 open=false
 order=0
@@ -617,32 +617,32 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:elm.tex]
-CursorColumn=38
-CursorLine=141
+CursorColumn=44
+CursorLine=56
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-analise.tex]
 CursorColumn=0
-CursorLine=35
+CursorLine=68
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-elm.tex]
-CursorColumn=36
-CursorLine=0
+CursorColumn=28
+CursorLine=31
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-meta.tex]
 CursorColumn=0
-CursorLine=0
+CursorLine=7
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:experimentos.tex]
 CursorColumn=0
-CursorLine=0
+CursorLine=28
 JumpList=
 ViMarks=
 
@@ -666,7 +666,7 @@ CursorLine=12
 
 [view-settings,view=0,item:introducao.tex]
 CursorColumn=0
-CursorLine=1
+CursorLine=89
 JumpList=
 ViMarks=
 
@@ -683,14 +683,14 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:metodologia.tex]
-CursorColumn=0
-CursorLine=132
+CursorColumn=25
+CursorLine=70
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:propostas.tex]
 CursorColumn=0
-CursorLine=0
+CursorLine=149
 JumpList=
 ViMarks=
 
@@ -701,7 +701,7 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:tese.tex]
-CursorColumn=12
-CursorLine=198
+CursorColumn=0
+CursorLine=233
 JumpList=
 ViMarks=
