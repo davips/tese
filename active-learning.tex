@@ -27,26 +27,29 @@ Em linhas gerais, sua aquisição deve ser guiada por duas noções
 preferir aquela para a qual o estado corrente do modelo é incerto e
 preferir aquela estimada como a mais relevante.
 
-Dentre as perguntas que as máquinas de aprendizado ativo são capazes de elaborar,
-a mais direta é ``\textit{Qual é o rótulo do exemplo $\bm{x}$?}''.
+Dentre as perguntas que as máquinas de aprendizado ativo são capazes de
+elaborar, a mais direta é ``\textit{Qual é o rótulo do exemplo $\bm{x}$?}''.
 Dado que a obtenção de um rótulo confiável normalmente é um processo custoso,
 o problema de se decidir qual seria o melhor $\bm{x}$ é a
 motivação basilar desta tese.
 Adicionalmente,
 a quantidade de exemplos disponíveis pode ser abundante e o esforço humano disponível
 (do professor, no caso da analogia acima) limitado.
-Dessa forma, apenas uma parcela criteriosamente escolhida dos exemplos precisa ser
-rotulada - em oposição ao
+Dessa forma, apenas uma parcela criteriosamente escolhida dos exemplos deve
+ser rotulada (ou \textit{consultada}, na terminologia de aprendizado ativo)
+- em oposição ao
 \ing{aprendizado por exemplos}{learning by example} convencional
 \citep{journals/cacm/Valiant84}, também chamado de \novo{passivo}.
 No aprendizado passivo,
-procura-se pelo maior conjunto de treinamento possível ou por uma amostragem aleatória.
+procura-se pelo maior conjunto de treinamento possível ou realiza-se
+uma amostragem aleatória.
 No primeiro caso, o custo de rotulação pode se tornar proibitivo; no segundo caso,
 a decisão quanto à relevância dos exemplos é deixada ao acaso.
 Em ambos os casos, dependendo da aplicação,
 a construção do conjunto de treinamento pode ser crítica.
-Por exemplo, quando a consulta de um exemplo envolve reações químicas destrutivas,
-é desejável fazer o mínimo possível de consultas visando um reduzido custo material.
+Por exemplo, quando a consulta de um exemplo envolve reações químicas
+destrutivas, é desejável fazer o mínimo possível de consultas visando um reduzido
+custo material.
 Similarmente, se o mecanismo rotulador, normalmente chamado de \novo{oráculo},
 for um especialista humano ou mesmo um robô \citep{journals/etai/BryantMOKRK01},
 é desejável parcimônia nas consultas para não se incorrer num esforço elevado de
@@ -57,7 +60,7 @@ processo de rotulação mais econômico.
 Na literatura de aprendizado ativo há diversos sub-casos, cenários e estratégias.
 O sub-caso e o cenário de aprendizado ativo mais comuns na literatura,
 e onde se situa a presente tese, são a busca por rótulos e
-o cenário baseado em \pool - respectivamente.
+o cenário baseado em \pool, respectivamente.
 Os cenários alternativos são apresentados no Apêndice \ref{cenarios}.
 No caso das estratégias,
 elas são frequentemente baseadas em diferentes concepções de relevância de
@@ -71,20 +74,15 @@ que enquadram ou não cada exemplo. \red{( <- verificar)}
 Estratégias agnósticas \citep{journals/jcss/BalcanBL09}, por outro lado,
 são independentes de algoritmo de aprendizado. \red{( <- verificar)}
 Essa diversidade de embasamentos configura-se praticamente como um \textit{conjunto de paradigmas}
-de amostragem ativa cujos principais representantes são apresentados na seção seguinte.
+de amostragem ativa cujos principais representantes são apresentados nas
+seções seguintes juntamente com suas ordens de complexidade,
+% espaciais e temporais,
+suas principais características e seus princípios de funcionamento.
 
-\ano{ aprendiz não é sinônimo de algoritmo de aprendizado,
-pois agnóstica ainda tem algo como um aprendiz, que faz perguntas embora não aprenda}
+\esb{ainda não usei a palavra aprendiz na tese,
+talvez seja desnecessário definir}
 
-\tar{explicar o que é consultar}
-
-\tar{mencionar algumas adaptações que algumas estratégias requerem para aceitar alguns learners}
-
-\ano{pode ser interessante explicitar que estrategias
-se enquadram em cada teoria de aprendizado: esquema Mitchel e tb
- o esquema da teoria do aprendizado estatístico; explicando que SG, por ex.,
-se baseia no primeiro}
-
+\tar{há mais alguma adaptação para adotar algum learn ou strat}
 
 % \section{Estratégias de consulta}\label{sec:estrategias}
 
@@ -189,10 +187,6 @@ se baseia no primeiro}
 % A medida de \textbf{informatividade} $m(\bm{x})$ é a base da tomada de decisão da estratégia de consulta e pode ser implementada de diversas maneiras conforme explicado na Seção \ref{sec:isolada}.
 % Uma vez definida a medida de informatividade, uma estratégia de consulta precisa ser definida; diferentes estratégias são estudadas na Seção \ref{sec:estrategias}.
 
-Nas próximas seções são elencadas as estratégias investigadas neste trabalho.
-São apresentadas suas ordens de complexidade,
-% espaciais e temporais,
-suas principais características e seus princípios de funcionamento.
 
 \ano{diferencia de aprendizado semisuperv. colocar algoritmos se der tempo;
 apresenta cada uma com uma figura padrão ilustrando sua particularidade}
@@ -200,7 +194,8 @@ apresenta cada uma com uma figura padrão ilustrando sua particularidade}
 \ano{definir tempo de espera interconsultas e explicitar que é assumida, qnd possível,
 a realização de cache de todos os cálculos pesados antes da primeira consulta}
 
-\green{apontar parâmetros escolhidos neste trabalho para as estratégias, quando houver}
+\green{apontar parâmetros escolhidos neste trabalho para as estratégias,
+quando houver}
 
 \subsection{Amostragem aleatória}
 
