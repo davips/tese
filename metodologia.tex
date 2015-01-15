@@ -94,20 +94,57 @@ de validação conforme descrito na Seção \ref{validacao} e antecipar o término da
 consultas.
 
 \section{Avaliação}\label{avaliacao}
-
+\ano{pro final: quando perde, perde muito feio?}
 
 \subsection{Métricas}
-\ano{colocar fórmulas}
+ Uma medida comum na área de aprendizado ativo
+ é a \textit{área debaixo da curva de aprendizado} (Area under the Learning Curve - ALC)
+ \citep{journals/jmlr/GuyonCDL11}.
+ Ela consiste no somatório de alguma medida de desempenho ao longo
+ das consultas.
+ Seu intuito é avaliar o desempenho geral de uma estratégia, ou seja,
+ numa ampla faixa de orçamentos.
+ Assim, a medida se mostra adequada para a tarefa de comparação
+ de estratégias.
+ Ela foi adotada em conjunto com a medida Kappa -
+ resultando no valor médio da medida para toda a sequência de consultas.
 
-kappa:\citep{conf/pkdd/Shah11}
+A medida Kappa de Cohen \citep{journals/coling/EugenioG04}
+é utilizada para comparar o grau de consenso entre avaliadores
+tem demonstrado bom poder discriminatório frente a outras medidas
+que sumarizam a matriz de confusão \citep{conf/acivs/DemirkesenC08}.
+Quando aplicada como medida de desempenho de classificação,
+ela assume valor $1$ para acerto total, $0$ para desempenho equivalente ao
+aleatório e $-1$ para erro total.
+Valores intermediários indicam o quão bom ou ruim é o clasificador.
+\cite{conf/pkdd/Shah11} apresenta a versão multiclasse para a medida Kappa
+que foi adotada neste trabalho.
+Ela tem a importante propriedade de remeter à medida original em problemas binários.
+Por fim, ela permite realizar a comparação por dois pontos de vista:
+interestratégias e em relação ao acaso.
+\ano{colocar fórmula da Kappa? já incluir pseudoALC na fórmula?}
 
-accbal: \citep{journals/bmcbi/MassoV10}
+Outro ponto de vista importante é em relação ao desempenho passivo.
+Sendo ele dado por apenas um valor para todos os exemplos, não existe
+a possibilidade de se calcular uma ALC.
+Assim, um momento na curva de aprendizado deve ser definido como o orçamento
+disponível e deve ser avaliado o modelo induzido até então.
+Nesse caso, foi adotada a acurácia balanceada \citep{journals/bmcbi/MassoV10}
+por ter um significado mais próximo
+da usual medida de acurácia quando se comparam classificadores.
+Assim como a Kappa multiclasse, ela é adequada para problemas multiclasse desbalanceados.
 
-ALC \textit{Area under the Learning Curve} \citep{journals/jmlr/GuyonCDL11}
+\ano{colocar fórmula da accbal?}
+
+
 
 \subsection{Validação}\label{validacao}
 Nos experimentos,
 para viabilidade computacional e conforme literatura de aprendizado ativo \ano{REF}
+foram adotadas cinco execuções de validação cruzada em cinco partes -
+totalizando vinte e cinco \pools para cada base.
+
+\tar{mencionar detalhes de embaralhamento?}
 
 \subsection{Teste estatístico}
 % programa R \citep{team2010r}

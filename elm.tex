@@ -77,19 +77,16 @@ pode ser feito por meio do cálculo da pseudo-inversa $H^{\dagger}$ de $H$
 \beta = H^{\dagger} T
 \end{equation}
 
-Uma formulação mais detalhada da ELM pode ser encontrada na literatura
-\citep{journals/tsmc/HuangZDZ12}.
+\tar{concluir mais gentilmente}
 
 \subsection{OS-ELM}\label{oselm}
 Em sistemas interativos, frequentemente é adotado o esquema incremental de aprendizado.
 O tempo de treinamento é reduzido quando é possível aproveitar o resultado de cálculos
 prévios durante todo o processo.
 No caso da ELM, isso é possível por meio da
-\ing{máquina extrema incremental}{On-line Sequential Extreme Learning Machine}\footnote{A nomenclatura usada na literatura de ELMs
-é inconsistente com a nomenclatura usual em aprendizado de máquina.
-Aqui optou-se pela segunda.}
-- OS-ELM
-\citep{conf/iastedCI/HuangLRSS05}.
+\elm \textit{sequencial}
+(\textit{On-line Sequential Extreme Learning Machine} - OS-ELM)
+proposta por \cite{conf/iastedCI/HuangLRSS05}.
 % cite Sherman-Morrison-Woodbury)
 % http://books.google.com.br/books?hl=en&lr=&id=iD5s0iKXHP8C&oi=fnd&pg=PT15&dq=+An+introduction+to+optimization&ots=3PqthZAq8d&sig=Befcr8te239chWT6UOVyVrMIkSo#v=snippet&q=recursive%20least&f=false
 
@@ -97,8 +94,10 @@ Aqui optou-se pela segunda.}
 A técnica é baseada no algoritmo dos mínimos quadrados recursivo
 que utiliza a fórmula de Sherman-Morrison-Woodbury
 \citep{chong2013introduction}.
-$H$ passa a ser considerada em função do tempo - com subscrito para melhor legibilidade: $H_{(t)}$.
-Para ser possível encontrar a solução dos mínimos quadrados de $H_{(0)} \beta_{(0)} = T_{(0)}$,
+$H$ passa a ser considerada em função do tempo - indicado subscrito
+para melhor legibilidade: $H_{(t)}$.
+Para ser possível encontrar a solução dos mínimos quadrados de
+$H_{(0)} \beta_{(0)} = T_{(0)}$,
 que se refere ao conjunto inicial de dados rotulados (instante $t=0$),
 a pseudo-inversa esquerda $H^\dagger_{(0)}$ deve ser calculada por:
 
@@ -124,24 +123,34 @@ P_{(t-1)}
 O cálculo incremental de $\beta_{(t)}$ e $P_{(t)}$ evita os custos de se recalcular a
 pseudo-inversa para cada novo lote de dados.
 
-Além da OS-ELM, outras variantes da ELM têm sido propostas:
-ROS-ELM, que evita matrizes mal-condicionadas por meio do ajuste dos vieses $b_i$ \cite
-{conf/isnn/HoangHVW07};
-EI-ELM ou EM-ELM, não-incrementais, que fazem a rede crescer \textit{congelando}
-\citep{huang2008enhanced} ou \textit{atualizando} \citep{journals/tnn/FengHLG09} nós antigos;
-e, CEOS-ELM, que faz a rede crescer durante o aprendizado \textit{on-line} \citep{conf/ijcnn/LanSH09}.
-
-Para o presente trabalho, a OS-ELM ``canônica'' foi adotada, pois cada variante tem seus próprias
-vicissitudes e o propósito deste trabalho é apenas dar uma primeira impressão a respeito da
-performance da ELM com diferentes estratégias.
-Também é importante lembrar que, na presença de uma matriz $H_{(0)}$ mal-condicionada,
-OS-ELM não converge para ELM.
+% Além da OS-ELM, outras variantes da ELM têm sido propostas:
+% ROS-ELM, que evita matrizes mal-condicionadas por meio do ajuste dos vieses $b_i$ \cite
+% {conf/isnn/HoangHVW07};
+% EI-ELM ou EM-ELM, não-incrementais, que fazem a rede crescer \textit{congelando}
+% \citep{huang2008enhanced} ou \textit{atualizando} \citep{journals/tnn/FengHLG09}
+% nós antigos;
+% e, CEOS-ELM, que faz a rede crescer durante o aprendizado \textit{on-line} \citep{conf/ijcnn/LanSH09}.
+% 
+% Para o presente trabalho, a OS-ELM ``canônica'' foi adotada, pois cada variante tem seus próprias
+% vicissitudes e o propósito deste trabalho é apenas dar uma primeira impressão a respeito da
+% performance da ELM com diferentes estratégias.
+% Também é importante lembrar que, na presença de uma matriz $H_{(0)}$ mal-condicionada,
+% OS-ELM não converge para ELM.
 
 \ano{PRESS: erro estatistico (de regressão?)}
 
 \ano{quadrado do resíduo: erro I e CI?}
 
 \subsection{I-ELM}
+Apesar da vantagem do cálculo da pseudo-inversa ser uma etapa única no
+aprendizado da ELM, trata-se de um cálculo que pode ser custoso.
+Uma alternativa é a \elm \textit{incremental} (I-ELM) proposta por
+\cite{journals/tnn/HuangCS06}.
+O aprendizado da I-ELM progride com a adição de novos neurônios,
+um a um.
+Para cada neurônio adicionado, um novo peso é necessário para conectá-lo
+ao neurônio de saída
 
 \subsection{CI-ELM}
+\citep{journals/ijon/HuangC07}
 
