@@ -1,4 +1,52 @@
 \chapter{Introdução} \label{cap:intro}
+Atualmente, o aprendizado de máquina permeia o cotidiano humano
+provendo auxílio em tarefas diversas.
+\ano{citar algumas(gps,digitação,fala))? precisa de ref?}
+Seu bom desempenho, na tarefa de classificação, depende da existência de:
+\begin{itemize}
+ \item \textbf{amostragem} de dados de qualidade para construção de um acervo \ano{acervo?};
+ \item um processo de \textbf{categorização} desses dados que exponha conhecimento
+ suficiente para a tarefa desejada; e,
+ \item de um algoritmo de \textbf{aprendizado} adequado.
+\end{itemize}
+Enquanto a \textit{categorização} dos dados, é normalmente
+realizada por um supervisor humano que atribui categorias para cada objeto/exemplo
+de interesse contido nos dados;
+a forma de \textit{amostragem} de exemplos
+e a determinação do algoritmo de \textit{aprendizado} dependem de
+um segundo especialista,
+com conhecimento específico da área de aprendizado de máquina.
+
+O segundo especialista pode resolver o problema da escolha do algoritmo
+adotando algum sistema automático de recomendação como o \textit{meta-aprendizado} ou
+baseando-se em conhecimentos sobre os dados e sobre os algoritmos disponíveis e
+escolher manualmente o melhor segundo alguma métrica de desempenho
+\cite{books/daglib/0022052}.
+Ambas as abordagens, manual e automática,
+são aplicáveis apenas no cenário em que o acervo \ano{acervo?}
+já está construído.
+Consequentemente, a escolha do processo mais adequado de seleção dos
+exemplos que mais contribuem para a qualidade do acervo \ano{acervo?}
+prescinde a escolha do algoritmo.
+Esse processo de seleção é um tipo de amostragem denominada
+\textit{aprendizado ativo}.
+
+Da mesma forma que existe o problema da escolha do algoritmo de aprendizado
+mais apropriado, existe o problema da escolha da melhor estratégia de
+aprendizado ativo.
+O segundo problema é mais complexo, tendo-se em vista que o sucesso
+da estratégia escolhida só pode ser determinado após ter-se incorrido
+em custos financeiros com a atividade de supervisão.
+
+Está implícita na busca pela qualidade dos dados a economia em tempo de processamento e
+de supervisão, dado que apenas a parcela reduzida de exemplos mais relevantes
+passa a ser considerada.
+A quantidade global de dados, por exemplo, duplica a cada dois anos
+\citep{journals/sigkdd/ZliobaiteBGGGMM12} apontando
+para uma tendência que torna intratável uma supervisão exaustiva em muitas aplicações.
+
+
+
 \citep{journals/jmlr/GuyonCDL11} tem o gráfico mostrando muita gente usando unc sampling
 e ninguém(?) usando DWTU
 
@@ -8,32 +56,12 @@ lacunas das estrategias existentes, apresenta melhorias propostas; apresenta
 recomendação de classificador e/ou estratégia; apresenta hipóteses principal e secundárias.
 Falar ainda dos objetivos da tese, que estao bem ligados as hipoteses}
 
-\ano{
- a quantidade global desses dados duplica a cada dois anos \citep{zliobaite2012next} e, por isso,
-requer sistemas cada vez mais eficientes e que exijam intervenção humana mínima.
-}
-
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-
-\ano{lembretes antigos talvez redundantes:}
+\ano{AL é uma área com enfoque prático, pois visa diretamente a redução de custos.
+Provavelmente por esse motivo, a pesquisa em AL é normalmente direcionada a
+aplicações específicas e não a experimentos comparativos abrangentes.}
 
 \ano{citar problemas? fadiga ...}
 
-\tar{ esboçar a tese em uma folha (desafios e soluções)}
-
-\tar{em outra página, vou deixar clara a principal contribuição:}
-
-\tar{provavelmente a meta-estratégia ou}
-
-\tar{a prova empírica da viabilidade do AA, coisa nunca provada com
-a devida análise de risco e com robustez estatística}
-
-\tar{as contribuições secundárias vão ser mencionadas e suas existências devem ser sempre
-justificadas em função da contribuição principal}
-
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Contribuição}\label{contribuicao}
 \esb{cita os artigos/software publicados e submetidos; menciona
 metodologia, compara com Everton e de que forma organiza a área}
@@ -53,8 +81,8 @@ Especificamente, há as seguintes restrições de escopo:
  \item consulta pela classe (não por valores de atributos, por exemplo);
 monorrótulo;
  \item distribuição estacionária;
- \item com custos uniformes;
- \item com oráculo único e consistente (sempre a mesma resposta para um mesmo ex.);
+ \item custos uniformes;
+ \item oráculo único e consistente (sempre a mesma resposta para um mesmo ex.);
  \item atributos sem valores faltantes;
 \end{itemize}
 e as seguintes condições que visam rigor experimental, replicabilidade e

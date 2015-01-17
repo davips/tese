@@ -21,14 +21,14 @@ de extração de atributos visando maior separabilidade entre as
  classes; composição de expressões regulares para extrair termos adequados de textos técnicos;
 e, criação de regras de classificação.
 Outras informações, mais diretamente obteníveis do supervisor humano incluiriam
- valores de atributos, rótulos associados com atributos, exemplos completos sob demanda e outros.
+ valores de atributos, classes associadas com atributos, exemplos completos sob demanda e outros.
 Em linhas gerais, sua aquisição deve ser guiada por duas noções
  \citep{krishnapuram2011cost}:
 preferir aquela para a qual o estado corrente do modelo é incerto e
 preferir aquela estimada como a mais relevante.
 
 Dentre as perguntas que as máquinas de aprendizado ativo são capazes de
-elaborar, a mais direta é ``\textit{Qual é o rótulo do exemplo $\bm{x}$?}''.
+elaborar, a mais direta é ``\textit{Qual é a classe do exemplo $\bm{x}$?}''.
 Dado que a obtenção de um rótulo confiável normalmente é um processo custoso,
 o problema de se decidir qual seria o melhor $\bm{x}$ é a
 motivação basilar desta tese.
@@ -65,7 +65,8 @@ Os cenários alternativos são apresentados no Apêndice \ref{cenarios}.
 No caso das estratégias,
 elas são frequentemente baseadas em diferentes concepções de relevância de
 exemplos ou mesmo diferentes teorias do aprendizado.
-A amostragem por incerteza, por exemplo, assume que os exemplos e suas classes pertencem a uma
+A amostragem por incerteza,
+por exemplo, assume que os exemplos e seus rótulos pertencem a uma
 distribuição de probabilidades - em linha com a teoria do aprendizado
 estatístico \citep{books/daglib/0097035};\red{( <- verificar)}
 a amostragem por busca no espaço de hipóteses, por sua vez, assume a existência
@@ -190,6 +191,12 @@ talvez seja desnecessário definir}
 
 \ano{diferencia de aprendizado semisuperv. colocar algoritmos se der tempo;
 apresenta cada uma com uma figura padrão ilustrando sua particularidade}
+
+\tar{usar semisupervised somente na fase de predição não faria muito sentido.
+usar semisupervised no learner faz sentido pelo fato de se ter tantos exemplos
+unlabeled à disposição}
+
+\tar{citar relação com crowd sourcing/labeling?}
 
 \ano{definir tempo de espera interconsultas e explicitar que é assumida, qnd possível,
 a realização de cache de todos os cálculos pesados antes da primeira consulta}
@@ -387,8 +394,10 @@ evitando depender apenas dos escassos exemplos rotulados.
 % Essa variante de estratégias de redução de erro foi adotada dado que uma performance superior à
 % original foi reportada pelos autores.
 
-Para cada exemplo candidato com vetor descritivo $\bm{x}$ obtido da reserva $\mathcal{U}$,
-seu rótulo mais provável, representado pelo vetor preditivo $\bm{y}'$, é calculado de forma
+Para cada exemplo candidato com vetor descritivo $\bm{x}$
+obtido da reserva $\mathcal{U}$,
+sua classe mais provável,
+representada pelo vetor preditivo $\bm{y}'$, é calculada de forma
 otimista:
 \begin{equation}
  \bm{y}' = \argmin_{\bm{y}}{\sum_{\bm{u} \in \mathcal{U}} O(\bm{x}, \theta_{\mathcal{L}\cup
@@ -480,6 +489,10 @@ essa abordagem é complexa}.
 
 \esb{clust. hierar. - explica o que é agrupamento hierárquico}
 
+\ano{Aplicar Ward no Weka. Gerar SVG e citar
+http://www.trex.uqam.ca/view.php
+usando em alguma base 2D interessante. Gerar com e sem ramos proporcionais.
+Gravei SVGs no PC de casa.}
 \ano{feature: agnóstica}
 
 \ano{definição da sequência de consultas é gradual}

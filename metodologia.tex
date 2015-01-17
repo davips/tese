@@ -14,6 +14,23 @@ mesmo domínio - com exceção de algumas que tivessem características
 suficientemente diferentes ou cuja acurácia passiva fosse suficientemente distinta para pelo
 menos três dos classificadores mencionados na Seção \ref{learners}.
 
+\ano{ilustrar o uso de banco de dados, a hierarquia de classes das estratégias;
+fluxograma de 4 fases: queries, hits, measures, sumarização (médias/friedmans = latex)}
+
+\tar{demsar usa (0.000, +-0.005)  no exemplo}
+
+% Nesse artigo é discutido o fato do Friedman ignorar as diferenças entre modelos (http://www.r-bloggers.com/beware-the-friedman-test/):
+% @article{zimmerman1993relative,
+%   title={Relative power of the Wilcoxon test, the Friedman test, and repeated-measures ANOVA on ranks},
+%   author={Zimmerman, Donald W and Zumbo, Bruno D},
+%   journal={The Journal of Experimental Education},
+%   volume={62},
+%   number={1},
+%   pages={75--86},
+%   year={1993},
+%   publisher={Taylor \& Francis}
+% }
+
 \section{Descrição das bases}
 As bases de dados têm suas características expostas nas tabelas \ref{tab:datasetsa},
 \ref{tab:datasetsb} e \ref{tab:datasetsc}.
@@ -25,6 +42,7 @@ majoritária do que na minoritária (Tabela \ref{tab:imb})
  \item bases com mais de cinquenta atributos (Tabela \ref{tab:x})
  \item bases com mais de cinco classes (Tabela \ref{tab:y})
  \item bases com mais de mil exemplos (Tabela \ref{tab:n})
+ \item bases com menos de quatrocentos exemplos (Tabela \ref{tab:nm})
 \end{itemize}
 
 \input dataset-tables
@@ -40,6 +58,29 @@ para possibilitar os cálculos e para evitar matrizes mal condicionadas - respect
 
 \ano{exemplos repetidos foram removidos,
 mas mantido um deles com a moda dos rótulos}
+
+\ano{A quantidade de atributos da base Arcene foi reduzida para 998 devido
+a restrições de armazenamento do sistema gerenciador de banco de dados}
+
+\tar{
+Experiments with Random Projection 2000
+http://cseweb.ucsd.edu/~dasgupta/papers/randomf.pdf
+;;;;;;
+preferem RP(O(n)) a PCA (O(n3));
+;;;;;
+é uma boa justificativa para ELM, e bom para reduzir
+rapidamente as dimensões de bases enormes para o limite de 1000 do mysql.
+;;;;;;
+ Randomness is now a standard tool in algorithm design;
+ for instance, it is the basis of the only known polynomial-time
+ algorithm for primality testing.
+;;;;;
+if the projected dimension is high enough, then a
+PCA-projected mixture could easily be far better separated
+than its randomly projected counterpart. For this reason
+PCA remains an important tool in the study of Gaussian
+clusters.
+}
 
 \section{Algoritmos de aprendizado}\label{learners}
 Cada algoritmo de aprendizado tem, intrinsecamente, um viés próprio \ano{REF}.
@@ -97,6 +138,13 @@ consultas.
 \ano{pro final: quando perde, perde muito feio?}
 
 \subsection{Métricas}
+Um cara que usa log no eixo X e usa ``Area under the Learning Curve'':
+{http://perso.rd.francetelecom.fr/lemaire/publis/ijcnn\_2\_2011\_camera\_ready.pdf}
+
+An Easy to Use Repository for Comparing and Improving Machine Learning Algorithm Usage
+http://arxiv.org/pdf/1405.7292.pdf
+fala sobre guardar resultados a 'instance level' com as predições do classificadores
+
  Uma medida comum na área de aprendizado ativo
  é a \textit{área debaixo da curva de aprendizado} (Area under the Learning Curve - ALC)
  \citep{journals/jmlr/GuyonCDL11}.
@@ -127,12 +175,17 @@ interestratégias e em relação ao acaso.
 Outro ponto de vista importante é em relação ao desempenho passivo.
 Sendo ele dado por apenas um valor para todos os exemplos, não existe
 a possibilidade de se calcular uma ALC.
-Assim, um momento na curva de aprendizado deve ser definido como o orçamento
+Assim, deve ser definido um momento na curva de aprendizado como sendo o orçamento
 disponível e deve ser avaliado o modelo induzido até então.
 Nesse caso, foi adotada a acurácia balanceada \citep{journals/bmcbi/MassoV10}
 por ter um significado mais próximo
 da usual medida de acurácia quando se comparam classificadores.
 Assim como a Kappa multiclasse, ela é adequada para problemas multiclasse desbalanceados.
+O orçamento escolhido foi $\cent=\frac{|\mathcal{U}|}{2}$
+% metade dos exemplos disponíveis
+nas trinta e nove bases com menos de quatrocentos exemplos (Tabela \ref{tab:nm})
+e  $\cent=200$ nas bases restantes.
+% duzentos exemplos
 
 \ano{colocar fórmula da accbal?}
 
@@ -144,11 +197,19 @@ para viabilidade computacional e conforme literatura de aprendizado ativo \ano{R
 foram adotadas cinco execuções de validação cruzada em cinco partes -
 totalizando vinte e cinco \pools para cada base.
 
-\tar{mencionar detalhes de embaralhamento?}
+\tar{mencionar detalhes de embaralhamento? e seeds de classificador?}
+
+\ano{A survey of cross-validation procedures for model selection (2010)
+{http://www.di.ens.fr/willow/pdfs/2010\_Arlot\_Celisse\_SS.pdf}
+;;;
+tem até review de fast CVs.
+;;;
+According to Breiman and Spector (1992) the best risk estimator is LOO,
+whereas 10-fold CV is more accurate for model selection.
+}
 
 \subsection{Teste estatístico}
-% programa R \citep{team2010r}
-Covões
+\ano{programa do Covões}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

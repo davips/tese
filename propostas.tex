@@ -44,10 +44,10 @@ que define um modelo mais geral e um mais específico,
 na proposta de adaptação um modelo específico é induzido para cada classe.
 Cada modelo, assim, tem uma aproximação da hipótese mais geral
 ($\theta_G$) e a conjunção de todos os modelos contém
-aproximações das hipóteses mais específicas de cada rótulo ($\theta_S$).
+aproximações das hipóteses mais específicas de cada classe ($\theta_S$).
 Isso é feito por meio da rotulação artificial de todos os exemplos presentes
 na reserva de acordo com a meta de cada modelo,
-que é apresentar a hipótese mais geral para um dado rótulo.
+que é apresentar a hipótese mais geral para uma dada classe.
 Uma vez gerados os modelos com os exemplos artificiais,
 os exemplos para consulta passam a ser amostrados da região de desacordo
 entre todos os modelos.
@@ -65,7 +65,7 @@ $\langle\bm{x},y,w\rangle \in \mathcal{L}_c$
 são os mesmos exemplos da reserva, exceto por duas diferenças:
 eles são rotulados como positivos ``positive'' para a classe correspondente
 ($y=c$) e lhes são atribuídos pesos com apenas uma pequena fração
-do peso dos exemplos que já têm os rótulos revelados
+do peso dos exemplos que já têm suas classes reveladas
 ($w << 1$),
 como sugerido recentemente na literatura \cite{series/synthesis/2012Settles}.
 O valor adotado para o peso neste trabalho foi
@@ -98,7 +98,7 @@ de treinamento com seu rótulo real e peso integral:
 
 \section{Adaptações da amostragem ponderada por densidade}
 
-\subsection{Agnóstica}
+\subsection{Agnóstica}\label{ag}
 A estratégia DWTU pondera a incerteza de forma a afastar as consultas
 dos exemplos já rotulados e a aproximá-las das maiores concentrações de exemplos
 não rotulados. Essa característica faz com que os exemplos tendam a ser consultados
@@ -109,8 +109,8 @@ pode ser redundante, de mero ajuste fino ou mesmo atrapalhar em parte dos casos.
 Essa possibilidade de redundância aliada à ideia de agnosticismo da amostragem baseada
 em agrupamento motivou a adaptação da amostragem ponderada por densidade por meio
 da remoção da medida de incerteza da fórmula inicial previamente apresentada nas equações
-\ref{eqid} e \ref{eqtu}. A nova fórmula é apresentada na Equação \ref{agtu}.
-\begin{equation}\label{agtu}
+\ref{eqid} e \ref{eqtu}. A nova fórmula é apresentada na Equação \ref{eq:agtu}.
+\begin{equation}\label{eq:agtu}
  TU(\bm{x}) =
  \frac{1}{|\mathcal{U}|} \sum_{\bm{u} \in \mathcal{U}} sim(\bm{x},\bm{u})
  (\sum_{\bm{l} \in \mathcal{L}} sim(\bm{x},\bm{l}))^{-1}
@@ -126,16 +126,19 @@ Essa possibilidade não existe na estratégia de agrupamento hierárquico,
 pois ela faz uso dos rótulos para determinar a pureza de cada grupo.
 Outra vantagem é a inexistência de tempo de espera interconsultas.
 
-\subsection{Ponderada pela utilidade de cada classe}
-\ano{preciso ver se omito essa e pulo direto pra AgLU, como sendo uma extensão da proposta
-agnóstica; assim a AgLU deixaria de ser fruto da combinação de duas propostas}
+\ano{Desvantagem do cluster-based
+        é pesado, mesmo que o aprendiz seja leve isso não é aproveitado, pois é agnóstico
+}
+
+\subsection{Ponderada pela utilidade de cada classe}\label{lu}
+% ELM vai bem com essa
 
 Uma possibilidade de extensão da amostragem baseada em densidade é
 ampliar os tipos de grupos de interesse do par original
 \textit{rotulados}/\textit{não rotulados}
 para \textit{um grupo por classe}/\textit{não rotulados}:
 
-\ano{colocar fórmula; preciso escolher se vai ser a 1 ou a 2}
+\ano{colocar fórmula da DWLU2}
 
 A motivação para tal mudança reside no potencial equilíbrio
 que as densidades por classe possam trazer em bases desbalanceadas.
@@ -145,7 +148,16 @@ a quantidade de consultas a exemplos da classe minoritária.
 
 % \subsection{Agnóstica e ponderada pela utilidade de cada classe}
 
+\subsection{Agnóstica ponderada pela utilidade de cada classe}\label{aglu}
+% vai bem com vários learners
+Naturalmente, as propostas das seções \ref{ag} e \ref{lu} podem ser combinadas.
+
+\ano{colocar fórmula; vai ser a da AgLU2}
+
 \input exp-elm
+
+\section{SemiELM}
+\ano{investigar maneiras de incorporar unlabeled data na ELM}
 
 \section{KFF multiclasse?}
 %parece que foi um fiasco quando desbalanceado (pior que random)

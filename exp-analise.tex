@@ -34,11 +34,26 @@ cap de experimentos}
 
 \esb{ilustra diferenças entre estratégias (incluindo as novas)}
 
-\esb{árvore, plot de vitórias vs budget, variabilidade, tempo, comparação com passivo* -
+\esb{árvore, plot de vitórias vs budget, variabilidade/estabilidade, tempo, comparação com passivo* -
 demonstra que AL é viável em geral e demonstra a efetividade das novas
 estratégias propostas
-(ponderação por rótulo tenta atacar o desbalanceamento, preciso ver se
+(ponderação pela classe tenta atacar o desbalanceamento, preciso ver se
 é mesmo nessas bases que ela se sobressai)}
+
+ref para plot:
+Active learning literature survey 2009
+http://research.cs.wisc.edu/techreports/2009/TR1648.pdf
+...
+Active learning algorithms are generally evaluated by constructing learning curves,
+which plot the evaluation measure of interest (e.g., accuracy) as a function of the
+number of new instance queries that are labeled and added to L.
+Figure 3 presents learning curves for the first 100 instances labeled using
+uncertainty sampling and random sampling.
+The reported results are for a logistic regression model averaged over ten folds
+using cross-validation.
+
+\ano{comparar o melhor par estrat/ELM com o melhor par estrat/SVM
+seria um bom indicativo de viabiidade da ELM com AL}
 
 \esb{
 agrupar por distância entre acurácias (vetor de ~700 dimensões) -
@@ -75,6 +90,8 @@ metade do numero de exemplos, o que for menor.
 \esb{citar: contra random; comparação 1-a-1; variabilidade (risco);
 tolerable waiting time}
 
+\tar{ fazer tabelão friedman (40? pares strat/classif: 40x40)}
+
 \section{Determinação da semelhança entre classificadores}
 tabela de passivas: learners nas colunas, datasets nas linhas
 fried de passivas
@@ -86,3 +103,37 @@ tabela de distâncias no espaço R7 para descobrir quais são similares entre si
 variabilidade
 
 \section{Tempo de espera tolerável}
+
+\tar{
+fazer árvore de decisão que mostre que metacaracteristicas influenciam e como no tempo de treinamento?
+}
+
+Não é possível auferir tempo durante experimentos de desempenho porque eles são
+paralelizados e compartilham cache de processador.
+
+limite de espera pra usuário web é 15s, é o máximo aceitável
+\citep{conf/amcis/Nah03}
+
+Miller (1968) argued for the 2-second rule based on the theory of limitations in human short-
+term memory. According to Miller, short-term memory plays a critical role in human information
+processing; interference with short-term memory can occur when an individual senses an awareness of
+waiting after approximately 2 seconds. Thus, to stay uninterrupted in information processing, the 2-
+second guideline is recommended. For tasks where uninterrupted focus is critical, Nielsen (1995)
+suggests that computer response should be kept within one second.
+
+
+From this study, we found that Web users expect a response in about 2 seconds for simple
+information retrieval tasks on the Web.
+A 2-second response is needed to ensure 'smooth' interactions
+between the WWW and the users.  The findings from this
+study also suggest that the upper bound for Web users' TWT is 15 seconds when
+the system does not provide any indication or feedback concerning
+the download
+
+\esb{
+é melhor comparar tempos minimos do que tempos medios;
+pode haver outlier para cima,
+mas para baixo há o limite onde todas as otimizações de hardware já
+foram atingidas e a ausência de outros processos é total.
+Assim, trata-se de uma grandeza mais comparável entre algoritmos. (ref?)
+}
