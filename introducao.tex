@@ -7,43 +7,48 @@ Seu bom desempenho, na tarefa de classificação, depende da existência de:
  \item \textbf{amostragem} de dados de qualidade para construção de um acervo \ano{acervo?};
  \item um processo de \textbf{categorização} desses dados que exponha conhecimento
  suficiente para a tarefa desejada; e,
- \item de um algoritmo de \textbf{aprendizado} adequado.
+ \item um algoritmo de \textbf{aprendizado} adequado.
 \end{itemize}
-Enquanto a \textit{categorização} dos dados, é normalmente
-realizada por um supervisor humano que atribui categorias para cada objeto/exemplo
-de interesse contido nos dados;
+Enquanto a \textit{categorização} dos dados é normalmente
+realizada por um supervisor humano que atribui categorias/classes para cada objeto/exemplo
+de interesse contido nos dados,
 a forma de \textit{amostragem} de exemplos
 e a determinação do algoritmo de \textit{aprendizado} dependem de
 um segundo especialista,
 com conhecimento específico da área de aprendizado de máquina.
 
 O segundo especialista pode resolver o problema da escolha do algoritmo
-adotando algum sistema automático de recomendação como o \textit{meta-aprendizado} ou
-baseando-se em conhecimentos sobre os dados e sobre os algoritmos disponíveis e
-escolher manualmente o melhor segundo alguma métrica de desempenho
-\cite{books/daglib/0022052}.
+recorrendo à sua experiência pessoal ou adotando algum sistema automático de
+recomendação como o \textit{meta-aprendizado} conforme descrito no
+Capítulo \ref{meta}.
 Ambas as abordagens, manual e automática,
 são aplicáveis apenas no cenário em que o acervo \ano{acervo?}
 já está construído.
-Consequentemente, a escolha do processo mais adequado de seleção dos
-exemplos que mais contribuem para a qualidade do acervo \ano{acervo?}
-prescinde a escolha do algoritmo.
-Esse processo de seleção é um tipo de amostragem denominada
-\textit{aprendizado ativo}.
+Consequentemente, a escolha do processo de amostragem,
+denominado \textit{aprendizado ativo},
+precede a determinação do melhor o algoritmo de aprendizado.
 
 Da mesma forma que existe o problema da escolha do algoritmo de aprendizado
 mais apropriado, existe o problema da escolha da melhor estratégia de
 aprendizado ativo.
 O segundo problema é mais complexo, tendo-se em vista que o sucesso
 da estratégia escolhida só pode ser determinado após ter-se incorrido
-em custos financeiros com a atividade de supervisão.
+em custos financeiros com a atividade de supervisão realizada
+frequentemente por um humano - chamado genericamente de \textit{oráculo}.
 
 Está implícita na busca pela qualidade dos dados a economia em tempo de processamento e
 de supervisão, dado que apenas a parcela reduzida de exemplos mais relevantes
-passa a ser considerada.
+é enviada para a análise do oráculo.
 A quantidade global de dados, por exemplo, duplica a cada dois anos
 \citep{journals/sigkdd/ZliobaiteBGGGMM12} apontando
 para uma tendência que torna intratável uma supervisão exaustiva em muitas aplicações.
+
+Por outro lado, aplicações em que o oráculo é um processo químico, por exemplo,
+envolvem consumo de material ou a destruição dos exemplos consultados.
+Apesar de não envolver a manutenção dispendiosa de um oráculo humano
+e possivelmente não requerer uma filtragem massiva de exemplos,
+cada consulta tem um custo associado.
+cada consulta 
 
 
 

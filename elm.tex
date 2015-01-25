@@ -127,7 +127,7 @@ Para os lotes de dados subsequentes, ou seja,
 quando $t>0$, apenas $\beta_{(t)}$ e $P_{(t)}$ precisam ser mantidos, onde:
 
 \begin{equation} \label{eq6}
-P(t) = P_{(t-1)} - P_{(t-1)} H^{\top}_{(t)} (I + H_{(t)} P_{(t-1)} H^{\top}_{(t)})^{-1} H_{(t)}
+P_{(t)} = P_{(t-1)} - P_{(t-1)} H^{\top}_{(t)} (I + H_{(t)} P_{(t-1)} H^{\top}_{(t)})^{-1} H_{(t)}
 P_{(t-1)}
 \end{equation}
 \begin{equation} \label{eq7}
@@ -171,10 +171,19 @@ Apesar da vantagem do cálculo da pseudo-inversa ser uma etapa única no
 aprendizado da ELM, trata-se de um cálculo que pode ser custoso.
 Uma alternativa é a \elm \textit{incremental} (I-ELM) proposta por
 \cite{journals/tnn/HuangCS06}.
-O aprendizado da I-ELM progride com a adição de novos neurônios,
-um a um.
+O aprendizado da I-ELM começa com um neurônio e
+progride com a adição de novos neurônios, um a um.
 Para cada neurônio adicionado, um novo peso é necessário para conectá-lo
-ao neurônio de saída
+ao neurônio de saída conforme a Equação \ref{eq:ielm}.
+\begin{equation}\label{eq:ielm}
+\beta_{n}={E\cdot H^{T}\over H\cdot H^{T}}
+={\sum_{p=1}^{N}e(p)h(p)\over\sum_{p=1}^{N}h^{2}(p)}
+\end{equation}
+O valor do peso é calculado de forma a reduzir o erro entre o valor predito e o valor
+esperado.
+Onde $E$ é o vetor de erros residuais antes da inserção do
+novo neurônio e $H$ é o vetor de valores da função de ativação do novo neurônio.
+Ambos os vetores têm cada valor associado a um dos exemplos do conjunto de treinamento.
 
 \subsection{CI-ELM}
 \citep{journals/ijon/HuangC07}

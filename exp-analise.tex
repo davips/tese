@@ -15,8 +15,24 @@ ao menos NB e 5NN devem ter esse problema;}
 
 \esb{
 É fato que o algoritmo NB produz estimativas de distribuição de probabilidade
-excessivamente confiantes \citep{conf/icml/RoyM01}.
-posso calcular a entropia média da saída de cada classif para cada base em todos os exemplos
+excessivamente confiantes \citep{conf/icml/RoyM01}, eles usaram bagging para amenizar
+e talvez SGmulti esteja funcionando como bagging, por isso NB vai melhor com ele.
+Os dois extremos seriam: SGmultiConsensus e Uncertainty.
+Os outros algoritmos são ortogonais a essa hierarquia.
+Os baseados em densidade, por exemplo, podem consultar
+exemplos adjacentes àqueles já conhecidos, explorando, assim,
+uma região fora daquela delimitada pelos extremos da hierarquia
+(citar figura do capítulo anterior) - ou pelo menos fora da SG.
+É possível percorrer controlar essa abrangência em ambos os
+algoritmos de um extremo ao outro. Com SG,
+basta que os pesos dos exemplos rotulados artificialmente sejam
+ajustados para valores muito menores.
+O mesmo vale para Uncertainty, se for definido um limiar de decisão binário.
+O limiar determinaria a abrangência espacial.}
+
+\ano{para avaliar a suavidade de cada learner,
+posso calcular a entropia média da saída de cada classif para cada
+base em todos os exemplos
 e fazer uma tabela com a ultima linha sendo a media de todas as bases}
 
 \esb{When Does Active Learning Work?
