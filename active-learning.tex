@@ -432,7 +432,7 @@ ela foi excluída dos experimentos.
 
 \ano{feature: próxima consulta depende dos rótulos anteriores}
 
-\subsection{Amostragem ponderada por densidade}
+\subsection{Amostragem ponderada por densidade}\label{dw}
 A proposta geral das amostragens ponderadas por densidade é o uso da medida de
 \textit{densidade de informação}, que atribui diferentes pesos à medida de
 informatividade conforme o nível de concentração de exemplos não rotulados no entorno de $\bm{x}$
@@ -453,8 +453,8 @@ Qualquer medida de similaridade $sim(\bm{x},\bm{u})$
 e de informatividade $H(\bm{x})$ podem ser adotadas.
 Neste trabalho, $Inf(\bm{x}) = 1 - M$ e três medidas de distância $d(\bm{x},\bm{u})$
 (euclidiana, Manhattan e Mahalanobis) foram transformadas em medidas de similaridade
-$sim(\bm{x},\bm{u})$ pela seguinte fórmula:
-\begin{equation}
+$sim(\bm{x},\bm{u})$ pela fórmula \ref{eq:sim}.
+\begin{equation}\label{eq:sim}
  sim(\bm{x},\bm{u}) = \frac{1}{1 + d(\bm{x},\bm{u})}
 \end{equation}
 

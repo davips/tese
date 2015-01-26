@@ -1,11 +1,43 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Experimentos e Resultados}\label{experimentos}
 
-\cite{brazdil1994analysis} faz tabela de distâncias pareadas com taxas de erro sendo
-as dimensões, depois faz decomposição ortogonal para visualizar em duas dimensões.
-Depois faz agrupamento hierárquico.
+\section{Algoritmos de aprendizado}
+Uma forma de ilustrar a diversidade entre os modelos gerados
+pelos diferentes algoritmos de aprendizado é por meio da similaridade
+entre suas acurácias.
+Ela é apresentada na Tabela \ref{passiveDists} de forma análoga à adotada por
+\cite{brazdil1994analysis}.
+\input passiveDists
+% faz tabela de distâncias pareadas com taxas de erro sendo
+% as dimensões, depois faz decomposição ortogonal para visualizar em duas dimensões.
+% Depois ele faz agrupamento hierárquico.
 
-\esb{distEntrePassivas.scala deve usar kappa? deve ser normalizado?}
+Esses modelos são o resultado de treinamento passivo, ou seja, com todos os
+exemplos da reserva.
+Considerando-se cada base de dados uma dimensão,
+a similaridade é calculada a partir da distância euclidiana $d(\bm{x},\bm{u})$
+entre dois vetores $\bm{x},\bm{u} \in \mathbb{R}^{94}$
+de valores de acurácia balanceada de acordo com a mesma fórmula
+(\ref{eq:sim}) adotada no cálculo de densidade da Seção \ref{dw}.
+
+Conforme esperado,
+a maior similaridade ($0,77$) ocorre entre IELM e CIELM.
+Outros valores relevantes são as proximidades entre VFDT e NB ($0,56$)
+e entre 5NN e C4.5 ($0,52$).
+O algoritmo mais distinto é a SVM, pois apresenta os menores valores em relação a
+todos os demais (entre $0,28$ e $0,30$).
+Dessa forma, uma definição de quatro grupos pode ser útil durante a análise
+da influência do classificador nas estratégias de aprendizado ativo:
+IELM-CIELM, VFDT-NB, 5NN-C4.5 e SVM.
+
+\ano{é preciso adicionar nintera e zeroR nas dists, nas 3 tabelas e no fried (e atualizar texto);
+eles ainda estão rodando}
+As acurácias para cada base são apresentadas nas tabelas \ref{tab:balaccClassif0},
+\ref{tab:balaccClassif1} e \ref{tab:balaccClassif2}.
+
+Na comparação um a um
+\input classifsTabFried
+
 
 \ano{selecionar das variantes da literatura fazendo mini friedman
 para cada tipo: unc,ent,mar  eer   dwtus ou usar centroide por distEntrePassivas?}
