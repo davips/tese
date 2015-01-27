@@ -36,13 +36,14 @@ a maior similaridade ($0,77$) ocorre entre IELM e CIELM.
 Outros valores relevantes são as proximidades entre VFDT e NB ($0,56$)
 e entre 5NN e C4.5 ($0,52$).
 O algoritmo mais distinto é a SVM, pois apresenta os menores valores em relação a
-todos os demais (entre $0,28$ e $0,30$).
+todos os demais (entre $0,28$ e $0,30$) - com exceção do acerto majoritário
+que se afasta dos demais por ser muito inferior em quase todas as bases.
 Dessa forma, uma definição de quatro grupos pode ser útil durante a análise
 da influência do classificador nas estratégias de aprendizado ativo:
 IELM-CIELM, VFDT-NB, 5NN-C4.5 e SVM.
 
-\ano{é preciso adicionar nintera e zeroR nas dists, nas 3 tabelas e no fried (e atualizar texto);
-eles ainda estão rodando}
+\ano{é preciso adicionar passiveNintera nas dists, nas 3 tabelas e no fried (e atualizar texto);
+ele ainda está rodando; }
 Na comparação um a um (Tabela \ref{tab:friedClassif}),
 a SVM vence com significância estatística quase todos os demais classificadores,
 explicando, dessa forma, a distinção observada na tabela de
