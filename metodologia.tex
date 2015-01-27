@@ -94,12 +94,12 @@ performance com muitos dados
 Dessa forma, diferentes algoritmos de aprendizado
 precisam ser adotados quando alguma comparação entre estratégias é pretendida.
 
-Cinco algoritmos comumente usados foram adotados:
-J48\footnote{Implementação do Weka baseada no algoritmo de
-árvore de decisão C4.5.}, NB\footnote{\textit{Naive Bayes}},
+Cinco algoritmos comumente usados e implementados na biblioteca Weka foram adotados:
+C4.5\footnote{Implementação baseada no algoritmo de
+árvore de decisão C4.5 denominada J48.}, NB\footnote{\textit{Naive Bayes}},
 VFDT\footnote{\textit{Very Fast Decision Trees}},
 5-NN\footnote{Cinco vizinhos mais próximos}
-e SVM\footnote{\textit{Support Vector Machines}}
+e SVM\footnote{\textit{Support Vector Machines \ano{explicar detalhes da implementação svmlib/weka para multiclasse?}}}
 \citep{books/mk/Quinlan93,conf/ecml/Lewis98,conf/kdd/DomingosH00,journals/tit/Hart68,
 hearst1998support}.
 Adicionalmente, por sua ausência na literatura de aprendizado ativo e características
@@ -117,13 +117,13 @@ um experimento reduzido \citep{conf/hais/SantosC14} foi conduzido visando
 a construção de um panorama geral do comportamento das estratégias
 e a definição do dimensionamento mais adequado dos experimentos definitivos
 aos recursos computacionais.
-Apenas dez estratégias e os algoritmos mais rápidos (J48, NB, VFDT e 5-NN)
+Apenas dez estratégias e os algoritmos mais rápidos (C4.5, NB, VFDT e 5-NN)
 foram adotados.
 Dez execuções de validação cruzada em dez partições totalizaram cem \pools
 para cada base - conforme sugerido na literatura de classificação
 \cite{conf/pakdd/BouckaertF04}.
-Os \pools foram consultados até o ponto em que a acurácia máxima da
-melhor estratégia havia sido atingida.
+As \pools foram consultados até o ponto em que a acurácia máxima da
+melhor estratégia houvesse sido atingida.
 
 Aproximadamente um mês\footnote{Pausas devido a problemas técnicos incluídas.}
 de experimento foi necessário para apenas a conclusão
@@ -131,13 +131,13 @@ nas vinte e oito menores bases de dados.
 Assim, considerando-se o crescimento exponencial do custo computacional em alguns
 pares \textit{algoritmo de aprendizado}-\textit{estratégia} com o aumento do número
 de classes, atributos e/ou exemplos, foi necessário reduzir o procedimento
-de validação conforme descrito na Seção \ref{validacao} e antecipar o término das
+de validação (Seção \ref{validacao}) e antecipar o término das
 consultas.
 
 \section{Avaliação}\label{avaliacao}
 \ano{pro final: quando perde, perde muito feio?}
 
-\subsection{Métricas}
+\subsection{Métricas}\label{metricas}
 Um cara que usa log no eixo X e usa ``Area under the Learning Curve'':
 {http://perso.rd.francetelecom.fr/lemaire/publis/ijcnn\_2\_2011\_camera\_ready.pdf}
 

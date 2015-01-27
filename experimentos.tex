@@ -1,7 +1,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Experimentos e Resultados}\label{experimentos}
+Neste capítulo são apresentados os experimentos comparativos de estratégias
+e seus resultados.
+\ano{descrever cada seção?}
 
-\section{Algoritmos de aprendizado}
+\section{Preparação} \label{prep}
+Devido à grande quantidade de fatores envolvidos nos experimentos,
+faz-se necessária uma etapa de preparação em que apenas
+a parcela mais representativa das estratégias seja mantida e
+a diversidade dos algoritmos de aprendizado escolhidos seja verificada.
+
+\subsection{Diversidade dos algoritmos de aprendizado}\label{algs}
 Uma forma de ilustrar a diversidade entre os modelos gerados
 pelos diferentes algoritmos de aprendizado é por meio da similaridade
 entre suas acurácias.
@@ -17,8 +26,10 @@ exemplos da reserva.
 Considerando-se cada base de dados uma dimensão,
 a similaridade é calculada a partir da distância euclidiana $d(\bm{x},\bm{u})$
 entre dois vetores $\bm{x},\bm{u} \in \mathbb{R}^{94}$
-de valores de acurácia balanceada de acordo com a mesma fórmula
-(\ref{eq:sim}) adotada no cálculo de densidade da Seção \ref{dw}.
+de valores de acurácia balanceada (Seção \ref{metricas}) de acordo com a mesma fórmula
+(Equação \ref{eq:sim}) adotada no cálculo de densidade da Seção \ref{dw}.
+As acurácias para cada base são apresentadas nas tabelas \ref{tab:balaccClassif0},
+\ref{tab:balaccClassif1} e \ref{tab:balaccClassif2} do Apêndice \ref{detalhes}.
 
 Conforme esperado,
 a maior similaridade ($0,77$) ocorre entre IELM e CIELM.
@@ -32,15 +43,28 @@ IELM-CIELM, VFDT-NB, 5NN-C4.5 e SVM.
 
 \ano{é preciso adicionar nintera e zeroR nas dists, nas 3 tabelas e no fried (e atualizar texto);
 eles ainda estão rodando}
-As acurácias para cada base são apresentadas nas tabelas \ref{tab:balaccClassif0},
-\ref{tab:balaccClassif1} e \ref{tab:balaccClassif2}.
+Na comparação um a um (Tabela \ref{tab:friedClassif}),
+a SVM vence com significância estatística quase todos os demais classificadores,
+explicando, dessa forma, a distinção observada na tabela de
+similaridades (\ref{passiveDists}).
 
-Na comparação um a um
-\input classifsTabFried
+\input classifsFried
+
+Por outro lado, os três pares de algoritmos similares são estatisticamente diferentes:
+5NN vence C4.5, NB vence VFDT e CIELM vence IELM.
+Isso significa que, apesar de cada par ser composto de algoritmos próximos entre si,
+ainda assim trata-se de algoritmos com resposta às
+bases de dados adotadas significativamente distinta.
 
 
-\ano{selecionar das variantes da literatura fazendo mini friedman
-para cada tipo: unc,ent,mar  eer   dwtus ou usar centroide por distEntrePassivas?}
+\subsection{Descarte de estratégias redundantes}
+Dentre as estratégias implementadas e estratégias propostas,
+é esperada a ocorrência de respostas fortemente correlacionadas
+para o conjunto de bases de dados escolhido.
+Por motivos de espaço e facilitação das análises posteriores,
+estratégias muito similares foram removidas.
+
+\ano{Fazer tabela de distEntrePassivas}
 
 x Qual a economia proporcionada por uma estratégia?
 

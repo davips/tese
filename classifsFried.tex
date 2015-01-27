@@ -1,0 +1,14 @@
+\begin{table}[h]
+\caption{Um contra um: cada asterisco/cruz/ponto indica quando o algoritmo na linha tem melhor acc que o algoritmo na coluna com intervalo de confiança de 0.99/0.95/0.90.}
+\begin{center}
+\begin{tabular}{lcc|cc|cc|c}
+ 				& 1 & 2 & 3 & 4 & 5 & 6 & 7 \\1 - SVM	& - &   & * & * &   & * &   \\
+2 - 5NN	&   & - & * & * & . & * & + \\ \hline
+3 - C4.5	&   &   & - &   &   &   &   \\
+4 - VFDT	&   &   &   & - &   &   &   \\ \hline
+5 - NB	&   &   & . & * & - & * &   \\
+6 - IELM	&   &   &   &   &   & - &   \\ \hline
+7 - CIELM	&   &   &   & + &   & + & - \\\end{tabular}
+\label{tab:friedClassif}
+\end{center}
+\end{table}
