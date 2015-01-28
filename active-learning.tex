@@ -214,7 +214,7 @@ quando houver}
 
 \ano{feature: próxima consulta independe dos rótulos anteriores}
 
-\subsection{Amostragem por incerteza}
+\subsection{Amostragem por incerteza}\label{unc}
 Provavelmente a mais simples medida de informatividade $Inf(\bm{x})$ para se
 decidir quando selecionar um exemplo $\bm{x}$
 (ou grupo de exemplos, na proposta original) é a máxima probabilidade a posteriori
@@ -239,6 +239,8 @@ ou seja, aquele com a menor $P_{max}(\bm{x})$,
 com o intuito de se explorar a fronteira de decisão no espaço de exemplos.
 A complexidade dessa estratégia é $\mathcal{O}(1)$ - equivalente a apenas um treinamento por consulta.
 
+\subsection{Amostragem por margem ou entropia}\label{mar}
+Adequada para multiclasse.
 \ano{explicar estrategias margem com fórmula M e entropia H(?)}
 
 \ano{feature: dependente de algoritmo de aprendizado}
@@ -405,17 +407,19 @@ otimista:
 \end{equation}
 onde $O$ é a função objetivo.
 A complexidade computacional é $\mathcal{O}(|\mathcal{U}|^2)$.
+Após cada consulta, caso a classe real seja diferente da esperada,
+o método recorre à estratégia de amostragem por incerteza (Seção \ref{unc})
+como medida de contingência.
+Para contemplar problemas multiclasse,
+a amostragem por margem (Seção \ref{mar}) foi utilizada nos experimentos deste trabalho.
  
 Neste trabalho, seguindo a escolha do artigo original,
 optou-se pela entropia como função objetivo.
-Adicionalmente, a acurácia balanceada foi adotada como uma variação do método,
-porém devido ao constatado desempenho inferior
-% nas primeiras 50 queries
-e alto custo computacional,
-ela foi excluída dos experimentos.
-\ano{foi mesmo?}
-% 
-% Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteração devido à alta
+Adicionalmente, a acurácia balanceada (Seção \ref{metricas})
+foi adotada como uma variação do método,
+visando agir diretamente na medida multiclasse de interesse.
+Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteração devido ao
+alto custo computacional da estratégia.
 
 \ano{feature: dependente de algoritmo de aprendizado}
 

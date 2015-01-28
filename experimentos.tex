@@ -42,7 +42,8 @@ Dessa forma, uma definição de quatro grupos pode ser útil durante a análise
 da influência do classificador nas estratégias de aprendizado ativo:
 IELM-CIELM, VFDT-NB, 5NN-C4.5 e SVM.
 
-\ano{é preciso adicionar passiveNintera nas dists, nas 3 tabelas e no fried (e atualizar texto);
+\ano{é preciso adicionar passiveNintera na tab de dists/fried,
+nas 3 tabelas do apendice  (e atualizar texto);
 ele ainda está rodando; }
 Na comparação um a um (Tabela \ref{tab:friedClassif}),
 a SVM vence com significância estatística quase todos os demais classificadores,
@@ -59,13 +60,26 @@ bases de dados adotadas significativamente distinta.
 
 
 \subsection{Descarte de estratégias redundantes}
-Dentre as estratégias implementadas e estratégias propostas,
+Dentre as estratégias implementadas e propostas,
 é esperada a ocorrência de respostas fortemente correlacionadas
 para o conjunto de bases de dados escolhido.
 Por motivos de espaço e facilitação das análises posteriores,
 estratégias muito similares foram removidas.
+Com essa finalidade, as similaridades entre estratégias foi calculada
+por meio da distância $\bm{x},\bm{u} \in \mathbb{R}^{658}$
+entre acurácias balanceadas ao longo das $94$
+bases e $7$ classificadores.
 
-\ano{Fazer tabela de distEntrePassivas}
+\afterpage{%
+    \clearpage% Flush earlier floats (otherwise order might not be correct)
+%     \thispagestyle{empty}% empty page style (?)
+    \begin{landscape}% Landscape page
+        \centering % Center table
+        \input stratDists
+%         \captionof{table}{Table caption}% Add 'table' caption
+    \end{landscape}
+    \clearpage% Flush page
+}
 
 x Qual a economia proporcionada por uma estratégia?
 

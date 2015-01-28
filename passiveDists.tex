@@ -1,15 +1,12 @@
 \begin{table}[h]
-\caption{Similaridade entre algoritmos de aprendizado de acordo com a acurácia balanceada para as 94 bases de dados.}
-\begin{center}
-\begin{tabular}{lcc|cc|cc|cc}
- 				& 5NN & C4.5 & CIELM & IELM & NB & SVM & VFDT & maj \\5NN	& - &   0.52 &   0.38 &   0.40 &   0.46 &   0.28 &   0.44 &   0.20 \\
-C4.5	&   0.52 & - &   0.38 &   0.40 &   0.46 &   0.28 &   0.43 &   0.20 \\ \hline
-CIELM	&   0.38 &   0.38 & - &   0.77 &   0.43 &   0.29 &   0.42 &   0.24 \\
-IELM	&   0.40 &   0.40 &   0.77 & - &   0.44 &   0.30 &   0.43 &   0.24 \\ \hline
-NB	&   0.46 &   0.46 &   0.43 &   0.44 & - &   0.28 &   0.56 &   0.21 \\
-SVM	&   0.28 &   0.28 &   0.29 &   0.30 &   0.28 & - &   0.28 &   0.24 \\ \hline
-VFDT	&   0.44 &   0.43 &   0.42 &   0.43 &   0.56 &   0.28 & - &   0.21 \\
-maj	&   0.20 &   0.20 &   0.24 &   0.24 &   0.21 &   0.24 &   0.21 & - \\ \hline\end{tabular}
-\label{passiveDists}
+\caption{Similaridade entre algoritmos de aprendizado de acordo com a acurácia balanceada para as 94 bases de dados. O maior e menor valor de cada linha está em \textcolor{blue}{\textbf{negrito azul}} e \textcolor{red}{\textbf{negrito vermelho}} respectivamente.}
+\begin{center}\begin{tabular}{lcc|cc|cc|c}
+ 				& 5NN & C4.5 & CIELM & IELM & NB & SVM & VFDT \\5NN	& - & \textcolor{blue}{\textbf{  0.52}} &   0.38 &   0.40 &   0.46 & \textcolor{red}{\textbf{  0.28}} &   0.44 \\
+C4.5	& \textcolor{blue}{\textbf{  0.52}} & - &   0.38 &   0.40 &   0.46 & \textcolor{red}{\textbf{  0.28}} &   0.43 \\ \hline
+CIELM	&   0.38 &   0.38 & - & \textcolor{blue}{\textbf{  0.77}} &   0.43 & \textcolor{red}{\textbf{  0.29}} &   0.42 \\
+IELM	&   0.40 &   0.40 & \textcolor{blue}{\textbf{  0.77}} & - &   0.44 & \textcolor{red}{\textbf{  0.30}} &   0.43 \\ \hline
+NB	&   0.46 &   0.46 &   0.43 &   0.44 & - & \textcolor{red}{\textbf{  0.28}} & \textcolor{blue}{\textbf{  0.56}} \\
+SVM	& \textcolor{red}{\textbf{  0.28}} & \textcolor{red}{\textbf{  0.28}} &   0.29 & \textcolor{blue}{\textbf{  0.30}} & \textcolor{red}{\textbf{  0.28}} & - & \textcolor{red}{\textbf{  0.28}} \\ \hline
+VFDT	&   0.44 &   0.43 &   0.42 &   0.43 & \textcolor{blue}{\textbf{  0.56}} & \textcolor{red}{\textbf{  0.28}} & - \\\end{tabular}\label{passiveDists}
 \end{center}
 \end{table}
