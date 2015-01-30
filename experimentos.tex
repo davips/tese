@@ -41,18 +41,20 @@ que se afasta dos demais por ser muito inferior em quase todas as bases.
 Dessa forma, uma definição de quatro grupos pode ser útil durante a análise
 da influência do classificador nas estratégias de aprendizado ativo:
 IELM-CIELM, VFDT-NB, 5NN-C4.5 e SVM.
+Pela proximidade excessiva entre IELM e CIELM, pela acurácia superior da CIELM
+e visando reduzir a quantidade necessária de análises,
+optou-se por manter, dentre as duas, apenas a CIELM nos experimentos.
 
-\ano{é preciso adicionar passiveNintera na tab de dists/fried,
-nas 3 tabelas do apendice  (e atualizar texto);
-ele ainda está rodando; }
-Na comparação um a um (Tabela \ref{tab:friedClassif}),
-a SVM vence com significância estatística quase todos os demais classificadores,
-explicando, dessa forma, a distinção observada na tabela de
-similaridades (\ref{passiveDists}).
+\ano{se terminar de rodar, é preciso adicionar passiveNintera na tab de dists/fried,
+nas 3 tabelas do apendice  (e atualizar texto)}
+Na comparação um contra um (Tabela \ref{tab:friedClassif}),
+SVM e 5NN se destacam com significância estatística,
+seguidos de NB e CIELM.
 
 \input classifsFried
 
-Por outro lado, os três pares de algoritmos similares são estatisticamente diferentes:
+Por outro lado, os três pares de algoritmos, apesar de similares,
+são estatisticamente diferentes:
 5NN vence C4.5, NB vence VFDT e CIELM vence IELM.
 Isso significa que, apesar de cada par ser composto de algoritmos próximos entre si,
 ainda assim trata-se de algoritmos com resposta às
@@ -65,44 +67,45 @@ Dentre as estratégias implementadas e propostas,
 para o conjunto de bases de dados escolhido.
 Por motivos de espaço e facilitação das análises posteriores,
 estratégias muito similares foram removidas.
-Com essa finalidade, as similaridades entre estratégias foi calculada
-por meio da distância $\bm{x},\bm{u} \in \mathbb{R}^{658}$
+Com essa finalidade, as similaridades entre estratégias foram calculadas
+por meio da distância $d(\bm{x},\bm{u}) \mid \bm{x},\bm{u} \in \mathbb{R}^{658}$
 entre acurácias balanceadas ao longo das $94$
-bases e $7$ classificadores.
+bases e $7$ classificadores e são apresentadas na Tabela \ref{stratDists}.
 
-\afterpage{%
-    \clearpage% Flush earlier floats (otherwise order might not be correct)
-%     \thispagestyle{empty}% empty page style (?)
-    \begin{landscape}% Landscape page
-        \centering % Center table
-        \input stratDists
-%         \captionof{table}{Table caption}% Add 'table' caption
-    \end{landscape}
-    \clearpage% Flush page
-}
+\afterpage{\clearpage\begin{landscape}
+\input stratDists
+\end{landscape}\clearpage}
 
-x Qual a economia proporcionada por uma estratégia?
+As estratégias que embutem algum tipo de aleatoriedade
+(Rnd, Clu, EERent, EERacu e SGmulti)
+têm um grau de similaridade acima da média (valor de $0,66$ para as duas agnósticas e
+entre $0,43$ e $0,57$ para as restantes).
+Uma similaridade maior pode ser notada entre as variantes das estratégias
+baseadas em densidade.
+As seis propostas baseadas na \textit{utilidade de cada classe} (prefixos LU e ALU)
+apresentam uma similaridade aproximada de $0,7$ em relação aos seus
+algoritmos originais correspondentes (prefixos TU e ATU).
+Por esse motivo e pela equivalência nas medidas de acurácia
+listadas nas tabelas \ref{} \ano{criar tabelas com dados de todas as 21 estrats no apêndice},
+optou-se por excluir dos experimentos
+as propostas baseadas na utilidade de cada classe.
+As estratégias remanescentes baseadas na distância de Manhattan
+(TUman e ATUman) também foram excluídas
+por serem excessivamente similares às estratégias baseadas na distância euclidiana.
 
-x Quão bem uma estratégia usufrui de um dado orçamento?
+Dentre as estratégias baseadas em simples medida de informatividade
+(Unc, Ent e Mar), apenas Mar foi mantida devido à similaridade entre
+as três, por ser mais adequada a problemas multiclasse que Unc e por
+seu desempenho ser superior ao da Ent.
+O grupo reduzido de estratégias é apresentado na Tabela \ref{stratDistsRedux}.
 
-AG,LU vs DWTU
+\newpage
+\input stratDistsRedux
 
-\tar{há alguma correlação entre desempenho de AL e desbalanceamento da base?}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input exp-analise
 
 
-
-
-
- \tar{usar nintera na(s) base(s) à parte?
- ou usar em todas, mas sem strats lentas?}
-
- \tar{plotar}
-
-
-
-\green{baseline p/ AccBal é $1/|Y|$}
 
 \green{manter apenas estratégias que ganharam em algum momento/nicho?}
 \blue{assim é possível o avaliar estratégias num cenário em que se sabe de

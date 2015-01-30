@@ -1,56 +1,53 @@
 \section{Análise Comparativa}\label{analise}
-\esb{criar boas siglas pras estrats e learners pras tabelas}
+Nesta seção, as estratégias selecionadas na Seção \ref{prep} são comparadas
+com o objetivo de identificar nichos em que umas possam se sobressair em relação às outras.
+Conjuntamente,
+é feita a demontração de que a estratégia agnóstica proposta baseada em densidade é viável.
+\ano{explicar pela arvore quais os nichos de cada estratégia}
 
-\ano{explicar pela arvore quais os nichos de cada estrategia}
+orçamento baixo : $|Y|<\cent\leq min(\frac{|\mathcal{U}|}{2},100)$
 
-\ano{usar clustering para mostrar que estrategias se adequam a nichos parecidos
-(a arvore do agrupamento hierarquico pode ilustrar bem isso,
-só falta descobrir como fazer o weka imprimir os nomes das strats,
-provavelm é colocando um atributo string.)}
+orçamento alto: $min(\frac{|\mathcal{U}|}{2},100)<\cent\leq min(|\mathcal{U}|,200)$
 
-\esb{provavelmente o classificador atrapalha quando ele
-não tem uma estimativa de distribuição de probabilidade suave;
-isso afeta a medida de incerteza;
-ao menos NB e 5NN devem ter esse problema;}
-
-\esb{
-É fato que o algoritmo NB produz estimativas de distribuição de probabilidade
-excessivamente confiantes \citep{conf/icml/RoyM01}, eles usaram bagging para amenizar
-e talvez SGmulti esteja funcionando como bagging, por isso NB vai melhor com ele.
-Os dois extremos seriam: SGmultiConsensus e Uncertainty.
-Os outros algoritmos são ortogonais a essa hierarquia.
-Os baseados em densidade, por exemplo, podem consultar
-exemplos adjacentes àqueles já conhecidos, explorando, assim,
-uma região fora daquela delimitada pelos extremos da hierarquia
-(citar figura do capítulo anterior) - ou pelo menos fora da SG.
-É possível percorrer controlar essa abrangência em ambos os
-algoritmos de um extremo ao outro. Com SG,
-basta que os pesos dos exemplos rotulados artificialmente sejam
-ajustados para valores muito menores.
-O mesmo vale para Uncertainty, se for definido um limiar de decisão binário.
-O limiar determinaria a abrangência espacial.}
-
+Na árvore exibida na Figura \ref{tree},
+é possível observar o papel central do algoritmo de aprendizado sobre
+a estratégia de aprendizado ativo.
+Apesar de ilustrativa, a árvore pode não ser segura do ponto de vista de tomada de
+decisão devido ao baixo grau de pureza das folhas.
+Entretanto, algumas ramificações aceitam explicações plausíveis:
+\begin{itemize}
+ \item É fato que o algoritmo NB produz estimativas de distribuição de probabilidade
+excessivamente confiantes que podem ser amenizadas por
+\textit{bagging} \citep{conf/icml/RoyM01}.
+Estratégias que dependem dessas estimativas podem ser prejudicadas.
+Por outro lado,
+por ter um modelo para cada classe, SGmulti pode estar funcionando como \textit{bagging}
+e com isso tendo um maior desempenho para esse classificador.
+A maior afinidade de SGmulti com atributos nominais também é um indício de uma
+maior proximidade com NB.
 \ano{para avaliar a suavidade de cada learner,
 posso calcular a entropia média da saída de cada classif para cada
 base em todos os exemplos
 e fazer uma tabela com a ultima linha sendo a media de todas as bases}
-
 \esb{When Does Active Learning Work?
-confirma que atributos não-discretizados favorecem AL, isso justifica z-score para qq classificador ? (ao menos RF, SVM, log reg. e QDA usados no artigo).
+confirma que atributos não-discretizados favorecem AL,
+isso justifica z-score para qq classificador ? (ao menos RF, SVM, log reg. e QDA usados no artigo).
 usa apenas QBC, entropia e random.
 }
 
-\ano{dizer em algum lugar que demonstra a Viabilidade do Aprendizado Ativo}
+\item Rnd tem melhor desempenho em bases mais desbalanceadas
+(entropia igual ou abaixo de $0,95$).
+\item Apenas uma folha corresponde à amostragem aleatória.
+Isso sugere a viabilidade do aprendizado ativo em geral.
+\end{itemize}
 
-\ano{neste e nos outros 2 caps de resultados vão aparecer apenas dados
-das strats mais importantes;
-as tabelas completam ficarão no apêndice inclusive resultados de kff e balanced-ee;
-outra opção para kff e balanced-ee é ficarem apenas na tabela referente a learner=svm do
-cap de experimentos}
+\input arvore
 
-\esb{ilustra diferenças entre estratégias (incluindo as novas)}
+\ano{seria ideal fazer uma segunda árvore em que apenas o melhor classificador
+é usado em cada base}
 
-\esb{árvore, plot de vitórias vs budget, variabilidade/estabilidade, tempo, comparação com passivo* -
+
+\esb{plot de vitórias vs budget, variabilidade/estabilidade, tempo, comparação com passivo -
 demonstra que AL é viável em geral e demonstra a efetividade das novas
 estratégias propostas
 (ponderação pela classe tenta atacar o desbalanceamento, preciso ver se
@@ -88,18 +85,9 @@ mais 10 queries e repetir o processo até acabarem os datasets)}
 rápido de teste em todas as bases, registrar tempo médio de consulta de cada
 estratégia e gerar friedman (espera-se realçar vantagem dos agnósticos)}
 
-\ano{* -> foram adotadas duas medidas importantes:
-ALCKappa e BalancedAcc (poderia haver tb ALCBalancedAcc e Kappa,
-mas vai duplicar a qtd de dados pra análise);
-por definição, a ALC passiva não é comparável com ALCs ativas.
-A BalancedAcc passiva deve ser calculada num ponto anterior ao término
-dos exemplos em todas as bases, i.e.  200
-(um número grande deixa mais justa a comparação com passivo) ou
-metade do numero de exemplos, o que for menor.
-}
 \ano{Efetividade geral}
 
-\blue{friedman um a um não está dando nada?}
+\blue{friedman um contra um não está dando nada?}
 
 \blue{friedman talvez funcione melhor por nicho (metaclusters)}
 
@@ -108,10 +96,20 @@ tolerable waiting time}
 
 \tar{ fazer tabelão friedman (40? pares strat/classif: 40x40)}
 
-\section{Determinação da semelhança entre classificadores}
-tabela de passivas: learners nas colunas, datasets nas linhas
-fried de passivas
-tabela de distâncias no espaço R7 para descobrir quais são similares entre si
+
+\ano{AG,LU vs DWTU}
+
+x Qual a economia proporcionada por uma estratégia?
+
+x Quão bem uma estratégia usufrui de um dado orçamento?
+
+\tar{há alguma correlação entre desempenho de AL e desbalanceamento da base?}
+
+\tar{usar nintera na(s) base(s) à parte?
+ ou usar em todas, mas sem strats lentas?}
+
+\tar{plotar}
+
 
 \section{Afinidades estratégia-domínio-classificador-orçamento}
 
