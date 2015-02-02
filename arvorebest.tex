@@ -1,0 +1,51 @@
+\begin{center}
+\begin{figure}\label{tree}
+\caption{Árvore de decisão gerada pelo algoritmo C4.5 com um mínimo de $12$ exemplos
+por nó (de um total de $188$ pares base-orçamento).
+O grau de pureza de cada folha é dado entre parênteses.
+Estratégias propostas estão em negrito.
+Rnd, Mar e EERacu não tiveram vitórias suficientes para aparecer na árvore.
+\ano{reposicionar valores para maior proximidade das arestas}}
+% \usetikzlibrary{trees}
+% \tikzset{
+%     every node/.style={        font=\scriptsize    },
+%     decision/.style={        shape=rectangle,        minimum height=1cm,
+%         text width=1.7cm,        text centered,        rounded corners=1ex,        draw,    },
+%     outcome/.style={        shape=ellipse,        fill=gray!15,        draw,
+%         text width=1.15cm,        text centered    },
+%     decision tree/.style={        sibling distance=3cm,        level distance=2cm    }
+% }
+\begin{tikzpicture} [text width=2.7cm, align=flush center,grow cyclic,
+level 1/.style={level distance=2.5cm,sibling angle=180},
+level 2/.style={text width=2cm, font=\footnotesize, level distance=3cm,sibling angle=45}]
+\node[line width=0.3ex, decision] {classes}
+    child {node [decision, label=$\leq5$] {aprendiz}
+      child {node [decision, label=SVM] {$\# atributos$}
+        child {node [outcome, label=$\leq7$] {DWeuc ($25\%$)}}
+        child {node [outcome, label=$>7$] {\textbf{ATUmah} ($33\%$)}}
+      }
+      child {node [decision, label=5NN] {orçamento}
+        child {node [outcome, label=baixo] {EERent ($40\%$)}}
+        child {node [outcome, label=alto] {Mar ($33\%$)}}
+      }
+      child {node [decision, label=C4.5] {$\frac{|\mathcal{U}|}{\# atributos}$}
+        child {node [outcome, label=$\leq50$] {\textbf{ATUeuc} ($22\%$)}}
+        child {node [decision, label=$>50$] {orçamento}
+          child {node [outcome, label=baixo] {EERent ($33\%$)}}
+          child {node [outcome, label=alto] {\textbf{SGmulti} ($25\%$)}}
+        }
+      }
+      child {node [outcome, label=VFDT] {\textbf{ATUeuc} ($32\%$)}}
+      child {node [decision, label=NB] {$\# atributos$}
+        child {node [outcome, label=$\leq11$] {TUeuc ($25\%$)}}
+        child {node [outcome, label=$>11$] {Clu ($36\%$)}}
+      }
+      child {node [outcome, label=CIELM] {\textbf{TUeuc} ($50\%$)}}
+    }
+    child {node [decision, label=$>5$] {$\frac{\%maj}{\%min}$}
+      child {node [outcome, label=$\leq2$] {\textbf{ATUmah} ($33\%$)}}
+      child {node [outcome, label=$>2$] {\textbf{ATUeuc} ($43\%$)}}
+    };
+\end{tikzpicture}
+\end{figure}
+\end{center}

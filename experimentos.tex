@@ -17,7 +17,7 @@ entre suas acurácias.
 Ela é apresentada na Tabela \ref{passiveDists} de forma análoga à adotada por
 \cite{brazdil1994analysis}.
 \input passiveDists
-% faz tabela de distâncias pareadas com taxas de erro sendo
+% Brazdil faz tabela de distâncias pareadas com taxas de erro sendo
 % as dimensões, depois faz decomposição ortogonal para visualizar em duas dimensões.
 % Depois ele faz agrupamento hierárquico.
 
@@ -30,6 +30,7 @@ de valores de acurácia balanceada (Seção \ref{metricas}) de acordo com a mesma f
 (Equação \ref{eq:sim}) adotada no cálculo de densidade da Seção \ref{dw}.
 As acurácias para cada base são apresentadas nas tabelas \ref{tab:balaccClassif0},
 \ref{tab:balaccClassif1} e \ref{tab:balaccClassif2} do Apêndice \ref{detalhes}.
+% BalAcc escolhida, e não Kappa, porque brazdil usou taxas de erro.
 
 Conforme esperado,
 a maior similaridade ($0,77$) ocorre entre IELM e CIELM.
@@ -78,7 +79,7 @@ bases e $7$ classificadores e são apresentadas na Tabela \ref{stratDists}.
 
 As estratégias que embutem algum tipo de aleatoriedade
 (Rnd, Clu, EERent, EERacu e SGmulti)
-têm um grau de similaridade acima da média (valor de $0,66$ para as duas agnósticas e
+têm um grau de similaridade acima da média (valor de $0,67$ para as duas agnósticas e
 entre $0,44$ e $0,58$ para as restantes).
 Uma similaridade maior pode ser notada entre as variantes das estratégias
 baseadas em densidade.
@@ -92,6 +93,7 @@ as propostas baseadas na utilidade de cada classe.
 As estratégias remanescentes baseadas na distância de Manhattan
 (TUman e ATUman) também foram excluídas
 por serem excessivamente similares às estratégias baseadas na distância euclidiana.
+Rnd e Clu foram mantidas por serem abordagens importantes na literatura.
 
 Dentre as estratégias baseadas em simples medida de informatividade
 (Unc, Ent e Mar), apenas Mar foi mantida devido à similaridade entre
@@ -161,11 +163,3 @@ ajuda a saber que estratégias são boas p/ bases desbalanceadas.
 Dois tipos de \#topos-de-rank:
 com empate = \#vezes em que ficou entre os vencedores
 sem empate = \#vezes em que foi o vencedor}
-
-\subsubsection{Aprendizado meta-ativo}
-\ano{ainda é preciso ver se ranking supera ranking medio (default)}
-
-\ano{possibilidades: um experimento para cada learner separadamente;
-sortear budget no exp acima;
-sortear learners num experimento só;}
-

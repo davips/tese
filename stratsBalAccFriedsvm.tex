@@ -1,0 +1,30 @@
+\begin{table}[h]
+\caption{Um contra um: cada asterisco/cruz/ponto indica quando o algoritmo na linha tem melhor acurácia balanceada que o algoritmo na coluna com intervalo de confiança de 0.99/0.95/0.90.}
+\begin{center}
+\begin{tabular}{lcc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc}
+ 			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21 & 22\\
+1 - Pass 	& - & * & * & * & * & * & * & * & * & * & * & * &   & * & * &   & * & * &   & * & * &   \\
+2 - Rnd  	&   & - &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   \\ \hline
+3 - Clu  	&   &   & - &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   \\
+4 - Unc  	&   &   &   & - &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   & . &   \\ \hline
+5 - Ent  	&   &   &   &   & - &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   \\
+6 - Mar  	&   &   &   &   &   & - &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   \\ \hline
+7 - EERent	&   &   & . &   &   &   & - &   &   &   &   &   &   &   & . &   &   &   &   &   & + &   \\
+8 - EERacu	&   &   &   &   &   &   &   & - &   &   &   &   &   &   &   &   &   &   &   &   & + &   \\ \hline
+9 - SGmulti	&   &   &   &   &   &   &   &   & - &   &   &   &   &   &   &   &   &   &   &   &   &   \\
+10 - DWeuc	&   &   &   &   &   &   &   &   &   & - &   &   &   &   &   &   &   &   &   &   &   &   \\ \hline
+11 - TUeuc	&   &   &   &   &   &   &   &   &   &   & - &   &   &   &   &   &   &   &   &   &   &   \\
+12 - TUman	&   &   &   &   &   &   &   &   &   &   &   & - &   &   &   &   &   &   &   &   &   &   \\ \hline
+13 - TUmah	&   & * & * & * & * & * & * & * & * & * & * & * & - & * & * &   & * & * &   & * & * &   \\
+14 - ATUeuc	&   &   &   &   &   &   &   &   &   &   &   &   &   & - &   &   &   &   &   &   &   &   \\ \hline
+15 - ATUman	&   &   &   &   &   &   &   &   &   &   &   &   &   &   & - &   &   &   &   &   &   &   \\
+16 - ATUmah	&   & * & * & * & * & * & * & * & * & * & * & * &   & * & * & - & * & * &   & * & * &   \\ \hline
+17 - LUeuc	&   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   & - &   &   &   &   &   \\
+18 - LUman	&   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   & - &   &   &   &   \\ \hline
+19 - LUmah	&   & * & * & * & * & * & * & * & * & * & * & * &   & * & * &   & * & * & - & * & * &   \\
+20 - ALUeuc	&   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   & - &   &   \\ \hline
+21 - ALUman	&   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   & - &   \\
+22 - ALUmah	&   & * & * & * & * & * & * & * & * & * & * & * &   & * & * &   & * & * &   & * & * & - \\ \hline\end{tabular}
+\label{stratsBalAccFried}
+\end{center}
+\end{table}

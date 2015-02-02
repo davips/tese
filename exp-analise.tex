@@ -1,52 +1,33 @@
 \section{Análise Comparativa}\label{analise}
-Nesta seção, as estratégias selecionadas na Seção \ref{prep} são comparadas
-com o objetivo de identificar nichos em que umas possam se sobressair em relação às outras.
+Nesta seção, as estratégias selecionadas na Seção \ref{prep} são comparadas.
 Conjuntamente,
 é feita a demontração de que a estratégia agnóstica proposta baseada em densidade é viável.
-\ano{explicar pela arvore quais os nichos de cada estratégia}
 
-orçamento baixo : $|Y|<\cent\leq min(\frac{|\mathcal{U}|}{2},100)$
 
-orçamento alto: $min(\frac{|\mathcal{U}|}{2},100)<\cent\leq min(|\mathcal{U}|,200)$
+\input stratsALCKappaFriedSVM
 
-Na árvore exibida na Figura \ref{tree},
-é possível observar o papel central do algoritmo de aprendizado sobre
-a estratégia de aprendizado ativo.
-Apesar de ilustrativa, a árvore pode não ser segura do ponto de vista de tomada de
-decisão devido ao baixo grau de pureza das folhas.
+\input stratsALCKappaFried5NN
 
-\input arvore
+\input stratsALCKappaFriedC4.5
 
-Entretanto, algumas ramificações aceitam explicações plausíveis:
-\begin{itemize}
- \item É fato que o algoritmo NB produz estimativas de distribuição de probabilidade
-excessivamente confiantes que podem ser amenizadas por
-\textit{bagging} \citep{conf/icml/RoyM01}.
-Estratégias que dependem dessas estimativas podem ser prejudicadas.
-Por outro lado,
-por ter um modelo para cada classe, SGmulti pode estar funcionando como \textit{bagging}
-e com isso tendo um maior desempenho para esse classificador.
-A maior afinidade de SGmulti com atributos nominais também é um indício de uma
-maior proximidade com NB.
-\ano{para avaliar a suavidade de cada learner,
-posso calcular a entropia média da saída de cada classif para cada
-base em todos os exemplos
-e fazer uma tabela com a ultima linha sendo a media de todas as bases}
-\esb{When Does Active Learning Work?
-confirma que atributos não-discretizados favorecem AL,
-isso justifica z-score para qq classificador ? (ao menos RF, SVM, log reg. e QDA usados no artigo).
-usa apenas QBC, entropia e random.
-}
+\input stratsALCKappaFriedCIELM
 
-\item Rnd tem melhor desempenho em bases mais desbalanceadas
-(entropia igual ou abaixo de $0,95$).
-\item Apenas uma folha corresponde à amostragem aleatória.
-Isso sugere a viabilidade do aprendizado ativo em geral.
-\end{itemize}
+\input stratsALCKappaFriedVFDT
 
-% \input stratsALCKappaFriedSVM
-% %
-% \input stratsBalAccFriedSVM
+\input stratsALCKappaFriedNB
+
+% \afterpage{\clearpage\begin{landscape}
+% \input stratsALCKappabest
+% \end{landscape}\clearpage}
+
+\afterpage{\clearpage\begin{landscape}
+\input stratsALCKappaFriedbest
+\end{landscape}\clearpage}
+
+\afterpage{\clearpage\begin{landscape}
+\input stratsALCKappaFriedbestRedux
+\end{landscape}\clearpage}
+
 
 \ano{seria ideal fazer uma segunda árvore em que apenas o melhor classificador
 é usado em cada base}
@@ -116,7 +97,7 @@ x Quão bem uma estratégia usufrui de um dado orçamento?
 \tar{plotar}
 
 
-\section{Afinidades estratégia-domínio-classificador-orçamento}
+% \section{Afinidades estratégia-domínio-classificador-orçamento}
 
 \section{Risco}
 variabilidade
