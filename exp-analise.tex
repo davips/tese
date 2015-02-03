@@ -1,20 +1,50 @@
 \section{Análise Comparativa}\label{analise}
 Nesta seção, as estratégias selecionadas na Seção \ref{prep} são comparadas.
 Conjuntamente,
-é feita a demontração de que a estratégia agnóstica proposta baseada em densidade é viável.
+é feita a demontração de que as estratégias propostas SGmulti,
+agnóstica baseada em densidade e agnóstica baseada
+na utilidade de cada rótulo são viáveis.
 
+As tabelas \ref{stratsALCKappaFriedSVMRedux}, \ref{stratsALCKappaFried5NNRedux},
+\ref{stratsALCKappaFriedC4.5Redux}, \ref{stratsALCKappaFriedCIELMRedux},
+\ref{stratsALCKappaFriedVFDTRedux} e \ref{stratsALCKappaFriedNBRedux}
+contém o resultado da comparação de todas as estratégias entre si para
+os algoritmos SVM, 5NN, C4.5, CIELM, VFDT e NB respectivamente.
 
-\input stratsALCKappaFriedSVM
+\input stratsALCKappaFriedSVMRedux
 
-\input stratsALCKappaFried5NN
+\input stratsALCKappaFried5NNRedux
 
-\input stratsALCKappaFriedC4.5
+\input stratsALCKappaFriedC4.5Redux
 
-\input stratsALCKappaFriedCIELM
+\input stratsALCKappaFriedCIELMRedux
 
-\input stratsALCKappaFriedVFDT
+\input stratsALCKappaFriedVFDTRedux
 
-\input stratsALCKappaFriedNB
+\input stratsALCKappaFriedNBRedux
+
+Quando comparadas entre si,
+é possível observar nas tabelas uma mudança significativa na distribuição das marcas de
+superioridade estatística.
+\ano{interpretar detalhes das tabelas?}
+Isso sugere a existência de alguma afinidade entre estratégia e aprendiz.
+Entretanto, alguns algoritmos de aprendizado são inadequados para determinadas
+bases \ano{ref?} e podem tornar a comparação imprecisa,
+pois a diferença entre estratégias se torna irrelevante
+quando nenhuma delas é capaz de atingir um desempenho satisfatório.
+Essa constatação conduz a uma reformulação do experimento visando dois cenários:
+\begin{itemize}
+ \item o algoritmo mais adequado é conhecido - por conhecimento especializado sobre o domínio
+ e particularidades de cada classificador ou pela análise de problemas similares já resolvidos;
+ \item o algoritmo mais adequado não é conhecido - o problema é novo e nada pode ser inferido
+ de seus dados.
+\end{itemize}
+Para simular o primeiro caso optou-se pela seleção do algoritmo com
+a melhor acurácia passiva para cada base.
+No segundo caso, o algoritmo com a acurácia passiva mediana foi considerado
+suficientemente representativo dos demais.
+% nas bases como um todo, o efeito esperado é aproximar-se do aleatório, mas
+% sem seu incoveniente de escolher o pior algoritmo para algumas bases
 
 % \afterpage{\clearpage\begin{landscape}
 % \input stratsALCKappabest
@@ -43,7 +73,7 @@ ref para plot:
 Active learning literature survey 2009
 http://research.cs.wisc.edu/techreports/2009/TR1648.pdf
 ...
-Active learning algorithms are generally evaluated by constructing learning curves,
+Active learning algoritmos are generally evaluated by constructing learning curves,
 which plot the evaluation measure of interest (e.g., accuracy) as a function of the
 number of new instance queries that are labeled and added to L.
 Figure 3 presents learning curves for the first 100 instances labeled using
@@ -101,11 +131,14 @@ x Quão bem uma estratégia usufrui de um dado orçamento?
 
 \section{Risco}
 variabilidade
+\ano{para o risco não é necessário separar por classificador; basta um fried}
 
 \section{Tempo de espera tolerável}
+\ano{para o tempo não é necessário separar por classificador; basta um fried}
 
 \tar{
-fazer árvore de decisão que mostre que metacaracteristicas influenciam e como no tempo de treinamento?
+fazer árvore de decisão que mostre que metacaracteristicas influenciam
+e como no tempo de treinamento?
 }
 
 Não é possível auferir tempo durante experimentos de desempenho porque eles são

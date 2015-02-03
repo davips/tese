@@ -1,19 +1,29 @@
 \begin{table}[h]
 \caption{Um contra um: cada asterisco/cruz/ponto indica quando o algoritmo na linha tem melhor ALCKappa para CIELM que o algoritmo na coluna com intervalo de confiança de 0.99/0.95/0.90.}
 \begin{center}
-\begin{tabular}{lcc|cc|cc|cc|cc|c}
- 			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11\\
-1 - Rnd  	& - &   &   &   &   &   &   &   &   &   &   \\
-2 - Clu  	&   & - &   &   &   &   &   &   &   &   &   \\ \hline
-3 - Mar  	& * & * & - & * &   & * & * &   &   &   &   \\
-4 - EERent	&   &   &   & - &   &   &   &   &   &   &   \\ \hline
-5 - EERacu	& * & * &   & . & - & * & * &   &   &   &   \\
-6 - SGmulti	&   &   &   &   &   & - &   &   &   &   &   \\ \hline
-7 - DWeuc	&   &   &   &   &   &   & - &   &   &   &   \\
-8 - TUeuc	& * & * &   & * & * & * & * & - &   & * & * \\ \hline
-9 - TUmah	& * & * &   & * & * & * & * &   & - & * & * \\
-10 - ATUeuc	& * & * &   & + &   & * & * &   &   & - &   \\ \hline
-11 - ATUmah	& * & * &   & + &   & * & * &   &   &   & - \\\end{tabular}
+\begin{tabular}{lcc|cc|cc|cc|cc|cc|cc|cc|cc|cc|c}
+ 			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21\\
+1 - Rnd  	& - &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   \\
+2 - Clu  	&   & - &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   \\ \hline
+3 - Unc  	& . &   & - &   &   &   &   & + &   &   &   &   &   &   &   &   &   &   &   &   &   \\
+4 - Ent  	&   &   &   & - &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   \\ \hline
+5 - Mar  	& * & * & . & * & - & * &   & * & * &   &   &   &   &   &   &   &   &   &   &   &   \\
+6 - EERent	&   &   &   &   &   & - &   &   &   &   &   &   &   &   &   &   &   &   &   &   &   \\ \hline
+7 - EERacu	& + & . &   &   &   &   & - & * & . &   &   &   &   &   &   &   &   &   &   &   &   \\
+8 - SGmulti	&   &   &   &   &   &   &   & - &   &   &   &   &   &   &   &   &   &   &   &   &   \\ \hline
+9 - DWeuc	&   &   &   &   &   &   &   &   & - &   &   &   &   &   &   &   &   &   &   &   &   \\
+10 - TUeuc	& * & * & * & * &   & * & * & * & * & - &   &   & * & * & * &   &   &   & * & * & * \\ \hline
+11 - TUman	& * & * & * & * &   & * & * & * & * &   & - &   & * & * & * &   &   &   & * & * & * \\
+12 - TUmah	& * & * & * & * &   & * & * & * & * &   &   & - & * & * & * &   &   &   & * & * & * \\ \hline
+13 - ATUeuc	& * & * &   &   &   &   &   & * & * &   &   &   & - &   &   &   &   &   &   &   &   \\
+14 - ATUman	& * & * &   & . &   & + &   & * & * &   &   &   &   & - &   &   &   &   &   &   &   \\ \hline
+15 - ATUmah	& * & * &   &   &   &   &   & * & * &   &   &   &   &   & - &   &   &   &   &   &   \\
+16 - LUeuc	& * & * & * & * &   & * & * & * & * &   &   &   & * & * & * & - &   &   & * & * & * \\ \hline
+17 - LUman	& * & * & * & * &   & * & * & * & * &   &   &   & * & * & * &   & - &   & * & * & * \\
+18 - LUmah	& * & * & * & * &   & * & * & * & * &   &   &   & * & + & * &   &   & - & * & * & * \\ \hline
+19 - ALUeuc	& + &   &   &   &   &   &   & * &   &   &   &   &   &   &   &   &   &   & - &   &   \\
+20 - ALUman	& * & * &   &   &   & . &   & * & * &   &   &   &   &   &   &   &   &   &   & - &   \\ \hline
+21 - ALUmah	& * & + &   &   &   &   &   & * & + &   &   &   &   &   &   &   &   &   &   &   & - \\\end{tabular}
 \label{stratsALCKappaFriedCIELM}
 \end{center}
 \end{table}

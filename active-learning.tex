@@ -659,14 +659,14 @@ Gravei SVGs no PC de casa.}
 
 \subsection{Outras estratégias}
 Os códigos originais dos autores das seguintes estratégias \textit{margem simples},
-\textit{self-conf}, \textit{KFF} \ano{estou dando mais uma chance pro kff;
-explicar que o rodízio é ponderado pela freq dos rótulos;
-não é claro se a ponderação faz diferença} e \textit{balancedEE}
+\textit{self-conf}, \textit{KFF} e \textit{balancedEE}
 \citep{journals/jmlr/TongK01,journals/jmlr/BaramEL04,conf/icdm/OsugiKS05}
 foram adaptados para contemplar problemas multiclasse por meio da aplicação de
 \ing{rodízio}{round-robin} entre sub-estratégias.
-A cada sub-estratégia foi atribuída uma classe principal, na configuração \textit{um para muitos}.
-Porém tal configuração resultou em estratégias excessivamente piores que a amostragem aleatória.
+A cada sub-estratégia foi atribuída uma classe principal,
+na configuração \textit{um para muitos}.
+Porém tal configuração resultou em estratégias excessivamente
+piores que a amostragem aleatória.
 Isso poderia ser um indício de problemas na implementação original ou na adaptação,
 ou mesmo da ineficácia do rodízio.
 Por esses motivos elas foram excluídas deste trabalho.
@@ -674,8 +674,6 @@ Por esses motivos elas foram excluídas deste trabalho.
 \ano{Não implementei Variance reduction pois exige um sistema muito complexo
 e com otimizações e ainda assim é ordens de magnitude mais lento que  Unc. Sampl.}
 % os experimentos.
-
-\tar{estrat. baseadas em SVM - explicar uma por seção}
 
 \tar{outras - mencionar as que ficaram de fora (Beygelzimmer)}
 

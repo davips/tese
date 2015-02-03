@@ -80,19 +80,23 @@ bases e $7$ classificadores e são apresentadas na Tabela \ref{stratDists}.
 As estratégias que embutem algum tipo de aleatoriedade
 (Rnd, Clu, EERent, EERacu e SGmulti)
 têm um grau de similaridade acima da média (valor de $0,67$ para as duas agnósticas e
-entre $0,44$ e $0,58$ para as restantes).
+entre $0,44$ e $0,58$ para as restantes), mas foram mantidas pela diversidade de
+princípios de funcionamento.
 Uma similaridade maior pode ser notada entre as variantes das estratégias
 baseadas em densidade.
-As seis propostas baseadas na \textit{utilidade de cada classe} (prefixos LU e ALU)
+As três propostas gnósticas baseadas na \textit{utilidade de cada classe} (prefixo LU)
 apresentam uma similaridade aproximada de $0,7$ em relação aos seus
-algoritmos originais correspondentes (prefixos TU e ATU).
-Por esse motivo e pela equivalência nas medidas de acurácia
-listadas nas tabelas \ref{} \ano{criar tabelas com dados de todas as 21 estrats no apêndice},
+algoritmos originais correspondentes (prefixos TU).
+Por esse motivo e pela correspondência direta entre as medidas de acurácia
+listadas nas tabelas do Apêndice \ref{detalhes},
 optou-se por excluir dos experimentos
-as propostas baseadas na utilidade de cada classe.
-As estratégias remanescentes baseadas na distância de Manhattan
-(TUman e ATUman) também foram excluídas
-por serem excessivamente similares às estratégias baseadas na distância euclidiana.
+as propostas gnósticas baseadas na utilidade de cada classe.
+As estratégias remanescentes baseadas na distância euclidiana
+(TUeuc, ATUeuc e ALUeuc) também foram excluídas
+por serem excessivamente similares às demais.
+Adicionalmente, a distância de Manhattan em conjunto com a de Mahalanobis provêem
+mais diversidade ao experimento pela adequação a atributos nominais da primeira
+e pela independência de escala da segunda.
 Rnd e Clu foram mantidas por serem abordagens importantes na literatura.
 
 Dentre as estratégias baseadas em simples medida de informatividade
