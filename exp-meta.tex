@@ -1,4 +1,14 @@
 \chapter{Aprendizado Meta-ativo}\label{aml}
+\esb{O mais próximo de meta que encontrei na literatura foi a combinação MAB de estratégias:
+http://arxiv.org/pdf/1309.6830.pdf}
+
+\tar{parece claro pelos exps anteriores que algumas estratégias simplesmente não aceitam
+certos aprendizes (ainda falta explicitar isso lá, apontando caso a caso e justificando
+teoricamente, para evitar que seja dito que ocorreu overfitting quando essa info
+for usada no metaap),
+então isso facilitaria um metaap que indique pares strat/aprendiz,pois
+reduziria a quantidade de combinações possíveis}
+
 \ano{ainda é preciso ver se ranking supera ranking medio (default)}
 
 \ano{possibilidades: um experimento para cada learner separadamente;
@@ -7,6 +17,7 @@ sortear learners num experimento só;}
 
 
 \section{Análise de nichos}\label{nichos}
+
 Nesta seção, as estratégias são comparadas
 com o objetivo de identificar nichos em que umas possam se sobressair em relação às outras.
 \ano{explicar pela arvore quais os nichos de cada estratégia}

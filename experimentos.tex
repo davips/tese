@@ -34,44 +34,45 @@ As acurácias para cada base são apresentadas nas tabelas \ref{tab:balaccClassif0
 
 Conforme esperado,
 a maior similaridade ($0,77$) ocorre entre IELM e CIELM.
-Outros valores relevantes são as proximidades entre VFDT e NB ($0,56$)
+Os próximos valores mais relevantes estão entre VFDT e NB ($0,56$)
 e entre 5NN e C4.5 ($0,52$).
+\ano{presente ou passado?}
 O algoritmo mais distinto é a SVM, pois apresenta os menores valores em relação a
 todos os demais (entre $0,28$ e $0,30$).
 % - com exceção do acerto majoritário que se afasta dos demais por ser muito inferior em quase todas as bases.
-Dessa forma, uma definição de quatro grupos pode ser útil durante a análise
+Dessa forma, uma definição de quatro grupos
+\ano{usar essses grupos no futuro} pode ser útil durante a análise
 da influência do classificador nas estratégias de aprendizado ativo:
 IELM-CIELM, VFDT-NB, 5NN-C4.5 e SVM.
 Pela proximidade excessiva entre IELM e CIELM, pela acurácia superior da CIELM
 e visando reduzir a quantidade necessária de análises,
 optou-se por manter, dentre as duas, apenas a CIELM nos experimentos.
 
-\ano{se terminar de rodar, é preciso adicionar passiveNintera na tab de dists/fried,
-nas 3 tabelas do apendice  (e atualizar texto)}
+\ano{se terminar de rodar, é preciso adicionar passiveNintera na tab de dists,
+fried e nas 3 tabelas do apendice  (e atualizar texto)}
 Na comparação um contra um (Tabela \ref{tab:friedClassif})
-SVM e 5NN se destacam com significância estatística,
-seguidos de NB e CIELM.
+C4.5 e 5NN se destacam com significância estatística,
+seguidos de NB e VFDT.
+Esse destaque é condizente com a semelhança contida nos três pares citados de algoritmos
+(Tabela \ref{passiveDists}).
 
 \input classifsFried
 
-Por outro lado, os três pares citados de algoritmos, apesar de similares,
-são estatisticamente diferentes:
-5NN vence C4.5, NB vence VFDT e CIELM vence IELM.
-Isso significa que, apesar de cada par ser composto de algoritmos próximos entre si,
-ainda assim trata-se de algoritmos com resposta às
-bases de dados adotadas significativamente distinta.
 
 
 \subsection{Descarte de estratégias redundantes}
-Dentre as estratégias implementadas e propostas,
-é esperada a ocorrência de respostas fortemente correlacionadas
+Dentre as estratégias implementadas da literatura e propostas,
+é esperada a ocorrência de respostas correlacionadas
 para o conjunto de bases de dados escolhido.
-Por motivos de espaço e facilitação das análises posteriores,
+Assim, por motivos de espaço e facilitação das análises posteriores,
 estratégias muito similares foram removidas.
-Com essa finalidade, as similaridades entre estratégias foram calculadas
+Com essa finalidade,
+analogamente à comparação na Seção \ref{algs},
+as similaridades entre estratégias foram calculadas
 por meio da distância $d(\bm{x},\bm{u}) \mid \bm{x},\bm{u} \in \mathbb{R}^{658}$
 entre acurácias balanceadas ao longo das $94$
-bases e $7$ classificadores e são apresentadas na Tabela \ref{stratDists}.
+bases e $6$ classificadores e são apresentadas na Tabela \ref{stratDists}.
+Os nomes de estratégias propostas estão em negrito.
 
 \afterpage{\clearpage\begin{landscape}
 \input stratDists
@@ -93,17 +94,22 @@ optou-se por excluir dos experimentos
 as propostas gnósticas baseadas na utilidade de cada classe.
 As estratégias remanescentes baseadas na distância euclidiana
 (TUeuc, ATUeuc e ALUeuc) também foram excluídas
-por serem excessivamente similares às demais.
-Adicionalmente, a distância de Manhattan em conjunto com a de Mahalanobis provêem
-mais diversidade ao experimento pela adequação a atributos nominais da primeira
-e pela independência de escala da segunda.
+por essa distância ser excessivamente similar à distância de Manhattan.
+A distância euclidiana foi preterida porque as distâncias de Manhattan e de Mahalanobis
+em conjunto provêem mais diversidade ao experimento pela adequação a atributos nominais
+da primeira e pela independência de escala da segunda.
 Rnd e Clu foram mantidas por serem abordagens importantes na literatura.
-
 Dentre as estratégias baseadas em simples medida de informatividade
 (Unc, Ent e Mar), apenas Mar foi mantida devido à similaridade entre
 as três, por ser mais adequada a problemas multiclasse que Unc e por
 seu desempenho ser superior ao da Ent.
+
 O grupo reduzido de estratégias é apresentado na Tabela \ref{stratDistsRedux}.
+É possível notar que a adoção da distância de Mahalanobis (últimas três
+colunas da tabela) confere o maior grau de diversidade dentre todas as estratégias.
+Apesar dessa propriedade,
+não é do conhecimento do autor a existência de trabalhos que empreguem essa
+medida de distância.
 
 \newpage
 \input stratDistsRedux

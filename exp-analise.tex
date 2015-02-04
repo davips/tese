@@ -1,40 +1,98 @@
 \section{Análise Comparativa}\label{analise}
 Nesta seção, as estratégias selecionadas na Seção \ref{prep} são comparadas.
 Conjuntamente,
-é feita a demontração de que as estratégias propostas SGmulti,
-agnóstica baseada em densidade e agnóstica baseada
-na utilidade de cada rótulo são viáveis.
+é feita a demonstração de que as estratégias propostas SGmulti,
+agnóstica baseada em densidade (prefixo ATU) e agnóstica baseada
+na utilidade de cada rótulo (prefixo ALU) são competitivas.
+A análise é dividida em duas partes:
+na Seção \ref{constante} ela é feita para cada aprendiz separadamente;
+na Seção \ref{melhor}, ela é feita com a adoção do melhor
+aprendiz para cada base;
+e, na Seção \ref{mediano}, ela é feita com a adoção do aprendiz
+com desempenho mediano para cada base.
 
-As tabelas \ref{stratsALCKappaFriedSVMRedux}, \ref{stratsALCKappaFried5NNRedux},
-\ref{stratsALCKappaFriedC4.5Redux}, \ref{stratsALCKappaFriedCIELMRedux},
-\ref{stratsALCKappaFriedVFDTRedux} e \ref{stratsALCKappaFriedNBRedux}
+\subsection{Aprendiz constante}\label{constante}
+Num cenário em que o algoritmo de aprendizado é fixado pela aplicação,
+independentemente do problema em questão,
+a estratégia escolhida deve ser aquela capaz de atingir o melhor desempenho
+mesmo que o aprendiz não seja o mais adequado aos dados.
+Dessa forma, faz-se necessária a análise com cada aprendiz isoladamente.
+As tabelas \ref{stratsALCKappaFriedCIELMRedux},
+\ref{stratsALCKappaFried5NNRedux},
+\ref{stratsALCKappaFriedC4.5Redux},
+\ref{stratsALCKappaFriedNBRedux}, 
+\ref{stratsALCKappaFriedVFDTRedux} e
+\ref{stratsALCKappaFriedSVMRedux}
 contém o resultado da comparação de todas as estratégias entre si para
-os algoritmos SVM, 5NN, C4.5, CIELM, VFDT e NB respectivamente.
+os algoritmos CIELM, 5NN, C4.5, NB, VFDT e SVM respectivamente.
 
-\input stratsALCKappaFriedSVMRedux
+\input stratsALCKappaFriedCIELMRedux
 
 \input stratsALCKappaFried5NNRedux
 
 \input stratsALCKappaFriedC4.5Redux
 
-\input stratsALCKappaFriedCIELMRedux
+\input stratsALCKappaFriedNBRedux
 
 \input stratsALCKappaFriedVFDTRedux
 
-\input stratsALCKappaFriedNBRedux
+\input stratsALCKappaFriedSVMRedux
 
 Quando comparadas entre si,
 é possível observar nas tabelas uma mudança significativa na distribuição das marcas de
 superioridade estatística.
 \ano{interpretar detalhes das tabelas?}
-Isso sugere a existência de alguma afinidade entre estratégia e aprendiz.
-Entretanto, alguns algoritmos de aprendizado são inadequados para determinadas
+Isso sugere a existência de alguma afinidade entre estratégia e aprendiz 
+\ano{esmiuçar detalhes?} e também a inexistência de uma estratégia
+que seja a melhor com todos os algoritmos de aprendizado.
+
+Algumas observações para cada aprendiz:
+\begin{itemize}
+ \item CIELM - TUman e TUmah vencem todas as demais exceto Mar;
+ \item 5NN - todas as estratégias baseadas em densidade, exceto DWeuc
+ (e TUmah em menor grau), vencem as demais, exceto EERent;
+ \item C4.5 - similar a C4.5, mas com algumas diferenças relevantes:
+ \begin{itemize}
+  \item DWeuc perde de todas;
+  \item SGmulti vence também Rnd e Mar;
+  \item ALUman vence sua contraparte e demais estratégias baseadas na
+  distância de Mahalanobis;
+ \end{itemize}
+  \item NB - SGmulti supera todas as estratégias,
+  exceto as baseadas na distância de Manhattan; as estratégias agnósticas baseadas na distância de Manhattan vencem todas,
+ exceto sua versão gnóstica e SGmulti;
+ \item VFDT - similar a NB, mas com algumas diferenças relevantes:
+ \begin{itemize}
+  \item é a única vez em que Rnd e Clu vencem mais do que uma das estratégias mais fracas
+  \item SGmulti deixa de vencer Rnd, Clu
+  \item SGmulti, ATUman e ALUman deixam de vencer as estratégias
+  baseadas na distância de Mahalanobis
+  \item ATUmah e ALUmah passam a vencer as demais,
+  exceto Rnd, Clu, SGmulti, ATUman e ALUman
+ \end{itemize}
+ \item SVM - EERent vence a maioria das estratégias mais fracas;
+ é a única vez em que EERacu vence (as estratégias baseadas na distância de Manhattan);
+  é a única vez em que estratégias (baseadas na distância de Mahalanobis)
+  vencem todas as demais.
+\end{itemize}
+
+\ano{sumarizar as melhores em geral, ou quando trocam de posição com alguma outra}
+
+\ano{explicitar comprovação da efetividade das propostas}
+
+
+
+
+
+
+\subsection{Aprendiz no melhor caso e caso mediano}
+Alguns algoritmos de aprendizado são inadequados para determinadas
 bases \ano{ref?} e podem tornar a comparação imprecisa,
 pois a diferença entre estratégias se torna irrelevante
 quando nenhuma delas é capaz de atingir um desempenho satisfatório.
-Essa constatação conduz a uma reformulação do experimento visando dois cenários:
+Essa constatação conduz a uma reformulação do experimento anterior visando dois cenários:
 \begin{itemize}
- \item o algoritmo mais adequado é conhecido - por conhecimento especializado sobre o domínio
+ \item o algoritmo mais adequado é conhecido - por experiência do usuário sobre o domínio
  e particularidades de cada classificador ou pela análise de problemas similares já resolvidos;
  \item o algoritmo mais adequado não é conhecido - o problema é novo e nada pode ser inferido
  de seus dados.
@@ -81,54 +139,6 @@ uncertainty sampling and random sampling.
 The reported results are for a logistic regression model averaged over ten folds
 using cross-validation.
 
-\ano{comparar o melhor par estrat/ELM com o melhor par estrat/SVM
-seria um bom indicativo de viabiidade da ELM com AL}
-
-\esb{
-agrupar por distância entre acurácias (vetor de ~700 dimensões) -
-inclui tabela 18x18, grupos de estratégias similares e árvore com hierarquia dos grupos
-}
-
-\ano{o experimento poderia continuar rodando para o grupo seleto de strats e learns
-até que a passiva fosse atingida, assim seria possivel avaliar as mais economicas quando
-perdas na acurácia é inaceitável. (a forma menos codificante de fazer isso
-é fixar um learner no código,
-manter apenas os datasets em que a passiva ainda nao foi atingida visualmente
-na tabela, rodar
-mais 10 queries e repetir o processo até acabarem os datasets)}
-
-\tar{falta um teste para esse cap. ficar ideal: rodar um classif. rápido de treino e um
-rápido de teste em todas as bases, registrar tempo médio de consulta de cada
-estratégia e gerar friedman (espera-se realçar vantagem dos agnósticos)}
-
-\ano{Efetividade geral}
-
-\blue{friedman um contra um não está dando nada?}
-
-\blue{friedman talvez funcione melhor por nicho (metaclusters)}
-
-\esb{citar: contra random; comparação 1-a-1; variabilidade (risco);
-tolerable waiting time}
-
-\tar{ fazer tabelão friedman (40? pares strat/classif: 40x40)}
-
-
-\ano{AG,LU vs DWTU}
-
-x Qual a economia proporcionada por uma estratégia?
-
-x Quão bem uma estratégia usufrui de um dado orçamento?
-
-\tar{há alguma correlação entre desempenho de AL e desbalanceamento da base?}
-
-\tar{usar nintera na(s) base(s) à parte?
- ou usar em todas, mas sem strats lentas?}
-
-\tar{plotar}
-
-
-% \section{Afinidades estratégia-domínio-classificador-orçamento}
-
 \section{Risco}
 variabilidade
 \ano{para o risco não é necessário separar por classificador; basta um fried}
@@ -170,3 +180,42 @@ mas para baixo há o limite onde todas as otimizações de hardware já
 foram atingidas e a ausência de outros processos é total.
 Assim, trata-se de uma grandeza mais comparável entre algoritmos. (ref?)
 }
+
+\section{rascunho}
+\ano{comparar o melhor par estrat/ELM com o melhor par estrat/SVM
+seria um bom indicativo de viabiidade da ELM com AL}
+
+\ano{o experimento poderia continuar rodando para o grupo seleto de strats e learns
+até que a passiva fosse atingida, assim seria possivel avaliar as mais economicas quando
+perdas na acurácia é inaceitável. (a forma menos codificante de fazer isso
+é fixar um learner no código,
+manter apenas os datasets em que a passiva ainda nao foi atingida visualmente
+na tabela, rodar
+mais 10 queries e repetir o processo até acabarem os datasets)}
+
+\tar{falta um teste para esse cap. ficar ideal: rodar um classif. rápido de treino e um
+rápido de teste em todas as bases, registrar tempo médio de consulta de cada
+estratégia e gerar friedman (espera-se realçar vantagem dos agnósticos)}
+
+\ano{Efetividade geral}
+
+\blue{friedman um contra um não está dando nada?}
+
+\blue{friedman talvez funcione melhor por nicho (metaclusters)}
+
+\esb{citar: contra random; comparação 1-a-1; variabilidade (risco);
+tolerable waiting time}
+
+\tar{ fazer tabelão friedman (40? pares strat/classif: 40x40)}
+
+
+\ano{AG,LU vs DWTU}
+
+x Qual a economia proporcionada por uma estratégia?
+
+x Quão bem uma estratégia usufrui de um dado orçamento?
+
+\tar{há alguma correlação entre desempenho de AL e desbalanceamento da base?}
+
+\tar{usar nintera na(s) base(s) à parte?
+ ou usar em todas, mas sem strats lentas?}
