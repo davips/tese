@@ -1,0 +1,25 @@
+\begin{figure}
+\caption{Curva de ranqueamento médio de todas as bases com mais de 200 exemplos.}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[xlabel=consultas, ylabel=colocação, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=300, y  dir=reverse]
+% \addplot+[dotted, green!50!black, thick, mark options={solid, scale=1},   mark=*, mark repeat=200, mark phase=80] table[x=budget, y=Rnd] {kappabestRank.plot};\addlegendentry{Rnd}
+% % \addplot+[violet, mark=pentagon, mark repeat=200, mark phase=90] table[x=budget, y=Clu] {kappabestRank.plot};\addlegendentry{Clu}
+% \addplot+[black,  mark=square,          mark options={solid, scale=1},   densely dashed, mark repeat=200, mark phase=100] table[x=budget, y=Mar] {kappabestRank.plot};\addlegendentry{Mar}
+% \addplot+[red,    mark=triangle*,       mark options={solid, scale=0.8}, dotted, thick, mark repeat=200, mark phase=110] table[x=budget, y=EERent] {kappabestRank.plot};\addlegendentry{EERent}
+% % \addplot+[gray,   mark=star,            mark options={solid, scale=1}, mark repeat=200, mark phase=120] table[x=budget, y=EERacu] {kappabestRank.plot};\addlegendentry{EERacu}
+% \addplot+[olive,  mark=star, mark options={solid, scale=1}, mark repeat=200, mark phase=130] table[x=budget, y=SGmulti] {kappabestRank.plot};\addlegendentry{\textbf{SGmulti}}
+% \addplot+[dark green,  mark=diamond,         mark options={solid, scale=1}, mark repeat=200, mark phase=140] table[x=budget, y=DWeuc] {kappabestRank.plot};\addlegendentry{DWeuc}
+\addplot+[blue,   mark=*,               mark options={solid, scale=1},   densely dashed, mark repeat=200, mark phase=150] table[x=budget, y=TUman] {kappabestRank.plot};\addlegendentry{TUman}
+\addplot+[black,   mark=*,               mark options={solid, scale=1},   densely dashed, mark repeat=200, mark phase=150] table[x=budget, y=LUman] {kappabestRank.plot};\addlegendentry{LUman}
+\addplot+[violet, mark=10-pointed star, mark options={solid, scale=1},   densely dotted, mark repeat=200, mark phase=160] table[x=budget, y=ATUman] {kappabestRank.plot};\addlegendentry{\textbf{ATUman}}
+\addplot+[black,    mark=triangle*,       mark options={solid, scale=1}, mark repeat=200, mark phase=170] table[x=budget, y=ALUman] {kappabestRank.plot};\addlegendentry{\textbf{ALUman}}
+\addplot+[black,    mark=triangle*, mark repeat=200, mark phase=180] table[x=budget, y=TUmah] {kappabestRank.plot};\addlegendentry{TUmah}
+\addplot+[orange,    mark=triangle*, mark repeat=200, mark phase=180] table[x=budget, y=TUmah] {kappabestRank.plot};\addlegendentry{LUmah}
+\addplot+[mark repeat=200, mark phase=190] table[x=budget, y=ATUmah] {kappabestRank.plot};\addlegendentry{\textbf{ATUmah}}
+\addplot+[violet, mark=pentagon, mark repeat=200, mark phase=20] table[x=budget, y=ALUmah] {kappabestRank.plot};\addlegendentry{\textbf{ALUmah}}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{figure}

@@ -1,0 +1,49 @@
+% \begin{figure}
+% \caption{Curva de aprendizado média de todas as bases com mais de 200 exemplos (melhor aprendiz).}
+% \begin{center}
+% \begin{tikzpicture}[scale=1]
+% \begin{axis}[xlabel=consultas, ylabel=acurácia balanceada, legend style={at={(0.9,0.1)}, anchor=south east}, grid = both,
+% scale only axis, width=300]
+% \addplot+[green!20!black, thick,   mark=*, mark repeat=200, mark phase=10] table[x=budget, y=Rnd] {kappabest.plot};\addlegendentry{Rnd}
+% % \addplot+[violet, mark=pentagon, mark repeat=200, mark phase=20] table[x=budget, y=Clu] {kappabest.plot};\addlegendentry{Clu}
+% \addplot+[black,  mark=square,          mark options={solid, scale=1},   densely dashed, mark repeat=200, mark phase=30] table[x=budget, y=Mar] {kappabest.plot};\addlegendentry{Mar}
+% \addplot+[red,    mark=triangle*,       mark options={solid, scale=0.8}, dotted, thick, mark repeat=200, mark phase=40] table[x=budget, y=EERent] {kappabest.plot};\addlegendentry{EERent}
+% % \addplot+[gray,   mark=star,            mark options={solid, scale=1}, mark repeat=200, mark phase=40] table[x=budget, y=EERacu] {kappabest.plot};\addlegendentry{EERacu}
+% \addplot+[olive,  mark=10-pointed star, mark options={solid, scale=1}, mark repeat=200, mark phase=50] table[x=budget, y=SGmulti] {kappabest.plot};\addlegendentry{\textbf{SGmulti}}
+% \addplot+[dark green,  mark=diamond,         mark options={solid, scale=1}, mark repeat=200, mark phase=60] table[x=budget, y=DWeuc] {kappabest.plot};\addlegendentry{DWeuc}
+% % \addplot+[blue,   mark=*,               mark options={solid, scale=1},   densely dashed, mark repeat=200, mark phase=70] table[x=budget, y=TUman] {kappabest.plot};\addlegendentry{TUman}
+% % \addplot+[violet, mark=10-pointed star, mark options={solid, scale=1},   densely dotted, mark repeat=200, mark phase=80] table[x=budget, y=ATUman] {kappabest.plot};\addlegendentry{\textbf{ATUman}}
+% % \addplot+[black,    mark=triangle*,       mark options={solid, scale=1}, mark repeat=200, mark phase=90] table[x=budget, y=ALUman] {kappabegst.plot};\addlegendentry{\textbf{ALUman}}
+% \addplot+[mark repeat=200, mark phase=100] table[x=budget, y=TUmah] {kappabest.plot};\addlegendentry{TUmah}
+% % \addplot+[mark repeat=200, mark phase=110] table[x=budget, y=ATUmah] {kappabest.plot};\addlegendentry{\textbf{ATUmah}}
+% \addplot+[mark repeat=200, mark phase=120] table[x=budget, y=ALUmah] {kappabest.plot};\addlegendentry{\textbf{ALUmah}}
+% \end{axis}
+% \end{tikzpicture}
+% \end{center}
+% \end{figure}
+
+\begin{figure}
+\caption{Curva de aprendizado média de todas as bases com mais de 200 exemplos.}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[xlabel=consultas, ylabel=Kappa, legend style={at={(0.9,0.1)}, anchor=south east}, grid = both,
+scale only axis, width=300]
+% \addplot+[dotted, green!50!black, thick, mark options={solid, scale=1},   mark=*, mark repeat=200, mark phase=80] table[x=budget, y=Rnd] {kappabest.plot};\addlegendentry{Rnd}
+% % \addplot+[violet, mark=pentagon, mark repeat=200, mark phase=90] table[x=budget, y=Clu] {kappabest.plot};\addlegendentry{Clu}
+% \addplot+[black,  mark=square,          mark options={solid, scale=1},   densely dashed, mark repeat=200, mark phase=100] table[x=budget, y=Mar] {kappabest.plot};\addlegendentry{Mar}
+% \addplot+[red,    mark=triangle*,       mark options={solid, scale=0.8}, dotted, thick, mark repeat=200, mark phase=110] table[x=budget, y=EERent] {kappabest.plot};\addlegendentry{EERent}
+% % \addplot+[gray,   mark=star,            mark options={solid, scale=1}, mark repeat=200, mark phase=120] table[x=budget, y=EERacu] {kappabest.plot};\addlegendentry{EERacu}
+% \addplot+[olive,  mark=star, mark options={solid, scale=1}, mark repeat=200, mark phase=130] table[x=budget, y=SGmulti] {kappabest.plot};\addlegendentry{\textbf{SGmulti}}
+% \addplot+[dark green,  mark=diamond,         mark options={solid, scale=1}, mark repeat=200, mark phase=140] table[x=budget, y=DWeuc] {kappabest.plot};\addlegendentry{DWeuc}
+\addplot+[blue,   mark=*,               mark options={solid, scale=1},   densely dashed, mark repeat=200, mark phase=150] table[x=budget, y=TUman] {kappabest.plot};\addlegendentry{TUman}
+\addplot+[black,   mark=*,               mark options={solid, scale=1},   densely dashed, mark repeat=200, mark phase=150] table[x=budget, y=LUman] {kappabest.plot};\addlegendentry{LUman}
+\addplot+[violet, mark=10-pointed star, mark options={solid, scale=1},   densely dotted, mark repeat=200, mark phase=160] table[x=budget, y=ATUman] {kappabest.plot};\addlegendentry{\textbf{ATUman}}
+\addplot+[black,    mark=triangle,       mark options={solid, scale=1}, dashdotdotted, mark repeat=200, mark phase=170] table[x=budget, y=ALUman] {kappabest.plot};\addlegendentry{\textbf{ALUman}}
+\addplot+[gray,    mark=star, mark options={solid, scale=1}, dashdotted, mark repeat=200, mark phase=180] table[x=budget, y=TUmah] {kappabest.plot};\addlegendentry{TUmah}
+\addplot+[orange,    mark=triangle*, mark repeat=200, mark phase=180] table[x=budget, y=TUmah] {kappabest.plot};\addlegendentry{LUmah}
+\addplot+[mark repeat=200, mark phase=190] table[x=budget, y=ATUmah] {kappabest.plot};\addlegendentry{\textbf{ATUmah}}
+\addplot+[violet, mark=pentagon, mark repeat=200, mark phase=20] table[x=budget, y=ALUmah] {kappabest.plot};\addlegendentry{\textbf{ALUmah}}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{figure}

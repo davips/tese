@@ -46,7 +46,8 @@ Isso sugere a existência de alguma afinidade entre estratégia e aprendiz
 \ano{esmiuçar detalhes?} e também a inexistência de uma estratégia
 que seja a melhor com todos os algoritmos de aprendizado.
 
-Algumas observações para cada aprendiz:
+Algumas observações para cada aprendiz \ano{essas observações servem para
+que possamos ter insights sobre o experimento, depois é preciso deixar mais sucinto.}:
 \begin{itemize}
  \item CIELM - TUman e TUmah vencem todas as demais exceto Mar;
  \item 5NN - todas as estratégias baseadas em densidade, exceto DWeuc
@@ -76,6 +77,44 @@ Algumas observações para cada aprendiz:
   vencem todas as demais.
 \end{itemize}
 
+É possível avaliar o comportamento das estratégias ao longo das consultas por meio
+de curvas de aprendizado.
+A acurácia balanceada média para todas as bases e aprendizes tem a forma de uma
+típica curva de aprendizado ativo.
+As curvas das diferentes estratégias são comparadas na Figura \ref{ALCs}.
+
+% \begin{figure}
+% \begin{center}
+% \begin{tikzpicture}[scale=1]
+% \begin{axis}[xlabel=consultas, ylabel=posição no ranqueamento,
+% legend style={at={(1.5,0.5)}, anchor=east}]
+% % \addplot[gmark=none] file[y=Rnd] {kappabestRank.plot};   % Here is the data file
+% % \addplot[color=green,mark=none] file {kappabestRank.plot};
+% % \addplot table[y = Rnd] from \datatable;
+% % \addplot[blue!80!black, mark=none] table [y=Rnd] {kappabestRank.plot};
+% \addplot table [y=Rnd, mark=star] {kappabestRank.plot};
+% \addplot table [y=Clu] {kappabestRank.plot};
+% \addplot table [y=Mar] {kappabestRank.plot};
+% \addplot table [y=EERacu] {kappabestRank.plot};
+% \addplot table [y=SGmulti] {kappabestRank.plot};
+% \addplot table [y=DWeuc] {kappabestRank.plot};
+% \addplot table [y=TUman] {kappabestRank.plot};
+% \addplot table [y=ATUman] {kappabestRank.plot};
+% \addplot table [y=ALUman] {kappabestRank.plot};
+% \addplot table [y=TUmah] {kappabestRank.plot};
+% \addplot table [y=ATUmah] {kappabestRank.plot};
+% \addplot table [y=ALUmah] {kappabestRank.plot};
+% \legend
+% {Rnd, Clu, Mar, EERent, EERacu, \textbf{SGmulti}, DWeuc, TUman, \textbf{ATUman}, \textbf{ALUman}, TUmah, \textbf{ATUmah}, \textbf{ALUmah}};
+% \end{axis}
+% \end{tikzpicture}
+% \end{center}
+% \end{figure}
+
+\input plot
+
+\input rankplot
+
 \ano{sumarizar as melhores em geral, ou quando trocam de posição com alguma outra}
 
 \ano{explicitar comprovação da efetividade das propostas}
@@ -97,16 +136,14 @@ Essa constatação conduz a uma reformulação do experimento anterior visando dois 
  \item o algoritmo mais adequado não é conhecido - o problema é novo e nada pode ser inferido
  de seus dados.
 \end{itemize}
-Para simular o primeiro caso optou-se pela seleção do algoritmo com
-a melhor acurácia passiva para cada base.
+Para simular o primeiro caso optou-se pela seleção do algoritmo mais adequado
+(com a melhor acurácia passiva) para cada base.
 No segundo caso, o algoritmo com a acurácia passiva mediana foi considerado
 suficientemente representativo dos demais.
 Uma vantagem adicional desses dois novos cenários é a possibilidade de análise unificada,
-sem a separação por aprendiz feita na Seção \ref{}.
-% nas bases como um todo, o efeito esperado é aproximar-se do aleatório, mas
-% sem seu incoveniente de escolher o pior algoritmo para algumas bases
+sem a separação por aprendiz feita na Seção \ref{constante}.
 
-% \afterpage{\clearpage\begin{landscape}
+% \afetrpage{\clearpage\begin{landscape}
 % \input stratsALCKappabest
 % \end{landscape}\clearpage}
 
@@ -118,9 +155,12 @@ sem a separação por aprendiz feita na Seção \ref{}.
 \input stratsALCKappaFriedbestRedux
 \end{landscape}\clearpage}
 
+\subsubsection{Melhor caso}
+\ano{árvore}
 
-\ano{seria ideal fazer uma segunda árvore em que apenas o melhor classificador
-é usado em cada base}
+\ano{árvore}
+
+\subsubsection{Caso mediano}
 
 
 \esb{plot de vitórias vs budget, variabilidade/estabilidade, tempo, comparação com passivo -
