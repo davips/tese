@@ -1,9 +1,8 @@
 \section{Análise Comparativa}\label{analise}
 Nesta seção, as estratégias selecionadas na Seção \ref{prep} são comparadas.
 Conjuntamente,
-é feita a demonstração de que as estratégias propostas SGmulti,
-agnóstica baseada em densidade (prefixo ATU) e agnóstica baseada
-na utilidade de cada rótulo (prefixo ALU) são competitivas.
+é feita a demonstração de que as estratégias propostas SGmulti e
+agnóstica baseada em densidade (prefixo ATU) são competitivas.
 A análise é dividida em duas partes:
 na Seção \ref{constante} ela é feita para cada aprendiz separadamente;
 na Seção \ref{melhor}, ela é feita com a adoção do melhor
@@ -52,10 +51,10 @@ que possamos ter insights sobre o experimento, depois é preciso deixar mais suci
  \item CIELM - TUman e TUmah vencem todas as demais exceto Mar;
  \item 5NN - todas as estratégias baseadas em densidade, exceto DWeuc
  (e TUmah em menor grau), vencem as demais, exceto EERent;
- \item C4.5 - similar a C4.5, mas com algumas diferenças relevantes:
+ \item C4.5 - similar a 5NN, mas com algumas diferenças relevantes:
  \begin{itemize}
   \item DWeuc perde de todas;
-  \item SGmulti vence também Rnd e Mar;
+  \item SGmulti vence Rnd e Mar além de DWeuc;
   \item ALUman vence sua contraparte e demais estratégias baseadas na
   distância de Mahalanobis;
  \end{itemize}

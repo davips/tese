@@ -155,10 +155,10 @@ fala sobre guardar resultados a 'instance level' com as predições do classificad
  numa ampla faixa de orçamentos.
  Assim, a medida se mostra adequada para a tarefa de comparação
  de estratégias.
- Ela foi adotada em conjunto com a medida Kappa -
+ Ela foi adotada em conjunto com a medida kappa -
  resultando no valor médio da medida para toda a sequência de consultas.
 
-A medida Kappa de Cohen \citep{journals/coling/EugenioG04}
+A medida kappa de Cohen \citep{journals/coling/EugenioG04}
 é utilizada para comparar o grau de consenso entre avaliadores
 tem demonstrado bom poder discriminatório frente a outras medidas
 que sumarizam a matriz de confusão \citep{conf/acivs/DemirkesenC08}.
@@ -166,12 +166,12 @@ Quando aplicada como medida de desempenho de classificação,
 ela assume valor $1$ para acerto total, $0$ para desempenho equivalente ao
 aleatório e $-1$ para erro total.
 Valores intermediários indicam o quão bom ou ruim é o clasificador.
-\cite{conf/pkdd/Shah11} apresenta a versão multiclasse para a medida Kappa
+\cite{conf/pkdd/Shah11} apresenta a versão multiclasse para a medida kappa
 que foi adotada neste trabalho.
 Ela tem a importante propriedade de remeter à medida original em problemas binários.
 Por fim, ela permite realizar a comparação por dois pontos de vista:
 interestratégias e em relação ao acaso.
-\ano{colocar fórmula da Kappa? já incluir pseudoALC na fórmula?}
+\ano{colocar fórmula da kappa? já incluir pseudoALC na fórmula?}
 
 Outro ponto de vista importante é em relação ao desempenho passivo.
 Sendo ele dado por apenas um valor para todos os exemplos, não existe
@@ -182,7 +182,7 @@ limite do orçamento disponível e deve ser avaliado o modelo induzido até então.
 Nesse caso, foi adotada a acurácia balanceada \citep{journals/bmcbi/MassoV10}
 por ter um significado mais próximo
 da usual medida de acurácia quando se comparam classificadores.
-Assim como a Kappa multiclasse, ela é adequada para problemas multiclasse desbalanceados.
+Assim como a kappa multiclasse, ela é adequada para problemas multiclasse desbalanceados.
 O orçamento escolhido foi $\cent=\frac{|\mathcal{U}|}{2}$
 % metade dos exemplos disponíveis
 nas trinta e nove bases com menos de quatrocentos exemplos (Tabela \ref{tab:nm})

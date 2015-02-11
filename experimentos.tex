@@ -20,7 +20,6 @@ Ela é apresentada na Tabela \ref{passiveDists} de forma análoga à adotada por
 % Brazdil faz tabela de distâncias pareadas com taxas de erro sendo
 % as dimensões, depois faz decomposição ortogonal para visualizar em duas dimensões.
 % Depois ele faz agrupamento hierárquico.
-
 Esses modelos são o resultado de treinamento passivo, ou seja, com todos os
 exemplos da reserva.
 Considerando-se cada base de dados uma dimensão,
@@ -32,29 +31,34 @@ As acurácias para cada base são apresentadas nas tabelas \ref{tab:balaccClassif0
 \ref{tab:balaccClassif1} e \ref{tab:balaccClassif2} do Apêndice \ref{detalhes}.
 % BalAcc escolhida, e não Kappa, porque brazdil usou taxas de erro.
 
-Conforme esperado,
-a maior similaridade ($0,77$) ocorre entre IELM e CIELM.
-Os próximos valores mais relevantes estão entre VFDT e NB ($0,56$)
-e entre 5NN e C4.5 ($0,52$).
-\ano{presente ou passado?}
 O algoritmo mais distinto é a SVM, pois apresenta os menores valores em relação a
-todos os demais (entre $0,28$ e $0,30$).
-% - com exceção do acerto majoritário que se afasta dos demais por ser muito inferior em quase todas as bases.
-Dessa forma, uma definição de quatro grupos
-\ano{usar essses grupos no futuro} pode ser útil durante a análise
-da influência do classificador nas estratégias de aprendizado ativo:
-IELM-CIELM, VFDT-NB, 5NN-C4.5 e SVM.
-Pela proximidade excessiva entre IELM e CIELM, pela acurácia superior da CIELM
-e visando reduzir a quantidade necessária de análises,
-optou-se por manter, dentre as duas, apenas a CIELM nos experimentos.
-
+todos os demais (abaixo ou igual a $0,30$).
+Por outro lado, conforme esperado,
+a maior similaridade ($0,77$) ocorre entre IELM e CIELM.
+\ano{conjugar no presente ou passado?}
+Os próximos valores mais relevantes (acima de $0,50$) permitem separar os demais classificadores
+em dois grupos, A e B, respectivamente:
+5NN, C4.5 e RF; e, VFDT e NB.
+\ano{usar essses grupos no futuro além do trecho mais abaixo?}
 \ano{se terminar de rodar, é preciso adicionar passiveNintera na tab de dists,
-fried e nas 3 tabelas do apendice  (e atualizar texto)}
-Na comparação um contra um (Tabela \ref{tab:friedClassif})
-C4.5 e 5NN se destacam com significância estatística,
+na fried e nas 3 tabelas do apendice  (e atualizar texto)}
+
+Na comparação um contra um da acurácia balanceada (Tabela \ref{tab:friedClassif}),
+RF vence todos os demais com significância estatística,
+provavelmente por se tratar de um \textit{ensemble}.
+C4.5 e 5NN também se destacam, em menor grau,
 seguidos de NB e VFDT.
-Esse destaque é condizente com a semelhança contida nos três pares citados de algoritmos
-(Tabela \ref{passiveDists}).
+Esse destaque reforça a tabela de similaridade (Tabela \ref{passiveDists}),
+pois os melhores classificadores (grupo A) são similares e os piores
+(IELM/CIELM e SVM) têm a menor similaridade em relação aos demais.
+Apesar disso, a existência de grupos distintos e de classificadores com variados níveis
+de desempenho fornece uma diversidade mais representativa do que se
+apenas um único classificador fosse empregado arbitrariamente.
+Para aumentar a independência entre os classificadores nos experimentos,
+optou-se por descartar os resultados referentes à IELM,
+por ser inferior à CIELM (Apêndice \ref{detalhes})
+e ambas possuírem uma proximidade excessiva com relação a princípio de funcionamento
+e desempenho.
 
 \input classifsFried
 
@@ -71,7 +75,9 @@ analogamente à comparação na Seção \ref{algs},
 as similaridades entre estratégias foram calculadas
 por meio da distância $d(\bm{x},\bm{u}) \mid \bm{x},\bm{u} \in \mathbb{R}^{658}$
 entre acurácias balanceadas ao longo das $94$
-bases e $6$ classificadores e são apresentadas na Tabela \ref{stratDists}.
+bases e $6$
+\ano{adicionar RF aos numeros acima, abaixo e tabela}
+classificadores e são apresentadas na Tabela \ref{stratDists}.
 Os nomes de estratégias propostas estão em negrito.
 
 \afterpage{\clearpage\begin{landscape}
@@ -85,16 +91,16 @@ entre $0,44$ e $0,58$ para as restantes), mas foram mantidas pela diversidade de
 princípios de funcionamento.
 Uma similaridade maior pode ser notada entre as variantes das estratégias
 baseadas em densidade.
-As três propostas gnósticas baseadas na \textit{utilidade de cada classe} (prefixo LU)
+As seis propostas baseadas na \textit{utilidade de cada classe} (prefixos LU e ALU)
 apresentam uma similaridade aproximada de $0,7$ em relação aos seus
-algoritmos originais correspondentes (prefixos TU).
+algoritmos originais correspondentes (prefixos TU e ATU).
 Por esse motivo e pela correspondência direta entre as medidas de acurácia
 listadas nas tabelas do Apêndice \ref{detalhes},
-optou-se por excluir dos experimentos
-as propostas gnósticas baseadas na utilidade de cada classe.
+optou-se por excluí-las dos experimentos.
 As estratégias remanescentes baseadas na distância euclidiana
-(TUeuc, ATUeuc e ALUeuc) também foram excluídas
-por essa distância ser excessivamente similar à distância de Manhattan.
+(TUeuc e ATUeuc) também foram excluídas
+por serem, de acordo com a Tabela \ref{stratDists},
+excessivamente similares às baseadas na distância de Manhattan.
 A distância euclidiana foi preterida porque as distâncias de Manhattan e de Mahalanobis
 em conjunto provêem mais diversidade ao experimento pela adequação a atributos nominais
 da primeira e pela independência de escala da segunda.
@@ -105,9 +111,9 @@ as três, por ser mais adequada a problemas multiclasse que Unc e por
 seu desempenho ser superior ao da Ent.
 
 O grupo reduzido de estratégias é apresentado na Tabela \ref{stratDistsRedux}.
-É possível notar que a adoção da distância de Mahalanobis (últimas três
-colunas da tabela) confere o maior grau de diversidade dentre todas as estratégias.
-Apesar dessa particularidade,
+É possível notar nas duas tabelas que a adoção da distância de Mahalanobis
+(últimas colunas/linhas da tabela) confere o maior grau de diversidade dentre todas as estratégias.
+Apesar dessa particularidade e do alto desempenho reportado na próxima seção (\ref{analise}),
 não é do conhecimento do autor a existência de trabalhos que empreguem essa
 medida de distância.
 
