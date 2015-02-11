@@ -1,28 +1,25 @@
-\section{Análise Comparativa}\label{analise}
-Nesta seção, as estratégias selecionadas na Seção \ref{prep} são comparadas.
-Conjuntamente,
-é feita a demonstração de que as estratégias propostas SGmulti e
-agnóstica baseada em densidade (prefixo ATU) são competitivas.
-A análise é dividida em duas partes:
-\textit{geral}, na Seção \ref{geral}, em que as estratégias são comparadas
-ao longo de todas as \ano{$234534$} combinações de aprendizes e estratégias;
-e, \textit{por aprendiz},
-na Seção \ref{isolado},
-onde a comparação é feita para cada aprendiz separadamente.
-
-\subsection{Geral}\label{geral}
+\section{Análise comparativa geral}\label{geral}
 O algoritmo de aprendizado ideal para um dado problema normalmente não é conhecido até que
 se tenha um conjunto de treinamento suficientemente grande para a realização de uma
 validação cruzada \ano{ref?}.
-Dessa forma, uma comparação de estratégias requer a avaliação do desempenho associado
-a diferentes classificadores.
+Dessa forma, não é possível realizar uma comparação de estratégias de aprendizado ativo
+por falta da definição do aprendiz a ser adotado.
+Por isso, a comparação requer a avaliação do desempenho associado a diferentes classificadores.
 A forma adotada para avaliação do desempenho geral foi considerar cada par
 base de dados/aprendiz como uma execução do experimento.
 Assim é possível uma análise unificada capaz de identificar estratégias que se sobressaiam
 mesmo diante da variedade de algoritmos de aprendizado.
 
-A Figura \ref{ALCs} ilustra o comportamento típico da curva de aprendizado ativo
-que foi seguido
+% http://research.cs.wisc.edu/techreports/2009/TR1648.pdf
+Estratégias são normalmente avaliadas por meio de curvas de aprendizado,
+com o gráfico da medida de interesse em função da quantidade de consultas
+\citep{settles2010active}.
+% Figure 3 presents learning curves for the first 100 instances labeled using
+% uncertainty sampling and random sampling.
+% The reported results are for a logistic regression model averaged over ten folds
+% using cross-validation.
+A Figura \ref{curvas} ilustra o comportamento típico da curva de aprendizado ativo
+e que foi seguido
 \ano{tempo verbal}
 por todas as diferentes estratégias.
 \input plot
@@ -33,40 +30,61 @@ Apesar das curvas ATUmah e TUmah se destacarem, qualquer comparação
 está sujeita a diferentes pesos do intervalo útil de valores kappa de cada base.
 
 Uma forma de neutralização do efeito da variedade de intervalos é a adoção
-de ranqueamento, conforme mostrado na Figura \ref{ALCs}.
+de ranqueamento, conforme mostrado na Figura \ref{curvasrank}.
 \input rankplot
 Se a diversidade de aprendizes fosse ideal, todas as estratégias agnósticas poderiam ser favorecidas,
 porém Rnd e Clu permaneceram debaixo da colocação média ($6$) por
 praticamente todo o intervalo de consultas.
 Conforme esperado, DWeuc teve o pior desempenho por concentrar as consultas apenas
 nas regiões mais densas e de fronteira, deixando de explorar adequadamente o espaço de exemplos.
-Por outro lado, suas extensões (prefixo TU e ATU) superaram as demais.
+Por outro lado, suas extensões (prefixo TU e ATU) - que evitam regiões densamente rotuladas -
+superaram as demais.
 SGmulti, por sua vez, se manteve próximo à colocação média.
 
-Uma propriedade importante das quatro curvas acima da colocação média é a inversão
-entre estratégias gnósticas (TU) e agnósticas (ATU) após $120$ exemplos.
-Essa inversão sugere que consultas exploratórias são vantajosas no início do
-aprendizado, enquanto que consultas prospectivas passam a ser proveitosas
+Uma propriedade importante das quatro curvas que ficaram acima da colocação média
+é a inversão entre estratégias gnósticas (TU) e agnósticas (ATU) após aproximadamente
+$120$ exemplos.
+Essa inversão sugere que consultas exploratórias sejam vantajosas no início do
+aprendizado, enquanto que consultas prospectivas passariam a ser proveitosas
 mais tardiamente.
 
+As estratégias com prefixo TU e ATU são superiores às demais e SGmulti superou a amostragem
+aleatória com significância estatística ($p$-$value$ $=0,01$)
+conforme Tabela \ref{stratsALCKappaFriedAllRedux}.
+Se forem considerados apenas os primeiros 100 exemplos,
+as variantes agnósticas propostas superam os algoritmos originais
+e SGmulti passa a superar Mar e EERacu, porém com menor significância estatística,
+conforme Tabela \ref{stratsALCKappaFriedAllReduxHalf}.
+\input stratsALCKappaFriedAllRedux
+\input stratsALCKappaFriedAllReduxHalf
+Dessa forma, as estratégias propostas podem ser consideradas competitivas em termos de
+desempenho preditivo.
+Em aplicações reais, entretanto, a estabilidade do algoritmo pode ser mais importante
+do que o desempenho preditivo médio, pois uma grande variabilidade pode colocar o
+orçamento sob o risco de ser gasto sem atingir um desempenho adequado e pode levar a custos
+de rotulação imprevisíveis.
+O processo de rotulação ocorre apenas uma vez em uma dada reserva de exemplos
+até o término do orçamento,
+impossibilitando novas tentativas.
+Assim, a estabilidade da estratégia tem fundamental importância para a análise do risco financeiro
+da aplicação.
+De forma análoga às curvas apresentadas para o valor médio de kappa e o ranqueamento
+correspondente, dois conjuntos de curvas baseadas no desvio padrão do valor de kappa foram
+construídos visando ilustrar o comportamento da variância preditiva ao longo de sucessivos
+valores de orçamento.
+Na Figura \ref{curvasdesvio}, é possível observar que as quatro estratégias agnósticas
+\input plotRisco
+detêm os menores valores de desvio padrão durante a maior parte do processo de rotulação.
+Enquanto que TUmah apresenta os maiores valores e TUman com valores intermediários.
+O mesmo ocorre com os ranqueamentos, apresentados na Figura \ref{curvasrankdesvio}.
+\input rankplotRisco
 
-\ano{sumarizar as melhores em geral, ou quando trocam de posição com alguma outra}
 
 \esb{variabilidade/estabilidade, tempo, comparação com passivo -}
 
-ref para plot:
-% Active learning literature survey 2009
-% http://research.cs.wisc.edu/techreports/2009/TR1648.pdf
-...
-Active learning algoritmos are generally evaluated by constructing learning curves,
-which plot the evaluation measure of interest (e.g., accuracy) as a function of the
-number of new instance queries that are labeled and added to L.
-Figure 3 presents learning curves for the first 100 instances labeled using
-uncertainty sampling and random sampling.
-The reported results are for a logistic regression model averaged over ten folds
-using cross-validation.
 
-\subsection{Por aprendiz}\label{isolado}
+
+\section{Análise comparativa por aprendiz}\label{isolado}
 Alguns algoritmos de aprendizado são inadequados para determinadas
 estratégias.
 Por exemplo, aquelas que dependem de estimativas de probabilidade

@@ -1,11 +1,14 @@
 \begin{figure}
-\label{ALCs}
 \begin{center}
-\caption{Curva de aprendizado média de todas as bases com mais de 200 exemplos.
-\textit{Suavizada por média móvel com largura de dez exemplos.}}
+\caption{Curvas de aprendizado.
+\textit{Suavizadas por média móvel com largura de dez exemplos.
+O valor (média ou desvio padrão, dependendo da figura)
+para cada base é calculado baseado nas cinco execuções de validação cruzada.
+Inclui apenas resultados para as bases com mais de 200 exemplos.}}
+\label{curvas}
 \begin{tikzpicture}[scale=1]
-\begin{axis}[xlabel=consultas, ylabel=kappa, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
-scale only axis, width=300]
+\begin{axis}[xlabel=consultas, ylabel=kappa (média), legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=300, yticklabel style={/pgf/number format/fixed}]
 
 \addplot+[orange, densely dashed, thick, mark options={solid, scale=1.5}, mark repeat=200, mark phase=48] table[x=budget, y=ATUmah] {kappamediaall.plot};\addlegendentry{\textbf{ATUmah}}
 % \addplot+[violet, thick, mark=pentagon, mark options={solid, scale=1.5}, mark repeat=200, mark phase=60] table[x=budget, y=ALUmah] {kappamediaall.plot};\addlegendentry{\textbf{ALUmah}}

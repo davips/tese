@@ -1,0 +1,38 @@
+\begin{figure}
+\caption{Curva de ranqueamento médio de todas as bases com mais de 200 exemplos.
+ \textit{Detalhes na Figura \ref{curvas}.}}
+\label{curvasrankdesvio}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[xlabel=consultas, ylabel=colocação, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/fixed}]
+
+\addplot+[orange, densely dashed, thick, mark options={solid, scale=1.5}, mark repeat=200, mark phase=48] table[x=budget, y=ATUmah] {kappamediaallReduxRankRisco.plot};\addlegendentry{\textbf{ATUmah}}
+% \addplot+[violet, thick, mark=pentagon, mark options={solid, scale=1.5}, mark repeat=200, mark phase=60] table[x=budget, y=ALUmah] {kappamediaallReduxRankRisco.plot};\addlegendentry{\textbf{ALUmah}}
+\addplot+[violet, thick, mark=10-pointed star, mark options={solid, scale=1.5}, densely dotted, mark repeat=200, mark phase=24] table[x=budget, y=ATUman] {kappamediaallReduxRankRisco.plot};\addlegendentry{\textbf{ATUman}}
+% \addplot+[dashed, thick, black, mark=triangle*, mark options={solid, scale=1.5}, mark repeat=200, mark phase=36] table[x=budget, y=ALUman] {kappamediaallReduxRankRisco.plot};\addlegendentry{\textbf{ALUman}}
+\addplot+[solid, red, mark=triangle*, mark repeat=200, mark phase=156] table[x=budget, y=TUmah] {kappamediaallReduxRankRisco.plot};\addlegendentry{TUmah}
+% \addplot+[solid, thick, orange, mark=triangle*, mark options={solid, scale=1.5}, mark repeat=200, mark phase=168] table[x=budget, y=LUmah] {kappamediaallReduxRankRisco.plot};\addlegendentry{LUmah}
+\addplot+[solid, gray, mark=*, mark options={solid, scale=1}, mark repeat=200, mark phase=132] table[x=budget, y=TUman] {kappamediaallReduxRankRisco.plot};\addlegendentry{TUman}
+% \addplot+[solid, thick, black, mark=*, mark options={solid, scale=1.5}, mark repeat=200, mark phase=144] table[x=budget, y=LUman] {kappamediaallReduxRankRisco.plot};\addlegendentry{LUman}
+
+% \addplot+[blue, densely dashed, thick, mark options={solid, scale=1.5}, mark repeat=200, mark phase=48] table[x=budget, y=ATUeuc] {kappamediaallReduxRankRisco.plot};\addlegendentry{\textbf{ATUeuc}}
+% \addplot+[green, thick, mark=pentagon, mark options={solid, scale=1.5}, mark repeat=200, mark phase=60] table[x=budget, y=ALUeuc] {kappamediaallReduxRankRisco.plot};\addlegendentry{\textbf{ALUeuc}}
+
+\addplot+[solid, black, mark=square, mark options={solid, scale=1}, mark repeat=200, mark phase=72] table[x=budget, y=Mar] {kappamediaallReduxRankRisco.plot};\addlegendentry{Mar}
+\addplot+[solid, gray, mark=star, mark options={solid, scale=1}, mark repeat=200, mark phase=96] table[x=budget, y=EERacu] {kappamediaallReduxRankRisco.plot};\addlegendentry{EERacu}
+\addplot+[solid, dark green, mark=triangle*, mark options={solid, scale=1}, mark repeat=200, mark phase=84] table[x=budget, y=EERent] {kappamediaallReduxRankRisco.plot};\addlegendentry{EERent}
+\addplot+[solid, thick, olive, mark=star, mark options={solid, scale=1.5}, mark repeat=200, mark phase=108] table[x=budget, y=SGmulti] {kappamediaallReduxRankRisco.plot};\addlegendentry{\textbf{SGmulti}}
+
+\addplot+[dashed, violet, mark=pentagon, mark options={solid, scale=1}, mark repeat=200, mark phase=12] table[x=budget, y=Clu] {kappamediaallReduxRankRisco.plot};\addlegendentry{Clu}
+\addplot+[dotted, green!50!black, thick, mark options={solid, scale=1}, mark=*, mark repeat=200, mark phase=1] table[x=budget, y=Rnd] {kappamediaallReduxRankRisco.plot};\addlegendentry{Rnd}
+
+% \addplot+[solid, blue, mark=triangle*, mark repeat=200, mark phase=156] table[x=budget, y=TUeuc] {kappamediaallReduxRankRisco.plot};\addlegendentry{TUeuc}
+% \addplot+[solid, red, thick, mark=triangle*, mark options={solid, scale=1.5}, mark repeat=200, mark phase=168] table[x=budget, y=LUeuc] {kappamediaallReduxRankRisco.plot};\addlegendentry{LUeuc}
+
+\addplot+[solid, dark green, mark=diamond, mark options={solid, scale=1}, mark repeat=200, mark phase=120] table[x=budget, y=DWeuc] {kappamediaallReduxRankRisco.plot};\addlegendentry{DWeuc}
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{figure}

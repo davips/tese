@@ -1,11 +1,11 @@
 \begin{figure}
-\label{ALCsrank}
-\caption{Curva de ranqueamento médio de todas as bases com mais de 200 exemplos.
-\textit{Suavizada por média móvel com largura de dez exemplos.}}
+\caption{Curvas de ranqueamento.
+ \textit{Detalhes na Figura \ref{curvas}.}}
+\label{curvasrank}
 \begin{center}
 \begin{tikzpicture}[scale=1]
 \begin{axis}[xlabel=consultas, ylabel=colocação, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
-scale only axis, width=300, y dir=reverse]
+scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/fixed}]
 
 \addplot+[orange, densely dashed, thick, mark options={solid, scale=1.5}, mark repeat=200, mark phase=48] table[x=budget, y=ATUmah] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{ATUmah}}
 % \addplot+[violet, thick, mark=pentagon, mark options={solid, scale=1.5}, mark repeat=200, mark phase=60] table[x=budget, y=ALUmah] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{ALUmah}}
