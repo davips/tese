@@ -4,13 +4,77 @@ Conjuntamente,
 é feita a demonstração de que as estratégias propostas SGmulti e
 agnóstica baseada em densidade (prefixo ATU) são competitivas.
 A análise é dividida em duas partes:
-na Seção \ref{constante} ela é feita para cada aprendiz separadamente;
-na Seção \ref{melhor}, ela é feita com a adoção do melhor
-aprendiz para cada base;
-e, na Seção \ref{mediano}, ela é feita com a adoção do aprendiz
-com desempenho mediano para cada base.
+\textit{geral}, na Seção \ref{geral}, em que as estratégias são comparadas
+ao longo de todas as \ano{$234534$} combinações de aprendizes e estratégias;
+e, \textit{por aprendiz},
+na Seção \ref{isolado},
+onde a comparação é feita para cada aprendiz separadamente.
 
-\subsection{Aprendiz constante}\label{constante}
+\subsection{Geral}\label{geral}
+O algoritmo de aprendizado ideal para um dado problema normalmente não é conhecido até que
+se tenha um conjunto de treinamento suficientemente grande para a realização de uma
+validação cruzada \ano{ref?}.
+Dessa forma, uma comparação de estratégias requer a avaliação do desempenho associado
+a diferentes classificadores.
+A forma adotada para avaliação do desempenho geral foi considerar cada par
+base de dados/aprendiz como uma execução do experimento.
+Assim é possível uma análise unificada capaz de identificar estratégias que se sobressaiam
+mesmo diante da variedade de algoritmos de aprendizado.
+
+A Figura \ref{ALCs} ilustra o comportamento típico da curva de aprendizado ativo
+que foi seguido
+\ano{tempo verbal}
+por todas as diferentes estratégias.
+\input plot
+Apesar de seguirem o mesmo padrão,
+o valor kappa, inicialmente igual para todas as estratégias, passa a divergir
+na medida em que novos exemplos são consultados.
+Apesar das curvas ATUmah e TUmah se destacarem, qualquer comparação
+está sujeita a diferentes pesos do intervalo útil de valores kappa de cada base.
+
+Uma forma de neutralização do efeito da variedade de intervalos é a adoção
+de ranqueamento, conforme mostrado na Figura \ref{ALCs}.
+\input rankplot
+Se a diversidade de aprendizes fosse ideal, todas as estratégias agnósticas poderiam ser favorecidas,
+porém Rnd e Clu permaneceram debaixo da colocação média ($6$) por
+praticamente todo o intervalo de consultas.
+Conforme esperado, DWeuc teve o pior desempenho por concentrar as consultas apenas
+nas regiões mais densas e de fronteira, deixando de explorar adequadamente o espaço de exemplos.
+Por outro lado, suas extensões (prefixo TU e ATU) superaram as demais.
+SGmulti, por sua vez, se manteve próximo à colocação média.
+
+Uma propriedade importante das quatro curvas acima da colocação média é a inversão
+entre estratégias gnósticas (TU) e agnósticas (ATU) após $120$ exemplos.
+Essa inversão sugere que consultas exploratórias são vantajosas no início do
+aprendizado, enquanto que consultas prospectivas passam a ser proveitosas
+mais tardiamente.
+
+
+\ano{sumarizar as melhores em geral, ou quando trocam de posição com alguma outra}
+
+\esb{variabilidade/estabilidade, tempo, comparação com passivo -}
+
+ref para plot:
+% Active learning literature survey 2009
+% http://research.cs.wisc.edu/techreports/2009/TR1648.pdf
+...
+Active learning algoritmos are generally evaluated by constructing learning curves,
+which plot the evaluation measure of interest (e.g., accuracy) as a function of the
+number of new instance queries that are labeled and added to L.
+Figure 3 presents learning curves for the first 100 instances labeled using
+uncertainty sampling and random sampling.
+The reported results are for a logistic regression model averaged over ten folds
+using cross-validation.
+
+\subsection{Por aprendiz}\label{isolado}
+Alguns algoritmos de aprendizado são inadequados para determinadas
+estratégias.
+Por exemplo, aquelas que dependem de estimativas de probabilidade
+não podem ter como aprendiz um classificador que seja capaz de realizar
+apenas predições exatas.
+Para essas estratégias, é necessário haver a possibilidade de avaliação do nível de certeza do modelo.
+Por esse motivo
+
 Num cenário em que o algoritmo de aprendizado é fixado pela aplicação,
 independentemente do problema em questão,
 a estratégia escolhida deve ser aquela capaz de atingir o melhor desempenho
@@ -19,7 +83,7 @@ Dessa forma, faz-se necessária a análise com cada aprendiz isoladamente.
 As tabelas \ref{stratsALCKappaFriedCIELMRedux},
 \ref{stratsALCKappaFried5NNRedux},
 \ref{stratsALCKappaFriedC4.5Redux},
-\ref{stratsALCKappaFriedNBRedux}, 
+\ref{stratsALCKappaFriedNBRedux},
 \ref{stratsALCKappaFriedVFDTRedux} e
 \ref{stratsALCKappaFriedSVMRedux}
 contém o resultado da comparação de todas as estratégias entre si para
@@ -41,7 +105,7 @@ Quando comparadas entre si,
 é possível observar nas tabelas uma mudança significativa na distribuição das marcas de
 superioridade estatística.
 \ano{interpretar detalhes das tabelas?}
-Isso sugere a existência de alguma afinidade entre estratégia e aprendiz 
+Isso sugere a existência de alguma afinidade entre estratégia e aprendiz
 \ano{esmiuçar detalhes?} e também a inexistência de uma estratégia
 que seja a melhor com todos os algoritmos de aprendizado.
 
@@ -52,133 +116,31 @@ que possamos ter insights sobre o experimento, depois é preciso deixar mais suci
  \item 5NN - todas as estratégias baseadas em densidade, exceto DWeuc
  (e TUmah em menor grau), vencem as demais, exceto EERent;
  \item C4.5 - similar a 5NN, mas com algumas diferenças relevantes:
- \begin{itemize}
-  \item DWeuc perde de todas;
-  \item SGmulti vence Rnd e Mar além de DWeuc;
-  \item ALUman vence sua contraparte e demais estratégias baseadas na
+  \subitem DWeuc perde de todas;
+  \subitem SGmulti vence Rnd e Mar além de DWeuc;
+  \subitem ALUman vence sua contraparte e demais estratégias baseadas na
   distância de Mahalanobis;
- \end{itemize}
   \item NB - SGmulti supera todas as estratégias,
   exceto as baseadas na distância de Manhattan; as estratégias agnósticas baseadas na distância de Manhattan vencem todas,
  exceto sua versão gnóstica e SGmulti;
  \item VFDT - similar a NB, mas com algumas diferenças relevantes:
- \begin{itemize}
-  \item é a única vez em que Rnd e Clu vencem mais do que uma das estratégias mais fracas
-  \item SGmulti deixa de vencer Rnd, Clu
-  \item SGmulti, ATUman e ALUman deixam de vencer as estratégias
+  \subitem é a única vez em que Rnd e Clu vencem mais do que uma das estratégias mais fracas
+  \subitem SGmulti deixa de vencer Rnd, Clu
+  \subitem SGmulti, ATUman e ALUman deixam de vencer as estratégias
   baseadas na distância de Mahalanobis
-  \item ATUmah e ALUmah passam a vencer as demais,
+  \subitem ATUmah e ALUmah passam a vencer as demais,
   exceto Rnd, Clu, SGmulti, ATUman e ALUman
- \end{itemize}
  \item SVM - EERent vence a maioria das estratégias mais fracas;
  é a única vez em que EERacu vence (as estratégias baseadas na distância de Manhattan);
   é a única vez em que estratégias (baseadas na distância de Mahalanobis)
   vencem todas as demais.
 \end{itemize}
-
-É possível avaliar o comportamento das estratégias ao longo das consultas por meio
-de curvas de aprendizado.
-A acurácia balanceada média para todas as bases e aprendizes tem a forma de uma
-típica curva de aprendizado ativo.
-As curvas das diferentes estratégias são comparadas na Figura \ref{ALCs}.
-
-% \begin{figure}
-% \begin{center}
-% \begin{tikzpicture}[scale=1]
-% \begin{axis}[xlabel=consultas, ylabel=posição no ranqueamento,
-% legend style={at={(1.5,0.5)}, anchor=east}]
-% % \addplot[gmark=none] file[y=Rnd] {kappabestRank.plot};   % Here is the data file
-% % \addplot[color=green,mark=none] file {kappabestRank.plot};
-% % \addplot table[y = Rnd] from \datatable;
-% % \addplot[blue!80!black, mark=none] table [y=Rnd] {kappabestRank.plot};
-% \addplot table [y=Rnd, mark=star] {kappabestRank.plot};
-% \addplot table [y=Clu] {kappabestRank.plot};
-% \addplot table [y=Mar] {kappabestRank.plot};
-% \addplot table [y=EERacu] {kappabestRank.plot};
-% \addplot table [y=SGmulti] {kappabestRank.plot};
-% \addplot table [y=DWeuc] {kappabestRank.plot};
-% \addplot table [y=TUman] {kappabestRank.plot};
-% \addplot table [y=ATUman] {kappabestRank.plot};
-% \addplot table [y=ALUman] {kappabestRank.plot};
-% \addplot table [y=TUmah] {kappabestRank.plot};
-% \addplot table [y=ATUmah] {kappabestRank.plot};
-% \addplot table [y=ALUmah] {kappabestRank.plot};
-% \legend
-% {Rnd, Clu, Mar, EERent, EERacu, \textbf{SGmulti}, DWeuc, TUman, \textbf{ATUman}, \textbf{ALUman}, TUmah, \textbf{ATUmah}, \textbf{ALUmah}};
-% \end{axis}
-% \end{tikzpicture}
-% \end{center}
-% \end{figure}
-
-\input plot
-
-\input rankplot
-
-\ano{sumarizar as melhores em geral, ou quando trocam de posição com alguma outra}
-
 \ano{explicitar comprovação da efetividade das propostas}
 
 
 
 
 
-
-\subsection{Aprendiz no melhor caso e caso mediano}
-Alguns algoritmos de aprendizado são inadequados para determinadas
-bases \ano{ref?} e podem tornar a comparação imprecisa,
-pois a diferença entre estratégias se torna irrelevante
-quando nenhuma delas é capaz de atingir um desempenho satisfatório.
-Essa constatação conduz a uma reformulação do experimento anterior visando dois cenários:
-\begin{itemize}
- \item o algoritmo mais adequado é conhecido - por experiência do usuário sobre o domínio
- e particularidades de cada classificador ou pela análise de problemas similares já resolvidos;
- \item o algoritmo mais adequado não é conhecido - o problema é novo e nada pode ser inferido
- de seus dados.
-\end{itemize}
-Para simular o primeiro caso optou-se pela seleção do algoritmo mais adequado
-(com a melhor acurácia passiva) para cada base.
-No segundo caso, o algoritmo com a acurácia passiva mediana foi considerado
-suficientemente representativo dos demais.
-Uma vantagem adicional desses dois novos cenários é a possibilidade de análise unificada,
-sem a separação por aprendiz feita na Seção \ref{constante}.
-
-% \afetrpage{\clearpage\begin{landscape}
-% \input stratsALCKappabest
-% \end{landscape}\clearpage}
-
-\afterpage{\clearpage\begin{landscape}
-\input stratsALCKappaFriedbest
-\end{landscape}\clearpage}
-
-\afterpage{\clearpage\begin{landscape}
-\input stratsALCKappaFriedbestRedux
-\end{landscape}\clearpage}
-
-\subsubsection{Melhor caso}
-\ano{árvore}
-
-\ano{árvore}
-
-\subsubsection{Caso mediano}
-
-
-\esb{plot de vitórias vs budget, variabilidade/estabilidade, tempo, comparação com passivo -
-demonstra que AL é viável em geral e demonstra a efetividade das novas
-estratégias propostas
-(ponderação pela classe tenta atacar o desbalanceamento, preciso ver se
-é mesmo nessas bases que ela se sobressai)}
-
-ref para plot:
-Active learning literature survey 2009
-http://research.cs.wisc.edu/techreports/2009/TR1648.pdf
-...
-Active learning algoritmos are generally evaluated by constructing learning curves,
-which plot the evaluation measure of interest (e.g., accuracy) as a function of the
-number of new instance queries that are labeled and added to L.
-Figure 3 presents learning curves for the first 100 instances labeled using
-uncertainty sampling and random sampling.
-The reported results are for a logistic regression model averaged over ten folds
-using cross-validation.
 
 \section{Risco}
 variabilidade
@@ -260,3 +222,28 @@ x Quão bem uma estratégia usufrui de um dado orçamento?
 
 \tar{usar nintera na(s) base(s) à parte?
  ou usar em todas, mas sem strats lentas?}
+
+ % podem tornar a comparação imprecisa,
+% pois a diferença entre estratégias se torna irrelevante
+% quando nenhuma delas é capaz de atingir um desempenho satisfatório.
+% Essa constatação conduz a uma reformulação do experimento anterior visando dois cenários:
+% \begin{itemize}
+%  \item o algoritmo mais adequado é conhecido - por experiência do usuário sobre o domínio
+%  e particularidades de cada classificador ou pela análise de problemas similares já resolvidos;
+%  \item o algoritmo mais adequado não é conhecido - o problema é novo e nada pode ser inferido
+%  de seus dados.
+% \end{itemize}
+% Para simular o primeiro caso optou-se pela seleção do algoritmo mais adequado
+% (com a melhor acurácia passiva) para cada base.
+% No segundo caso, o algoritmo com a acurácia passiva mediana foi considerado
+% suficientemente representativo dos demais.
+% Uma vantagem adicional desses dois novos cenários é a possibilidade de análise unificada,
+% sem a separação por aprendiz feita na Seção \ref{geral}.
+%
+% \afterpage{\clearpage\begin{landscape}
+% \input stratsALCKappaFriedbest
+% \end{landscape}\clearpage}
+%
+% \afterpage{\clearpage\begin{landscape}
+% \input stratsALCKappaFriedbestRedux
+% \end{landscape}\clearpage}

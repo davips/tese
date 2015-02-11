@@ -1,6 +1,8 @@
 \begin{figure}
-\caption{Curva de aprendizado média de todas as bases com mais de 200 exemplos.}
+\label{ALCs}
 \begin{center}
+\caption{Curva de aprendizado média de todas as bases com mais de 200 exemplos.
+\textit{Suavizada por média móvel com largura de dez exemplos.}}
 \begin{tikzpicture}[scale=1]
 \begin{axis}[xlabel=consultas, ylabel=kappa, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
 scale only axis, width=300]
@@ -34,7 +36,6 @@ scale only axis, width=300]
 \end{tikzpicture}
 \end{center}
 \end{figure}
-
 % \begin{figure}
 % \caption{Curva de aprendizado média de todas as bases com mais de 200 exemplos.}
 % \begin{center}
