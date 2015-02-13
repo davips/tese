@@ -1,18 +1,18 @@
 \section{Análise comparativa geral}\label{geral}
-O algoritmo de aprendizado ideal para um dado problema normalmente não é conhecido até que
-se tenha um conjunto de treinamento suficientemente grande para a realização de uma
-validação cruzada \ano{ref?}.
+O algoritmo de aprendizado mais adequado para um dado problema normalmente não
+é conhecido até que se tenha um conjunto de treinamento suficientemente grande para
+a realização de uma validação cruzada \ano{ref?}.
 Dessa forma, não é possível realizar uma comparação de estratégias de aprendizado ativo
-por falta da definição do aprendiz a ser adotado.
+sem a definição do aprendiz a ser adotado.
 Por isso, a comparação requer a avaliação do desempenho associado a diferentes classificadores.
-A forma adotada para avaliação do desempenho geral foi considerar cada par
+A forma escolhida para avaliação do desempenho geral foi considerar cada par
 base de dados/aprendiz como uma execução do experimento.
 Assim é possível uma análise unificada capaz de identificar estratégias que se sobressaiam
 mesmo diante da variedade de algoritmos de aprendizado.
 
 % http://research.cs.wisc.edu/techreports/2009/TR1648.pdf
 Estratégias são normalmente avaliadas por meio de curvas de aprendizado,
-com o gráfico da medida de interesse em função da quantidade de consultas
+que é o gráfico da medida de interesse em função da quantidade de consultas
 \citep{settles2010active}.
 % Figure 3 presents learning curves for the first 100 instances labeled using
 % uncertainty sampling and random sampling.
@@ -26,15 +26,27 @@ por todas as diferentes estratégias.
 Apesar de seguirem o mesmo padrão,
 o valor kappa, inicialmente igual para todas as estratégias, passa a divergir
 na medida em que novos exemplos são consultados.
-Apesar das curvas ATUmah e TUmah se destacarem, qualquer comparação
-está sujeita a diferentes pesos do intervalo útil de valores kappa de cada base.
+Se todas as bases tivessem a mesma quantidade de exemplos
+e o aprendizado prosseguisse, as curvas se encontrariam novamente,
+pois tendem ao desempenho passivo.
+% A parada em duzentas consultas se mostrou proveitosa 
 
-Uma forma de neutralização do efeito da variedade de intervalos é a adoção
+É possível observar que as curvas ATUmah e TUmah se destacam,
+mas comparações de curvas neste gráfico são imprecisas devido aos diferentes
+pesos que as bases podem ter:
+bases mais difíceis tendem a ter um valor mais baixo para kappa e acabam
+sub-representadas.
+Uma forma de neutralização da desigualdade de pesos é a adoção
 de ranqueamento, conforme mostrado na Figura \ref{curvasrank}.
 \input rankplot
-Se a diversidade de aprendizes fosse ideal, todas as estratégias agnósticas poderiam ser favorecidas,
-porém Rnd e Clu permaneceram debaixo da colocação média ($6$) por
-praticamente todo o intervalo de consultas.
+O panorama geral nos dois gráficos é similar, mas a diferença entre eles se acentua com a
+evolução do aprendizado.
+O fato de nem todas as estratégias agnósticas terem sido favorecidas - Rnd e Clu
+permaneceram debaixo da colocação média ($6$) por praticamente todo o intervalo de consultas -
+sugere que a ausência de premissas baseadas no viés do aprendiz não é condição preponderante
+para um bom desempenho em classificadores variados.
+Porém,.
+
 Conforme esperado, DWeuc teve o pior desempenho por concentrar as consultas apenas
 nas regiões mais densas e de fronteira, deixando de explorar adequadamente o espaço de exemplos.
 Por outro lado, suas extensões (prefixo TU e ATU) - que evitam regiões densamente rotuladas -
@@ -48,16 +60,23 @@ Essa inversão sugere que consultas exploratórias sejam vantajosas no início do
 aprendizado, enquanto que consultas prospectivas passariam a ser proveitosas
 mais tardiamente.
 
+A significância estatística ($p$-$value$ $=0,01$) \ano{tá certa essa notação?}
+das diferenças pode ser verificada pela comparação dos valores de ALCKappa para todas as bases
+na Tabela \ref{stratsALCKappaFriedAllRedux}.
+A ALCKappa foi calculada sobre $200$ exemplos nas bases com tamanho suficientemente
+ou $|\mathcal{U}|$ nas demais.
 As estratégias com prefixo TU e ATU são superiores às demais e SGmulti superou a amostragem
-aleatória com significância estatística ($p$-$value$ $=0,01$)
-conforme Tabela \ref{stratsALCKappaFriedAllRedux}.
-Se forem considerados apenas os primeiros 100 exemplos,
+aleatória.
+Se forem considerados apenas os primeiras 100 consultas -
+%150 conf/emnlp/SettlesC08
+valor arbitrário frequentemente adotado em outros trabalhos
+\citep{journals/pieee/CrawfordTY13,chermanaprendizado,conf/nips/SettlesCR07,conf/icml/RoyM01} -
 as variantes agnósticas propostas superam os algoritmos originais
 e SGmulti passa a superar Mar e EERacu, porém com menor significância estatística,
 conforme Tabela \ref{stratsALCKappaFriedAllReduxHalf}.
 \input stratsALCKappaFriedAllRedux
 \input stratsALCKappaFriedAllReduxHalf
-Dessa forma, as estratégias propostas podem ser consideradas competitivas em termos de
+Assim, as estratégias propostas podem ser consideradas competitivas em termos de
 desempenho preditivo.
 Em aplicações reais, entretanto, a estabilidade do algoritmo pode ser mais importante
 do que o desempenho preditivo médio, pois uma grande variabilidade pode colocar o
@@ -78,11 +97,15 @@ detêm os menores valores de desvio padrão durante a maior parte do processo de r
 Enquanto que TUmah apresenta os maiores valores e TUman com valores intermediários.
 O mesmo ocorre com os ranqueamentos, apresentados na Figura \ref{curvasrankdesvio}.
 \input rankplotRisco
+SGmulti teve um desempenho mediano.
+Finalmente, pode-se concluir, segundo o conjunto de bases utilizado,
+que as versões agnósticas propostas são viáveis na prática,
+podendo superar as outras da atual comparação sem incorrer em
+aumento do risco financeiro.
 
+\esb{comparar também tempo? comparação com passivo?}
 
-\esb{variabilidade/estabilidade, tempo, comparação com passivo -}
-
-
+\ano{adicionar RF, depois que terminar de rodar}
 
 \section{Análise comparativa por aprendiz}\label{isolado}
 Alguns algoritmos de aprendizado são inadequados para determinadas
@@ -91,21 +114,23 @@ Por exemplo, aquelas que dependem de estimativas de probabilidade
 não podem ter como aprendiz um classificador que seja capaz de realizar
 apenas predições exatas.
 Para essas estratégias, é necessário haver a possibilidade de avaliação do nível de certeza do modelo.
-Por esse motivo
-
-Num cenário em que o algoritmo de aprendizado é fixado pela aplicação,
-independentemente do problema em questão,
-a estratégia escolhida deve ser aquela capaz de atingir o melhor desempenho
-mesmo que o aprendiz não seja o mais adequado aos dados.
-Dessa forma, faz-se necessária a análise com cada aprendiz isoladamente.
+% Num cenário em que o algoritmo de aprendizado é fixado pela aplicação,
+% independentemente do problema em questão,
+% a estratégia escolhida deve ser aquela capaz de atingir o melhor desempenho
+% mesmo que o aprendiz não seja o mais adequado aos dados.
+Dessa forma, faz-se necessária uma análise com cada aprendiz isoladamente,
+pois ela evita que classificadores inadequados prejudiquem o desempenho dos
+demais.
+Esse cenário pode ser interpretado como aquele em que o algoritmo de aprendizado
+é fixado previamente pela natureza da aplicação.
 As tabelas \ref{stratsALCKappaFriedCIELMRedux},
 \ref{stratsALCKappaFried5NNRedux},
 \ref{stratsALCKappaFriedC4.5Redux},
 \ref{stratsALCKappaFriedNBRedux},
 \ref{stratsALCKappaFriedVFDTRedux} e
 \ref{stratsALCKappaFriedSVMRedux}
-contém o resultado da comparação de todas as estratégias entre si para
-os algoritmos CIELM, 5NN, C4.5, NB, VFDT e SVM respectivamente.
+contêm o resultado da comparação de todas as estratégias entre si para
+os algoritmos CIELM, 5NN, C4.5, NB, VFDT e SVM respectivamente \ano{RF?}.
 
 \input stratsALCKappaFriedCIELMRedux
 
@@ -119,10 +144,28 @@ os algoritmos CIELM, 5NN, C4.5, NB, VFDT e SVM respectivamente.
 
 \input stratsALCKappaFriedSVMRedux
 
-Quando comparadas entre si,
-é possível observar nas tabelas uma mudança significativa na distribuição das marcas de
+\input stratsALCKappaFriedRFRedux
+
+É possível observar nas seis tabelas uma mudança significativa na distribuição das marcas de
 superioridade estatística.
-\ano{interpretar detalhes das tabelas?}
+A vantagem de uma dada estratégia em relação a outra que use o mesmo aprendiz
+pode chegar a se inverter, como é o caso de EERacu e Clu com os classificadores
+CIELM e 5NN.
+
+\ano{vfdt:ags e aleas}
+
+\ano{SVM:EERs e mahalas}
+
+\ano{c4.5:}
+
+\ano{nb:SG só não vence manhattans e vice-versa}
+
+\ano{CI:EERacu; gnos vencem mais que ags}
+
+\ano{5NN:EERent}
+
+
+
 Isso sugere a existência de alguma afinidade entre estratégia e aprendiz
 \ano{esmiuçar detalhes?} e também a inexistência de uma estratégia
 que seja a melhor com todos os algoritmos de aprendizado.
@@ -159,10 +202,6 @@ que possamos ter insights sobre o experimento, depois é preciso deixar mais suci
 
 
 
-
-\section{Risco}
-variabilidade
-\ano{para o risco não é necessário separar por classificador; basta um fried}
 
 \section{Tempo de espera tolerável}
 \ano{para o tempo não é necessário separar por classificador; basta um fried}

@@ -139,12 +139,28 @@ consultas.
 \ano{pro final: quando perde, perde muito feio?}
 
 \subsection{Métricas}\label{metricas}
-Um cara que usa log no eixo X e usa ``Area under the Learning Curve'':
+\esb{Um cara que usa log no eixo X e usa ``Area under the Learning Curve'':
 {http://perso.rd.francetelecom.fr/lemaire/publis/ijcnn\_2\_2011\_camera\_ready.pdf}
+}
 
 An Easy to Use Repository for Comparing and Improving Machine Learning Algorithm Usage
 http://arxiv.org/pdf/1405.7292.pdf
 fala sobre guardar resultados a 'instance level' com as predições do classificadores
+
+
+\ano{talvez o primeiro artigo que fala em "area under the learning curve" (chamando confusamente de AUClog): When will feature feedback help? quantifying the complexity of classification problems (2007)
+O próximo, sem siglas, é do Settles (com f-measure e sem log(x)):
+An analysis of active learning strategies for sequence labeling tasks (2008)
+No "active chalenge 2011",
+que alguns adotam como referência para citar ALC, foi usada a AUC verdadeira e log2(x) no cálculo (igual ao Cawley):
+http://www.causality.inf.ethz.ch/activelearning.php?page=evaluation
+Porém, eles avaliam sem validação cruzada, talvez por limitação do próprio fato de ser uma competição.
+O dataset inteiro é usado uma só vez e o teste é feito em cima de
+"all the samples with unknown labels".
+Isso explica o fato de classificadores semisupervisionados terem alavancado as estratégias na competição.
+Já estou rodando as estratégias agnósticas com 5x5-fold.
+Podemos adotar ALC c/ AUC e log(x) para sumarizar os resultados.
+}
 
  Uma medida comum na área de aprendizado ativo
  é a \textit{área debaixo da curva de aprendizado} (Area under the Learning Curve - ALC)
