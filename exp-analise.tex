@@ -36,6 +36,7 @@ mas comparações de curvas neste gráfico são imprecisas devido aos diferentes
 pesos que as bases podem ter:
 bases mais difíceis tendem a ter um valor mais baixo para kappa e acabam
 sub-representadas.
+\ano{mencionar media e mediana}
 Uma forma de neutralização da desigualdade de pesos é a adoção
 de ranqueamento, conforme mostrado na Figura \ref{curvasrank}.
 \input rankplot
@@ -65,8 +66,9 @@ das diferenças pode ser verificada pela comparação dos valores de ALCKappa para 
 na Tabela \ref{stratsALCKappaFriedAllRedux}.
 A ALCKappa foi calculada sobre $200$ exemplos nas bases com tamanho suficientemente
 ou $|\mathcal{U}|$ nas demais.
-As estratégias com prefixo TU e ATU são superiores às demais e SGmulti superou a amostragem
-aleatória.
+DWeuc perde de todas as demais estratégias.
+As estratégias com prefixo TU e ATU são superiores às demais e SGmulti superou as
+duas amostragens aleatórias.
 Se forem considerados apenas os primeiras 100 consultas -
 %150 conf/emnlp/SettlesC08
 valor arbitrário frequentemente adotado em outros trabalhos
