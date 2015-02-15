@@ -105,7 +105,7 @@ não rotulados. Essa característica faz com que os exemplos tendam a ser consulta
 da região de fronteira e arredores, mesmo que todos os exemplos
 estivessem debaixo de um mesmo nível de incerteza.
 Isso significa que o classificador e sua medida de incerteza representam um papel que
-pode ser redundante, de mero ajuste fino ou mesmo atrapalhar em parte dos casos.
+pode ser redundante, de ajuste fino ou mesmo atrapalhar em parte dos casos.
 Essa possibilidade de redundância aliada à ideia de agnosticismo da amostragem baseada
 em agrupamento motivou a adaptação da amostragem ponderada por densidade por meio
 da remoção da medida de incerteza da fórmula inicial previamente apresentada nas equações
@@ -126,31 +126,50 @@ Essa possibilidade não existe na estratégia de agrupamento hierárquico,
 pois ela faz uso dos rótulos para determinar a pureza de cada grupo.
 Outra vantagem é a inexistência de tempo de espera interconsultas.
 
-\ano{Desvantagem do cluster-based
-        é pesado, mesmo que o aprendiz seja leve isso não é aproveitado, pois é agnóstico
-}
+\ano{Desvantagem do cluster-based:        é pesado, mesmo que o aprendiz seja leve}
 
-\subsection{Ponderada pela utilidade de cada classe}\label{lu}
-% ELM vai bem com essa
+\subsection{Enviesada para o balanceamento}\label{gatu}
+A abordagem agnóstica baseada em densidade é de natureza exploratória,
+pois enfoca as regiões mais desconhecidas (sem rótulos) do espaço de exemplos.
+Pela ausência de aprendiz, não há uma fronteira de decisão a se considerar.
+Logo, não é possível realizar consultas de caráter prospectivo - ou o ajuste fino citado
+na Seção \ref{ag}, ou seja,
+que ataquem diretamente os exemplos mais críticos de forma análoga a uma busca binária.
+Como a premissa de fronteira única da busca binária não pode ser garantida e
+a amostragem puramente exploratória se assemelha a uma busca exaustiva,
+é natural supor que o equilíbrio entre exploração e prospecção seja proveitoso.
+A estratégia TU embute ambas as abordagens em sua fórmula, mas não
+permite que elas ajam separadamente.
+Assim, a nova estratégia (GATU) procura alternar entre agnosticismo e gnosticismo
+de acordo com a qualidade das consultas.
+Devido à impossibilidade de se obter diretamente o erro de generalização como medida de qualidade,
+é preciso recorrer a uma medida indireta.
+Optou-se pelo grau de balanceamento das classes do conjunto de exemplos rotulados.
+Se a última consulta melhora o balanceamento, então mantém-se a estratégia vigente;
+do contrário, passa a vigorar a outra.
+O grau de balanceamento é calculado pela entropia normalizada da distribuição de classes.
 
-Uma possibilidade de extensão da amostragem baseada em densidade é
-ampliar os tipos de grupos de interesse do par original
-\textit{rotulados}/\textit{não rotulados}
-para \textit{um grupo por classe}/\textit{não rotulados}:
-
-\ano{colocar fórmula da DWLU2}
-
-A motivação para tal mudança reside no potencial equilíbrio
-que as densidades por classe possam trazer em bases desbalanceadas.
-Grupos de exemplos da classe majoritária repelem as consultas mais
-fortemente do que grupos da minoritária, possivelmente aumentando
-a quantidade de consultas a exemplos da classe minoritária.
-
-\subsection{Agnóstica ponderada pela utilidade de cada classe}\label{aglu}
-% vai bem com vários learners
-Naturalmente, as propostas das seções \ref{ag} e \ref{lu} podem ser combinadas.
-
-\ano{colocar fórmula; vai ser a da AgLU2}
+% \subsection{Ponderada pela utilidade de cada classe}\label{lu}
+% % ELM vai bem com essa
+% 
+% Uma possibilidade de extensão da amostragem baseada em densidade é
+% ampliar os tipos de grupos de interesse do par original
+% \textit{rotulados}/\textit{não rotulados}
+% para \textit{um grupo por classe}/\textit{não rotulados}:
+% 
+% \ano{colocar fórmula da DWLU2}
+% 
+% A motivação para tal mudança reside no potencial equilíbrio
+% que as densidades por classe possam trazer em bases desbalanceadas.
+% Grupos de exemplos da classe majoritária repelem as consultas mais
+% fortemente do que grupos da minoritária, possivelmente aumentando
+% a quantidade de consultas a exemplos da classe minoritária.
+% 
+% \subsection{Agnóstica ponderada pela utilidade de cada classe}\label{aglu}
+% % vai bem com vários learners
+% Naturalmente, as propostas das seções \ref{ag} e \ref{lu} podem ser combinadas.
+% 
+% \ano{colocar fórmula; vai ser a da AgLU2}
 
 \input exp-elm
 

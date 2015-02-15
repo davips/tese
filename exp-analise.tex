@@ -46,17 +46,15 @@ O fato de nem todas as estratégias agnósticas terem sido favorecidas - Rnd e Clu
 permaneceram debaixo da colocação média ($6$) por praticamente todo o intervalo de consultas -
 sugere que a ausência de premissas baseadas no viés do aprendiz não é condição preponderante
 para um bom desempenho em classificadores variados.
-Porém,.
 
 Conforme esperado, DWeuc teve o pior desempenho por concentrar as consultas apenas
 nas regiões mais densas e de fronteira, deixando de explorar adequadamente o espaço de exemplos.
 Por outro lado, suas extensões (prefixo TU e ATU) - que evitam regiões densamente rotuladas -
 superaram as demais.
 SGmulti, por sua vez, se manteve próximo à colocação média.
-
 Uma propriedade importante das quatro curvas que ficaram acima da colocação média
 é a inversão entre estratégias gnósticas (TU) e agnósticas (ATU) após aproximadamente
-$120$ exemplos.
+$75$ exemplos.
 Essa inversão sugere que consultas exploratórias sejam vantajosas no início do
 aprendizado, enquanto que consultas prospectivas passariam a ser proveitosas
 mais tardiamente.
@@ -64,22 +62,25 @@ mais tardiamente.
 A significância estatística ($p$-$value$ $=0,01$) \ano{tá certa essa notação?}
 das diferenças pode ser verificada pela comparação dos valores de ALCKappa para todas as bases
 na Tabela \ref{stratsALCKappaFriedAllRedux}.
-A ALCKappa foi calculada sobre $200$ exemplos nas bases com tamanho suficientemente
+A ALCKappa foi calculada sobre $200$ exemplos nas bases com tamanho suficiente
 ou $|\mathcal{U}|$ nas demais.
-DWeuc perde de todas as demais estratégias.
+DWeuc perde de todas exceto Rnd.
 As estratégias com prefixo TU e ATU são superiores às demais e SGmulti superou as
 duas amostragens aleatórias.
-Se forem considerados apenas os primeiras 100 consultas -
+Se forem consideradas apenas as primeiras 100 consultas -
 %150 conf/emnlp/SettlesC08
 valor arbitrário frequentemente adotado em outros trabalhos
 \citep{journals/pieee/CrawfordTY13,chermanaprendizado,conf/nips/SettlesCR07,conf/icml/RoyM01} -
-as variantes agnósticas propostas superam os algoritmos originais
-e SGmulti passa a superar Mar e EERacu, porém com menor significância estatística,
+Clu deixa de perder para Mar, EERent e SGmulti; e
+SGmulti passa a vencer EERacu com maior significância
+% as variantes agnósticas propostas superam os algoritmos originais e SGmulti passa a superar Mar e EERacu, porém com menor significância estatística,
 conforme Tabela \ref{stratsALCKappaFriedAllReduxHalf}.
 \input stratsALCKappaFriedAllRedux
 \input stratsALCKappaFriedAllReduxHalf
-Assim, as estratégias propostas podem ser consideradas competitivas em termos de
-desempenho preditivo.
+% Assim, as estratégias propostas podem ser consideradas competitivas em termos de desempenho preditivo.
+Assim, as estratégias propostas podem ser consideradas superiores à não aplicação
+de aprendizado ativo (Rnd) e a algumas estratégias relevantes apesar de ATUman e ATUmah não
+terem superarado suas versões originais.
 Em aplicações reais, entretanto, a estabilidade do algoritmo pode ser mais importante
 do que o desempenho preditivo médio, pois uma grande variabilidade pode colocar o
 orçamento sob o risco de ser gasto sem atingir um desempenho adequado e pode levar a custos
