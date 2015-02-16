@@ -492,10 +492,10 @@ order=0
 
 [item:capa.tex]
 archive=true
-column=0
+column=6
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=15
 mode=LaTeX
 open=false
 order=3
@@ -542,13 +542,13 @@ order=5
 
 [item:exp-analise.tex]
 archive=true
-column=12
+column=43
 encoding=ISO-8859-1
 highlight=LaTeX
 line=84
 mode=LaTeX
 open=true
-order=1
+order=0
 
 [item:exp-elm.tex]
 archive=true
@@ -575,9 +575,9 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=100
+line=0
 mode=LaTeX
-open=true
+open=false
 order=0
 
 [item:imagens/fluxo-esquema.tex]
@@ -782,7 +782,7 @@ order=-1
 
 [item:tese.tex]
 archive=true
-column=43
+column=22
 encoding=ISO-8859-1
 highlight=LaTeX
 line=185
@@ -875,7 +875,7 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-analise.tex]
-CursorColumn=12
+CursorColumn=43
 CursorLine=84
 JumpList=
 ViMarks=
@@ -1013,7 +1013,7 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:tese.tex]
-CursorColumn=43
+CursorColumn=22
 CursorLine=185
 JumpList=
 ViMarks=
