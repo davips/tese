@@ -290,6 +290,16 @@ Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
+[document-settings,item:plotRisco.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
 [document-settings,item:propostas.tex]
 Bookmarks=
 Encoding=ISO-8859-15
@@ -301,6 +311,16 @@ Mode=LaTeX
 ReadWrite=true
 
 [document-settings,item:rankplot.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:rankplotRisco.tex]
 Bookmarks=
 Encoding=ISO-8859-1
 FoldedColumns=
@@ -340,7 +360,27 @@ Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
+[document-settings,item:stratsALCKappaFriedbest.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
 [document-settings,item:stratsALCKappaNB.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:stratsALCKappaRFRedux.tex]
 Bookmarks=
 Encoding=ISO-8859-1
 FoldedColumns=
@@ -382,10 +422,10 @@ order=9
 
 [item:apendice2.tex]
 archive=true
-column=0
+column=14
 encoding=ISO-8859-15
 highlight=LaTeX
-line=5
+line=28
 mode=LaTeX
 open=false
 order=10
@@ -395,7 +435,7 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=1
 mode=LaTeX
 open=false
 order=4
@@ -442,10 +482,10 @@ order=-1
 
 [item:bibliografia.bib]
 archive=true
-column=15
+column=30
 encoding=ISO-8859-1
 highlight=BibTeX
-line=1348
+line=1390
 mode=BibTeX
 open=false
 order=0
@@ -472,10 +512,10 @@ order=-1
 
 [item:contexto.tex]
 archive=true
-column=5
+column=73
 encoding=ISO-8859-1
 highlight=LaTeX
-line=10
+line=77
 mode=LaTeX
 open=false
 order=4
@@ -485,7 +525,7 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=5
 mode=LaTeX
 open=false
 order=-1
@@ -502,10 +542,10 @@ order=5
 
 [item:exp-analise.tex]
 archive=true
-column=45
+column=12
 encoding=ISO-8859-1
 highlight=LaTeX
-line=56
+line=84
 mode=LaTeX
 open=true
 order=1
@@ -522,20 +562,20 @@ order=3
 
 [item:exp-meta.tex]
 archive=true
-column=74
+column=50
 encoding=ISO-8859-1
 highlight=LaTeX
-line=1
+line=144
 mode=LaTeX
 open=false
 order=5
 
 [item:experimentos.tex]
 archive=true
-column=39
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=134
+line=100
 mode=LaTeX
 open=true
 order=0
@@ -582,10 +622,10 @@ order=3
 
 [item:introducao.tex]
 archive=true
-column=36
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=49
+line=1
 mode=LaTeX
 open=false
 order=6
@@ -612,12 +652,12 @@ order=-1
 
 [item:metodologia.tex]
 archive=true
-column=14
+column=39
 encoding=ISO-8859-1
 highlight=LaTeX
-line=184
+line=105
 mode=LaTeX
-open=true
+open=false
 order=3
 
 [item:passiveDists.tex]
@@ -635,17 +675,27 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=27
+line=37
 mode=LaTeX
-open=true
+open=false
 order=2
+
+[item:plotRisco.tex]
+archive=true
+column=9
+encoding=ISO-8859-1
+highlight=LaTeX
+line=2
+mode=LaTeX
+open=false
+order=-1
 
 [item:propostas.tex]
 archive=true
-column=0
+column=89
 encoding=ISO-8859-15
 highlight=LaTeX
-line=158
+line=149
 mode=LaTeX
 open=false
 order=4
@@ -655,17 +705,27 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=15
+line=17
 mode=LaTeX
-open=true
+open=false
 order=4
 
-[item:resumo.tex]
+[item:rankplotRisco.tex]
 archive=true
-column=42
+column=33
 encoding=ISO-8859-1
 highlight=LaTeX
 line=1
+mode=LaTeX
+open=false
+order=-1
+
+[item:resumo.tex]
+archive=true
+column=0
+encoding=ISO-8859-1
+highlight=LaTeX
+line=2
 mode=LaTeX
 open=false
 order=2
@@ -690,12 +750,32 @@ mode=LaTeX
 open=false
 order=2
 
+[item:stratsALCKappaFriedbest.tex]
+archive=true
+column=0
+encoding=ISO-8859-1
+highlight=LaTeX
+line=4
+mode=LaTeX
+open=false
+order=-1
+
 [item:stratsALCKappaNB.tex]
 archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
 line=0
+mode=LaTeX
+open=false
+order=-1
+
+[item:stratsALCKappaRFRedux.tex]
+archive=true
+column=26
+encoding=ISO-8859-1
+highlight=LaTeX
+line=18
 mode=LaTeX
 open=false
 order=-1
@@ -723,14 +803,14 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:apendice2.tex]
-CursorColumn=0
-CursorLine=5
+CursorColumn=14
+CursorLine=28
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:apendice3.tex]
 CursorColumn=0
-CursorLine=0
+CursorLine=1
 JumpList=
 ViMarks=
 
@@ -759,8 +839,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:bibliografia.bib]
-CursorColumn=15
-CursorLine=1348
+CursorColumn=30
+CursorLine=1390
 JumpList=
 ViMarks=
 
@@ -777,14 +857,14 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:contexto.tex]
-CursorColumn=5
-CursorLine=10
+CursorColumn=73
+CursorLine=77
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:dataset-tables.tex]
 CursorColumn=0
-CursorLine=0
+CursorLine=5
 JumpList=
 ViMarks=
 
@@ -795,8 +875,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-analise.tex]
-CursorColumn=45
-CursorLine=56
+CursorColumn=12
+CursorLine=84
 JumpList=
 ViMarks=
 
@@ -807,14 +887,14 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-meta.tex]
-CursorColumn=74
-CursorLine=1
+CursorColumn=50
+CursorLine=144
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:experimentos.tex]
-CursorColumn=39
-CursorLine=134
+CursorColumn=0
+CursorLine=100
 JumpList=
 ViMarks=
 
@@ -837,8 +917,8 @@ CursorColumn=20
 CursorLine=12
 
 [view-settings,view=0,item:introducao.tex]
-CursorColumn=36
-CursorLine=49
+CursorColumn=0
+CursorLine=1
 JumpList=
 ViMarks=
 
@@ -855,8 +935,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:metodologia.tex]
-CursorColumn=14
-CursorLine=184
+CursorColumn=39
+CursorLine=105
 JumpList=
 ViMarks=
 
@@ -868,25 +948,37 @@ ViMarks=
 
 [view-settings,view=0,item:plot.tex]
 CursorColumn=0
-CursorLine=27
+CursorLine=37
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:plotRisco.tex]
+CursorColumn=9
+CursorLine=2
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:propostas.tex]
-CursorColumn=0
-CursorLine=158
+CursorColumn=89
+CursorLine=149
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:rankplot.tex]
 CursorColumn=0
-CursorLine=15
+CursorLine=17
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:rankplotRisco.tex]
+CursorColumn=33
+CursorLine=1
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:resumo.tex]
-CursorColumn=42
-CursorLine=1
+CursorColumn=0
+CursorLine=2
 JumpList=
 ViMarks=
 
@@ -902,9 +994,21 @@ CursorLine=11
 JumpList=
 ViMarks=
 
+[view-settings,view=0,item:stratsALCKappaFriedbest.tex]
+CursorColumn=0
+CursorLine=4
+JumpList=
+ViMarks=
+
 [view-settings,view=0,item:stratsALCKappaNB.tex]
 CursorColumn=0
 CursorLine=0
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:stratsALCKappaRFRedux.tex]
+CursorColumn=26
+CursorLine=18
 JumpList=
 ViMarks=
 
