@@ -17,12 +17,14 @@ e a determinação do algoritmo de \textit{aprendizado} dependem de
 um segundo especialista,
 com conhecimento específico da área de aprendizado de máquina.
 
+\ano{citar problemas? fadiga ...}
+
 O segundo especialista pode resolver o problema da escolha do algoritmo
 recorrendo à sua experiência pessoal ou adotando algum sistema automático de
 recomendação como o \textit{meta-aprendizado} conforme descrito no
 Capítulo \ref{meta}.
 Ambas as abordagens, manual e automática,
-são aplicáveis apenas no cenário em que o acervo \ano{acervo?}
+são aplicáveis apenas no cenário em que o acervo, chamado de conjunto de treinamento,
 já está construído.
 Consequentemente, a escolha do processo de amostragem,
 denominado \textit{aprendizado ativo},
@@ -35,40 +37,56 @@ mais apropriado, existe o problema da escolha da melhor estratégia de
 aprendizado ativo.
 O segundo problema é mais complexo, tendo-se em vista que o sucesso
 da estratégia escolhida só pode ser determinado após ter-se incorrido
-em custos financeiros com a atividade de supervisão realizada
-frequentemente por um humano - chamado genericamente de \textit{oráculo}.
-
-Está implícita na seleção de dados de qualidade a economia em tempo de processamento e
-de supervisão, dado que apenas a parcela reduzida de exemplos mais relevantes
-é enviada para a análise do oráculo e processada pelo algoritmo de aprendizado.
-Como agravante, a quantidade global de dados duplica a cada dois anos
-\citep{journals/sigkdd/ZliobaiteBGGGMM12}, apontando
-para uma tendência que torna intratável a supervisão e aprendizado exaustivos
-em muitas aplicações.
-
-Por outro lado, aplicações em que o oráculo é um processo químico, por exemplo,
-envolvem consumo de material ou a destruição dos exemplos consultados.
-Apesar de não envolver a manutenção dispendiosa de um oráculo humano
-e possivelmente não requerer uma filtragem massiva de exemplos,
-cada consulta tem um custo associado.
-
-
-
-
-\ano{\citep{journals/jmlr/GuyonCDL11} tem o gráfico mostrando muita gente usando unc sampling
-e ninguém(?) usando DWTU}
-
-\esb{apresenta o custo de rotulação como motivação;
-explicita que ninguém compara estratégias; comenta possiveis deficiencias ou
-lacunas das estrategias existentes, apresenta melhorias propostas; apresenta
-recomendação de classificador e/ou estratégia; apresenta hipóteses principal e secundárias.
-Falar ainda dos objetivos da tese, que estao bem ligados as hipoteses}
-
+em custos financeiros com a atividade de supervisão - que é realizada
+frequentemente por um humano, chamado genericamente de \textit{oráculo}.
+% Está implícita na seleção de dados de qualidade a economia em tempo de processamento e
+% de supervisão, dado que apenas a parcela reduzida de exemplos mais relevantes
+% é enviada para a análise do oráculo e processada pelo algoritmo de aprendizado.
+% Como agravante, a quantidade global de dados duplica a cada dois anos
+% \citep{journals/sigkdd/ZliobaiteBGGGMM12}, apontando
+% para uma tendência que torna intratável a supervisão e aprendizado exaustivos
+% em muitas aplicações.
+% 
+% Por outro lado, aplicações em que o oráculo é um processo químico, por exemplo,
+% envolvem consumo de material ou a destruição dos exemplos consultados.
+% Apesar de não envolver a manutenção dispendiosa de um oráculo humano
+% e possivelmente não requerer uma filtragem massiva de exemplos,
+% cada consulta tem um custo associado.
+Dessa forma, é preciso adotar uma estratégia
+com base em previsões de desempenho ou de acordo com características da base
+de dados.
+Na prática, essa escolha tem sido quase arbitrária, tendendo a se concentrar
+no uso da estratégia mais simples (amostragem por incerteza).
+Essa preferência foi reportada numa competição de aprendizado ativo,
+onde também foi reportada a ausência de estratégias mais efetivas
+como as baseadas em densidade \citep{journals/jmlr/GuyonCDL11}.
+Em consonância com tais comportamentos,
+está a ausência de estudos comparativos
+abrangentes que possam guiar o especialista na fase de amostragem.
+% - até onde o conhecimento do autor permite dizer - 
 \ano{AL é uma área com enfoque prático, pois visa diretamente a redução de custos.
 Provavelmente por esse motivo, a pesquisa em AL é normalmente direcionada a
 aplicações específicas e não a experimentos comparativos abrangentes.}
 
-\ano{citar problemas? fadiga ...}
+
+\esb{comenta possiveis deficiencias ou
+lacunas das estrategias existentes (pensando nas que vou propor),
+apresenta melhorias propostas;
+apresenta recomendação de classificador e/ou estratégia;
+apresenta hipóteses principal e secundárias.
+Falar ainda dos objetivos da tese, que estao bem ligados as hipoteses}
+
+Hipóteses secundárias
+Estratégias baseadas em densidade são viáveis \ano{muito fraca essa palavra?} sem um aprendiz
+objetivo: contornar o problema de escolha do algoritmo de aprendizado antes
+da obtenção dos rótulos (transformando uma estratégia eficaz em agnóstica)
+
+É possível definir a estratégia mais adequada \ano{muito forte essas duas palavras?} por meio de recomendação automática
+objetivo: resolver o problema de escolha da estratégia quando o algoritmo de
+aprendizado é dado previamente pela aplicação (com recomendação automática)
+
+
+
 
 \section{Contribuição}\label{contribuicao}
 \esb{cita os artigos/software publicados e submetidos; menciona
@@ -82,8 +100,7 @@ Existem três principais cenários na literatura de aprendizado ativo
 \ing{amostragem baseada em \pool}{pool-based sampling}; e
 \ing{amostragem seletiva baseada em fluxo}{stream-based selective sampling}.
 Mais detalhes são apresentados no Apêndice \ref{cenarios}.
-
-O cenário adotado neste trabalho é o baseado em \pool.
+O cenário adotado neste trabalho é baseado em \pool.
 Especificamente, há as seguintes restrições de escopo:
 \begin{itemize}
  \item consulta pela classe (não por valores de atributos, por exemplo);
@@ -103,12 +120,12 @@ verossimilhança com aplicações reais:
  \item um rótulo inicial por classe - simulando
    \ing{aprendizado guiado}{guided learning} \citep{conf/kdd/AttenbergP10}.
 \end{itemize}
-Outra característica está no desconhecimento do orçamento disponível por parte das estratégias implementadas.
+Outra característica do cenário está no desconhecimento do orçamento disponível por parte das estratégias implementadas.
 Isso implica na geração de sequências de consultas não necessariamente ótimas.
 Essa possibilidade, mais teórica do que prática,
 decorre de o fato do processo ativo de amostragem não ser uma
 \textit{cadeia de Markov} de primeira ordem \citep{conf/icml/RoyM01}.
-Uma consulta ótima depende de quantas ainda podem ser feitas.
+Uma consulta ótima dependeria de quantas ainda podem ser feitas.
 
 \section{Estrutura do documento}\label{estrutura}
 A notação matemática e a terminologia adotadas e a revisão da literatura das áreas
