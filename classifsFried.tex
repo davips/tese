@@ -1,15 +1,13 @@
 \begin{table}[h]
 \caption{\textbf{Um contra um}. Medida: BalancedAcc. \textit{Cada asterisco/cruz/ponto indica quando o algoritmo na linha tem melhor desempenho que o algoritmo na coluna com intervalo de confiança de 0.99/0.95/0.90.}}
-\begin{center}\begin{tabular}{lcc|cc|cc|cc}
- 			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
-1 - 5NN  	& - &   & * & * &   &   &   & * \\
-2 - C4.5 	&   & - & * & * &   &   & . & * \\ \hline
-3 - CIELM	&   &   & - &   &   &   &   &   \\
-4 - IELM 	&   &   &   & - &   &   &   &   \\ \hline
-5 - NB   	&   &   & . & * & - &   &   & + \\
-6 - RF   	& * & * & * & * & * & - & * & * \\ \hline
-7 - VFDT 	&   &   &   & + &   &   & - &   \\
-8 - SVM  	&   &   &   &   &   &   &   & - \\ \hline\end{tabular}
+\begin{center}\begin{tabular}{lcc|cc|cc}
+ 			& 1 & 2 & 3 & 4 & 5 & 6\\
+1 - 5NN  	& - &   &   &   &   &   \\
+2 - C4.5w	&   & - &   &   &   &   \\ \hline
+3 - CIELM	&   &   & - &   &   &   \\
+4 - ELM  	&   &   &   & - &   &   \\ \hline
+5 - RFw  	&   & . &   & + & - &   \\
+6 - NB   	&   &   &   &   &   & - \\ \hline\end{tabular}
 \label{tab:friedClassif}
 \end{center}
 \end{table}

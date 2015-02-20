@@ -58,9 +58,53 @@ de dados.
 Na prática, essa escolha tem sido quase arbitrária, tendendo a se concentrar
 no uso da estratégia mais simples (amostragem por incerteza).
 Essa preferência foi reportada numa competição de aprendizado ativo,
-onde também foi reportada a ausência de estratégias mais efetivas
-como as baseadas em densidade \citep{journals/jmlr/GuyonCDL11}.
-Em consonância com tais comportamentos,
+onde também prevaleceu a ausência de estratégias possivelmente mais efetivas
+como as baseadas em densidade conforme
+Figura \ref{compet}.
+\begin{figure}
+\caption{Frequência de uso de estratégias na competição de aprendizado ativo
+(alguns participantes adotaram mais de uma estratégia).
+\textit{Adaptado de \citep{journals/jmlr/GuyonCDL11}.}}
+\label{compet}
+\begin{center}
+    \begin{tikzpicture}
+\begin{axis}[
+    xbar,
+%     xmin=0.0,
+%     width=12cm,
+%     height=40cm,
+%     enlarge x limits={rel=0.13,upper},
+    ytick={1,2,3,4,5,6,7},
+    yticklabels={
+    {amostragem por incerteza},
+    {amostragem aleatória},
+    {consulta por comitê},
+    {aprendizado passivo},
+    {redução do erro esperado},
+    {mudança esperada no modelo},
+    {outras}
+    },
+%         enlarge y limits=0.4,
+    xlabel={participantes (\%)},
+    ytick=data,
+    nodes near coords,
+    nodes near coords align=horizontal
+]
+\addplot [draw=black, fill=cyan!40!black] coordinates {
+    (80,7)
+    (42,6)
+    (38,5)
+    (20,4)
+    (10,3)
+    (5,2)
+    (25,1)
+};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{figure}
+
+Em consonância com esse panorama,
 está a ausência de estudos comparativos
 abrangentes que possam guiar o especialista na fase de amostragem.
 % - até onde o conhecimento do autor permite dizer - 
@@ -109,23 +153,8 @@ Especificamente, há as seguintes restrições de escopo:
  \item custos uniformes;
  \item oráculo único e consistente (sempre a mesma resposta para um mesmo ex.);
  \item atributos sem valores faltantes;
+ \item consulta \ing{um a um}{on-line}.
 \end{itemize}
-e as seguintes condições que visam rigor experimental, replicabilidade e
-verossimilhança com aplicações reais:
-\begin{itemize}
- \item consulta \ing{um a um}{on-line};
- \item toda\footnote{Exceto exemplos duplicados.} a base de dados original é utilizada no
-   processo de validação cruzada\footnote{Algumas estratégias fazem uma amostragem interna,
-   que se renova a cada consulta.}; e,
- \item um rótulo inicial por classe - simulando
-   \ing{aprendizado guiado}{guided learning} \citep{conf/kdd/AttenbergP10}.
-\end{itemize}
-Outra característica do cenário está no desconhecimento do orçamento disponível por parte das estratégias implementadas.
-Isso implica na geração de sequências de consultas não necessariamente ótimas.
-Essa possibilidade, mais teórica do que prática,
-decorre de o fato do processo ativo de amostragem não ser uma
-\textit{cadeia de Markov} de primeira ordem \citep{conf/icml/RoyM01}.
-Uma consulta ótima dependeria de quantas ainda podem ser feitas.
 
 \section{Estrutura do documento}\label{estrutura}
 A notação matemática e a terminologia adotadas e a revisão da literatura das áreas
@@ -134,7 +163,7 @@ No Capítulo \ref{propostas},
 são apresentadas as propostas de algoritmos.
 O Capítulo \ref{metodologia} contém os métodos de avaliação e detalhes de
 implementação comuns a todos os experimentos descritos neste documento.
-Essa avaliação empírica e seus experimentos e resultados associados são apresentados
+Essa avaliação empírica e seus resultados associados são apresentados
 no Capítulo \ref{experimentos}.
 Adicionalmente, uma abordagem baseada em meta-aprendizado
 é proposta e avaliada no Capítulo \ref{aml}.

@@ -1,7 +1,6 @@
 \section{Meta-aprendizado} \label{meta}
 Um sistema de classificação baseado em aprendizado de máquina depende
-de um modelo que é induzido por algoritmos de aprendizado.
-\ano{citar seção/cap de contexto?}
+de um modelo que é induzido por algoritmos de aprendizado (Capítulo \ref{contexto}).
 Diante da infinidade de vieses possíveis de aprendizado,
 muitos algoritmos têm sido propostos e alguns são frequentemente
 empregados de forma generalizada na solução dos mais diversos problemas,
@@ -16,18 +15,25 @@ uma escolha criteriosa de qual algoritmo deva ser empregado.
 Normalmente, o problema da escolha do algoritmo é resolvido
 por um especialista em aprendizado de máquina que se baseia em conhecimentos
 sobre os dados e sobre os algoritmos disponíveis
-para escolher manualmente o melhor segundo alguma métrica de desempenho
+para escolher manualmente o melhor.
+Essa escolha é feita segundo alguma métrica de desempenho
 \cite{books/daglib/0022052}.
 Uma maneira de se evitar a escolha manual é a adoção de algum tipo
 de \textit{meta-aprendizado}, que é o estudo do aperfeiçoamento dos
 algoritmos de aprendizado por meio da experiência.
 Esse aperfeiçoamento se dá no nível \textit{meta},
-que é um nível acima do aprendizado convencional chamado nível \textit{base}
+que é um nível acima do aprendizado convencional, chamado de nível \textit{base}
 \citep{journals/air/VilaltaD02}.
 No nível base, o viés de aprendizado é fixo, enquanto que
 no nível meta o viés normalmente é escolhido dinamicamente.
+Existem diferentes formas de meta-aprendizado.
+As mais relevantes são apresentadas nas seções seguintes.
+A última seção (\ref{direta}) descreve a abordagem mais aplicável ao problema de
+recomendação de estratégias de aprendizado ativo.
+Dependendo do conjunto de metaatributos escolhidos,
+ela permite caracterizar as bases de dados com poucos rótulos ou na ausência deles.
 
-Diferentes formas de meta-aprendizado são apresentadas nas seções seguintes.
+\ano{definir ML explicitamente?}
 
 \subsection{Generalização em pilha}
 Na \ing{generalização em pilha}{stacked generalization}
@@ -38,7 +44,6 @@ Uma particularidade dessa abordagem é o viés estático,
 pois ocorre uma combinação de algoritmos ao invés de uma seleção.
 O resultado dessa transformação são metaexemplos cujos valores dos atributos
 são as predições de cada modelo base.
-% kalousis2002algorithm
 
 \subsection{Marcadores de referência}
 Os \ing{marcadores de referência}{landmarkers} \citep{pfahringer2000tell}
@@ -50,22 +55,39 @@ A acurácia de cada um dos modelos associados fornece o valor de um meta-atributo
 A própria estrutura dos modelos do nível base pode ser explorada na construção dos
 metaexemplos.
 Uma representante da \textit{caracterização por modelos} é a
-\ing{indução de modelos tipados de ordem maior}{typed higher-order induction}
-\citep{conf/ilp/BensusanGK00}.
-Ela gera - no exemplo dado no trabalho original - uma árvore de decisão para cada
+\ing{indução de modelos tipados de ordem maior}{typed higher-order induction}.
+Ela gera - de acordo com exemplo dado no trabalho de
+\cite{conf/ilp/BensusanGK00} - uma árvore de decisão para cada
 base de dados.
 As árvores são completamente representadas por estruturas complexas
 que servem de metaexemplos que são aprendidos por algoritmos especialmente
 desenvolvidos para esse tipo de tarefa.
 
-\subsection{Caracterização direta}
+\subsection{Caracterização direta}\label{direta}
+A caracterização direta consiste na obtenção de medidas diretamente dos exemplos
+que compõem uma base de dados, ou seja, sem o intermédio de um algoritmo
+de aprendizado.
+% tese kalousis: The first attempt to characterize datasets in order to predict the
+% performance of classication algorithms was done by Rendell et al. (1987).
+A primeira caracterização de bases de dados foi feita por \cite{conf/ijcai/RendellST87}
+com o intuito de predizer acurácio e tempo de processamento e era baseada no número
+de exemplos e de atributos.
+O próximo conjunto foi proposto no projeto STATLOG
+\citep{brazdil1994analysis} e era composto de quinze medidas:
+% mitchie 1994 pode ser a referência certa do STATLOG?
+\begin{itemize}
+ \item número de exemplos, atributos binários e não binários e classes;
+ \item entropia das classes, informação mútua entre classe e atributos e razão sinal-ruído;
+ \item entropia, curtose, assimetria, correlação e razão entre os desvios padrão entre atributos;
+ \item primeira correlação canônica e variância pelo primeiro discriminante canônico.
+\end{itemize}
+As medidas adotadas neste trabalho são apresentadas em maior detalhe na
+Seção \ref{recom}.
 
-\ano{entrar em mais detalhes, pois é o caso adotado/adotável}
-
-\cite{brazdil1994analysis} é a ref do statlog;
 
 
-\ano{definir ML explicitamente?}
+% kalousis2002algorithm - Algorithm selection via meta-learning - pg9 formaliza ap. sup. pra colocar no cap contexto
+
 Um sistema de recomendação baseado em meta-aprendizado
 tem a função de sugerir o algoritmo e parâmetros mais apropriados,
 ou um ranqueamento das opções disponíveis,

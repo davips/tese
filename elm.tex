@@ -3,16 +3,18 @@ As máquinas extremas (\textit{Extreme Learning Machines} - ELMs) são redes - não
 necessariamente neurais - com treinamento diferenciado que têm recebido crescente
 atenção devido à sua simplicidade e performance, comparável com o estado da arte
 \citep{journals/tsmc/HuangZDZ12}.
-Trata-se de um algoritmo adequado para AA porque, ainda que pertença a um grupo
-de algoritmos complexos, com a capacidade de aproximação universal
-\citep{journals/tsmc/HuangZDZ12} - por exemplo,
-ela tem um ajuste de parâmetros que pode ser simplificado de uma forma que não ocorre
-com outros algoritmos similares em complexidade e nichos de aplicação como a máquina
+Trata-se de um algoritmo adequado para aprendizado ativo porque
+seu ajuste de parâmetros pode ser simplificado de uma forma que não ocorre
+com outros algoritmos similares em complexidade
+(com a capacidade de aproximação universal)
+e nichos de aplicação como a máquina
 de vetores de suporte e o Perceptron multicamadas \citep{haykin2004comprehensive}.
 Esse último requer, por exemplo, algum critério de parada no treinamento e um processo
 de seleção de modelo que envolve o ajuste de topologia e parâmetros.
-Essa característica da ELM permite um rápido treinamento, algo necessário num ambiente interativo.
-O motivo para a baixa necessidade ou ausência de iterações é explicado a seguir.
+Essa característica da ELM permite um rápido treinamento,
+algo necessário num ambiente interativo.
+O motivo para a baixa necessidade ou ausência de iterações de ajuste é explicado a seguir.
+% \citep{journals/tsmc/HuangZDZ12} 
 
 Fixado o tipo de nó como o neurônio artificial convencional, seus parâmetros a ajustar são os
 valores e quantidade de neurônios/conexões sinápticas da camada oculta.

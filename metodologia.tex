@@ -31,6 +31,35 @@ fluxograma de 4 fases: queries, hits, measures, sumarização (médias/friedmans = 
 %   publisher={Taylor \& Francis}
 % }
 
+\section{Descrição do cenário}
+O cenário adotado neste trabalho é baseado em \pool.
+Especificamente, há as seguintes restrições de escopo:
+\begin{itemize}
+ \item consulta pela classe (não por valores de atributos, por exemplo);
+ \item monorrótulo;
+ \item distribuição estacionária;
+ \item custos uniformes;
+ \item oráculo único e consistente (sempre a mesma resposta para um mesmo ex.);
+ \item atributos sem valores faltantes;
+\end{itemize}
+e as seguintes condições que visam rigor experimental, replicabilidade e
+verossimilhança com aplicações reais:
+\begin{itemize}
+ \item consulta \ing{um a um}{on-line};
+ \item toda\footnote{Exceto exemplos duplicados.} a base de dados original é utilizada no
+   processo de validação cruzada\footnote{Algumas estratégias fazem uma amostragem interna,
+   que se renova a cada consulta.}; e,
+ \item um rótulo inicial por classe.
+\end{itemize}
+Outra característica do cenário está no desconhecimento do orçamento disponível por parte das estratégias implementadas.
+Isso implica na geração de sequências de consultas não necessariamente ótimas.
+Essa possibilidade, mais teórica do que prática,
+decorre de o fato do processo ativo de amostragem não ser uma
+\textit{cadeia de Markov} de primeira ordem \citep{conf/icml/RoyM01}.
+Uma consulta ótima dependeria de quantas ainda podem ser feitas.
+
+\ing{aprendizado guiado}{guided learning} \citep{conf/kdd/AttenbergP10}
+
 \section{Descrição das bases}
 As bases de dados têm suas características expostas no Apêndice \ref{detalhes}
 (tabelas \ref{tab:datasetsa},

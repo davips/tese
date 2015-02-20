@@ -106,7 +106,7 @@ cada base: os primeiros seriam os positivos e últimos seriam os negativos.
 Multiarmed bandit problem
 http://www.ualberta.ca/~szepesva/Thesis/varun08.thesis.pdf
 
-\section{Recomendação de estratégias}
+\section{Recomendação de estratégias}\label{recom}
 c45    5nn   maj
 3buds
 0.252 0.227 0.283 qtd de grupos = 94 qtd de metaexemplos: 1974 Winner nenhum*
@@ -181,18 +181,9 @@ Posso colocar ou omitir a informação de distribuição das classes; ela normalment
 \ano{vai que o tempo de phd se multiplica:
 testar com outros meta-classificadores; Meta-estratégia dinâmica}
 
-\esb{A quantidade inicial de exemplos rotulados tem sido fixada igual ao número Y de classes.
-Uma meta-feature N interessante seria adicionar uma etapa inicial exploratória
-que sorteia N exemplos para todas as estratégias
-(os valores poderiam ser 0 e 12, pois há um pool com apenas 50 exemplos,
-12 é metade do máximo aceitável pra AL que é 0.5 do total).
-Evita a influência das diferenças ruidosas no início das curvas de aprendizado.
-Ajuda DW e também ajuda ClusterBased, cuja implementação não aproveita os rótulos iniciais (e pode dispensar a etapa inicial).
+\esb{Dar a ideia de que uma meta-feature N interessante seriaa qtdade inicial de exemplos.
+Se eu chegasse a implementar, ajudaria DW e também ajuda ClusterBased, cuja implementação não aproveita os rótulos iniciais (e pode dispensar a etapa inicial).
 Porém, qto maios exemplos, mais as estratégias se aproximam de Random Sampling.}
-
-tese kalousis: The first attempt to characterize datasets in order to predict the performance of classication algorithms was done by Rendell et al. (1987).
-
-tese bruno feres:
 
 
 \section{Experimentos e Resultados}
