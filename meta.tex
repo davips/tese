@@ -1,3 +1,4 @@
+\newpage
 \section{Meta-aprendizado} \label{meta}
 Um sistema de classificação baseado em aprendizado de máquina depende
 de um modelo que é induzido por algoritmos de aprendizado (Capítulo \ref{contexto}).
@@ -28,28 +29,20 @@ No nível base, o viés de aprendizado é fixo, enquanto que
 no nível meta o viés normalmente é escolhido dinamicamente.
 Existem diferentes formas de meta-aprendizado.
 As mais relevantes são apresentadas nas seções seguintes.
-A última seção (\ref{direta}) descreve a abordagem mais aplicável ao problema de
+A Seção \ref{direta}, em especial, descreve a abordagem mais aplicável ao problema de
 recomendação de estratégias de aprendizado ativo.
-Dependendo do conjunto de metaatributos escolhidos,
+Dependendo do conjunto de meta-atributos escolhidos,
 ela permite caracterizar as bases de dados com poucos rótulos ou na ausência deles.
-
-\ano{definir ML explicitamente?}
 
 \subsection{Generalização em pilha}
 Na \ing{generalização em pilha}{stacked generalization}
 \citep{journals/nn/Wolpert92} o meta-aprendiz lida com uma metabase
 que consiste de um conjunto de treinamento transformado por
 aprendizes no nível base.
-Uma particularidade dessa abordagem é o viés estático,
-pois ocorre uma combinação de algoritmos ao invés de uma seleção.
 O resultado dessa transformação são metaexemplos cujos valores dos atributos
 são as predições de cada modelo base.
-
-\subsection{Marcadores de referência}
-Os \ing{marcadores de referência}{landmarkers} \citep{pfahringer2000tell}
-são um conjunto diverso de algoritmos simples usados como referência para
-algoritmos mais complexos.
-A acurácia de cada um dos modelos associados fornece o valor de um meta-atributo.
+Uma particularidade dessa abordagem é o viés estático,
+pois ocorre uma combinação de algoritmos ao invés de uma seleção.
 
 \subsection{Caracterização por modelos}
 A própria estrutura dos modelos do nível base pode ser explorada na construção dos
@@ -63,6 +56,15 @@ As árvores são completamente representadas por estruturas complexas
 que servem de metaexemplos que são aprendidos por algoritmos especialmente
 desenvolvidos para esse tipo de tarefa.
 
+\subsection{Marcadores de referência}
+Os \ing{marcadores de referência}{landmarkers} \citep{pfahringer2000tell}
+são um conjunto diverso de algoritmos simples usados como referência para
+algoritmos mais complexos.
+A acurácia de cada um dos modelos associados fornece o valor de um meta-atributo.
+Embora não diretamente aplicável, o conceito da geração de meta-atributos por meio
+de processamentos que representem uma simplificação da tarefa base pode
+ser adaptável ao cenário de aprendizado ativo conforme definido na Seção \ref{recom}.
+
 \subsection{Caracterização direta}\label{direta}
 A caracterização direta consiste na obtenção de medidas diretamente dos exemplos
 que compõem uma base de dados, ou seja, sem o intermédio de um algoritmo
@@ -70,10 +72,10 @@ de aprendizado.
 % tese kalousis: The first attempt to characterize datasets in order to predict the
 % performance of classication algorithms was done by Rendell et al. (1987).
 A primeira caracterização de bases de dados foi feita por \cite{conf/ijcai/RendellST87}
-com o intuito de predizer acurácio e tempo de processamento e era baseada no número
+com o intuito de predizer acurácia e tempo de processamento e era baseada no número
 de exemplos e de atributos.
-O próximo conjunto foi proposto no projeto STATLOG
-\citep{brazdil1994analysis} e era composto de quinze medidas:
+O próximo conjunto, proposto no projeto STATLOG
+\citep{brazdil1994analysis}, era composto de quinze medidas:
 % mitchie 1994 pode ser a referência certa do STATLOG?
 \begin{itemize}
  \item número de exemplos, atributos binários e não binários e classes;
@@ -81,20 +83,27 @@ O próximo conjunto foi proposto no projeto STATLOG
  \item entropia, curtose, assimetria, correlação e razão entre os desvios padrão entre atributos;
  \item primeira correlação canônica e variância pelo primeiro discriminante canônico.
 \end{itemize}
-As medidas adotadas neste trabalho são apresentadas em maior detalhe na
+Variações desse conjunto são propostas em trabalhos posteriores
+\citep{books/daglib/0022052},
+como a adoção de histogramas para evitar a perda de informações que ocorre quando
+se adota a média das medidas nos diferentes atributos base \citep{kalousis2002algorithm};
+ou a binarização de medidas, como o grau de dispersão do atributo alvo em
+tarefas de regressão \citep{journals/ijon/GomesPSRC12}.
+Outros conjuntos visam a recomendação automática de algoritmos não supervisionados.
+Essa tarefa é mais próxima da recomendação de estratégias de aprendizado ativo.
+Alguns trabalhos, por exemplo, adotam medidas como o grau de normalidade da distribuição e
+o percentual de pontos aberrantes e de atributos mais relevantes
+\citep{conf/ijcnn/SoutoPSACLS08,Ferrari2015181}.
+As medidas adotadas na presente pesquisa são apresentadas em maior detalhe na
 Seção \ref{recom}.
 
 
 
-% kalousis2002algorithm - Algorithm selection via meta-learning - pg9 formaliza ap. sup. pra colocar no cap contexto
+% kalousis2002algorithm -
+%Algorithm selection via meta-learning - pg9 formaliza ap. sup. pra eu colocar no cap contexto
+%ele fala de normalizar entropia pela maior possivel log(-) e fala de usa-la como medida de
+%balanceamento
 
-Um sistema de recomendação baseado em meta-aprendizado
-tem a função de sugerir o algoritmo e parâmetros mais apropriados,
-ou um ranqueamento das opções disponíveis,
-para uma determinada base de dados.
 
-Critério de empate:
-Um algoritmo é considerado adequado se ele não for
-pior que o melhor de todos com significância estatística
-\cite{books/daglib/0022052}.
+
 

@@ -107,6 +107,47 @@ Multiarmed bandit problem
 http://www.ualberta.ca/~szepesva/Thesis/varun08.thesis.pdf
 
 \section{Recomendação de estratégias}\label{recom}
+Um sistema de recomendação baseado em meta-aprendizado tem a função de sugerir
+o algoritmo e parâmetros mais apropriados, ou um ranqueamento das opções disponíveis,
+para uma determinada base de dados \citep{books/daglib/0022052}.
+As medidas escolhidas para caracterização das bases foram obtidas da literatura
+de meta-aprendizado tanto supervisionado quanto não supervisionado.
+Devido à impossibilidade de se prever o intervalo dos valores e definir
+o particionamento dele, optou-se por substituir o esquema de histogramas
+pelos valores mínimo, máximo, médio e razão entre mínimo e máximo.
+Medidas de agrupamento também foram incluídas visando identificar possíveis afinidades
+de algumas bases com a estratégia de amostragem por agrupamento.
+\begin{table}
+\caption{Descrição dos meta-atributos.}
+\begin{tabular}{c|c|c}
+\textbf{meta-atributo} & \textbf{descrição}&\textbf{fórmula} \\ \hline
+\makecell{$\av_{min}$,$\av_{max}$\\$\av_{min/max}$,$\av_{avg}$} &
+\makecell{média (mínima, máxima,\\razão entre ambas e média)} & formula? \\ \hline
+\makecell{$\sd_{min}$,$\sd_{max}$\\$\sd_{min/max}$,$\sd_{avg}$} &
+\makecell{desvio padrão (\textit{idem})} & formula? \\ \hline
+\makecell{$\en_{min}$,$\en_{max}$\\$\en_{min/max}$,$\en_{avg}$} &
+\makecell{entropia (\textit{idem})} & formula? \\ \hline
+\makecell{$\co_{min}$,$\co_{max}$\\$\co_{min/max}$,$\co_{avg}$} &
+\makecell{correlação entre pares\\de atributos (\textit{idem})} & formula? \\ \hline
+\makecell{$\sk_{min}$,$\sk_{max}$\\$\sk_{min/max}$,$\sk_{avg}$} &
+\makecell{assimetria (\textit{idem})} & formula? \\ \hline
+\makecell{$\ku_{min}$,$\ku_{max}$,\\$\ku_{min/max}$,$\ku_{avg}$} &
+curtose (\textit{idem}) & formula? \\ \hline
+\makecell{$\val_{min}$,$\val_{max}$,\\$\val_{min/max}$,$\val_{avg}$} &
+\makecell{quantidade de valores\\nominais (\textit{idem})} &
+$\val=\{|a| \mid \forall a\in A(X),\nom(a)=1\}$\\ \hline
+% Rnd & \makecell{exploratória\\aleatória} & \makecell{agnóstica}&autônoma&nenhuma&$\mathcal{O}(0)$\\ \hline
+\end{tabular}
+\end{table}
+
+% "AH-conect.-Y", "AH-Dunn-Y", "AH-silhueta-Y", "AH-conect.-1.5Y", "AH-Dunn-1.5Y",
+% "AH-silhueta-1.5Y",
+%       "AH-conect.-2Y", "AH-Dunn-2Y", "AH-silhueta-2Y", "kM-conect.-Y", "kM-Dunn-Y",
+% "kM-silhueta-Y", "kM-conect.-1.5Y", "kM-Dunn-1.5Y",
+%       "kM-silhueta-1.5Y", "kM-conect.-2Y", "kM-Dunn-2Y", "kM-silhueta-2Y").
+%    val nonHumanNumAttsNames = "\"#classes\",\"#atributos\",\"#exemplos\"," +
+%       "\"#exemplos/#atributos\",\"%nominais\",\"log(#exs)\",\"log(#exs/#atrs)\"," +
+
 c45    5nn   maj
 3buds
 0.252 0.227 0.283 qtd de grupos = 94 qtd de metaexemplos: 1974 Winner nenhum*
@@ -155,7 +196,12 @@ para uma dada estratégia}
 \ano{sucesso garantido: recomendar strat por tempo de consulta estimado.
 seria muito óbvio?}
 
-\section{Meta-estratégia}
+Critério de empate:
+Um algoritmo é considerado adequado se ele não for
+pior que o melhor de todos com significância estatística
+\cite{books/daglib/0022052}.
+
+
 \tar{mais metafeatures:
  só usa atributos nominais (NB,...)
 2- só usa atributos numéricos (SVM, ELM, ...)
@@ -173,18 +219,19 @@ Meta-Leaner 0.75 +- 0.21
 ;
 ``melhoram`` statlog, aplicando log}
 
-\citep{kalousis2002algorithm} pg. 43 tem metafeatures (inclusive histograma,
+\citep{kalousis2002algorithm} pg. 43 tem metafeatures (inclusive histograma10,
 mas como as faixas ideais são imprevisíveis, resolvi isso colocando max, min, avg e min/max)
 Posso colocar ou omitir a informação de distribuição das classes; ela normalmente não
 é conhecida na prática.
-
-\ano{vai que o tempo de phd se multiplica:
-testar com outros meta-classificadores; Meta-estratégia dinâmica}
 
 \esb{Dar a ideia de que uma meta-feature N interessante seriaa qtdade inicial de exemplos.
 Se eu chegasse a implementar, ajudaria DW e também ajuda ClusterBased, cuja implementação não aproveita os rótulos iniciais (e pode dispensar a etapa inicial).
 Porém, qto maios exemplos, mais as estratégias se aproximam de Random Sampling.}
 
+\section{Meta-estratégia}
+
+\ano{vai que o tempo de phd se multiplica:
+testar com outros meta-classificadores; Meta-estratégia dinâmica}
 
 \section{Experimentos e Resultados}
 \ano{citar programa R para a extração de parte dos meta-atributos \citep{team2010r}}

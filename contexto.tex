@@ -55,13 +55,18 @@ Seção \ref{meta}.
 
 
 \section{Terminologia e notação}\label{notacao}
+\esb{$A(X)$ é o conjunto de atributos que definem todos os valores de cada tupla
+$\bm{x}\in X$}
+
+\ano{pegar notação do kalousis}
+
 O termo \textit{algoritmo de aprendizado} é substituído por \textit{classificador}
 quando se trata do produto do processo, isto é, o modelo capaz de classificar exemplos.
 Durante a indução do modelo, se ele integrar uma estratégia de aprendizado ativo,
 ele é chamado de \textit{aprendiz}.
 Apesar de contradizer o princípio motivador do aprendizado ativo explicitado
 na Seção \ref{aprendizado-ativo},
-existem estratégias sem aprendiz chamadas \textit{agnósticas}.
+existem estratégias sem aprendiz - chamadas \textit{agnósticas}.
 Cada \textit{consulta} da estratégia ao \textit{oráculo} visa a obtenção
 do \textit{rótulo} que contém a informação de \textit{classe} de um dado exemplo.
 As consultas podem ser \ing{exploratórias}{for exploration}, que buscam maximizar
