@@ -65,7 +65,7 @@ forma:
 H \beta = T
 \end{equation}
 
-onde $H$ é a matriz de saídas da camada oculta (\textit{hidden layer output matrix}) da SLFN,
+onde $H$ é a \ing{matriz de saídas da camada oculta}{hidden layer output matrix} da SLFN,
 ou seja, cada coluna corresponde à saída de um neurônio oculto e cada linha corresponde a um
 exemplo do conjunto de treinamento;
 $\beta$ é a matriz contendo os pesos que conectam a camada oculta à camada de saída, ou seja, cada
@@ -168,25 +168,60 @@ estimated function value.
 
 \tar{Citar von Zuben e outros brasileiros}
 
-\subsection{I-ELM}
+\subsection{I-ELM}\label{ielm}
 Apesar da vantagem do cálculo da pseudo-inversa ser uma etapa única no
 aprendizado da ELM, trata-se de um cálculo que pode ser custoso.
 Uma alternativa é a \elm \textit{incremental} (I-ELM) proposta por
 \cite{journals/tnn/HuangCS06}.
 O aprendizado da I-ELM começa com um neurônio e
 progride com a adição de novos neurônios, um a um.
-Para cada neurônio adicionado, um novo peso é necessário para conectá-lo
-ao neurônio de saída conforme a Equação \ref{eq:ielm}.
-\begin{equation}\label{eq:ielm}
-\beta_{n}={E\cdot H^{T}\over H\cdot H^{T}}
-={\sum_{p=1}^{N}e(p)h(p)\over\sum_{p=1}^{N}h^{2}(p)}
+O valor do peso é calculado de forma a reduzir o erro entre o
+valor predito e o valor esperado.
+Cada neurônio adicionado na iteração $t$ requer um novo peso $\beta_{1,t}$
+para conectá-lo ao neurônio de saída.
+Assumindo, por simplicidade, apenas um atributo preditivo,
+a matriz alvo $T$ se torna um \textit{vetor coluna}, representado aqui por $\bm{\tau}$.
+Sendo $\bm{h}_{(t)}$ o vetor de valores da função de ativação do novo neurônio,
+ou seja, com os valores da coluna $t$ de $H$,
+o valor do peso é calculado segundo a Equação \ref{eq:ielm}.
+\begin{equation}\label{eq:ielm0}
+\bm{e}_{(0)} = \bm{\tau}
 \end{equation}
-O valor do peso é calculado de forma a reduzir o erro entre o valor predito e o valor
-esperado.
-Onde $E$ é o vetor de erros residuais antes da inserção do
-novo neurônio e $H$ é o vetor de valores da função de ativação do novo neurônio.
-Ambos os vetores têm cada valor associado a um dos exemplos do conjunto de treinamento.
+\begin{equation}\label{eq:ielm}
+\beta_{1,t}=\frac{\bm{e}_{(t-1)}\cdot \bm{h}_{(t)}}
+{\bm{h}_{(t)}\cdot \bm{h}_{(t)}}
+\end{equation}
+Onde $\bm{e}_{(t)}$ é o vetor de erros residuais antes da inserção do
+novo neurônio na iteração $t$.
+Todos os vetores têm cada valor associado a um dos exemplos do conjunto de treinamento.
 
 \subsection{CI-ELM}
-\citep{journals/ijon/HuangC07}
+Uma proposta similar à I-ELM, chamada \textit{convexa incremental} (CI-ELM),
+opta pelo reajuste de todos os pesos da camada de saída a cada novo neurônio
+acrescentado \citep{journals/ijon/HuangC07}.
+Diferentemente da I-ELM, ela é baseada na otimização convexa de Barron
+\citep{journals/tit/Barron93}, mas mantém a capacidade de redução do erro
+treinamento de forma monotônica até qualquer valor arbitrariamente pequeno.
+Ela é capaz de atingir uma convergência maior que a I-ELM
+para um mesmo número de iterações.
+Assim, dada uma meta de erro, a CI-ELM possibilita a indução de redes mais compactas.
 
+Para cada novo neurônio, seu peso é calculado de forma análoga à apresentada na
+Seção \ref{ielm}, porém os valores de saída do novo neurônio representados por
+$\bm{h}_{(t)}$ são substituídos pela diferença $\bm{d}_{(t)}$
+entre o erro corrente e o erro devido ao novo neurônio,
+conforme equações \ref{eq:cielm} e \ref{eq:cielm2}.
+\begin{equation}\label{eq:cielm}
+\bm{d}_{(t)}=\bm{e}_{(t-1)} - (\bm{\tau} - \bm{h}_{(t)})
+\end{equation}
+\begin{equation}\label{eq:cielm2}
+\beta_{1,t}=\frac{\bm{e}_{(t-1)}\cdot \bm{d}_{(t)}}
+{\bm{d}_{(t)}\cdot \bm{d}_{(t)}}
+\end{equation}
+% Onde $T$ é o vetor alvo, ou seja, contém os valores do atributo preditivo.
+A etapa adicional de reajuste é feita para todo o conjunto de pesos anteriormente
+acrescentados ($\{\beta_i \mid 1 \leq i < t\}$)
+de acordo com a Equação \ref{reajuste}.
+\begin{equation}\label{reajuste}
+\beta_{1,i}^* = (1 - \beta_{1,t}) \cdot \beta_{1,i}
+\end{equation}
