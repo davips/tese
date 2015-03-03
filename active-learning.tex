@@ -56,7 +56,12 @@ for um especialista humano ou mesmo um robô \citep{journals/etai/BryantMOKRK01},
 atenção humana/movimento mecânico.
 Assim, um direcionamento adequado do esforço de aprendizado tem como resultado um
 processo de rotulação mais econômico.
+A variedade de abordagens existentes para esse direcionamento são assunto da Seção \ref{estrategias}.
+A notação necessária é definida na Seção \ref{notacao}
 
+\input notacao
+
+\section{Estratégias de consulta}\label{estrategias}
 Na literatura de aprendizado ativo há diversos sub-casos, cenários e estratégias.
 O sub-caso e o cenário de aprendizado ativo mais comuns na literatura,
 e onde se situa a presente tese, são a busca por rótulos e
@@ -77,6 +82,7 @@ são independentes de algoritmo de aprendizado. \red{( <- verificar)}
 Essa diversidade de embasamentos configura-se praticamente como um \textit{conjunto de paradigmas}
 de amostragem ativa cujos principais representantes são apresentados nas
 seções seguintes juntamente com suas ordens de complexidade,
+\ano{a ordem de complexidade muda se o learner for incremental ou batch}
 % espaciais e temporais,
 suas principais características e seus princípios de funcionamento.
 Na apresentação das ordens de complexidade, é assumido que todos os cálculos
@@ -88,8 +94,6 @@ Dessa forma apenas o custo computacional entre consultas se configura como poten
 custo financeiro porque consome o tempo do oráculo.
 
 \tar{há mais alguma adaptação para adotar algum learn ou strat}
-
-% \section{Estratégias de consulta}\label{sec:estrategias}
 
 
 

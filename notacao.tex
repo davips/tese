@@ -1,0 +1,42 @@
+\section{Terminologia e notação}\label{notacao}
+O conjunto de símbolos e termos empregados neste texto são definidos nesta seção.
+Ele é baseado no livro de \cite{series/synthesis/2012Settles} juntamente com a notação
+normalmente utilizada na literatura de
+\elms e meta-aprendizado \citep{journals/tsmc/HuangZDZ12,books/daglib/0022052}.
+
+O termo \textit{algoritmo de aprendizado} é substituído por \textit{classificador}
+quando se trata do produto do processo, isto é, o modelo capaz de classificar exemplos.
+Durante a indução do modelo, se ele integrar uma estratégia de aprendizado ativo,
+ele é chamado de \textit{aprendiz}.
+Apesar de contradizer o princípio motivador do aprendizado ativo explicitado
+na Seção \ref{aprendizado-ativo},
+existem estratégias sem aprendiz - chamadas \textit{agnósticas}.
+Cada \textit{consulta} de uma dada estratégia ao \textit{oráculo} visa a obtenção
+do \textit{rótulo} que indica a \textit{classe} $\bm{y}$ de um dado exemplo dentre um
+conjunto limitado $Y$ delas. Assim, o número de classes é indicado por $|Y|$.
+
+As consultas podem ser \ing{exploratórias}{for exploration}, que buscam maximizar
+a variedade na escolha de exemplos; ou \ing{prospectivas}{for exploitation},
+que se concentram apenas nos casos mais críticos,
+ou seja, com maior \textit{informatividade}.
+O limite de duração para processamento computacional entre consultas
+é chamado \ing{tempo de espera tolerável}{tolerable waiting time},
+pois é o tempo efetivamente sentido pelo oráculo.
+
+\esb{$A(X)$ é o conjunto de atributos.
+Cada atributo $\bm{a} \in A$ é o conjunto de todos os valores que cada tupla
+$\bm{x}\in X$ pode assumir.}
+
+
+\esb{ e a quantidade inicial de exemplos é
+$|\mathcal{U}|$ - mantendo a notação
+usual de os símbolos $\mathcal{U}$ e $\mathcal{L}$ representarem a
+reserva de exemplos \citep{series/synthesis/2012Settles}
+e o conjunto de exemplos já rotulados, respectivamente.}
+$ID$ densidade de informação
+$TU$ utilidade de treinamento
+$Inf(\bm{x})$ medida de informatividade
+$d(\bm{x},\bm{u})$ medida de distância
+$sim(\bm{x},\bm{u})$ medida de similaridade
+$\cent$ orçamento ou número de consultas
+

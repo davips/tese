@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=exp-meta.tex
+lastDocument=rankplot.tex
 masterDocument=
 name=Tese
 pkg_extIsRegExp=false
@@ -240,6 +240,16 @@ Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
+[document-settings,item:kappamediaParesReduxRank.plot]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=None
+Indentation Mode=normal
+Mode=
+ReadWrite=true
+
 [document-settings,item:kappamediaallReduxRank.plot]
 Bookmarks=
 Encoding=ISO-8859-1
@@ -412,13 +422,13 @@ ReadWrite=true
 
 [item:active-learning.tex]
 archive=true
-column=0
+column=41
 encoding=ISO-8859-1
 highlight=LaTeX
-line=732
+line=70
 mode=LaTeX
-open=false
-order=0
+open=true
+order=3
 
 [item:apendice1.tex]
 archive=true
@@ -492,12 +502,12 @@ order=-1
 
 [item:bibliografia.bib]
 archive=true
-column=9
+column=3
 encoding=ISO-8859-1
 highlight=BibTeX
-line=1453
+line=1495
 mode=BibTeX
-open=true
+open=false
 order=1
 
 [item:capa.tex]
@@ -522,13 +532,13 @@ order=-1
 
 [item:contexto.tex]
 archive=true
-column=11
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=12
 mode=LaTeX
-open=false
-order=4
+open=true
+order=1
 
 [item:dataset-tables.tex]
 archive=true
@@ -545,20 +555,20 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=9
+line=0
 mode=LaTeX
-open=false
-order=5
+open=true
+order=2
 
 [item:exp-analise.tex]
 archive=true
-column=33
+column=11
 encoding=ISO-8859-1
 highlight=LaTeX
-line=134
+line=100
 mode=LaTeX
-open=false
-order=0
+open=true
+order=4
 
 [item:exp-elm.tex]
 archive=true
@@ -572,20 +582,20 @@ order=3
 
 [item:exp-meta.tex]
 archive=true
-column=24
+column=71
 encoding=ISO-8859-1
 highlight=LaTeX
-line=120
+line=150
 mode=LaTeX
-open=true
-order=0
+open=false
+order=6
 
 [item:experimentos.tex]
 archive=true
-column=0
+column=5
 encoding=ISO-8859-1
 highlight=LaTeX
-line=77
+line=27
 mode=LaTeX
 open=false
 order=0
@@ -632,23 +642,33 @@ order=3
 
 [item:introducao.tex]
 archive=true
-column=69
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=156
+line=157
 mode=LaTeX
 open=false
 order=2
 
-[item:kappamediaallReduxRank.plot]
+[item:kappamediaParesReduxRank.plot]
 archive=true
 column=0
 encoding=ISO-8859-1
 highlight=None
-line=0
+line=1
 mode=
 open=false
 order=-1
+
+[item:kappamediaallReduxRank.plot]
+archive=true
+column=77
+encoding=ISO-8859-1
+highlight=None
+line=15
+mode=
+open=false
+order=6
 
 [item:macros.tex]
 archive=true
@@ -662,50 +682,50 @@ order=3
 
 [item:meta.tex]
 archive=true
-column=40
+column=78
 encoding=ISO-8859-1
 highlight=LaTeX
-line=41
+line=17
 mode=LaTeX
-open=false
-order=4
+open=true
+order=0
 
 [item:metodologia.tex]
 archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=33
+line=312
 mode=LaTeX
 open=false
 order=3
 
 [item:passiveDists.tex]
 archive=true
-column=0
+column=115
 encoding=ISO-8859-1
 highlight=LaTeX
-line=13
+line=8
 mode=LaTeX
 open=false
 order=-1
 
 [item:plot.tex]
 archive=true
-column=32
+column=4
 encoding=ISO-8859-1
 highlight=LaTeX
-line=13
+line=0
 mode=LaTeX
 open=false
 order=2
 
 [item:plotRisco.tex]
 archive=true
-column=9
+column=79
 encoding=ISO-8859-1
 highlight=LaTeX
-line=2
+line=16
 mode=LaTeX
 open=false
 order=-1
@@ -715,20 +735,20 @@ archive=true
 column=0
 encoding=ISO-8859-15
 highlight=LaTeX
-line=81
+line=182
 mode=LaTeX
 open=false
 order=4
 
 [item:rankplot.tex]
 archive=true
-column=0
+column=132
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=49
 mode=LaTeX
-open=false
-order=1
+open=true
+order=5
 
 [item:rankplotRisco.tex]
 archive=true
@@ -807,12 +827,12 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=20
 mode=LaTeX
-open=true
+open=false
 order=2
 
 [view-settings,view=0,item:active-learning.tex]
-CursorColumn=0
-CursorLine=732
+CursorColumn=41
+CursorLine=70
 JumpList=
 ViMarks=
 
@@ -859,8 +879,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:bibliografia.bib]
-CursorColumn=9
-CursorLine=1453
+CursorColumn=3
+CursorLine=1495
 JumpList=
 ViMarks=
 
@@ -877,8 +897,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:contexto.tex]
-CursorColumn=11
-CursorLine=0
+CursorColumn=0
+CursorLine=12
 JumpList=
 ViMarks=
 
@@ -890,13 +910,13 @@ ViMarks=
 
 [view-settings,view=0,item:elm.tex]
 CursorColumn=0
-CursorLine=9
+CursorLine=0
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-analise.tex]
-CursorColumn=33
-CursorLine=134
+CursorColumn=11
+CursorLine=100
 JumpList=
 ViMarks=
 
@@ -907,14 +927,14 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-meta.tex]
-CursorColumn=24
-CursorLine=120
+CursorColumn=71
+CursorLine=150
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:experimentos.tex]
-CursorColumn=0
-CursorLine=77
+CursorColumn=5
+CursorLine=27
 JumpList=
 ViMarks=
 
@@ -937,14 +957,20 @@ CursorColumn=20
 CursorLine=12
 
 [view-settings,view=0,item:introducao.tex]
-CursorColumn=69
-CursorLine=156
+CursorColumn=0
+CursorLine=157
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:kappamediaParesReduxRank.plot]
+CursorColumn=0
+CursorLine=1
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:kappamediaallReduxRank.plot]
-CursorColumn=0
-CursorLine=0
+CursorColumn=77
+CursorLine=15
 JumpList=
 ViMarks=
 
@@ -955,44 +981,44 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:meta.tex]
-CursorColumn=40
-CursorLine=41
+CursorColumn=78
+CursorLine=17
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:metodologia.tex]
 CursorColumn=0
-CursorLine=33
+CursorLine=312
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:passiveDists.tex]
-CursorColumn=0
-CursorLine=13
+CursorColumn=115
+CursorLine=8
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:plot.tex]
-CursorColumn=32
-CursorLine=13
+CursorColumn=4
+CursorLine=0
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:plotRisco.tex]
-CursorColumn=9
-CursorLine=2
+CursorColumn=79
+CursorLine=16
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:propostas.tex]
 CursorColumn=0
-CursorLine=81
+CursorLine=182
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:rankplot.tex]
-CursorColumn=0
-CursorLine=0
+CursorColumn=132
+CursorLine=49
 JumpList=
 ViMarks=
 

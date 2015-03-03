@@ -38,8 +38,13 @@ Especificamente, há as seguintes restrições de escopo:
  \item consulta pela classe (não por valores de atributos, por exemplo);
  \item monorrótulo;
  \item distribuição estacionária;
- \item custos uniformes;
- \item oráculo único e consistente (sempre a mesma resposta para um mesmo ex.);
+ \item custo por erro de classificação uniforme;
+ \item custo por consulta uniforme;
+ \item oráculo único e constante\footnote{Sempre a mesma resposta para um mesmo exemplo.}
+ sujeito a ruído\footnote{Apesar da contradição em atribuir erro a uma entidade
+ denominada \textit{oráculo}, essa concessão deve ser feita tanto pelo fato do supervisor
+ humano ser sujeito à fadiga quanto pela adoção, nesta tese, de bases de dados reais.};
+ \item os domínios dos atributos nominais são previamente conhecidos;
  \item atributos sem valores faltantes;
 \end{itemize}
 e as seguintes condições que visam rigor experimental, replicabilidade e
@@ -48,17 +53,39 @@ verossimilhança com aplicações reais:
  \item consulta \ing{um a um}{on-line};
  \item toda\footnote{Exceto exemplos duplicados.} a base de dados original é utilizada no
    processo de validação cruzada\footnote{Algumas estratégias fazem uma amostragem interna,
-   que se renova a cada consulta.}; e,
- \item um rótulo inicial por classe.
-\end{itemize}
+   que se renova a cada consulta.};
+ \item um rótulo inicial por classe; e,
+ \item critério de parada determinado pelo orçamento.
+ \end{itemize}
+A decisão de um rótulo inicial por classe visa prover condições mínimas
+para que todas as estratégias tenham uma ponto de partida viável.
+O principal exemplo de condição necessária é a pré-existência de uma fronteira de decisão,
+que só é possível de ser estimada com a presença de alguns rótulos.
+Essa escolha também é compatível com aplicações reais, pois,
+sendo uma atividade dispendiosa, a rotulação requer cautela.
+Por isso, é razoável a obtenção de alguns rótulos antes de se sujeitar aos custos
+da amostragem ativa.
+Uma maneira de se obter um rótulo por classe é por meio do
+ \ing{aprendizado guiado}{guided learning} \citep{conf/kdd/AttenbergP10}.
+ Em diversas aplicações, como a categorização de notícias, o usuário é capaz
+ de encontrar um exemplar para uma dada classe, seja por páginas de busca
+ na \textit{internet} ou por recordação de uma experiência pessoal.
+ Assim, o início da amostragem com um exemplo de cada classe pode ser
+ feito de forma eficiente em aplicações reais.
+ Essa prática tem sido adotada da mesma forma em outros trabalhos
+ \citep{conf/nips/GuoS07, conf/cvpr/BiswasP13, conf/iconip/GuJC14a,
+ }, com variações mais permissivas com relação à quantidade de exemplos
+ \citep{journals/prl/PatraB12} ou substituída por uma amostragem aleatória
+ aplicada até que se encontre um exemplo por classe \citep{chermanaprendizado}.
+
+ \ano{settles diz (no livro?) que o critério de parada normalmente é financeiro}
+ 
 Outra característica do cenário está no desconhecimento do orçamento disponível por parte das estratégias implementadas.
 Isso implica na geração de sequências de consultas não necessariamente ótimas.
 Essa possibilidade, mais teórica do que prática,
 decorre de o fato do processo ativo de amostragem não ser uma
 \textit{cadeia de Markov} de primeira ordem \citep{conf/icml/RoyM01}.
 Uma consulta ótima dependeria de quantas ainda podem ser feitas.
-
-\ing{aprendizado guiado}{guided learning} \citep{conf/kdd/AttenbergP10}
 
 \section{Descrição das bases}
 As bases de dados têm suas características expostas no Apêndice \ref{detalhes}
@@ -278,4 +305,14 @@ estação e \textit{notebook} vinculados ao orientador do autor deste trabalho.}.
 \end{itemize}
 
 \green{descrever hardware, mysql}
+
+scala
+
+pgfplots
+
+java
+
+mtj
+
+apache commons math
 

@@ -1,51 +1,106 @@
 \definecolor{darkgreen}{rgb}{0.0, 0.4, 0.0}
 \begin{table}[h]
 \caption{BalancedAcc: O maior valor de cada base está em \textcolor{blue}{\textbf{negrito azul}} e \textcolor{red}{\textbf{negrito vermelho}} respectivamente. Valores isolados estão sublinhados. Apenas negrito indica segundo melhor valor.}
-\begin{center}\begin{tabular}{lc|c|c|c|c|c}
- & 5NN & C4.5w & CIELM & ELM & RFw & NB\\ \hline 1-abalone 3class & \textcolor{red}{\textbf{  0.58}} &   0.62 & \textcolor{blue}{\textbf{  0.66}} & \textcolor{blue}{\textbf{  0.66}} &   0.64 & \textcolor{red}{\textbf{  0.58}} \\
-2-artificial charact... &   0.55 &   0.56 &   0.50 & \underline{\textcolor{blue}{\textbf{  0.61}}} & \textcolor{black}{\textbf{  0.58}} & \textcolor{red}{\textbf{  0.40}} \\
-3-autoUniv au7 300 d... &   0.31 & \textcolor{black}{\textbf{  0.38}} &   0.33 &   0.32 & \underline{\textcolor{blue}{\textbf{  0.40}}} & \textcolor{red}{\textbf{  0.30}} \\
-4-climate simulation... &   0.55 & \textcolor{black}{\textbf{  0.62}} & \textcolor{red}{\textbf{  0.51}} &   0.53 & \textcolor{red}{\textbf{  0.51}} & \underline{\textcolor{blue}{\textbf{  0.71}}} \\
-5-connect. vowel... & \underline{\textcolor{blue}{\textbf{  0.99}}} &   0.66 &   0.75 &   0.94 & \textcolor{black}{\textbf{  0.96}} & \textcolor{red}{\textbf{  0.62}} \\ \hline
-6-dbworld subjects &   0.79 &   0.83 &   0.65 & \textcolor{red}{\textbf{  0.51}} & \underline{\textcolor{blue}{\textbf{  0.87}}} & \textcolor{black}{\textbf{  0.84}} \\
-7-first order theore... & \textcolor{black}{\textbf{  0.44}} &   0.39 &   0.39 & \textcolor{red}{\textbf{  0.36}} & \underline{\textcolor{blue}{\textbf{  0.47}}} & \textcolor{red}{\textbf{  0.36}} \\
-8-glass &   0.65 & \textcolor{black}{\textbf{  0.66}} &   0.55 & \textcolor{red}{\textbf{  0.50}} & \underline{\textcolor{blue}{\textbf{  0.75}}} &   0.65 \\
-9-habermans survival &   0.55 & \textcolor{black}{\textbf{  0.57}} & \underline{\textcolor{blue}{\textbf{  0.58}}} & \textcolor{black}{\textbf{  0.57}} & \textcolor{black}{\textbf{  0.57}} & \textcolor{red}{\textbf{  0.53}} \\
-10-heart disease hung... & \textcolor{red}{\textbf{  0.74}} &   0.76 &   0.78 &   0.78 & \textcolor{black}{\textbf{  0.80}} & \underline{\textcolor{blue}{\textbf{  0.81}}} \\ \hline
-11-hill valley withou... &   0.64 & \textcolor{red}{\textbf{  0.50}} & \textcolor{black}{\textbf{  0.65}} & \underline{\textcolor{blue}{\textbf{  0.69}}} &   0.61 & \textcolor{red}{\textbf{  0.50}} \\
-12-horse colic surgic... & \textcolor{red}{\textbf{  0.74}} & \underline{\textcolor{blue}{\textbf{  0.84}}} &   0.77 &   0.75 & \textcolor{black}{\textbf{  0.83}} &   0.81 \\
-13-indian liver patie... & \textcolor{black}{\textbf{  0.58}} &   0.57 & \textcolor{red}{\textbf{  0.55}} &   0.56 & \textcolor{black}{\textbf{  0.58}} & \underline{\textcolor{blue}{\textbf{  0.67}}} \\
-14-ionosphere &   0.83 & \textcolor{black}{\textbf{  0.88}} &   0.83 & \textcolor{red}{\textbf{  0.81}} & \underline{\textcolor{blue}{\textbf{  0.92}}} &   0.87 \\
-15-iris & \textcolor{blue}{\textbf{  0.96}} &   0.93 & \textcolor{red}{\textbf{  0.92}} & \textcolor{blue}{\textbf{  0.96}} &   0.95 &   0.94 \\ \hline
-16-mammographic mass & \textcolor{red}{\textbf{  0.74}} &   0.81 & \textcolor{blue}{\textbf{  0.82}} & \textcolor{blue}{\textbf{  0.82}} &   0.80 & \textcolor{blue}{\textbf{  0.82}} \\
-17-mfeat fourier & \textcolor{black}{\textbf{  0.80}} & \textcolor{red}{\textbf{  0.75}} & \textcolor{black}{\textbf{  0.80}} &   0.78 & \underline{\textcolor{blue}{\textbf{  0.84}}} &   0.77 \\
-18-monks2 &   0.45 & \underline{\textcolor{blue}{\textbf{  0.50}}} &   0.48 &   0.47 & \textcolor{red}{\textbf{  0.32}} & \textcolor{black}{\textbf{  0.49}} \\
-19-movement libras 10 & \underline{\textcolor{blue}{\textbf{  0.86}}} & \textcolor{red}{\textbf{  0.50}} &   0.77 &   0.72 & \textcolor{black}{\textbf{  0.79}} &   0.63 \\
-20-parkinsons & \underline{\textcolor{blue}{\textbf{  0.95}}} &   0.79 & \textcolor{red}{\textbf{  0.76}} &   0.79 & \textcolor{black}{\textbf{  0.85}} &   0.79 \\ \hline
-21-pima indians diabe... & \textcolor{red}{\textbf{  0.66}} &   0.71 & \textcolor{blue}{\textbf{  0.73}} &   0.72 & \textcolor{blue}{\textbf{  0.73}} & \textcolor{blue}{\textbf{  0.73}} \\
-22-planning relax &   0.49 & \textcolor{blue}{\textbf{  0.50}} &   0.48 & \textcolor{red}{\textbf{  0.46}} &   0.48 & \textcolor{blue}{\textbf{  0.50}} \\
-23-robot failure lp5 &   0.60 &   0.55 &   0.43 & \textcolor{red}{\textbf{  0.34}} & \textcolor{black}{\textbf{  0.67}} & \underline{\textcolor{blue}{\textbf{  0.70}}} \\
-24-robot nav sensor r... &   0.98 & \textcolor{blue}{\textbf{  1.00}} & \textcolor{red}{\textbf{  0.86}} &   0.87 & \textcolor{blue}{\textbf{  1.00}} & \textcolor{blue}{\textbf{  1.00}} \\
-25-semeion & \textcolor{black}{\textbf{  0.91}} & \textcolor{red}{\textbf{  0.71}} &   0.85 &   0.82 & \underline{\textcolor{blue}{\textbf{  0.94}}} &   0.85 \\ \hline
-26-spambase & \textcolor{red}{\textbf{  0.89}} & \textcolor{black}{\textbf{  0.92}} & \textcolor{black}{\textbf{  0.92}} &   0.91 & \underline{\textcolor{blue}{\textbf{  0.95}}} & \textcolor{red}{\textbf{  0.89}} \\
-27-spectf heart & \textcolor{red}{\textbf{  0.58}} &   0.61 & \textcolor{black}{\textbf{  0.63}} & \textcolor{black}{\textbf{  0.63}} &   0.59 & \underline{\textcolor{blue}{\textbf{  0.73}}} \\
-28-statlog australian... & \textcolor{red}{\textbf{  0.80}} &   0.85 & \textcolor{black}{\textbf{  0.86}} & \textcolor{black}{\textbf{  0.86}} & \underline{\textcolor{blue}{\textbf{  0.87}}} &   0.85 \\
-29-statlog german cre... & \textcolor{red}{\textbf{  0.61}} &   0.63 & \textcolor{blue}{\textbf{  0.68}} & \textcolor{blue}{\textbf{  0.68}} &   0.67 &   0.63 \\
-30-statlog heart & \textcolor{red}{\textbf{  0.75}} &   0.77 & \underline{\textcolor{blue}{\textbf{  0.83}}} &   0.81 &   0.81 & \textcolor{black}{\textbf{  0.82}} \\ \hline
-31-statlog landsat sa... & \textcolor{blue}{\textbf{  0.89}} & \textcolor{red}{\textbf{  0.82}} &   0.85 &   0.86 & \textcolor{blue}{\textbf{  0.89}} & \textcolor{red}{\textbf{  0.82}} \\
-32-thyroid ann &   0.60 & \underline{\textcolor{blue}{\textbf{  1.00}}} & \textcolor{red}{\textbf{  0.59}} &   0.61 & \textcolor{black}{\textbf{  0.99}} &   0.93 \\
-33-thyroid hypothyroi... & \textcolor{red}{\textbf{  0.78}} & \textcolor{blue}{\textbf{  0.96}} &   0.82 &   0.84 &   0.93 & \textcolor{blue}{\textbf{  0.96}} \\\end{tabular}\label{tab:balaccClassif0}
+\begin{center}\scalebox{0.7}{\begin{tabular}{lc|c|c|c|c|c|c|c|c}
+ & 5NNa & C4.5w & CIELM & ELM & NB & NBinc & RFw & VFDT & SVM\\ \hline 1-abalone 3class &   0.58 &   0.62 & \textcolor{blue}{\textbf{  0.66}} & \textcolor{blue}{\textbf{  0.66}} &   0.58 & \textcolor{red}{\textbf{  0.57}} &   0.64 & \textcolor{red}{\textbf{  0.57}} &   0.59 \\
+2-arcene & \underline{\textcolor{blue}{\textbf{  0.87}}} &   0.68 &   0.72 &   0.66 &   0.67 &   0.68 & \textcolor{black}{\textbf{  0.82}} &   0.68 & \textcolor{red}{\textbf{  0.50}} \\
+3-artificial charact... &   0.55 &   0.56 &   0.50 & \underline{\textcolor{blue}{\textbf{  0.61}}} &   0.40 &   0.30 & \textcolor{black}{\textbf{  0.58}} & \textcolor{red}{\textbf{  0.29}} &   0.45 \\
+4-autoUniv au1 1000 &   0.56 & \underline{\textcolor{blue}{\textbf{  0.66}}} &   0.55 &   0.54 & \textcolor{red}{\textbf{  0.50}} &   0.55 & \textcolor{black}{\textbf{  0.62}} & \textcolor{red}{\textbf{  0.50}} &   0.57 \\
+5-autoUniv au7 300 d... &   0.31 & \textcolor{black}{\textbf{  0.38}} &   0.33 &   0.32 &   0.30 &   0.33 & \underline{\textcolor{blue}{\textbf{  0.40}}} &   0.33 & \textcolor{red}{\textbf{  0.20}} \\ \hline
+6-autoUniv au7 700 &   0.36 & \textcolor{blue}{\textbf{  0.51}} &   0.42 &   0.42 &   0.48 &   0.43 & \textcolor{blue}{\textbf{  0.51}} &   0.43 & \textcolor{red}{\textbf{  0.33}} \\
+7-balance scale &   0.60 &   0.57 &   0.64 & \textcolor{black}{\textbf{  0.66}} & \textcolor{red}{\textbf{  0.54}} &   0.61 &   0.59 &   0.65 & \underline{\textcolor{blue}{\textbf{  0.69}}} \\
+8-banana &   0.87 &   0.88 &   0.79 &   0.70 &   0.70 & \textcolor{red}{\textbf{  0.57}} & \textcolor{black}{\textbf{  0.89}} &   0.71 & \underline{\textcolor{blue}{\textbf{  0.90}}} \\
+9-banknote authentic... & \textcolor{blue}{\textbf{  1.00}} &   0.98 &   0.99 & \textcolor{blue}{\textbf{  1.00}} &   0.93 & \textcolor{red}{\textbf{  0.76}} &   0.99 &   0.96 & \textcolor{blue}{\textbf{  1.00}} \\
+10-bupa &   0.61 &   0.62 & \textcolor{black}{\textbf{  0.67}} & \textcolor{black}{\textbf{  0.67}} &   0.52 &   0.59 & \underline{\textcolor{blue}{\textbf{  0.70}}} &   0.52 & \textcolor{red}{\textbf{  0.50}} \\ \hline
+11-car evaluation &   0.71 &   0.61 &   0.61 &   0.63 & \textcolor{red}{\textbf{  0.58}} & \textcolor{red}{\textbf{  0.58}} & \textcolor{black}{\textbf{  0.84}} & \textcolor{red}{\textbf{  0.58}} & \underline{\textcolor{blue}{\textbf{  0.91}}} \\
+12-cardiotocography 1... & \textcolor{blue}{\textbf{  1.00}} & \textcolor{blue}{\textbf{  1.00}} & \textcolor{blue}{\textbf{  1.00}} & \textcolor{blue}{\textbf{  1.00}} &   0.98 &   0.98 & \textcolor{blue}{\textbf{  1.00}} & \textcolor{blue}{\textbf{  1.00}} & \textcolor{red}{\textbf{  0.10}} \\
+13-cardiotocography 3... & \textcolor{blue}{\textbf{  0.98}} & \textcolor{blue}{\textbf{  0.98}} &   0.96 & \textcolor{blue}{\textbf{  0.98}} &   0.88 &   0.94 & \textcolor{blue}{\textbf{  0.98}} &   0.88 & \textcolor{red}{\textbf{  0.33}} \\
+14-climate simulation... &   0.55 &   0.62 &   0.51 &   0.53 & \underline{\textcolor{blue}{\textbf{  0.71}}} & \textcolor{black}{\textbf{  0.64}} &   0.51 & \textcolor{red}{\textbf{  0.50}} & \textcolor{red}{\textbf{  0.50}} \\
+15-connect. mines vs... & \underline{\textcolor{blue}{\textbf{  0.85}}} &   0.75 &   0.77 &   0.69 &   0.75 &   0.69 & \textcolor{black}{\textbf{  0.82}} &   0.70 & \textcolor{red}{\textbf{  0.67}} \\ \hline
+16-connect. vowel red... & \underline{\textcolor{blue}{\textbf{  0.99}}} & \textcolor{red}{\textbf{  0.59}} &   0.72 &   0.92 &   0.61 &   0.64 & \textcolor{black}{\textbf{  0.95}} &   0.65 &   0.89 \\
+17-connect. vowel... & \underline{\textcolor{blue}{\textbf{  0.99}}} &   0.66 &   0.75 &   0.94 & \textcolor{red}{\textbf{  0.62}} &   0.64 & \textcolor{black}{\textbf{  0.96}} &   0.65 &   0.87 \\
+18-dbworld subjects &   0.79 &   0.83 &   0.65 & \textcolor{red}{\textbf{  0.51}} & \textcolor{black}{\textbf{  0.84}} & \textcolor{black}{\textbf{  0.84}} & \underline{\textcolor{blue}{\textbf{  0.87}}} & \textcolor{black}{\textbf{  0.84}} &   0.68 \\
+19-first order theore... & \textcolor{black}{\textbf{  0.44}} &   0.39 &   0.39 &   0.36 &   0.36 &   0.24 & \underline{\textcolor{blue}{\textbf{  0.47}}} & \textcolor{red}{\textbf{  0.17}} &   0.36 \\
+20-flare &   0.58 &   0.59 & \textcolor{blue}{\textbf{  0.61}} &   0.60 & \textcolor{blue}{\textbf{  0.61}} &   0.48 &   0.60 & \textcolor{red}{\textbf{  0.38}} &   0.59 \\ \hline
+21-glass &   0.65 & \textcolor{black}{\textbf{  0.66}} &   0.55 &   0.50 &   0.65 &   0.50 & \underline{\textcolor{blue}{\textbf{  0.75}}} & \textcolor{red}{\textbf{  0.45}} &   0.57 \\
+22-habermans survival &   0.55 & \textcolor{black}{\textbf{  0.57}} & \underline{\textcolor{blue}{\textbf{  0.58}}} & \textcolor{black}{\textbf{  0.57}} &   0.53 & \textcolor{black}{\textbf{  0.57}} & \textcolor{black}{\textbf{  0.57}} &   0.55 & \textcolor{red}{\textbf{  0.50}} \\
+23-heart disease clev... & \underline{\textcolor{blue}{\textbf{  0.35}}} &   0.31 &   0.31 &   0.31 & \textcolor{black}{\textbf{  0.34}} &   0.32 &   0.33 &   0.23 & \textcolor{red}{\textbf{  0.20}} \\
+24-heart disease hung... &   0.74 &   0.76 &   0.78 &   0.78 & \textcolor{blue}{\textbf{  0.81}} & \textcolor{blue}{\textbf{  0.81}} &   0.80 & \textcolor{blue}{\textbf{  0.81}} & \textcolor{red}{\textbf{  0.49}} \\
+25-hepatitis &   0.68 &   0.62 & \textcolor{blue}{\textbf{  0.78}} &   0.74 & \textcolor{blue}{\textbf{  0.78}} &   0.76 &   0.70 &   0.75 & \textcolor{red}{\textbf{  0.49}} \\ \hline
+26-hill valley withou... &   0.64 & \textcolor{red}{\textbf{  0.50}} & \textcolor{black}{\textbf{  0.65}} & \underline{\textcolor{blue}{\textbf{  0.69}}} & \textcolor{red}{\textbf{  0.50}} &   0.51 &   0.61 & \textcolor{red}{\textbf{  0.50}} &   0.52 \\
+27-horse colic surgic... &   0.74 & \underline{\textcolor{blue}{\textbf{  0.84}}} &   0.77 &   0.75 &   0.81 &   0.57 & \textcolor{black}{\textbf{  0.83}} &   0.54 & \textcolor{red}{\textbf{  0.51}} \\
+28-indian liver patie... &   0.58 &   0.57 &   0.55 &   0.56 & \textcolor{blue}{\textbf{  0.67}} & \textcolor{blue}{\textbf{  0.67}} &   0.58 & \textcolor{red}{\textbf{  0.50}} & \textcolor{red}{\textbf{  0.50}} \\
+29-ionosphere &   0.83 &   0.88 &   0.83 & \textcolor{red}{\textbf{  0.81}} &   0.87 &   0.84 & \textcolor{black}{\textbf{  0.92}} &   0.86 & \underline{\textcolor{blue}{\textbf{  0.93}}} \\
+30-iris & \textcolor{black}{\textbf{  0.96}} &   0.93 &   0.92 & \textcolor{black}{\textbf{  0.96}} &   0.94 & \textcolor{red}{\textbf{  0.91}} &   0.95 &   0.95 & \underline{\textcolor{blue}{\textbf{  0.97}}} \\ \hline
+31-kr vs kp &   0.95 & \textcolor{blue}{\textbf{  0.99}} &   0.95 &   0.95 & \textcolor{red}{\textbf{  0.88}} & \textcolor{red}{\textbf{  0.88}} & \textcolor{blue}{\textbf{  0.99}} &   0.94 &   0.94 \\
+32-leaf &   0.60 &   0.47 &   0.67 &   0.69 &   0.61 & \textcolor{black}{\textbf{  0.73}} & \underline{\textcolor{blue}{\textbf{  0.76}}} &   0.69 & \textcolor{red}{\textbf{  0.21}} \\
+33-leukemia haslinger &   0.81 &   0.74 &   0.84 &   0.79 &   0.86 & \underline{\textcolor{blue}{\textbf{  0.89}}} &   0.86 & \textcolor{black}{\textbf{  0.88}} & \textcolor{red}{\textbf{  0.50}} \\\end{tabular}}\label{tab:balaccClassif0}
 \end{center}
 \end{table}\definecolor{darkgreen}{rgb}{0.0, 0.4, 0.0}
 \begin{table}[h]
 \caption{BalancedAcc: O maior valor de cada base está em \textcolor{blue}{\textbf{negrito azul}} e \textcolor{red}{\textbf{negrito vermelho}} respectivamente. Valores isolados estão sublinhados. Apenas negrito indica segundo melhor valor.}
-\begin{center}\begin{tabular}{lc|c|c|c|c|c}
- & 5NN & C4.5w & CIELM & ELM & RFw & NB\\ \hline 34-thyroid sick euthy... &   0.77 & \underline{\textcolor{blue}{\textbf{  0.93}}} & \textcolor{red}{\textbf{  0.69}} &   0.72 & \textcolor{black}{\textbf{  0.92}} & \textcolor{black}{\textbf{  0.92}} \\
-35-tic tac toe & \underline{\textcolor{blue}{\textbf{  0.98}}} &   0.78 & \textcolor{black}{\textbf{  0.95}} & \textcolor{black}{\textbf{  0.95}} &   0.94 & \textcolor{red}{\textbf{  0.63}} \\
-36-twonorm &   0.95 & \textcolor{red}{\textbf{  0.84}} & \underline{\textcolor{blue}{\textbf{  0.98}}} & \textcolor{black}{\textbf{  0.97}} & \textcolor{black}{\textbf{  0.97}} & \textcolor{black}{\textbf{  0.97}} \\
-37-user knowledge &   0.67 & \textcolor{black}{\textbf{  0.78}} & \textcolor{red}{\textbf{  0.52}} &   0.63 & \underline{\textcolor{blue}{\textbf{  0.80}}} &   0.70 \\
-38-volcanoes a3 & \underline{\textcolor{blue}{\textbf{  0.34}}} &   0.30 &   0.28 &   0.27 & \textcolor{black}{\textbf{  0.33}} & \textcolor{red}{\textbf{  0.22}} \\ \hline
-39-volcanoes e2 & \underline{\textcolor{blue}{\textbf{  0.25}}} & \textcolor{red}{\textbf{  0.20}} & \textcolor{red}{\textbf{  0.20}} & \textcolor{red}{\textbf{  0.20}} & \textcolor{black}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.20}} \\
-40-wilt &   0.67 & \textcolor{black}{\textbf{  0.89}} &   0.57 &   0.81 & \underline{\textcolor{blue}{\textbf{  0.90}}} & \textcolor{red}{\textbf{  0.50}} \\\end{tabular}\label{tab:balaccClassif1}
+\begin{center}\scalebox{0.7}{\begin{tabular}{lc|c|c|c|c|c|c|c|c}
+ & 5NNa & C4.5w & CIELM & ELM & NB & NBinc & RFw & VFDT & SVM\\ \hline 34-mammographic mass & \textcolor{red}{\textbf{  0.74}} &   0.81 & \textcolor{blue}{\textbf{  0.82}} & \textcolor{blue}{\textbf{  0.82}} & \textcolor{blue}{\textbf{  0.82}} &   0.79 &   0.80 &   0.80 &   0.80 \\
+35-mfeat fourier & \textcolor{black}{\textbf{  0.80}} &   0.75 & \textcolor{black}{\textbf{  0.80}} &   0.78 &   0.77 &   0.76 & \underline{\textcolor{blue}{\textbf{  0.84}}} &   0.76 & \textcolor{red}{\textbf{  0.74}} \\
+36-molecular promotor... &   0.80 &   0.79 &   0.71 & \textcolor{red}{\textbf{  0.56}} &   0.90 &   0.90 & \textcolor{blue}{\textbf{  0.92}} &   0.90 & \textcolor{blue}{\textbf{  0.92}} \\
+37-molecular splice j... & \textcolor{red}{\textbf{  0.79}} &   0.93 &   0.91 &   0.85 & \textcolor{black}{\textbf{  0.94}} & \textcolor{black}{\textbf{  0.94}} &   0.93 & \textcolor{black}{\textbf{  0.94}} & \underline{\textcolor{blue}{\textbf{  0.95}}} \\
+38-monks1 &   0.69 &   0.80 &   0.71 &   0.78 &   0.75 & \textcolor{red}{\textbf{  0.67}} & \underline{\textcolor{blue}{\textbf{  1.00}}} &   0.76 & \textcolor{black}{\textbf{  0.90}} \\ \hline
+39-monks2 &   0.45 & \textcolor{blue}{\textbf{  0.50}} &   0.48 &   0.47 &   0.49 &   0.49 & \textcolor{red}{\textbf{  0.32}} & \textcolor{blue}{\textbf{  0.50}} & \textcolor{blue}{\textbf{  0.50}} \\
+40-monks3 & \textcolor{red}{\textbf{  0.76}} & \textcolor{blue}{\textbf{  1.00}} &   0.80 &   0.94 &   0.97 &   0.90 & \textcolor{blue}{\textbf{  1.00}} &   0.94 &   0.97 \\
+41-movement libras & \underline{\textcolor{blue}{\textbf{  0.82}}} &   0.48 &   0.73 &   0.68 &   0.54 &   0.63 & \textcolor{black}{\textbf{  0.76}} &   0.63 & \textcolor{red}{\textbf{  0.41}} \\
+42-movement libras 10 & \underline{\textcolor{blue}{\textbf{  0.86}}} &   0.50 &   0.77 &   0.72 &   0.63 &   0.67 & \textcolor{black}{\textbf{  0.79}} &   0.68 & \textcolor{red}{\textbf{  0.31}} \\
+43-ozone eighthr &   0.66 &   0.63 &   0.58 &   0.58 & \underline{\textcolor{blue}{\textbf{  0.76}}} & \textcolor{black}{\textbf{  0.75}} &   0.57 & \textcolor{red}{\textbf{  0.50}} & \textcolor{red}{\textbf{  0.50}} \\ \hline
+44-ozone onehr &   0.60 &   0.57 &   0.51 &   0.51 & \underline{\textcolor{blue}{\textbf{  0.76}}} & \textcolor{black}{\textbf{  0.75}} & \textcolor{red}{\textbf{  0.50}} & \textcolor{red}{\textbf{  0.50}} & \textcolor{red}{\textbf{  0.50}} \\
+45-page blocks &   0.76 &   0.82 &   0.67 &   0.66 & \textcolor{blue}{\textbf{  0.85}} &   0.69 & \textcolor{blue}{\textbf{  0.85}} &   0.56 & \textcolor{red}{\textbf{  0.31}} \\
+46-parkinsons & \underline{\textcolor{blue}{\textbf{  0.95}}} &   0.79 &   0.76 &   0.79 &   0.79 &   0.77 & \textcolor{black}{\textbf{  0.85}} & \textcolor{red}{\textbf{  0.53}} &   0.65 \\
+47-phoneme & \textcolor{black}{\textbf{  0.87}} &   0.83 &   0.74 &   0.81 &   0.77 & \textcolor{red}{\textbf{  0.73}} & \underline{\textcolor{blue}{\textbf{  0.88}}} &   0.76 &   0.80 \\
+48-pima indians diabe... &   0.66 &   0.71 & \textcolor{blue}{\textbf{  0.73}} &   0.72 & \textcolor{blue}{\textbf{  0.73}} &   0.70 & \textcolor{blue}{\textbf{  0.73}} &   0.72 & \textcolor{red}{\textbf{  0.50}} \\ \hline
+49-planning relax &   0.49 & \textcolor{black}{\textbf{  0.50}} &   0.48 & \textcolor{red}{\textbf{  0.46}} & \textcolor{black}{\textbf{  0.50}} &   0.47 &   0.48 & \textcolor{black}{\textbf{  0.50}} & \underline{\textcolor{blue}{\textbf{  0.51}}} \\
+50-qsar biodegradatio... &   0.83 &   0.81 & \textcolor{blue}{\textbf{  0.85}} &   0.84 &   0.80 & \textcolor{red}{\textbf{  0.76}} & \textcolor{blue}{\textbf{  0.85}} &   0.78 &   0.82 \\
+51-robot failure lp1 &   0.82 &   0.66 &   0.48 &   0.42 &   0.81 & \textcolor{black}{\textbf{  0.86}} &   0.84 & \underline{\textcolor{blue}{\textbf{  0.92}}} & \textcolor{red}{\textbf{  0.25}} \\
+52-robot failure lp4 &   0.81 &   0.72 &   0.51 &   0.42 &   0.88 & \textcolor{black}{\textbf{  0.89}} &   0.84 & \underline{\textcolor{blue}{\textbf{  0.91}}} & \textcolor{red}{\textbf{  0.33}} \\
+53-robot failure lp5 &   0.60 &   0.55 &   0.43 &   0.34 & \underline{\textcolor{blue}{\textbf{  0.70}}} &   0.62 & \textcolor{black}{\textbf{  0.67}} &   0.65 & \textcolor{red}{\textbf{  0.20}} \\ \hline
+54-robot nav sensor r... &   0.98 & \textcolor{blue}{\textbf{  1.00}} &   0.86 &   0.87 & \textcolor{blue}{\textbf{  1.00}} & \textcolor{red}{\textbf{  0.82}} & \textcolor{blue}{\textbf{  1.00}} &   0.98 &   0.96 \\
+55-saheart &   0.60 &   0.61 & \textcolor{black}{\textbf{  0.67}} &   0.66 &   0.65 & \textcolor{black}{\textbf{  0.67}} &   0.62 & \underline{\textcolor{blue}{\textbf{  0.68}}} & \textcolor{red}{\textbf{  0.50}} \\
+56-seeds &   0.92 &   0.92 & \textcolor{blue}{\textbf{  0.95}} & \textcolor{blue}{\textbf{  0.95}} & \textcolor{red}{\textbf{  0.90}} & \textcolor{red}{\textbf{  0.90}} &   0.94 & \textcolor{red}{\textbf{  0.90}} & \textcolor{red}{\textbf{  0.90}} \\
+57-semeion &   0.91 & \textcolor{red}{\textbf{  0.71}} &   0.85 &   0.82 &   0.85 &   0.85 & \underline{\textcolor{blue}{\textbf{  0.94}}} &   0.82 & \textcolor{black}{\textbf{  0.93}} \\
+58-spambase &   0.89 & \textcolor{black}{\textbf{  0.92}} & \textcolor{black}{\textbf{  0.92}} &   0.91 &   0.89 &   0.82 & \underline{\textcolor{blue}{\textbf{  0.95}}} & \textcolor{red}{\textbf{  0.80}} &   0.81 \\ \hline
+59-spect heart & \textcolor{red}{\textbf{  0.65}} &   0.67 & \textcolor{black}{\textbf{  0.68}} &   0.66 &   0.67 &   0.67 &   0.67 &   0.67 & \underline{\textcolor{blue}{\textbf{  0.71}}} \\
+60-spectf heart &   0.58 &   0.61 &   0.63 &   0.63 & \textcolor{black}{\textbf{  0.73}} & \underline{\textcolor{blue}{\textbf{  0.77}}} &   0.59 & \textcolor{red}{\textbf{  0.50}} & \textcolor{red}{\textbf{  0.50}} \\
+61-statlog australian... &   0.80 &   0.85 & \textcolor{black}{\textbf{  0.86}} & \textcolor{black}{\textbf{  0.86}} &   0.85 &   0.75 & \underline{\textcolor{blue}{\textbf{  0.87}}} & \textcolor{black}{\textbf{  0.86}} & \textcolor{red}{\textbf{  0.50}} \\
+62-statlog german cre... &   0.61 &   0.63 & \textcolor{blue}{\textbf{  0.68}} & \textcolor{blue}{\textbf{  0.68}} &   0.63 & \textcolor{blue}{\textbf{  0.68}} &   0.67 & \textcolor{red}{\textbf{  0.54}} &   0.55 \\
+63-statlog heart &   0.75 &   0.77 & \textcolor{black}{\textbf{  0.83}} &   0.81 &   0.82 & \underline{\textcolor{blue}{\textbf{  0.84}}} &   0.81 & \textcolor{black}{\textbf{  0.83}} & \textcolor{red}{\textbf{  0.50}} \\ \hline
+64-statlog image segm... & \textcolor{black}{\textbf{  0.96}} &   0.95 &   0.91 &   0.92 &   0.90 &   0.78 & \underline{\textcolor{blue}{\textbf{  0.98}}} &   0.79 & \textcolor{red}{\textbf{  0.61}} \\
+65-statlog landsat sa... & \textcolor{blue}{\textbf{  0.89}} &   0.82 &   0.85 &   0.86 &   0.82 &   0.79 & \textcolor{blue}{\textbf{  0.89}} &   0.80 & \textcolor{red}{\textbf{  0.17}} \\
+66-statlog vehicle si... &   0.70 &   0.70 & \textcolor{blue}{\textbf{  0.78}} & \textcolor{blue}{\textbf{  0.78}} &   0.60 &   0.47 &   0.76 &   0.46 & \textcolor{red}{\textbf{  0.26}} \\\end{tabular}}\label{tab:balaccClassif1}
+\end{center}
+\end{table}\definecolor{darkgreen}{rgb}{0.0, 0.4, 0.0}
+\begin{table}[h]
+\caption{BalancedAcc: O maior valor de cada base está em \textcolor{blue}{\textbf{negrito azul}} e \textcolor{red}{\textbf{negrito vermelho}} respectivamente. Valores isolados estão sublinhados. Apenas negrito indica segundo melhor valor.}
+\begin{center}\scalebox{0.7}{\begin{tabular}{lc|c|c|c|c|c|c|c|c}
+ & 5NNa & C4.5w & CIELM & ELM & NB & NBinc & RFw & VFDT & SVM\\ \hline 67-steel plates fault... & \textcolor{blue}{\textbf{  1.00}} & \textcolor{blue}{\textbf{  1.00}} & \textcolor{blue}{\textbf{  1.00}} & \textcolor{blue}{\textbf{  1.00}} &   0.91 &   0.89 & \textcolor{blue}{\textbf{  1.00}} &   0.99 & \textcolor{red}{\textbf{  0.50}} \\
+68-systhetic control & \textcolor{black}{\textbf{  0.97}} &   0.89 &   0.92 &   0.89 &   0.96 &   0.94 & \underline{\textcolor{blue}{\textbf{  0.98}}} &   0.94 & \textcolor{red}{\textbf{  0.17}} \\
+69-teaching assistant... &   0.40 &   0.49 & \underline{\textcolor{blue}{\textbf{  0.53}}} &   0.50 &   0.46 & \textcolor{black}{\textbf{  0.51}} &   0.43 &   0.50 & \textcolor{red}{\textbf{  0.32}} \\
+70-thyroid ann &   0.60 & \underline{\textcolor{blue}{\textbf{  1.00}}} &   0.59 &   0.61 &   0.93 &   0.51 & \textcolor{black}{\textbf{  0.99}} & \textcolor{red}{\textbf{  0.33}} &   0.74 \\
+71-thyroid hypothyroi... &   0.78 & \textcolor{blue}{\textbf{  0.96}} &   0.82 &   0.84 & \textcolor{blue}{\textbf{  0.96}} &   0.91 &   0.93 &   0.76 & \textcolor{red}{\textbf{  0.59}} \\ \hline
+72-thyroid newthyroid & \underline{\textcolor{blue}{\textbf{  0.95}}} &   0.86 & \textcolor{red}{\textbf{  0.77}} &   0.85 &   0.89 &   0.91 &   0.91 & \textcolor{black}{\textbf{  0.93}} &   0.80 \\
+73-thyroid sick &   0.43 &   0.43 &   0.43 &   0.41 & \textcolor{blue}{\textbf{  0.49}} & \textcolor{blue}{\textbf{  0.49}} &   0.45 & \textcolor{blue}{\textbf{  0.49}} & \textcolor{red}{\textbf{  0.20}} \\
+74-thyroid sick euthy... &   0.77 & \underline{\textcolor{blue}{\textbf{  0.93}}} &   0.69 &   0.72 & \textcolor{black}{\textbf{  0.92}} &   0.69 & \textcolor{black}{\textbf{  0.92}} &   0.66 & \textcolor{red}{\textbf{  0.52}} \\
+75-tic tac toe & \underline{\textcolor{blue}{\textbf{  0.98}}} &   0.78 & \textcolor{black}{\textbf{  0.95}} & \textcolor{black}{\textbf{  0.95}} & \textcolor{red}{\textbf{  0.63}} & \textcolor{red}{\textbf{  0.63}} &   0.94 & \textcolor{red}{\textbf{  0.63}} &   0.87 \\
+76-turkiye student &   0.28 &   0.33 &   0.31 &   0.27 &   0.32 &   0.29 & \textcolor{blue}{\textbf{  0.34}} & \textcolor{red}{\textbf{  0.25}} & \textcolor{blue}{\textbf{  0.34}} \\ \hline
+77-twonorm &   0.95 & \textcolor{red}{\textbf{  0.84}} & \textcolor{blue}{\textbf{  0.98}} &   0.97 &   0.97 &   0.97 &   0.97 &   0.97 & \textcolor{blue}{\textbf{  0.98}} \\
+78-user knowledge &   0.67 &   0.78 & \textcolor{red}{\textbf{  0.52}} &   0.63 &   0.70 &   0.65 & \textcolor{black}{\textbf{  0.80}} &   0.76 & \underline{\textcolor{blue}{\textbf{  0.83}}} \\
+79-vertebra column 2c &   0.79 &   0.75 & \textcolor{black}{\textbf{  0.82}} & \underline{\textcolor{blue}{\textbf{  0.83}}} &   0.78 &   0.80 & \textcolor{black}{\textbf{  0.82}} &   0.81 & \textcolor{red}{\textbf{  0.50}} \\
+80-vertebra column 3c &   0.73 &   0.75 & \underline{\textcolor{blue}{\textbf{  0.80}}} & \textcolor{black}{\textbf{  0.79}} &   0.71 &   0.77 & \textcolor{black}{\textbf{  0.79}} & \textcolor{black}{\textbf{  0.79}} & \textcolor{red}{\textbf{  0.33}} \\
+81-volcanoes a3 & \underline{\textcolor{blue}{\textbf{  0.34}}} &   0.30 &   0.28 &   0.27 &   0.22 &   0.32 & \textcolor{black}{\textbf{  0.33}} &   0.29 & \textcolor{red}{\textbf{  0.20}} \\ \hline
+82-volcanoes e2 & \underline{\textcolor{blue}{\textbf{  0.25}}} & \textcolor{red}{\textbf{  0.20}} & \textcolor{red}{\textbf{  0.20}} & \textcolor{red}{\textbf{  0.20}} & \textcolor{red}{\textbf{  0.20}} &   0.22 & \textcolor{black}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.20}} & \textcolor{red}{\textbf{  0.20}} \\
+83-voting &   0.91 &   0.93 & \textcolor{black}{\textbf{  0.94}} &   0.93 & \textcolor{red}{\textbf{  0.88}} & \textcolor{red}{\textbf{  0.88}} & \underline{\textcolor{blue}{\textbf{  0.95}}} & \textcolor{black}{\textbf{  0.94}} & \textcolor{black}{\textbf{  0.94}} \\
+84-waveform v2 & \textcolor{red}{\textbf{  0.73}} &   0.76 &   0.83 &   0.81 &   0.80 &   0.80 & \textcolor{black}{\textbf{  0.85}} &   0.80 & \underline{\textcolor{blue}{\textbf{  0.86}}} \\
+85-wdbc &   0.95 &   0.93 & \underline{\textcolor{blue}{\textbf{  0.97}}} & \textcolor{black}{\textbf{  0.96}} &   0.94 &   0.92 & \textcolor{black}{\textbf{  0.96}} &   0.92 & \textcolor{red}{\textbf{  0.50}} \\
+86-wholesale channel &   0.85 & \textcolor{blue}{\textbf{  0.91}} &   0.88 &   0.88 & \textcolor{blue}{\textbf{  0.91}} &   0.86 & \textcolor{blue}{\textbf{  0.91}} &   0.88 & \textcolor{red}{\textbf{  0.50}} \\ \hline
+87-wilt &   0.67 & \textcolor{black}{\textbf{  0.89}} &   0.57 &   0.81 & \textcolor{red}{\textbf{  0.50}} &   0.66 & \underline{\textcolor{blue}{\textbf{  0.90}}} &   0.60 &   0.51 \\
+88-wine &   0.96 &   0.90 & \textcolor{black}{\textbf{  0.98}} &   0.97 & \underline{\textcolor{blue}{\textbf{  0.99}}} &   0.97 & \textcolor{black}{\textbf{  0.98}} & \textcolor{black}{\textbf{  0.98}} & \textcolor{red}{\textbf{  0.41}} \\
+89-wine quality white... & \underline{\textcolor{blue}{\textbf{  0.37}}} &   0.33 &   0.33 &   0.31 & \textcolor{black}{\textbf{  0.36}} & \textcolor{black}{\textbf{  0.36}} & \textcolor{black}{\textbf{  0.36}} & \textcolor{red}{\textbf{  0.20}} &   0.23 \\
+90-yeast 4class & \textcolor{red}{\textbf{  0.57}} &   0.63 & \textcolor{black}{\textbf{  0.66}} &   0.65 &   0.64 &   0.58 & \textcolor{black}{\textbf{  0.66}} &   0.60 & \underline{\textcolor{blue}{\textbf{  0.67}}} \\\end{tabular}}\label{tab:balaccClassif2}
 \end{center}
 \end{table}
