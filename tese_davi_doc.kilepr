@@ -22,7 +22,7 @@ Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
-Indentation Mode=
+Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
@@ -58,7 +58,7 @@ ReadWrite=true
 
 [document-settings,item:apendice4.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -225,6 +225,8 @@ ReadWrite=true
 [document-settings,item:imagens/poolbased-esquema.tex]
 Bookmarks=
 Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
 Highlighting=LaTeX
 Indentation Mode=
 Mode=LaTeX
@@ -287,6 +289,16 @@ FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
 Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:notacao.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=
 Mode=LaTeX
 ReadWrite=true
 
@@ -422,13 +434,13 @@ ReadWrite=true
 
 [item:active-learning.tex]
 archive=true
-column=41
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=70
+line=0
 mode=LaTeX
-open=true
-order=3
+open=false
+order=-1
 
 [item:apendice1.tex]
 archive=true
@@ -463,12 +475,12 @@ order=4
 [item:apendice4.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=46
 mode=LaTeX
-open=false
-order=-1
+open=true
+order=2
 
 [item:apendice5.tex]
 archive=true
@@ -492,20 +504,20 @@ order=-1
 
 [item:arvorebest.tex]
 archive=true
-column=30
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=16
+line=49
 mode=LaTeX
 open=false
 order=-1
 
 [item:bibliografia.bib]
 archive=true
-column=3
+column=26
 encoding=ISO-8859-1
 highlight=BibTeX
-line=1495
+line=524
 mode=BibTeX
 open=false
 order=1
@@ -535,10 +547,10 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=12
+line=70
 mode=LaTeX
 open=true
-order=1
+order=0
 
 [item:dataset-tables.tex]
 archive=true
@@ -555,9 +567,9 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=39
 mode=LaTeX
-open=true
+open=false
 order=2
 
 [item:exp-analise.tex]
@@ -567,7 +579,7 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=100
 mode=LaTeX
-open=true
+open=false
 order=4
 
 [item:exp-elm.tex]
@@ -582,10 +594,10 @@ order=3
 
 [item:exp-meta.tex]
 archive=true
-column=71
+column=31
 encoding=ISO-8859-1
 highlight=LaTeX
-line=150
+line=137
 mode=LaTeX
 open=false
 order=6
@@ -642,30 +654,30 @@ order=3
 
 [item:introducao.tex]
 archive=true
-column=0
+column=39
 encoding=ISO-8859-1
 highlight=LaTeX
-line=157
+line=162
 mode=LaTeX
 open=false
 order=2
 
 [item:kappamediaParesReduxRank.plot]
 archive=true
-column=0
+column=75
 encoding=ISO-8859-1
 highlight=None
-line=1
+line=0
 mode=
 open=false
 order=-1
 
 [item:kappamediaallReduxRank.plot]
 archive=true
-column=77
+column=24
 encoding=ISO-8859-1
 highlight=None
-line=15
+line=0
 mode=
 open=false
 order=6
@@ -687,7 +699,7 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=17
 mode=LaTeX
-open=true
+open=false
 order=0
 
 [item:metodologia.tex]
@@ -699,6 +711,16 @@ line=312
 mode=LaTeX
 open=false
 order=3
+
+[item:notacao.tex]
+archive=true
+column=0
+encoding=ISO-8859-1
+highlight=LaTeX
+line=42
+mode=LaTeX
+open=true
+order=1
 
 [item:passiveDists.tex]
 archive=true
@@ -717,8 +739,8 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=0
 mode=LaTeX
-open=false
-order=2
+open=true
+order=4
 
 [item:plotRisco.tex]
 archive=true
@@ -732,20 +754,20 @@ order=-1
 
 [item:propostas.tex]
 archive=true
-column=0
+column=47
 encoding=ISO-8859-15
 highlight=LaTeX
-line=182
+line=66
 mode=LaTeX
-open=false
-order=4
+open=true
+order=3
 
 [item:rankplot.tex]
 archive=true
 column=132
 encoding=ISO-8859-1
 highlight=LaTeX
-line=49
+line=57
 mode=LaTeX
 open=true
 order=5
@@ -822,17 +844,17 @@ order=-1
 
 [item:tese.tex]
 archive=true
-column=25
+column=29
 encoding=ISO-8859-1
 highlight=LaTeX
-line=20
+line=21
 mode=LaTeX
 open=false
 order=2
 
 [view-settings,view=0,item:active-learning.tex]
-CursorColumn=41
-CursorLine=70
+CursorColumn=0
+CursorLine=0
 JumpList=
 ViMarks=
 
@@ -856,7 +878,7 @@ ViMarks=
 
 [view-settings,view=0,item:apendice4.tex]
 CursorColumn=0
-CursorLine=0
+CursorLine=46
 JumpList=
 ViMarks=
 
@@ -873,14 +895,14 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:arvorebest.tex]
-CursorColumn=30
-CursorLine=16
+CursorColumn=0
+CursorLine=49
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:bibliografia.bib]
-CursorColumn=3
-CursorLine=1495
+CursorColumn=26
+CursorLine=524
 JumpList=
 ViMarks=
 
@@ -898,7 +920,7 @@ ViMarks=
 
 [view-settings,view=0,item:contexto.tex]
 CursorColumn=0
-CursorLine=12
+CursorLine=70
 JumpList=
 ViMarks=
 
@@ -910,7 +932,7 @@ ViMarks=
 
 [view-settings,view=0,item:elm.tex]
 CursorColumn=0
-CursorLine=0
+CursorLine=39
 JumpList=
 ViMarks=
 
@@ -927,8 +949,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-meta.tex]
-CursorColumn=71
-CursorLine=150
+CursorColumn=31
+CursorLine=137
 JumpList=
 ViMarks=
 
@@ -955,22 +977,24 @@ CursorLine=12
 [view-settings,view=0,item:imagens/poolbased-esquema.tex]
 CursorColumn=20
 CursorLine=12
+JumpList=
+ViMarks=
 
 [view-settings,view=0,item:introducao.tex]
-CursorColumn=0
-CursorLine=157
+CursorColumn=39
+CursorLine=162
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:kappamediaParesReduxRank.plot]
-CursorColumn=0
-CursorLine=1
+CursorColumn=75
+CursorLine=0
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:kappamediaallReduxRank.plot]
-CursorColumn=77
-CursorLine=15
+CursorColumn=24
+CursorLine=0
 JumpList=
 ViMarks=
 
@@ -989,6 +1013,12 @@ ViMarks=
 [view-settings,view=0,item:metodologia.tex]
 CursorColumn=0
 CursorLine=312
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:notacao.tex]
+CursorColumn=0
+CursorLine=42
 JumpList=
 ViMarks=
 
@@ -1011,14 +1041,14 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:propostas.tex]
-CursorColumn=0
-CursorLine=182
+CursorColumn=47
+CursorLine=66
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:rankplot.tex]
 CursorColumn=132
-CursorLine=49
+CursorLine=57
 JumpList=
 ViMarks=
 
@@ -1065,7 +1095,7 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:tese.tex]
-CursorColumn=25
-CursorLine=20
+CursorColumn=29
+CursorLine=21
 JumpList=
 ViMarks=

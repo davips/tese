@@ -39,7 +39,7 @@ contempla apenas problemas de classificação binária.
 Para contornar essa limitação, uma adaptação chamada \textit{SGmulti}
 foi proposta \citep{conf/hais/SantosC14}.
 
-Diferentemente da abordagem original em que existe uma classe positiva
+Diferentemente da abordagem original onde existe uma classe positiva
 que define um modelo mais geral e um mais específico,
 na proposta de adaptação um modelo específico é induzido para cada classe.
 Cada modelo, assim, tem uma aproximação da hipótese mais geral
@@ -57,13 +57,13 @@ A ordem de complexidade do \textit{SG-multi} é $\mathcal{O}(|Y|)$.
 \ano{mesclar descrição abaixo que é mais formal com a descrição acima?}
 
 Para cada classe $c \in Y$, existe um par modelo/conjunto de treinamento
-$\langle\theta_c,\mathcal{L}_c\rangle$
+$\langle\theta^c,\mathcal{L}^c\rangle$
 devidamente projetado para representar a hipótese mais geral
 $h^c_G$ com relação à classe $c$.
 Inicialmente, todos os exemplos
-$\langle\bm{x},y,w\rangle \in \mathcal{L}_c$
+$\langle\bm{x},y,w\rangle \in \mathcal{L}^c$
 são os mesmos exemplos da reserva, exceto por duas diferenças:
-eles são rotulados como positivos ``positive'' para a classe correspondente
+eles são rotulados como positivos para a classe correspondente
 ($y=c$) e lhes são atribuídos pesos com apenas uma pequena fração
 do peso dos exemplos que já têm suas classes reveladas
 ($w << 1$),
