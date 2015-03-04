@@ -1,7 +1,7 @@
 \section{Aprendizado Ativo} \label{aprendizado-ativo}
-O \ing{aprendizado ativo}{active learning} é o estudo de máquinas
+\ing{Aprendizado ativo}{Active learning} é o estudo de máquinas
 de aprendizado capazes de se aprimorar fazendo perguntas \citep{series/synthesis/2012Settles}.
-A origem do termo remete à Pedagogia, especificamente à forma didática centrada no aluno.
+A origem do termo remete à Pedagogia, especificamente à forma de ensino centrada no aluno.
 A ideia básica é aproveitar a individualidade de cada aluno e seu próprio ritmo de aprendizado.
 Assim, ele pode ser auxiliado pelo professor nos aspectos em que experimenta maior dificuldade.
 Esse tipo ativo de aprendizado humano - com foco no aluno - tem mostrado evidências
@@ -15,8 +15,8 @@ Em sua forma mais geral, como esboçado por \cite{forman2012programmer},
 o aprendizado de máquina ativo pode lançar mão de todo conhecimento que um professor
 humano seja capaz de transmitir dentro das limitações de configurabilidade do sistema.
 Alguns pontos de configuração seriam, por exemplo:
-reescrita do \textit{código}\footnote{\textit{Código} usualmente escrito na linguagem de
- programação que implementa o sistema ou em alguma linguagem específica de domínio.}
+reescrita do código\footnote{Código escrito na linguagem de
+programação que implementa o sistema ou em alguma linguagem específica do domínio.}
 de extração de atributos visando maior separabilidade entre as
  classes; composição de expressões regulares para extrair termos adequados de textos técnicos;
 e, criação de regras de classificação.
@@ -33,11 +33,11 @@ Dado que a obtenção de um rótulo confiável normalmente é um processo custoso,
 o problema de se decidir qual seria o melhor $\bm{x}$ é a
 motivação basilar desta tese.
 Adicionalmente,
-a quantidade de exemplos disponíveis pode ser abundante e o esforço humano disponível
-(do professor, no caso da analogia acima) limitado.
+a quantidade de exemplos disponíveis pode ser abundante e o esforço humano disponível limitado -
+do professor, no caso da analogia com o aprendizado humano.
 Dessa forma, apenas uma parcela criteriosamente escolhida dos exemplos deve
-ser rotulada (ou \textit{consultada}, na terminologia de aprendizado ativo)
-- em oposição ao
+ser rotulada, ou \textit{consultada}, na terminologia de aprendizado ativo.
+Essa abordagem se dá em oposição ao
 \ing{aprendizado por exemplos}{learning by example} convencional
 \citep{journals/cacm/Valiant84}, também chamado de \novo{passivo}.
 No aprendizado passivo,
@@ -53,7 +53,7 @@ custo material.
 Similarmente, se o mecanismo rotulador, normalmente chamado de \novo{oráculo},
 for um especialista humano ou mesmo um robô \citep{journals/etai/BryantMOKRK01},
 é desejável parcimônia nas consultas para não se incorrer num esforço elevado de
-atenção humana/movimento mecânico.
+atenção humana ou movimento mecânico.
 Assim, um direcionamento adequado do esforço de aprendizado tem como resultado um
 processo de rotulação mais econômico.
 A variedade de abordagens existentes para esse direcionamento são assunto da Seção \ref{estrategias}.

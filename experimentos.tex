@@ -25,11 +25,11 @@ a diversidade dos algoritmos de aprendizado escolhidos seja verificada.
 \ano{colocar svm na tabela e dizer que foi excluído por ter ido muito ruim ou deixar?
 prov devido à necessidade de ajuste de parâmetros}
 
-\esb{quando a pessoa não sabe que classificador é adequado à base,
+\esb{quando a pessoa não sabe que algoritmo de aprendizado é adequado à base,
 é melhor ela adotar uma estratégia agnóstica,
 assim ela não compromete sua amostragem e pode,
 posteriormente, quando já tiver os rótulos,
-escolher o melhor classificador de forma mais apropriada.}
+escolher o melhor algoritmo de aprendizado de forma mais apropriada.}
 
 Uma forma de ilustrar a diversidade entre os modelos gerados
 pelos diferentes algoritmos de aprendizado é por meio da similaridade
@@ -59,7 +59,7 @@ todos os demais (abaixo ou igual a $0,30$).
 Por outro lado, conforme esperado,
 a maior similaridade ($0,77$) ocorre entre IELM e CIELM.
 \ano{conjugar no presente ou passado?}
-Os próximos valores mais relevantes (acima de $0,50$) permitem separar os demais classificadores
+Os próximos valores mais relevantes (acima de $0,50$) permitem separar os demais algoritmos
 em dois grupos, A e B, respectivamente:
 5NN, C4.5 e RF; e, VFDT e NB.
 \ano{usar essses grupos no futuro além do trecho mais abaixo?}
@@ -72,12 +72,12 @@ provavelmente por se tratar de um \textit{ensemble}.
 C4.5 e 5NN também se destacam, em menor grau,
 seguidos de NB e VFDT.
 Esse destaque reforça a tabela de similaridade (Tabela \ref{passiveDists}),
-pois os melhores classificadores (grupo A) são similares e os piores
+pois os melhores algoritmos (grupo A) são similares e os piores
 (IELM/CIELM e SVM) têm a menor similaridade em relação aos demais.
-Apesar disso, a existência de grupos distintos e de classificadores com variados níveis
+Apesar disso, a existência de grupos distintos e de algoritmos com variados níveis
 de desempenho fornece uma diversidade mais representativa do que se
-apenas um único classificador fosse empregado arbitrariamente.
-Para aumentar a independência entre os classificadores nos experimentos,
+apenas um único algoritmo fosse empregado arbitrariamente.
+Para aumentar a independência entre os algoritmos nos experimentos,
 optou-se por descartar os resultados referentes à IELM,
 por ser inferior à CIELM (Apêndice \ref{detalhes})
 e ambas possuírem uma proximidade excessiva com relação a princípio de funcionamento
@@ -102,7 +102,7 @@ por meio da distância $d(\bm{x},\bm{u}) \mid \bm{x},\bm{u} \in \mathbb{R}^{658}$
 entre acurácias balanceadas ao longo das $94$
 bases e $6$
 \ano{adicionar RF aos numeros acima, abaixo e tabela}
-classificadores e são apresentadas na Tabela \ref{stratDists}.
+algoritmos e são apresentadas na Tabela \ref{stratDists}.
 Os nomes de estratégias propostas estão em negrito.
 
 \afterpage{\clearpage\begin{landscape}

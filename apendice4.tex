@@ -35,7 +35,8 @@ letra $h$ \citep{mitchell1997machine}.
 % como por exemplo, restrições num espaço de parâmetros.
 Essas restrições delimitam um subconjunto de todos os exemplos possíveis,
 pois determinam quais valores cada atributo aceita.
-As restrições são as necessárias justamente para que o subconjunto seja somente de exemplos positivos.
+As restrições são as necessárias justamente para que o subconjunto seja somente de exemplos
+positivos.
 Reunindo-se todas as hipóteses possíveis, tem-se o espaço de hipóteses $H$.
 Se houver pelo menos um atributo contínuo (ou discreto com um número infinito de valores),
 infinitas hipóteses são possíveis.
@@ -67,16 +68,15 @@ heurística gulosa, otimização de funções etc.
 Da mesma forma, os parâmetros do algoritmo também influenciam a elaboração de $h$.
 Esses fatores fazem com que o aprendizado de qualquer modelo seja enviesado.
 Na realidade, sem \textit{viés de aprendizado} não há generalização \citep{mitchell1980need}.
-O viés de aprendizado é uma das fontes de diversidade entre modelos, OU SEJA, é UMA DAS ALTERNATIVAS QUE VIABILIZAM a criação de \textit{ensembles}.
 
-Em muitos casos, para se gerar $\mathcal{L}$, pode-se amostrar para rotulação apenas parte de um conjunto de exemplos não rotulados $\mathcal{U}$ tendo em vista restrições de custo.
-A ordem de escolha dos exemplos de treinamento, quando não é fortuita ou intencionalmente aleatória, também é caracterizada por um viés.
-Esse viés é característico do aprendizado ativo abordado no Capítulo \ref{cap:aprendizado-ativo} e é um dos pontos de investigação propostos no Capítulo \ref{cap:plano} enquanto influência na construção de $h$.
-Reserva-se aqui o termo \textbf{aprendiz} para representar o algoritmo que é servido pela amostragem de exemplos com base nesse viés - e reserva-se a expressão \textbf{aprendiz passivo} para cada algoritmo de aprendizado componente de um \textit{ensemble}.
-Por simplicidade, \textbf{aprendiz ativo} refere-se, consequentemente, ao sistema completo: aprendiz e procedimento de amostragem.
-Cada escolha de exemplo numa amostragem ativa é chamada de \textbf{consulta} e envolve o processo de \textit{rotulação} - geralmente custoso nos domínios onde se opta pelo aprendizado ativo.
-A \textbf{rotulação} é a atribuição do rótulo por uma entidade confiável, geralmente humana, mas passível de erro.
-Os exemplos ainda não consultados são chamados neste trabalho, por simplicidade, de \textbf{candidatos}.
+Em muitos casos, para se gerar $\mathcal{L}$, pode-se amostrar para rotulação apenas
+parte de um conjunto de exemplos não rotulados $\mathcal{U}$ tendo em vista
+restrições de custo.
+A ordem de escolha dos exemplos de treinamento, quando não é fortuita ou
+intencionalmente aleatória, também é caracterizada por um viés.
+Esse viés é característico do aprendizado ativo abordado no
+Capítulo \ref{cap:aprendizado-ativo} e é um dos pontos de investigação propostos
+no Capítulo \ref{cap:plano} enquanto influência na construção de $h$.
 
 
 % \e{\textbf{preciso definir} conjunto de validação . . .  classificador}
@@ -84,20 +84,4 @@ Os exemplos ainda não consultados são chamados neste trabalho, por simplicidade,
 % \e{\textbf{preciso definir} conhecimento . . . }
 %
 % \e{\textbf{preciso definir} variância. . .   }
-
-
-Dado um exemplo $\bm{x}$ e supondo que o modelo $\theta$ seja probabilístico, a probabilidade dele ter um rótulo $y$ é denotada nas seções e capítulos seguintes por $P$,
-sendo que $\hat{y}$ é o rótulo mais provável, ou seja:
-\begin{equation}
-  \hat{y} = \argmax_y\{ P_{\theta} (y|\bm{x})\}
-\end{equation}
-
-Adicionalmente, e considerando uma construção incremental da hipótese
-(de forma a incorporar uma componente temporal $t$ de instante/ordem de chegada),
-o algoritmo de treinamento do modelo $\theta$ pode ser representado por
-$a: \langle \{\theta_1, \theta_2, ...\},X,Y \rangle \rightarrow \{\theta_1, \theta_2, ...\}$, de forma que cada novo modelo $\theta^{(t+1)}$ é dado por:
-\begin{equation}
-  \theta^{(t+1)} = a(\theta^{(t)}, \langle \bm{x},y \rangle), \forall t \in \mathbb{N^{+}}
-\end{equation}
-Note-se que $\bm{x}$ é apresentado, no restante do texto, como $\bm{x}^{(t)}$ quando necessário.
 

@@ -4,7 +4,7 @@ O algoritmo de aprendizado mais adequado para um dado problema normalmente não
 a realização de uma validação cruzada \ano{ref?}.
 Dessa forma, não é possível realizar uma comparação de estratégias de aprendizado ativo
 sem a definição do aprendiz a ser adotado.
-Por isso, a comparação requer a avaliação do desempenho associado a diferentes classificadores.
+Por isso, a comparação requer a avaliação do desempenho associado a diferentes algoritmos de aprendizado.
 A forma escolhida para avaliação do desempenho geral foi considerar cada par
 base de dados/aprendiz como uma execução do experimento.
 Assim é possível uma análise unificada capaz de identificar estratégias que se sobressaiam
@@ -45,7 +45,7 @@ evolução do aprendizado.
 O fato de nem todas as estratégias agnósticas terem sido favorecidas - Rnd e Clu
 permaneceram debaixo da colocação média ($6$) por praticamente todo o intervalo de consultas -
 sugere que a ausência de premissas baseadas no viés do aprendiz não é condição preponderante
-para um bom desempenho em classificadores variados.
+para um bom desempenho em algoritmos de aprendizado variados.
 
 Conforme esperado, DWeuc teve o pior desempenho por concentrar as consultas apenas
 nas regiões mais densas e de fronteira, deixando de explorar adequadamente o espaço de exemplos.
@@ -125,8 +125,7 @@ Para essas estratégias, é necessário haver a possibilidade de avaliação do nível
 % a estratégia escolhida deve ser aquela capaz de atingir o melhor desempenho
 % mesmo que o aprendiz não seja o mais adequado aos dados.
 Dessa forma, faz-se necessária uma análise com cada aprendiz isoladamente,
-pois ela evita que classificadores inadequados prejudiquem o desempenho dos
-demais.
+pois ela evita que classificadores inadequados prejudiquem o desempenho geral.
 Esse cenário pode ser interpretado como aquele em que o algoritmo de aprendizado
 é fixado previamente pela natureza da aplicação.
 As tabelas \ref{stratsALCKappaFriedCIELMRedux},
@@ -153,7 +152,7 @@ os algoritmos CIELM, 5NN, C4.5, NB, VFDT e SVM respectivamente \ano{RF?}.
 É possível observar nas seis tabelas uma mudança significativa na distribuição das marcas de
 superioridade estatística.
 A vantagem de uma dada estratégia em relação a outra que use o mesmo aprendiz
-pode chegar a se inverter, como é o caso de EERacu e Clu com os classificadores
+pode chegar a se inverter, como é o caso de EERacu e Clu com os algoritmos
 CIELM e 5NN.
 
 \ano{vfdt:ags e aleas}
