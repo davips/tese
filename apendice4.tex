@@ -59,15 +59,16 @@ Porém, como tem-se apenas o conjunto $\mathcal{L}$, é preciso assumir que ele é 
 Esse é o princípio do aprendizado indutivo: é possível \textbf{predizer} a classe de novos exemplos baseando-se num conjunto de \textbf{treinamento}.
 Logo, o resultado da indução é um \textbf{modelo} de representação (DENOMINADO $\theta$) de parte da realidade; capaz de ser usado na generalização de fatos conhecidos para novas situações.
 
-Além de depender de $\mathcal{L}$, a hipótese $h$ depende da \textit{linguagem de representação} e do \textit{viés de busca}.
+Além de depender de $\mathcal{L}$, a hipótese $h$ depende da \textit{linguagem de representação} e
+do \textit{viés de busca}.
 Ambas são definidas pelo algoritmo de aprendizado.
-O modelo $\theta$ é descrito pela linguagem de representação, pois ela é a forma de se representar o conhecimento adquirido -
+O modelo $\theta$ é descrito pela linguagem de representação,
+pois ela é a forma de se representar o conhecimento adquirido -
 árvores de decisão, neurônios artificiais etc. \citep{quinlan1993c4,haykin1994neural}.
 O \textit{viés de busca}, por sua vez, é a forma do processo de construção do modelo dentro da linguagem -
 heurística gulosa, otimização de funções etc.
 Da mesma forma, os parâmetros do algoritmo também influenciam a elaboração de $h$.
 Esses fatores fazem com que o aprendizado de qualquer modelo seja enviesado.
-Na realidade, sem \textit{viés de aprendizado} não há generalização \citep{mitchell1980need}.
 
 Em muitos casos, para se gerar $\mathcal{L}$, pode-se amostrar para rotulação apenas
 parte de um conjunto de exemplos não rotulados $\mathcal{U}$ tendo em vista

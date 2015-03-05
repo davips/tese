@@ -1,19 +1,5 @@
 \newpage
 \section{Meta-aprendizado} \label{meta}
-sugiro
-quebrar o primeiro paragrafo em paragrafos menores e discutir , alem
-de falar como voce fala que alguns trabalhos tratam de recomendacao de
-algoritmos nao supervisionados, falar que as medidas diretas
-frequentemente usam informacao sobre o atributo alvo
-e que para algumas estrategias de recomendacao, como aprendi nao
-supervisionado e aprendizado (assim fazer um gancho para sua tese), eh
-necessario procurar medidas adicionais alem das propostas no statlog
-
-seria interessante mencionar os trabalhos feitos no grupo ainda para
-pre-processamento de dados (Bruno e Luis Paulo) para otimizacao
-(Jorge) e para series de dados (Andre Rossi)
-
-
 Um sistema de classificação baseado em aprendizado de máquina depende
 de um modelo que é induzido por algoritmos de aprendizado (Seção \ref{contexto}).
 Diante da infinidade de vieses possíveis de aprendizado,
@@ -24,6 +10,12 @@ Entretanto, nenhum algoritmo pode ser adequado a todos os domínios,
 pois um desempenho positivo em algumas situações de aprendizado
 precisa ser compensado por um igual grau de desempenho negativo
 em outras \citep{conf/icml/Schaffer94}.
+Isso decorre da existência de um viés necessário na forma de representação
+(árvores de decisão e neurônios artificiais entre outras)
+e busca de hipóteses sobre um dado problema (busca gulosa e otimização de funções entre outros).
+A existência do viés de aprendizado é essencial para a capacidade de generalização
+do algoritmo \citep{Mitchell:1980}.
+
 Dessa forma, um sistema de aprendizado de máquina requer
 uma escolha criteriosa de qual algoritmo deva ser empregado.
 % \cite{wolpert1996lack},
@@ -108,10 +100,20 @@ Essa tarefa é mais próxima da recomendação de estratégias de aprendizado ativo.
 Alguns trabalhos, por exemplo, adotam medidas como o grau de normalidade da distribuição e
 o percentual de pontos aberrantes e de atributos mais relevantes
 \citep{conf/ijcnn/SoutoPSACLS08,Ferrari2015181}.
+\ano{seria interessante mencionar os trabalhos feitos no grupo ainda para
+pre-processamento de dados (Bruno e Luis Paulo) para otimizacao
+(Jorge) e para series de dados (Andre Rossi)}
 As medidas adotadas na presente pesquisa são apresentadas em maior detalhe na
 Seção \ref{recom}.
 
 
+\ano{de falar como voce fala que alguns trabalhos tratam de recomendacao de
+algoritmos nao supervisionados, falar que as medidas diretas
+frequentemente usam informacao sobre o atributo alvo
+e que para algumas estrategias de recomendacao, como aprendi nao
+supervisionado e aprendizado (assim fazer um gancho para sua tese), eh
+necessario procurar medidas adicionais alem das propostas no statlog
+}
 
 % kalousis2002algorithm -
 %Algorithm selection via meta-learning - pg9 formaliza ap. sup. pra eu colocar no cap contexto
