@@ -1,5 +1,6 @@
+\newpage
 \section{Máquinas Extremas}\label{elmorig}
-As máquinas extremas (\textit{Extreme Learning Machines} - ELMs) são redes - não
+As \ing{\elms}{Extreme Learning Machines} (ELMs) são redes - não
 necessariamente neurais - com treinamento diferenciado que têm recebido crescente
 atenção devido à sua simplicidade e performance, comparável com o estado da arte
 \citep{journals/tsmc/HuangZDZ12}.
@@ -18,7 +19,7 @@ O motivo para a baixa necessidade ou ausência de iterações de ajuste é explicado
 
 Fixado o tipo de nó como o neurônio artificial convencional, seus parâmetros a ajustar são os
 valores e quantidade de neurônios/conexões sinápticas da camada oculta.
-Dada uma função geradora de pesos aleatórios ou pseudo-aleatórios incluída sua semente geradora e
+Dada uma função geradora de pesos aleatórios ou pseudoaleatórios incluída sua semente geradora e
 adotada a restrição de sempre se manter os pesos na ordem em que são
 gerados\footnote{Do contrário, cada peso deveria ser interpretado como um parâmetro independente.},
 a quantidade de
@@ -31,13 +32,11 @@ capaz de aprender num passo único e rápido quando comparada a outros algoritmos 
 
 % descrever ELM básica
 Uma ELM é uma rede com uma única camada oculta que transmite os sinais apenas na direção
-entrada-saída (\textit{Single Hidden Layer Feedforward Network} - SLFN),
+entrada-saída (SLFN\footnote{\textit{Single Hidden Layer Feedforward Network}}),
 cujos nós podem ser neurais (aditivo logístico sigmoidal) - como neste trabalho -
 ou de diversos outros tipos, como as também frequentemente usadas funções de base radial
 \citep{journals/tsmc/HuangZDZ12}.
-
-\ano{relembrar leitor da notação?}
-
+\ano{relembrar leitor da notação sobre classificação apresentada anteriormente na tese?}
 A função preditiva de uma SLFN com $L$ neurônios ocultos pode ser representada como segue:
 \begin{equation} \label{eqelm}
 f(\bm{x}_{(t)})= \argmax_{\bm{y} \in Y}{\displaystyle\mathop{\sum} _{l=1}^{L}\beta_{l,c(\bm{y})}
@@ -67,50 +66,73 @@ $\beta$ é a matriz contendo os pesos que conectam a camada oculta à camada de sa
 coluna corresponde a um neurônio de saída e cada linha corresponde a um neurônio oculto;
 e $T$ é a matriz objetivo, que contém em cada linha a
 representação binária $\bm{y}$ da classe de cada exemplo.
-
 Calcular $\beta$, que é análogo a treinar a rede,
-pode ser feito por meio do cálculo da pseudo-inversa $H^{\dagger}$ de $H$
+pode ser feito por meio do cálculo da pseudoinversa $H^{\dagger}$ de $H$
 \citep{rao1971generalized}:
 \begin{equation} \label{eq3}
 \beta = H^{\dagger} T
 \end{equation}
+Essa abordagem tem a vantagem de ser também uma minimização da norma dos pesos -
+propriedade importante que reduz a possibilidade de sobreajustamento \citep{journals/tit/Bartlett98}.
+Uma vez calculada a pseudoinversa,
+novos exemplos podem alimentar a entrada da rede e gerar predições conforme a função $f$
+presente na Equação \ref{eqelm}.
 
-\tar{concluir mais gentilmente}
+Para buscar a melhor topologia, é possível estimar o erro de generalização por meio do cálculo da
+\textit{soma dos quadrados dos erros de predição} - PRESS\footnote{\textit{PREdiction Sum of Squares}}
+\citep{myers2000classical,allan1974relationship}.
 
-\ano{ELM ajuda a reduzir overfitting com pequenas normas dos pesos.}
+\tar {é necessario apresentar extensão multiclasse do press que precisei desenvolver embora seja trivial}
 
-\tar {necessario apresentar versao multiclasse do press que precisei desenvolver}
+\ano{pegar papéis com fórmulas do press? A fórmula via EM-ELM mais abaixo deve ser suficiente.}
 
-referencias para press \citep{myers2000classical};
-\citep{journals/ijon/HeeswijkMOL11}
-refaz ELM (jeito antigo, sem lumda)  a cada grow e chama de eficiente.
-posso usar esse como ponto de partida, mas não por na GPU porque:
-1-AL tem pequenos cjtos de teste(rotulos); 2-overhead entre grows é
-ainda maior por ser um crescimento ``incremental''.
-o calculo do HAT vem de graça da EM-ELM que eles esqueceram de adotar.
+\cite{journals/ijon/HeeswijkMOL11} recalcula a pseudoinversa a cada novo neurônio
+acrescentado até encontrar a topologia com a menor PRESS.
+Eles implementaram uma ELM específica para \ing{unidades de processamento gráfico}
+{Graphics Processing Unit} (GPU).
+No presente trabalho, exceto para SGmulti, os conjuntos de treinamento não passam de $200$ exemplos,
+não justificando o uso de GPU, especialmente em vista o custo de envio de dados para ela.
+Outra diferença é a opção pelo crescimento incremental da
+\ing{\elm por minimização do erro}{Error Minimized Extreme Learning Machine} -
+EM-ELM \citep{journals/tnn/FengHLG09}.
+Além de permitir o crescimento da rede sem recalcular a pseudoinversa,
+a EM-ELM permite o cálculo da PRESS a um custo reduzido.
 
+% \ano{PRESS: erro estatistico (de regressão?)}
+% 
+% \ano{quadrado do resíduo: erro I e CI?}
+% 
+% diferencia 'statistical error' e 'residual':
+% 
+% {http://en.wikipedia.org/wiki/Errors\_and\_residuals\_in\_statistics}
+% 
+% error (or disturbance) of an observed value is the deviation of the observed value from
+% the (unobservable) true function value
+% residual of an observed value is the difference between the observed value and the
+% estimated function value.
+
+\subsection{EM-ELM} \label{emelm}
+\ano{falta colocar as fórmulas da EM-ELM}
+
+\tar{colocar fórmula que obtém PRESS da EM-ELM}
 
 \subsection{OS-ELM}\label{oselm}
 Em sistemas interativos, frequentemente é adotado o esquema incremental de aprendizado.
 O tempo de treinamento é reduzido quando é possível aproveitar o resultado de cálculos
 prévios durante todo o processo.
 No caso da ELM, isso é possível por meio da
-\elm \textit{sequencial}
-(\textit{On-line Sequential Extreme Learning Machine} - OS-ELM)
+\ing{\elm sequencial}{On-line Sequential Extreme Learning Machine} (OS-ELM)
 proposta por \cite{conf/iastedCI/HuangLRSS05}.
-% cite Sherman-Morrison-Woodbury)
-% http://books.google.com.br/books?hl=en&lr=&id=iD5s0iKXHP8C&oi=fnd&pg=PT15&dq=+An+introduction+to+optimization&ots=3PqthZAq8d&sig=Befcr8te239chWT6UOVyVrMIkSo#v=snippet&q=recursive%20least&f=false
-
-
 A técnica é baseada no algoritmo dos mínimos quadrados recursivo
 que utiliza a fórmula de Sherman-Morrison-Woodbury
+% http://books.google.com.br/books?hl=en&lr=&id=iD5s0iKXHP8C&oi=fnd&pg=PT15&dq=+An+introduction+to+optimization&ots=3PqthZAq8d&sig=Befcr8te239chWT6UOVyVrMIkSo#v=snippet&q=recursive%20least&f=false
 \citep{chong2013introduction}.
 $H$ passa a ser considerada em função do tempo - indicado subscrito
 para melhor legibilidade: $H_{(t)}$.
 Para ser possível encontrar a solução dos mínimos quadrados de
 $H_{(0)} \beta_{(0)} = T_{(0)}$,
 que se refere ao conjunto inicial de dados rotulados (instante $t=0$),
-a pseudo-inversa esquerda $H^\dagger_{(0)}$ deve ser calculada por:
+a pseudoinversa esquerda $H^\dagger_{(0)}$ deve ser calculada por:
 
 \begin{equation} \label{eq4}
 P_{(0)}=(H^\top_{(0)}H_{(0)})^{-1}
@@ -132,39 +154,12 @@ P_{(t-1)}
 \end{equation}
 
 O cálculo incremental de $\beta_{(t)}$ e $P_{(t)}$ evita os custos de se recalcular a
-pseudo-inversa para cada novo lote de dados.
+pseudoinversa para cada novo lote de dados.
 
-% Além da OS-ELM, outras variantes da ELM têm sido propostas:
-% ROS-ELM, que evita matrizes mal-condicionadas por meio do ajuste dos vieses $b_i$ \cite
-% {conf/isnn/HoangHVW07};
-% EI-ELM ou EM-ELM, não-incrementais, que fazem a rede crescer \textit{congelando}
-% \citep{huang2008enhanced} ou \textit{atualizando} \citep{journals/tnn/FengHLG09}
-% nós antigos;
-% e, CEOS-ELM, que faz a rede crescer durante o aprendizado \textit{on-line} \citep{conf/ijcnn/LanSH09}.
-% 
-% Para o presente trabalho, a OS-ELM ``canônica'' foi adotada, pois cada variante tem seus próprias
-% vicissitudes e o propósito deste trabalho é apenas dar uma primeira impressão a respeito da
-% performance da ELM com diferentes estratégias.
-% Também é importante lembrar que, na presença de uma matriz $H_{(0)}$ mal-condicionada,
-% OS-ELM não converge para ELM.
 
-\ano{PRESS: erro estatistico (de regressão?)}
-
-\ano{quadrado do resíduo: erro I e CI?}
-
-diferencia 'statistical error' e 'residual':
-
-{http://en.wikipedia.org/wiki/Errors\_and\_residuals\_in\_statistics}
-
-error (or disturbance) of an observed value is the deviation of the observed value from
-the (unobservable) true function value
-residual of an observed value is the difference between the observed value and the
-estimated function value.
-
-\tar{Citar von Zuben e outros brasileiros}
 
 \subsection{I-ELM}\label{ielm}
-Apesar da vantagem do cálculo da pseudo-inversa ser uma etapa única no
+Apesar da vantagem do cálculo da pseudoinversa ser uma etapa única no
 aprendizado da ELM, trata-se de um cálculo que pode ser custoso.
 Uma alternativa é a \elm \textit{incremental} (I-ELM) proposta por
 \cite{journals/tnn/HuangCS06}.
@@ -188,7 +183,8 @@ o valor do peso é calculado segundo a Equação \ref{eq:ielm}.
 \end{equation}
 Onde $\bm{e}_{(t)}$ é o vetor de erros residuais antes da inserção do
 novo neurônio na iteração $t$.
-Todos os vetores têm cada valor associado a um dos exemplos do conjunto de treinamento.
+Todos os vetores têm cada uma de suas componentes associadas a um dos exemplos do conjunto de treinamento.
+A predição da classe de novos exemplos se dá da mesma forma que na ELM original.
 
 \subsection{CI-ELM}
 Uma proposta similar à I-ELM, chamada \textit{convexa incremental} (CI-ELM),
@@ -220,3 +216,22 @@ de acordo com a Equação \ref{reajuste}.
 \begin{equation}\label{reajuste}
 \beta_{1,i}^* = (1 - \beta_{1,t}) \cdot \beta_{1,i}
 \end{equation}
+Assim como na I-ELM, a CI-ELM realiza as predições por meio da fórmula da Equação \ref{eqelm}.
+
+
+\ano{citar as outras ELMs que crescem ou aprendem incrementalmente?}
+% Além da OS-ELM, outras variantes da ELM têm sido propostas:
+% ROS-ELM, que evita matrizes mal-condicionadas por meio do ajuste dos vieses $b_i$ \cite
+% {conf/isnn/HoangHVW07};
+% EI-ELM ou EM-ELM, não-incrementais, que fazem a rede crescer \textit{congelando}
+% \citep{huang2008enhanced} ou \textit{atualizando} \citep{journals/tnn/FengHLG09}
+% nós antigos;
+% e, CEOS-ELM, que faz a rede crescer durante o aprendizado \textit{on-line} \citep{conf/ijcnn/LanSH09}.
+%
+% Para o presente trabalho, a OS-ELM ``canônica'' foi adotada, pois cada variante tem seus próprias
+% vicissitudes e o propósito deste trabalho é apenas dar uma primeira impressão a respeito da
+% performance da ELM com diferentes estratégias.
+% Também é importante lembrar que, na presença de uma matriz $H_{(0)}$ mal-condicionada,
+% OS-ELM não converge para ELM.
+
+\tar{Citar von Zuben e outros brasileiros}
