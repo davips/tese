@@ -1,60 +1,83 @@
 \newpage
+\newpage
+
 \section{Máquinas Extremas}\label{elmorig}
-As \ing{\elms}{Extreme Learning Machines} (ELMs) são redes - não
-necessariamente neurais - com treinamento diferenciado que têm recebido crescente
+AtÃ© onde o conhecimento dos autores permite alcanÃ§ar,
+nÃ£o existe pesquisa em aprendizado ativo que enfoque ELMs.
+As poucas abordagens encontradas usam AA apenas como uma ferramenta
+sem maiores desenvolvimentos em torno do AA em si.
+Um exemplo Ã© o \textit{standard deviation query-by-bagging} \cite{conf/his/AyerdiMG12},
+que é conceitualmente próximo à \textit{amostragem por incerteza}
+e \textit{Query-by-Committee}.
+Ã‰ uma abordagem genÃ©rica no sentido de que ela pode ser aplicada em
+um \textit{ensemble} de modelos gerados por qualquer  algoritmo de aprendizado.
+Outro exemplo Ã© o \textit{fixation-based active learning},
+que treina uma ELM para ser usada como uma tabela de mapeamento de cores
+(\textit{color look-up table}) para segmentaÃ§Ã£o.
+Na parte de AA, Ã© calculada a entropia de um histograma feito das intensidades
+em uma regiÃ£o circular \cite{journals/soco/PanPLW12}.
+Novamente, AA Ã© usado apenas como uma ferramenta independente do classificador adotado.
+Outro, menos relacionado,
+exemplo Ã© a incerteza de um \textit{framework} bayesiano nÃ£o-paramÃ©trico baseado em ELMs \cite{conf/ictai/ChatzisKD11}.
+Ã€ parte desses trabalhos isolados, nenhum estudo comparativo abrangente foi encontrado na literatura de aprendizado de mÃ¡quina.
+
+% von Zuben:
+% ftp://ftp.dca.fee.unicamp.br/pub/docs/vonzuben/ia353_1s13/topico4_P4_1s2013_view.pdf
+% Ele coloca uma coluna adicional de 1s em H.
+% Considerando que a matriz H tenha posto completo
+Uma \ing{\elm}{Extreme Learning Machine} (ELM) é uma rede, não
+necessariamente neural e com treinamento diferenciado, que tem recebido crescente
 atenção devido à sua simplicidade e performance, comparável com o estado da arte
-\citep{journals/tsmc/HuangZDZ12}.
-Trata-se de um algoritmo adequado para aprendizado ativo porque
-seu ajuste de parâmetros pode ser simplificado de uma forma que não ocorre
-com outros algoritmos similares em complexidade
-(com a capacidade de aproximação universal)
-e nichos de aplicação como a máquina
-de vetores de suporte e o Perceptron multicamadas \citep{haykin2004comprehensive}.
-Esse último requer, por exemplo, algum critério de parada no treinamento e um processo
-de seleção de modelo que envolve o ajuste de topologia e parâmetros.
-Essa característica da ELM permite um rápido treinamento,
-algo necessário num ambiente interativo.
-O motivo para a baixa necessidade ou ausência de iterações de ajuste é explicado a seguir.
-% \citep{journals/tsmc/HuangZDZ12} 
+em classificação \citep{journals/tsmc/HuangZDZ12}.
 
-Fixado o tipo de nó como o neurônio artificial convencional, seus parâmetros a ajustar são os
-valores e quantidade de neurônios/conexões sinápticas da camada oculta.
-Dada uma função geradora de pesos aleatórios ou pseudoaleatórios incluída sua semente geradora e
-adotada a restrição de sempre se manter os pesos na ordem em que são
-gerados\footnote{Do contrário, cada peso deveria ser interpretado como um parâmetro independente.},
-a quantidade de
-neurônios $L$ na camada oculta pode ser vista como o único parâmetro a se ajustar.
-Embora possa ser otimizado, esse parâmetro frequentemente não é crítico
-\citep{conf/esann/FrenayV10}.
-Essa possível não-criticidade torna a ELM, dentro das restrições apresentadas,
-capaz de aprender num passo único e rápido quando comparada a outros algoritmos similares
-\citep{journals/tsmc/HuangZDZ12}.
+When one needs prompt response from machine learning systems
+or has massive data to process in an acceptable time,
+it is necessary to resort to fast classifiers.
+One such classifier is the Extreme Learning Machine (ELM).
 
-% descrever ELM básica
-Uma ELM é uma rede com uma única camada oculta que transmite os sinais apenas na direção
-entrada-saída (SLFN\footnote{\textit{Single Hidden Layer Feedforward Network}}),
-cujos nós podem ser neurais (aditivo logístico sigmoidal) - como neste trabalho -
-ou de diversos outros tipos, como as também frequentemente usadas funções de base radial
-\citep{journals/tsmc/HuangZDZ12}.
-\ano{relembrar leitor da notação sobre classificação apresentada anteriormente na tese?}
-A função preditiva de uma SLFN com $L$ neurônios ocultos pode ser representada como segue:
+Sua topologia é a mesma de um \ing{Perceptron multicamadas}{MultiLayer Perceptron} - MLP
+\citep{haykin2004comprehensive}, mas com a quantidade de camadas ocultas fixada em apenas uma.
+Essa topologia é chamada de \ing{rede de camada oculta única com direcionamento entrada-saída}
+{Single Hidden Layer Feedforward Network}
+(SLFN).
+Com relação à configuração dos neurônios, a ELM é desprovida do peso de viés na
+camada de saída e aceita funções de ativação não diferenciáveis na camada oculta.
+A camada oculta é gerada com pesos aleatórios e mantida sem alterações
+durante o treinamento.
+Essa ideia remonta ao trabalho de \cite{rosenblatt1961principles} que optou
+por ajustar apenas as últimas camadas.
+Na ELM, o ajuste tira proveito do fato de que a camada de saída
+é um modelo de regressão linear.
+Esse tipo de modelo tem sido estudado desde o século XIX \citep{legendre1805nouvelles},
+logo possui uma vasta literatura de métodos que permitem alterar a rede de
+forma otimizada conforme explorado a seguir e nas seções
+\ref{press}, \ref{emelm} e \ref{oselm}.
+
+A ELM enquanto conceito existe desde o trabalho de \cite{journals/tnn/HuangB98}
+onde é proposta a busca direta pelo valor dos pesos de saída sem a necessidade de iterações
+e o uso de qualquer função de ativação limitada não linear.
+Neste trabalho, dentre os dois tipos de nó mais frequentemente usados,
+aditivo logístico sigmoide e função de base radial \citep{journals/tsmc/HuangZDZ12},
+optou-se pelo primeiro.
+Assim, a função preditiva de uma SLFN com $L$ neurônios ocultos pode ser representada
+como segue na Equação \ref{eqelm}.
 \begin{equation} \label{eqelm}
 f(\bm{x}_{(t)})= \argmax_{\bm{y} \in Y}{\displaystyle\mathop{\sum} _{l=1}^{L}\beta_{l,c(\bm{y})}
 g(\bm{a}_l \bm{x}_{(t)} + b_l)} = \bm{y}_{(t)}
 \end{equation}
 % }, \quad j=1, \cdots, {\it N}.
 
-onde $\beta_{l,o}$ é o peso da sinapse que conecta o neurônio oculto $l$ ao neurônio de saída $o$;
+$\beta_{l,o}$ é o peso da sinapse que conecta o neurônio oculto $l$ ao neurônio de saída $o$;
 $c(\bm{z})$ é uma função auxiliar que retorna o índice correspondente à classe
 representado pelo vetor $\bm{z} \in Y$;
 $g$ é, neste trabalho, a função sigmoide logística;
-$\bm{a}_l$ é o vetor de pesos do neurônio $l$ com cada valor $a_i$ representando o peso entre a
+$\bm{w}_l$ é o vetor de pesos do neurônio $l$ com cada valor $w_i$ representando o peso entre a
 entrada $i$ e o neurônio $l$ e, sendo o produto interno deste neurônio uma equação de reta no
 espaço de parâmetros, $b_l$ é o valor de seu viés de deslocamento em relação à origem.
-Mais detalhes da formulação da primeira camada oculta podem ser consultados na literatura sobre o
+Mais detalhes da formulação da primeira camada podem ser consultados na literatura sobre o
 Perceptron multicamadas convencional \citep{haykin2004comprehensive}.
 Se $\beta$ for adotada como uma matriz, a equação \ref{eqelm} pode ser escrita compactamente da
-forma:
+forma (Equação \ref{eq2}):
 \begin{equation} \label{eq2}
 H \beta = T
 \end{equation}
@@ -65,39 +88,393 @@ exemplo do conjunto de treinamento;
 $\beta$ é a matriz contendo os pesos que conectam a camada oculta à camada de saída, ou seja, cada
 coluna corresponde a um neurônio de saída e cada linha corresponde a um neurônio oculto;
 e $T$ é a matriz objetivo, que contém em cada linha a
-representação binária $\bm{y}$ da classe de cada exemplo.
-Calcular $\beta$, que é análogo a treinar a rede,
+representação binária (um-de-n) $\bm{y}$ da classe de cada exemplo.
+O cálculo de $\beta$, que é análogo a treinar a rede,
 pode ser feito por meio do cálculo da pseudoinversa $H^{\dagger}$ de $H$
 \citep{rao1971generalized}:
 \begin{equation} \label{eq3}
 \beta = H^{\dagger} T
 \end{equation}
 Essa abordagem tem a vantagem de ser também uma minimização da norma dos pesos -
-propriedade importante que reduz a possibilidade de sobreajustamento \citep{journals/tit/Bartlett98}.
+propriedade que reduz a possibilidade de sobreajustamento aos dados de treinamento
+\citep{journals/tit/Bartlett98}.
 Uma vez calculada a pseudoinversa,
 novos exemplos podem alimentar a entrada da rede e gerar predições conforme a função $f$
 presente na Equação \ref{eqelm}.
 
-Para buscar a melhor topologia, é possível estimar o erro de generalização por meio do cálculo da
+% https://reference.wolfram.com/mathematica/tutorial/LinearAlgebraMatrixComputations.html
+% explica bem a pinv
+
+\subsection{Topologia}
+
+
+A definição da topologia de uma rede neural é uma tarefa complexa.
+\cite{sheela2013review}, por exemplo, citam cento e uma heurísticas para a definição do
+número de neurônios ocultos.
+No caso específico da ELM, há trabalhos que propõem a definição automática de $L$,
+porém com a introdução de um novo parâmetro \citep{journals/ijon/YuHMNHSL14} ...
+
+
+
+On Over-?tting in Model Selection and Subsequent Selection Bias
+n Performance Evaluation (2010)
+% http://jmlr.org/papers/volume11/cawley10a/cawley10a.pdf
+
+Like over-?tting in training, over-?tting in model selection is likely to be most severe when
+the sample of data is small and the number of hyper-parameters to be tuned is relatively large.
+Likewise, assuming additional data are unavailable, potential solutions to the problem of
+over-?tting the model selection criterion are likely to be similar to the tried and tested
+solutions to the problem of over-?tting the training
+
+criterion, namely regularisation (Cawley and Talbot, 2007), early stopping (Qi et al., 2004) and
+model or hyper-parameter averaging (Cawley, 2006; Hall and Robinson, 2009).
+
+Another approach is simply to avoid model selection altogether using an ensemble approach,
+for example the Random Forest (RF) method
+
+regarding leave-one-out cross-validation, Kulkarni et al. (1998) comment
+In spite of the practical
+importance of this estimate, relatively little is known about its properties.
+
+Bengio and Grandvalet (2004) have shown there is no unbiased estimate of the variance
+of (k-fold) cross-validation.
+
+
+The task of model selection is frequently done by the application of some kind of validation,
+preferably cross-validation for efficient data reuse.
+Within this context,
+
+
+
+Another approach is to adopt one of the several methods for selecting, growing and/or shrinking the ELM's topology from the literature with its own requirements:
+E-ELM searches through a population of ELMs using the accuracy on a \textit{validation set} as measure of fitness \cite{journals/pr/ZhuQSH05};
+% http://citeseerx.ist.psu.edu/viewdoc/download?rep=rep1&type=pdf&doi=10.1.1.217.3643
+I-ELM and EI-ELM use a predefined \textit{training error} or maximum number of iterations as stopping criterion \cite{journals/tnn/HuangCS06};
+OP-ELM \cite{journals/tnn/MicheSBSJL10} adopts the PRESS statistic \cite{mye:book};
+HQ-OP-ELM uses the non-exact Hannan-Quinn criterion which is faster than PRESS for very large datasets \cite{conf/esann/MicheL09};
+% http://research.ics.aalto.fi/eiml/Publications/Publication119.pdf
+% Do mesmo autor de OP-ELM, é mais rápido para bases muito grandes e equivalente em bases pequenas. O método não é exato.
+
+% EnhancedOS-ELM uses a complex set of three criteria including the Root Mean Squares value of the error over a sliding window
+% (enhanced) EOS-ELM 2008
+% http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4597855&tag=1
+
+% for SLFNs with RBF hidden nodes based on minimal resource allocation network (MRAN) algorithm.
+% Although we can get more compact network structure using EOS-ELM in the end, the method is
+% complicate and only suitable for RBF hidden nodes (texto do ceos)).
+
+CEOS-ELM provides the optimal hidden nodes according to the \textit{expected error} given by the user \cite{conf/ijcnn/LanSH09};
+% Experimentos: N0 começa grande (abalone=75, 200, 500, 800); Lmax em torno de ? de N0;
+% fórmula 13 é central na atualização de Beta pro EM-ELM.
+% http://ieeexplore.ieee.org/xpls/icp.jsp?arnumber=5178608 tem latex
+% http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=5178608&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D5178608
+
+
+EM-ELM also relies on a \textit{targert error} or on the pace of its reduction \cite{journals/tnn/FengHLG09};
+% http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5161346&tag=1
+% experimentos: sigmoide, normalizado entre [-1,1] (atts) e [0,1] (output); alguns datasets com aição de neurônios de 25 em 25 e outros de 1 em 1; target accuracy arbitrariamente setada em 90%.
+% Huang et al. [6] has further shown that if the N training data are distinct, H is column full rank with probability one when L<=N.
+% In real applications, one need not request that the network output
+% error E(Hk ) is less than the target error . In fact, the network growing
+% procedure could stop if the network output error reduced very slowly,
+% one may also apply cross-validation methods in learning of EM-ELM.
+% rank H = L, ou seja, duas condiçoes de acordo com a definição de rank MxN mais abaixo.
+% 1) L <= N0  (pois o rank é sempre da menor dimensão)
+% 2) todas colunas de H são linearly independentes*
+% http://www.cds.caltech.edu/~murray/amwiki/index.php/FAQ:_What_does_it_mean_for_a_non-square_matrix_to_be_full_rank%3F
+% So if there are more rows than columns (), then the matrix is full rank if the matrix is full column rank.
+% Full-rank MxN = full [column|row] rank = todos independentes = [M|N]
+
+
+
+% EnsembleOS-ELM
+CS-ELM depends on the \textit{training Mean Squared Error} \cite{journals/ijon/LanSH10a};
+TS-ELM relies on the final prediction error criterion which compromises the \textit{validation error} and $L$ \cite{journals/ijon/LanSH10};
+% http://www.sciencedirect.com/science/article/pii/S0925231210003401
+% http://ieeexplore.ieee.org/xpls/icp.jsp?arnumber=4746040
+% http://download.springer.com/static/pdf/722/chp%253A10.1007%252F978-3-642-14922-1_2.pdf?auth66=1393101679_7d2915b6efac3e939585e1273dab21f4&ext=.pdf
+
+ELM-TV requires a predefined \textit{expected error} \cite{conf/apccas/CingolaniSP08};
+DT-ELM adjusts $L$ automatically, but depends on a new parameter, the number of clusters \cite{journals/ijon/YuHMNHSL14};
+AIE-ELM requires the definition of the \textit{expected learning accuracy} \cite{conf/ais2/ZhangLHS11};
+AG-ELM selects the neurons that achieve the \textit{best generalization performance} \cite{journals/tnn/ZhangLHX12};
+% http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6125249
+
+D-ELM (a versão HTML tem os TEX sources das fórmulas da ELM) 2013
+Dynamic Extreme Learning Machine and Its Approximation Capability
+http://ieeexplore.ieee.org/xpls/icp.jsp?arnumber=6459569
+The key idea of D-ELM is the following. The network starts with one random hidden unit. Then, at each subsequent step, several new networks with different numbers of hidden nodes are first generated. Among all these new networks and the network obtained at the previous step, the generalization performance will be compared, and the ?best? one, whose number of hidden nodes is the least among those having the best generalization, will be selected. Adding one more random hidden node to such selected network then results in the network for the current step. In D-ELM, the hidden nodes are randomly generated, and the output weights are updated incrementally by using the error-minimization-based method proposed in [6].
+...
+Comparing with those constructive ELMs, AG-ELM has two features: 1) the hidden-node number of AG-ELM is determined in an adaptive way in the sense that the existing networks may be replaced by some newly generated networks with better performance rather than always keeping those existing ones; 2) a group of new networks are generated at each step in AG-ELM (i.e.,  networks with different numbers of hidden nodes are generated at the th step), while in other constructive ELMs, only one new network is generated at each step.
+
+Comparativo com 10 variantes de ELM 2013, citar pra dizer que existem elms pra outras finalidades
+Extreme learning machine and its applications
+
+% % % OPIUM (Online PseudoInverse Update Method) 2013
+% % % Learning the pseudoinverse solution to network weights
+% % % http://www.sciencedirect.com/science/article/pii/S089360801300049X
+% % % ?
+% % % We present an online or incremental method of computing the pseudoinverse precisely, which we argue is biologically plausible as a learning method, and which can be made adaptable for non-stationary data streams. The method is significantly more memory-efficient than the conventional computation of pseudoinverses by singular value decomposition.
+% % % ?
+% % % Neural Engineering Framework ( Eliasmith & Anderson, 2003) in computational neuroscience and the Extreme Learning Machine (ELM) ( Huang, Zhu, & Siew, 2006) in the machine learning field, both synthesize three-layer feedforward networks which are superficially similar to the classic multilayer perceptron ... What makes these architectures unique is that the input layer signals are connected to an unusually large number of hidden layer neurons, using randomly initialized connection weights. This has the effect of randomly spreading or projecting the inputs from their original input dimensionality to a hidden layer of very much higher dimensionality. It is then possible to find a hyperplane in the higher dimensional space which approximates a desired function regression solution, or represents a classification boundary for the input?output relationship.
+% % % ?
+% % % We will refer broadly to this class of methods as linear solutions to higher dimensional interlayer networks (LSHDI).
+% % % ?
+% % % structures embodying the LSHDI principle may exist in the brain. For example, recent work by Rigotti, Ben Dayan Rubin, Wang, and Fusi (2010) in modeling recorded cortical activity in monkeys performing context-sensitive tasks shows that complex rule-based tasks require both sensory stimuli and internal representation of states; and that a significant number of random connections placed between input sources and a hidden interlayer, and random recurrent connections between interlayer neurons, are necessary for optimal performance. They describe these interlayer neurons as generating mixed selectivity, which is equivalent to increasing the dimensionality of the state representation.
+% % % ?
+% % % An obstruction to acceptance of the LSHDI method as being biologically plausible is the necessity to compute the pseudoinverse of a matrix.
+% % % ?
+% % % The solution to the network weights is exactly the same as that which would be calculated by singular value decomposition. It converges with a single forward iteration per input data sample, and as such is ideal for real-time online computation of the pseudoinverse solution.
+% % % ?
+% % %  It requires significantly less memory than the SVD method, as its memory requirement scales as the square of the size of the hidden layer, whereas the SVD memory requirement scales with the product of the hidden layer size and the size of the training data set.
+% % % ?
+% % % OPIUM is adapted from an iterative method for computing the pseudoinverse, known as Greville?s method (Greville, 1960).
+% % % ?
+% % % Pseudoinverse methods were widely used in an earlier era of neural network research, to the extent that a significant class of Kohonen-type linear associative memories were known as pseudoinverse neural networks (PINNs) (Kohonen, 1988 and Kohonen, 1989). The key variations in the LSHDI use of the method are in the initial spreading to higher dimension, and the associated nonlinear activation performed on the higher dimension signals.
+% % % ?
+% % %  typical test error on the raw MNIST data set is 2.75%
+% % % ?
+% % % apart from the number of hidden-layer neurons, there are no parameters to be tuned
+
+
+Fast sparse approximation of extreme learning machine(2014)
+http://www.sciencedirect.com/science/article/pii/S0925231213010047
+the solution of LS-SVM lacks sparseness and hence, the test speed is significantly slower than that of other algorithms, such as the support vector machine (SVM) [5] and [6] and neural networks
+?
+ELM: unified learning mode for regression, binary, and multiclass classification
+?
+aparentemente somente para kernels (talvez seja um restrição inerente à tarefa de se criar uma ?sparse solution?.
+?
+The popular Gaussian kernel function K(u,v)=exp(??2?u?v?) is used in SVM, LS-SVM, SLFN-ELM, and FSA-ELM. In order to achieve a good generalization performance, the cost parameter C and kernel parameter ? of SVM, LS-SVM, and SLFN-ELM, need to be chosen appropriately.
+
+
+TOSELM: Timeliness Online Sequential Extreme Learning Machine 2014
+http://www.sciencedirect.com/science/article/pii/S0925231213009120
+Timeliness here means the data distribution or the data trend changes with time passing by.
+
+
+
+Parsimonious Extreme Learning Machine Using Recursive Orthogonal Least Squares (2014):
+% http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6704311
+Castaño et al. [17]
+proposed a robust and pruned ELM approach based on prin-
+cipal component analysis (PCA), termed PCA-ELM, whereby
+the PCA method is used to select the hidden nodes from input
+features while corresponding input weights are deterministi-
+cally defined as principal components rather than random ones.
+Note that the deterministic approach to hidden node selection
+inevitably results in poor accuracy especially for noisy data.
+% http://en.wikipedia.org/wiki/Multicollinearity#Remedies_for_multicollinearity :
+Note that one technique that does not work in offsetting the effects of multicollinearity is orthogonalizing the explanatory variables (linearly transforming them so that the transformed variables are uncorrelated with each other): By the Frisch?Waugh?Lovell theorem, using projection matrices to make the explanatory variables orthogonal to each other will lead to the same results as running the regression with all non-orthogonal explanators included.
+
+
+
+
+
+Comparando com SVM (2012:
+% http://www.ntu.edu.sg/home/egbhuang/pdf/ELM-Unified-Learning.pdf
+% http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.298.1213&rep=rep1&type=pdf
+% ELM tends to have better scalability and achieve similar (for regression and
+% binary class cases) or much better (for multiclass cases) generaliza-
+% tion performance at much faster learning speed (up to thousands
+% times) than traditional SVM and LS-SVM.
+% ...
+% According to the ridge regression theory [37], one can add
+% a positive value to the diagonal of HT H or HHT ; the resul-
+% tant solution is stabler and tends to have better generalization
+% performance. Toh [22] and Deng et al. [21] have studied the
+% performance of ELM with this enhancement under the Sigmoid
+% additive type of SLFNs.
+% ...
+% In this specific case, similar to SVM, LS-SVM, and PSVM,
+% the feature mapping h(x) need not be known to users;
+% instead, its corresponding kernel K(u, v) (e.g., K(u, v) =
+% exp(?? u ? v 2 )) is given to users. The dimensionality L of
+% the feature space (number of hidden nodes) need not be given
+% either.
+
+
+% Architecture selection for networks trained with extreme learning machine using localized generalization error model 2013
+% http://www.sciencedirect.com/science/article/pii/S0925231212004328
+% só pra RBF.
+% If the number of hidden nodes is equal to the number of distinct training samples, the matrix H is square and invertible, and SLFNs can approximate these training samples with zero error.
+
+
+
+% multi-objective micro genetic ELM (?G-ELM) 2013:
+% http://www.sciencedirect.com/science/article/pii/S0925231213000520
+% ?
+% EI-ELM and EOS-ELM are the least competitive
+% ?
+% Regarding the error of OP-ELM and OS-ELM, our algorithms beat them in 15 and 14 problems, or in 20 and 16 if we consider the cases in which they show an unstable behavior.
+% ?
+% hidden nodes, we obtain a lower number than ELM in 22 out of 26 problems  and lower than BP in 13.
+% ?
+% BP exhibits a very stable behavior, but its execution time is very high compared to the other algorithms, see Fig. 4.
+% ?
+% Sobre a busca dos parametros ótimos: we consider that the relationship is parabolic and we test the significance of its quadratic term
+% ?
+% não aparenta ser incremental (on-line)
+
+$\mu$G-ELM also depends on the \textit{mean square error} \cite{journals/ijon/LahozLM13};
+D-ELM depends on the \textit{generalization performance} \cite{journals/tcyb/ZhangLHXS13};
+FSA-ELM changes $L$ indirectly by an additional parameter \cite{journals/ijon/LiMJ14};
+
+optimal pruning OP-ELM (2010):
+http://research.ics.aalto.fi/eiml/Publications/Publication157.pdf
+Rong et al. [9]presented a pruned ELM (P-ELM). It starts with a large network and then eliminates the hidden nodes that have low relevance to the class labels by using statistical criteria, namely the Chi-squared
+OP-ELM methodology has three steps: (1) Build the SLFN using the original ELM algorithm, (2) Rank the hidden nodes by applying multi-response sparse regression algorithm (MRSR) [11], (3) Select the hidden nodes through leave-one-out
+
+There is one SVM-based approach in which $L$ is not critical,
+but it is outside the scope of this paper \cite{conf/esann/FrenayV10}.
+
+
+Leave-One-Out (LOO) is the least biased estimator \cite{conf/ijcai/95}
+and usually the most computationally expensive.
+
+
+a unica vantagem que varias das variacoes da ELM promove eh,
+por exemplo, adicionar um neuronio sem precisar retreinar a rede toda.
+ainda assim, elas dependem de uma estimativa boa do erro para decidir se continua crescendo.
+
+
+Another approach is to explore the fact that $L$ is dataset-dependent.
+It is possible to use \textit{meta-learning} to discover the relations between meta-attributes and $L$.
+This was proposed recently in the literature,
+with $L$ in the range $[1,300]$ for 93 regression problems \cite{conf/cbic/lucas11}.
+An already trained meta-classifier can be used to perform a warm start,
+limiting the search space for model selection.
+However,
+both this step of refining the search and the very expensive previous step of training the meta-classifier require an efficient and immune-to-overfitting validation process.
+
+citar exemplo de evolutionary ELM
+
+
+
+EM-ELM eh mais apropriado aqui do que CEOS-ELM, pois o treinamento eh num lote soh.
+a OS-ELM serve apenas para os decrementos.
+EM-ELM poderia ser usado para acelerar ambos LLOOE and LOO,
+mas no caso do LOO seria preciso manter N modelos em memória durante todo o processo.
+
+CEOS-ELM addresses both the weights incremental update due to new instances arrival and the adequate growing of the hidden layer.
+However, from the original paper,
+it is possible to note that the convergence (to the original ELM) requires a certain amount of instances for the initial training.
+Apparently, the advantage of CEOS-ELM is to reduce training time in large training sets
+by avoiding recalculation of the pseudo-inverse of H from scratch at every time step.
+
+se CEOS comecar a partir de $L=1$, entao eh aplicavel a model selection (soh em batch learning por eventuais problemas de convergencia quando se comeca com poucos exemplos).
+
+Like in the other ELM variants,
+it is impossible to determine the target accuracy nor to define confidently $L_0$, $L_{max}$ and $N_0$ beforehand.
+Also, $L_{max}$ is around a third of $N_0$ which is impossible for small $N_0$s.
+
+
+
+Several fast cross-validation techniques have been proposed in the literature for different classifiers.
+Least-Squares Support Vector Machines leave-one-out in linear time complexity
+\cite{journals/nn/CawleyT04}.
+Classifiers whose model space forms a monoid or a group and whose batch trainer is a
+homomorphism \cite{conf/icml/Izbicki13}.
+ELM-FLOO has time complexity $mathcal{O}(n)$ \cite{xue2011fast}.
+
+Some classifiers can be trivially used for incremental/decremental learning, e.g. Naive Bayes  (NB) and 5-NN \cite{conf/ecml/Lewis98,journals/tit/Hart68}
+C4.5 and Very Fast Decision Trees (VFDT) \cite{books/mk/Quinlan93,conf/kdd/DomingosH00} it is not trivial.
+
+%software/algorithms/hardware
+The library Matrix-Toolkits-Java was used to  interface the reference implementation of LAPACK with Debian default compilation.
+%reference implementation of LAPACK para evitar instabilidade numerica (= matriz singular ocorrer muito cedo)
+Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz
+
+
+
+
+% http://research.ics.aalto.fi/eiml/Publications/Publication208.pdf
+% adjusts $L$ automatically, but depends on a new parameter, the number of clusters
+% 
+% AIE-ELM 2011
+% Extreme Learning Machine with Adaptive Growth of Hidden Nodes and Incremental Updating of Output Weights
+% http://link.springer.com/chapter/10.1007%2F978-3-642-21538-4_25
+% AIE-ELM grows the randomly generated hidden nodes in an adaptive way in the sense that the existing hidden nodes may be replaced by some newly generated hidden nodes with better performance rather than always keeping those existing ones in other incremental ELMs. The output weights are updated incrementally in the same way of error minimized ELM (EM-ELM). Simulation results demonstrate and verify that our new approach can achieve a more compact network architecture than EM-ELM with better generalization performance.
+Outros trabalhos escolhem neurônios
+
+\ano{pegar no gdocs as dezenas de citações e num artigo em que resumi varias}
+
+Por fim, há propostas que buscam pelos melhores pesos da camada oculta,
+entretanto passa-se a se tratar de um desvio da ideia original mais próximo
+das redes neurais convencionais e sua complexidade de configuração do que
+da simplicidade da ELM original.
+Fixado o tipo de nó, os únicos parâmetros a ajustar a quantidade de neurônios na camada oculta
+e os valores de suas conexões sinápticas.
+Dada uma função geradora de pesos aleatórios ou pseudoaleatórios e sua semente geradora,
+a quantidade de
+neurônios $L$ na camada oculta pode ser vista como o único parâmetro a se ajustar.
+Entretanto, há evidências de que a projeção no espaço de maior dimensionalidade
+realizada pela camada oculta aleatória é inferior à realizada por uma MLP,
+por exemplo (\citep{parviainen2011studies}).
+% https://aaltodoc.aalto.fi/bitstream/handle/123456789/5067/isbn9789526043128.pdf?sequence=1
+% The only theoretically motivated upper limit for the number of hidden units to try is N (which is enough for zero training error).
+% ...
+% At that limit, computing pseudoinverse corresponds to ordinary inversion of an N × N matrix, with a complexity of O(N3). In practice, smaller upper limits are used.
+% ...
+% Aqui tem uns desenhos legais mostrando que a projeção aleatória da ELM
+% no espaço de maior dimensão é algo que pode ser melhorado na página 47.
+
+Esse parâmetro frequentemente não é crítico \citep{conf/esann/FrenayV10}.
+% http://www3.ntu.edu.sg/home/EGBHuang/pdf/ELM_IJCNN2004.PDF \citep{huang2004extreme}
+% simulation results in artificial and real world cases done in [7] as well as in this paper further
+% demonstrated that no gain is possible by adjusting the input weights and the hidden layer biases
+Apesar disso, 
+,
+porém
+
+% * A partir de um certo momento, a camada oculta passou a ser tratada como um
+% conjunto de paraâmetros e não apenas seu tamanho. Daí surgiram as propostas
+% evolucionárias/evolutivas(?) em oposição às propostas de crescimento da camada
+% e/ou de atualização dos pesos.
+
+\subsection{PRESS}\label{press}
+% Meta-learning to optimize the number of hidden nodes of MLP networks trained
+% by Extreme Learning Machine algorithm (2011)
+% http://www.mendeley.com/download/public/1683461/5291097694/743b3ac1a6f01b8b9ad380254dc9ee7de2146086/dl.pdf
+% \citep{prud2011}
+
+Um desses métodos, chamado
 \textit{soma dos quadrados dos erros de predição} - PRESS\footnote{\textit{PREdiction Sum of Squares}}
-\citep{myers2000classical,allan1974relationship}.
+\citep{myers2000classical,allan1974relationship}, permite estimar o erro de generalização do modelo.
+Exceto nos casos de instabilidade numérica, essa estimativa é exata e equivalente à que seria obtida
+pela validação cruzada via \textit{Leave-One-Out} (LOO), representando uma redução na complexidade
+computacional em relação à quantidade de treinamentos de linear para constante - ou
+de quadrática para linear, se for considerada a quantidade de exemplos.
 
-\tar {é necessario apresentar extensão multiclasse do press que precisei desenvolver embora seja trivial}
+% http://www.jstor.org/stable/2686028?__redirected
+% o começo fala do PRESS, com formula clarificando(?)
 
-\ano{pegar papéis com fórmulas do press? A fórmula via EM-ELM mais abaixo deve ser suficiente.}
+% (see [15] and [16] for details of this formula and its implementations)
+% 15:Classical and Modern Regression With Applications,
+% 16:?Recursive lazy learning for modeling and control,? http://www.researchgate.net/publication/2301623_Recursive_Lazy_Learning_for_Modeling_and_Control/file/79e4151136c53c3067.pdf
 
-\cite{journals/ijon/HeeswijkMOL11} recalcula a pseudoinversa a cada novo neurônio
+.
+\cite{journals/ijon/HeeswijkMOL11}, por exemplo, recalculam a pseudoinversa a cada novo neurônio
 acrescentado até encontrar a topologia com a menor PRESS.
 Eles implementaram uma ELM específica para \ing{unidades de processamento gráfico}
 {Graphics Processing Unit} (GPU).
 No presente trabalho, exceto para SGmulti, os conjuntos de treinamento não passam de $200$ exemplos,
-não justificando o uso de GPU, especialmente em vista o custo de envio de dados para ela.
+não justificando o uso de GPU, especialmente em vista do custo de transferência de dados.
+
+Quando se dispõe 
+
+\ano{pegar papéis com fórmulas do press? A fórmula via EM-ELM mais abaixo deve ser suficiente.}
+
 Outra diferença é a opção pelo crescimento incremental da
 \ing{\elm por minimização do erro}{Error Minimized Extreme Learning Machine} -
 EM-ELM \citep{journals/tnn/FengHLG09}.
 Além de permitir o crescimento da rede sem recalcular a pseudoinversa,
 a EM-ELM permite o cálculo da PRESS a um custo reduzido.
 
+\ano{no artigo e em algum lugar da tese, preciso expor o algoritmo que defini para unir OS, EM e PRESS,
+que é incrementar de 1 em 1 exemplo
+e selecionar topologia a cada 4, testando a faixa de  de L-10 até L+10 neurônios;
+começando com L=1}
 % \ano{PRESS: erro estatistico (de regressão?)}
 % 
 % \ano{quadrado do resíduo: erro I e CI?}
@@ -112,14 +489,47 @@ a EM-ELM permite o cálculo da PRESS a um custo reduzido.
 % estimated function value.
 
 \subsection{EM-ELM} \label{emelm}
-\ano{falta colocar as fórmulas da EM-ELM}
+
+% * EM-ELM serve de base para várias variantes de ELM: AIE-ELM, D-ELM, CEOS-ELM
+% survey simples: http://www.wisdombasedcomputing.com/vol1issue1april2011/paper4.pdf
 
 \tar{colocar fórmula que obtém PRESS da EM-ELM}
+\ano{ver se k é usado pra alguma outra coisa}
+Sendo $\bm{h}_{(k)}$ o vetor coluna de valores de função de ativação correspondente
+à coluna $k$ da matriz $H_k$ na iteração $k$, ou seja, após o acréscimo de $k$
+neurônios,
+a matriz $H_k$ pode ser representada conforme a Equação \ref{eqh}.
+\begin{equation}\label{eqh}
+\mathbf{H}_k = [\mathbf{H}_{(k-1)}, \bm{h}_k]
+\end{equation}
+Assim, cada novo neurônio faz a matriz $H$ aumentar em uma coluna.
+A atualização dos pesos $\beta$ se dá por meio das equações
+\ref{em1}, \ref{em2} e \ref{em3}.
+\begin{equation}\label{em1}
+\mathbf{D}_k=[(\mathbf{I}-\mathbf{H}_k\mathbf{H}_k^\dagger)\bm{h}_k]
+\end{equation}
+\begin{equation}\label{em2}
+\mathbf{U}_k=\mathbf{H}_k^\dagger(\mathbf{I}-\bm{h}_k\mathbf{D}_k)
+\end{equation}
+\ano{procurar papel ou código que mostre as fórmulas siomplificadas para o caso que cresce só 1 por vez}
+\begin{equation}\label{em3}
+\end{equation}
+
+
+
+
+
 
 \subsection{OS-ELM}\label{oselm}
+\ano{OS-ELM vale a pena porque evita uma inversa grande, calcula apenas uma vez e favorece o uso do pequeno cache.}
+
 Em sistemas interativos, frequentemente é adotado o esquema incremental de aprendizado.
 O tempo de treinamento é reduzido quando é possível aproveitar o resultado de cálculos
 prévios durante todo o processo.
+% ROS-ELM A Robust Online Sequential Extreme Learning Machine 2007:
+% http://download.springer.com/static/pdf/966/chp%253A10.1007%252F978-3-540-72383-7_126.pdf?auth66=1398531288_8f1d69c65bc2dcd81b7a7451031a0dad&ext=.pdf
+% Na OS-ELM, os biases precisam ser escolhidos dentro de determinados intervalos, dependentes de dataset, para evitar ill-conditioning/singularity of H.
+% Eles calculam, aparentemente, os biases pela diagonal de XW (X: att values? W: pesos?).
 No caso da ELM, isso é possível por meio da
 \ing{\elm sequencial}{On-line Sequential Extreme Learning Machine} (OS-ELM)
 proposta por \cite{conf/iastedCI/HuangLRSS05}.
@@ -171,6 +581,7 @@ Cada neurônio adicionado na iteração $t$ requer um novo peso $\beta_{1,t}$
 para conectá-lo ao neurônio de saída.
 Assumindo, por simplicidade, apenas um atributo preditivo,
 a matriz alvo $T$ se torna um \textit{vetor coluna}, representado aqui por $\bm{\tau}$.
+\ano{ver se ja mencionei h antes, na parte da EM-ELM}
 Sendo $\bm{h}_{(t)}$ o vetor de valores da função de ativação do novo neurônio,
 ou seja, com os valores da coluna $t$ de $H$,
 o valor do peso é calculado segundo a Equação \ref{eq:ielm}.
@@ -187,6 +598,10 @@ Todos os vetores têm cada uma de suas componentes associadas a um dos exemplos d
 A predição da classe de novos exemplos se dá da mesma forma que na ELM original.
 
 \subsection{CI-ELM}
+\ano{http://www.sciencedirect.com/science/article/pii/S0925231207000677
+mostra tabela comparando tempos onde sigmoide additive é bem mais rápida que RBF. É uma boa justificativa para se escolher additive nodes.
+mostra tb que CI-elm é melhor que I-elm, BP (e RAN e MRAN) em tempo e acc.
+}
 Uma proposta similar à I-ELM, chamada \textit{convexa incremental} (CI-ELM),
 opta pelo reajuste de todos os pesos da camada de saída a cada novo neurônio
 acrescentado \citep{journals/ijon/HuangC07}.

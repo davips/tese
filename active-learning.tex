@@ -1,4 +1,45 @@
 \section{Aprendizado Ativo} \label{aprendizado-ativo}
+Activized Learning: Transforming Passive to Active with Improved Label Complexity 2012 Hanneke
+First, since we are lacking a complete understanding of the potential capabilities of active learning, we are not yet sure to what standards we should aspire for active learning algorithms to meet, and in particular this challenges our ability to characterize how a ?good? active learning algorithm should behave. Second, since we have yet to identify a complete set of general principles for the design of effective active learning algorithms, in many cases the most effective known active learning algorithms have problem-specific designs (e.g., designed specifically for linear separators, or decision trees, etc., under specific assumptions on the data distribution), and it is not clear what components of their design can be abstracted and transferred to the design of active learning algorithms for different learning problems (e.g., with different types of classifiers,
+or different data distributions). Finally, we have yet to fully understand the scope of the relative
+benefits of active learning over passive learning, and in particular the conditions under which such
+improvements are achievable, as well as a general characterization of the potential magnitudes of
+these improvements. In the present work, we take steps toward closing this gap in our understanding
+of the capabilities, general principles, and advantages of active learning.
+...
+REALIZABLE CASE
+In the realizable case, there are obvious examples of learning problems where
+active learning can provide a significant advantage compared to passive learning ...
+ binary search strategy for selecting which examples to request labels for naturally leads to exponential
+improvements in label complexity compared to learning from random labeled examples (passive
+learning). ?
+Disagreement-based methods are sometimes referred to as ?mellow? active learning, since in some
+sense this is the least we can expect from a reasonable active learning algorithm; it never requests
+the label of an example whose label it can infer from information already available, but otherwise
+makes no attempt to seek out particularly informative examples to request the labels of. T
+?
+Balcan, Hanneke, and Vaughan
+(2010) noted that if we do not require the algorithm to be self-verifying, instead simply measuring
+the number of label requests the algorithm needs to find a good classifier, rather than the number
+needed to both find a good classifier and verify that it is indeed good, then these negative results
+vanish. In fact, (shockingly) they were able to show that for any concept space with finite VC
+dimension, and any fixed data distribution, for any given passive learning algorithm there is an
+active learning algorithm with asymptotically superior label complexity for every nontrivial target
+concept!
+
+
+Learning with few examples: An empirical study on leading classifiers 2011
+associa AL com incremental learning
+faz ALC com AUC e log2
+investiga tipos de AL especificos para poucos exemplos
+?
+comparar ?bastante? datasets:
+The study presented in this paper aims to
+study a larger panel of both algorithms (9 different kinds) and
+data sets (17 UCI bases).
+% http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6033333&tag=1
+ 
+
 \ing{Aprendizado ativo}{Active learning} é o estudo de máquinas
 de aprendizado capazes de se aprimorar fazendo perguntas \citep{series/synthesis/2012Settles}.
 A origem do termo remete à Pedagogia, especificamente à forma de ensino centrada no aluno.
