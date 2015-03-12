@@ -2,25 +2,6 @@
 \newpage
 
 \section{Máquinas Extremas}\label{elmorig}
-AtÃ© onde o conhecimento dos autores permite alcanÃ§ar,
-nÃ£o existe pesquisa em aprendizado ativo que enfoque ELMs.
-As poucas abordagens encontradas usam AA apenas como uma ferramenta
-sem maiores desenvolvimentos em torno do AA em si.
-Um exemplo Ã© o \textit{standard deviation query-by-bagging} \cite{conf/his/AyerdiMG12},
-que é conceitualmente próximo à \textit{amostragem por incerteza}
-e \textit{Query-by-Committee}.
-Ã‰ uma abordagem genÃ©rica no sentido de que ela pode ser aplicada em
-um \textit{ensemble} de modelos gerados por qualquer  algoritmo de aprendizado.
-Outro exemplo Ã© o \textit{fixation-based active learning},
-que treina uma ELM para ser usada como uma tabela de mapeamento de cores
-(\textit{color look-up table}) para segmentaÃ§Ã£o.
-Na parte de AA, Ã© calculada a entropia de um histograma feito das intensidades
-em uma regiÃ£o circular \cite{journals/soco/PanPLW12}.
-Novamente, AA Ã© usado apenas como uma ferramenta independente do classificador adotado.
-Outro, menos relacionado,
-exemplo Ã© a incerteza de um \textit{framework} bayesiano nÃ£o-paramÃ©trico baseado em ELMs \cite{conf/ictai/ChatzisKD11}.
-Ã€ parte desses trabalhos isolados, nenhum estudo comparativo abrangente foi encontrado na literatura de aprendizado de mÃ¡quina.
-
 % von Zuben:
 % ftp://ftp.dca.fee.unicamp.br/pub/docs/vonzuben/ia353_1s13/topico4_P4_1s2013_view.pdf
 % Ele coloca uma coluna adicional de 1s em H.
@@ -454,27 +435,9 @@ de quadrática para linear, se for considerada a quantidade de exemplos.
 % 16:?Recursive lazy learning for modeling and control,? http://www.researchgate.net/publication/2301623_Recursive_Lazy_Learning_for_Modeling_and_Control/file/79e4151136c53c3067.pdf
 
 .
-\cite{journals/ijon/HeeswijkMOL11}, por exemplo, recalculam a pseudoinversa a cada novo neurônio
-acrescentado até encontrar a topologia com a menor PRESS.
-Eles implementaram uma ELM específica para \ing{unidades de processamento gráfico}
-{Graphics Processing Unit} (GPU).
-No presente trabalho, exceto para SGmulti, os conjuntos de treinamento não passam de $200$ exemplos,
-não justificando o uso de GPU, especialmente em vista do custo de transferência de dados.
+\ano{fórmula hat}
 
-Quando se dispõe 
 
-\ano{pegar papéis com fórmulas do press? A fórmula via EM-ELM mais abaixo deve ser suficiente.}
-
-Outra diferença é a opção pelo crescimento incremental da
-\ing{\elm por minimização do erro}{Error Minimized Extreme Learning Machine} -
-EM-ELM \citep{journals/tnn/FengHLG09}.
-Além de permitir o crescimento da rede sem recalcular a pseudoinversa,
-a EM-ELM permite o cálculo da PRESS a um custo reduzido.
-
-\ano{no artigo e em algum lugar da tese, preciso expor o algoritmo que defini para unir OS, EM e PRESS,
-que é incrementar de 1 em 1 exemplo
-e selecionar topologia a cada 4, testando a faixa de  de L-10 até L+10 neurônios;
-começando com L=1}
 % \ano{PRESS: erro estatistico (de regressão?)}
 % 
 % \ano{quadrado do resíduo: erro I e CI?}
@@ -490,6 +453,12 @@ começando com L=1}
 
 \subsection{EM-ELM} \label{emelm}
 
+crescimento incremental da
+\ing{\elm por minimização do erro}{Error Minimized Extreme Learning Machine} -
+EM-ELM \citep{journals/tnn/FengHLG09}.
+Além de permitir o crescimento da rede sem recalcular a pseudoinversa,
+a EM-ELM permite o cálculo da PRESS a um custo reduzido.
+
 % * EM-ELM serve de base para várias variantes de ELM: AIE-ELM, D-ELM, CEOS-ELM
 % survey simples: http://www.wisdombasedcomputing.com/vol1issue1april2011/paper4.pdf
 
@@ -500,19 +469,26 @@ Sendo $\bm{h}_{(k)}$ o vetor coluna de valores de função de ativação corresponde
 neurônios,
 a matriz $H_k$ pode ser representada conforme a Equação \ref{eqh}.
 \begin{equation}\label{eqh}
-\mathbf{H}_k = [\mathbf{H}_{(k-1)}, \bm{h}_k]
+\mathbf{H}_k = [\mathbf{H}_{k-1}, \bm{h}_k]
 \end{equation}
 Assim, cada novo neurônio faz a matriz $H$ aumentar em uma coluna.
 A atualização dos pesos $\beta$ se dá por meio das equações
 \ref{em1}, \ref{em2} e \ref{em3}.
 \begin{equation}\label{em1}
-\mathbf{D}_k=[(\mathbf{I}-\mathbf{H}_k\mathbf{H}_k^\dagger)\bm{h}_k]
+\mathbf{D}_k=\frac{\bm{h}_k(\mathbf{I}-\mathbf{H}_k\mathbf{H}_k^\dagger)}
+{\bm{h}_k(\mathbf{I}-\mathbf{H}_k\mathbf{H}_k^\dagger)\bm{h}_k}
 \end{equation}
 \begin{equation}\label{em2}
 \mathbf{U}_k=\mathbf{H}_k^\dagger(\mathbf{I}-\bm{h}_k\mathbf{D}_k)
 \end{equation}
-\ano{procurar papel ou código que mostre as fórmulas siomplificadas para o caso que cresce só 1 por vez}
+\ano{procurar papel ou código que mostre as fórmulas siomplificadas para
+ficar sem redundância}
 \begin{equation}\label{em3}
+\beta_{k+1}=\mathbf{H}_{k+1}^\dagger\mathbf{T}=\left [
+\begin{matrix}
+{\bf U}_{k}\cr {\bf D}_{k} 
+\end{matrix}
+\right] \mathbf{T}
 \end{equation}
 
 
@@ -650,3 +626,70 @@ Assim como na I-ELM, a CI-ELM realiza as predições por meio da fórmula da Equaçã
 % OS-ELM não converge para ELM.
 
 \tar{Citar von Zuben e outros brasileiros}
+
+
+\subsection{Configuração adotada para aprendizado ativo}
+Até onde o conhecimento do autor permite alcançar,
+não existe pesquisa em aprendizado ativo que enfoque ELMs.
+As poucas abordagens encontradas usam aprendizado ativo apenas como uma ferramenta
+sem maiores desenvolvimentos em torno do assunto em si.
+
+\subsubsection{Aprendizado ativo e \elms}\label{aelmrev}
+Um exemplo é a \ing{consulta por amostragens e desvio padrão}{standard deviation query-by-bagging}
+\cite{conf/his/AyerdiMG12},
+que é conceitualmente próximo à \textit{amostragem por incerteza}
+e \textit{consulta por comitê}.
+É uma abordagem genérica no sentido de que ela pode ser aplicada em
+um comitê de modelos gerados por qualquer algoritmo de aprendizado.
+Outro exemplo é o \ing{aprendizado ativo baseado em fixação}{fixation-based active learning},
+que treina uma ELM para ser usada como uma \ing{tabela de mapeamento de cores}{color look-up table}
+para segmentação.
+Na parte de aprendizado ativo, é calculada a entropia de um histograma feito das intensidades
+em uma região circular \cite{journals/soco/PanPLW12} - novamente,
+o aprendizado ativo é usado apenas como uma ferramenta independente do classificador adotado.
+Outro, menos relacionado exemplo,
+é a incerteza de um \ing{arcabouço}{framework} bayesiano não-paramétrico baseado em ELMs
+\cite{conf/ictai/ChatzisKD11}.
+À parte desses trabalhos isolados,
+nenhum estudo foi encontrado na literatura de aprendizado de máquina.
+Consequentemente, estudos comparativos abrangentes estão ausentes da literatura.
+
+\subsubsection{Adequação da \elm para aprendizado ativo}\label{adeq}
+O aprendizado ativo é um caso de aprendizado interativo.
+Assim, o aprendiz representa um modelo que evolui com o tempo que possa fazer predições
+a qualquer momento.
+Sendo a \elm original uma rede de topologia fixa e treinamento em lote,
+o modelo resultante pode demorar para ser gerado, dependendo da quantidade de exemplos,
+de atributos e de classes. Além disso, algum tipo de seleção de modelos é necessária para
+a busca do valor ideal para $L$.
+O processo de seleção de modelos habitualmente envolve o uso de validação cruzada
+\ano{citar artigo sobre seleção de moldelo, ``pra fazer melhor proveito dos dados''}
+que é custoso, especialmente se envolver a validação menos enviesada que é o LOO.
+\esb{citação}
+
+Dependendo da aplicação, o oráculo é humano, sujeito ao \textit{tempo máximo tolerável de espera}.
+\ano{vou  definir aqui, ou antes?}
+Dentre as variantes da \elm citadas na seções \ref{topologia}, \ref{oselm} e \ref{emelm}
+a mais conveniente é a combinação OS-ELM, EM-ELM e PRESS,
+por envolver a formulação canônica, ou seja, analiticamente desenvolvida
+por teoremas já consagrados na literatura de álgebra linear.
+% Outra vantagem de se evitar as variantes da Seção \ref{topologia} é a ausência de parâmetros? ops!
+% mais citadas e mais representativas sem pirotecnias
+
+Uma abordagem similar foi empregada por \cite{journals/ijon/HeeswijkMOL11},
+porém sem o crescimento acelerado que poderia ser proporcionado pela EM-ELM
+e sem a possibilidade de aprendizado incremental.
+Eles recalculam a pseudoinversa a cada novo neurônio acrescentado até encontrar a topologia com
+a menor PRESS.
+% Eles implementaram uma ELM específica para \ing{unidades de processamento gráfico}
+% {Graphics Processing Unit} (GPU).
+% No presente trabalho, exceto para SGmulti, os conjuntos de treinamento não passam de $200$ exemplos,
+% não justificando o uso de GPU, especialmente em vista do custo de transferência de dados.
+
+
+\ano{expor o algoritmo}
+
+\ano{crescer de 1 em 1, mas para acelerar conforme a necessidade incrementar de 1 em 1 exemplo e crescer
+de q em q}
+\esb{testa a faixa de  de L-10 até L+10 neurônios;}
+começando com L=1

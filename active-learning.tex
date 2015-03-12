@@ -292,15 +292,99 @@ evita esse problema utilizando o valor da diferença entre as duas maiores probab
 Outra possibilidade é a medida de entropia normalizada
 \citep{journals/bioinformatics/LewinSA0P04}, apresentada na \ref{eqent}.
 \begin{eqnarray} \label{eqz}
-\bm{z}=\argmax_{\bm{y}\in Y}P(\bm{y}|\bm{x})
+\bm{z}(\bm{x})=\argmax_{\bm{y}\in Y}P(\bm{y}|\bm{x})
 \\
-M(\bm{x})=P(\bm{z}|\bm{x})-\max_{\bm{y}\in Y\setminus\{\bm{z}\}}P(\bm{y}|\bm{x})
+M(\bm{x})=P(\bm{z}(\bm{x})|\bm{x})-\max_{\bm{y}\in Y\setminus\{\bm{z}(\bm{x})\}}P(\bm{y}|\bm{x})
 \label{eqmar}
 \end{eqnarray}
 \begin{equation} \label{eqent}
-E(\bm{x})=-\log^{-1}|Y|\sum_{\bm{y}\in Y}P(\bm{y}|\bm{x})\log(P(\bm{y}|\bm{x}))
+E(\bm{x})=-\log^{-1}|Y|\sum_{\bm{y}\in Y}P(\bm{y}|\bm{x})\log P(\bm{y}|\bm{x})
 \end{equation}
 
+\subsection{SVM}
+%mais detalhes sobre essas estratégias:
+% Online choice of active learning algorithms
+% A simple active-learning heuristic based on ``farthest-first'' traversal sequences
+%                     in kernel space. Farthest-first (FF) sequences have been previously used for computing provably
+%                     approximate optimal clustering for k-center problems (Hochbaum and Shmoys, 1985). The FF
+%                     traversal of the points in a data set is defined as follows. Start with any point x and find the farthest
+%                     point from x. Then find the farthest point from the first two (where the distance of a point from a set
+%                     is defined to be the minimum distance to a point in the set), etc. In any metric space, FF traversals
+%                     can be used for computing 2-approximation solutions to the k-center clustering problem in which
+%                     one seeks an optimal k-clustering of the data and optimality is measured by the maximum diameter
+%                     of the clusters. In particular, by taking the first k elements in the FF traversal as ``centroids`` and then
+%                     assigning each other point to its closest ``centroid``, one obtains a k-clustering whose cost is within
+%                     a factor 2 of the optimal (Hochbaum and Shmoys, 1985).
+%
+%                  * Parece que é o sucessor do MAB3.
+%                  * The idea is similar to COMB (by Luz et. al.). We use two learners:
+%                  * SIMPLE and KFF. the latter exploits and the former explores the data.
+%                  * the context switch between the two methods is done randomly using a biased coin.
+%                  * the bias is dynamically chosen and reflects the `effectivness' of exploration,
+%                  * which is measured by a distance function between two hypothesis.
+%                  *
+%                  * the implemention corresponds the paper:
+%                  * Thomas Osugi, Deng Kun, and Stephen Scott.
+%                  * Balancing Exploration and Exploitation: A New Algorithm for Active Machine Learning.
+%                  * In Proceedings of the Fifth IEEE International Conference on Data Mining. November 2005.
+%                  */
+Os códigos originais dos autores das seguintes estratégias \textit{margem simples},
+\textit{KFF} e \textit{balancedEE}
+\citep{journals/jmlr/TongK01,journals/jmlr/BaramEL04,conf/icdm/OsugiKS05}
+foram adaptados para contemplar problemas multiclasse por meio da aplicação de
+\ing{rodízio}{round-robin} entre sub-estratégias.
+A cada sub-estratégia foi atribuída uma classe principal,
+na configuração \textit{um para muitos}.
+
+\subsection{Consulta por comitê}\label{qbc}
+Comitês
+% também chamados de classificadores baseados em \textit{ensemble},
+são combinações de modelos com o objetivo de superar as predições de modelos únicos.
+A \ing{consulta por grupo de amostras}{query by bagging} e
+a \ing{consulta por grupo de amostras impulsionador}{query by boosting}
+são dois exemplos de \ing{consulta por comitê}{Query By Committee} - QBC
+\citep{conf/icml/AbeM98}.
+Dependendo do tipo de saída fornecida pelo modelo, diferentes medidas de desacordo
+podem ser usadas,
+% The possibility to take measures about the \textbf{disagreement between concurrent hypotheses},
+% rather than a single model probability output, is the main feature of this strategy.
+
+% In data-based ensembles, subsampling techniques are the most popular,
+% specifically \textit{boosting} and \textit{bagging}.
+% While boosting \cite{schapire1990strength} explores instances uncovered
+% (incorrectly classified) by previous models to generate the next one,
+% bagging \cite{breiman1996bagging} tries to force different biases by randomly
+% selecting considerably different subsets of instances for each classifier.
+% In the active learning context,
+% the several flavors of Query by Committee are similar to both uncertainty sampling and
+% \textit{query by disagreement}.
+% They unite the localized notion of uncertainty from the former with the multiple opinions from
+% the latter into a single measure.
+% Due to its enforced diversity, \textit{Decorate} ensembles are also worth to mention.
+%
+% In this paper,
+% % \textit{soft vote entropy} \cite{settles2012active} is considered when generating queries from
+% committees apart from the fact that non-probabilistic classifiers like decision trees are adopted
+% instead of probabilistic ones.
+
+% two such measures are \textit{JS-divergence} and \textit{KL-divergence}.
+% They have been described as good measures to achieve accurate class probability estimates
+%mccallum1998employing}.
+
+A divergência de Jensen-Shannon \cite{journals/tit/Lin91} é uma medida da teoria da informação
+que compara distribuições de probabilidade, comumente usada em comitês para
+avaliar o grau de desacordo entre os membros \cite{Melville:2004:DEA:1015330.1015385}.
+A divergência não-ponderada de Jensen-Shannon é definida em termos da entropia das distribuições
+na Equação \ref{js}.
+\begin{equation}\label{js}
+ JS(\{\theta_c \forall c \in Y\}) = E(\sum_{c \in Y}{P(\theta_c,\bm{x})}) - \sum_c{E(P(\theta_c,\bm{x})})
+\end{equation}
+Quanto maior o valor de $JS$, mais distante os membros estão de um consenso.
+Assim, o exemplo com o maior valor deve ser consultado primeiro.
+A complexidade computacional é $\mathcal{O}(1)$,
+se o comitê for visto como um único algoritmo de aprendizado;
+ou $\mathcal{O}(M)$, se o número de membros $M$ for considerado.
+\ano{explicar aqui detalhes do RF adotado pra QBC?}
 
 \subsection{Busca no espaço de hipóteses}\label{sgnet}
 É possível fazer uma amostragem ativa baseada na perspectiva do espaço de hipóteses.
@@ -392,50 +476,6 @@ amostragem por incerteza, vista na seção anterior.
 % \red{-------------------------- fim das info}
 
 % 
-% \subsection{Query by Committee}
-% Committees, also called ensemble-based classifiers,
-% are combinations of models whose united predictions are meant to achieve better accuracy than a
-% single model.
-% Query by Bagging and Query by Boosting are two examples of active learning committees
-% \cite{conf/icml/AbeM98}.
-% Depending on the member models output,
-% several measures of disagreement are possible.
-% % The possibility to take measures about the \textbf{disagreement between concurrent hypotheses},
-% % rather than a single model probability output, is the main feature of this strategy.
-% 
-% % In data-based ensembles, subsampling techniques are the most popular,
-% % specifically \textit{boosting} and \textit{bagging}.
-% % While boosting \cite{schapire1990strength} explores instances uncovered
-% % (incorrectly classified) by previous models to generate the next one,
-% % bagging \cite{breiman1996bagging} tries to force different biases by randomly
-% % selecting considerably different subsets of instances for each classifier.
-% % In the active learning context,
-% % the several flavors of Query by Committee are similar to both uncertainty sampling and
-% \textit{query by disagreement}.
-% % They unite the localized notion of uncertainty from the former with the multiple opinions from
-% the latter into a single measure.
-% % Due to its enforced diversity, \textit{Decorate} ensembles are also worth to mention.
-% %
-% In this paper,
-% % \textit{soft vote entropy} \cite{settles2012active} is considered when generating queries from
-% committees apart from the fact that non-probabilistic classifiers like decision trees are adopted
-% instead of probabilistic ones.
-% since the base learning algorithms of all strategies are not ensembles,
-% a comparison that includes \textit{Query by Committee} is deferred to future work.
-% Moreover, a fair comparison between strategies requires the same base learner,
-% otherwise accuracies of classifiers trained on the actively sampled instances could not be
-% compared.
-% % Additionally, JS-divergence is implemented for Random Forest.
-% 
-% % More elaborate measures quantify the difference/spread between the probability distribution of
-% the ensemble as a whole and its members;
-% % two such measures are \textit{JS-divergence} and \textit{KL-divergence}.
-% % They have been described as good measures to achieve accurate class probability estimates
-% \cite{melville2004diverse}. %mccallum1998employing}.
-% 
-% The complexity of Query by Committee is considered here as $\mathcal{O}(1)$,
-% if the ensemble is seen as a single base learner or $\mathcal{O}(M)$, if the number of members $M$
-% is considered.
 
 
 \subsection{\Eer}
@@ -485,7 +525,18 @@ alto custo computacional da estratégia.
 
 
 \subsection{Impacto esperado no modelo}
-
+\ano{EER e EMC fazem amostragem de 100}
+O futuro impacto de um exemplo sobre o modelo,
+chamado de \ing{mudança esperada no modelo}{expected model change} (EMC),
+é uma indicação de sua possível contribuição para o aprendizado.
+A maneira proposta por \cite{settles2008multiple} é chamada
+de \ing{comprimento esperado do gradiente}{expected gradient length} (EGL).
+Ela se aplica a modelos baseados na técnica de gradiente descendente \citep{haykin2004comprehensive}:
+deve ser escolhido para treinamento o exemplo capaz de contribuir com uma descida de maior magnitude
+na curva de erro.
+Como o rótulo não é sabido de antemão,
+usa-se a soma das contribuições de cada rótulo ponderada pelas respectivas probabilidades condicionais.
+\ano{colocar fórmula?}
 \ano{feature: dependente de algoritmo de aprendizado}
 
 \ano{definição da sequência de consultas é gradual}
@@ -593,16 +644,6 @@ Gravei SVGs no PC de casa.}
 % 
 % Árvores de decisão \citep{quinlan1993c4}, $k$-vizinhos mais próximos \citep{aha1991instance} e máquinas de vetores de suporte \citep{cristianini2000introduction} também têm sido usados para a estratégia de \textit{uncertainty sampling}.
 % A medida de incerteza, nesses casos, pode ser respectivamente: a pureza do nó, a proporção de vizinhos positivos e a distância exemplo-fronteira \citep{settles2010active}.
-% 
-% % Expected Model Change
-% O futuro impacto de um exemplo sobre o modelo, chamado de \textit{\textbf{expected model change}}\footnote{[mudança esperada no modelo]
-% }, também é uma indicação razoável de sua possível contribuição para o aprendizado.
-% A maneira proposta por \cite{settles2008multiple} é o \textit{\textbf{expected gradient length}}\footnote{[comprimento esperado do gradiente]
-% }.
-% Ela se aplica a modelos baseados na técnica de gradiente descendente:
-% %citar???
-% deve ser escolhido para treinamento o exemplo capaz de contribuir com uma descida de maior magnitude.
-% Como o rótulo não é sabido de antemão, usa-se a soma das contribuições de cada rótulo ponderada pelas respectivas probabilidades condicionais.
 % 
 % % Query-By-Committee
 % Por fim, a \textbf{consulta por comitê}\footnote{[\textit{query-by-committee}]
@@ -725,51 +766,12 @@ Gravei SVGs no PC de casa.}
 % Eles são descritos na Seção \ref{sec:cenarios}.
 
 \subsection{Outras estratégias}
-Os códigos originais dos autores das seguintes estratégias \textit{margem simples},
-\textit{self-conf}, \textit{KFF} e \textit{balancedEE}
-\citep{journals/jmlr/TongK01,journals/jmlr/BaramEL04,conf/icdm/OsugiKS05}
-foram adaptados para contemplar problemas multiclasse por meio da aplicação de
-\ing{rodízio}{round-robin} entre sub-estratégias.
-A cada sub-estratégia foi atribuída uma classe principal,
-na configuração \textit{um para muitos}.
-Porém tal configuração resultou em estratégias excessivamente
-piores que a amostragem aleatória.
-Isso poderia ser um indício de problemas na implementação original ou na adaptação,
-ou mesmo da ineficácia do rodízio.
-Por esses motivos elas foram excluídas deste trabalho.
-
 \ano{Não implementei Variance reduction pois exige um sistema muito complexo
 e com otimizações e ainda assim é ordens de magnitude mais lento que  Unc. Sampl.}
 % os experimentos.
 
 \tar{outras - mencionar as que ficaram de fora (Beygelzimmer)}
 
-%mais detalhes sobre essas estratégias:
-% Online choice of active learning algorithms
-% A simple active-learning heuristic based on ``farthest-first'' traversal sequences
-%                     in kernel space. Farthest-first (FF) sequences have been previously used for computing provably
-%                     approximate optimal clustering for k-center problems (Hochbaum and Shmoys, 1985). The FF
-%                     traversal of the points in a data set is defined as follows. Start with any point x and find the farthest
-%                     point from x. Then find the farthest point from the first two (where the distance of a point from a set
-%                     is defined to be the minimum distance to a point in the set), etc. In any metric space, FF traversals
-%                     can be used for computing 2-approximation solutions to the k-center clustering problem in which
-%                     one seeks an optimal k-clustering of the data and optimality is measured by the maximum diameter
-%                     of the clusters. In particular, by taking the first k elements in the FF traversal as ``centroids`` and then
-%                     assigning each other point to its closest ``centroid``, one obtains a k-clustering whose cost is within
-%                     a factor 2 of the optimal (Hochbaum and Shmoys, 1985).
-% 
-%                  * Parece que é o sucessor do MAB3.
-%                  * The idea is similar to COMB (by Luz et. al.). We use two learners:
-%                  * SIMPLE and KFF. the latter exploits and the former explores the data.
-%                  * the context switch between the two methods is done randomly using a biased coin.
-%                  * the bias is dynamically chosen and reflects the `effectivness' of exploration,
-%                  * which is measured by a distance function between two hypothesis.
-%                  *
-%                  * the implemention corresponds the paper:
-%                  * Thomas Osugi, Deng Kun, and Stephen Scott.
-%                  * Balancing Exploration and Exploitation: A New Algorithm for Active Machine Learning.
-%                  * In Proceedings of the Fifth IEEE International Conference on Data Mining. November 2005.
-%                  */
 
 \subsection{Considerações}
 \ano{deixar aqui apenas as da literatura, depois repeti-las junto com as propostas numa outra tabela
@@ -785,7 +787,10 @@ a aprender para viabilizar cada consulta. \ano{é aceito O(0)?}}
 \textbf{estratégia} & \textbf{\makecell{forma\\ de busca}}&\textbf{\makecell{presença \\de aprendiz}} & \textbf{\makecell{definição da \\sequência de \\consultas}} & \textbf{\makecell{dependência\\entre\\consultas}}&\textbf{\makecell{ordem de\\complexidade}}\\ \hline
 Rnd & \makecell{exploratória\\aleatória} & \makecell{agnóstica}&autônoma&nenhuma&$\mathcal{O}(0)$\\ \hline
 Clu&\makecell{balanceada:\\exploratória e\\prospectiva}& agnóstica&interativa&total&\makecell{não\\especificada}\\ \hline
-\makecell{Unc/Mar/Ent\\DW}&prospectiva&gnóstica&interativa&total&$\mathcal{O}(1)$\\ \hline % EMC
+\makecell{Unc/Mar/Ent\\QBC/DW}&prospectiva&gnóstica&interativa&total&$\mathcal{O}(1)$\\ \hline
+SVMS&prospectiva&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|\mathcal{L}|)$\\ \hline
+SVMB&\makecell{alternada:\\exploratória e\\prospectiva}&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|\mathcal{L}|)$\\ \hline
+EGL&prospectiva&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|)$\\ \hline
 EER&prospectiva&gnóstica&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|^2)$\\ \hline
 SGmulti&\makecell{exploratória\\limitada e\\aleatória}&gnóstica&interativa&total&$\mathcal{O}(|Y|)$\\ \hline
 TU&\makecell{balanceada:\\exploratória e\\prospectiva}&gnóstica&interativa&\makecell{após etapa\\exploratória}&$\mathcal{O}(1)$\\ \hline
@@ -796,7 +801,7 @@ GATU&\makecell{alternada:\\exploratória e\\prospectiva}&\makecell{alternada:\\ag
 }
 \end{table}
 
-\ano{diferencia de aprendizado semisuperv. colocar algoritmos se der tempo;
+\ano{diferenciar de aprendizado semisuperv. colocar algoritmos se der tempo;
 apresenta cada uma com uma figura padrão ilustrando sua particularidade}
 
 \tar{usar semisupervised somente na fase de predição não faria muito sentido.
@@ -804,4 +809,3 @@ usar semisupervised no learner faz sentido pelo fato de se ter tantos exemplos
 unlabeled à disposição}
 
 \tar{citar relação com crowd sourcing/labeling?}
-
