@@ -24,12 +24,10 @@ a comparação de estratégias está dividida em quatro partes:
   porém com duas estratégias específicas; e,
   \item \textbf{comparação ELM} - de forma análoga à \textit{comparação RFw},
   porém com o diferencial de revelar de forma pioneira a viabilidade de se aplicar
-  variadas estratégias, inclusive a específica, com ELMs.
+  estratégias em geral, inclusive a específica, com ELMs.
   \end{itemize}
 
-
-\ano{fazer análise adicional do SVM só com problemas binários}
-
+\subsection{Comparação diversa}\ref{cdiversa}
 % http://research.cs.wisc.edu/techreports/2009/TR1648.pdf
 Estratégias são normalmente avaliadas por meio de curvas de aprendizado,
 que é o gráfico da medida de interesse em função da quantidade de consultas
@@ -39,9 +37,7 @@ que é o gráfico da medida de interesse em função da quantidade de consultas
 % The reported results are for a logistic regression model averaged over ten folds
 % using cross-validation.
 A Figura \ref{curvas} ilustra o comportamento típico da curva de aprendizado ativo
-e que foi seguido
-\ano{tempo verbal}
-por todas as diferentes estratégias.
+e que é seguido por todas as diferentes estratégias.
 \input plot
 Apesar de seguirem o mesmo padrão,
 o valor kappa, inicialmente igual para todas as estratégias, passa a divergir
@@ -49,7 +45,7 @@ na medida em que novos exemplos são consultados.
 Se todas as bases tivessem a mesma quantidade de exemplos
 e o aprendizado prosseguisse, as curvas se encontrariam novamente,
 pois tendem ao desempenho passivo.
-% A parada em duzentas consultas se mostrou proveitosa 
+% A parada em duzentas consultas se mostrou proveitosa
 
 É possível observar que as curvas ATUmah e TUmah se destacam,
 mas comparações de curvas neste gráfico são imprecisas devido aos diferentes
@@ -129,9 +125,23 @@ que as versões agnósticas propostas são viáveis na prática,
 podendo superar as outras da atual comparação sem incorrer em
 aumento do risco financeiro.
 
-\esb{comparar também tempo? comparação com passivo?}
+\subsection{Comparação RFw}\ref{crf}
+\subsection{Comparação SVM}\ref{csvm}
+\ano{fazer análise adicional do SVM só com problemas binários}
+\subsection{Comparação ELM}\ref{celm}
 
-\ano{adicionar RF, depois que terminar de rodar}
+
+
+
+
+
+
+
+
+
+
+
+\esb{comparar também tempo? comparação com passivo?}
 
 \section{Análise comparativa por aprendiz}\label{isolado}
 Alguns algoritmos de aprendizado são inadequados para determinadas

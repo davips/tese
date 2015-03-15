@@ -10,68 +10,17 @@ Inclui apenas resultados para as bases com mais de 200 exemplos.}}
 \begin{axis}[xlabel=consultas, ylabel=kappa (média), legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
 scale only axis, width=300, yticklabel style={/pgf/number format/fixed}]
 
-\addplot+[orange, densely dashed, thick, mark options={solid, scale=1.5}, mark repeat=200, mark phase=48] table[x=budget, y=ATUmah] {kappamediaall.plot};\addlegendentry{\textbf{ATUmah}}
-% \addplot+[violet, thick, mark=pentagon, mark options={solid, scale=1.5}, mark repeat=200, mark phase=60] table[x=budget, y=ALUmah] {kappamediaall.plot};\addlegendentry{\textbf{ALUmah}}
-\addplot+[violet, thick, mark=10-pointed star, mark options={solid, scale=1.5}, densely dotted, mark repeat=200, mark phase=24] table[x=budget, y=ATUman] {kappamediaall.plot};\addlegendentry{\textbf{ATUman}}
-% \addplot+[dashed, thick, black, mark=triangle*, mark options={solid, scale=1.5}, mark repeat=200, mark phase=36] table[x=budget, y=ALUman] {kappamediaall.plot};\addlegendentry{\textbf{ALUman}}
-\addplot+[solid, red, mark=triangle*, mark repeat=200, mark phase=156] table[x=budget, y=TUmah] {kappamediaall.plot};\addlegendentry{TUmah}
-% \addplot+[solid, thick, orange, mark=triangle*, mark options={solid, scale=1.5}, mark repeat=200, mark phase=168] table[x=budget, y=LUmah] {kappamediaall.plot};\addlegendentry{LUmah}
-\addplot+[solid, gray, mark=*, mark options={solid, scale=1}, mark repeat=200, mark phase=132] table[x=budget, y=TUman] {kappamediaall.plot};\addlegendentry{TUman}
-% \addplot+[solid, thick, black, mark=*, mark options={solid, scale=1.5}, mark repeat=200, mark phase=144] table[x=budget, y=LUman] {kappamediaall.plot};\addlegendentry{LUman}
+\addplot+[dashed, black,            mark=triangle,     mark phase=35, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Rnd] {kappamediaallRedux.plot};\addlegendentry{Rnd}
+\addplot+[dashed, green!50!black, mark=triangle*,   mark phase=47, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Clu] {kappamediaallRedux.plot};\addlegendentry{Clu}
+\addplot+[dotted, thick, violet, mark=10-pointed star, mark phase=59, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUman] {kappamediaallRedux.plot};\addlegendentry{\textbf{ATUman}}
+\addplot+[dotted, thick, orange,  mark repeat=200,  mark phase=71, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUmah] {kappamediaallRedux.plot};\addlegendentry{\textbf{ATUmah}}
 
-% \addplot+[blue, densely dashed, thick, mark options={solid, scale=1.5}, mark repeat=200, mark phase=48] table[x=budget, y=ATUeuc] {kappamediaall.plot};\addlegendentry{\textbf{ATUeuc}}
-% \addplot+[green, thick, mark=pentagon, mark options={solid, scale=1.5}, mark repeat=200, mark phase=60] table[x=budget, y=ALUeuc] {kappamediaall.plot};\addlegendentry{\textbf{ALUeuc}}
-
-\addplot+[solid, black, mark=square, mark options={solid, scale=1}, mark repeat=200, mark phase=72] table[x=budget, y=Mar] {kappamediaall.plot};\addlegendentry{Mar}
-\addplot+[solid, gray, mark=star, mark options={solid, scale=1}, mark repeat=200, mark phase=96] table[x=budget, y=EERacu] {kappamediaall.plot};\addlegendentry{EERacu}
-\addplot+[solid, dark green, mark=triangle*, mark options={solid, scale=1}, mark repeat=200, mark phase=84] table[x=budget, y=EERent] {kappamediaall.plot};\addlegendentry{EERent}
-\addplot+[solid, thick, olive, mark=star, mark options={solid, scale=1.5}, mark repeat=200, mark phase=108] table[x=budget, y=SGmulti] {kappamediaall.plot};\addlegendentry{\textbf{SGmulti}}
-
-\addplot+[dashed, violet, mark=pentagon, mark options={solid, scale=1}, mark repeat=200, mark phase=12] table[x=budget, y=Clu] {kappamediaall.plot};\addlegendentry{Clu}
-\addplot+[dotted, green!50!black, thick, mark options={solid, scale=1}, mark=*, mark repeat=200, mark phase=1] table[x=budget, y=Rnd] {kappamediaall.plot};\addlegendentry{Rnd}
-
-% \addplot+[solid, blue, mark=triangle*, mark repeat=200, mark phase=156] table[x=budget, y=TUeuc] {kappamediaall.plot};\addlegendentry{TUeuc}
-% \addplot+[solid, red, thick, mark=triangle*, mark options={solid, scale=1.5}, mark repeat=200, mark phase=168] table[x=budget, y=LUeuc] {kappamediaall.plot};\addlegendentry{LUeuc}
-
-% \addplot+[solid, dark green, mark=diamond, mark options={solid, scale=1}, mark repeat=200, mark phase=120] table[x=budget, y=DWeuc] {kappamediaall.plot};\addlegendentry{DWeuc}
+\addplot+[blue,   mark=star,     mark phase=83, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUman] {kappamediaallRedux.plot};\addlegendentry{TUman}
+\addplot+[red, mark=square,   mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUmah] {kappamediaallRedux.plot};\addlegendentry{TUmah}
+\addplot+[gray,   mark=star,     mark phase=107, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=GATUman] {kappamediaallRedux.plot};\addlegendentry{GATUman}
+\addplot+[olive, mark=square,   mark phase=119, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=GATUmah] {kappamediaallRedux.plot};\addlegendentry{GATUmah}
 
 \end{axis}
 \end{tikzpicture}
 \end{center}
 \end{figure}
-% \begin{figure}
-% \caption{Curva de aprendizado média de todas as bases com mais de 200 exemplos.}
-% \begin{center}
-% \begin{tikzpicture}[scale=1]
-% \begin{axis}[xlabel=consultas, ylabel=kappa, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
-% scale only axis, width=300]
-% 
-% \addplot+[orange, densely dashed, thick, mark options={solid, scale=1.5}, mark repeat=200, mark phase=48] table[x=budget, y=ATUmah] {kappamedianallRedux.plot};\addlegendentry{\textbf{ATUmah}}
-% % \addplot+[violet, thick, mark=pentagon, mark options={solid, scale=1.5}, mark repeat=200, mark phase=60] table[x=budget, y=ALUmah] {kappamedianallRedux.plot};\addlegendentry{\textbf{ALUmah}}
-% \addplot+[violet, thick, mark=10-pointed star, mark options={solid, scale=1.5}, densely dotted, mark repeat=200, mark phase=24] table[x=budget, y=ATUman] {kappamedianallRedux.plot};\addlegendentry{\textbf{ATUman}}
-% % \addplot+[dashed, thick, black, mark=triangle*, mark options={solid, scale=1.5}, mark repeat=200, mark phase=36] table[x=budget, y=ALUman] {kappamedianallRedux.plot};\addlegendentry{\textbf{ALUman}}
-% \addplot+[solid, red, mark=triangle*, mark repeat=200, mark phase=156] table[x=budget, y=TUmah] {kappamedianallRedux.plot};\addlegendentry{TUmah}
-% % \addplot+[solid, thick, orange, mark=triangle*, mark options={solid, scale=1.5}, mark repeat=200, mark phase=168] table[x=budget, y=LUmah] {kappamedianallRedux.plot};\addlegendentry{LUmah}
-% \addplot+[solid, gray, mark=*, mark options={solid, scale=1}, mark repeat=200, mark phase=132] table[x=budget, y=TUman] {kappamedianallRedux.plot};\addlegendentry{TUman}
-% % \addplot+[solid, thick, black, mark=*, mark options={solid, scale=1.5}, mark repeat=200, mark phase=144] table[x=budget, y=LUman] {kappamedianallRedux.plot};\addlegendentry{LUman}
-% 
-% % \addplot+[blue, densely dashed, thick, mark options={solid, scale=1.5}, mark repeat=200, mark phase=48] table[x=budget, y=ATUeuc] {kappamedianallRedux.plot};\addlegendentry{\textbf{ATUeuc}}
-% % \addplot+[green, thick, mark=pentagon, mark options={solid, scale=1.5}, mark repeat=200, mark phase=60] table[x=budget, y=ALUeuc] {kappamedianallRedux.plot};\addlegendentry{\textbf{ALUeuc}}
-% 
-% \addplot+[solid, black, mark=square, mark options={solid, scale=1}, mark repeat=200, mark phase=72] table[x=budget, y=Mar] {kappamedianallRedux.plot};\addlegendentry{Mar}
-% \addplot+[solid, gray, mark=star, mark options={solid, scale=1}, mark repeat=200, mark phase=96] table[x=budget, y=EERacu] {kappamedianallRedux.plot};\addlegendentry{EERacu}
-% \addplot+[solid, green, mark=triangle*, mark options={solid, scale=1}, mark repeat=200, mark phase=84] table[x=budget, y=EERent] {kappamedianallRedux.plot};\addlegendentry{EERent}
-% \addplot+[solid, thick, olive, mark=star, mark options={solid, scale=1.5}, mark repeat=200, mark phase=108] table[x=budget, y=SGmulti] {kappamedianallRedux.plot};\addlegendentry{\textbf{SGmulti}}
-% 
-% \addplot+[dashed, violet, mark=pentagon, mark options={solid, scale=1}, mark repeat=200, mark phase=12] table[x=budget, y=Clu] {kappamedianallRedux.plot};\addlegendentry{Clu}
-% \addplot+[dotted, green!50!black, thick, mark options={solid, scale=1}, mark=*, mark repeat=200, mark phase=1] table[x=budget, y=Rnd] {kappamedianallRedux.plot};\addlegendentry{Rnd}
-% 
-% % \addplot+[solid, blue, mark=triangle*, mark repeat=200, mark phase=156] table[x=budget, y=TUeuc] {kappamedianallRedux.plot};\addlegendentry{TUeuc}
-% % \addplot+[solid, red, thick, mark=triangle*, mark options={solid, scale=1.5}, mark repeat=200, mark phase=168] table[x=budget, y=LUeuc] {kappamedianallRedux.plot};\addlegendentry{LUeuc}
-% 
-% \addplot+[solid, dark green, mark=diamond, mark options={solid, scale=1}, mark repeat=200, mark phase=120] table[x=budget, y=DWeuc] {kappamedianallRedux.plot};\addlegendentry{DWeuc}
-% 
-% \end{axis}
-% \end{tikzpicture}
-% \end{center}
-% \end{figure}
