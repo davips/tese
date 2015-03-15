@@ -19,8 +19,14 @@ ele é chamado de \textit{aprendiz}.
 Apesar de contradizerem o princípio motivador do aprendizado ativo explicitado
 na Seção \ref{aprendizado-ativo},
 existem estratégias sem aprendiz, chamadas \textit{agnósticas}.
+\ano{citar}
 Os exemplos ainda não consultados são chamados, neste trabalho,
 de \textit{candidatos}.
+Por simplicidade, o aprendizado é dito \textit{passivo} se for realizado com todos os exemplos e
+todos os rótulos presentes.
+A estratégia de amostragem de maior correspondência com o aprendizado passivo é a aleatória,
+pois tende a ser uma aproximação não enviesada de todo o conjunto de exemplos.
+
 Cada \textit{consulta} de uma dada estratégia ao \textit{oráculo} visa a obtenção
 do \textit{rótulo} que indica a \textit{classe} de um dado exemplo.
 A determinação da classe de um exemplo é chamada de \textit{rotulação}.
@@ -39,8 +45,10 @@ O indicador de iteração $(t)$ é usado quando o contexto exige situar o aprendiza
 no tempo, na medida em que a quantidade de exemplos aumenta um a um.
 O conjunto de valores assumidos pelos atributos \textit{descritivos} de um exemplo
 é dado por uma tupla\footnote {Ou vetor, quando o contexto for de álgebra linear.}
-$\bm{x}$ pertencente ao conjunto $X$ de exemplos possíveis.
-Dessa forma, a representação completa de um exemplo é um par \ano{dupla/tupla?}
+$\bm{x}$ pertencente ao conjunto $X$ de tuplas possíveis de atributos descritivos
+(exemplos não rotulados).
+Dessa forma, a representação completa de um exemplo é um par
+%  \ano{dupla/tupla?}
 $\langle \bm{x}_{(t)}, \bm{y}_{(t)} \rangle \in X\times Y$.
 Os valores possíveis de cada componente de $\bm{x}$ são dados por um conjunto
 $\bm{a}$ pertencente a $A$. $A$ é o conjunto de atributos descritivos de um dado problema.
@@ -51,8 +59,6 @@ $\bm{a} = \mathbb{R}$ e $b=3.7$.
 O tipo de atributo é dado pela função $\nom:A\rightarrow\{0,1\}$ que retorna $1$ para
 atributos nominais e $0$ para atributos numéricos.
 
-\ano{definir passivo = todos os exemplos <> aleatório}
-
 Dado um exemplo $\bm{x}$ e supondo que o modelo $\theta$ permita
 estimação da probabilidade de $\bm{x}$ ter a classe $\bm{y}$,
 ela é denotada por $P_{\theta}$,
@@ -60,7 +66,7 @@ sendo que $\hat{\bm{y}}$ é classe mais mais provável conforme a Equação \ref{p}.
 \begin{equation}\label{p}
   \hat{\bm{y}} = \argmax_{\bm{y}} P_{\theta} (\bm{y}|\bm{x})
 \end{equation}
-
+$P_{\theta}$ é a base de grande parte das medidas de informatividade $Inf(\bm{x})$ de exemplos.
 % Adicionalmente, e considerando uma construção incremental da hipótese
 % (de forma a incorporar uma componente temporal $t$ de instante/ordem de chegada),
 % o algoritmo de treinamento do modelo $\theta$ pode ser representado por
@@ -68,42 +74,17 @@ sendo que $\hat{\bm{y}}$ é classe mais mais provável conforme a Equação \ref{p}.
 % \begin{equation}
 %   \theta^{(t+1)} = a(\theta^{(t)}, \langle \bm{x},y \rangle), \forall t \in \mathbb{N^{+}}
 % \end{equation}
-
-
-\ano{vvvvvvvvvvvvvvvvvvvvvvv}
-
 A classe \textit{minoritária} é a de menor ocorrência e a \textit{majoritária} a de maior ocorrência.
-
-
-\begin{itemize}
- \item $\X$ - conjunto de tuplas de atributos descritivos (numéricos e nominais),
-    ou seja, todos os exemplos matematicamente possíveis (sem informação de classe);
-  \item $\x \in \X$ - tupla de atributos que descrevem um exemplo;
-  \item $\Y$ - conjunto de vetores;
-  \item $\y \in Y$ - vetor de atributos que classificam um exemplo;
-  \item $\yt$,$\xt$ - o subscrito $t \in \mathbb{N}$ indica que o exemplo
-    é parte de uma sequência para aprendizado incremental;
-%  $o$, $y_o=1$ e $y_p=0 \forall o \neq p, 1 \leq p \leq |Y|$;
-a quantidade inicial de exemplos é
-$|\mathcal{U}|$ - mantendo a notação
-usual de os símbolos $\mathcal{U}$ e $\mathcal{L}$ representarem a
+Os símbolos $\mathcal{U}$ e $\mathcal{L}$ representam a
 reserva de exemplos \citep{series/synthesis/2012Settles}
 e o conjunto de exemplos já rotulados, respectivamente.
-$ID$ densidade de informação
-$TU$ utilidade de treinamento
-$Inf(\bm{x})$ medida de informatividade
-$d(\bm{x},\bm{u})$ medida de distância
-$sim(\bm{x},\bm{u})$ medida de similaridade
-$\cent$ orçamento ou número de consultas
+$\cent$ é o valor do orçamento ou, em outras palavras, o número de consultas permitido.
 
-  \item $\U$ - \pool inicial;
-  \item $\Ut$ - \pool no instante $t$;
-  \item $\Lt$ - conjunto de exemplos já rotulados no instante $t$.
-\end{itemize}
 
-  \begin{equation}
-h: \mathcal{D} \rightarrow \{-,+\}
-\end{equation}
+
+%   \begin{equation}
+% h: \mathcal{D} \rightarrow \{-,+\}
+% \end{equation}
 
 % Assim, o domínio de uma dado problema de classificação é definido pela tupla
 % $\{X,Y,A\}$
@@ -113,4 +94,4 @@ que se concentram apenas nos casos mais críticos,
 ou seja, com maior \textit{informatividade}.
 O limite de duração para processamento computacional entre consultas
 é chamado \ing{tempo de espera tolerável}{tolerable waiting time},
-pois é o tempo efetivamente sentido pelo oráculo.
+pois é a espera efetivamente sentida pelo oráculo.

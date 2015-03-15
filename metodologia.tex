@@ -121,13 +121,10 @@ a restrições de armazenamento do sistema gerenciador de banco de dados}
 
 \tar{
 Experiments with Random Projection 2000
-http://cseweb.ucsd.edu/~dasgupta/papers/randomf.pdf
-;;;;;;
+% http://cseweb.ucsd.edu/~dasgupta/papers/randomf.pdf
 preferem RP(O(n)) a PCA (O(n3));
-;;;;;
 é uma boa justificativa para ELM, e bom para reduzir
 rapidamente as dimensões de bases enormes para o limite de 1000 do mysql.
-;;;;;;
  Randomness is now a standard tool in algorithm design;
  for instance, it is the basis of the only known polynomial-time
  algorithm for primality testing.
@@ -151,19 +148,23 @@ performance com muitos dados
 Dessa forma, diferentes algoritmos de aprendizado
 precisam ser adotados quando alguma comparação entre estratégias é pretendida.
 
-Cinco algoritmos comumente usados e implementados na biblioteca Weka foram adotados:
+Seis algoritmos comumente usados e implementados na biblioteca Weka foram adotados
+inicialmente:
 C4.5\footnote{Implementação baseada no algoritmo de
 árvore de decisão C4.5 denominada J48.}, NB\footnote{\textit{Naive Bayes}},
-VFDT\footnote{\textit{Very Fast Decision Trees}},
+VFDT\footnote{\textit{Very Fast Decision Trees} ou \textit{Hoeffding Trees}},
 5-NN\footnote{Cinco vizinhos mais próximos},
 SVM\footnote{\textit{Support Vector Machines \ano{explicar detalhes da implementação svmlib/weka para multiclasse?}}}
 e RF\footnote{\textit{Random Forest}}
-\citep{books/mk/Quinlan93,conf/ecml/Lewis98,conf/kdd/DomingosH00,journals/tit/Hart68,
-hearst1998support,journals/ml/Breiman01}.
+\citep{books/mk/Quinlan93,
+conf/ecml/Lewis98,
+conf/kdd/DomingosH00,
+journals/tit/Hart68,
+hearst1998support,
+journals/ml/Breiman01}.
 Adicionalmente, por sua ausência na literatura de aprendizado ativo e características
 distintivas com relação aos outros algoritmos,
-três variantes das \elms também foram adotadas - conforme adaptações descritas
-na Seção \ref{elmnovas}.
+duas variantes das \elms também foram adotadas.
 
 \green{descrever parâmetros dos learners:
 5-nn ponderado pelo inverso da distância euclidiana padronizada;
@@ -196,12 +197,12 @@ consultas.
 \ano{pro final: quando perde, perde muito feio?}
 
 \subsection{Métricas}\label{metricas}
-\esb{Um cara que usa log no eixo X e usa ``Area under the Learning Curve'':
-{http://perso.rd.francetelecom.fr/lemaire/publis/ijcnn\_2\_2011\_camera\_ready.pdf}
+\esb{Um cara que usa log no eixo X e usa ``Area under the Learning Curve'': url.
+% http://perso.rd.francetelecom.fr/lemaire/publis/ijcnn\_2\_2011\_camera\_ready.pdf
 }
 
 An Easy to Use Repository for Comparing and Improving Machine Learning Algorithm Usage
-http://arxiv.org/pdf/1405.7292.pdf
+% http://arxiv.org/pdf/1405.7292.pdf
 fala sobre guardar resultados a 'instance level' com as predições do classificadores
 
 
@@ -316,3 +317,7 @@ mtj
 
 apache commons math
 
+%software/algorithms/hardware
+The library Matrix-Toolkits-Java was used to  interface the reference implementation of LAPACK with Debian default compilation.
+%reference implementation of LAPACK para evitar instabilidade numerica (= matriz singular ocorrer muito cedo)
+Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz

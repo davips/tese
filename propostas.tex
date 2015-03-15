@@ -1,4 +1,11 @@
 \chapter{Propostas} \label{propostas}
+\esb{quando a pessoa não sabe que algoritmo de aprendizado é adequado à base,
+é melhor ela adotar uma estratégia agnóstica,
+assim ela não compromete sua amostragem e pode,
+posteriormente, quando já tiver os rótulos,
+escolher o melhor algoritmo de aprendizado de forma mais apropriada.}
+
+
 O tema desta tese é o uso efetivo do aprendizado de máquina ativo por meio de escolhas
 adequadas diante da diversidade existente de estratégias.
 
@@ -99,6 +106,13 @@ de treinamento com seu rótulo real e peso integral:
 \section{Adaptações da amostragem ponderada por densidade}
 
 \subsection{Agnóstica}\label{ag}
+\ano{an agnostic active learner (one that does not assume a perfect
+separator exists)}
+% http://machinelearning.wustl.edu/mlpapers/paper_files/NIPS2007_178.pdf
+\esb{This is often referred to as the agnostic learning setting,
+since we make no assumptions about the origin of the labels.}
+% http://www.jennwv.com/courses/F11/lecture4.pdf
+
 A estratégia DWTU pondera a incerteza de forma a afastar as consultas
 dos exemplos já rotulados e a aproximá-las das maiores concentrações de exemplos
 não rotulados. Essa característica faz com que os exemplos tendam a ser consultados

@@ -1,45 +1,4 @@
 \section{Aprendizado Ativo} \label{aprendizado-ativo}
-Activized Learning: Transforming Passive to Active with Improved Label Complexity 2012 Hanneke
-First, since we are lacking a complete understanding of the potential capabilities of active learning, we are not yet sure to what standards we should aspire for active learning algorithms to meet, and in particular this challenges our ability to characterize how a ?good? active learning algorithm should behave. Second, since we have yet to identify a complete set of general principles for the design of effective active learning algorithms, in many cases the most effective known active learning algorithms have problem-specific designs (e.g., designed specifically for linear separators, or decision trees, etc., under specific assumptions on the data distribution), and it is not clear what components of their design can be abstracted and transferred to the design of active learning algorithms for different learning problems (e.g., with different types of classifiers,
-or different data distributions). Finally, we have yet to fully understand the scope of the relative
-benefits of active learning over passive learning, and in particular the conditions under which such
-improvements are achievable, as well as a general characterization of the potential magnitudes of
-these improvements. In the present work, we take steps toward closing this gap in our understanding
-of the capabilities, general principles, and advantages of active learning.
-...
-REALIZABLE CASE
-In the realizable case, there are obvious examples of learning problems where
-active learning can provide a significant advantage compared to passive learning ...
- binary search strategy for selecting which examples to request labels for naturally leads to exponential
-improvements in label complexity compared to learning from random labeled examples (passive
-learning). ?
-Disagreement-based methods are sometimes referred to as ?mellow? active learning, since in some
-sense this is the least we can expect from a reasonable active learning algorithm; it never requests
-the label of an example whose label it can infer from information already available, but otherwise
-makes no attempt to seek out particularly informative examples to request the labels of. T
-?
-Balcan, Hanneke, and Vaughan
-(2010) noted that if we do not require the algorithm to be self-verifying, instead simply measuring
-the number of label requests the algorithm needs to find a good classifier, rather than the number
-needed to both find a good classifier and verify that it is indeed good, then these negative results
-vanish. In fact, (shockingly) they were able to show that for any concept space with finite VC
-dimension, and any fixed data distribution, for any given passive learning algorithm there is an
-active learning algorithm with asymptotically superior label complexity for every nontrivial target
-concept!
-
-
-Learning with few examples: An empirical study on leading classifiers 2011
-associa AL com incremental learning
-faz ALC com AUC e log2
-investiga tipos de AL especificos para poucos exemplos
-?
-comparar ?bastante? datasets:
-The study presented in this paper aims to
-study a larger panel of both algorithms (9 different kinds) and
-data sets (17 UCI bases).
-% http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6033333&tag=1
- 
-
 \ing{Aprendizado ativo}{Active learning} é o estudo de máquinas
 de aprendizado capazes de se aprimorar fazendo perguntas \citep{series/synthesis/2012Settles}.
 A origem do termo remete à Pedagogia, especificamente à forma de ensino centrada no aluno.
@@ -113,19 +72,16 @@ elas são frequentemente baseadas em diferentes concepções de relevância de
 exemplos ou mesmo diferentes teorias do aprendizado.
 A amostragem por incerteza,
 por exemplo, assume que os exemplos e seus rótulos pertencem a uma
-distribuição de probabilidades - em linha com a teoria do aprendizado
-estatístico \citep{books/daglib/0097035};\red{( <- verificar)}
+distribuição de probabilidades;
+% - em linha com a teoria do aprendizado estatístico \citep{books/daglib/0097035};
 a amostragem por busca no espaço de hipóteses, por sua vez, assume a existência
 de hipóteses integrantes de um \ing{\versionspace}{version space} \citep{books/daglib/0087929}
-que enquadram ou não cada exemplo. \red{( <- verificar)}
+que enquadram ou não cada exemplo.
 Estratégias agnósticas \citep{journals/jcss/BalcanBL09}, por outro lado,
-são independentes de algoritmo de aprendizado. \red{( <- verificar)}
-Essa diversidade de embasamentos configura-se praticamente como um \textit{conjunto de paradigmas}
+são independentes de algoritmo de aprendizado.
+Essa diversidade de embasamentos configura-se praticamente como um conjunto de paradigmas
 de amostragem ativa cujos principais representantes são apresentados nas
-seções seguintes juntamente com suas ordens de complexidade,
-\ano{a ordem de complexidade muda se o learner for incremental ou batch}
-% espaciais e temporais,
-suas principais características e seus princípios de funcionamento.
+seções seguintes juntamente com suas principais características e seus princípios de funcionamento.
 Na apresentação das ordens de complexidade, é assumido que todos os cálculos
 possíveis de serem feitos antes do processo de amostragem já foram realizados
 e seus resultados estão disponíveis em memória.
@@ -263,7 +219,7 @@ P_{max}(\bm{x})=\max_{\bm{y}\in Y}P(\bm{y}|\bm{x})
 Classificadores não probabilísticos e com saídas numéricas podem simular uma
 distribuição de probabilidades por meio da aplicação da função sigmoide logística
 $g=\frac{1}{1+e^{-\bm{x}}}$
-\ano{qual seria uma boa ref para isso?}:
+\ano{qual seria uma boa ref para sigmoide?}:
 \begin{equation} \label{eqprob}
  P(y_o=1|\bm{x}) = \frac{g(f_o(\bm{x}))}{\sum_{1 \leq p \leq |Y|}g(f_p(\bm{x})) }
 \end{equation}
@@ -290,7 +246,7 @@ porém com maior $P_{max}(\bm{x})$.
 A medida da margem, apresentada nas Equações \ref{eqz} e \ref{eqmar},
 evita esse problema utilizando o valor da diferença entre as duas maiores probabilidades.
 Outra possibilidade é a medida de entropia normalizada
-\citep{journals/bioinformatics/LewinSA0P04}, apresentada na \ref{eqent}.
+\citep{journals/bioinformatics/LewinSA0P04}, apresentada na Equação \ref{eqent}.
 \begin{eqnarray} \label{eqz}
 \bm{z}(\bm{x})=\argmax_{\bm{y}\in Y}P(\bm{y}|\bm{x})
 \\
@@ -301,40 +257,38 @@ M(\bm{x})=P(\bm{z}(\bm{x})|\bm{x})-\max_{\bm{y}\in Y\setminus\{\bm{z}(\bm{x})\}}
 E(\bm{x})=-\log^{-1}|Y|\sum_{\bm{y}\in Y}P(\bm{y}|\bm{x})\log P(\bm{y}|\bm{x})
 \end{equation}
 
-\subsection{SVM}
-%mais detalhes sobre essas estratégias:
-% Online choice of active learning algorithms
-% A simple active-learning heuristic based on ``farthest-first'' traversal sequences
-%                     in kernel space. Farthest-first (FF) sequences have been previously used for computing provably
-%                     approximate optimal clustering for k-center problems (Hochbaum and Shmoys, 1985). The FF
-%                     traversal of the points in a data set is defined as follows. Start with any point x and find the farthest
-%                     point from x. Then find the farthest point from the first two (where the distance of a point from a set
-%                     is defined to be the minimum distance to a point in the set), etc. In any metric space, FF traversals
-%                     can be used for computing 2-approximation solutions to the k-center clustering problem in which
-%                     one seeks an optimal k-clustering of the data and optimality is measured by the maximum diameter
-%                     of the clusters. In particular, by taking the first k elements in the FF traversal as ``centroids`` and then
-%                     assigning each other point to its closest ``centroid``, one obtains a k-clustering whose cost is within
-%                     a factor 2 of the optimal (Hochbaum and Shmoys, 1985).
-%
-%                  * Parece que é o sucessor do MAB3.
-%                  * The idea is similar to COMB (by Luz et. al.). We use two learners:
-%                  * SIMPLE and KFF. the latter exploits and the former explores the data.
-%                  * the context switch between the two methods is done randomly using a biased coin.
-%                  * the bias is dynamically chosen and reflects the `effectivness' of exploration,
-%                  * which is measured by a distance function between two hypothesis.
-%                  *
-%                  * the implemention corresponds the paper:
-%                  * Thomas Osugi, Deng Kun, and Stephen Scott.
-%                  * Balancing Exploration and Exploitation: A New Algorithm for Active Machine Learning.
-%                  * In Proceedings of the Fifth IEEE International Conference on Data Mining. November 2005.
-%                  */
-Os códigos originais dos autores das seguintes estratégias \textit{margem simples},
-\textit{KFF} e \textit{balancedEE}
-\citep{journals/jmlr/TongK01,journals/jmlr/BaramEL04,conf/icdm/OsugiKS05}
-foram adaptados para contemplar problemas multiclasse por meio da aplicação de
-\ing{rodízio}{round-robin} entre sub-estratégias.
-A cada sub-estratégia foi atribuída uma classe principal,
-na configuração \textit{um para muitos}.
+\subsection{Margem simples - SVM}
+A estratégia de amostragem por margem pode ser estendida para espaços de atributos $\mathcal{F}$.
+transformados por uma \ing{função núcleo}{kernel function}.
+Essa foi a abordagem de \cite{journals/jmlr/TongK01} para SVMs,
+cuja variante mais empregada é chamada \ing{margem simples}{simple margin}.
+%  If asking each query is expensive relative to computing time then using either the MaxMin or Ratio
+% may be preferable. However, ifthe cost ofasking each query is relatively cheap and more emphasis
+% is placed upon fast feedback then the Simple method may be more suitable.
+Ela consiste em selecionar o exemplo mais próximo do hiperplano que é a fronteira de decisão
+que divide linearmente o espaço $\mathcal{F}$.
+%  algoritmo: learn an SVM on the existing labeled data and choose as the next instance to
+%  query the instance that comes closest to the hyperplane in F.
+
+\subsection{Balanceamento exploração-prospecção - SVM}
+A natureza puramente prospectiva da amostragem por margem simples tem o viés de enfocar
+prioritariamente a fronteira de decisão, deixando de explorar as demais regiões do espaço
+$\mathcal{F}$.
+Por esse motivo, \cite{conf/icdm/OsugiKS05} propuseram um balanceamento entre prospecção
+e a exploração realizada pelo algoritmo de se escolher \ing{primeiro os mais distantes pelo núcleo}
+{Kernel Farthest First} (KFF).
+A heurística de se adotar os mais distantes primeiro, sem a transformação pelo núcleo,
+foi usada previamente para calcular agrupamentos aproximadamente ótimos
+\citep{Hochbaum1985}.
+
+O algoritmo de balanceamento exploração-prospecção inicia com a aplicação do KFF.
+Seu primeiro exemplo é aleatório e o segundo é seu par mais distante.
+Esse par consiste no conjunto inicial que vai ser estendido com exemplos,
+um a um, da mesma maneira que o segundo foi escolhido.
+Esse processo exploratório é alternado com a estratégia de margem simples
+de acordo com uma probabilidade definida em função da distância entre as predições
+% para todos os exemplos
+antes e depois da última consulta.
 
 \subsection{Consulta por comitê}\label{qbc}
 Comitês
@@ -384,7 +338,6 @@ Assim, o exemplo com o maior valor deve ser consultado primeiro.
 A complexidade computacional é $\mathcal{O}(1)$,
 se o comitê for visto como um único algoritmo de aprendizado;
 ou $\mathcal{O}(M)$, se o número de membros $M$ for considerado.
-\ano{explicar aqui detalhes do RF adotado pra QBC?}
 
 \subsection{Busca no espaço de hipóteses}\label{sgnet}
 É possível fazer uma amostragem ativa baseada na perspectiva do espaço de hipóteses.
@@ -396,7 +349,7 @@ A busca no espaço de hipóteses é feita pelo acompanhamento das hipóteses
 mais específicas e as mais gerais pertencentes aos conjuntos $S$ e $G$ de todas as hipóteses possíveis,
 denominadas $h_S \in S$ e $h_G \in G$, respectivamente.
 \tar{colocar figura? para esse texto confuso fazer sentido e evitar formalismo do mittchel}
-Uma característica distintiva deste paradigma com relação aos demais neste capítulo é
+Uma característica distintiva desse paradigma com relação aos demais neste capítulo é
 seu \textbf{modelo de decisão binário}: todos os exemplos controversos são considerados
 igualmente informativos,
 podendo ser consultados em qualquer ordem ou em lotes.
@@ -416,27 +369,7 @@ foram empregadas no trabalho original,
 mas qualquer classificador apto a lidar com exemplos ponderados poderia ser usado.
 A ordem de complexidade das estratégias desse paradigma é $\mathcal{O}(|Y|)$.
 
-
- \ano{feature: decisão de consulta é binária, há o cjt dos consultáveis e o dos não consultáveis
- sem uma ordem de relevância para os consultáveis}
-
- \ano{feature: é parcialmente exploratório, pois requer sorteio na área de desacordo}
-
-\ano{feature: dependente de algoritmo de aprendizado}
-
-\ano{definição da sequência de consultas é gradual}
-
-\ano{feature: próxima consulta depende dos rótulos anteriores}
-
-Existem outras três abordagens, baseadas em \svm que podem ser interpretadas como
-uma busca de sucessivas divisões no \versionspace \cite{tong2002support}:
-\ing{margem simples}{simple margin}, \ing{margem maxmin}{maxmin margin} e
-\ing{margem razão}{ratio margin}.
-Sob outra ótica, elas podem também serem vistas como um tipo de
-amostragem por incerteza, vista na seção anterior.
-
-
-\ano{há mais detalhes de sgnet comentados no arquivo tex}
+\ano{TODO: ampliar ou descartar infos adicionais que estão no tex}
 %  \red{infos dos txts sobre SG-network cohn1994improving:}
 % \esb{Se concentra em membership queries, cita angluin86 e valiant84.
 % Em problemas formais, como encontrar uma fronteira no "unit line interval"
@@ -500,48 +433,28 @@ otimista:
 \end{equation}
 onde $O$ é a função objetivo.
 A complexidade computacional é $\mathcal{O}(|Y||\mathcal{U}|^2)$.
-\ano{está correto colocar duas variáveis com potências diferentes em $\mathcal{O}$?}
+% \ano{está correto colocar duas variáveis com potências diferentes em $\mathcal{O}$?}
 Após cada consulta, caso a classe real seja diferente da esperada,
 o método recorre à estratégia de amostragem por incerteza (Seção \ref{unc})
 como medida de contingência.
-Para contemplar problemas multiclasse,
-a amostragem por margem (Seção \ref{mar}) foi utilizada nos experimentos deste trabalho.
- 
-Neste trabalho, seguindo a escolha do artigo original,
-optou-se pela entropia como função objetivo.
-\ano{verificar se ficaram mesmo as duas; balacc é melhor que kappa porque não zera tão fácil?}
-Adicionalmente, a acurácia balanceada (Seção \ref{metricas})
-foi adotada como uma variação do método,
-visando agir diretamente nas medidas multiclasse de interesse apresentadas na
-Seção \ref{metricas}.
-Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteração devido ao
-alto custo computacional da estratégia.
-
-\ano{feature: dependente de algoritmo de aprendizado}
-
-\ano{definição da sequência de consultas é gradual}
-
-\ano{feature: próxima consulta depende dos rótulos anteriores}
-
+No artigo original, optou-se pela entropia como função objetivo.
+Outras medidas tmabém podem ser adequadas, dependendo da meta,
+como a acurácia balanceada (Seção \ref{metricas}).
 
 \subsection{Impacto esperado no modelo}
 \ano{EER e EMC fazem amostragem de 100}
 O futuro impacto de um exemplo sobre o modelo,
 chamado de \ing{mudança esperada no modelo}{expected model change} (EMC),
 é uma indicação de sua possível contribuição para o aprendizado.
-A maneira proposta por \cite{settles2008multiple} é chamada
+A maneira proposta por \cite{conf/nips/SettlesCR07} é chamada
 de \ing{comprimento esperado do gradiente}{expected gradient length} (EGL).
 Ela se aplica a modelos baseados na técnica de gradiente descendente \citep{haykin2004comprehensive}:
 deve ser escolhido para treinamento o exemplo capaz de contribuir com uma descida de maior magnitude
 na curva de erro.
 Como o rótulo não é sabido de antemão,
 usa-se a soma das contribuições de cada rótulo ponderada pelas respectivas probabilidades condicionais.
+
 \ano{colocar fórmula?}
-\ano{feature: dependente de algoritmo de aprendizado}
-
-\ano{definição da sequência de consultas é gradual}
-
-\ano{feature: próxima consulta depende dos rótulos anteriores}
 
 \subsection{Amostragem ponderada por densidade}\label{dw}
 A proposta geral das amostragens ponderadas por densidade é o uso da medida de
@@ -572,14 +485,7 @@ $sim(\bm{x},\bm{u})$ pela fórmula \ref{eq:sim}.
 A ordem de complexidade é $\mathcal{O}(1)$, se os $|\mathcal{U}|^2$ cálculos de distância forem
 devidamente armazenados em memória para futuro acesso rápido.
 
-\ano{explicar como empreguei mahalanobis}
 \ano{expoentes ponderadores nem são mencionados}
-
-\ano{feature: dependente de algoritmo de aprendizado}
-
-\ano{definição da sequência de consultas é gradual}
-
-\ano{feature: próxima consulta depende dos rótulos anteriores}
 
 \subsection{Amostragem por agrupamento}
 O processo de aprendizado pode explorar agrupamentos naturais na \pool,
@@ -597,21 +503,17 @@ Os filhos, por sua vez, podem ser exemplos isolados ou novas relações.
 Qualquer nó tem o potencial de ser visto como o grupo dos exemplos representados
 pelos nós folhas mais abaixo na hierarquia.
 Na árvore como um todo, as diferentes podas possíveis definem a organização em grupos.
-\ano{figura}
+\ano{por figura?}
 
 A amostragem hierárquica faz uso da árvore para definir a relevância dos exemplos.
 Eles têm maior probabilidade de serem consultados se pertencerem aos grupos
 mais impuros e representativos.
-A implementação original do autor foi adotada neste trabalho com o mesmo
-algoritmo de agrupamento chamado
-\textit{Ward's average linkage method}\footnote{
-Implementação disponível no Weka \cite{journals/sigkdd/HallFHPRW09}.}
+A implementação original do autor fez uso do algoritmo de agrupamento chamado
+\textit{Ward's average linkage method}.
 \ano{como traduzir?}
 
-\tar{dar mais detalhes? replicar o algoritmo(ele tem formulas por todo o texto))?
+\tar{dar mais detalhes? replicar o algoritmo(ele tem formulas por todo o artigo))?
 essa abordagem é complexa}.
-
-\esb{clust. hierar. - explica o que é agrupamento hierárquico}
 
 \ano{Aplicar Ward no Weka. Gerar SVG e citar
 http://www.trex.uqam.ca/view.php
@@ -619,98 +521,15 @@ usando em alguma base 2D interessante. Gerar com e sem ramos proporcionais.
 Gravei SVGs no PC de casa.}
 \ano{feature: agnóstica}
 
-\ano{definição da sequência de consultas é gradual}
-
-\ano{feature: próxima consulta depende dos rótulos anteriores}
-
-% Há diferentes propostas para a determinação de quais exemplos são informativos para consulta.
-% Por conveniência, aqui elas estão separadas entre aquelas baseadas na análise de \textit{informatividade isolada} de cada exemplo, aquelas baseadas na \textit{informatividade conjunta} e aquelas baseadas numa análise que combina \textit{informatividade com representatividade}.
-% Cada uma das três tem uma perspectiva própria, portanto devem ser vistas como não excludentes entre si; ou seja, elas estão sujeitas a sobreposição, especialmente da primeira em relação às demais.
-% 
-% \subsection{Informatividade isolada}\label{sec:isolada}
-% Uma medida isolada se baseia numa informação extraída do modelo quando apresentado a um exemplo candidato.
-% 
 % Em classificadores probabilísticos, como é o caso do \textit{Naive Bayes} \citep{duda2001pattern},
-% é possível selecionar os exemplos mais relevantes pelos valores de probabilidade condicional atribuídos pelo modelo.
-% Essa estratégia é conhecida como \textbf{\textit{uncertainty sampling}}\footnote{[amostragem por incerteza]
-% } \citep{lewis:1994:SAT:188490.188495}.
-% Ela é simples e bastante difundida.
-% Nela, o exemplo com a probabilidade de pertencer à classe mais provável mais próxima de $0,5$ é considerado o candidato ideal a ser enviado ao oráculo.
-% No caso com mais de duas classes, pode-se medir a entropia 
-% CITAR
-% ou considerar a diferença entre os valores de probabilidade dos dois rótulos melhor cotados. Essa variação é conhecida como \textit{margin sampling} \citep{scheffer2001active}.
-% Tem sido argumentado que a margem é mais indicada quando se desejar reduzir o erro de classificação, enquanto que a entropia é mais indicada quando se deseja aperfeiçoar a resposta probabilística do modelo CITAR.
-% 
-% 
 % Árvores de decisão \citep{quinlan1993c4}, $k$-vizinhos mais próximos \citep{aha1991instance} e máquinas de vetores de suporte \citep{cristianini2000introduction} também têm sido usados para a estratégia de \textit{uncertainty sampling}.
 % A medida de incerteza, nesses casos, pode ser respectivamente: a pureza do nó, a proporção de vizinhos positivos e a distância exemplo-fronteira \citep{settles2010active}.
 % 
-% % Query-By-Committee
-% Por fim, a \textbf{consulta por comitê}\footnote{[\textit{query-by-committee}]
-% }, facilitada pela própria natureza dos \textit{ensembles}, privilegia os exemplos a respeito dos quais há maior discordância entre os modelos-membro \citep{seung1992query}.
-% NOVAMENTE, VERIFICAR ENTROPIA, SE É EQUIVALENTE
-% 
-% \textit{Active-Decorate} \citep{melville2004diverse} é uma estratégia de aprendizado ativo baseada em \textit{ensemble} do tipo \textit{Decorate} \citep{melville:phd2005}; ela mede a margem das duas maiores probabilidades a posteriori dadas pelo comitê como um todo - uma adaptação da margem de votos usada por \citet{mamitsuka1998query}.
-% \textit{Ensembles Decorate} foram reportados recentemente \cite{zhang2012empirical} como superiores a \textit{Boosting} e \textit{Bagging} na escassez de exemplos de treinamento e equivalentes nas demais situações.
-% Por isso, é um forte candidato para ser o classificador base do aprendizado ativo, especialmente em casos de cota reduzida.
-% \textit{Adaboost} melhor para conjuntos maiores. \textit{Random forests} 
-% Os mesmos autores reportaram que \textit{JS-Divergence}\footnote{
-%   \textit{JS-divergence} é uma versão simétrica e suavizada de \textit{KL-divergence} \citep{settles2012active}.
-% }, além de mais complexa, é menos efetiva em termos de acurácia do que a medida de margem proposta.
-% 
-% !!passar para um capitulo mais adequado!!
 % Decomposição viés-variância do erro.
 % Ruído intrínseco é o erro esperado do preditor bayesiano ótimo\cite{zhang2012empirical}.
-% Viés é o desvio sistemático normalmente esperado ao longo de diferentes experimentos (diferentes conjuntos de treinamento).
+% Viés é o desvio sistemático normalmente esperado ao longo de diferentes experimentos
+% (diferentes conjuntos de treinamento).
 % Variância é a variabilidade esperada em torno do viés dados diferentes experimentos.
-% 
-% 
-% 
-% ???Essa é a medida de informatividade isolada adotada na proposta ??ainda é?? (Capítulo \ref{cap:plano}),
-% pois é independente da forma de composição do \textit{ensemble}.
-% Isso abre a possibilidade de aplicação das diversas técnicas enumeradas na
-% Seção \ref{sec:ensemble}.
-% O uso dessa medida pode ser parte de outras medidas mais complexas como as mencionadas nas Seções \ref{sec:conjunta} e \ref{sec:inf_representativa}.
-% 
-% 
-% % \citep{dagan1995committee} HMM, part of speech
-% % \citep{freund1997selective} mesma laia do dagan e seung, mas mais comprido
-% 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{Informatividade conjunta}\label{sec:conjunta}
-% Uma medida conjunta se baseia em uma informação extraída do modelo quando,
-%  além do exemplo candidato sob análise, os candidatos restantes também são utilizados.
-% 
-% % Expected Error Reduction
-% A intensidade de redução no erro de generalização, por exemplo,
-%  é uma medida sugestiva quanto à utilidade de um exemplo.
-% Ela foi proposta por \cite{roy2001toward} em uma abordagem chamada
-% \textit{\textbf{expected error reduction}}\footnote{[redução do erro esperado]
-% }.
-% Ela assume que os exemplos não rotulados restantes podem ser usados
-%  como conjunto de validação desde que as predições atuais para eles
-%  sejam consideradas como os rótulos verdadeiros - ou como probabilidades
-%  condicionais se for o caso do classificador.
-% % citar SVM e outros modelos???
-% A medida do erro de generalização é custosa, com ordem de complexidade
-%  de pelo menos $\mathcal{O}(|U||L|)$, o que torna desejável alguma maneira de estimá-lo.
-% 
-% % Variance Reduction
-% Uma forma indireta de se fazer a minimização do erro de generalização
-%  é a \textbf{redução da variância}\footnote{[\textit{variance reduction}]
-% }.
-% Apesar do enfoque diferente, a ordem de complexidade continua sendo um
-% problema, pois depende quadraticamente do número de parâmetros do modelo.
-% Mesmo quando se reduz essa complexidade por amostragem, redução de
-%  dimensionalidade, etc., essa abordagem, assim como outras de medidas conjuntas, permanece empiricamente muito mais lenta que medidas isoladas como \textit{uncertainty sampling} \citep{settles2010active}.
-% 
-% Métodos mais promissores são descritos na Seção \ref{sec:inf_representativa}.
-% 
-% \subsection{Informativo-representatividade}\label{sec:inf_representativa}
-% A incerteza a respeito do rótulo de um exemplo não é necessariamente indicativa da importância do mesmo.
-% Isso pode ser notado na Figura \ref{fig:incerteza_vs_importancia}.
-% O exemplo mais controverso é $\boldsymbol{x_a}$ - aquele mais próximo da fronteira de decisão.
-% Apesar disso, qualquer dos exemplos $\boldsymbol{x_b}$, $\boldsymbol{x_c}$, $\boldsymbol{x_d}$ ou $\boldsymbol{x_e}$ discriminaria melhor a região onde a maioria dos dados se encontra.
 % \begin{figure}
 % \begin{center}
 % \begin{tikzpicture}
@@ -749,31 +568,29 @@ Gravei SVGs no PC de casa.}
 % \end{center}
 % \end{figure}
 % % Density-Weighted Methods
-% Por esse motivo existem os métodos baseados em \textbf{ponderação por densidade}\footnote{[\textit{density-weighted}]
-% }, que podem, entre outras possibilidades, dividir o espaço de atributos por agrupamentos; ponderar a medida de relevância do exemplo pela sua representatividade na distribuição dos dados; ou escolher o candidato com maior afinidade em relação ao conjunto não rotulado e maior diferença em relação ao conjunto de treinamento \citep{settles2010active}.
-% 
-% Segundo \cite{settles2008multiple}, os resultados reportados com esse tipo de abordagem se mostraram superiores àqueles não baseados em densidade ou representatividade.
-% % conferir??
-% Além disso, eles mostram que é viável a manutenção de um registro de densidades pré-computadas com o objetivo de atingir um tempo de processamento similar ao da estratégia de \textit{uncertainty sampling} (a referência natural da área no quesito custo computacional).
-% 
 % % \subsection{Notas}
-% \cite{mccallum1998employing} fazem uso da ponderação por densidade e de comitês (Seção \ref{sec:isolada}) em dados de distribuição estacionária.
-% Eles conseguiram bons resultados em bases diversas, chegando a duplicar a acurácia quando comparada a uma seleção por consulta aleatória.
-% Esse resultado, relativamente antigo, somado à já citada observação de \cite{settles2008multiple},
-% direciona o presente trabalho para o uso de comitês e ponderação da discordância interna (informatividade isolada) por densidade (informativo-representatividade).
 % 
-% A forma de obtenção das medidas de informatividade é afetada pelas particularidades de cada cenário.
-% Eles são descritos na Seção \ref{sec:cenarios}.
 
 \subsection{Outras estratégias}
 \ano{Não implementei Variance reduction pois exige um sistema muito complexo
 e com otimizações e ainda assim é ordens de magnitude mais lento que  Unc. Sampl.}
+% % Variance Reduction
+% Uma forma indireta de se fazer a minimização do erro de generalização
+%  é a \textbf{redução da variância}\footnote{[\textit{variance reduction}]
+% }.
+% Apesar do enfoque diferente, a ordem de complexidade continua sendo um
+% problema, pois depende quadraticamente do número de parâmetros do modelo.
+% Mesmo quando se reduz essa complexidade por amostragem, redução de
+%  dimensionalidade, etc., essa abordagem, assim como outras de medidas conjuntas, permanece empiricamente muito mais lenta que medidas isoladas como \textit{uncertainty sampling} \citep{settles2010active}.
+
 % os experimentos.
 
 \tar{outras - mencionar as que ficaram de fora (Beygelzimmer)}
 
 
 \subsection{Considerações}
+\ano{a ordem de complexidade muda se o learner for incremental ou batch}
+
 \ano{deixar aqui apenas as da literatura, depois repeti-las junto com as propostas numa outra tabela
 no prox capitulo}
 
@@ -788,8 +605,8 @@ a aprender para viabilizar cada consulta. \ano{é aceito O(0)?}}
 Rnd & \makecell{exploratória\\aleatória} & \makecell{agnóstica}&autônoma&nenhuma&$\mathcal{O}(0)$\\ \hline
 Clu&\makecell{balanceada:\\exploratória e\\prospectiva}& agnóstica&interativa&total&\makecell{não\\especificada}\\ \hline
 \makecell{Unc/Mar/Ent\\QBC/DW}&prospectiva&gnóstica&interativa&total&$\mathcal{O}(1)$\\ \hline
-SVMS&prospectiva&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|\mathcal{L}|)$\\ \hline
-SVMB&\makecell{alternada:\\exploratória e\\prospectiva}&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|\mathcal{L}|)$\\ \hline
+SVMS&prospectiva&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
+SVMB&\makecell{alternada:\\exploratória e\\prospectiva}&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
 EGL&prospectiva&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|)$\\ \hline
 EER&prospectiva&gnóstica&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|^2)$\\ \hline
 SGmulti&\makecell{exploratória\\limitada e\\aleatória}&gnóstica&interativa&total&$\mathcal{O}(|Y|)$\\ \hline
@@ -801,11 +618,86 @@ GATU&\makecell{alternada:\\exploratória e\\prospectiva}&\makecell{alternada:\\ag
 }
 \end{table}
 
-\ano{diferenciar de aprendizado semisuperv. colocar algoritmos se der tempo;
-apresenta cada uma com uma figura padrão ilustrando sua particularidade}
+\ano{diferenciar de aprendizado semisuperv. colocar algoritmos se der tempo}
+
+\esb{apresenta cada uma com uma figura padrão ilustrando sua particularidade}
 
 \tar{usar semisupervised somente na fase de predição não faria muito sentido.
 usar semisupervised no learner faz sentido pelo fato de se ter tantos exemplos
 unlabeled à disposição}
 
 \tar{citar relação com crowd sourcing/labeling?}
+
+
+\ano{TODO: ver tex}
+% \citep{conf/ijcnn/SalperwyckL11}
+% Learning with few examples: An empirical study on leading classifiers 2011
+% associa AL com incremental learning, mas não é sobre AL
+% faz ALC com AUC e log2
+% investiga tipos de AL especificos para poucos exemplos
+% compara ?bastante? datasets:
+% The study presented in this paper aims to
+% study a larger panel of both algorithms (9 different kinds) and
+% data sets (17 UCI bases).
+% % http://ieeexplore.ieee.org/xpls/icp.jsp?arnumber=6033333
+% % combina AUC final com ALC num grafico 2D
+
+% Activized Learning: Transforming Passive to Active with Improved Label Complexity 2012 Hanneke
+% First, since we are lacking a complete understanding of the potential capabilities of active learning, we are not yet sure to what standards we should aspire for active learning algorithms to meet, and in particular this challenges our ability to characterize how a ?good? active learning algorithm should behave. Second, since we have yet to identify a complete set of general principles for the design of effective active learning algorithms, in many cases the most effective known active learning algorithms have problem-specific designs (e.g., designed specifically for linear separators, or decision trees, etc., under specific assumptions on the data distribution), and it is not clear what components of their design can be abstracted and transferred to the design of active learning algorithms for different learning problems (e.g., with different types of classifiers,
+% or different data distributions). Finally, we have yet to fully understand the scope of the relative
+% benefits of active learning over passive learning, and in particular the conditions under which such
+% improvements are achievable, as well as a general characterization of the potential magnitudes of
+% these improvements. In the present work, we take steps toward closing this gap in our understanding
+% of the capabilities, general principles, and advantages of active learning.
+% ...
+% REALIZABLE CASE
+% In the realizable case, there are obvious examples of learning problems where
+% active learning can provide a significant advantage compared to passive learning ...
+%  binary search strategy for selecting which examples to request labels for naturally leads to exponential
+% improvements in label complexity compared to learning from random labeled examples (passive
+% learning). ?
+% Disagreement-based methods are sometimes referred to as ?mellow? active learning, since in some
+% sense this is the least we can expect from a reasonable active learning algorithm; it never requests
+% the label of an example whose label it can infer from information already available, but otherwise
+% makes no attempt to seek out particularly informative examples to request the labels of. T
+% ?
+% Balcan, Hanneke, and Vaughan
+% (2010) noted that if we do not require the algorithm to be self-verifying, instead simply measuring
+% the number of label requests the algorithm needs to find a good classifier, rather than the number
+% needed to both find a good classifier and verify that it is indeed good, then these negative results
+% vanish. In fact, (shockingly) they were able to show that for any concept space with finite VC
+% dimension, and any fixed data distribution, for any given passive learning algorithm there is an
+% active learning algorithm with asymptotically superior label complexity for every nontrivial target
+% concept!
+
+\section{Adaptações ? pequenas}
+\ano{passar pra metodologia?}
+Os códigos originais dos autores das seguintes estratégias \textit{balancedEE}
+% journals/jmlr/BaramEL04
+foram adaptados para contemplar problemas multiclasse por meio da aplicação de
+\ing{rodízio}{round-robin} entre sub-estratégias.
+A cada sub-estratégia foi atribuída uma classe principal,
+na configuração \textit{um para muitos}.
+
+\ano{explicar aqui detalhes do RF adotado pra QBC?}
+
+Para contemplar problemas multiclasse,
+a amostragem por margem (Seção \ref{mar}) foi utilizada como substituta
+nos experimentos deste trabalho.
+Neste trabalho, seguindo a escolha do artigo original,
+optou-se pela entropia como função objetivo.
+\ano{verificar se ficaram mesmo as duas; balacc é melhor que kappa porque não zera tão fácil?}
+Adicionalmente, a acurácia balanceada (Seção \ref{metricas})
+foi adotada como uma variação do método,
+visando agir diretamente nas medidas multiclasse de interesse apresentadas na
+Seção \ref{metricas}.
+Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteração devido ao
+alto custo computacional da estratégia.
+
+\ano{explicar como empreguei mahalanobis nas TUs}
+
+A implementação original do autor foi adotada neste trabalho com o mesmo
+algoritmo de agrupamento chamado
+\textit{Ward's average linkage method}\footnote{
+Implementação disponível no Weka \cite{journals/sigkdd/HallFHPRW09}.}
+\ano{como traduzir?}

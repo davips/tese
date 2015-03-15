@@ -2,13 +2,13 @@
 \chapter{Experimentos e Resultados}\label{experimentos}
 Neste capítulo são apresentados os experimentos comparativos de estratégias
 e seus resultados.
-Na Seção \ref{prep}, é definido o subconjunto de estratégias e aprendizes mais relevantes
+Na Seção \ref{prep}, é definido o subconjunto de estratégias mais relevantes
 para os experimentos.
 Nas demais seções é feita a demonstração de que as estratégias propostas SGmulti e
 agnóstica baseada em densidade (prefixo ATU) são competitivas.
 Adicionalmente, constatações relevantes para o problema da escolha de estratégias
 são fornecidas.
-A análise experimental é dividida em duas partes:
+A análise experimental é dividida em duas partes: \ano{rever}
 \textit{geral}, na Seção \ref{geral}, em que as estratégias são comparadas
 ao longo de todas as \ano{$xxxx$} combinações de aprendizes e estratégias;
 e, \textit{por aprendiz},
@@ -18,22 +18,12 @@ onde a comparação é feita para cada aprendiz separadamente.
 \section{Preparação} \label{prep}
 Devido à grande quantidade de fatores envolvidos nos experimentos,
 faz-se necessária uma etapa de preparação em que apenas
-a parcela mais representativa das estratégias seja mantida e
-a diversidade dos algoritmos de aprendizado escolhidos seja verificada.
+a parcela mais representativa das estratégias e algoritmos de aprendizado
+seja mantida.
 
 \subsection{Diversidade dos algoritmos de aprendizado}\label{algs}
-\ano{colocar svm na tabela e dizer que foi excluído por ter ido muito ruim ou deixar?
-prov devido à necessidade de ajuste de parâmetros}
-
-\esb{quando a pessoa não sabe que algoritmo de aprendizado é adequado à base,
-é melhor ela adotar uma estratégia agnóstica,
-assim ela não compromete sua amostragem e pode,
-posteriormente, quando já tiver os rótulos,
-escolher o melhor algoritmo de aprendizado de forma mais apropriada.}
-
-Uma forma de ilustrar a diversidade entre os modelos gerados
-pelos diferentes algoritmos de aprendizado é por meio da similaridade
-entre suas acurácias.
+Uma forma indireta de ilustrar a diversidade entre os modelos gerados pelos diferentes algoritmos
+de aprendizado é por meio da similaridade entre suas acurácias.
 Ela é apresentada na Tabela \ref{passiveDists} de forma análoga à adotada por
 \cite{brazdil1994analysis}.
 \input passiveDists
@@ -49,22 +39,19 @@ de valores de acurácia balanceada (Seção \ref{metricas}) de acordo com a mesma f
 (Equação \ref{eq:sim}) adotada no cálculo de densidade da Seção \ref{dw}.
 As acurácias para cada base são apresentadas nas tabelas \ref{tab:balaccClassif0},
 \ref{tab:balaccClassif1} e \ref{tab:balaccClassif2} do Apêndice \ref{detalhes}.
-% BalAcc escolhida, e não Kappa, porque brazdil usou taxas de erro.
+% BalAcc escolhida, e não Kappa, porque brazdil usou taxas de erro
+% (que é mais comparável com acuracia do que kappa).
 
-\ano{apesar de passiva, essa é a acurácia com treinamento incremental, desde
-|Y| um a um até |U| para os algs CIELM,IELM,NB e VFDT; talvez por isso o
-desempenho tenha sido pior}
-O algoritmo mais distinto é a SVM, pois apresenta os menores valores em relação a
-todos os demais (abaixo ou igual a $0,30$).
+% Apesar de passiva, essa é a acurácia com treinamento incremental, desde
+% |Y| um a um até |U| para VFDT; talvez por isso o desempenho tenha sido pior
+O algoritmo mais distinto é a VFDT, pois apresenta os menores valores em relação a
+praticamente todos os demais (abaixo ou igual a $0,30$).
 Por outro lado, conforme esperado,
-a maior similaridade ($0,77$) ocorre entre IELM e CIELM.
-\ano{conjugar no presente ou passado?}
-Os próximos valores mais relevantes (acima de $0,50$) permitem separar os demais algoritmos
+a maior similaridade ($0,64$) ocorre entre ELM e CIELM.
+Os próximos maiores valores por linha permitem separar os demais algoritmos
 em dois grupos, A e B, respectivamente:
-5NN, C4.5 e RF; e, VFDT e NB.
+5NN, RFw e SVM; e, C4.5w, NB e VFDT.
 \ano{usar essses grupos no futuro além do trecho mais abaixo?}
-\ano{se terminar de rodar, é preciso adicionar passiveNintera na tab de dists,
-na fried e nas 3 tabelas do apendice  (e atualizar texto)}
 
 Na comparação um contra um da acurácia balanceada (Tabela \ref{tab:friedClassif}),
 RF vence todos os demais com significância estatística,
@@ -85,11 +72,44 @@ e desempenho.
 
 \ano{mudar para medir distancia apenas das passivas}
 
-\input classifsFried
+% \input classifsFried
+\begin{table}[h]
+\caption{\textbf{Um contra um e contagem de posições}.
+Medida: acurácia balanceada.
+\textit{Cada asterisco/cruz/ponto indica quando o algoritmo na linha tem melhor
+desempenho que o algoritmo na coluna com intervalo de confiança de 0.99/0.95/0.90.}}
+\begin{center}
+\begin{tabular}{lcc|cc|cc|cc}
+                        & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+1 - 5NN         & - &   &   &   &   &   &   &   \\
+2 - C4.5w       &   & - &   &   &   &   &   &   \\ \hline
+3 - CIELM       &   &   & - &   &   &   &   & + \\
+4 - ELM         &   &   &   & - &   &   &   &   \\ \hline
+5 - NB          &   &   &   &   & - &   &   &   \\
+6 - RFw         & * & * & * & * & * & - &   & * \\ \hline
+7 - SVM         & + & + &   & * & + &   & - & * \\
+8 - VFDT        &   &   &   &   &   &   &   & - \\ \hline
+\end{tabular}
+\label{tab:friedClassif}
+\quad
+\begin{tabular}{lcc}
+algoritmo & \makecell{primeiros\\lugares} & \makecell{últimos\\lugares} \\
+\hline
+SVM        &    20       &              4       \\
+RFw        &    19       &              1       \\
+5NN        &    16       &              16      \\
+NB         &    12       &              17      \\
+CIELM      &    10       &              5       \\
+C4.5w      &    10       &              11      \\
+VFDT       &    6        &              30      \\
+ELM        &    4        &              12      \\
+\label{tab:fstPlacesClassif}
+\end{tabular}
+\end{center}
+\end{table}
 
 
-
-\subsection{Descarte de estratégias redundantes}
+\subsection{Diversidade de estratégias}
 Dentre as estratégias implementadas da literatura e propostas,
 é esperada a ocorrência de respostas correlacionadas
 para o conjunto de bases de dados escolhido.
