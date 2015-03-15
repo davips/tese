@@ -1,16 +1,34 @@
 \section{Análise comparativa geral}\label{geral}
+Há aplicações com particularidades ou preferências do especialista em que o algoritmo é
+previamente determinado. \ano{exemplos?}
+Por outro lado, há aplicações, possivelmente a maioria, em que a escolha é livre
+e só é possível a partir do momento em que o conjunto de treinamento é
+suficientemente grande para a realização de uma validação cruzada \ano{ref?}.
+Para simular esses dois cenários de forma concisa e
+devido à presença de estratégias específicas de um único tipo de aprendiz
+(QBC, EMC, SVMS e SVMB),
+a comparação de estratégias está dividida em quatro partes:
+\begin{itemize}
+ \item \textbf{comparação diversa} - compreende algoritmos não vinculados a nenhuma estratégia
+ (5NN, C4.5w, CIELM e NB); incidentalmente, esse critério tem a desejável propriedade 
+ de aumentar a diversidade, pois mantém apenas um do grupo dos dominantes
+ (grupo A citado na Seção \ref{algs}) e mais similares entre si;
+ essa propriedade indiretamente evita uma presença desigual de alguns vieses de
+ aprendizado em detrimento de outros;
+%  , dentro da limitação do conjunto disponível de algoritmos;
+  \item \textbf{comparação RFw} - por ser um comitê, o RF viabiliza o uso da estratégia QBC;
+  nessa comparação é possível verificar a existência de benefícios em aplicá-la frente
+  às estratégias de uso geral; é possível também observar que estratégias são adequadas
+  para esse algoritmo;
+  \item \textbf{comparação SVM} - de forma análoga à \textit{comparação RFw},
+  porém com duas estratégias específicas; e,
+  \item \textbf{comparação ELM} - de forma análoga à \textit{comparação RFw},
+  porém com o diferencial de revelar de forma pioneira a viabilidade de se aplicar
+  variadas estratégias, inclusive a específica, com ELMs.
+  \end{itemize}
+
 
 \ano{fazer análise adicional do SVM só com problemas binários}
-O algoritmo de aprendizado mais adequado para um dado problema normalmente não
-é conhecido até que se tenha um conjunto de treinamento suficientemente grande para
-a realização de uma validação cruzada \ano{ref?}.
-Dessa forma, não é possível realizar uma comparação de estratégias de aprendizado ativo
-sem a definição do aprendiz a ser adotado.
-Por isso, a comparação requer a avaliação do desempenho associado a diferentes algoritmos de aprendizado.
-A forma escolhida para avaliação do desempenho geral foi considerar cada par
-base de dados/aprendiz como uma execução do experimento.
-Assim é possível uma análise unificada capaz de identificar estratégias que se sobressaiam
-mesmo diante da variedade de algoritmos de aprendizado.
 
 % http://research.cs.wisc.edu/techreports/2009/TR1648.pdf
 Estratégias são normalmente avaliadas por meio de curvas de aprendizado,
