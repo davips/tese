@@ -45,13 +45,24 @@ As acurácias para cada base são apresentadas nas tabelas \ref{tab:balaccClassif0
 % Apesar de passiva, essa é a acurácia com treinamento incremental, desde
 % |Y| um a um até |U| para VFDT; talvez por isso o desempenho tenha sido pior
 O algoritmo mais distinto é a VFDT, pois apresenta os menores valores em relação a
-praticamente todos os demais (abaixo ou igual a $0,30$).
-Por outro lado, conforme esperado,
-a maior similaridade ($0,64$) ocorre entre ELM e CIELM.
+praticamente todos os demais.
+Isso é explicado pelo seu desempenho excessivamente inferior,
+ficando, por exemplo, em último lugar trinta vezes e em primeiro apenas seis
+(Apêndice \ref{detalhes}).
+VFDT teve o pior desempenho possivelmente por ser o único algoritmo incremental do conjunto
+e originalmente ter sido proposto para grandes quantidades de exemplos desde o primeiro
+treinamento. A acurácia passiva foi obtida após o treinamento incremental desde
+$|Y|$ até $|\mathcal{U}|$ exemplos, simulando o progresso de um aprendizado interativo.
+Devido a essa inadequação do cenário ao algoritmo, optou-se por excluí-lo dos
+experimentos.
+
+A maior similaridade ($0,64$) ocorre entre ELM e CIELM conforme esperado.
 Os próximos maiores valores por linha permitem separar os demais algoritmos
 em dois grupos, A e B, respectivamente:
-5NN, RFw e SVM; e, C4.5w, NB e VFDT.
-\ano{usar essses grupos no futuro além do trecho mais abaixo?}
+5NN, RFw e SVM; e, C4.5w e NB.
+O primeiro grupo coincide com os algoritmos mais presentes no primeiro lugar
+conforme Tabela \ref{tab:friedClassif}.
+
 
 Na comparação um contra um da acurácia balanceada (Tabela \ref{tab:friedClassif}),
 RF vence todos os demais com significância estatística,
@@ -80,30 +91,26 @@ Medida: acurácia balanceada.
 desempenho que o algoritmo na coluna com intervalo de confiança de 0.99/0.95/0.90.}}
 \begin{center}
 \begin{tabular}{lcc|cc|cc|cc}
-                        & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
-1 - 5NN         & - &   &   &   &   &   &   &   \\
-2 - C4.5w       &   & - &   &   &   &   &   &   \\ \hline
-3 - CIELM       &   &   & - &   &   &   &   & + \\
-4 - ELM         &   &   &   & - &   &   &   &   \\ \hline
-5 - NB          &   &   &   &   & - &   &   &   \\
-6 - RFw         & * & * & * & * & * & - &   & * \\ \hline
-7 - SVM         & + & + &   & * & + &   & - & * \\
-8 - VFDT        &   &   &   &   &   &   &   & - \\ \hline
-\end{tabular}
-\label{tab:friedClassif}
+                        & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
+1 - 5NN         & - &   &   &   &   &   &   \\
+2 - C4.5w       &   & - &   &   &   &   &   \\ \hline
+3 - CIELM       &   &   & - &   &   &   &   \\
+4 - ELM         &   &   &   & - &   &   &   \\ \hline
+5 - NB          &   &   &   &   & - &   &   \\
+6 - RFw         & * & * & * & * & * & - &   \\ \hline
+7 - SVM         & + & + &   & * & + &   & - \\\end{tabular}
 \quad
 \begin{tabular}{lcc}
 algoritmo & \makecell{primeiros\\lugares} & \makecell{últimos\\lugares} \\
 \hline
-SVM        &    20       &              4       \\
-RFw        &    19       &              1       \\
-5NN        &    16       &              16      \\
-NB         &    12       &              17      \\
-CIELM      &    10       &              5       \\
-C4.5w      &    10       &              11      \\
-VFDT       &    6        &              30      \\
-ELM        &    4        &              12      \\
-\label{tab:fstPlacesClassif}
+RFw        &    20       &              3       \\
+SVM        &    20       &              8       \\
+5NN        &    16       &              21      \\
+NB         &    14       &              23      \\
+CIELM      &    12       &              9       \\
+C4.5w      &    10       &              13      \\
+ELM        &    4        &              16      \\
+\label{tab:friedClassif}
 \end{tabular}
 \end{center}
 \end{table}
