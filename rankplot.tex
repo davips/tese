@@ -7,22 +7,56 @@
 \begin{axis}[xlabel=consultas, ylabel=colocação, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
 scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/fixed}]
 
-% \addplot+[solid, blue,   mark=star,     mark phase=83, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUman] {kappamediaallReduxRank.plot};\addlegendentry{TUman}
+% \addplot+[solid, thick, black, mark=10-pointed star,   mark phase=119, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=GATUman] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{GATUman}}
+\addplot+[solid, thick, black, mark=10-pointed star,   mark phase=119, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=GATUmah] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{GATUmah}}
+% \addplot+[solid, gray, mark=square,   mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUman] {kappamediaallReduxRank.plot};\addlegendentry{TUman}
 \addplot+[solid, gray, mark=square,   mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUmah] {kappamediaallReduxRank.plot};\addlegendentry{TUmah}
 
-\addplot+[dashed, olive,            mark=triangle,     mark phase=35, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Rnd] {kappamediaallReduxRank.plot};\addlegendentry{Rnd}
-\addplot+[dashed, green!50!black, mark=triangle*,   mark phase=47, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Clu] {kappamediaallReduxRank.plot};\addlegendentry{Clu}
-% \addplot+[dotted, ultra thick, violet, mark=10-pointed star, mark phase=59, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUman] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{ATUman}}
+\addplot+[solid, blue, mark=*,   mark phase=143, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Mar] {kappamediaallReduxRank.plot};\addlegendentry{Mar}
+% \addplot+[dotted, ultra thick, orange,  mark repeat=200,  mark phase=71, mark options={solid, scale=1.9}, mark repeat=200]] table[x=budget, y=ATUman] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{ATUman}}
 \addplot+[dotted, ultra thick, orange,  mark repeat=200,  mark phase=71, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUmah] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{ATUmah}}
 
-% \addplot+[solid, thick, red,   mark=star,     mark phase=107, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=GATUman] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{GATUman}}
-\addplot+[solid, thick, black, mark=10-pointed star,   mark phase=119, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=GATUmah] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{GATUmah}}
-
+\addplot+[solid, green!30!black, mark=square*,   mark phase=179, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent] {kappamediaallReduxRank.plot};\addlegendentry{EERent}
 \addplot+[solid, thick, red,   mark=star,     mark phase=131, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=SGmulti] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{SGmulti}}
-\addplot+[solid, blue, mark=*,   mark phase=143, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Mar] {kappamediaallReduxRank.plot};\addlegendentry{Mar}
+\addplot+[solid, thick, black, mark=square,   mark phase=167, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=EERacu] {kappamediaallReduxRank.plot};\addlegendentry{EERacu}
+
+\addplot+[dashed, green!50!black, mark=triangle*,   mark phase=47, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Clu] {kappamediaallReduxRank.plot};\addlegendentry{Clu}
+\addplot+[dashed, olive,            mark=triangle,     mark phase=35, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Rnd] {kappamediaallReduxRank.plot};\addlegendentry{Rnd}
 \addplot+[solid, black, mark=pentagon,   mark phase=155, mark options={solid, thick, scale=1.4}, mark repeat=200] table[x=budget, y=DWeuc] {kappamediaallReduxRank.plot};\addlegendentry{DWeuc}
-\addplot+[solid, thick, black, mark=square,   mark phase=119, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=EERacu] {kappamediaallReduxRank.plot};\addlegendentry{EERacu}
-\addplot+[solid, green!30!black, mark=square*,   mark phase=119, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent] {kappamediaallReduxRank.plot};\addlegendentry{EERent}
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{figure}
+
+
+
+
+\begin{figure}
+\caption{Curvas de ranqueamento.
+ \textit{Detalhes na Figura \ref{curvas}.}}
+\label{curvasrank}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[xlabel=consultas, ylabel=colocação, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/fixed}]
+
+\addplot+[solid, thick, black, mark=10-pointed star,   mark phase=119, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=GATUman] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{GATUman}}
+% \addplot+[solid, thick, black, mark=10-pointed star,   mark phase=119, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=GATUmah] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{GATUmah}}
+\addplot+[solid, gray, mark=square,   mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUman] {kappamediaallReduxRank.plot};\addlegendentry{TUman}
+% \addplot+[solid, gray, mark=square,   mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUmah] {kappamediaallReduxRank.plot};\addlegendentry{TUmah}
+
+\addplot+[solid, blue, mark=*,   mark phase=143, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Mar] {kappamediaallReduxRank.plot};\addlegendentry{Mar}
+\addplot+[dotted, ultra thick, orange,  mark repeat=200,  mark phase=71, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUman] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{ATUman}}
+% \addplot+[dotted, ultra thick, orange,  mark repeat=200,  mark phase=71, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUmah] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{ATUmah}}
+
+\addplot+[solid, green!30!black, mark=square*,   mark phase=179, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent] {kappamediaallReduxRank.plot};\addlegendentry{EERent}
+\addplot+[solid, thick, red,   mark=star,     mark phase=131, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=SGmulti] {kappamediaallReduxRank.plot};\addlegendentry{\textbf{SGmulti}}
+\addplot+[solid, thick, black, mark=square,   mark phase=167, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=EERacu] {kappamediaallReduxRank.plot};\addlegendentry{EERacu}
+
+\addplot+[dashed, green!50!black, mark=triangle*,   mark phase=47, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Clu] {kappamediaallReduxRank.plot};\addlegendentry{Clu}
+\addplot+[dashed, olive,            mark=triangle,     mark phase=35, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Rnd] {kappamediaallReduxRank.plot};\addlegendentry{Rnd}
+\addplot+[solid, black, mark=pentagon,   mark phase=155, mark options={solid, thick, scale=1.4}, mark repeat=200] table[x=budget, y=DWeuc] {kappamediaallReduxRank.plot};\addlegendentry{DWeuc}
 
 \end{axis}
 \end{tikzpicture}

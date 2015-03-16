@@ -10,21 +10,18 @@ devido à presença de estratégias específicas de um único tipo de aprendiz
 a comparação de estratégias está dividida em quatro partes:
 \begin{itemize}
  \item \textbf{comparação diversa} - compreende algoritmos não vinculados a nenhuma estratégia
- (5NN, C4.5w, CIELM e NB); incidentalmente, esse critério tem a desejável propriedade 
- de aumentar a diversidade, pois mantém apenas um do grupo dos dominantes
- (grupo A citado na Seção \ref{algs}) e mais similares entre si;
- essa propriedade indiretamente evita uma presença desigual de alguns vieses de
- aprendizado em detrimento de outros;
-%  , dentro da limitação do conjunto disponível de algoritmos;
-  \item \textbf{comparação RFw} - por ser um comitê, o RF viabiliza o uso da estratégia QBC;
-  nessa comparação é possível verificar a existência de benefícios em aplicá-la frente
-  às estratégias de uso geral; é possível também observar que estratégias são adequadas
+ (5NN, C4.5w, CIELM e NB); incidentalmente, esse critério remove os algoritmos que aparecem
+ nos extremos da contagem de posições, deixando a contagem de primeiros
+ lugares e últimos lugares mais equilibrada, entre $21$ e $27$ e entre $19$ e $28$, respectivamente;
+ \item \textbf{comparação RFw} - por ser um comitê, o RF viabiliza o uso da estratégia QBC;
+  nessa comparação é possível avaliar a existência de benefícios em aplicá-la frente
+  às estratégias de uso geral; é possível também observar quais estratégias são adequadas
   para esse algoritmo;
   \item \textbf{comparação SVM} - de forma análoga à \textit{comparação RFw},
   porém com duas estratégias específicas; e,
   \item \textbf{comparação ELM} - de forma análoga à \textit{comparação RFw},
   porém com o diferencial de revelar de forma pioneira a viabilidade de se aplicar
-  estratégias em geral, inclusive a específica, com ELMs.
+  aprendizado ativo e a estratégia específica com ELMs.
   \end{itemize}
 
 \subsection{Comparação diversa}\ref{cdiversa}
