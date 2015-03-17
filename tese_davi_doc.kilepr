@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=plot.tex
+lastDocument=exp-analise.tex
 masterDocument=
 name=Tese
 pkg_extIsRegExp=false
@@ -604,13 +604,13 @@ order=0
 
 [item:exp-analise.tex]
 archive=true
-column=11
+column=40
 encoding=ISO-8859-1
 highlight=LaTeX
-line=37
+line=100
 mode=LaTeX
 open=true
-order=0
+order=1
 
 [item:exp-elm.tex]
 archive=true
@@ -634,13 +634,13 @@ order=6
 
 [item:experimentos.tex]
 archive=true
-column=24
+column=72
 encoding=ISO-8859-1
 highlight=LaTeX
-line=76
+line=179
 mode=LaTeX
-open=false
-order=2
+open=true
+order=0
 
 [item:imagens/fluxo-esquema.tex]
 archive=true
@@ -764,12 +764,12 @@ order=-1
 
 [item:plot.tex]
 archive=true
-column=169
+column=39
 encoding=ISO-8859-1
 highlight=LaTeX
-line=12
+line=15
 mode=LaTeX
-open=true
+open=false
 order=2
 
 [item:plotRisco.tex]
@@ -797,9 +797,9 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=25
+line=18
 mode=LaTeX
-open=true
+open=false
 order=1
 
 [item:rankplotRisco.tex]
@@ -837,7 +837,7 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=16
+line=2
 mode=LaTeX
 open=false
 order=-1
@@ -897,7 +897,7 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=265
+line=252
 mode=LaTeX
 open=false
 order=2
@@ -997,8 +997,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-analise.tex]
-CursorColumn=11
-CursorLine=37
+CursorColumn=40
+CursorLine=100
 JumpList=
 ViMarks=
 
@@ -1015,8 +1015,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:experimentos.tex]
-CursorColumn=24
-CursorLine=76
+CursorColumn=72
+CursorLine=179
 JumpList=
 ViMarks=
 
@@ -1089,8 +1089,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:plot.tex]
-CursorColumn=169
-CursorLine=12
+CursorColumn=39
+CursorLine=15
 JumpList=
 ViMarks=
 
@@ -1108,7 +1108,7 @@ ViMarks=
 
 [view-settings,view=0,item:rankplot.tex]
 CursorColumn=0
-CursorLine=25
+CursorLine=18
 JumpList=
 ViMarks=
 
@@ -1132,7 +1132,7 @@ ViMarks=
 
 [view-settings,view=0,item:stratDistsRedux.tex]
 CursorColumn=0
-CursorLine=16
+CursorLine=2
 JumpList=
 ViMarks=
 
@@ -1168,7 +1168,7 @@ ViMarks=
 
 [view-settings,view=0,item:tese.tex]
 CursorColumn=0
-CursorLine=265
+CursorLine=252
 JumpList=
 ViMarks=
 
