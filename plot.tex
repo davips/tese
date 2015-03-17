@@ -1,8 +1,9 @@
 \begin{figure}
 \begin{center}
 \caption{Curvas de aprendizado.
-\textit{Suavizadas por média móvel com largura de dez exemplos.
-O valor (média ou desvio padrão, dependendo da figura)
+\textit{Suavizadas por média móvel com largura de $20$ exemplos.
+O valor
+% (média ou desvio padrão, dependendo da figura)
 para cada base é calculado baseado nas cinco execuções de validação cruzada.
 Inclui apenas resultados para as bases com mais de 200 exemplos.}}
 \label{curvas}
@@ -10,22 +11,25 @@ Inclui apenas resultados para as bases com mais de 200 exemplos.}}
 \begin{axis}[xlabel=consultas, ylabel=kappa (média), legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
 scale only axis, width=300, yticklabel style={/pgf/number format/fixed}]
 
-% \addplot+[solid, thick, black, mark=10-pointed star,   mark phase=119, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=GATUman] {kappamediaallRedux.plot};\addlegendentry{\textbf{GATUman}}
-\addplot+[solid, thick, black, mark=10-pointed star,   mark phase=119, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=GATUmah] {kappamediaallRedux.plot};\addlegendentry{\textbf{GATUmah}}
-% \addplot+[solid, gray, mark=square,   mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUman] {kappamediaallRedux.plot};\addlegendentry{TUman}
-\addplot+[solid, gray, mark=square,   mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUmah] {kappamediaallRedux.plot};\addlegendentry{TUmah}
+\addplot+[no marks,dashed, thick, violet,   mark phase=119, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=GATUeuc] {kappamediaall.plot};\addlegendentry{\textbf{GATUeuc}}
+\addplot+[no marks,dotted, thick, violet,   mark phase=119, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=GATUman] {kappamediaall.plot};\addlegendentry{\textbf{GATUman}}
+\addplot+[no marks,solid, thick, violet,   mark phase=119, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=GATUmah] {kappamediaall.plot};\addlegendentry{\textbf{GATUmah}}
+\addplot+[no marks,dashed, gray,   mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUeuc] {kappamediaall.plot};\addlegendentry{TUeuc}
+\addplot+[no marks,dotted, gray,  mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUman] {kappamediaall.plot};\addlegendentry{TUman}
+\addplot+[no marks,solid, gray,   mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUmah] {kappamediaall.plot};\addlegendentry{TUmah}
 
-\addplot+[solid, blue, mark=*,   mark phase=143, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Mar] {kappamediaallRedux.plot};\addlegendentry{Mar}
-% \addplot+[dotted, ultra thick, orange,  mark repeat=200,  mark phase=71, mark options={solid, scale=1.9}, mark repeat=200]] table[x=budget, y=ATUman] {kappamediaallRedux.plot};\addlegendentry{\textbf{ATUman}}
-\addplot+[dotted, ultra thick, orange,  mark repeat=200,  mark phase=71, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUmah] {kappamediaallRedux.plot};\addlegendentry{\textbf{ATUmah}}
+\addplot+[no marks,solid, blue,  mark phase=143, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Mar] {kappamediaall.plot};\addlegendentry{Mar}
+\addplot+[no marks,dashed, ultra thick, orange, mark repeat=200,  mark phase=71, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUeuc] {kappamediaall.plot};\addlegendentry{\textbf{ATUeuc}}
+\addplot+[no marks,dotted, ultra thick, orange,  mark repeat=200,  mark phase=71, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUman] {kappamediaall.plot};\addlegendentry{\textbf{ATUman}}
+\addplot+[no marks,solid, ultra thick, orange,  mark repeat=200,  mark phase=71, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUmah] {kappamediaall.plot};\addlegendentry{\textbf{ATUmah}}
 
-\addplot+[solid, green!30!black, mark=square*,   mark phase=179, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent] {kappamediaallRedux.plot};\addlegendentry{EERent}
-\addplot+[solid, thick, red,   mark=star,     mark phase=131, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=SGmulti] {kappamediaallRedux.plot};\addlegendentry{\textbf{SGmulti}}
-\addplot+[solid, thick, black, mark=square,   mark phase=167, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=EERacu] {kappamediaallRedux.plot};\addlegendentry{EERacu}
+\addplot+[no marks,solid, green!30!black,    mark phase=179, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent] {kappamediaall.plot};\addlegendentry{EERent}
+\addplot+[no marks,solid, thick, red,      mark phase=131, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=SGmulti] {kappamediaall.plot};\addlegendentry{\textbf{SGmulti}}
+\addplot+[no marks,solid, thick, black,   mark phase=167, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=EERacu] {kappamediaall.plot};\addlegendentry{EERacu}
 
-\addplot+[dashed, green!50!black, mark=triangle*,   mark phase=47, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Clu] {kappamediaallRedux.plot};\addlegendentry{Clu}
-\addplot+[dashed, olive,            mark=triangle,     mark phase=35, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Rnd] {kappamediaallRedux.plot};\addlegendentry{Rnd}
-\addplot+[solid, black, mark=pentagon,   mark phase=155, mark options={solid, thick, scale=1.4}, mark repeat=200] table[x=budget, y=DWeuc] {kappamediaallRedux.plot};\addlegendentry{DWeuc}
+\addplot+[no marks,dashed, green!50!black,   mark phase=47, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Clu] {kappamediaall.plot};\addlegendentry{Clu}
+\addplot+[no marks,dashed, olive,              mark phase=35, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Rnd] {kappamediaall.plot};\addlegendentry{Rnd}
+\addplot+[no marks,solid, black,   mark phase=155, mark options={solid, thick, scale=1.4}, mark repeat=200] table[x=budget, y=DWeuc] {kappamediaall.plot};\addlegendentry{DWeuc}
 
 \end{axis}
 \end{tikzpicture}

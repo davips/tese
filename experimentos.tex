@@ -35,8 +35,8 @@ As similaridades são apresentadas na Tabela \ref{passiveDists} de forma análoga 
 % as dimensões, depois faz decomposição ortogonal para visualizar em duas dimensões.
 % Depois ele faz agrupamento hierárquico.
 \begin{table}[h]
-\caption{Similaridade entre algoritmos de aprendizado.
-\textit{Medida: acurácia balanceada em 94 bases de dados.
+\caption{Similaridade entre algoritmos de aprendizado de acordo com a acurácia balanceada.
+\textit{94 bases de dados.
 O maior e o menor valor de cada linha
 está em \textcolor{blue}{\textbf{azul}} e \textcolor{red}{\textbf{vermelho}}
 respectivamente. Valores iguais ou acima de $0,50$ estão apenas em \textbf{negrito}.}}
@@ -145,7 +145,7 @@ Os nomes de estratégias propostas estão em negrito.
 \afterpage{\clearpage\begin{landscape}
 % \input stratDists
 \begin{table}[h]
-\caption{Similaridade entre estratégias.
+\caption{Similaridade entre estratégias de acordo com a medida ALC-kappa.
 \textit{Detalhes na Tabela \ref{passiveDists}.}}
 \begin{center}\scalebox{0.9}{\begin{tabular}{lcc|cc|cc|cc|cc|cc|cc|cc|c}
    & \begin{sideways}Rnd\end{sideways} & \begin{sideways}Clu\end{sideways} & \begin{sideways}\textbf{ATUeuc}\end{sideways} & \begin{sideways}\textbf{ATUman}\end{sideways} & \begin{sideways}\textbf{ATUmah}\end{sideways} & \begin{sideways}\textbf{GATUeuc}\end{sideways} & \begin{sideways}\textbf{GATUman}\end{sideways} & \begin{sideways}\textbf{GATUmah}\end{sideways} & \begin{sideways}\textbf{SGmulti}\end{sideways} & \begin{sideways}Ent\end{sideways} & \begin{sideways}Mar\end{sideways} & \begin{sideways}DWeuc\end{sideways} & \begin{sideways}TUeuc\end{sideways} & \begin{sideways}TUman\end{sideways} & \begin{sideways}TUmah\end{sideways} & \begin{sideways}EERacu\end{sideways} & \begin{sideways}EERent\end{sideways} \\
@@ -173,24 +173,24 @@ EERent  &   0.37 &   0.41 &   0.36 &   0.37 &   0.36 &   0.38 &   0.39 &   0.37 
 As estratégias mais exploratórias (Rnd, Clu, ATU e SGmulti)
 têm entre si um grau de similaridade acima da média
 (valor de $0,63$ para as duas primeiras e entre $0,51$ e $0,59$ para as restantes,
-desconsiderando as variantes de ATU entre si).
+desconsiderando seis das variantes de TU entre si).
 Rnd, Clu e SGmulti foram mantidas pelo seu valor referencial e histórico.
 Uma similaridade maior pode ser notada entre as variantes de cada estratégia
 baseada em densidade (ATU, GATU e TU).
-As estratégias remanescentes baseadas na distância euclidiana
-(TUeuc e ATUeuc) também foram excluídas
-por serem, de acordo com a Tabela \ref{stratDists},
-excessivamente similares às baseadas na distância de Manhattan.
-A distância euclidiana foi preterida porque as distâncias de Manhattan e de Mahalanobis
-em conjunto proveem mais diversidade ao experimento pela adequação a atributos nominais
-da primeira e pela intrínseca independência de escala da segunda.
+Para conveniência experimental, as variantes baseadas nas distâncias euclidiana e de Manhattan
+(TUeuc, TUman, ATUeuc, ATUman, GATUeuc e GATUman)
+foram excluídas por serem mais similares às demais estratégias em comparação com
+as variantes baseadas na distância de Mahalanobis (TUmah, ATUmah e GATUmah),
+de acordo com a Tabela \ref{stratDists}.
+% A intrínseca independência de escala da distância de Mahalanobis é uma característica
+% que pode favorecer as estratégias.
+
 Dentre as estratégias baseadas em simples medida de informatividade
 (Unc, Ent e Mar), apenas Mar foi mantida devido à similaridade entre
 as três, por ser mais adequada a problemas multiclasse que Unc e por
 seu desempenho ser superior ao da Ent (Apêndice \ref{detalhes}).
 A estratégia DWeuc é a mais dissimilar devido a seu desempenho inferior,
 como demonstram os experimentos nas seções seguintes.
-
 O grupo reduzido de estratégias é apresentado na Tabela \ref{stratDistsRedux}.
 
 \newpage
@@ -198,20 +198,20 @@ O grupo reduzido de estratégias é apresentado na Tabela \ref{stratDistsRedux}.
 \begin{table}[h]
 \caption{Similaridade entre estratégias selecionadas.
 \textit{Detalhes na Tabela \ref{passiveDists}.}}
-\begin{center}\scalebox{0.7}{\begin{tabular}{lcc|cc|cc|cc|cc|cc|cc}
-                                & \begin{sideways}Rnd\end{sideways} & \begin{sideways}Clu\end{sideways} & \begin{sideways}\textbf{ATUman}\end{sideways} & \begin{sideways}\textbf{ATUmah}\end{sideways} & \begin{sideways}\textbf{GATUman}\end{sideways} & \begin{sideways}\textbf{GATUmah}\end{sideways} & \begin{sideways}\textbf{SGmulti}\end{sideways} & \begin{sideways}Mar\end{sideways} & \begin{sideways}DWeuc\end{sideways} & \begin{sideways}TUman\end{sideways} & \begin{sideways}TUmah\end{sideways} & \begin{sideways}EERacu\end{sideways} & \begin{sideways}EERent\end{sideways} \\Rnd    & - & \textcolor{blue}{\textbf{  0.63}} & \textbf{  0.57} & \textbf{  0.51} &   0.45 &   0.44 & \textbf{  0.56} &   0.36 & \textcolor{red}{\textbf{  0.24}} &   0.38 &   0.38 &   0.46 &   0.37 \\
-Clu     & \textcolor{blue}{\textbf{  0.63}} & - & \textbf{  0.59} & \textbf{  0.52} &   0.49 &   0.48 & \textbf{  0.58} &   0.39 & \textcolor{red}{\textbf{  0.24}} &   0.41 &   0.40 & \textbf{  0.50} &   0.41 \\ \hline
-\textbf{ATUman} & \textbf{  0.57} & \textcolor{blue}{\textbf{  0.59}} & - & \textbf{  0.57} & \textbf{  0.50} &   0.47 & \textbf{  0.56} &   0.39 & \textcolor{red}{\textbf{  0.23}} &   0.42 &   0.41 &   0.46 &   0.37 \\
-\textbf{ATUmah} & \textbf{  0.51} & \textbf{  0.52} & \textcolor{blue}{\textbf{  0.57}} & - &   0.45 & \textbf{  0.54} &   0.48 &   0.37 & \textcolor{red}{\textbf{  0.23}} &   0.39 &   0.44 &   0.43 &   0.36 \\ \hline
-\textbf{GATUman}        &   0.45 &   0.49 & \textbf{  0.50} &   0.45 & - & \textcolor{blue}{\textbf{  0.53}} &   0.48 &   0.42 & \textcolor{red}{\textbf{  0.24}} &   0.47 &   0.42 &   0.46 &   0.39 \\
-\textbf{GATUmah}        &   0.44 &   0.48 &   0.47 & \textcolor{blue}{\textbf{  0.54}} & \textbf{  0.53} & - &   0.44 &   0.38 & \textcolor{red}{\textbf{  0.24}} &   0.42 &   0.48 &   0.43 &   0.37 \\ \hline
-\textbf{SGmulti}        & \textbf{  0.56} & \textcolor{blue}{\textbf{  0.58}} & \textbf{  0.56} &   0.48 &   0.48 &   0.44 & - &   0.42 & \textcolor{red}{\textbf{  0.25}} &   0.44 &   0.42 & \textbf{  0.50} &   0.39 \\
-Mar     &   0.36 &   0.39 &   0.39 &   0.37 &   0.42 &   0.38 &   0.42 & - & \textcolor{red}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.56}} &   0.46 &   0.44 &   0.36 \\ \hline
-DWeuc   &   0.24 &   0.24 & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} &   0.24 &   0.24 & \textcolor{blue}{\textbf{  0.25}} &   0.24 & - &   0.24 & \textcolor{red}{\textbf{  0.23}} &   0.24 & \textcolor{red}{\textbf{  0.23}} \\
-TUman   &   0.38 &   0.41 &   0.42 &   0.39 &   0.47 &   0.42 &   0.44 & \textcolor{blue}{\textbf{  0.56}} & \textcolor{red}{\textbf{  0.24}} & - & \textbf{  0.51} &   0.44 &   0.37 \\ \hline
-TUmah   &   0.38 &   0.40 &   0.41 &   0.44 &   0.42 &   0.48 &   0.42 &   0.46 & \textcolor{red}{\textbf{  0.23}} & \textcolor{blue}{\textbf{  0.51}} & - &   0.41 &   0.35 \\
-EERacu  &   0.46 & \textcolor{blue}{\textbf{  0.50}} &   0.46 &   0.43 &   0.46 &   0.43 & \textcolor{blue}{\textbf{  0.50}} &   0.44 & \textcolor{red}{\textbf{  0.24}} &   0.44 &   0.41 & - &   0.44 \\ \hline
-EERent  &   0.37 &   0.41 &   0.37 &   0.36 &   0.39 &   0.37 &   0.39 &   0.36 & \textcolor{red}{\textbf{  0.23}} &   0.37 &   0.35 & \textcolor{blue}{\textbf{  0.44}} & - \\ \end{tabular}}\label{stratDistsRedux}
+\begin{center}
+\scalebox{0.76}{
+\begin{tabular}{lcc|cc|cc|cc|cc}
+                                & Rnd & Clu & \textbf{ATUeuc} & \textbf{GATUeuc} & \textbf{SGmulti} & Mar & DWeuc & TUeuc & EERacu & EERent \\Rnd       & - & \textcolor{blue}{\textbf{  0.63}} & \textbf{  0.59} &   0.43 & \textbf{  0.56} &   0.36 & \textcolor{red}{\textbf{  0.24}} &   0.38 &   0.46 &   0.37 \\
+Clu     & \textcolor{blue}{\textbf{  0.63}} & - & \textbf{  0.59} &   0.47 & \textbf{  0.58} &   0.39 & \textcolor{red}{\textbf{  0.24}} &   0.41 & \textbf{  0.50} &   0.41 \\ \hline
+\textbf{ATUeuc} & \textcolor{blue}{\textbf{  0.59}} & \textcolor{blue}{\textbf{  0.59}} & - &   0.46 & \textbf{  0.56} &   0.38 & \textcolor{red}{\textbf{  0.23}} &   0.41 &   0.45 &   0.36 \\
+\textbf{GATUeuc}        &   0.43 &   0.47 &   0.46 & - &   0.46 &   0.43 & \textcolor{red}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.49}} &   0.44 &   0.38 \\ \hline
+\textbf{SGmulti}        & \textbf{  0.56} & \textcolor{blue}{\textbf{  0.58}} & \textbf{  0.56} &   0.46 & - &   0.42 & \textcolor{red}{\textbf{  0.25}} &   0.44 & \textbf{  0.50} &   0.39 \\
+Mar     &   0.36 &   0.39 &   0.38 &   0.43 &   0.42 & - & \textcolor{red}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.56}} &   0.44 &   0.36 \\ \hline
+DWeuc   &   0.24 &   0.24 & \textcolor{red}{\textbf{  0.23}} &   0.24 & \textcolor{blue}{\textbf{  0.25}} &   0.24 & - &   0.24 &   0.24 & \textcolor{red}{\textbf{  0.23}} \\
+TUeuc   &   0.38 &   0.41 &   0.41 &   0.49 &   0.44 & \textcolor{blue}{\textbf{  0.56}} & \textcolor{red}{\textbf{  0.24}} & - &   0.44 &   0.36 \\ \hline
+EERacu  &   0.46 & \textcolor{blue}{\textbf{  0.50}} &   0.45 &   0.44 & \textcolor{blue}{\textbf{  0.50}} &   0.44 & \textcolor{red}{\textbf{  0.24}} &   0.44 & - &   0.44 \\
+EERent  &   0.37 &   0.41 &   0.36 &   0.38 &   0.39 &   0.36 & \textcolor{red}{\textbf{  0.23}} &   0.36 & \textcolor{blue}{\textbf{  0.44}} & - \\ \end{tabular}}
+\label{stratDistsRedux}
 \end{center}
 \end{table}
 

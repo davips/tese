@@ -1,21 +1,16 @@
 \begin{table}[h]
-\caption{Um contra um para todos os algoritmos de aprendizado. Medida: ALCKappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
-\begin{center}\scalebox{0.9}{\begin{tabular}{lcc|cc|cc|cc|cc|cc|cc}
- 			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14\\
-1 - Rnd  	& - &   &   &   &   &   &   &   &   &   &   &   &   &   \\
-2 - Clu  	&   & - &   &   &   &   &   &   &   &   &   &   &   &   \\ \hline
-3 - Mar  	& * & + & - &   &   &   &   &   &   &   &   &   &   &   \\
-4 - EERent	& * & + &   & - &   &   &   &   &   &   &   &   &   &   \\ \hline
-5 - EERacu	& + &   &   &   & - &   &   &   &   &   &   &   &   &   \\
-6 - \textbf{SGmulti}	& * & + &   &   &   & - &   &   &   &   &   &   &   &   \\ \hline
-7 - TUman	& * & * & * & * & * & * & - &   &   &   &   &   &   &   \\
-8 - \textbf{ATUman}	& * & * & * & * & * & * &   & - &   &   &   &   &   &   \\ \hline
-9 - TUmah	& * & * & * & * & * & * &   &   & - &   &   &   &   &   \\
-10 - \textbf{ATUmah}	& * & * & * & * & * & * &   &   &   & - &   &   &   &   \\ \hline
-11 - \textbf{GATU0man}	& * & * & * & * & * & * &   &   &   & * & - &   &   &   \\
-12 - \textbf{GATU0mah}	& * & * & * & * & * & * &   &   &   & * &   & - &   &   \\ \hline
-13 - \textbf{GATUman}	& * & * & * & * & * & * & * & * & * & * &   &   & - &   \\
-14 - \textbf{GATUmah}	& * & * & * & * & * & * &   &   & . & * &   &   &   & - \\ \hline\end{tabular}}
+\caption{Um contra um para todos os algoritmos de aprendizado. Medida: ALC-kappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
+\begin{center}\begin{tabular}{lcc|cc|cc|cc|c}
+ 			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
+1 - Rnd  	& - &   &   &   &   &   &   &   &   \\
+2 - Clu  	&   & - &   &   &   &   &   &   &   \\ \hline
+3 - \textbf{ATUmah}	& * & * & - &   & * &   &   & * &   \\
+4 - \textbf{GATUmah}	& * & * &   & - & * & . &   & * &   \\ \hline
+5 - \textbf{SGmulti}	& * &   &   &   & - &   &   & + &   \\
+6 - Mar  	& * & * &   &   &   & - &   & * &   \\ \hline
+7 - TUmah	& * & * &   &   & * &   & - & * &   \\
+8 - EERacu	&   &   &   &   &   &   &   & - &   \\ \hline
+9 - EERent	& * & * &   &   & + &   &   & * & - \\\end{tabular}
 \label{stratsALCKappaFriedAllReduxall}
 \end{center}
 \end{table}
