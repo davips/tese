@@ -604,13 +604,13 @@ order=0
 
 [item:exp-analise.tex]
 archive=true
-column=40
+column=54
 encoding=ISO-8859-1
 highlight=LaTeX
-line=100
+line=127
 mode=LaTeX
 open=true
-order=1
+order=0
 
 [item:exp-elm.tex]
 archive=true
@@ -634,13 +634,13 @@ order=6
 
 [item:experimentos.tex]
 archive=true
-column=72
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=179
+line=94
 mode=LaTeX
 open=true
-order=0
+order=1
 
 [item:imagens/fluxo-esquema.tex]
 archive=true
@@ -764,20 +764,20 @@ order=-1
 
 [item:plot.tex]
 archive=true
-column=39
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=15
+line=31
 mode=LaTeX
 open=false
 order=2
 
 [item:plotRisco.tex]
 archive=true
-column=79
+column=4
 encoding=ISO-8859-1
 highlight=LaTeX
-line=16
+line=17
 mode=LaTeX
 open=false
 order=-1
@@ -797,17 +797,17 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=18
+line=9
 mode=LaTeX
 open=false
 order=1
 
 [item:rankplotRisco.tex]
 archive=true
-column=33
+column=4
 encoding=ISO-8859-1
 highlight=LaTeX
-line=1
+line=18
 mode=LaTeX
 open=false
 order=-1
@@ -997,8 +997,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-analise.tex]
-CursorColumn=40
-CursorLine=100
+CursorColumn=54
+CursorLine=127
 JumpList=
 ViMarks=
 
@@ -1015,8 +1015,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:experimentos.tex]
-CursorColumn=72
-CursorLine=179
+CursorColumn=0
+CursorLine=94
 JumpList=
 ViMarks=
 
@@ -1089,14 +1089,14 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:plot.tex]
-CursorColumn=39
-CursorLine=15
+CursorColumn=0
+CursorLine=31
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:plotRisco.tex]
-CursorColumn=79
-CursorLine=16
+CursorColumn=4
+CursorLine=17
 JumpList=
 ViMarks=
 
@@ -1108,13 +1108,13 @@ ViMarks=
 
 [view-settings,view=0,item:rankplot.tex]
 CursorColumn=0
-CursorLine=18
+CursorLine=9
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:rankplotRisco.tex]
-CursorColumn=33
-CursorLine=1
+CursorColumn=4
+CursorLine=18
 JumpList=
 ViMarks=
 

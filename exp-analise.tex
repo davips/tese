@@ -91,7 +91,8 @@ Como um indicativo da viabilidade do aprendizado ativo em geral, Rnd perde de to
 Ainda assim, o princípio teórico de Clu, que garante um desempenho que não seja pior que a
 amostragem aleatória, manteve-se válido.
 Dentre as melhores estratégias, a proposta GATUmah é a preferível, pois além de se equiparar
-às outras ela foi superior à Mar - ainda que com baixo nível de confiança (com $p=0,10$).
+às outras ela foi superior à Mar - ainda que com baixo nível de confiança ($p=0,10$).
+SGmulti superou apenas a aleatória.
 
 % Se forem consideradas apenas as primeiras 100 consultas -
 % %150 conf/emnlp/SettlesC08
@@ -105,25 +106,35 @@ Dentre as melhores estratégias, a proposta GATUmah é a preferível, pois além de 
 % - conforme Tabela \ref{stratsALCKappaFriedAllRedux50}.
 Em aplicações reais, entretanto, a estabilidade do algoritmo pode ser mais importante
 do que o desempenho preditivo médio, pois uma grande variabilidade pode colocar o
-orçamento sob o risco de ser gasto sem atingir um desempenho adequado e pode levar a custos
+orçamento sob o risco de ser gasto sem que seja atingido um desempenho adequado e pode levar a custos
 de rotulação imprevisíveis.
-O processo de rotulação ocorre apenas uma vez em uma dada reserva de exemplos
-até o término do orçamento, impossibilitando novas tentativas.
 Assim, a estabilidade da estratégia tem fundamental importância para a análise do risco financeiro
-da aplicação.
+da aplicação. É importante enfatizar que o processo de rotulação ocorre apenas uma vez em uma
+dada reserva de exemplos até o término do orçamento, impossibilitando novas tentativas.
+
 De forma análoga às curvas apresentadas para o valor médio de kappa e o ranqueamento
 correspondente, dois conjuntos de curvas baseadas no desvio padrão do valor de kappa foram
 construídos visando ilustrar o comportamento da variância preditiva a cada instante ao longo de sucessivos
 valores de orçamento.
-Na Figura \ref{curvasdesvio}, é possível observar que as quatro estratégias agnósticas
+Na Figura \ref{curvasdesvio}, é possível observar que as estratégias ATUmah e GATUmah
+seguidas de TUmah detêm os menores valores de desvio padrão durante a maior parte do
+processo de rotulação.
 \input plotRisco
-detêm os menores valores de desvio padrão durante a maior parte do processo de rotulação.
-Enquanto que TUmah apresenta os maiores valores e TUman com valores intermediários.
-O mesmo ocorre com os ranqueamentos, apresentados na Figura \ref{curvasrankdesvio}.
+O mesmo ocorre com os ranqueamentos apresentados na Figura \ref{curvasrankdesvio},
+porém com EERent alternando com TUmah.
 \input rankplotRisco
-SGmulti teve um desempenho mediano.
-Finalmente, pode-se concluir, segundo o conjunto de bases utilizado,
-que as versões agnósticas propostas são viáveis na prática,
+SGmulti teve um desempenho abaixo do ranqueamento médio ($4,5$).
+
+parece que Fried está dizendo não haver diferença, p=1
+
+Finalmente, pode-se concluir, segundo o conjunto de bases e algoritmos utilizados,
+que a versão agnóstica proposta (ATUmah) é viável na prática pelo seu desempenho
+e por possuir a maior estabilidade.
+Ambas as condições são importantes na redução de riscos financeiros.
+Adicionalmente, a estratégia híbrida (GATUmah) mostrou-se como a melhor opção
+em desempenho, apesar da pequena diferença em relação às outras duas melhores
+(ATUmah e TUmah); e 
+
 podendo superar as outras da atual comparação sem incorrer em
 aumento do risco financeiro.
 
