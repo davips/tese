@@ -116,27 +116,24 @@ De forma análoga às curvas apresentadas para o valor médio de kappa e o ranqueam
 correspondente, dois conjuntos de curvas baseadas no desvio padrão do valor de kappa foram
 construídos visando ilustrar o comportamento da variância preditiva a cada instante ao longo de sucessivos
 valores de orçamento.
-Na Figura \ref{curvasdesvio}, é possível observar que as estratégias ATUmah e GATUmah
+Apesar dos valores de desvio padrão serem muito próximos para haver diferenças estatisticamente
+significativas, é possível observar, na Figura \ref{curvasdesvio}, que as estratégias ATUmah e GATUmah
 seguidas de TUmah detêm os menores valores de desvio padrão durante a maior parte do
 processo de rotulação.
 \input plotRisco
 O mesmo ocorre com os ranqueamentos apresentados na Figura \ref{curvasrankdesvio},
 porém com EERent alternando com TUmah.
 \input rankplotRisco
-SGmulti teve um desempenho abaixo do ranqueamento médio ($4,5$).
-
-parece que Fried está dizendo não haver diferença, p=1
+A curva de SGmulti ficou abaixo do ranqueamento médio ($4,5$).
+Uma propriedade das curvas é a clara tendência de estabilização durante o treinamento,
+indicando que em baixos orçamentos a escolha de estratégias mais estáveis é prioritária.
+% Fried está dizendo não haver diferença, p=1
 
 Finalmente, pode-se concluir, segundo o conjunto de bases e algoritmos utilizados,
-que a versão agnóstica proposta (ATUmah) é viável na prática pelo seu desempenho
-e por possuir a maior estabilidade.
-Ambas as condições são importantes na redução de riscos financeiros.
+que a versão agnóstica proposta (ATUmah) é viável na prática.
 Adicionalmente, a estratégia híbrida (GATUmah) mostrou-se como a melhor opção
 em desempenho, apesar da pequena diferença em relação às outras duas melhores
-(ATUmah e TUmah); e 
-
-podendo superar as outras da atual comparação sem incorrer em
-aumento do risco financeiro.
+(ATUmah e TUmah).
 
 \subsection{Comparação RFw}\ref{crf}
 \subsection{Comparação SVM}\ref{csvm}

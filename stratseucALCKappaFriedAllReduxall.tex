@@ -1,15 +1,17 @@
 \begin{table}[h]
 \caption{Um contra um para todos os algoritmos de aprendizado. Medida: ALC-kappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
-\begin{center}\begin{tabular}{lcc|cc|cc|cc}
- 			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
-1 - Rnd  	& - &   &   &   &   &   &   &   \\
-2 - Clu  	&   & - &   &   &   &   &   &   \\ \hline
-3 - \textbf{ATUeuc}	& * & * & - &   & * & + &   &   \\
-4 - \textbf{GATUeuc}	& * & * &   & - & * & * &   & . \\ \hline
-5 - \textbf{SGmulti}	& * &   &   &   & - &   &   &   \\
-6 - Mar  	& * & * &   &   &   & - &   &   \\ \hline
-7 - TUeuc	& * & * &   &   & * & * & - &   \\
-8 - EERent	& * & * &   &   & + &   &   & - \\ \hline\end{tabular}
+\begin{center}\begin{tabular}{lcc|cc|cc|cc|cc}
+ 			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+1 - Rnd  	& - &   &   &   &   &   &   &   & . &   \\
+2 - Clu  	&   & - &   &   &   &   & . &   & * &   \\ \hline
+3 - \textbf{ATUeuc}	& * & * & - &   & * & * & * &   & * &   \\
+4 - \textbf{GATUeuc}	& * & * &   & - & * & * & * &   & * &   \\ \hline
+5 - \textbf{SGmulti}	&   &   &   &   & - &   &   &   & . &   \\
+6 - Mar  	&   &   &   &   &   & - &   &   &   &   \\ \hline
+7 - DWeuc	&   &   &   &   &   &   & - &   &   &   \\
+8 - TUeuc	& . &   &   &   & . & + & * & - & * &   \\ \hline
+9 - EERacu	&   &   &   &   &   &   &   &   & - &   \\
+10 - EERent	& * & + &   &   & * & * & * &   & * & - \\ \hline\end{tabular}
 \label{stratsALCKappaFriedAllReduxall}
 \end{center}
 \end{table}
