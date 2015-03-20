@@ -1,4 +1,4 @@
-\section{Análise comparativa geral}\label{geral}
+\section{Análise comparativa}\label{comparativa}
 Há aplicações em que suas particularidades ou preferências do especialista determinam
 previamente o algoritmo de aprendizado. \ano{exemplos?}
 Por outro lado, há aplicações, possivelmente a maioria, em que a escolha é livre
@@ -86,7 +86,24 @@ quando uma estratégia na linha é melhor que a outra na coluna.
 O critério de vitória é baseado na comparação dos valores da ALC-kappa para todas as bases.
 A medida foi calculada com $200$ exemplos nas bases de tamanho suficiente
 e $|\mathcal{U}|$ nas demais.
-\input stratsmahALCKappaFriedAllReduxall
+% \input stratsmahALCKappaFriedAllReduxall
+\begin{table}[h]
+\caption{Um contra um para as estratégias.
+Medida: ALC-kappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
+\begin{center}\begin{tabular}{lcc|cc|cc|cc}
+                        & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+1 - Rnd         & - &   &   &   &   &   &   &   \\
+2 - Clu         &   & - &   &   &   &   &   &   \\ \hline
+3 - \textbf{ATUmah}     & * & * & - &   & * &   &   &   \\
+4 - \textbf{GATUmah}    & * & * &   & - & * & . &   &   \\ \hline
+5 - \textbf{SGmulti}    & * &   &   &   & - &   &   &   \\
+6 - Mar         & * & * &   &   & . & - &   &   \\ \hline
+7 - TUmah       & * & * &   &   & * &   & - &   \\
+8 - EERent      & * & * &   &   & * &   &   & - \\ \hline\end{tabular}
+\label{stratsALCKappaFriedAllReduxall}
+\end{center}
+\end{table}
+
 Como um indicativo da viabilidade do aprendizado ativo em geral, Rnd perde de todas exceto Clu.
 Ainda assim, o princípio teórico de Clu, que garante um desempenho que não seja pior que a
 amostragem aleatória, manteve-se válido.
@@ -114,10 +131,9 @@ dada reserva de exemplos até o término do orçamento, impossibilitando novas tent
 
 De forma análoga às curvas apresentadas para o valor médio de kappa e o ranqueamento
 correspondente, dois conjuntos de curvas baseadas no desvio padrão do valor de kappa foram
-construídos visando ilustrar o comportamento da variância preditiva a cada instante ao longo de sucessivos
-valores de orçamento.
-Apesar dos valores de desvio padrão serem muito próximos para haver diferenças estatisticamente
-significativas, é possível observar, na Figura \ref{curvasdesvio}, que as estratégias ATUmah e GATUmah
+construídos visando ilustrar o comportamento da variância preditiva a cada instante ao longo
+de sucessivos valores de orçamento.
+É possível observar, na Figura \ref{curvasdesvio}, que as estratégias ATUmah e GATUmah
 seguidas de TUmah detêm os menores valores de desvio padrão durante a maior parte do
 processo de rotulação.
 \input plotRisco
@@ -127,18 +143,67 @@ porém com EERent alternando com TUmah.
 A curva de SGmulti ficou abaixo do ranqueamento médio ($4,5$).
 Uma propriedade das curvas é a clara tendência de estabilização durante o treinamento,
 indicando que em baixos orçamentos a escolha de estratégias mais estáveis é prioritária.
-% Fried está dizendo não haver diferença, p=1
+A significância estatística das diferenças pode ser verificada na Tabela
+\ref{stratsALCKappaFriedAllRiscoReduxall}.
+% \input stratsmahALCKappaFriedAllRiscoReduxall
+\begin{table}[h]
+\caption{Um contra um para as estratégias. Medida: desvio padrão da ALC-kappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
+\begin{center}\begin{tabular}{lcc|cc|cc|cc}
+                                 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+1 - Rnd                       & - &   &   &   &   &   &   &   \\
+2 - Clu                         &   & - &   &   &   &   &   &   \\ \hline
+3 - \textbf{ATUmah}     & * & *  & - &   & *  & * &  & *   \\
+4 - \textbf{GATUmah}    & * & * &   & - & * & * &   & * \\ \hline
+5 - \textbf{SGmulti}    &   &   &   &    & - &   &   &   \\
+6 - Mar                         &   &   &   &   &   & - &   &   \\ \hline
+7 - TUmah                       & + & * &   &   & + & * & - & . \\
+8 - EERent                      &   &   &   &   &   &   &   & - \\ \hline\end{tabular}
+% calculado pelo R
+\label{stratsALCKappaFriedAllRiscoReduxall}
+\end{center}
+\end{table}
 
-Finalmente, pode-se concluir, segundo o conjunto de bases e algoritmos utilizados,
-que a versão agnóstica proposta (ATUmah) é viável na prática.
-Adicionalmente, a estratégia híbrida (GATUmah) mostrou-se como a melhor opção
-em desempenho, apesar da pequena diferença em relação às outras duas melhores
-(ATUmah e TUmah).
+Finalmente, pode-se concluir que, segundo o conjunto de bases e algoritmos utilizados,
+as versões agnóstica e híbrida propostas (ATUmah e GATUmah) são viáveis enquanto alternativas
+à TUmah, com pequena vantagem para GATUmah em acurácia quando considerada
+a quantidade de estratégias estatisticamente inferiores a elas.
+Com relação à minimização de risco financeiro, 
+novamente as estratégias propostas também se mostraram viáveis,
+vencendo as mesmas estratégias que TUmah, porém com maior significância estatística.
 
 \subsection{Comparação RFw}\ref{crf}
+
 \subsection{Comparação SVM}\ref{csvm}
 \ano{fazer análise adicional do SVM só com problemas binários}
 \subsection{Comparação ELM}\ref{celm}
+\begin{table}[h]
+\caption{Um contra um (ELM). Medida: ALCKappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
+\begin{center}\begin{tabular}{lcc|cc|cc|c}
+                        & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
+1 - Rnd         & - &   &   &   &   &   & * \\
+2 - Clu         &   & - &   &   &   &   & * \\ \hline
+3 - \textbf{ATUmah}     &   &   & - &   &   &   & * \\
+4 - \textbf{GATUmah}    &   &   &   & - &   &   & * \\ \hline
+5 - \textbf{SGmulti}    & * & * &   &   & - &   & * \\
+6 - Mar         & * & * &   &   &   & - & * \\ \hline
+7 - EMC         &   &   &   &   &   &   & - \\\end{tabular}
+\quad
+\begin{tabular}{rrrrrrr}
+  \hline
+ & V1 & V2 & V3 & V4 & V5 & V6 \\
+  \hline
+V2 & 1.00 &  &  &  &  &  \\
+  V3 & 0.43 & 0.54 &  &  &  &  \\
+  V4 & 0.17 & 0.24 & 1.00 &  &  &  \\
+  V5 & 0.00 & 0.00 & 0.50 & 0.82 &  &  \\
+  V6 & 0.00 & 0.00 & 0.11 & 0.33 & 0.99 &  \\
+  V7 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\
+   \hline
+\end{tabular}
+
+\label{stratsALCKappaFriedELMRedux}
+\end{center}
+\end{table}
 
 
 
@@ -149,66 +214,114 @@ em desempenho, apesar da pequena diferença em relação às outras duas melhores
 
 
 
+\section{Análise de nichos}\label{nichos}
+Conforme visto na Seção \ref{comparativa}, o algoritmo escolhido pode favorecer ou prejudicar
+algumas estratégias.
+\ano{conferir elm,svm , outras e rf se isso é verdade}
+
+Nesta seção, as estratégias são comparadas
+com o objetivo de identificar nichos em que umas possam se sobressair em relação às outras.
+\ano{explicar pela arvore quais os nichos de cada estratégia}
+
+orçamento baixo : $|Y|<\cent\leq min(\frac{|\mathcal{U}|}{2},100)$
+
+orçamento alto: $min(\frac{|\mathcal{U}|}{2},100)<\cent\leq min(|\mathcal{U}|,200)$
+
+Na árvore exibida na Figura \ref{tree},
+é possível observar o papel central do algoritmo de aprendizado sobre
+a estratégia de aprendizado ativo.
+Apesar de ilustrativa, a árvore pode não ser segura do ponto de vista de tomada de
+decisão devido ao baixo grau de pureza das folhas.
+
+\input arvore
+
+\input arvorebest
+
+Entretanto, algumas ramificações aceitam explicações plausíveis:
+\begin{itemize}
+ \item É fato que o algoritmo NB produz estimativas de distribuição de probabilidade
+excessivamente confiantes que podem ser amenizadas por
+\textit{bagging} \citep{conf/icml/RoyM01}.
+Estratégias que dependem dessas estimativas podem ser prejudicadas.
+Por outro lado,
+por ter um modelo para cada classe, SGmulti pode estar funcionando como \textit{bagging}
+\ano{na verdade não é bagging, pois na acurácia é usado apenas um}
+e com isso tendo um maior desempenho para esse algoritmo.
+A maior afinidade de SGmulti com atributos nominais também é um indício de uma
+maior proximidade com NB.
+\ano{para avaliar a suavidade de cada learner,
+posso calcular a entropia média da saída de cada classif para cada
+base em todos os exemplos
+e fazer uma tabela com a ultima linha sendo a media de todas as bases}
+\esb{When Does Active Learning Work?
+confirma que atributos não-discretizados favorecem AL,
+isso justifica z-score para qq classificador ? (ao menos RF, SVM, log reg. e QDA usados no artigo).
+usa apenas QBC, entropia e random.
+}
+
+% \item Rnd tem melhor desempenho em bases mais desbalanceadas
+% (entropia igual ou abaixo de $0,95$).
+\item Nenhuma folha corresponde à amostragem aleatória.
+Isso sugere a viabilidade do aprendizado ativo em geral.
+\end{itemize}
 
 
-\esb{comparar também tempo? comparação com passivo?}
 
-\section{Análise comparativa por aprendiz}\label{isolado}
-Alguns algoritmos de aprendizado são inadequados para determinadas
-estratégias.
-Por exemplo, aquelas que dependem de estimativas de probabilidade
-não podem ter como aprendiz um classificador que seja capaz de realizar
-apenas predições exatas.
-Para essas estratégias, é necessário haver a possibilidade de avaliação do nível de certeza do modelo.
-% Num cenário em que o algoritmo de aprendizado é fixado pela aplicação,
-% independentemente do problema em questão,
-% a estratégia escolhida deve ser aquela capaz de atingir o melhor desempenho
-% mesmo que o aprendiz não seja o mais adequado aos dados.
-Dessa forma, faz-se necessária uma análise com cada aprendiz isoladamente,
-pois ela evita que classificadores inadequados prejudiquem o desempenho geral.
-Esse cenário pode ser interpretado como aquele em que o algoritmo de aprendizado
-é fixado previamente pela natureza da aplicação.
-As tabelas \ref{stratsALCKappaFriedCIELMRedux},
-\ref{stratsALCKappaFried5NNRedux},
-\ref{stratsALCKappaFriedC4.5Redux},
-\ref{stratsALCKappaFriedNBRedux},
-\ref{stratsALCKappaFriedVFDTRedux} e
-\ref{stratsALCKappaFriedSVMRedux}
-contêm o resultado da comparação de todas as estratégias entre si para
-os algoritmos CIELM, 5NN, C4.5, NB, VFDT e SVM respectivamente \ano{RF?}.
-
-\input stratsALCKappaFriedELMRedux
-
-\input stratsALCKappaFriedCIELMRedux
-
-\input stratsALCKappaFried5NNRedux
-
-\input stratsALCKappaFriedC4.5wRedux
-
-\input stratsALCKappaFriedNBRedux
-
-\input stratsALCKappaFriedRFwRedux
-
-É possível observar nas seis tabelas uma mudança significativa na distribuição das marcas de
-superioridade estatística.
-A vantagem de uma dada estratégia em relação a outra que use o mesmo aprendiz
-pode chegar a se inverter, como é o caso de EERacu e Clu com os algoritmos
-CIELM e 5NN.
-
-% o 5-nn foi mal com o SGmulti porque o classificador só consegue expandir os verdadeiros labels para os 5 vizinhos mais próximos. Assim, a área de desacordo abrange praticamente todos os exemplos não rotulados.
-
-\ano{vfdt:ags e aleas}
-
-\ano{SVM:EERs e mahalas}
-
-\ano{c4.5:}
-
-\ano{nb:SG só não vence manhattans e vice-versa}
-
-\ano{CI:EERacu; gnos vencem mais que ags}
-
-\ano{5NN:EERent}
-
+% Alguns algoritmos de aprendizado são inadequados para determinadas
+% estratégias.
+% Por exemplo, aquelas que dependem de estimativas de probabilidade
+% não podem ter como aprendiz um classificador que seja capaz de realizar
+% apenas predições exatas.
+% Para essas estratégias, é necessário haver a possibilidade de avaliação do nível de certeza do modelo.
+% % Num cenário em que o algoritmo de aprendizado é fixado pela aplicação,
+% % independentemente do problema em questão,
+% % a estratégia escolhida deve ser aquela capaz de atingir o melhor desempenho
+% % mesmo que o aprendiz não seja o mais adequado aos dados.
+% Dessa forma, faz-se necessária uma análise com cada aprendiz isoladamente,
+% pois ela evita que classificadores inadequados prejudiquem o desempenho geral.
+% Esse cenário pode ser interpretado como aquele em que o algoritmo de aprendizado
+% é fixado previamente pela natureza da aplicação.
+% As tabelas \ref{stratsALCKappaFriedCIELMRedux},
+% \ref{stratsALCKappaFried5NNRedux},
+% \ref{stratsALCKappaFriedC4.5Redux},
+% \ref{stratsALCKappaFriedNBRedux},
+% \ref{stratsALCKappaFriedVFDTRedux} e
+% \ref{stratsALCKappaFriedSVMRedux}
+% contêm o resultado da comparação de todas as estratégias entre si para
+% os algoritmos CIELM, 5NN, C4.5, NB, VFDT e SVM respectivamente \ano{RF?}.
+% 
+% \input stratsALCKappaFriedELMRedux
+% 
+% \input stratsALCKappaFriedCIELMRedux
+% 
+% \input stratsALCKappaFried5NNRedux
+% 
+% \input stratsALCKappaFriedC4.5wRedux
+% 
+% \input stratsALCKappaFriedNBRedux
+% 
+% \input stratsALCKappaFriedRFwRedux
+% 
+% É possível observar nas seis tabelas uma mudança significativa na distribuição das marcas de
+% superioridade estatística.
+% A vantagem de uma dada estratégia em relação a outra que use o mesmo aprendiz
+% pode chegar a se inverter, como é o caso de EERacu e Clu com os algoritmos
+% CIELM e 5NN.
+% 
+% % o 5-nn foi mal com o SGmulti porque o classificador só consegue expandir os verdadeiros labels para os 5 vizinhos mais próximos. Assim, a área de desacordo abrange praticamente todos os exemplos não rotulados.
+% 
+% \ano{vfdt:ags e aleas}
+% 
+% \ano{SVM:EERs e mahalas}
+% 
+% \ano{c4.5:}
+% 
+% \ano{nb:SG só não vence manhattans e vice-versa}
+% 
+% \ano{CI:EERacu; gnos vencem mais que ags}
+% 
+% \ano{5NN:EERent}
+% 
 
 
 Isso sugere a existência de alguma afinidade entre estratégia e aprendiz

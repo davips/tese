@@ -442,6 +442,26 @@ Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
+[document-settings,item:stratsmahALCKappaFriedAllReduxall.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:stratsmahALCKappaFriedAllRiscoReduxall.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
 [document-settings,item:tese.tex]
 Bookmarks=
 Encoding=ISO-8859-1
@@ -604,13 +624,13 @@ order=0
 
 [item:exp-analise.tex]
 archive=true
-column=54
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=127
+line=192
 mode=LaTeX
 open=true
-order=0
+order=1
 
 [item:exp-elm.tex]
 archive=true
@@ -624,23 +644,23 @@ order=3
 
 [item:exp-meta.tex]
 archive=true
-column=56
-encoding=ISO-8859-1
-highlight=LaTeX
-line=47
-mode=LaTeX
-open=false
-order=6
-
-[item:experimentos.tex]
-archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=94
+line=18
 mode=LaTeX
 open=true
-order=1
+order=2
+
+[item:experimentos.tex]
+archive=true
+column=84
+encoding=ISO-8859-1
+highlight=LaTeX
+line=34
+mode=LaTeX
+open=true
+order=0
 
 [item:imagens/fluxo-esquema.tex]
 archive=true
@@ -767,7 +787,7 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=31
+line=7
 mode=LaTeX
 open=false
 order=2
@@ -892,6 +912,26 @@ mode=LaTeX
 open=false
 order=-1
 
+[item:stratsmahALCKappaFriedAllReduxall.tex]
+archive=true
+column=11
+encoding=ISO-8859-1
+highlight=LaTeX
+line=14
+mode=LaTeX
+open=false
+order=3
+
+[item:stratsmahALCKappaFriedAllRiscoReduxall.tex]
+archive=true
+column=0
+encoding=ISO-8859-1
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=false
+order=2
+
 [item:tese.tex]
 archive=true
 column=0
@@ -997,8 +1037,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-analise.tex]
-CursorColumn=54
-CursorLine=127
+CursorColumn=0
+CursorLine=192
 JumpList=
 ViMarks=
 
@@ -1009,14 +1049,14 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-meta.tex]
-CursorColumn=56
-CursorLine=47
+CursorColumn=0
+CursorLine=18
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:experimentos.tex]
-CursorColumn=0
-CursorLine=94
+CursorColumn=84
+CursorLine=34
 JumpList=
 ViMarks=
 
@@ -1090,7 +1130,7 @@ ViMarks=
 
 [view-settings,view=0,item:plot.tex]
 CursorColumn=0
-CursorLine=31
+CursorLine=7
 JumpList=
 ViMarks=
 
@@ -1163,6 +1203,18 @@ ViMarks=
 [view-settings,view=0,item:stratsALCKappaRFRedux.tex]
 CursorColumn=1
 CursorLine=4
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:stratsmahALCKappaFriedAllReduxall.tex]
+CursorColumn=11
+CursorLine=14
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:stratsmahALCKappaFriedAllRiscoReduxall.tex]
+CursorColumn=0
+CursorLine=0
 JumpList=
 ViMarks=
 
