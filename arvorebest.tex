@@ -1,52 +1,57 @@
+\usetikzlibrary{trees}
+\tikzset{
+every node/.style={font=\scriptsize,black, thin},
+decision/.style={shape=rectangle, minimum height=1cm, text width=1.7cm,
+text centered, rounded corners=1ex, draw},
+outcome/.style={ shape=ellipse, fill=gray!15, draw, text width=1.15cm, text centered},
+decision tree/.style={sibling distance=3cm, level distance=2cm},
+cond/.style={blue, yshift=-2mm, shape=rectangle, text centered},
+}
+
+% \afterpage{\clearpage\begin{landscape}
+\begin{figure}
 \begin{center}
-\begin{figure}\label{tree}
-\caption{Árvore de decisão gerada pelo algoritmo C4.5 com um mínimo de $12$ exemplos
-por nó (de um total de $188$ pares base-orçamento).
-O grau de pureza de cada folha é dado entre parênteses.
-Estratégias propostas estão em negrito.
-Rnd, Mar e EERacu não tiveram vitórias suficientes para aparecer na árvore.
-\ano{reposicionar valores para maior proximidade das arestas}
-\esb{idem da outra árvore}}
-% \usetikzlibrary{trees}
-% \tikzset{
-%     every node/.style={        font=\scriptsize    },
-%     decision/.style={        shape=rectangle,        minimum height=1cm,
-%         text width=1.7cm,        text centered,        rounded corners=1ex,        draw,    },
-%     outcome/.style={        shape=ellipse,        fill=gray!15,        draw,
-%         text width=1.15cm,        text centered    },
-%     decision tree/.style={        sibling distance=3cm,        level distance=2cm    }
-% }
-\begin{tikzpicture} [text width=2.7cm, align=flush center,grow cyclic,
-level 1/.style={level distance=2.5cm,sibling angle=180},
-level 2/.style={text width=2cm, font=\footnotesize, level distance=3cm,sibling angle=45}]
-\node[line width=0.3ex, decision] {classes}
-    child {node [decision, label=$\leq5$] {aprendiz}
-      child {node [decision, label=SVM] {$\# atributos$}
-        child {node [outcome, label=$\leq7$] {DWeuc ($25\%$)}}
-        child {node [outcome, label=$>7$] {\textbf{ATUmah} ($33\%$)}}
-      }
-      child {node [decision, label=5NN] {orçamento}
-        child {node [outcome, label=baixo] {EERent ($40\%$)}}
-        child {node [outcome, label=alto] {Mar ($33\%$)}}
-      }
-      child {node [decision, label=C4.5] {$\frac{|\mathcal{U}|}{\# atributos}$}
-        child {node [outcome, label=$\leq50$] {\textbf{ATUeuc} ($22\%$)}}
-        child {node [decision, label=$>50$] {orçamento}
-          child {node [outcome, label=baixo] {EERent ($33\%$)}}
-          child {node [outcome, label=alto] {\textbf{SGmulti} ($25\%$)}}
-        }
-      }
-      child {node [outcome, label=VFDT] {\textbf{ATUeuc} ($32\%$)}}
-      child {node [decision, label=NB] {$\# atributos$}
-        child {node [outcome, label=$\leq11$] {TUeuc ($25\%$)}}
-        child {node [outcome, label=$>11$] {Clu ($36\%$)}}
-      }
-      child {node [outcome, label=CIELM] {\textbf{TUeuc} ($50\%$)}}
-    }
-    child {node [decision, label=$>5$] {$\frac{\%maj}{\%min}$}
-      child {node [outcome, label=$\leq2$] {\textbf{ATUmah} ($33\%$)}}
-      child {node [outcome, label=$>2$] {\textbf{ATUeuc} ($43\%$)}}
-    };
+\caption{Nichos de cada estratégia. Para cada base foi adotado o melhor algoritmo.
+Mínimo de $12$ exemplos por folha.
+\textit{Árvore de decisão gerada pelo algoritmo C4.5w.
+Quantidade de exemplos e grau de pureza dados nas folhas.}
+}
+\begin{tikzpicture} [edge from parent/.style={->,above,draw,sloped,midway,gray!30,ultra thick},
+text width=2.7cm, align=flush center, grow cyclic,
+level 1/.style={level distance=2.85cm,sibling angle=60},
+level 2/.style={text width=2cm, font=\footnotesize, level distance=2.8cm,sibling angle=45},
+% level 3/.style={text width=2cm, font=\footnotesize, level distance=2.8cm,sibling angle=45},
+% level 4/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=45},
+% level 5/.style={text width=2cm, font=\footnotesize, level distance=2.85cm,sibling angle=45},
+]
+% \input tree
+\node[line width=0.3ex, decision] {algoritmo}
+child {node [decision] {$\frac{\#exemplos}{\#atrib.}$}
+child {node [decision] {\#exemplos}
+child {node [outcome] {EERent \\$5$: $80\%$} edge from parent node [cond] {$\leq226$}}
+child {node [outcome] {TUmah \\$4$: $50\%$} edge from parent node [cond] {$>226$}}edge from parent node [cond] {$\leq50$}}
+child {node [outcome] {Mar \\$6$: $67\%$} edge from parent node [cond] {$>50$}}edge from parent node [cond] {5NN}}
+child {node [decision] {\%minor.}
+child {node [outcome] {EERent \\$5$: $80\%$} edge from parent node [cond] {$\leq32$}}
+child {node [outcome] {TUmah \\$4$: $75\%$} edge from parent node [cond] {$>32$}}edge from parent node [cond] {C4.5w}}
+child {node [outcome] {EERent \\$21$: $57\%$} edge from parent node [cond] {SVM}}
+child {node [decision] {\#classes}
+child {node [outcome] {\textbf{ATUmah} \\$4$: $75\%$} edge from parent node [cond] {$\leq2$}}
+child {node [outcome] {EERent \\$5$: $80\%$} edge from parent node [cond] {$>2$}}edge from parent node [cond] {NB}}
+child {node [decision] {\#atributos}
+child {node [outcome] {EERent \\$5$: $40\%$} edge from parent node [cond] {$\leq6$}}
+child {node [decision] {\#exemplos}
+child {node [decision] {\%nominais}
+child {node [outcome] {TUmah \\$8$: $100\%$} edge from parent node [cond] {$\leq17$}}
+child {node [outcome] {Mar \\$4$: $50\%$} edge from parent node [cond] {$>17$}}edge from parent node [cond] {$\leq1669$}}
+child {node [outcome] {Mar \\$8$: $50\%$} edge from parent node [cond] {$>1669$}}edge from parent node [cond] {$>6$}}edge from parent node [cond] {RFw}}
+child {node [decision] {\%major.}
+child {node [outcome] {TUmah \\$5$: $80\%$} edge from parent node [cond] {$\leq42$}}
+child {node [decision] {\#atributos}
+child {node [outcome] {Mar \\$7$: $71\%$} edge from parent node [cond] {$\leq20$}}
+child {node [outcome] {TUmah \\$4$: $75\%$} edge from parent node [cond] {$>20$}}edge from parent node [cond] {$>42$}}edge from parent node [cond] {CIELM}};
+\label{treeBest}
 \end{tikzpicture}
-\end{figure}
 \end{center}
+\end{figure}
+% \end{landscape}\clearpage}

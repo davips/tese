@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=exp-analise.tex
+lastDocument=experimentos.tex
 masterDocument=
 name=Tese
 pkg_extIsRegExp=false
@@ -482,6 +482,16 @@ Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
+[document-settings,item:tree.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
 [item:active-learning.tex]
 archive=true
 column=100
@@ -544,20 +554,20 @@ order=-1
 
 [item:arvore.tex]
 archive=true
-column=42
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=16
+line=0
 mode=LaTeX
 open=false
-order=-1
+order=1
 
 [item:arvorebest.tex]
 archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=49
+line=10
 mode=LaTeX
 open=false
 order=1
@@ -617,27 +627,27 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=298
+line=362
 mode=LaTeX
 open=false
 order=0
 
 [item:exp-analise.tex]
 archive=true
-column=0
+column=10
 encoding=ISO-8859-1
 highlight=LaTeX
-line=192
+line=285
 mode=LaTeX
 open=true
-order=1
+order=0
 
 [item:exp-elm.tex]
 archive=true
-column=0
+column=30
 encoding=ISO-8859-1
 highlight=LaTeX
-line=15
+line=33
 mode=LaTeX
 open=false
 order=3
@@ -647,20 +657,20 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=18
+line=0
 mode=LaTeX
-open=true
+open=false
 order=2
 
 [item:experimentos.tex]
 archive=true
-column=84
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=34
+line=241
 mode=LaTeX
 open=true
-order=0
+order=1
 
 [item:imagens/fluxo-esquema.tex]
 archive=true
@@ -807,7 +817,7 @@ archive=true
 column=0
 encoding=ISO-8859-15
 highlight=LaTeX
-line=7
+line=191
 mode=LaTeX
 open=false
 order=3
@@ -874,10 +884,10 @@ order=-1
 
 [item:stratsALCKappaFriedSVMRedux.tex]
 archive=true
-column=39
+column=11
 encoding=ISO-8859-1
 highlight=LaTeX
-line=11
+line=16
 mode=LaTeX
 open=false
 order=2
@@ -937,17 +947,27 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=252
+line=198
 mode=LaTeX
 open=false
 order=2
 
 [item:topologia.tex]
 archive=true
-column=23
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=258
+line=0
+mode=LaTeX
+open=false
+order=-1
+
+[item:tree.tex]
+archive=true
+column=120
+encoding=ISO-8859-1
+highlight=LaTeX
+line=32
 mode=LaTeX
 open=false
 order=-1
@@ -989,14 +1009,14 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:arvore.tex]
-CursorColumn=42
-CursorLine=16
+CursorColumn=0
+CursorLine=0
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:arvorebest.tex]
 CursorColumn=0
-CursorLine=49
+CursorLine=10
 JumpList=
 ViMarks=
 
@@ -1032,19 +1052,19 @@ ViMarks=
 
 [view-settings,view=0,item:elm.tex]
 CursorColumn=0
-CursorLine=298
+CursorLine=362
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-analise.tex]
-CursorColumn=0
-CursorLine=192
+CursorColumn=10
+CursorLine=285
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-elm.tex]
-CursorColumn=0
-CursorLine=15
+CursorColumn=30
+CursorLine=33
 JumpList=
 ViMarks=
 
@@ -1055,8 +1075,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:experimentos.tex]
-CursorColumn=84
-CursorLine=34
+CursorColumn=0
+CursorLine=241
 JumpList=
 ViMarks=
 
@@ -1142,7 +1162,7 @@ ViMarks=
 
 [view-settings,view=0,item:propostas.tex]
 CursorColumn=0
-CursorLine=7
+CursorLine=191
 JumpList=
 ViMarks=
 
@@ -1183,8 +1203,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:stratsALCKappaFriedSVMRedux.tex]
-CursorColumn=39
-CursorLine=11
+CursorColumn=11
+CursorLine=16
 JumpList=
 ViMarks=
 
@@ -1220,12 +1240,18 @@ ViMarks=
 
 [view-settings,view=0,item:tese.tex]
 CursorColumn=0
-CursorLine=252
+CursorLine=198
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:topologia.tex]
-CursorColumn=23
-CursorLine=258
+CursorColumn=0
+CursorLine=0
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:tree.tex]
+CursorColumn=120
+CursorLine=32
 JumpList=
 ViMarks=

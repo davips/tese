@@ -218,27 +218,9 @@ EERent  &   0.37 &   0.41 &   0.36 &   0.38 &   0.39 &   0.36 & \textcolor{red}{
 \input exp-analise
 
 
-
-\green{manter apenas estratégias que ganharam em algum momento/nicho?}
-\blue{assim é possível o avaliar estratégias num cenário em que se sabe de
-antemão qual é o melhor learner.
-manter todas as combinações learner-dataset serve para o cenário em que
-nada se sabe do dataset, ou seja, é o mais esperado,
-pois normalmente é preciso ter rótulos suficientes para se testar classificadores;
-além disso, quando se conhece o melhor classificador
-(a não ser por propriedades dos dados:
-ex.: nominal->NB, muitos atributos->SVM etc.)
-é por meio de um problema parecido onde as estratégias podem ser testadas}
-
-\blue{plotar (log?) rnd (e clu?) p/ nb,c45 e 5nn até o fim do pool ou
-até atingir passiva, assim
-serve de panorama do qto as outras estrategias/learners
-atingiram da ALC possivel)}
-
 \green{rodar eeg-eye-state pra medir tempo nas principais estrategias/learners,
-pra ser a unica base usando nintera (nintera come memória);
 rodar como todas as outras, mas em 1x10-fold}
-\red{o tempo ficou sempre abaixo de 1s, então está dentro do tolerable
+\red{o tempo ficou sempre abaixo de 1s?, então está dentro do tolerable
 waiting time.
 Suponho que a demora do experimento se deva à inicialização das strats
 e não às consultas propriamente ditas.}

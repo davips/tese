@@ -142,7 +142,7 @@ Outra vantagem é a inexistência de tempo de espera interconsultas.
 
 \ano{Desvantagem do cluster-based:        é pesado, mesmo que o aprendiz seja leve}
 
-\subsection{Enviesada para o balanceamento}\label{gatu}
+\subsection{Híbrida}\label{htu}
 
 \ano{uma amostragem balanceada tem mais chance de estar sendo exploratória?}
 
@@ -161,10 +161,7 @@ Assim, a nova estratégia (GATU) procura alternar entre agnosticismo e gnosticism
 de acordo com a qualidade das consultas.
 Devido à impossibilidade de se obter diretamente o erro de generalização como medida de qualidade,
 é preciso recorrer a uma medida indireta.
-Optou-se pelo grau de balanceamento das classes do conjunto de exemplos rotulados.
-Se a última consulta melhora o balanceamento, então mantém-se a estratégia vigente;
-do contrário, passa a vigorar a outra.
-O grau de balanceamento é calculado pela entropia normalizada da distribuição de classes.
+Pearson
 
 % \subsection{Ponderada pela utilidade de cada classe}\label{lu}
 % % ELM vai bem com essa
@@ -190,7 +187,7 @@ O grau de balanceamento é calculado pela entropia normalizada da distribuição de
 
 \input exp-elm
 
-\section{SemiELM}
-\ano{investigar maneiras de incorporar unlabeled data na ELM}
+% \section{SemiELM}
+% \ano{investigar maneiras de incorporar unlabeled data na ELM}
  
 \section{Considerações}

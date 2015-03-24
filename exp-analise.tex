@@ -6,8 +6,9 @@ e concretizada idealmente a partir do momento em que o conjunto de treinamento é
 suficientemente grande para a realização de uma validação cruzada \ano{ref?}.
 Para simular esses dois cenários de forma concisa e
 devido à presença de estratégias específicas de um único tipo de aprendiz
-(QBC, EMC, SVMS e SVMB),
-a comparação de estratégias está dividida em quatro partes:
+(QBC, SVMS e SVMB),
+% (QBC, EMC, SVMS e SVMB),
+a comparação de estratégias está dividida em três partes:
 \begin{itemize}
  \item \textbf{comparação com algoritmos variados} - compreende algoritmos não vinculados a nenhuma estratégia
  (5NN, C4.5w, CIELM e NB); incidentalmente, esse critério remove os algoritmos que aparecem
@@ -19,9 +20,9 @@ e últimos lugares mais equilibrada, entre $21$ e $27$ e entre $19$ e $28$, respe
   para esse algoritmo;
   \item \textbf{comparação SVM} - de forma análoga à \textit{comparação RFw},
   porém com duas estratégias específicas; e,
-  \item \textbf{comparação ELM} - de forma análoga à \textit{comparação RFw},
-  porém com o diferencial de revelar de forma pioneira a viabilidade de se aplicar
-  aprendizado ativo e a estratégia específica com ELMs.
+%   \item \textbf{comparação ELM} - de forma análoga à \textit{comparação RFw},
+%   porém com o diferencial de revelar de forma pioneira a viabilidade de se aplicar
+%   aprendizado ativo e a estratégia específica com ELMs.
   \end{itemize}
 
 \subsection{Comparação diversa}\label{cdiversa}
@@ -171,192 +172,146 @@ Com relação à minimização de risco financeiro,
 novamente as estratégias propostas também se mostraram viáveis,
 vencendo as mesmas estratégias que TUmah, porém com maior significância estatística.
 
-\subsection{Comparação RFw}\ref{crf}
+\subsection{Comparação RFw}\label{crf}
+A estratégia específica QBC perdeu de todas, exceto GATUman e Rnd,
+conforme Tabela \ref{stratsALCKappaFriedRFwRedux}.
+GATUman também teve um desempenho significativamente negativo.
+Com o algoritmo RFw, as estratégias mais exploratórias ficaram em desvantagem,
+com TUman vencendo todas, exceto Mar, que é uma estratégia puramente
+prospectiva.
+SGmulti, Mar e EERent também tiveram algum destaque, em oposição ao ocorrido
+na comparação de estratégias com algoritmos variados.
 
-\subsection{Comparação SVM}\ref{csvm}
-\ano{fazer análise adicional do SVM só com problemas binários}
-\subsection{Comparação ELM}\ref{celm}
 \begin{table}[h]
-\caption{Um contra um (ELM). Medida: ALCKappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
-\begin{center}\begin{tabular}{lcc|cc|cc|c}
-                        & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
-1 - Rnd         & - &   &   &   &   &   & * \\
-2 - Clu         &   & - &   &   &   &   & * \\ \hline
-3 - \textbf{ATUmah}     &   &   & - &   &   &   & * \\
-4 - \textbf{GATUmah}    &   &   &   & - &   &   & * \\ \hline
-5 - \textbf{SGmulti}    & * & * &   &   & - &   & * \\
-6 - Mar         & * & * &   &   &   & - & * \\ \hline
-7 - EMC         &   &   &   &   &   &   & - \\\end{tabular}
-\quad
-\begin{tabular}{rrrrrrr}
-  \hline
- & V1 & V2 & V3 & V4 & V5 & V6 \\
-  \hline
-V2 & 1.00 &  &  &  &  &  \\
-  V3 & 0.43 & 0.54 &  &  &  &  \\
-  V4 & 0.17 & 0.24 & 1.00 &  &  &  \\
-  V5 & 0.00 & 0.00 & 0.50 & 0.82 &  &  \\
-  V6 & 0.00 & 0.00 & 0.11 & 0.33 & 0.99 &  \\
-  V7 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\
-   \hline
-\end{tabular}
-
-\label{stratsALCKappaFriedELMRedux}
+\caption{Um contra um (RFw). Medida: ALCKappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
+\begin{center}\begin{tabular}{lcc|cc|cc|cc|c}
+                        & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
+1 - Rnd         & - &   &   &   &   &   &   &   &   \\
+2 - Clu         &   & - &   &   &   &   &   &   & * \\ \hline
+3 - \textbf{ATUmah}     & * &   & - & * &   &   &   &   & * \\
+4 - \textbf{GATUmah}    &   &   &   & - &   &   &   &   &   \\ \hline
+5 - \textbf{SGmulti}    & * & * &   & * & - &   &   &   & * \\
+6 - Mar         & * & * & * & * &   & - &   &   & * \\ \hline
+7 - TUmah       & * & * & * & * & * &   & - & * & * \\
+8 - EERent      & * & * &   & * &   &   &   & - & * \\ \hline
+9 - QBC         &   &   &   &   &   &   &   &   & - \\\end{tabular}
+\label{stratsALCKappaFriedRFwRedux}
 \end{center}
 \end{table}
 
 
+\subsection{Comparação SVM}\label{csvm}
+Diferentemente do que ocorreu com RFw, a SVM favoreceu GATUman.
+EERent apareceu como a melhor opção, vencendo praticamente todas.
+As estratégias específicas não tiveram tantas derrotas quanto a QBC na Seção \ref{crf}
+\begin{table}[h]
+\caption{Um contra um (SVM). Medida: ALCKappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
+\begin{center}\begin{tabular}{lcc|cc|cc|cc|cc}
+                        & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+1 - Rnd         & - &   &   &   &   &   &   &   &   &   \\
+2 - Clu         &   & - &   &   &   &   &   &   &   &   \\ \hline
+3 - \textbf{ATUmah}     &   &   & - &   &   &   &   &   &   &   \\
+4 - \textbf{GATUmah}    & * &   & . & - & * & * &   &   & * & + \\ \hline
+5 - \textbf{SGmulti}    &   &   &   &   & - &   &   &   &   &   \\
+6 - Mar         &   &   &   &   &   & - &   &   &   &   \\ \hline
+7 - TUmah       & . &   &   &   &   &   & - &   &   &   \\
+8 - EERent      & * & * & * &   & * & * & * & - & * & * \\ \hline
+9 - SVMRBFbal   &   &   &   &   &   &   &   &   & - &   \\
+10 - SVMRBFsim  &   &   &   &   &   &   &   &   &   & - \\ \hline\end{tabular}
+\label{stratsALCKappaFriedSVMRedux}
+\end{center}
+\end{table}
 
 
+% \subsection{Comparação ELM}\label{celm}
+% Similarmente ao ocorrido com a QBC, a estratégia específica da ELM (EMC)
+% perdeu de todas incluindo a amostragem aleatória.
+% Isso sugere que a proposta não é viável.
+% Porém, segundo a comparação de classificadores da Seção \ref{algs},
+% a ELM teve apenas quatro primeiros lugares dentre as $94$ bases de dados.
+% É possível que a seleção de modelos via PRESS tenha influenciado negativamente
+% as predições e consequentemente prejudicado a estimativa de mudança no modelo.
+% TUmah, EERent e Mar venceram as três estratégias agnósticas com diferentes
+% graus de significância estatística.
+% SGmulti superou apenas as estratégias Rnd e Clu.
+% \begin{table}[h]
+% \caption{Um contra um (ELM). Medida: ALCKappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
+% \begin{center}\begin{tabular}{lcc|cc|cc|cc|c}
+%                         & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
+% 1 - Rnd         & - &   &   &   &   &   &   &   & + \\
+% 2 - Clu         &   & - &   &   &   &   &   &   & + \\ \hline
+% 3 - \textbf{ATUmah}     &   &   & - &   &   &   &   &   & * \\
+% 4 - \textbf{GATUmah}    &   &   &   & - &   &   &   &   & * \\ \hline
+% 5 - \textbf{SGmulti}    & + & + &   &   & - &   &   &   & * \\
+% 6 - Mar         & * & * & . &   &   & - &   &   & * \\ \hline
+% 7 - TUmah       & * & * & + &   &   &   & - &   & * \\
+% 8 - EERent      & * & * & + &   &   &   &   & - & * \\ \hline
+% 9 - EMC         &   &   &   &   &   &   &   &   & - \\\end{tabular}
+% \label{stratsALCKappaFriedELMRedux}
+% \end{center}
+% \end{table}
 
+\subsection{Síntese das comparações}\label{sintese}
+Estratégias agnósticas têm a vantagem de dispensar o aprendiz.
+Assim, elas evitam o risco de uma escolha inadequada de algoritmo de aprendizado
+para um dado problema.
+Consequentemente, ATUmah seria a preferível no caso de algoritmos variados.
+Entretanto, os resultados dos quatro experimentos apontam para diferentes melhores
+estratégias.
+Apesar de ATUmah não ter sido pior que a amostragem aleatória em nenhum deles,
+ela perde de Mar, TUmah e EERent em alguns casos.
+Logo, se for desejado o melhor desempenho para um dado algoritmo,
+então é preciso recorrer a algum procedimento que minimize a chance de
+uma escolha inadequada de estratégia.
+Além do algoritmo, o orçamento disponível e as características de cada base também
+podem favorecer ou prejudicar certas estratégias.
 
+Nesta seção, as estratégias são comparadas com o objetivo de identificar nichos
+em que umas possam se sobressair em relação às outras.
+Cada nicho corresponde a um algoritmo e um conjunto de bases de dados similares entre si.
 
-
-
-
-\section{Análise de nichos}\label{nichos}
-Conforme visto na Seção \ref{comparativa}, o algoritmo escolhido pode favorecer ou prejudicar
-algumas estratégias.
-\ano{conferir elm,svm , outras e rf se isso é verdade}
-
-Nesta seção, as estratégias são comparadas
-com o objetivo de identificar nichos em que umas possam se sobressair em relação às outras.
-\ano{explicar pela arvore quais os nichos de cada estratégia}
-
-orçamento baixo : $|Y|<\cent\leq min(\frac{|\mathcal{U}|}{2},100)$
-
-orçamento alto: $min(\frac{|\mathcal{U}|}{2},100)<\cent\leq min(|\mathcal{U}|,200)$
-
-Na árvore exibida na Figura \ref{tree},
+Nas árvores exibidas nas figuras \ref{treeBest} e \ref{tree},
 é possível observar o papel central do algoritmo de aprendizado sobre
-a estratégia de aprendizado ativo.
-Apesar de ilustrativa, a árvore pode não ser segura do ponto de vista de tomada de
-decisão devido ao baixo grau de pureza das folhas.
-
+a estratégia de aprendizado ativo, pois é a primeira regra em ambas as árvores.
+Elas simulam dois cenários com relação à escolha do algoritmo: quando o mais adequado é conhecido
+(\ref{treeBest}) e quando ele é arbitrário (\ref{tree}).
+O primeiro caso resulta em $95$ metaexemplos devido a um empate,
+e o segundo caso também resulta em torno de $95$ metaexemplos, porém para cada algoritmo,
+totalizando $595$.
+% Apesar de ilustrativa, a árvore pode não ser segura do ponto de vista de tomada de
+% decisão devido ao baixo grau de pureza das folhas.
+\input arvorebest
 \input arvore
 
-\input arvorebest
+\ref{tree}
+A amostragem aleatória aparece apenas na folha que representa o uso do 5NN nas quatro bases que têm
+uma proporção de atributos nominais não muito alta (igual ou abaixo de $77$),
+poucos atributos em geral (igual ou abaixo de $6$) e não muitos exemplos (igual ou abaixo de $1078$).
+Assim, pode-se concluir que não optar pelo aprendizado ativo raramente é a melhor estratégia.
+Num nicho similar, porém com muitos exemplos (acima de $1078$), HTUmah é a mais indicada.
+ATUmah
 
-Entretanto, algumas ramificações aceitam explicações plausíveis:
-\begin{itemize}
- \item É fato que o algoritmo NB produz estimativas de distribuição de probabilidade
-excessivamente confiantes que podem ser amenizadas por
-\textit{bagging} \citep{conf/icml/RoyM01}.
+\ref{treeBest}
+O algoritmo NB produz estimativas de distribuição de probabilidade excessivamente confiantes
+que podem ser amenizadas por um \ing{comitê por amostragem}{bagging} \citep{conf/icml/RoyM01}.
 Estratégias que dependem dessas estimativas podem ser prejudicadas.
-Por outro lado,
-por ter um modelo para cada classe, SGmulti pode estar funcionando como \textit{bagging}
-\ano{na verdade não é bagging, pois na acurácia é usado apenas um}
-e com isso tendo um maior desempenho para esse algoritmo.
-A maior afinidade de SGmulti com atributos nominais também é um indício de uma
-maior proximidade com NB.
-\ano{para avaliar a suavidade de cada learner,
-posso calcular a entropia média da saída de cada classif para cada
-base em todos os exemplos
-e fazer uma tabela com a ultima linha sendo a media de todas as bases}
-\esb{When Does Active Learning Work?
-confirma que atributos não-discretizados favorecem AL,
-isso justifica z-score para qq classificador ? (ao menos RF, SVM, log reg. e QDA usados no artigo).
-usa apenas QBC, entropia e random.
-}
+ATUmah por ser agnóstica é independente dessas estimativas e aparece como nó
+folha para esse algoritmo de aprendizado.
+EERent também aparece e é gnóstico,
+mas seu uso da soma das entropias das estimativas de
+probabilidade de todos os exemplos da reserva ameniza o efeito do excesso de confiança.
 
-% \item Rnd tem melhor desempenho em bases mais desbalanceadas
-% (entropia igual ou abaixo de $0,95$).
-\item Nenhuma folha corresponde à amostragem aleatória.
-Isso sugere a viabilidade do aprendizado ativo em geral.
-\end{itemize}
-
-
-
-% Alguns algoritmos de aprendizado são inadequados para determinadas
-% estratégias.
-% Por exemplo, aquelas que dependem de estimativas de probabilidade
-% não podem ter como aprendiz um classificador que seja capaz de realizar
-% apenas predições exatas.
-% Para essas estratégias, é necessário haver a possibilidade de avaliação do nível de certeza do modelo.
-% % Num cenário em que o algoritmo de aprendizado é fixado pela aplicação,
-% % independentemente do problema em questão,
-% % a estratégia escolhida deve ser aquela capaz de atingir o melhor desempenho
-% % mesmo que o aprendiz não seja o mais adequado aos dados.
-% Dessa forma, faz-se necessária uma análise com cada aprendiz isoladamente,
-% pois ela evita que classificadores inadequados prejudiquem o desempenho geral.
-% Esse cenário pode ser interpretado como aquele em que o algoritmo de aprendizado
-% é fixado previamente pela natureza da aplicação.
-% As tabelas \ref{stratsALCKappaFriedCIELMRedux},
-% \ref{stratsALCKappaFried5NNRedux},
-% \ref{stratsALCKappaFriedC4.5Redux},
-% \ref{stratsALCKappaFriedNBRedux},
-% \ref{stratsALCKappaFriedVFDTRedux} e
-% \ref{stratsALCKappaFriedSVMRedux}
-% contêm o resultado da comparação de todas as estratégias entre si para
-% os algoritmos CIELM, 5NN, C4.5, NB, VFDT e SVM respectivamente \ano{RF?}.
+% Algumas ramificações aceitam explicações plausíveis:
+% \begin{itemize}
+%  \item
 % 
-% \input stratsALCKappaFriedELMRedux
-% 
-% \input stratsALCKappaFriedCIELMRedux
-% 
-% \input stratsALCKappaFried5NNRedux
-% 
-% \input stratsALCKappaFriedC4.5wRedux
-% 
-% \input stratsALCKappaFriedNBRedux
-% 
-% \input stratsALCKappaFriedRFwRedux
-% 
-% É possível observar nas seis tabelas uma mudança significativa na distribuição das marcas de
-% superioridade estatística.
-% A vantagem de uma dada estratégia em relação a outra que use o mesmo aprendiz
-% pode chegar a se inverter, como é o caso de EERacu e Clu com os algoritmos
-% CIELM e 5NN.
-% 
-% % o 5-nn foi mal com o SGmulti porque o classificador só consegue expandir os verdadeiros labels para os 5 vizinhos mais próximos. Assim, a área de desacordo abrange praticamente todos os exemplos não rotulados.
-% 
-% \ano{vfdt:ags e aleas}
-% 
-% \ano{SVM:EERs e mahalas}
-% 
-% \ano{c4.5:}
-% 
-% \ano{nb:SG só não vence manhattans e vice-versa}
-% 
-% \ano{CI:EERacu; gnos vencem mais que ags}
-% 
-% \ano{5NN:EERent}
-% 
-
-
-Isso sugere a existência de alguma afinidade entre estratégia e aprendiz
-\ano{esmiuçar detalhes?} e também a inexistência de uma estratégia
-que seja a melhor com todos os algoritmos de aprendizado.
-
-Algumas observações para cada aprendiz \ano{essas observações servem para
-que possamos ter insights sobre o experimento, depois é preciso deixar mais sucinto.}:
-\begin{itemize}
- \item CIELM - TUman e TUmah vencem todas as demais exceto Mar;
- \item 5NN - todas as estratégias baseadas em densidade, exceto DWeuc
- (e TUmah em menor grau), vencem as demais, exceto EERent;
- \item C4.5 - similar a 5NN, mas com algumas diferenças relevantes:
-  \subitem DWeuc perde de todas;
-  \subitem SGmulti vence Rnd e Mar além de DWeuc;
-  \subitem ALUman vence sua contraparte e demais estratégias baseadas na
-  distância de Mahalanobis;
-  \item NB - SGmulti supera todas as estratégias,
-  exceto as baseadas na distância de Manhattan; as estratégias agnósticas baseadas na distância de Manhattan vencem todas,
- exceto sua versão gnóstica e SGmulti;
- \item VFDT - similar a NB, mas com algumas diferenças relevantes:
-  \subitem é a única vez em que Rnd e Clu vencem mais do que uma das estratégias mais fracas
-  \subitem SGmulti deixa de vencer Rnd, Clu
-  \subitem SGmulti, ATUman e ALUman deixam de vencer as estratégias
-  baseadas na distância de Mahalanobis
-  \subitem ATUmah e ALUmah passam a vencer as demais,
-  exceto Rnd, Clu, SGmulti, ATUman e ALUman
- \item SVM - EERent vence a maioria das estratégias mais fracas;
- é a única vez em que EERacu vence (as estratégias baseadas na distância de Manhattan);
-  é a única vez em que estratégias (baseadas na distância de Mahalanobis)
-  vencem todas as demais.
-\end{itemize}
-\ano{explicitar comprovação da efetividade das propostas}
-
-
+% % \esb{When Does Active Learning Work?
+% % confirma que atributos não-discretizados favorecem AL,
+% % isso justifica z-score para qq classificador ?
+% % (ao menos RF, SVM, log reg. e QDA usados no artigo).
+% % usa apenas QBC, entropia e random.
+% % }
+% \end{itemize}
 
 
 
@@ -364,32 +319,27 @@ que possamos ter insights sobre o experimento, depois é preciso deixar mais suci
 \section{Tempo de espera tolerável}
 \ano{para o tempo não é necessário separar por classificador; basta um fried}
 
-\tar{
-fazer árvore de decisão que mostre que metacaracteristicas influenciam
-e como no tempo de treinamento?
-}
-
 Não é possível auferir tempo durante experimentos de desempenho porque eles são
 paralelizados e compartilham cache de processador.
 
 limite de espera pra usuário web é 15s, é o máximo aceitável
 \citep{conf/amcis/Nah03}
 
-Miller (1968) argued for the 2-second rule based on the theory of limitations in human short-
-term memory. According to Miller, short-term memory plays a critical role in human information
-processing; interference with short-term memory can occur when an individual senses an awareness of
-waiting after approximately 2 seconds. Thus, to stay uninterrupted in information processing, the 2-
-second guideline is recommended. For tasks where uninterrupted focus is critical, Nielsen (1995)
-suggests that computer response should be kept within one second.
-
-
-From this study, we found that Web users expect a response in about 2 seconds for simple
-information retrieval tasks on the Web.
-A 2-second response is needed to ensure 'smooth' interactions
-between the WWW and the users.  The findings from this
-study also suggest that the upper bound for Web users' TWT is 15 seconds when
-the system does not provide any indication or feedback concerning
-the download
+% Miller (1968) argued for the 2-second rule based on the theory of limitations in human short-
+% term memory. According to Miller, short-term memory plays a critical role in human information
+% processing; interference with short-term memory can occur when an individual senses an awareness of
+% waiting after approximately 2 seconds. Thus, to stay uninterrupted in information processing, the 2-
+% second guideline is recommended. For tasks where uninterrupted focus is critical, Nielsen (1995)
+% suggests that computer response should be kept within one second.
+% 
+% 
+% From this study, we found that Web users expect a response in about 2 seconds for simple
+% information retrieval tasks on the Web.
+% A 2-second response is needed to ensure 'smooth' interactions
+% between the WWW and the users.  The findings from this
+% study also suggest that the upper bound for Web users' TWT is 15 seconds when
+% the system does not provide any indication or feedback concerning
+% the download
 
 \esb{
 é melhor comparar tempos minimos do que tempos medios;
@@ -399,66 +349,13 @@ foram atingidas e a ausência de outros processos é total.
 Assim, trata-se de uma grandeza mais comparável entre algoritmos. (ref?)
 }
 
-\section{rascunho}
-\ano{comparar o melhor par estrat/ELM com o melhor par estrat/SVM
-seria um bom indicativo de viabiidade da ELM com AL}
-
-\ano{o experimento poderia continuar rodando para o grupo seleto de strats e learns
-até que a passiva fosse atingida, assim seria possivel avaliar as mais economicas quando
-perdas na acurácia é inaceitável. (a forma menos codificante de fazer isso
-é fixar um learner no código,
-manter apenas os datasets em que a passiva ainda nao foi atingida visualmente
-na tabela, rodar
-mais 10 queries e repetir o processo até acabarem os datasets)}
-
-\tar{falta um teste para esse cap. ficar ideal: rodar um classif. rápido de treino e um
+\tar{rodar um classif. rápido de treino e um
 rápido de teste em todas as bases, registrar tempo médio de consulta de cada
 estratégia e gerar friedman (espera-se realçar vantagem dos agnósticos)}
 
-\ano{Efetividade geral}
-
-\blue{friedman um contra um não está dando nada?}
-
-\blue{friedman talvez funcione melhor por nicho (metaclusters)}
-
-\esb{citar: contra random; comparação 1-a-1; variabilidade (risco);
-tolerable waiting time}
-
-\tar{ fazer tabelão friedman (40? pares strat/classif: 40x40)}
-
-
-\ano{AG,LU vs DWTU}
-
-x Qual a economia proporcionada por uma estratégia?
-
-x Quão bem uma estratégia usufrui de um dado orçamento?
-
-\tar{há alguma correlação entre desempenho de AL e desbalanceamento da base?}
-
-\tar{usar nintera na(s) base(s) à parte?
- ou usar em todas, mas sem strats lentas?}
-
- % podem tornar a comparação imprecisa,
-% pois a diferença entre estratégias se torna irrelevante
-% quando nenhuma delas é capaz de atingir um desempenho satisfatório.
-% Essa constatação conduz a uma reformulação do experimento anterior visando dois cenários:
+% 
+% e uma faixa de orçamentos:
 % \begin{itemize}
-%  \item o algoritmo mais adequado é conhecido - por experiência do usuário sobre o domínio
-%  e particularidades de cada classificador ou pela análise de problemas similares já resolvidos;
-%  \item o algoritmo mais adequado não é conhecido - o problema é novo e nada pode ser inferido
-%  de seus dados.
+%  \item orçamento baixo: $|Y|<\cent\leq min(\frac{|\mathcal{U}|}{2},100)$
+%  \item orçamento alto: $min(\frac{|\mathcal{U}|}{2},100)<\cent\leq min(|\mathcal{U}|,200)$
 % \end{itemize}
-% Para simular o primeiro caso optou-se pela seleção do algoritmo mais adequado
-% (com a melhor acurácia passiva) para cada base.
-% No segundo caso, o algoritmo com a acurácia passiva mediana foi considerado
-% suficientemente representativo dos demais.
-% Uma vantagem adicional desses dois novos cenários é a possibilidade de análise unificada,
-% sem a separação por aprendiz feita na Seção \ref{geral}.
-%
-% \afterpage{\clearpage\begin{landscape}
-% \input stratsALCKappaFriedbest
-% \end{landscape}\clearpage}
-%
-% \afterpage{\clearpage\begin{landscape}
-% \input stratsALCKappaFriedbestRedux
-% \end{landscape}\clearpage}

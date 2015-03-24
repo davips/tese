@@ -77,137 +77,137 @@ presente na Equação \ref{eqelm}.
 % https://reference.wolfram.com/mathematica/tutorial/LinearAlgebraMatrixComputations.html
 % explica bem a pinv
 
-\input topologia
-
-\subsection{PRESS}\label{press}
-% Meta-learning to optimize the number of hidden nodes of MLP networks trained
-% by Extreme Learning Machine algorithm (2011)
-% http://www.mendeley.com/download/public/1683461/5291097694/743b3ac1a6f01b8b9ad380254dc9ee7de2146086/dl.pdf
-% \citep{prud2011}
-
-Um desses métodos, chamado
-\textit{soma dos quadrados dos erros de predição} - PRESS\footnote{\textit{PREdiction Sum of Squares}}
-\citep{myers2000classical,allan1974relationship}, permite estimar o erro de generalização do modelo.
-Exceto nos casos de instabilidade numérica, essa estimativa é exata e equivalente à que seria obtida
-pela validação cruzada via \textit{Leave-One-Out} (LOO), representando uma redução na complexidade
-computacional em relação à quantidade de treinamentos de linear para constante - ou
-de quadrática para linear, se for considerada a quantidade de exemplos.
-
-% http://www.jstor.org/stable/2686028?__redirected
-% o começo fala do PRESS, com formula clarificando(?)
-
-% (see [15] and [16] for details of this formula and its implementations)
-% 15:Classical and Modern Regression With Applications,
-% 16:?Recursive lazy learning for modeling and control,? http://www.researchgate.net/publication/2301623_Recursive_Lazy_Learning_for_Modeling_and_Control/file/79e4151136c53c3067.pdf
-
-.
-\ano{fórmula hat}
-
-
-% \ano{PRESS: erro estatistico (de regressão?)}
+% \input topologia
 % 
-% \ano{quadrado do resíduo: erro I e CI?}
+% \subsection{PRESS}\label{press}
+% % Meta-learning to optimize the number of hidden nodes of MLP networks trained
+% % by Extreme Learning Machine algorithm (2011)
+% % http://www.mendeley.com/download/public/1683461/5291097694/743b3ac1a6f01b8b9ad380254dc9ee7de2146086/dl.pdf
+% % \citep{prud2011}
 % 
-% diferencia 'statistical error' e 'residual':
+% Um desses métodos, chamado
+% \textit{soma dos quadrados dos erros de predição} - PRESS\footnote{\textit{PREdiction Sum of Squares}}
+% \citep{myers2000classical,allan1974relationship}, permite estimar o erro de generalização do modelo.
+% Exceto nos casos de instabilidade numérica, essa estimativa é exata e equivalente à que seria obtida
+% pela validação cruzada via \textit{Leave-One-Out} (LOO), representando uma redução na complexidade
+% computacional em relação à quantidade de treinamentos de linear para constante - ou
+% de quadrática para linear, se for considerada a quantidade de exemplos.
 % 
-% {http://en.wikipedia.org/wiki/Errors\_and\_residuals\_in\_statistics}
+% % http://www.jstor.org/stable/2686028?__redirected
+% % o começo fala do PRESS, com formula clarificando(?)
 % 
-% error (or disturbance) of an observed value is the deviation of the observed value from
-% the (unobservable) true function value
-% residual of an observed value is the difference between the observed value and the
-% estimated function value.
-
-\subsection{EM-ELM} \label{emelm}
-
-crescimento incremental da
-\ing{\elm por minimização do erro}{Error Minimized Extreme Learning Machine} -
-EM-ELM \citep{journals/tnn/FengHLG09}.
-Além de permitir o crescimento da rede sem recalcular a pseudoinversa,
-a EM-ELM permite o cálculo da PRESS a um custo reduzido.
-
-% * EM-ELM serve de base para várias variantes de ELM: AIE-ELM, D-ELM, CEOS-ELM
-% survey simples: http://www.wisdombasedcomputing.com/vol1issue1april2011/paper4.pdf
-
-\tar{colocar fórmula que obtém PRESS da EM-ELM}
-\ano{ver se k é usado pra alguma outra coisa}
-Sendo $\bm{h}_{(k)}$ o vetor coluna de valores de função de ativação correspondente
-à coluna $k$ da matriz $H_k$ na iteração $k$, ou seja, após o acréscimo de $k$
-neurônios,
-a matriz $H_k$ pode ser representada conforme a Equação \ref{eqh}.
-\begin{equation}\label{eqh}
-\mathbf{H}_k = [\mathbf{H}_{k-1}, \bm{h}_k]
-\end{equation}
-Assim, cada novo neurônio faz a matriz $H$ aumentar em uma coluna.
-A atualização dos pesos $\beta$ se dá por meio das equações
-\ref{em1}, \ref{em2} e \ref{em3}.
-\begin{equation}\label{em1}
-\mathbf{D}_k=\frac{\bm{h}_k(\mathbf{I}-\mathbf{H}_k\mathbf{H}_k^\dagger)}
-{\bm{h}_k(\mathbf{I}-\mathbf{H}_k\mathbf{H}_k^\dagger)\bm{h}_k}
-\end{equation}
-\begin{equation}\label{em2}
-\mathbf{U}_k=\mathbf{H}_k^\dagger(\mathbf{I}-\bm{h}_k\mathbf{D}_k)
-\end{equation}
-\ano{procurar papel ou código que mostre as fórmulas siomplificadas para
-ficar sem redundância}
-\begin{equation}\label{em3}
-\beta_{k+1}=\mathbf{H}_{k+1}^\dagger\mathbf{T}=\left [
-\begin{matrix}
-{\bf U}_{k}\cr {\bf D}_{k} 
-\end{matrix}
-\right] \mathbf{T}
-\end{equation}
-
-
-
-
-
-
-\subsection{OS-ELM}\label{oselm}
-\ano{OS-ELM vale a pena porque evita uma inversa grande, calcula apenas uma vez e favorece o uso do pequeno cache.}
-
-Em sistemas interativos, frequentemente é adotado o esquema incremental de aprendizado.
-O tempo de treinamento é reduzido quando é possível aproveitar o resultado de cálculos
-prévios durante todo o processo.
-% ROS-ELM A Robust Online Sequential Extreme Learning Machine 2007:
-% http://download.springer.com/static/pdf/966/chp%253A10.1007%252F978-3-540-72383-7_126.pdf?auth66=1398531288_8f1d69c65bc2dcd81b7a7451031a0dad&ext=.pdf
-% Na OS-ELM, os biases precisam ser escolhidos dentro de determinados intervalos, dependentes de dataset, para evitar ill-conditioning/singularity of H.
-% Eles calculam, aparentemente, os biases pela diagonal de XW (X: att values? W: pesos?).
-No caso da ELM, isso é possível por meio da
-\ing{\elm sequencial}{On-line Sequential Extreme Learning Machine} (OS-ELM)
-proposta por \cite{conf/iastedCI/HuangLRSS05}.
-A técnica é baseada no algoritmo dos mínimos quadrados recursivo
-que utiliza a fórmula de Sherman-Morrison-Woodbury
-% http://books.google.com.br/books?hl=en&lr=&id=iD5s0iKXHP8C&oi=fnd&pg=PT15&dq=+An+introduction+to+optimization&ots=3PqthZAq8d&sig=Befcr8te239chWT6UOVyVrMIkSo#v=snippet&q=recursive%20least&f=false
-\citep{chong2013introduction}.
-$H$ passa a ser considerada em função do tempo - indicado subscrito
-para melhor legibilidade: $H_{(t)}$.
-Para ser possível encontrar a solução dos mínimos quadrados de
-$H_{(0)} \beta_{(0)} = T_{(0)}$,
-que se refere ao conjunto inicial de dados rotulados (instante $t=0$),
-a pseudoinversa esquerda $H^\dagger_{(0)}$ deve ser calculada por:
-
-\begin{equation} \label{eq4}
-P_{(0)}=(H^\top_{(0)}H_{(0)})^{-1}
-\end{equation}
-\begin{equation} \label{eq5}
-H^{\dagger}_{(0)} = P_{(0)}H^\top_{(0)}
-\end{equation}
-
-Assim, é possível realizar um treinamento inicial da rede.
-Para os lotes de dados subsequentes, ou seja,
-quando $t>0$, apenas $\beta_{(t)}$ e $P_{(t)}$ precisam ser mantidos, onde:
-
-\begin{equation} \label{eq6}
-P_{(t)} = P_{(t-1)} - P_{(t-1)} H^{\top}_{(t)} (I + H_{(t)} P_{(t-1)} H^{\top}_{(t)})^{-1} H_{(t)}
-P_{(t-1)}
-\end{equation}
-\begin{equation} \label{eq7}
-\beta_{(t)} = \beta_{(t-1)} + P_{(t)} H^{\top}_{(t)} (T_{(t)} - H_{(t)} \beta_{(t-1)})
-\end{equation}
-
-O cálculo incremental de $\beta_{(t)}$ e $P_{(t)}$ evita os custos de se recalcular a
-pseudoinversa para cada novo lote de dados.
-
+% % (see [15] and [16] for details of this formula and its implementations)
+% % 15:Classical and Modern Regression With Applications,
+% % 16:?Recursive lazy learning for modeling and control,? http://www.researchgate.net/publication/2301623_Recursive_Lazy_Learning_for_Modeling_and_Control/file/79e4151136c53c3067.pdf
+% 
+% .
+% \ano{fórmula hat}
+% 
+% 
+% % \ano{PRESS: erro estatistico (de regressão?)}
+% % 
+% % \ano{quadrado do resíduo: erro I e CI?}
+% % 
+% % diferencia 'statistical error' e 'residual':
+% % 
+% % {http://en.wikipedia.org/wiki/Errors\_and\_residuals\_in\_statistics}
+% % 
+% % error (or disturbance) of an observed value is the deviation of the observed value from
+% % the (unobservable) true function value
+% % residual of an observed value is the difference between the observed value and the
+% % estimated function value.
+% 
+% \subsection{EM-ELM} \label{emelm}
+% 
+% crescimento incremental da
+% \ing{\elm por minimização do erro}{Error Minimized Extreme Learning Machine} -
+% EM-ELM \citep{journals/tnn/FengHLG09}.
+% Além de permitir o crescimento da rede sem recalcular a pseudoinversa,
+% a EM-ELM permite o cálculo da PRESS a um custo reduzido.
+% 
+% % * EM-ELM serve de base para várias variantes de ELM: AIE-ELM, D-ELM, CEOS-ELM
+% % survey simples: http://www.wisdombasedcomputing.com/vol1issue1april2011/paper4.pdf
+% 
+% \tar{colocar fórmula que obtém PRESS da EM-ELM}
+% \ano{ver se k é usado pra alguma outra coisa}
+% Sendo $\bm{h}_{(k)}$ o vetor coluna de valores de função de ativação correspondente
+% à coluna $k$ da matriz $H_k$ na iteração $k$, ou seja, após o acréscimo de $k$
+% neurônios,
+% a matriz $H_k$ pode ser representada conforme a Equação \ref{eqh}.
+% \begin{equation}\label{eqh}
+% \mathbf{H}_k = [\mathbf{H}_{k-1}, \bm{h}_k]
+% \end{equation}
+% Assim, cada novo neurônio faz a matriz $H$ aumentar em uma coluna.
+% A atualização dos pesos $\beta$ se dá por meio das equações
+% \ref{em1}, \ref{em2} e \ref{em3}.
+% \begin{equation}\label{em1}
+% \mathbf{D}_k=\frac{\bm{h}_k(\mathbf{I}-\mathbf{H}_k\mathbf{H}_k^\dagger)}
+% {\bm{h}_k(\mathbf{I}-\mathbf{H}_k\mathbf{H}_k^\dagger)\bm{h}_k}
+% \end{equation}
+% \begin{equation}\label{em2}
+% \mathbf{U}_k=\mathbf{H}_k^\dagger(\mathbf{I}-\bm{h}_k\mathbf{D}_k)
+% \end{equation}
+% \ano{procurar papel ou código que mostre as fórmulas siomplificadas para
+% ficar sem redundância}
+% \begin{equation}\label{em3}
+% \beta_{k+1}=\mathbf{H}_{k+1}^\dagger\mathbf{T}=\left [
+% \begin{matrix}
+% {\bf U}_{k}\cr {\bf D}_{k} 
+% \end{matrix}
+% \right] \mathbf{T}
+% \end{equation}
+% 
+% 
+% 
+% 
+% 
+% 
+% \subsection{OS-ELM}\label{oselm}
+% \ano{OS-ELM vale a pena porque evita uma inversa grande, calcula apenas uma vez e favorece o uso do pequeno cache.}
+% 
+% Em sistemas interativos, frequentemente é adotado o esquema incremental de aprendizado.
+% O tempo de treinamento é reduzido quando é possível aproveitar o resultado de cálculos
+% prévios durante todo o processo.
+% % ROS-ELM A Robust Online Sequential Extreme Learning Machine 2007:
+% % http://download.springer.com/static/pdf/966/chp%253A10.1007%252F978-3-540-72383-7_126.pdf?auth66=1398531288_8f1d69c65bc2dcd81b7a7451031a0dad&ext=.pdf
+% % Na OS-ELM, os biases precisam ser escolhidos dentro de determinados intervalos, dependentes de dataset, para evitar ill-conditioning/singularity of H.
+% % Eles calculam, aparentemente, os biases pela diagonal de XW (X: att values? W: pesos?).
+% No caso da ELM, isso é possível por meio da
+% \ing{\elm sequencial}{On-line Sequential Extreme Learning Machine} (OS-ELM)
+% proposta por \cite{conf/iastedCI/HuangLRSS05}.
+% A técnica é baseada no algoritmo dos mínimos quadrados recursivo
+% que utiliza a fórmula de Sherman-Morrison-Woodbury
+% % http://books.google.com.br/books?hl=en&lr=&id=iD5s0iKXHP8C&oi=fnd&pg=PT15&dq=+An+introduction+to+optimization&ots=3PqthZAq8d&sig=Befcr8te239chWT6UOVyVrMIkSo#v=snippet&q=recursive%20least&f=false
+% \citep{chong2013introduction}.
+% $H$ passa a ser considerada em função do tempo - indicado subscrito
+% para melhor legibilidade: $H_{(t)}$.
+% Para ser possível encontrar a solução dos mínimos quadrados de
+% $H_{(0)} \beta_{(0)} = T_{(0)}$,
+% que se refere ao conjunto inicial de dados rotulados (instante $t=0$),
+% a pseudoinversa esquerda $H^\dagger_{(0)}$ deve ser calculada por:
+% 
+% \begin{equation} \label{eq4}
+% P_{(0)}=(H^\top_{(0)}H_{(0)})^{-1}
+% \end{equation}
+% \begin{equation} \label{eq5}
+% H^{\dagger}_{(0)} = P_{(0)}H^\top_{(0)}
+% \end{equation}
+% 
+% Assim, é possível realizar um treinamento inicial da rede.
+% Para os lotes de dados subsequentes, ou seja,
+% quando $t>0$, apenas $\beta_{(t)}$ e $P_{(t)}$ precisam ser mantidos, onde:
+% 
+% \begin{equation} \label{eq6}
+% P_{(t)} = P_{(t-1)} - P_{(t-1)} H^{\top}_{(t)} (I + H_{(t)} P_{(t-1)} H^{\top}_{(t)})^{-1} H_{(t)}
+% P_{(t-1)}
+% \end{equation}
+% \begin{equation} \label{eq7}
+% \beta_{(t)} = \beta_{(t-1)} + P_{(t)} H^{\top}_{(t)} (T_{(t)} - H_{(t)} \beta_{(t-1)})
+% \end{equation}
+% 
+% O cálculo incremental de $\beta_{(t)}$ e $P_{(t)}$ evita os custos de se recalcular a
+% pseudoinversa para cada novo lote de dados.
+% 
 
 
 \subsection{I-ELM}\label{ielm}
@@ -275,88 +275,88 @@ de acordo com a Equação \ref{reajuste}.
 \end{equation}
 Assim como na I-ELM, a CI-ELM realiza as predições por meio da fórmula da Equação \ref{eqelm}.
 
-
-\ano{citar as outras ELMs que crescem ou aprendem incrementalmente?}
-% Além da OS-ELM, outras variantes da ELM têm sido propostas:
-% ROS-ELM, que evita matrizes mal-condicionadas por meio do ajuste dos vieses $b_i$ \cite
-% {conf/isnn/HoangHVW07};
-% EI-ELM ou EM-ELM, não-incrementais, que fazem a rede crescer \textit{congelando}
-% \citep{huang2008enhanced} ou \textit{atualizando} \citep{journals/tnn/FengHLG09}
-% nós antigos;
-% e, CEOS-ELM, que faz a rede crescer durante o aprendizado \textit{on-line} \citep{conf/ijcnn/LanSH09}.
-%
-% Para o presente trabalho, a OS-ELM ``canônica'' foi adotada, pois cada variante tem seus próprias
-% vicissitudes e o propósito deste trabalho é apenas dar uma primeira impressão a respeito da
-% performance da ELM com diferentes estratégias.
-% Também é importante lembrar que, na presença de uma matriz $H_{(0)}$ mal-condicionada,
-% OS-ELM não converge para ELM.
-
-\tar{Citar von Zuben e outros brasileiros}
-
-
-\subsection{Configuração adotada para aprendizado ativo}
-\ano{mover isso pra algum lugar melhor na tese}
-Até onde o conhecimento do autor permite alcançar,
-não existe pesquisa em aprendizado ativo que enfoque ELMs.
-As poucas abordagens encontradas usam aprendizado ativo apenas como uma ferramenta
-sem maiores desenvolvimentos em torno do assunto em si.
-
-\subsubsection{Aprendizado ativo e \elms}\label{aelmrev}
-Um exemplo é a \ing{consulta por amostragens e desvio padrão}{standard deviation query-by-bagging}
-\cite{conf/his/AyerdiMG12},
-que é conceitualmente próximo à \textit{amostragem por incerteza}
-e \textit{consulta por comitê}.
-É uma abordagem genérica no sentido de que ela pode ser aplicada em
-um comitê de modelos gerados por qualquer algoritmo de aprendizado.
-Outro exemplo é o \ing{aprendizado ativo baseado em fixação}{fixation-based active learning},
-que treina uma ELM para ser usada como uma \ing{tabela de mapeamento de cores}{color look-up table}
-para segmentação.
-Na parte de aprendizado ativo, é calculada a entropia de um histograma feito das intensidades
-em uma região circular \cite{journals/soco/PanPLW12} - novamente,
-o aprendizado ativo é usado apenas como uma ferramenta independente do classificador adotado.
-Outro, menos relacionado exemplo,
-é a incerteza de um \ing{arcabouço}{framework} bayesiano não-paramétrico baseado em ELMs
-\cite{conf/ictai/ChatzisKD11}.
-À parte desses trabalhos isolados,
-nenhum estudo foi encontrado na literatura de aprendizado de máquina.
-Consequentemente, estudos comparativos abrangentes estão ausentes da literatura.
-
-\subsubsection{Adequação da \elm para aprendizado ativo}\label{adeq}
-O aprendizado ativo é um caso de aprendizado interativo.
-Assim, o aprendiz representa um modelo que evolui com o tempo que possa fazer predições
-a qualquer momento.
-Sendo a \elm original uma rede de topologia fixa e treinamento em lote,
-o modelo resultante pode demorar para ser gerado, dependendo da quantidade de exemplos,
-de atributos e de classes. Além disso, algum tipo de seleção de modelos é necessária para
-a busca do valor ideal para $L$.
-O processo de seleção de modelos habitualmente envolve o uso de validação cruzada
-\ano{citar artigo sobre seleção de moldelo, ``pra fazer melhor proveito dos dados''}
-que é custoso, especialmente se envolver a validação menos enviesada que é o LOO.
-\esb{citação}
-
-Dependendo da aplicação, o oráculo é humano, sujeito ao \textit{tempo máximo tolerável de espera}.
-\ano{vou  definir aqui, ou antes?}
-Dentre as variantes da \elm citadas na seções \ref{topologia}, \ref{oselm} e \ref{emelm}
-a mais conveniente é a combinação OS-ELM, EM-ELM e PRESS,
-por envolver a formulação canônica, ou seja, analiticamente desenvolvida
-por teoremas já consagrados na literatura de álgebra linear.
-% Outra vantagem de se evitar as variantes da Seção \ref{topologia} é a ausência de parâmetros? ops!
-% mais citadas e mais representativas sem pirotecnias
-
-Uma abordagem similar foi empregada por \cite{journals/ijon/HeeswijkMOL11},
-porém sem o crescimento acelerado que poderia ser proporcionado pela EM-ELM
-e sem a possibilidade de aprendizado incremental.
-Eles recalculam a pseudoinversa a cada novo neurônio acrescentado até encontrar a topologia com
-a menor PRESS.
-% Eles implementaram uma ELM específica para \ing{unidades de processamento gráfico}
-% {Graphics Processing Unit} (GPU).
-% No presente trabalho, exceto para SGmulti, os conjuntos de treinamento não passam de $200$ exemplos,
-% não justificando o uso de GPU, especialmente em vista do custo de transferência de dados.
-
-
-\ano{expor o algoritmo}
-
-\ano{crescer de 1 em 1, mas para acelerar conforme a necessidade incrementar de 1 em 1 exemplo e crescer
-de q em q}
-\esb{testa a faixa de  de L-10 até L+10 neurônios;}
-começando com L=1
+% 
+% \ano{citar as outras ELMs que crescem ou aprendem incrementalmente?}
+% % Além da OS-ELM, outras variantes da ELM têm sido propostas:
+% % ROS-ELM, que evita matrizes mal-condicionadas por meio do ajuste dos vieses $b_i$ \cite
+% % {conf/isnn/HoangHVW07};
+% % EI-ELM ou EM-ELM, não-incrementais, que fazem a rede crescer \textit{congelando}
+% % \citep{huang2008enhanced} ou \textit{atualizando} \citep{journals/tnn/FengHLG09}
+% % nós antigos;
+% % e, CEOS-ELM, que faz a rede crescer durante o aprendizado \textit{on-line} \citep{conf/ijcnn/LanSH09}.
+% %
+% % Para o presente trabalho, a OS-ELM ``canônica'' foi adotada, pois cada variante tem seus próprias
+% % vicissitudes e o propósito deste trabalho é apenas dar uma primeira impressão a respeito da
+% % performance da ELM com diferentes estratégias.
+% % Também é importante lembrar que, na presença de uma matriz $H_{(0)}$ mal-condicionada,
+% % OS-ELM não converge para ELM.
+% 
+% \tar{Citar von Zuben e outros brasileiros}
+% 
+% 
+% \subsection{Configuração adotada para aprendizado ativo}
+% \ano{mover isso pra algum lugar melhor na tese}
+% Até onde o conhecimento do autor permite alcançar,
+% não existe pesquisa em aprendizado ativo que enfoque ELMs.
+% As poucas abordagens encontradas usam aprendizado ativo apenas como uma ferramenta
+% sem maiores desenvolvimentos em torno do assunto em si.
+% 
+% \subsubsection{Aprendizado ativo e \elms}\label{aelmrev}
+% Um exemplo é a \ing{consulta por amostragens e desvio padrão}{standard deviation query-by-bagging}
+% \cite{conf/his/AyerdiMG12},
+% que é conceitualmente próximo à \textit{amostragem por incerteza}
+% e \textit{consulta por comitê}.
+% É uma abordagem genérica no sentido de que ela pode ser aplicada em
+% um comitê de modelos gerados por qualquer algoritmo de aprendizado.
+% Outro exemplo é o \ing{aprendizado ativo baseado em fixação}{fixation-based active learning},
+% que treina uma ELM para ser usada como uma \ing{tabela de mapeamento de cores}{color look-up table}
+% para segmentação.
+% Na parte de aprendizado ativo, é calculada a entropia de um histograma feito das intensidades
+% em uma região circular \cite{journals/soco/PanPLW12} - novamente,
+% o aprendizado ativo é usado apenas como uma ferramenta independente do classificador adotado.
+% Outro, menos relacionado exemplo,
+% é a incerteza de um \ing{arcabouço}{framework} bayesiano não-paramétrico baseado em ELMs
+% \cite{conf/ictai/ChatzisKD11}.
+% À parte desses trabalhos isolados,
+% nenhum estudo foi encontrado na literatura de aprendizado de máquina.
+% Consequentemente, estudos comparativos abrangentes estão ausentes da literatura.
+% 
+% \subsubsection{Adequação da \elm para aprendizado ativo}\label{adeq}
+% O aprendizado ativo é um caso de aprendizado interativo.
+% Assim, o aprendiz representa um modelo que evolui com o tempo que possa fazer predições
+% a qualquer momento.
+% Sendo a \elm original uma rede de topologia fixa e treinamento em lote,
+% o modelo resultante pode demorar para ser gerado, dependendo da quantidade de exemplos,
+% de atributos e de classes. Além disso, algum tipo de seleção de modelos é necessária para
+% a busca do valor ideal para $L$.
+% O processo de seleção de modelos habitualmente envolve o uso de validação cruzada
+% \ano{citar artigo sobre seleção de moldelo, ``pra fazer melhor proveito dos dados''}
+% que é custoso, especialmente se envolver a validação menos enviesada que é o LOO.
+% \esb{citação}
+% 
+% Dependendo da aplicação, o oráculo é humano, sujeito ao \textit{tempo máximo tolerável de espera}.
+% \ano{vou  definir aqui, ou antes?}
+% Dentre as variantes da \elm citadas na seções \ref{topologia}, \ref{oselm} e \ref{emelm}
+% a mais conveniente é a combinação OS-ELM, EM-ELM e PRESS,
+% por envolver a formulação canônica, ou seja, analiticamente desenvolvida
+% por teoremas já consagrados na literatura de álgebra linear.
+% % Outra vantagem de se evitar as variantes da Seção \ref{topologia} é a ausência de parâmetros? ops!
+% % mais citadas e mais representativas sem pirotecnias
+% 
+% Uma abordagem similar foi empregada por \cite{journals/ijon/HeeswijkMOL11},
+% porém sem o crescimento acelerado que poderia ser proporcionado pela EM-ELM
+% e sem a possibilidade de aprendizado incremental.
+% Eles recalculam a pseudoinversa a cada novo neurônio acrescentado até encontrar a topologia com
+% a menor PRESS.
+% % Eles implementaram uma ELM específica para \ing{unidades de processamento gráfico}
+% % {Graphics Processing Unit} (GPU).
+% % No presente trabalho, exceto para SGmulti, os conjuntos de treinamento não passam de $200$ exemplos,
+% % não justificando o uso de GPU, especialmente em vista do custo de transferência de dados.
+% 
+% 
+% \ano{expor o algoritmo}
+% 
+% \ano{crescer de 1 em 1, mas para acelerar conforme a necessidade incrementar de 1 em 1 exemplo e crescer
+% de q em q}
+% \esb{testa a faixa de  de L-10 até L+10 neurônios;}
+% começando com L=1
