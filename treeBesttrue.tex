@@ -1,0 +1,28 @@
+\node[line width=0.3ex, decision] {atributo aceito}
+child {node [decision] {algoritmo}
+child {node [decision] {\%major.}
+child {node [outcome] {Rnd \\$17$: $41\%$} edge from parent node [cond] {$\leq72$}}
+child {node [outcome] {Mar \\$4$: $75\%$} edge from parent node [cond] {$>72$}}edge from parent node [cond] {5NN}}
+child {node [decision] {\#atributos}
+child {node [outcome] {EERent \\$12$: $92\%$} edge from parent node [cond] {$\leq20$}}
+child {node [outcome] {Clu \\$4$: $50\%$} edge from parent node [cond] {$>20$}}edge from parent node [cond] {CIELM}}
+child {node [decision] {\%major.}
+child {node [decision] {\#classes}
+child {node [outcome] {Mar \\$9$: $56\%$} edge from parent node [cond] {$\leq2$}}
+child {node [outcome] {SVMsim \\$8$: $38\%$} edge from parent node [cond] {$>2$}}edge from parent node [cond] {$\leq68$}}
+child {node [outcome] {Rnd \\$4$: $50\%$} edge from parent node [cond] {$>68$}}edge from parent node [cond] {SVM}}edge from parent node [cond] {numérico}}
+child {node [decision] {\%minor.}
+child {node [outcome] {TUmah \\$4$: $100\%$} edge from parent node [cond] {$\leq10$}}
+child {node [outcome] {Mar \\$5$: $60\%$} edge from parent node [cond] {$>10$}}edge from parent node [cond] {nominal}}
+child {node [decision] {algoritmo}
+child {node [decision] {$\frac{\#exemplos}{\#atrib.}$}
+child {node [outcome] {Rnd \\$4$: $50\%$} edge from parent node [cond] {$\leq50$}}
+child {node [outcome] {\textbf{ATUmah} \\$5$: $60\%$} edge from parent node [cond] {$>50$}}edge from parent node [cond] {C4.5w}}
+child {node [decision] {\%major.}
+child {node [decision] {\#atributos}
+child {node [decision] {\%minor.}
+child {node [outcome] {QBC \\$4$: $75\%$} edge from parent node [cond] {$\leq9$}}
+child {node [outcome] {\textbf{HTUmah} \\$6$: $67\%$} edge from parent node [cond] {$>9$}}edge from parent node [cond] {$\leq14$}}
+child {node [outcome] {QBC \\$11$: $91\%$} edge from parent node [cond] {$>14$}}edge from parent node [cond] {$\leq68$}}
+child {node [outcome] {Rnd \\$4$: $100\%$} edge from parent node [cond] {$>68$}}edge from parent node [cond] {RFw}}
+edge from parent node [cond] {ambos}};

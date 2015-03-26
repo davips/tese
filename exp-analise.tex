@@ -25,7 +25,7 @@ e últimos lugares mais equilibrada, entre $21$ e $27$ e entre $19$ e $28$, respe
 %   aprendizado ativo e a estratégia específica com ELMs.
   \end{itemize}
 
-\subsection{Comparação diversa}\label{cdiversa}
+\subsection{Comparação com algoritmos variados}\label{cdiversa}
 % http://research.cs.wisc.edu/techreports/2009/TR1648.pdf
 Estratégias são normalmente avaliadas por meio de curvas de aprendizado,
 que são os gráficos da medida de interesse em função da quantidade de consultas
@@ -89,9 +89,10 @@ A medida foi calculada com $200$ exemplos nas bases de tamanho suficiente
 e $|\mathcal{U}|$ nas demais.
 % \input stratsmahALCKappaFriedAllReduxall
 \begin{table}[h]
-\caption{Um contra um para as estratégias.
+\caption{Um contra um para as estratégias (376 testes).
 Medida: ALC-kappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
-\begin{center}\begin{tabular}{lcc|cc|cc|cc}
+\begin{center}
+\scalebox{0.94}{\begin{tabular}{lcc|cc|cc|cc}
                         & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
 1 - Rnd         & - &   &   &   &   &   &   &   \\
 2 - Clu         &   & - &   &   &   &   &   &   \\ \hline
@@ -101,6 +102,20 @@ Medida: ALC-kappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
 6 - Mar         & * & * &   &   & . & - &   &   \\ \hline
 7 - TUmah       & * & * &   &   & * &   & - &   \\
 8 - EERent      & * & * &   &   & * &   &   & - \\ \hline\end{tabular}
+}
+\quad
+\scalebox{0.91}{\begin{tabular}{lccc}
+algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{últimos\\lugares} \\
+\hline
+EERent          &       \textcolor{blue}{\textbf{94}}      &       135     &       \textcolor{red}{\textbf{74}}      \\
+TUmah           &       \textbf{80}      &       126     &       41      \\
+Mar             &       72      &       129     &       \textcolor{red}{\textbf{74}}      \\
+HTUmah          &       64      &       \textcolor{blue}{\textbf{106}}     &       \textcolor{blue}{\textbf{23}}      \\
+ATUmah          &       49      &       \textbf{112}     &       \textbf{31}      \\
+SGmulti         &       21      &       166     &       34      \\
+Clu             &       19      &       \textcolor{red}{\textbf{168}}     &       56      \\
+Rnd             &       \textcolor{red}{\textbf{8}}       &       -     &       \textcolor{red}{\textbf{74}}      \\
+\end{tabular}}
 \label{stratsALCKappaFriedAllReduxall}
 \end{center}
 \end{table}
@@ -110,6 +125,9 @@ Ainda assim, o princípio teórico de Clu, que garante um desempenho que não seja 
 amostragem aleatória, manteve-se válido.
 Dentre as melhores estratégias, a proposta GATUmah é a preferível, pois além de se equiparar
 às outras ela foi superior à Mar - ainda que com baixo nível de confiança ($p=0,10$).
+A menor quantidade de derrotas para Rnd e de últimos lugares são duas vantagens das duas propostas
+baseadas na TUmah, pois indicam o melhor desempenho frente ao não uso de aprendizado ativo
+e um menor risco de se obter o pior desempenho.
 SGmulti superou apenas a aleatória.
 
 % Se forem consideradas apenas as primeiras 100 consultas -
@@ -184,17 +202,33 @@ na comparação de estratégias com algoritmos variados.
 
 \begin{table}[h]
 \caption{Um contra um (RFw). Medida: ALCKappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
-\begin{center}\begin{tabular}{lcc|cc|cc|cc|c}
+\begin{center}
+\scalebox{0.9}{\begin{tabular}{lcc|cc|cc|cc|c}
                         & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
 1 - Rnd         & - &   &   &   &   &   &   &   &   \\
 2 - Clu         &   & - &   &   &   &   &   &   & * \\ \hline
 3 - \textbf{ATUmah}     & * &   & - & * &   &   &   &   & * \\
-4 - \textbf{GATUmah}    &   &   &   & - &   &   &   &   &   \\ \hline
+4 - \textbf{HTUmah}    &   &   &   & - &   &   &   &   &   \\ \hline
 5 - \textbf{SGmulti}    & * & * &   & * & - &   &   &   & * \\
 6 - Mar         & * & * & * & * &   & - &   &   & * \\ \hline
 7 - TUmah       & * & * & * & * & * &   & - & * & * \\
 8 - EERent      & * & * &   & * &   &   &   & - & * \\ \hline
 9 - QBC         &   &   &   &   &   &   &   &   & - \\\end{tabular}
+\quad
+\begin{tabular}{lccc}
+algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{últimos\\lugares} \\
+\hline
+TUmah      & \bom{50} & \bomd{13} & 2 \\
+Mar        & \bomd{19} & 14 & 2 \\
+ATUmah     & 9 & 18 & 5 \\
+SGmulti    & 8 & \bom{8} & \bom{0} \\
+EERent     & 3 & 14 & 2 \\
+Rnd        & 2 & - & 24 \\
+QBC        & 1 & \ruim{64} & \ruim{45} \\
+HTUmah     & 1 & 48 & 13 \\
+Clu        & \ruim{1} & 25 & \bomd{1} \\
+\end{tabular}
+}
 \label{stratsALCKappaFriedRFwRedux}
 \end{center}
 \end{table}
@@ -206,18 +240,35 @@ EERent apareceu como a melhor opção, vencendo praticamente todas.
 As estratégias específicas não tiveram tantas derrotas quanto a QBC na Seção \ref{crf}
 \begin{table}[h]
 \caption{Um contra um (SVM). Medida: ALCKappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
-\begin{center}\begin{tabular}{lcc|cc|cc|cc|cc}
+\begin{center}
+\scalebox{0.85}{\begin{tabular}{lcc|cc|cc|cc|cc}
                         & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
 1 - Rnd         & - &   &   &   &   &   &   &   &   &   \\
 2 - Clu         &   & - &   &   &   &   &   &   &   &   \\ \hline
 3 - \textbf{ATUmah}     &   &   & - &   &   &   &   &   &   &   \\
-4 - \textbf{GATUmah}    & * &   & . & - & * & * &   &   & * & + \\ \hline
+4 - \textbf{HTUmah}    & * &   & . & - & * & * &   &   & * & + \\ \hline
 5 - \textbf{SGmulti}    &   &   &   &   & - &   &   &   &   &   \\
 6 - Mar         &   &   &   &   &   & - &   &   &   &   \\ \hline
 7 - TUmah       & . &   &   &   &   &   & - &   &   &   \\
 8 - EERent      & * & * & * &   & * & * & * & - & * & * \\ \hline
 9 - SVMRBFbal   &   &   &   &   &   &   &   &   & - &   \\
 10 - SVMRBFsim  &   &   &   &   &   &   &   &   &   & - \\ \hline\end{tabular}
+\quad
+\begin{tabular}{lccc}
+algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{últimos\\lugares} \\
+\hline
+EERent     & \bom{32} & \bom{19} & \bom{2} \\
+SVMsim     & \bomd{17} & 48 & \ruim{23} \\
+HTUmah     & 13 & \bomd{26} & 5 \\
+SVMbal     & 8 & \ruim{51} & 13 \\
+TUmah      & 7 & 36 & 5 \\
+Clu        & 7 & 34 & 7 \\
+Mar        & 4 & 44 & 18 \\
+ATUmah     & 4 & 35 & 6 \\
+SGmulti    & 2 & 42 & \bomd{4} \\
+Rnd        & \ruim{0} & - & 11 \\
+\end{tabular}
+}
 \label{stratsALCKappaFriedSVMRedux}
 \end{center}
 \end{table}
@@ -247,6 +298,20 @@ As estratégias específicas não tiveram tantas derrotas quanto a QBC na Seção \re
 % 7 - TUmah       & * & * & + &   &   &   & - &   & * \\
 % 8 - EERent      & * & * & + &   &   &   &   & - & * \\ \hline
 % 9 - EMC         &   &   &   &   &   &   &   &   & - \\\end{tabular}
+% \quad
+% \begin{tabular}{lccc}
+% algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{últimos\\lugares} \\
+% \hline
+% TUmah      & 28 & 36 & 3 \\
+% EERent     & 18 & 25 & 3 \\
+% Mar        & 15 & 29 & 6 \\
+% EMC        & 8 & 69 & 58 \\
+% SGmulti    & 7 & 24 & 2 \\
+% HTUmah     & 7 & 38 & 7 \\
+% ATUmah     & 5 & 37 & 7 \\
+% Clu        & 5 & 45 & 4 \\
+% Rnd        & 3 & 94 & 9 \\
+% \end{tabular}
 % \label{stratsALCKappaFriedELMRedux}
 % \end{center}
 % \end{table}
@@ -280,8 +345,11 @@ e o segundo caso também resulta em torno de $95$ metaexemplos, porém para cada a
 totalizando $595$.
 % Apesar de ilustrativa, a árvore pode não ser segura do ponto de vista de tomada de
 % decisão devido ao baixo grau de pureza das folhas.
+\usetikzlibrary{trees}
 \input arvorebest
 \input arvore
+\input arvorebestperd
+\input arvoreperd
 
 \ref{tree}
 A amostragem aleatória aparece apenas na folha que representa o uso do 5NN nas quatro bases que têm
@@ -318,6 +386,8 @@ probabilidade de todos os exemplos da reserva ameniza o efeito do excesso de con
 
 \section{Tempo de espera tolerável}
 \ano{para o tempo não é necessário separar por classificador; basta um fried}
+
+\ano{EER venceu demais. no tempo ele vai perder de todas?}
 
 Não é possível auferir tempo durante experimentos de desempenho porque eles são
 paralelizados e compartilham cache de processador.
@@ -359,3 +429,9 @@ estratégia e gerar friedman (espera-se realçar vantagem dos agnósticos)}
 %  \item orçamento baixo: $|Y|<\cent\leq min(\frac{|\mathcal{U}|}{2},100)$
 %  \item orçamento alto: $min(\frac{|\mathcal{U}|}{2},100)<\cent\leq min(|\mathcal{U}|,200)$
 % \end{itemize}
+
+\esb{pra provar que o algoritmo é determinante, basta demonstrar qtas vezes o melhor par contem
+o mesmo algoritmo que venceu na passiva}
+
+\ano{faz sentido testar com o melhor classif porque o user vai ter os rotulos pra poder escolher o melhor,
+mas isso soh vale pra agnosticas: Rnd, Clu, ATUman, ATUmah e ATUeuc}

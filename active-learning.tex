@@ -261,7 +261,7 @@ E(\bm{x})=-\log^{-1}|Y|\sum_{\bm{y}\in Y}P(\bm{y}|\bm{x})\log P(\bm{y}|\bm{x})
 A estratégia de amostragem por margem pode ser estendida para espaços de atributos $\mathcal{F}$.
 transformados por uma \ing{função núcleo}{kernel function}.
 Essa foi a abordagem de \cite{journals/jmlr/TongK01} para SVMs,
-cuja variante mais empregada é chamada \ing{margem simples}{simple margin}.
+cuja variante mais empregada é chamada \ing{margem simples}{simple margin} (SVMsim).
 %  If asking each query is expensive relative to computing time then using either the MaxMin or Ratio
 % may be preferable. However, ifthe cost ofasking each query is relatively cheap and more emphasis
 % is placed upon fast feedback then the Simple method may be more suitable.
@@ -281,7 +281,7 @@ A heurística de se adotar os mais distantes primeiro, sem a transformação pelo n
 foi usada previamente para calcular agrupamentos aproximadamente ótimos
 \citep{Hochbaum1985}.
 
-O algoritmo de balanceamento exploração-prospecção inicia com a aplicação do KFF.
+O algoritmo de balanceamento exploração-prospecção (SVMbal) inicia com a aplicação do KFF.
 Seu primeiro exemplo é aleatório e o segundo é seu par mais distante.
 Esse par consiste no conjunto inicial que vai ser estendido com exemplos,
 um a um, da mesma maneira que o segundo foi escolhido.
@@ -605,17 +605,14 @@ a aprender para viabilizar cada consulta. \ano{é aceito O(0)?}}
 Rnd & \makecell{exploratória\\aleatória} & \makecell{agnóstica}&autônoma&nenhuma&$\mathcal{O}(0)$\\ \hline
 Clu&\makecell{balanceada:\\exploratória e\\prospectiva}& agnóstica&interativa&total&\makecell{não\\especificada}\\ \hline
 \makecell{Unc/Mar/Ent\\QBC/DW}&prospectiva&gnóstica&interativa&total&$\mathcal{O}(1)$\\ \hline
-SVMS&prospectiva&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
-SVMB&\makecell{alternada:\\exploratória e\\prospectiva}&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
+SVMsim&prospectiva&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
+SVMbal&\makecell{alternada:\\exploratória e\\prospectiva}&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
 EGL&prospectiva&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|)$\\ \hline
 EER&prospectiva&gnóstica&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|^2)$\\ \hline
-SGmulti&\makecell{exploratória\\limitada e\\aleatória}&gnóstica&interativa&total&$\mathcal{O}(|Y|)$\\ \hline
 TU&\makecell{balanceada:\\exploratória e\\prospectiva}&gnóstica&interativa&\makecell{após etapa\\exploratória}&$\mathcal{O}(1)$\\ \hline
-ATU&\makecell{exploratória\\ponderada}&agnóstica&autônoma&nenhuma&$\mathcal{O}(0)$\\ \hline
-GATU&\makecell{em fases:\\exploratória e\\prospectiva}&\makecell{em fases:\\agnóstica e\\gnóstica}&interativa&\makecell{após etapa\\exploratória}&$\mathcal{O}(1)$\\ \hline
-GATU&\makecell{alternada:\\exploratória e\\prospectiva}&\makecell{alternada:\\agnóstica e\\gnóstica}&interativa&frequente&$\mathcal{O}(1)$\\ \hline
 \end{tabular}
 }
+\label{stratsparcial}
 \end{table}
 
 \ano{diferenciar de aprendizado semisuperv. colocar algoritmos se der tempo}

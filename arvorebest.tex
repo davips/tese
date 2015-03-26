@@ -1,4 +1,5 @@
-\usetikzlibrary{trees}
+% \afterpage{\clearpage\begin{landscape}
+\begin{figure}
 \tikzset{
 every node/.style={font=\scriptsize,black, thin},
 decision/.style={shape=rectangle, minimum height=1cm, text width=1.7cm,
@@ -7,12 +8,9 @@ outcome/.style={ shape=ellipse, fill=gray!15, draw, text width=1.15cm, text cent
 decision tree/.style={sibling distance=3cm, level distance=2cm},
 cond/.style={blue, yshift=-2mm, shape=rectangle, text centered},
 }
-
-% \afterpage{\clearpage\begin{landscape}
-\begin{figure}
 \begin{center}
 \caption{Nichos de cada estratégia. Para cada base foi adotado o melhor algoritmo.
-Mínimo de $12$ exemplos por folha.
+Mínimo de $4$ exemplos por folha.
 \textit{Árvore de decisão gerada pelo algoritmo C4.5w.
 Quantidade de exemplos e grau de pureza dados nas folhas.}
 }
@@ -26,18 +24,21 @@ level 2/.style={text width=2cm, font=\footnotesize, level distance=2.8cm,sibling
 ]
 % \input tree
 \node[line width=0.3ex, decision] {algoritmo}
+child {node [decision] {\#classes}
+child {node [outcome] {\textbf{ATUmah} \\$4$: $75\%$} edge from parent node [cond] {$\leq2$}}
+child {node [outcome] {EERent \\$5$: $80\%$} edge from parent node [cond] {$>2$}}edge from parent node [cond] {NB}}child {node [decision] {\%minor.}
+child {node [outcome] {EERent \\$5$: $80\%$} edge from parent node [cond] {$\leq32$}}
+child {node [outcome] {TUmah \\$4$: $75\%$} edge from parent node [cond] {$>32$}}edge from parent node [cond] {C4.5w}}
+child {node [decision] {\%major.}
+child {node [outcome] {TUmah \\$5$: $80\%$} edge from parent node [cond] {$\leq42$}}
+child {node [decision] {\#atributos}
+child {node [outcome] {Mar \\$7$: $71\%$} edge from parent node [cond] {$\leq20$}}
+child {node [outcome] {TUmah \\$4$: $75\%$} edge from parent node [cond] {$>20$}}edge from parent node [cond] {$>42$}}edge from parent node [cond] {CIELM}}
 child {node [decision] {$\frac{\#exemplos}{\#atrib.}$}
 child {node [decision] {\#exemplos}
 child {node [outcome] {EERent \\$5$: $80\%$} edge from parent node [cond] {$\leq226$}}
 child {node [outcome] {TUmah \\$4$: $50\%$} edge from parent node [cond] {$>226$}}edge from parent node [cond] {$\leq50$}}
 child {node [outcome] {Mar \\$6$: $67\%$} edge from parent node [cond] {$>50$}}edge from parent node [cond] {5NN}}
-child {node [decision] {\%minor.}
-child {node [outcome] {EERent \\$5$: $80\%$} edge from parent node [cond] {$\leq32$}}
-child {node [outcome] {TUmah \\$4$: $75\%$} edge from parent node [cond] {$>32$}}edge from parent node [cond] {C4.5w}}
-child {node [outcome] {EERent \\$21$: $57\%$} edge from parent node [cond] {SVM}}
-child {node [decision] {\#classes}
-child {node [outcome] {\textbf{ATUmah} \\$4$: $75\%$} edge from parent node [cond] {$\leq2$}}
-child {node [outcome] {EERent \\$5$: $80\%$} edge from parent node [cond] {$>2$}}edge from parent node [cond] {NB}}
 child {node [decision] {\#atributos}
 child {node [outcome] {EERent \\$5$: $40\%$} edge from parent node [cond] {$\leq6$}}
 child {node [decision] {\#exemplos}
@@ -45,11 +46,9 @@ child {node [decision] {\%nominais}
 child {node [outcome] {TUmah \\$8$: $100\%$} edge from parent node [cond] {$\leq17$}}
 child {node [outcome] {Mar \\$4$: $50\%$} edge from parent node [cond] {$>17$}}edge from parent node [cond] {$\leq1669$}}
 child {node [outcome] {Mar \\$8$: $50\%$} edge from parent node [cond] {$>1669$}}edge from parent node [cond] {$>6$}}edge from parent node [cond] {RFw}}
-child {node [decision] {\%major.}
-child {node [outcome] {TUmah \\$5$: $80\%$} edge from parent node [cond] {$\leq42$}}
-child {node [decision] {\#atributos}
-child {node [outcome] {Mar \\$7$: $71\%$} edge from parent node [cond] {$\leq20$}}
-child {node [outcome] {TUmah \\$4$: $75\%$} edge from parent node [cond] {$>20$}}edge from parent node [cond] {$>42$}}edge from parent node [cond] {CIELM}};
+child {node [decision] {\#exemplos}
+child {node [outcome] {SVMsim \\$9$: $33\%$} edge from parent node [cond] {$\leq614$}}
+child {node [outcome] {EERent \\$12$: $83\%$} edge from parent node [cond] {$>614$}}edge from parent node [cond] {SVM}};
 \label{treeBest}
 \end{tikzpicture}
 \end{center}

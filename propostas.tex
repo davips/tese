@@ -191,3 +191,28 @@ Pearson
 % \ano{investigar maneiras de incorporar unlabeled data na ELM}
  
 \section{Considerações}
+\begin{table}
+\caption{Características de cada estratégia.
+\textit{A ordem de complexidade é dada conforme a quantidade de exemplos
+a aprender para viabilizar cada consulta. \ano{é aceito O(0)?}}
+}
+\scalebox{0.88}{
+\begin{tabular}{c|c|c|c|c|c}
+\textbf{estratégia} & \textbf{\makecell{forma\\ de busca}}&\textbf{\makecell{presença \\de aprendiz}} & \textbf{\makecell{definição da \\sequência de \\consultas}} & \textbf{\makecell{dependência\\entre\\consultas}}&\textbf{\makecell{ordem de\\complexidade}}\\ \hline
+Rnd & \makecell{exploratória\\aleatória} & \makecell{agnóstica}&autônoma&nenhuma&$\mathcal{O}(0)$\\ \hline
+Clu&\makecell{balanceada:\\exploratória e\\prospectiva}& agnóstica&interativa&total&\makecell{não\\especificada}\\ \hline
+\makecell{Unc/Mar/Ent\\QBC/DW}&prospectiva&gnóstica&interativa&total&$\mathcal{O}(1)$\\ \hline
+SVMS&prospectiva&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
+SVMB&\makecell{alternada:\\exploratória e\\prospectiva}&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
+EGL&prospectiva&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|)$\\ \hline
+EER&prospectiva&gnóstica&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|^2)$\\ \hline
+SGmulti&\makecell{exploratória\\limitada e\\aleatória}&gnóstica&interativa&total&$\mathcal{O}(|Y|)$\\ \hline
+TU&\makecell{balanceada:\\exploratória e\\prospectiva}&gnóstica&interativa&\makecell{após etapa\\exploratória}&$\mathcal{O}(1)$\\ \hline
+ATU&\makecell{exploratória\\ponderada}&agnóstica&autônoma&nenhuma&$\mathcal{O}(0)$\\ \hline
+GATU&\makecell{em fases:\\exploratória e\\prospectiva}&\makecell{em fases:\\agnóstica e\\gnóstica}&interativa&\makecell{após etapa\\exploratória}&$\mathcal{O}(1)$\\ \hline
+GATU&\makecell{alternada:\\exploratória e\\prospectiva}&\makecell{alternada:\\agnóstica e\\gnóstica}&interativa&frequente&$\mathcal{O}(1)$\\ \hline
+\end{tabular}
+}
+\label{stratscompleta}
+\end{table}
+

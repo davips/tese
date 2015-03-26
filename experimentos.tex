@@ -98,7 +98,11 @@ apenas um único algoritmo arbitrário.
 \caption{Um contra um e contagem de posições.
 Medida: acurácia balanceada.
 \textit{Cada asterisco/cruz/ponto indica quando o algoritmo na linha tem melhor
-desempenho que o algoritmo na coluna com intervalo de confiança de 0.99/0.95/0.90.}}
+desempenho que o algoritmo na coluna com intervalo de confiança de 0.99/0.95/0.90.
+O melhor, o segundo melhor e o pior valor de cada linha
+estão em \textcolor{blue}{\textbf{azul}}, \textcolor{red}{\textbf{vermelho}} e \textbf{negrito}
+respectivamente.}}
+
 \begin{center}
 \begin{tabular}{lcc|cc|cc|cc}
                         & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
@@ -113,13 +117,13 @@ desempenho que o algoritmo na coluna com intervalo de confiança de 0.99/0.95/0.9
 \begin{tabular}{lcc}
 algoritmo & \makecell{primeiros\\lugares} & \makecell{últimos\\lugares} \\
 \hline
-RFw        &    21       &              3       \\
-SVM        &    20       &              8       \\
+RFw        &    \textcolor{blue}{\textbf{21}}       &              \textcolor{blue}{\textbf{3}}       \\
+SVM        &    \textbf{20}       &              \textbf{8}       \\
 5NNa       &    17       &              21      \\
-NB         &    14       &              24      \\
+NB         &    14       &              \textcolor{red}{\textbf{24}}      \\
 CIELM      &    12       &              9       \\
 C4.5w      &    11       &              13      \\
-ELM        &    4        &              16      \\
+ELM        &    \textcolor{red}{\textbf{4}}        &              16      \\
 \label{tab:friedClassif}
 \end{tabular}
 \end{center}
@@ -144,7 +148,7 @@ Os nomes de estratégias propostas estão em negrito.
 \afterpage{\clearpage\begin{landscape}
 % \input stratDists
 \begin{table}[h]
-\caption{Similaridade entre estratégias de acordo com a medida ALC-kappa.
+\caption{Similaridade entre estratégias. Medida: ALC-kappa.
 \textit{Detalhes na Tabela \ref{passiveDists}.}}
 \begin{center}\scalebox{0.9}{\begin{tabular}{lcc|cc|cc|cc|cc|cc|cc|cc|c}
    & \begin{sideways}Rnd\end{sideways} & \begin{sideways}Clu\end{sideways} & \begin{sideways}\textbf{ATUeuc}\end{sideways} & \begin{sideways}\textbf{ATUman}\end{sideways} & \begin{sideways}\textbf{ATUmah}\end{sideways} & \begin{sideways}\textbf{GATUeuc}\end{sideways} & \begin{sideways}\textbf{GATUman}\end{sideways} & \begin{sideways}\textbf{GATUmah}\end{sideways} & \begin{sideways}\textbf{SGmulti}\end{sideways} & \begin{sideways}Ent\end{sideways} & \begin{sideways}Mar\end{sideways} & \begin{sideways}DWeuc\end{sideways} & \begin{sideways}TUeuc\end{sideways} & \begin{sideways}TUman\end{sideways} & \begin{sideways}TUmah\end{sideways} & \begin{sideways}EERacu\end{sideways} & \begin{sideways}EERent\end{sideways} \\
@@ -195,7 +199,7 @@ O grupo reduzido de estratégias é apresentado na Tabela \ref{stratDistsRedux}.
 \newpage
 % \input stratDistsRedux
 \begin{table}[h]
-\caption{Similaridade entre estratégias selecionadas.
+\caption{Similaridade entre estratégias selecionadas.  Medida: ALC-kappa.
 \textit{Detalhes na Tabela \ref{passiveDists}.}}
 \begin{center}
 \scalebox{0.76}{
@@ -225,20 +229,6 @@ waiting time.
 Suponho que a demora do experimento se deva à inicialização das strats
 e não às consultas propriamente ditas.}
 
-\subsubsection{Afinidade estratégia-aprendiz, estratégia-budget e outros nichos}
-
-\ano{A primeira árvore é aplicada a todos os datasets; ele servirá apenas para dar algum insight
-sobre o motivo de cada afinidade existir (desbalanceamento, agrupamentos, tipos e qtd de atts etc.).
-Não serve para ML, pois os atributos e o
-claffisifcador devem ser interpretáveis e haverá atributos com informação ``desleal''
-da distribuição de classes}
-
-\ano{possiveis atts: proporção da minor., da maj.; entropia* ou medida melhor para medir o grau de desbalanço}
-
-* -> normalized entropy \citep{journals/bioinformatics/LewinSA0P04}:
-ajuda a saber que estratégias são boas p/ bases desbalanceadas.
-
-----------
 
 \green{árvore do vencedor accbal e variancia}
 
