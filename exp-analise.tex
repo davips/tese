@@ -381,8 +381,34 @@ probabilidade de todos os exemplos da reserva ameniza o efeito do excesso de con
 % % }
 % \end{itemize}
 
+\section{Cenário realista: Amostragem gnóstica com viés independente}\label{ind}
+Numa aplicação real, a disponibilidade de rótulos permite uma escolha mais adequada
+do algoritmo de aprendizado.
+Assim, estratégias agnósticas e aquelas cujo aprendiz possa ser desvinculado da escolha do
+algoritmo de aprendizado definitivo da aplicação se mostram desejáveis.
+As estratégias agnósticas adiam naturalmente a escolha do algoritmo para depois da etapa de rotulação.
+Entretanto, elas são desprovidas da capacidade de prospecção advinda do víes de aprendizado inerente
+a todo aprendiz.
+As gnósticas, por sua vez, dependem desse viés desde o início da amostragem ativa.
+Apesar disso, é possível adotar um aprendiz compatível com a estratégia e que tenha um bom
+desempenho geral; depois de obtidos os rótulos, o algoritmo definitivo seria escolhido via validação
+cruzada.
 
+O experimento desta seção foi formulado para avaliar a viabilidade da independência do aprendiz
+enquanto alternativa às estratégias agnósticas, simulando uma aplicação real.
 
+A medida de desempenho (ALC-kappa) 
+
+Nas árvores das figuras \ref{treeBestdesf} e  \ref{treedesf},
+TUmah, por exemplo, pode ser entendido como uma escolha arriscada
+quando o algoritmo é o 5NN ou aceita apenas atributos nominais, ou seja, requer discretização.
+
+\esb{neste exp, a necessidade de aplicação de filtro é separada, ex.: o learner precisa,
+mas não obriga o classif a usar ou viceversa;
+a mesma ideia foi estendida para a relação estrat-learner, embora pudesse ter sido
+feito no experimento anterior (posso aproveitar os resultados daqui lá,
+mas faltaria rodar os hits que não coincidem com o bestlearner):
+a estratégia precisa (maha), mas não obriga o learner a usar  ou viceversa}
 
 \section{Tempo de espera tolerável}
 \ano{para o tempo não é necessário separar por classificador; basta um fried}

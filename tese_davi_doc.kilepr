@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=arvoreperd.tex
+lastDocument=exp-analise.tex
 masterDocument=
 name=Tese
 pkg_extIsRegExp=false
@@ -127,6 +127,16 @@ Mode=BibTeX
 ReadWrite=true
 
 [document-settings,item:capa.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:classifsTab.tex]
 Bookmarks=
 Encoding=ISO-8859-1
 FoldedColumns=
@@ -594,50 +604,50 @@ order=-1
 
 [item:arvore.tex]
 archive=true
-column=13
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=12
+line=0
 mode=LaTeX
-open=false
-order=-1
+open=true
+order=4
 
 [item:arvorebest.tex]
 archive=true
-column=12
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=12
+line=25
 mode=LaTeX
 open=true
 order=3
 
 [item:arvorebestperd.tex]
 archive=true
-column=12
+column=7
 encoding=ISO-8859-1
 highlight=LaTeX
-line=12
+line=25
 mode=LaTeX
 open=true
-order=0
+order=2
 
 [item:arvoreperd.tex]
 archive=true
-column=12
+column=15
 encoding=ISO-8859-1
 highlight=LaTeX
-line=12
+line=23
 mode=LaTeX
 open=true
 order=1
 
 [item:bibliografia.bib]
 archive=true
-column=44
+column=1
 encoding=ISO-8859-1
 highlight=BibTeX
-line=841
+line=1761
 mode=BibTeX
 open=false
 order=1
@@ -651,6 +661,16 @@ line=15
 mode=LaTeX
 open=false
 order=3
+
+[item:classifsTab.tex]
+archive=true
+column=0
+encoding=ISO-8859-1
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=false
+order=-1
 
 [item:conclusao.tex]
 archive=true
@@ -694,13 +714,13 @@ order=0
 
 [item:exp-analise.tex]
 archive=true
-column=67
+column=51
 encoding=ISO-8859-1
 highlight=LaTeX
-line=436
+line=384
 mode=LaTeX
 open=true
-order=2
+order=0
 
 [item:exp-elm.tex]
 archive=true
@@ -724,13 +744,13 @@ order=2
 
 [item:experimentos.tex]
 archive=true
-column=73
+column=6
 encoding=ISO-8859-1
 highlight=LaTeX
-line=201
+line=278
 mode=LaTeX
-open=false
-order=1
+open=true
+order=5
 
 [item:imagens/fluxo-esquema.tex]
 archive=true
@@ -814,10 +834,10 @@ order=3
 
 [item:meta.tex]
 archive=true
-column=4
+column=59
 encoding=ISO-8859-1
 highlight=LaTeX
-line=109
+line=104
 mode=LaTeX
 open=false
 order=4
@@ -1039,7 +1059,7 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=26
 mode=LaTeX
-open=true
+open=false
 order=4
 
 [item:treetrue.tex]
@@ -1049,7 +1069,7 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=31
 mode=LaTeX
-open=true
+open=false
 order=5
 
 [view-settings,view=0,item:active-learning.tex]
@@ -1089,38 +1109,44 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:arvore.tex]
-CursorColumn=13
-CursorLine=12
+CursorColumn=0
+CursorLine=0
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:arvorebest.tex]
-CursorColumn=12
-CursorLine=12
+CursorColumn=0
+CursorLine=25
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:arvorebestperd.tex]
-CursorColumn=12
-CursorLine=12
+CursorColumn=7
+CursorLine=25
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:arvoreperd.tex]
-CursorColumn=12
-CursorLine=12
+CursorColumn=15
+CursorLine=23
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:bibliografia.bib]
-CursorColumn=44
-CursorLine=841
+CursorColumn=1
+CursorLine=1761
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:capa.tex]
 CursorColumn=6
 CursorLine=15
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:classifsTab.tex]
+CursorColumn=0
+CursorLine=0
 JumpList=
 ViMarks=
 
@@ -1149,8 +1175,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-analise.tex]
-CursorColumn=67
-CursorLine=436
+CursorColumn=51
+CursorLine=384
 JumpList=
 ViMarks=
 
@@ -1167,8 +1193,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:experimentos.tex]
-CursorColumn=73
-CursorLine=201
+CursorColumn=6
+CursorLine=278
 JumpList=
 ViMarks=
 
@@ -1217,8 +1243,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:meta.tex]
-CursorColumn=4
-CursorLine=109
+CursorColumn=59
+CursorLine=104
 JumpList=
 ViMarks=
 

@@ -105,14 +105,13 @@ respectivamente.}}
 
 \begin{center}
 \begin{tabular}{lcc|cc|cc|cc}
-                        & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
-1 - 5NN         & - &   &   &   &   &   &   \\
-2 - C4.5w       &   & - &   &   &   &   &   \\ \hline
-3 - CIELM       &   &   & - &   &   &   &   \\
-4 - ELM         &   &   &   & - &   &   &   \\ \hline
-5 - NB          &   &   &   &   & - &   &   \\
-6 - RFw         & * & * & * & * & * & - &   \\ \hline
-7 - SVM         & . & + &   & * & + &   & - \\\end{tabular}
+                   & 1 & 2 & 3 & 4 & 5 & 6\\
+1 - 5NN         & - &   &   &     &   &   \\
+2 - C4.5w       &   & - &   &    &   &   \\ \hline
+3 - CIELM      &   &   & - &   &   &   \\
+4 - NB           &   &   &   &   - &   &   \\
+5 - RFw         & * & * & * &* & - &   \\ \hline
+6 - SVM         & . & + &   &+ &   & - \\\end{tabular}
 \quad
 \begin{tabular}{lcc}
 algoritmo & \makecell{primeiros\\lugares} & \makecell{últimos\\lugares} \\
@@ -123,10 +122,33 @@ SVM        &    \textbf{20}       &              \textbf{8}       \\
 NB         &    14       &              \textcolor{red}{\textbf{24}}      \\
 CIELM      &    12       &              9       \\
 C4.5w      &    11       &              13      \\
-ELM        &    \textcolor{red}{\textbf{4}}        &              16      \\
 \label{tab:friedClassif}
 \end{tabular}
 \end{center}
+% \begin{center}
+% \begin{tabular}{lcc|cc|cc|cc}
+%                         & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
+% 1 - 5NN         & - &   &   &   &   &   &   \\
+% 2 - C4.5w       &   & - &   &   &   &   &   \\ \hline
+% 3 - CIELM       &   &   & - &   &   &   &   \\
+% 4 - ELM         &   &   &   & - &   &   &   \\ \hline
+% 5 - NB          &   &   &   &   & - &   &   \\
+% 6 - RFw         & * & * & * & * & * & - &   \\ \hline
+% 7 - SVM         & . & + &   & * & + &   & - \\\end{tabular}
+% \quad
+% \begin{tabular}{lcc}
+% algoritmo & \makecell{primeiros\\lugares} & \makecell{últimos\\lugares} \\
+% \hline
+% RFw        &    \textcolor{blue}{\textbf{21}}       &              \textcolor{blue}{\textbf{3}}       \\
+% SVM        &    \textbf{20}       &              \textbf{8}       \\
+% 5NNa       &    17       &              21      \\
+% NB         &    14       &              \textcolor{red}{\textbf{24}}      \\
+% CIELM      &    12       &              9       \\
+% C4.5w      &    11       &              13      \\
+% ELM        &    \textcolor{red}{\textbf{4}}        &              16      \\
+% \label{tab:friedClassif}
+% \end{tabular}
+% \end{center}
 \end{table}
 
 
@@ -251,3 +273,13 @@ sem empate = \#vezes em que foi o vencedor}
 Apesar dessa particularidade e do alto desempenho reportado
 na próxima seção (\ref{analise}), não é do conhecimento do
 autor a existência de trabalhos que empreguem essa medida de distância.
+
+
+
+% copy
+% tostr
+% abr+learner
+% muda id e +convlid
+% põe no strats
+% põe id na lista
+

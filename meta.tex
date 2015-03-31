@@ -75,12 +75,10 @@ ser adaptável ao cenário de aprendizado ativo conforme definido na Seção \ref{re
 A caracterização direta consiste na obtenção de medidas diretamente dos exemplos
 que compõem uma base de dados, ou seja, sem o intermédio de um algoritmo
 de aprendizado.
-% tese kalousis: The first attempt to characterize datasets in order to predict the
-% performance of classication algorithms was done by Rendell et al. (1987).
 A primeira caracterização de bases de dados foi feita por \cite{conf/ijcai/RendellST87}
-com o intuito de predizer acurácia e tempo de processamento e era baseada no número
-de exemplos e de atributos.
-O próximo conjunto, proposto no projeto STATLOG
+com o intuito de predizer acurácia e tempo de processamento.
+Ela era baseada no número de exemplos e de atributos.
+O próximo conjunto de meta-atributos, proposto no projeto STATLOG
 \citep{brazdil1994analysis}, era composto de quinze medidas:
 % mitchie 1994 pode ser a referência certa do STATLOG?
 \begin{itemize}
@@ -96,13 +94,16 @@ se adota a média das medidas nos diferentes atributos base \citep{kalousis2002al
 ou a binarização de medidas, como o grau de dispersão do atributo alvo em
 tarefas de regressão \citep{journals/ijon/GomesPSRC12}.
 Outros conjuntos visam a recomendação automática de algoritmos não supervisionados.
-Essa tarefa é mais próxima da recomendação de estratégias de aprendizado ativo.
+Essa tarefa é mais próxima da recomendação de estratégias de aprendizado ativo
+pela ausência de rótulos.
 Alguns trabalhos, por exemplo, adotam medidas como o grau de normalidade da distribuição e
 o percentual de pontos aberrantes e de atributos mais relevantes
 \citep{conf/ijcnn/SoutoPSACLS08,Ferrari2015181}.
-\ano{seria interessante mencionar os trabalhos feitos no grupo ainda para
-pre-processamento de dados (Bruno e Luis Paulo) para otimizacao
-(Jorge) e para series de dados (Andre Rossi)}
+% e Luis Paulo) para otimizacao
+Também há trabalhos direcionados a: otimização \citep{journals/ijhis/KandaCHS11},
+fluxos de dados \citep{journals/ijon/RossiCSS14}, predição de ranqueamentos
+\citep{conf/iberamia/SouzaCS10} e detecção de ruído \citep{Garcia2015}.
+
 As medidas adotadas na presente pesquisa são apresentadas em maior detalhe na
 Seção \ref{recom}.
 
