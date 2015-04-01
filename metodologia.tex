@@ -150,25 +150,73 @@ precisam ser adotados quando alguma comparação entre estratégias é pretendida.
 
 Seis algoritmos comumente usados e implementados na biblioteca Weka foram adotados
 inicialmente:
-C4.5\footnote{Implementação baseada no algoritmo de
-árvore de decisão C4.5 denominada J48.}, NB\footnote{\textit{Naive Bayes}},
-VFDT\footnote{\textit{Very Fast Decision Trees} ou \textit{Hoeffding Trees}},
-5-NN\footnote{Cinco vizinhos mais próximos},
-SVM\footnote{\textit{Support Vector Machines \ano{explicar detalhes da implementação svmlib/weka para multiclasse?}}}
-e RF\footnote{\textit{Random Forest}}
-\citep{books/mk/Quinlan93,
+5-NN\footnote{Cinco vizinhos mais próximos (nome Weka: IBk).},
+C4.5w\footnote{Implementação baseada no algoritmo de árvore de decisão C4.5 (nome Weka: J48).},
+NB\footnote{\textit{Naive Bayes}},
+RF\footnote{\textit{Random Forest}},
+SVM\footnote{\textit{Support Vector Machines}},
+VFDT\footnote{\textit{Very Fast Decision Trees} ou \textit{Hoeffding Trees}}
+\citep{journals/tit/Hart68,
+books/mk/Quinlan93,
 conf/ecml/Lewis98,
-conf/kdd/DomingosH00,
-journals/tit/Hart68,
+journals/ml/Breiman01,
 hearst1998support,
-journals/ml/Breiman01}.
+conf/kdd/DomingosH00}.
 Adicionalmente, por sua ausência na literatura de aprendizado ativo e características
 distintivas com relação aos outros algoritmos,
 duas variantes das \elms também foram adotadas.
+\ano{duas?}
 
-\green{descrever parâmetros dos learners:
-5-nn ponderado pelo inverso da distância euclidiana padronizada;
-outros ajustes: vou pegar no código e help do weka}
+\subsection{5-NN}
+ponderado pelo complemento da distância euclidiana padronizada \ano{REF pra padronização}
+busca linear ou em KDTree quando $\frac{|\mathcal{U}|}{|A|}\geq10$
+
+\subsection{C4.5w}
+ramificação múltipla (não apenas binária)
+fator de confiança na poda $0,25$ (smaller values incur more pruning)
+mínimo de $\min{10, 2|Y|}$ exemplos por folhas
+poda por substituição pelo nó filho
+estimativa de probabilidades com suavização aditiva \cite{books/daglib/0021593}
+
+\subsection{NB}
+discretização supervisionada baseada na distribuição normal
+
+\subsection{RFw}
+sem poda
+escolha aleatória de $\log_2|A| + 1$ atributos por árvore
+total de dez árvores
+
+\subsection{SVM}
+tipo C-SVC \citep{journals/ml/CortesV95}
+núcleo RBF
+$\gamma=0,5$ %inverse of the radius of influence of support vectors
+% classif/learner g=0.5; SVMmulti g=1
+
+$C=1$ %A low C makes the decision surface smooth, high C aims at classifying all training examples correctly
+cache 200MB
+eps=0,001 %tolerância do critério de parada SVMmulti eps=0,1
+Shrinking(false)
+ProbabilityEstimates(true)
+
+\ano{explicar detalhes da implementação svmlib/weka para multiclasse?}
+
+\subsection{VFDT}
+Valores padrão exceto  graceperiod
+% GracePeriod(math.min(200, pattern.nclasses + newModel.N / 20)
+% Gini
+% erro permitido de 1e-7
+% limiar de desempate de 0,05
+%  Minimum fraction of weight required down at least two branches for info gain splitting  (default = 0.01)
+%  The number of instances (weight) a leaf should observe before allowing naive Bayes to make predictions (NB or NB adaptive only)(default = 0)
+
+\subsection{CIELM}
+nó sigmoide aditivo
+\ano{explicar nr de neurônios}
+
+\ano{http://www.sciencedirect.com/science/article/pii/S0925231207000677
+mostra tabela comparando tempos onde sigmoide additive é bem mais rápida que RBF. É uma boa justificativa para se escolher additive nodes.
+mostra tb que CI-elm é melhor que I-elm, BP (e RAN e MRAN) em tempo e acc.
+}
 
 \section{Experimento preliminar}\label{preliminar}
 Dado o grande número de estratégias, bases de dados e algoritmos de aprendizado envolvidos,
