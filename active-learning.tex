@@ -667,34 +667,3 @@ unlabeled à disposição}
 % active learning algorithm with asymptotically superior label complexity for every nontrivial target
 % concept!
 
-\section{Adaptações ? pequenas}
-\ano{passar pra metodologia?}
-Os códigos originais dos autores das seguintes estratégias \textit{balancedEE}
-% journals/jmlr/BaramEL04
-foram adaptados para contemplar problemas multiclasse por meio da aplicação de
-\ing{rodízio}{round-robin} entre sub-estratégias.
-A cada sub-estratégia foi atribuída uma classe principal,
-na configuração \textit{um para muitos}.
-
-\ano{explicar aqui detalhes do RF adotado pra QBC?}
-
-Para contemplar problemas multiclasse,
-a amostragem por margem (Seção \ref{mar}) foi utilizada como substituta
-nos experimentos deste trabalho.
-Neste trabalho, seguindo a escolha do artigo original,
-optou-se pela entropia como função objetivo.
-\ano{verificar se ficaram mesmo as duas; balacc é melhor que kappa porque não zera tão fácil?}
-Adicionalmente, a acurácia balanceada (Seção \ref{metricas})
-foi adotada como uma variação do método,
-visando agir diretamente nas medidas multiclasse de interesse apresentadas na
-Seção \ref{metricas}.
-Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteração devido ao
-alto custo computacional da estratégia.
-
-\ano{explicar como empreguei mahalanobis nas TUs}
-
-A implementação original do autor foi adotada neste trabalho com o mesmo
-algoritmo de agrupamento chamado
-\textit{Ward's average linkage method}\footnote{
-Implementação disponível no Weka \cite{journals/sigkdd/HallFHPRW09}.}
-\ano{como traduzir?}

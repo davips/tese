@@ -141,7 +141,7 @@ Cada algoritmo de aprendizado tem, intrinsecamente, um viés próprio \ano{REF}.
 É natural esperar que esse viés influencie no desempenho das estratégias gnósticas
 ou que o aprendizado seja afetado pela sequência de consultas gerada por uma
 determinada estratégia agnóstica.
-Também pode ser um fator relevante o fato de que, no aprendizado passivo,
+Também pode ser um fator relevante que, no aprendizado passivo,
 algoritmos com boa performance com poucos dados podem ter baixa
 performance com muitos dados
 \citep{journals/sigkdd/AttenbergP10,journals/jmlr/PerlichPS03}.
@@ -214,9 +214,52 @@ nó sigmoide aditivo
 \ano{explicar nr de neurônios}
 
 \ano{http://www.sciencedirect.com/science/article/pii/S0925231207000677
-mostra tabela comparando tempos onde sigmoide additive é bem mais rápida que RBF. É uma boa justificativa para se escolher additive nodes.
+mostra tabela comparando tempos onde sigmoide additive é bem mais rápida que RBF.
+É uma boa justificativa para se escolher additive nodes.
 mostra tb que CI-elm é melhor que I-elm, BP (e RAN e MRAN) em tempo e acc.
 }
+
+\section{Estratégias}
+Algumas estratégias exigiram configurações específicas ou precisaram de adaptações para
+problemas multiclasse.
+Essas escolhas são detalhadas nesta seção.
+
+\subsection{SVMsim e SVMbal}
+Os códigos originais dos autores das seguintes estratégias \textit{balancedEE}
+% journals/jmlr/BaramEL04
+foram adaptados para contemplar problemas multiclasse por meio da aplicação de
+\ing{rodízio}{round-robin} entre sub-estratégias.
+A cada sub-estratégia foi atribuída uma classe principal,
+na configuração \textit{um para muitos}.
+
+\subsection{QBC}
+\ano{explicar aqui detalhes do RF adotado pra QBC?}
+
+\subsection{Unc e Mar}
+Para contemplar problemas multiclasse,
+a amostragem por margem (Seção \ref{mar}) foi utilizada como substituta
+nos experimentos deste trabalho.
+
+\subsection{EERent e EERacu}
+Neste trabalho, seguindo a escolha do artigo original,
+optou-se pela entropia como função objetivo.
+\ano{verificar se ficaram mesmo as duas}
+Adicionalmente, a acurácia balanceada (Seção \ref{metricas})
+foi adotada como uma variação do método,
+visando agir diretamente nas medidas multiclasse de interesse apresentadas na
+Seção \ref{metricas}.
+Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteração devido ao
+alto custo computacional da estratégia.
+
+\subsection{TU}
+\ano{explicar como empreguei mahalanobis nas TUs}
+
+\subsection{Clu}
+A implementação original do autor foi adotada neste trabalho com o mesmo
+algoritmo de agrupamento chamado
+\textit{Ward's average linkage method}\footnote{
+Implementação disponível no Weka \cite{journals/sigkdd/HallFHPRW09}.}
+\ano{como traduzir?}
 
 \section{Experimento preliminar}\label{preliminar}
 Dado o grande número de estratégias, bases de dados e algoritmos de aprendizado envolvidos,
