@@ -18,10 +18,20 @@ Durante a indução, se o algoritmo integrar uma estratégia de aprendizado ativo,
 ele é chamado de \textit{aprendiz}.
 Apesar de contradizerem o princípio motivador do aprendizado ativo explicitado
 na Seção \ref{aprendizado-ativo},
-existem estratégias sem aprendiz, chamadas \textit{agnósticas}.
-\ano{citar}
+existem estratégias sem aprendiz, chamadas neste trabalho de \textit{agnósticas}.
+\cite{conf/isaim/DasguptaHM08} define o termo de outro ponto de vista:
+``um \textit{aprendiz ativo agnóstico} é aquele que não assume a existência de uma
+fronteira de decisão perfeita'', porém a definição sobre a ausência de aprendiz
+é mais conveniente nesta tese.
+% an agnostic active learner (one that does not assume a perfect separator exists)
+% http://machinelearning.wustl.edu/mlpapers/paper_files/NIPS2007_178.pdf
+% o cenário de aprendizado agnóstico não faz suposições a respeito da origem dos rótulos.
+% This is often referred to as the agnostic learning setting,
+% since we make no assumptions about the origin of the labels.
+% http://www.jennwv.com/courses/F11/lecture4.pdf
+
 Os exemplos ainda não consultados são chamados, neste trabalho,
-de \textit{candidatos}.
+de \textit{candidatos}. \ano{onde?}
 Por simplicidade, o aprendizado é dito \textit{passivo} se for realizado com todos os exemplos e
 todos os rótulos presentes.
 A estratégia de amostragem de maior correspondência com o aprendizado passivo é a aleatória,
@@ -37,7 +47,7 @@ sendo $Y$ formalmente definido pela Equação \ref{ydef}.
  Y = \{\bm{y} \mid y_o=1, y_p=0 \forall o \neq p, 1 \leq p \leq |C|\}
 \end{equation}
 Essa representação binária, por exemplo, $\Y=\{(0,0,1),(0,1,0),(1,0,0)\}$,
-é conhecida como \ing{um-de-n}{one-hot encoding} (\cite{Harris:2007:DDC})
+é conhecida como \ing{um-de-n}{one-hot encoding} (\cite{Harris:2007:DDC}).
 O vetor $\bm{y}=\{0,1,0\}$ é um exemplo de \textit{representação de classe} e é
 chamado apenas de \textit{classe} de um dado exemplo por conveniência.
 

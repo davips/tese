@@ -103,27 +103,25 @@ de treinamento com seu rótulo real e peso integral:
  \]
 
 
-\section{Adaptações da amostragem ponderada por densidade}
+\section{Variações da amostragem ponderada por densidade}
+
+\ano{as variantes se justificam mais por sua natureza e papel nos experimentos do
+que por um suposto avanço no estado da arte; é assim porque existem muitas estratégias
+mais recentes que precisariam ser comparadas com elas}
 
 \subsection{Agnóstica}\label{ag}
-\ano{an agnostic active learner (one that does not assume a perfect
-separator exists)}
-% http://machinelearning.wustl.edu/mlpapers/paper_files/NIPS2007_178.pdf
-\esb{This is often referred to as the agnostic learning setting,
-since we make no assumptions about the origin of the labels.}
-% http://www.jennwv.com/courses/F11/lecture4.pdf
-
-A estratégia DWTU pondera a incerteza de forma a afastar as consultas
+A estratégia DW pondera a incerteza de forma a afastar as consultas
 dos exemplos já rotulados e a aproximá-las das maiores concentrações de exemplos
 não rotulados. Essa característica faz com que os exemplos tendam a ser consultados
-da região de fronteira e arredores, mesmo que todos os exemplos
-estivessem debaixo de um mesmo nível de incerteza.
+na região de fronteira e arredores, mesmo que todos os exemplos
+estejam associados a um mesmo nível de incerteza.
 Isso significa que o classificador e sua medida de incerteza representam um papel que
-pode ser redundante, de ajuste fino ou mesmo atrapalhar em parte dos casos.
+pode ser redundante, de ajuste fino ou eventualmente contraproducente.
 Essa possibilidade de redundância aliada à ideia de agnosticismo da amostragem baseada
 em agrupamento motivou a adaptação da amostragem ponderada por densidade por meio
-da remoção da medida de incerteza da fórmula inicial previamente apresentada nas equações
-\ref{eqid} e \ref{eqtu}. A nova fórmula é apresentada na Equação \ref{eq:agtu}.
+da remoção da medida de incerteza da fórmula inicial previamente apresentada
+nas equações \ref{eqid} e \ref{eqtu}.
+A nova fórmula é apresentada na Equação \ref{eq:agtu}.
 \begin{equation}\label{eq:agtu}
  TU(\bm{x}) =
  \frac{1}{|\mathcal{U}|} \sum_{\bm{u} \in \mathcal{U}} sim(\bm{x},\bm{u})
@@ -132,20 +130,16 @@ da remoção da medida de incerteza da fórmula inicial previamente apresentada nas
 Assim, possivelmente sem grande impacto na acurácia,
 pode-se adiar a escolha do algoritmo de aprendizado para depois da obtenção dos rótulos.
 Em determinadas aplicações também pode ser útil a possibilidade de se conhecer toda
-a sequência de consultas antes de começar a interação com o oráculo.
+a sequência de consultas antes da interação com o oráculo começar.
 Frequentemente, o número de consultas é conhecido de antemão \citep{settles2010active};
 isso permite, por exemplo, que elas sejam repartidas entre vários oráculos que podem
 trabalhar de forma independente dos demais.
-Essa possibilidade não existe na estratégia de agrupamento hierárquico,
+Essa possibilidade de paralelização não existe na estratégia de agrupamento hierárquico,
 pois ela faz uso dos rótulos para determinar a pureza de cada grupo.
 Outra vantagem é a inexistência de tempo de espera interconsultas.
 
-\ano{Desvantagem do cluster-based:        é pesado, mesmo que o aprendiz seja leve}
-
 \subsection{Híbrida}\label{htu}
-
-\ano{uma amostragem balanceada tem mais chance de estar sendo exploratória?}
-
+% \ano{uma amostragem balanceada tem mais chance de estar sendo exploratória?}
 A abordagem agnóstica baseada em densidade é de natureza exploratória,
 pois enfoca as regiões mais desconhecidas (sem rótulos) do espaço de exemplos.
 Pela ausência de aprendiz, não há uma fronteira de decisão a se considerar.
@@ -157,38 +151,24 @@ a amostragem puramente exploratória se assemelha a uma busca exaustiva,
 é natural supor que o equilíbrio entre exploração e prospecção seja proveitoso.
 A estratégia TU embute ambas as abordagens em sua fórmula, mas não
 permite que elas ajam separadamente.
-Assim, a nova estratégia (GATU) procura alternar entre agnosticismo e gnosticismo
-de acordo com a qualidade das consultas.
-Devido à impossibilidade de se obter diretamente o erro de generalização como medida de qualidade,
-é preciso recorrer a uma medida indireta.
-Pearson
-
-% \subsection{Ponderada pela utilidade de cada classe}\label{lu}
-% % ELM vai bem com essa
-% 
-% Uma possibilidade de extensão da amostragem baseada em densidade é
-% ampliar os tipos de grupos de interesse do par original
-% \textit{rotulados}/\textit{não rotulados}
-% para \textit{um grupo por classe}/\textit{não rotulados}:
-% 
-% \ano{colocar fórmula da DWLU2}
-% 
-% A motivação para tal mudança reside no potencial equilíbrio
-% que as densidades por classe possam trazer em bases desbalanceadas.
-% Grupos de exemplos da classe majoritária repelem as consultas mais
-% fortemente do que grupos da minoritária, possivelmente aumentando
-% a quantidade de consultas a exemplos da classe minoritária.
-% 
-% \subsection{Agnóstica ponderada pela utilidade de cada classe}\label{aglu}
-% % vai bem com vários learners
-% Naturalmente, as propostas das seções \ref{ag} e \ref{lu} podem ser combinadas.
-% 
-% \ano{colocar fórmula; vai ser a da AgLU2}
+Diferentemente,
+a nova estratégia (HTU) procura alternar a estratégia TU com a amostragem
+puramente exploratória (ATU) de acordo com o nível de contribuição corrente
+da componente exploratória em TU.
+O nível de contribuição é estimado por meio do cáculo da correlação de
+Pearson \citep{books/daglib/0000786} entre as medidas de informatividade de
+TU e ATU para toda a reserva de exemplos.
+Uma correlação acima de $0,999$, valor arbitrário próximo de $1$,
+indica uma baixa contribuição da componente exploratória,
+sugerindo que a presença do aprendiz passa a ser relevante ou
+que o aprendizado atingiu o nível de ajuste fino.
+Espera-se que o emprego do aprendiz apenas nos períodos de relevância
+reduza sua influência negativa durante a fase inicial de aprendizado
+e também no caso de algoritmos impróprios para prospecção eventualmente
+empregados equivocadamente.
+\ano{algoritmo}
 
 \input exp-elm
-
-% \section{SemiELM}
-% \ano{investigar maneiras de incorporar unlabeled data na ELM}
  
 \section{Considerações}
 \begin{table}
