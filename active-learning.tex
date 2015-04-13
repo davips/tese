@@ -56,7 +56,8 @@ for um especialista humano ou mesmo um robô \citep{journals/etai/BryantMOKRK01},
 atenção humana ou movimento mecânico.
 Assim, um direcionamento adequado do esforço de aprendizado tem como resultado um
 processo de rotulação mais econômico.
-A variedade de abordagens existentes para esse direcionamento são assunto da Seção \ref{estrategias}.
+A variedade de abordagens existentes para esse direcionamento é assunto da
+Seção \ref{estrategias}.
 A notação necessária é definida na Seção \ref{notacao}
 
 \input notacao
@@ -331,8 +332,9 @@ avaliar o grau de desacordo entre os membros \cite{Melville:2004:DEA:1015330.101
 A divergência não-ponderada de Jensen-Shannon é definida em termos da entropia das distribuições
 na Equação \ref{js}.
 \begin{equation}\label{js}
- JS(\{\theta_c \forall c \in Y\}) = E(\sum_{c \in Y}{P(\theta_c,\bm{x})}) - \sum_c{E(P(\theta_c,\bm{x})})
+ JS(\{\theta^{(m)} \forall m \in Y\}) = E(\sum_{m \in Y}{P(\theta^{(m)},\bm{x})}) - \sum_m{E(P(\theta^{(m)},\bm{x})})
 \end{equation}
+Onde $\theta^{(m)}$ é o modelo numerado $m$.
 Quanto maior o valor de $JS$, mais distante os membros estão de um consenso.
 Assim, o exemplo com o maior valor deve ser consultado primeiro.
 A complexidade computacional é $\mathcal{O}(1)$,
@@ -474,7 +476,7 @@ resultando num afastamento das regiões mais consultadas
 
 
 Qualquer medida de similaridade $sim(\bm{x},\bm{u})$
-e de informatividade $H(\bm{x})$ podem ser adotadas.
+e de informatividade $Inf(\bm{x})$ podem ser adotadas.
 Neste trabalho, $Inf(\bm{x}) = 1 - M$ e três medidas de distância $d(\bm{x},\bm{u})$
 (euclidiana, Manhattan e Mahalanobis) foram transformadas em medidas de similaridade
 $sim(\bm{x},\bm{u})$ pela fórmula \ref{eq:sim}.
@@ -607,6 +609,7 @@ Clu&\makecell{balanceada:\\exploratória e\\prospectiva}& agnóstica&interativa&to
 \makecell{Unc/Mar/Ent\\QBC/DW}&prospectiva&gnóstica&interativa&total&$\mathcal{O}(1)$\\ \hline
 SVMsim&prospectiva&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
 SVMbal&\makecell{alternada:\\exploratória e\\prospectiva}&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
+SGmulti&\makecell{exploratória\\limitada e\\aleatória}&gnóstica&interativa&total&$\mathcal{O}(|Y|)$\\ \hline
 EGL&prospectiva&\makecell{gnóstica\\(aprendiz\\específico)}&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|)$\\ \hline
 EER&prospectiva&gnóstica&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|^2)$\\ \hline
 TU&\makecell{balanceada:\\exploratória e\\prospectiva}&gnóstica&interativa&\makecell{após etapa\\exploratória}&$\mathcal{O}(1)$\\ \hline
