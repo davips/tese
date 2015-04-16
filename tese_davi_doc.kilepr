@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=rankplot.tex
+lastDocument=experimentos.tex
 masterDocument=
 name=Tese
 pkg_extIsRegExp=false
@@ -547,7 +547,7 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=612
+line=96
 mode=LaTeX
 open=false
 order=5
@@ -569,8 +569,8 @@ encoding=ISO-8859-15
 highlight=LaTeX
 line=0
 mode=LaTeX
-open=false
-order=1
+open=true
+order=3
 
 [item:apendice3.tex]
 archive=true
@@ -644,10 +644,10 @@ order=1
 
 [item:bibliografia.bib]
 archive=true
-column=30
+column=3
 encoding=ISO-8859-1
 highlight=BibTeX
-line=1774
+line=1796
 mode=BibTeX
 open=false
 order=1
@@ -714,12 +714,12 @@ order=0
 
 [item:exp-analise.tex]
 archive=true
-column=0
+column=56
 encoding=ISO-8859-1
 highlight=LaTeX
-line=168
+line=28
 mode=LaTeX
-open=false
+open=true
 order=0
 
 [item:exp-elm.tex]
@@ -747,10 +747,10 @@ archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=216
+line=148
 mode=LaTeX
-open=false
-order=0
+open=true
+order=2
 
 [item:imagens/fluxo-esquema.tex]
 archive=true
@@ -794,10 +794,10 @@ order=3
 
 [item:introducao.tex]
 archive=true
-column=36
+column=31
 encoding=ISO-8859-1
 highlight=LaTeX
-line=179
+line=145
 mode=LaTeX
 open=false
 order=2
@@ -834,10 +834,10 @@ order=3
 
 [item:meta.tex]
 archive=true
-column=0
+column=35
 encoding=ISO-8859-1
 highlight=LaTeX
-line=2
+line=108
 mode=LaTeX
 open=false
 order=0
@@ -854,10 +854,10 @@ order=6
 
 [item:notacao.tex]
 archive=true
-column=68
+column=41
 encoding=ISO-8859-1
 highlight=LaTeX
-line=44
+line=23
 mode=LaTeX
 open=false
 order=1
@@ -880,7 +880,7 @@ highlight=LaTeX
 line=7
 mode=LaTeX
 open=false
-order=2
+order=1
 
 [item:plotRisco.tex]
 archive=true
@@ -897,19 +897,19 @@ archive=true
 column=0
 encoding=ISO-8859-15
 highlight=LaTeX
-line=209
+line=168
 mode=LaTeX
 open=false
 order=3
 
 [item:rankplot.tex]
 archive=true
-column=19
+column=16
 encoding=ISO-8859-1
 highlight=LaTeX
-line=930
+line=54
 mode=LaTeX
-open=false
+open=true
 order=1
 
 [item:rankplotRisco.tex]
@@ -1074,7 +1074,7 @@ order=5
 
 [view-settings,view=0,item:active-learning.tex]
 CursorColumn=0
-CursorLine=612
+CursorLine=96
 JumpList=
 ViMarks=
 
@@ -1133,8 +1133,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:bibliografia.bib]
-CursorColumn=30
-CursorLine=1774
+CursorColumn=3
+CursorLine=1796
 JumpList=
 ViMarks=
 
@@ -1175,8 +1175,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-analise.tex]
-CursorColumn=0
-CursorLine=168
+CursorColumn=56
+CursorLine=28
 JumpList=
 ViMarks=
 
@@ -1194,7 +1194,7 @@ ViMarks=
 
 [view-settings,view=0,item:experimentos.tex]
 CursorColumn=0
-CursorLine=216
+CursorLine=148
 JumpList=
 ViMarks=
 
@@ -1219,8 +1219,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:introducao.tex]
-CursorColumn=36
-CursorLine=179
+CursorColumn=31
+CursorLine=145
 JumpList=
 ViMarks=
 
@@ -1243,8 +1243,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:meta.tex]
-CursorColumn=0
-CursorLine=2
+CursorColumn=35
+CursorLine=108
 JumpList=
 ViMarks=
 
@@ -1255,8 +1255,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:notacao.tex]
-CursorColumn=68
-CursorLine=44
+CursorColumn=41
+CursorLine=23
 JumpList=
 ViMarks=
 
@@ -1280,13 +1280,13 @@ ViMarks=
 
 [view-settings,view=0,item:propostas.tex]
 CursorColumn=0
-CursorLine=209
+CursorLine=168
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:rankplot.tex]
-CursorColumn=19
-CursorLine=930
+CursorColumn=16
+CursorLine=54
 JumpList=
 ViMarks=
 

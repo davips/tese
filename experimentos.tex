@@ -23,17 +23,14 @@ seja mantida.
 
 \subsection{Diversidade dos algoritmos de aprendizado}\label{algs}
 Uma forma indireta de ilustrar a diversidade entre os modelos gerados pelos diferentes
-vieses dos algoritmos de aprendizado é por meio da similaridade entre suas acurácias.
-Embora sem garantias, essa relação assume que, no caso extremo de similaridade total
-(acurácias idênticas em todas as bases),
-é razoável supor que os modelos estejam fazendo as mesmas predições ou tenham
-algum tipo de afinidade com cada tipo de base parecida.
-As similaridades são apresentadas na Tabela \ref{passiveDists} de forma análoga à adotada por
-\cite{brazdil1994analysis}.
+vieses dos algoritmos de aprendizado é por meio da dissimilaridade entre suas acurácias.
+Com esse intuito, os valores de similaridade são apresentados na Tabela \ref{passiveDists}
+de forma análoga à adotada por \cite{brazdil1994analysis}.
 % \input passiveDists
 % Brazdil faz tabela de distâncias pareadas com taxas de erro sendo
 % as dimensões, depois faz decomposição ortogonal para visualizar em duas dimensões.
 % Depois ele faz agrupamento hierárquico.
+\ano{tirar ELM da tabela?}
 \begin{table}[h]
 \caption{Similaridade entre algoritmos. Medida: acurácia balanceada.
 \textit{94 bases de dados.
@@ -53,7 +50,7 @@ VFDT    &   0.44 &   0.43 &   0.46 &   0.42 & \textcolor{blue}{\textbf{  0.47}} 
 \end{center}
 \end{table}
 Esses modelos são o resultado de treinamento passivo, ou seja, com todos os
-exemplos da reserva.
+exemplos da reserva - rotulados.
 Considerando-se cada base de dados uma dimensão,
 a similaridade é calculada a partir da distância euclidiana $d(\bm{x},\bm{u})$
 entre dois vetores $\bm{x},\bm{u} \in \mathbb{R}^{94}$
@@ -78,6 +75,7 @@ $|Y|$ até $|\mathcal{U}|$ exemplos, simulando o progresso de um aprendizado inte
 Devido a essa inadequação do algoritmo ao cenário, optou-se por excluí-lo dos
 experimentos.
 
+\ano{tirar refs à ELM?}
 A maior similaridade ($0,64$) ocorre entre ELM e CIELM conforme esperado.
 Os próximos maiores valores por linha permitem separar os demais algoritmos
 em dois grupos, A e B, respectivamente:
@@ -91,8 +89,8 @@ provavelmente por se tratar de um comitê.
 SVM também se destaca, em menor grau.
 A distribuição das vitórias dos diferentes classificadores ao longo das bases de dados
 indica a existência de diversidade de viés.
-Assim, a adoção dos algoritmos é mais representativa do que
-apenas um único algoritmo arbitrário.
+Assim, a adoção dos algoritmos escolhidos é mais representativa do que
+o emprego de apenas um único algoritmo arbitrário.
 % \input classifsFried
 \begin{table}[h]
 \caption{Um contra um e contagem de posições.
@@ -100,8 +98,8 @@ Medida: acurácia balanceada.
 \textit{Cada asterisco/cruz/ponto indica quando o algoritmo na linha tem melhor
 desempenho que o algoritmo na coluna com intervalo de confiança de 0.99/0.95/0.90.
 O melhor, o segundo melhor e o pior valor de cada linha
-estão em \textcolor{blue}{\textbf{azul}}, \textcolor{red}{\textbf{vermelho}} e \textbf{negrito}
-respectivamente.}}
+estão em \textcolor{blue}{\textbf{azul}}, \textbf{negrito} e
+\textcolor{red}{\textbf{vermelho}} respectivamente.}}
 
 \begin{center}
 \begin{tabular}{lcc|cc|cc|cc}
@@ -125,32 +123,7 @@ C4.5w      &    11       &              13      \\
 \label{tab:friedClassif}
 \end{tabular}
 \end{center}
-% \begin{center}
-% \begin{tabular}{lcc|cc|cc|cc}
-%                         & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
-% 1 - 5NN         & - &   &   &   &   &   &   \\
-% 2 - C4.5w       &   & - &   &   &   &   &   \\ \hline
-% 3 - CIELM       &   &   & - &   &   &   &   \\
-% 4 - ELM         &   &   &   & - &   &   &   \\ \hline
-% 5 - NB          &   &   &   &   & - &   &   \\
-% 6 - RFw         & * & * & * & * & * & - &   \\ \hline
-% 7 - SVM         & . & + &   & * & + &   & - \\\end{tabular}
-% \quad
-% \begin{tabular}{lcc}
-% algoritmo & \makecell{primeiros\\lugares} & \makecell{últimos\\lugares} \\
-% \hline
-% RFw        &    \textcolor{blue}{\textbf{21}}       &              \textcolor{blue}{\textbf{3}}       \\
-% SVM        &    \textbf{20}       &              \textbf{8}       \\
-% 5NNa       &    17       &              21      \\
-% NB         &    14       &              \textcolor{red}{\textbf{24}}      \\
-% CIELM      &    12       &              9       \\
-% C4.5w      &    11       &              13      \\
-% ELM        &    \textcolor{red}{\textbf{4}}        &              16      \\
-% \label{tab:friedClassif}
-% \end{tabular}
-% \end{center}
 \end{table}
-
 
 \subsection{Diversidade de estratégias}
 Dentre as estratégias implementadas da literatura e propostas,
@@ -161,104 +134,80 @@ estratégias muito similares foram removidas.
 Com essa finalidade,
 analogamente à comparação na Seção \ref{algs},
 as similaridades entre estratégias foram calculadas
-por meio da distância $d(\bm{x},\bm{u}) \mid \bm{x},\bm{u} \in \mathbb{R}^{658}$
+por meio da distância $d(\bm{x},\bm{u}) \mid \bm{x},\bm{u} \in \mathbb{R}^{564}$
 entre acurácias balanceadas ao longo das $94$
-bases e $7$ algoritmos e são apresentadas na Tabela \ref{stratDists}.
-Estratégias específicas de um único tipo de aprendiz não foram incluídas nessa comparação.
+bases e $6$ algoritmos e são apresentadas na Tabela \ref{stratDists}.
 Os nomes de estratégias propostas estão em negrito.
+Nas análises seguintes, uma abreviação de estratégia seguido de asterisco indica o conjunto
+de todas as variantes de uma mesma estratégia.
 
 \afterpage{\clearpage\begin{landscape}
-% \input stratDists
 \begin{table}[h]
-\caption{Similaridade entre estratégias. Medida: ALC-kappa.
+\caption{Similaridade entre estratégias. Medida: ALC da acurácia balanceada.
 \textit{Detalhes na Tabela \ref{passiveDists}.}}
-% \begin{center}\scalebox{0.9}{\begin{tabular}{lcc|cc|cc|cc|cc|cc|cc|cc|c}
-%    & \begin{sideways}Rnd\end{sideways} & \begin{sideways}Clu\end{sideways} & \begin{sideways}\textbf{ATUeuc}\end{sideways} & \begin{sideways}\textbf{ATUman}\end{sideways} & \begin{sideways}\textbf{ATUmah}\end{sideways} & \begin{sideways}\textbf{GATUeuc}\end{sideways} & \begin{sideways}\textbf{GATUman}\end{sideways} & \begin{sideways}\textbf{GATUmah}\end{sideways} & \begin{sideways}\textbf{SGmulti}\end{sideways} & \begin{sideways}Ent\end{sideways} & \begin{sideways}Mar\end{sideways} & \begin{sideways}DWeuc\end{sideways} & \begin{sideways}TUeuc\end{sideways} & \begin{sideways}TUman\end{sideways} & \begin{sideways}TUmah\end{sideways} & \begin{sideways}EERacu\end{sideways} & \begin{sideways}EERent\end{sideways} \\
-% Rnd        & - & \textcolor{blue}{\textbf{  0.63}} & \textbf{  0.59} & \textbf{  0.57} & \textbf{  0.51} &   0.44 &   0.45 &   0.44 & \textbf{  0.56} &   0.36 &   0.36 & \textcolor{red}{\textbf{  0.24}} &   0.38 &   0.38 &   0.38 &   0.46 &   0.37 \\
-% Clu     & \textcolor{blue}{\textbf{  0.63}} & - & \textbf{  0.59} & \textbf{  0.59} & \textbf{  0.52} &   0.48 &   0.49 &   0.48 & \textbf{  0.58} &   0.38 &   0.39 & \textcolor{red}{\textbf{  0.24}} &   0.41 &   0.41 &   0.40 & \textbf{  0.50} &   0.41 \\ \hline
-% \textbf{ATUeuc} & \textbf{  0.59} & \textbf{  0.59} & - & \textcolor{blue}{\textbf{  0.74}} & \textbf{  0.57} &   0.47 &   0.48 &   0.47 & \textbf{  0.56} &   0.36 &   0.38 & \textcolor{red}{\textbf{  0.23}} &   0.41 &   0.41 &   0.41 &   0.45 &   0.36 \\
-% \textbf{ATUman} & \textbf{  0.57} & \textbf{  0.59} & \textcolor{blue}{\textbf{  0.74}} & - & \textbf{  0.57} &   0.48 & \textbf{  0.50} &   0.47 & \textbf{  0.56} &   0.37 &   0.39 & \textcolor{red}{\textbf{  0.23}} &   0.42 &   0.42 &   0.41 &   0.46 &   0.37 \\ \hline
-% \textbf{ATUmah} & \textbf{  0.51} & \textbf{  0.52} & \textcolor{blue}{\textbf{  0.57}} & \textcolor{blue}{\textbf{  0.57}} & - &   0.44 &   0.45 & \textbf{  0.54} &   0.48 &   0.35 &   0.37 & \textcolor{red}{\textbf{  0.23}} &   0.39 &   0.39 &   0.44 &   0.43 &   0.36 \\
-% \textbf{GATUeuc}        &   0.44 &   0.48 &   0.47 &   0.48 &   0.44 & - & \textcolor{blue}{\textbf{  0.70}} & \textbf{  0.52} &   0.47 &   0.41 &   0.43 & \textcolor{red}{\textbf{  0.24}} &   0.49 & \textbf{  0.50} &   0.45 &   0.45 &   0.38 \\ \hline
-% \textbf{GATUman}        &   0.45 &   0.49 &   0.48 & \textbf{  0.50} &   0.45 & \textcolor{blue}{\textbf{  0.70}} & - & \textbf{  0.53} &   0.48 &   0.40 &   0.42 & \textcolor{red}{\textbf{  0.24}} &   0.46 &   0.47 &   0.42 &   0.46 &   0.39 \\
-% \textbf{GATUmah}        &   0.44 &   0.48 &   0.47 &   0.47 & \textcolor{blue}{\textbf{  0.54}} & \textbf{  0.52} & \textbf{  0.53} & - &   0.44 &   0.37 &   0.38 & \textcolor{red}{\textbf{  0.24}} &   0.41 &   0.42 &   0.48 &   0.43 &   0.37 \\ \hline
-% \textbf{SGmulti}       & \textbf{  0.56} & \textcolor{blue}{\textbf{  0.58}} & \textbf{  0.56} & \textbf{  0.56} &   0.48 &   0.47 &   0.48 &   0.44 & - &   0.40 &   0.42 & \textcolor{red}{\textbf{  0.25}} &   0.44 &   0.44 &   0.42 & \textbf{  0.50} &   0.39 \\
-% Ent     &   0.36 &   0.38 &   0.36 &   0.37 &   0.35 &   0.41 &   0.40 &   0.37 &   0.40 & - & \textcolor{blue}{\textbf{  0.56}} & \textcolor{red}{\textbf{  0.25}} &   0.48 &   0.46 &   0.42 &   0.41 &   0.34 \\ \hline
-% Mar     &   0.36 &   0.39 &   0.38 &   0.39 &   0.37 &   0.43 &   0.42 &   0.38 &   0.42 & \textbf{  0.56} & - & \textcolor{red}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.57}} & \textbf{  0.56} &   0.46 &   0.44 &   0.36 \\
-% DWeuc   &   0.24 &   0.24 & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} &   0.24 &   0.24 &   0.24 & \textcolor{blue}{\textbf{  0.25}} & \textcolor{blue}{\textbf{  0.25}} &   0.24 & - &   0.24 &   0.24 & \textcolor{red}{\textbf{  0.23}} &   0.24 & \textcolor{red}{\textbf{  0.23}} \\ \hline
-% TUeuc   &   0.38 &   0.41 &   0.41 &   0.42 &   0.39 &   0.49 &   0.46 &   0.41 &   0.44 &   0.48 & \textbf{  0.57} & \textcolor{red}{\textbf{  0.24}} & - & \textcolor{blue}{\textbf{  0.70}} & \textbf{  0.50} &   0.44 &   0.36 \\
-% TUman   &   0.38 &   0.41 &   0.41 &   0.42 &   0.39 & \textbf{  0.50} &   0.47 &   0.42 &   0.44 &   0.46 & \textbf{  0.56} & \textcolor{red}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.70}} & - & \textbf{  0.51} &   0.44 &   0.37 \\ \hline
-% TUmah   &   0.38 &   0.40 &   0.41 &   0.41 &   0.44 &   0.45 &   0.42 &   0.48 &   0.42 &   0.42 &   0.46 & \textcolor{red}{\textbf{  0.23}} & \textbf{  0.50} & \textcolor{blue}{\textbf{  0.51}} & - &   0.41 &   0.35 \\
-% EERacu  &   0.46 & \textcolor{blue}{\textbf{  0.50}} &   0.45 &   0.46 &   0.43 &   0.45 &   0.46 &   0.43 & \textcolor{blue}{\textbf{  0.50}} &   0.41 &   0.44 & \textcolor{red}{\textbf{  0.24}} &   0.44 &   0.44 &   0.41 & - &   0.44 \\ \hline
-% EERent  &   0.37 &   0.41 &   0.36 &   0.37 &   0.36 &   0.38 &   0.39 &   0.37 &   0.39 &   0.34 &   0.36 & \textcolor{red}{\textbf{  0.23}} &   0.36 &   0.37 &   0.35 & \textcolor{blue}{\textbf{  0.44}} & - \\\end{tabular}}\label{stratDists}
-% \end{center}
-\begin{center}\scalebox{0.8}{\begin{tabular}{lcc|cc|cc|cc|cc|cc|cc|cc|cc|c}
-                                & \begin{sideways}Rnd\end{sideways} & \begin{sideways}Clu\end{sideways} & \begin{sideways}\textbf{ATUeuc}\end{sideways} & \begin{sideways}\textbf{ATUman}\end{sideways} & \begin{sideways}\textbf{ATUmah}\end{sideways} & \begin{sideways}\textbf{HTUeuc}\end{sideways} & \begin{sideways}\textbf{HTUman}\end{sideways} & \begin{sideways}\textbf{HTUmah}\end{sideways} & \begin{sideways}\textbf{SGmulti}\end{sideways} & \begin{sideways}Ent\end{sideways} & \begin{sideways}Mar\end{sideways} & \begin{sideways}DWeuc\end{sideways} & \begin{sideways}DWman\end{sideways} & \begin{sideways}DWmah\end{sideways} & \begin{sideways}TUeuc\end{sideways} & \begin{sideways}TUman\end{sideways} & \begin{sideways}TUmah\end{sideways} & \begin{sideways}EERacu\end{sideways} & \begin{sideways}EERent\end{sideways} \\Rnd        & - & \textcolor{blue}{\textbf{  0.64}} & \textbf{  0.58} & \textbf{  0.57} & \textbf{  0.55} &   0.44 &   0.46 &   0.46 & \textbf{  0.57} &   0.37 &   0.37 & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}}
- & \textcolor{red}{\textbf{  0.24}} &   0.40 &   0.40 &   0.41 &   0.46 &   0.38 \\
-Clu     & \textcolor{blue}{\textbf{  0.64}} & - & \textbf{  0.57} & \textbf{  0.58} & \textbf{  0.55} &   0.48 & \textbf{  0.50} & \textbf{  0.50} & \textbf{  0.59} &   0.39 &   0.40 & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} &   0.43 &   0.43 &   0.44 & \textbf{  0.51} &   0.41 \\ \hline
-\textbf{ATUeuc} & \textbf{  0.58} & \textbf{  0.57} & - & \textcolor{blue}{\textbf{  0.76}} & \textbf{  0.70} &   0.49 & \textbf{  0.51} & \textbf{  0.52} & \textbf{  0.50} &   0.36 &   0.36 & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} &   0.43 &   0.43 &   0.44 &   0.42 &   0.36 \\
-\textbf{ATUman} & \textbf{  0.57} & \textbf{  0.58} & \textcolor{blue}{\textbf{  0.76}} & - & \textbf{  0.70} & \textbf{  0.51} & \textbf{  0.54} & \textbf{  0.53} & \textbf{  0.50} &   0.37 &   0.37 & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} &   0.44 &   0.45 &   0.45 &   0.44 &   0.37 \\ \hline
-\textbf{ATUmah} & \textbf{  0.55} & \textbf{  0.55} & \textcolor{blue}{\textbf{  0.70}} & \textcolor{blue}{\textbf{  0.70}} & - & \textbf{  0.50} & \textbf{  0.52} & \textbf{  0.54} &   0.48 &   0.36 &   0.36 & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} &   0.43 &   0.44 &   0.45 &   0.43 &   0.36 \\
-\textbf{HTUeuc} &   0.44 &   0.48 &   0.49 & \textbf{  0.51} & \textbf{  0.50} & - & \textcolor{blue}{\textbf{  0.71}} & \textbf{  0.64} &   0.47 &   0.42 &   0.43 & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} & \textbf{  0.58} & \textbf{  0.60} & \textbf{  0.60} &   0.45 &   0.38 \\ \hline
-\textbf{HTUman} &   0.46 & \textbf{  0.50} & \textbf{  0.51} & \textbf{  0.54} & \textbf{  0.52} & \textcolor{blue}{\textbf{  0.71}} & - & \textbf{  0.66} &   0.49 &   0.41 &   0.42 & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} & \textbf{  0.52} & \textbf{  0.55} & \textbf{  0.54} &   0.47 &   0.39 \\
-\textbf{HTUmah} &   0.46 & \textbf{  0.50} & \textbf{  0.52} & \textbf{  0.53} & \textbf{  0.54} & \textbf{  0.64} & \textcolor{blue}{\textbf{  0.66}} & - &   0.48 &   0.40 &   0.41 & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} & \textbf{  0.51} & \textbf{  0.53} & \textbf{  0.55} &   0.45 &   0.38 \\ \hline
-\textbf{SGmulti}        & \textbf{  0.57} & \textcolor{blue}{\textbf{  0.59}} & \textbf{  0.50} & \textbf{  0.50} &   0.48 &   0.47 &   0.49 &   0.48 & - &   0.41 &   0.42 & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} &   0.42 &   0.43 &   0.43 & \textbf{  0.51} &   0.39 \\
-Ent     &   0.37 &   0.39 &   0.36 &   0.37 &   0.36 &   0.42 &   0.41 &   0.40 &   0.41 & - & \textcolor{blue}{\textbf{  0.62}} & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} &   0.47 &   0.47 &   0.45 &   0.42 &   0.35 \\ \hline
-Mar     &   0.37 &   0.40 &   0.36 &   0.37 &   0.36 &   0.43 &   0.42 &   0.41 &   0.42 & \textcolor{blue}{\textbf{  0.62}} & - & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} & \textbf{  0.50} &   0.49 &   0.47 &   0.45 &   0.36 \\
-DWeuc   & \textcolor{blue}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.24}} &   0.23 &   0.23 & \textcolor{blue}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.24}} &   0.23 & \textcolor{blue}{\textbf{  0.24}} &   0.23 & \textcolor{blue}{\textbf{  0.24}} &   0.23 & - & \textbf{  1.00} & \textbf{  1.00} & \textcolor{blue}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.24}} &   0.23 & \textcolor{red}{\textbf{  0.22}} \\ \hline
-DWman   & \textcolor{blue}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.24}} &   0.23 &   0.23 & \textcolor{blue}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.24}} &   0.23 & \textcolor{blue}{\textbf{  0.24}} &   0.23 & \textcolor{blue}{\textbf{  0.24}} &   0.23 & \textbf{  1.00} & - & \textbf{  1.00} & \textcolor{blue}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.24}} &   0.23 & \textcolor{red}{\textbf{  0.22}} \\
-DWmah   & \textcolor{blue}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.24}} &   0.23 &   0.23 & \textcolor{blue}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.24}} &   0.23 & \textcolor{blue}{\textbf{  0.24}} &   0.23 & \textcolor{blue}{\textbf{  0.24}} &   0.23 & \textbf{  1.00} & \textbf{  1.00} & - & \textcolor{blue}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.24}} &   0.23 & \textcolor{red}{\textbf{  0.22}} \\ \hline
-TUeuc   &   0.40 &   0.43 &   0.43 &   0.44 &   0.43 & \textbf{  0.58} & \textbf{  0.52} & \textbf{  0.51} &   0.42 &   0.47 & \textbf{  0.50} & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} & - & \textcolor{blue}{\textbf{  0.74}} & \textbf{  0.64} &   0.43 &   0.35 \\
-TUman   &   0.40 &   0.43 &   0.43 &   0.45 &   0.44 & \textbf{  0.60} & \textbf{  0.55} & \textbf{  0.53} &   0.43 &   0.47 &   0.49 & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.74}} & - & \textbf{  0.66} &   0.43 &   0.36 \\ \hline
-TUmah   &   0.41 &   0.44 &   0.44 &   0.45 &   0.45 & \textbf{  0.60} & \textbf{  0.54} & \textbf{  0.55} &   0.43 &   0.45 &   0.47 & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} & \textcolor{red}{\textbf{  0.24}} & \textbf{  0.64} & \textcolor{blue}{\textbf{  0.66}} & - &   0.42 &   0.36 \\
-EERacu  &   0.46 & \textcolor{blue}{\textbf{  0.51}} &   0.42 &   0.44 &   0.43 &   0.45 &   0.47 &   0.45 & \textcolor{blue}{\textbf{  0.51}} &   0.42 &   0.45 & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} & \textcolor{red}{\textbf{  0.23}} &   0.43 &   0.43 &   0.42 & - &   0.44 \\ \hline
-EERent  &   0.38 &   0.41 &   0.36 &   0.37 &   0.36 &   0.38 &   0.39 &   0.38 &   0.39 &   0.35 &   0.36 & \textcolor{red}{\textbf{  0.22}} & \textcolor{red}{\textbf{  0.22}} & \textcolor{red}{\textbf{  0.22}} &   0.35 &   0.36 &   0.36 & \textcolor{blue}{\textbf{  0.44}} & - \\\end{tabular}}\label{stratDists}
+\begin{center}\scalebox{0.77}{\begin{tabular}{lcc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc}
+                                & \begin{sideways}Rnd\end{sideways} & \begin{sideways}Clu\end{sideways} & \begin{sideways}\textbf{ATUeuc}\end{sideways} & \begin{sideways}\textbf{ATUman}\end{sideways} & \begin{sideways}\textbf{ATUmah}\end{sideways} & \begin{sideways}\textbf{HTUeuc}\end{sideways} & \begin{sideways}\textbf{HTUman}\end{sideways} & \begin{sideways}\textbf{HTUmah}\end{sideways} & \begin{sideways}\textbf{SGmulti}\end{sideways} & \begin{sideways}QBC\end{sideways} & \begin{sideways}Ent\end{sideways} & \begin{sideways}Mar\end{sideways} & \begin{sideways}DWeuc\end{sideways} & \begin{sideways}DWman\end{sideways} & \begin{sideways}DWmah\end{sideways} & \begin{sideways}TUeuc\end{sideways} & \begin{sideways}TUman\end{sideways} & \begin{sideways}TUmah\end{sideways} & \begin{sideways}EERacc\end{sideways} & \begin{sideways}EERent\end{sideways} & \begin{sideways}SVMbal\end{sideways} & \begin{sideways}SVMsim\end{sideways} \\Rnd      & - & \textcolor{blue}{\textbf{  0.68}} & \textcolor{blue}{\textbf{  0.68}} & \textbf{  0.67} & \textbf{  0.66} & \textbf{  0.54} & \textbf{  0.56} & \textbf{  0.56} & \textbf{  0.65} &   0.44 &   0.44 &   0.47 & \textcolor{red}{\textbf{  0.33}} & \textcolor{red}{\textbf{  0.33}} &   0.36 & \textbf{  0.51} & \textbf{  0.52} & \textbf{  0.52} & \textbf{  0.55} &   0.48 &   0.42 &   0.40 \\
+Clu     & \textcolor{blue}{\textbf{  0.68}} & - & \textbf{  0.66} & \textbf{  0.66} & \textbf{  0.65} & \textbf{  0.60} & \textbf{  0.62} & \textbf{  0.62} & \textbf{  0.67} & \textbf{  0.50} &   0.48 & \textbf{  0.52} &   0.33 & \textcolor{red}{\textbf{  0.32}} &   0.34 & \textbf{  0.55} & \textbf{  0.56} & \textbf{  0.57} & \textbf{  0.63} & \textbf{  0.54} &   0.44 &   0.41 \\ \hline
+\textbf{ATUeuc} & \textbf{  0.68} & \textbf{  0.66} & - & \textcolor{blue}{\textbf{  0.84}} & \textbf{  0.80} & \textbf{  0.60} & \textbf{  0.62} & \textbf{  0.63} & \textbf{  0.59} &   0.45 &   0.45 &   0.47 &   0.33 & \textcolor{red}{\textbf{  0.32}} &   0.35 & \textbf{  0.55} & \textbf{  0.56} & \textbf{  0.57} & \textbf{  0.53} &   0.47 &   0.42 &   0.39 \\
+\textbf{ATUman} & \textbf{  0.67} & \textbf{  0.66} & \textcolor{blue}{\textbf{  0.84}} & - & \textbf{  0.79} & \textbf{  0.61} & \textbf{  0.65} & \textbf{  0.64} & \textbf{  0.60} &   0.46 &   0.45 &   0.48 &   0.33 & \textcolor{red}{\textbf{  0.32}} &   0.35 & \textbf{  0.56} & \textbf{  0.57} & \textbf{  0.58} & \textbf{  0.54} &   0.49 &   0.43 &   0.40 \\ \hline
+\textbf{ATUmah} & \textbf{  0.66} & \textbf{  0.65} & \textcolor{blue}{\textbf{  0.80}} & \textbf{  0.79} & - & \textbf{  0.61} & \textbf{  0.63} & \textbf{  0.65} & \textbf{  0.58} &   0.46 &   0.45 &   0.48 &   0.33 & \textcolor{red}{\textbf{  0.32}} &   0.35 & \textbf{  0.56} & \textbf{  0.57} & \textbf{  0.58} & \textbf{  0.54} &   0.48 &   0.43 &   0.40 \\
+\textbf{HTUeuc} & \textbf{  0.54} & \textbf{  0.60} & \textbf{  0.60} & \textbf{  0.61} & \textbf{  0.61} & - & \textcolor{blue}{\textbf{  0.81}} & \textbf{  0.76} & \textbf{  0.57} &   0.49 & \textbf{  0.51} & \textbf{  0.56} &   0.33 & \textcolor{red}{\textbf{  0.32}} &   0.35 & \textbf{  0.72} & \textbf{  0.73} & \textbf{  0.72} & \textbf{  0.58} & \textbf{  0.52} &   0.44 &   0.40 \\ \hline
+\textbf{HTUman} & \textbf{  0.56} & \textbf{  0.62} & \textbf{  0.62} & \textbf{  0.65} & \textbf{  0.63} & \textcolor{blue}{\textbf{  0.81}} & - & \textbf{  0.76} & \textbf{  0.59} & \textbf{  0.50} & \textbf{  0.50} & \textbf{  0.55} &   0.33 & \textcolor{red}{\textbf{  0.32}} &   0.35 & \textbf{  0.67} & \textbf{  0.70} & \textbf{  0.68} & \textbf{  0.59} & \textbf{  0.52} &   0.44 &   0.40 \\
+\textbf{HTUmah} & \textbf{  0.56} & \textbf{  0.62} & \textbf{  0.63} & \textbf{  0.64} & \textbf{  0.65} & \textcolor{blue}{\textbf{  0.76}} & \textcolor{blue}{\textbf{  0.76}} & - & \textbf{  0.58} &   0.49 &   0.49 & \textbf{  0.54} &   0.33 & \textcolor{red}{\textbf{  0.32}} &   0.35 & \textbf{  0.65} & \textbf{  0.67} & \textbf{  0.69} & \textbf{  0.58} & \textbf{  0.51} &   0.44 &   0.40 \\ \hline
+\textbf{SGmulti}        & \textbf{  0.65} & \textcolor{blue}{\textbf{  0.67}} & \textbf{  0.59} & \textbf{  0.60} & \textbf{  0.58} & \textbf{  0.57} & \textbf{  0.59} & \textbf{  0.58} & - &   0.46 &   0.49 & \textbf{  0.54} &   0.33 & \textcolor{red}{\textbf{  0.32}} &   0.35 & \textbf{  0.54} & \textbf{  0.55} & \textbf{  0.55} & \textbf{  0.61} & \textbf{  0.52} &   0.42 &   0.38 \\
+QBC     &   0.44 & \textcolor{blue}{\textbf{  0.50}} &   0.45 &   0.46 &   0.46 &   0.49 & \textcolor{blue}{\textbf{  0.50}} &   0.49 &   0.46 & - &   0.47 &   0.47 &   0.33 & \textcolor{red}{\textbf{  0.32}} &   0.33 &   0.49 &   0.49 &   0.48 &   0.49 &   0.48 & \textcolor{blue}{\textbf{  0.50}} &   0.46 \\ \hline
+Ent     &   0.44 &   0.48 &   0.45 &   0.45 &   0.45 & \textbf{  0.51} & \textbf{  0.50} &   0.49 &   0.49 &   0.47 & - & \textcolor{blue}{\textbf{  0.65}} &   0.33 & \textcolor{red}{\textbf{  0.32}} &   0.33 & \textbf{  0.53} & \textbf{  0.52} & \textbf{  0.52} & \textbf{  0.53} &   0.47 &   0.42 &   0.39 \\
+Mar     &   0.47 & \textbf{  0.52} &   0.47 &   0.48 &   0.48 & \textbf{  0.56} & \textbf{  0.55} & \textbf{  0.54} & \textbf{  0.54} &   0.47 & \textcolor{blue}{\textbf{  0.65}} & - &   0.32 & \textcolor{red}{\textbf{  0.31}} &   0.33 & \textbf{  0.60} & \textbf{  0.59} & \textbf{  0.58} & \textbf{  0.59} & \textbf{  0.50} &   0.42 &   0.38 \\ \hline
+DWeuc   &   0.33 &   0.33 &   0.33 &   0.33 &   0.33 &   0.33 &   0.33 &   0.33 &   0.33 &   0.33 &   0.33 &   0.32 & - & \textcolor{blue}{\textbf{  0.65}} & \textbf{  0.51} &   0.33 &   0.33 &   0.33 &   0.32 & \textcolor{red}{\textbf{  0.31}} &   0.33 &   0.34 \\
+DWman   &   0.33 &   0.32 &   0.32 &   0.32 &   0.32 &   0.32 &   0.32 &   0.32 &   0.32 &   0.32 &   0.32 &   0.31 & \textcolor{blue}{\textbf{  0.65}} & - & \textbf{  0.53} &   0.32 &   0.32 &   0.32 &   0.31 & \textcolor{red}{\textbf{  0.30}} &   0.32 &   0.33 \\ \hline
+DWmah   &   0.36 &   0.34 &   0.35 &   0.35 &   0.35 &   0.35 &   0.35 &   0.35 &   0.35 &   0.33 &   0.33 &   0.33 & \textbf{  0.51} & \textcolor{blue}{\textbf{  0.53}} & - &   0.34 &   0.34 &   0.35 &   0.34 & \textcolor{red}{\textbf{  0.32}} &   0.33 &   0.34 \\
+TUeuc   & \textbf{  0.51} & \textbf{  0.55} & \textbf{  0.55} & \textbf{  0.56} & \textbf{  0.56} & \textbf{  0.72} & \textbf{  0.67} & \textbf{  0.65} & \textbf{  0.54} &   0.49 & \textbf{  0.53} & \textbf{  0.60} &   0.33 & \textcolor{red}{\textbf{  0.32}} &   0.34 & - & \textcolor{blue}{\textbf{  0.83}} & \textbf{  0.73} & \textbf{  0.56} &   0.49 &   0.44 &   0.40 \\ \hline
+TUman   & \textbf{  0.52} & \textbf{  0.56} & \textbf{  0.56} & \textbf{  0.57} & \textbf{  0.57} & \textbf{  0.73} & \textbf{  0.70} & \textbf{  0.67} & \textbf{  0.55} &   0.49 & \textbf{  0.52} & \textbf{  0.59} &   0.33 & \textcolor{red}{\textbf{  0.32}} &   0.34 & \textcolor{blue}{\textbf{  0.83}} & - & \textbf{  0.75} & \textbf{  0.56} & \textbf{  0.50} &   0.43 &   0.40 \\
+TUmah   & \textbf{  0.52} & \textbf{  0.57} & \textbf{  0.57} & \textbf{  0.58} & \textbf{  0.58} & \textbf{  0.72} & \textbf{  0.68} & \textbf{  0.69} & \textbf{  0.55} &   0.48 & \textbf{  0.52} & \textbf{  0.58} &   0.33 & \textcolor{red}{\textbf{  0.32}} &   0.35 & \textbf{  0.73} & \textcolor{blue}{\textbf{  0.75}} & - & \textbf{  0.55} &   0.49 &   0.43 &   0.40 \\ \hline
+EERacc  & \textbf{  0.55} & \textcolor{blue}{\textbf{  0.63}} & \textbf{  0.53} & \textbf{  0.54} & \textbf{  0.54} & \textbf{  0.58} & \textbf{  0.59} & \textbf{  0.58} & \textbf{  0.61} &   0.49 & \textbf{  0.53} & \textbf{  0.59} &   0.32 & \textcolor{red}{\textbf{  0.31}} &   0.34 & \textbf{  0.56} & \textbf{  0.56} & \textbf{  0.55} & - & \textbf{  0.58} &   0.44 &   0.41 \\
+EERent  &   0.48 & \textbf{  0.54} &   0.47 &   0.49 &   0.48 & \textbf{  0.52} & \textbf{  0.52} & \textbf{  0.51} & \textbf{  0.52} &   0.48 &   0.47 & \textbf{  0.50} &   0.31 & \textcolor{red}{\textbf{  0.30}} &   0.32 &   0.49 & \textbf{  0.50} &   0.49 & \textcolor{blue}{\textbf{  0.58}} & - &   0.41 &   0.38 \\ \hline
+SVMbal  &   0.42 &   0.44 &   0.42 &   0.43 &   0.43 &   0.44 &   0.44 &   0.44 &   0.42 & \textbf{  0.50} &   0.42 &   0.42 &   0.33 & \textcolor{red}{\textbf{  0.32}} &   0.33 &   0.44 &   0.43 &   0.43 &   0.44 &   0.41 & - & \textcolor{blue}{\textbf{  0.67}} \\
+SVMsim  &   0.40 &   0.41 &   0.39 &   0.40 &   0.40 &   0.40 &   0.40 &   0.40 &   0.38 &   0.46 &   0.39 &   0.38 &   0.34 & \textcolor{red}{\textbf{  0.33}} &   0.34 &   0.40 &   0.40 &   0.40 &   0.41 &   0.38 & \textcolor{blue}{\textbf{  0.67}} & - \\ \hline\end{tabular}}
+\label{stratDists}
 \end{center}
 \end{table}
 \end{landscape}\clearpage}
 
-As estratégias mais exploratórias (Rnd, Clu, ATU e SGmulti)
-têm entre si um grau de similaridade acima da média
-(valor de $0,63$ para as duas primeiras e entre $0,51$ e $0,59$ para as restantes,
-desconsiderando seis das variantes de TU entre si).
-Rnd, Clu e SGmulti foram mantidas pelo seu valor referencial e histórico.
-Uma similaridade maior pode ser notada entre as variantes de cada estratégia
-baseada em densidade (ATU, GATU e TU).
-Para conveniência experimental, as variantes baseadas nas distâncias euclidiana e de Manhattan
-(TUeuc, TUman, ATUeuc, ATUman, GATUeuc e GATUman)
-foram excluídas por serem mais similares às demais estratégias em comparação com
-as variantes baseadas na distância de Mahalanobis (TUmah, ATUmah e GATUmah),
+As estratégias mais exploratórias (Rnd, Clu, ATU* e SGmulti)
+tiveram entre si um grau de similaridade acima da média
+(valor de $0,68$ para as duas primeiras e entre $0,58$ e $0,68$ para as restantes,
+desconsiderando variantes entre si).
+Entretanto, Rnd, Clu e SGmulti foram mantidas pelo seu valor referencial e histórico.
+Uma similaridade maior pode ser notada dentro dos três conjuntos de variantes
+ATU*, HTU* e TU* (entre $0,73$ e $0,84$), logo,
+é possível manter apenas uma das métricas de distância sem impactar
+significativamente a representatividade das estratégias.
+Assim, as variantes baseadas nas distâncias euclidiana e de Manhattan
+foram excluídas por serem mais similares às demais variantes do que as baseadas na
+distância de Mahalanobis
+(TUeuc: $0,83$ e $0,73$, TUman: $0,83$ e $0,75$, \textbf{TUmah}: $0,75$ e $0,55$;
+ATUeuc: $0,84$ e $0,80$, ATUman: $0,84$ e $0,79$, \textbf{ATUmah}: $0,80$ e $0,79$;
+HTUeuc: $0,81$ e $0,76$, e HTUman: $0,81$ e $0,76$, \textbf{HTUmah}: $0,76$ e $0,76$),
 de acordo com a Tabela \ref{stratDists}.
-% A intrínseca independência de escala da distância de Mahalanobis é uma característica
-% que pode favorecer as estratégias.
+Além disso, a intrínseca independência de escala da distância de Mahalanobis é uma
+característica que a torna menos vinculada ao formato dos atributos.
 
 Dentre as estratégias baseadas em simples medida de informatividade
-(Unc, Ent e Mar), apenas Mar foi mantida devido à similaridade entre
-as três, por ser mais adequada a problemas multiclasse que Unc e por
-seu desempenho ser superior ao da Ent (Apêndice \ref{detalhes}).
-A estratégia DWeuc é a mais dissimilar devido a seu desempenho inferior,
-como demonstram os experimentos nas seções seguintes.
+(Unc, Ent e Mar), apenas Mar foi mantida devido à similaridade com Ent ($0,65$),
+por ser equivalente em problemas binários e mais adequada a problemas multiclasse que Unc
+e por seu desempenho superior (detalhes no Apêndice \ref{detalhes}).
+As variantes DW* são as mais dissimilares devido a seus desempenhos excessivamente inferiores,
+como demonstram os experimentos nas seções seguintes - foi mantida apenas
+DWmah analogamente à escolha feita com as outras estratégias baseadas em distância.
 O grupo reduzido de estratégias é apresentado na Tabela \ref{stratDistsRedux}.
 
 \newpage
 % \input stratDistsRedux
 \begin{table}[h]
-\caption{Similaridade entre estratégias selecionadas.  Medida: ALC-kappa.
+\caption{Similaridade entre estratégias selecionadas.  Medida: ALC da acurácia balanceada.
 \textit{Detalhes na Tabela \ref{passiveDists}.}}
 \begin{center}
-\scalebox{0.76}{
-\begin{tabular}{lcc|cc|cc|cc|cc}
-                                & Rnd & Clu & \textbf{ATUeuc} & \textbf{GATUeuc} & \textbf{SGmulti} & Mar & DWeuc & TUeuc & EERacu & EERent \\Rnd       & - & \textcolor{blue}{\textbf{  0.63}} & \textbf{  0.59} &   0.43 & \textbf{  0.56} &   0.36 & \textcolor{red}{\textbf{  0.24}} &   0.38 &   0.46 &   0.37 \\
-Clu     & \textcolor{blue}{\textbf{  0.63}} & - & \textbf{  0.59} &   0.47 & \textbf{  0.58} &   0.39 & \textcolor{red}{\textbf{  0.24}} &   0.41 & \textbf{  0.50} &   0.41 \\ \hline
-\textbf{ATUeuc} & \textcolor{blue}{\textbf{  0.59}} & \textcolor{blue}{\textbf{  0.59}} & - &   0.46 & \textbf{  0.56} &   0.38 & \textcolor{red}{\textbf{  0.23}} &   0.41 &   0.45 &   0.36 \\
-\textbf{GATUeuc}        &   0.43 &   0.47 &   0.46 & - &   0.46 &   0.43 & \textcolor{red}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.49}} &   0.44 &   0.38 \\ \hline
-\textbf{SGmulti}        & \textbf{  0.56} & \textcolor{blue}{\textbf{  0.58}} & \textbf{  0.56} &   0.46 & - &   0.42 & \textcolor{red}{\textbf{  0.25}} &   0.44 & \textbf{  0.50} &   0.39 \\
-Mar     &   0.36 &   0.39 &   0.38 &   0.43 &   0.42 & - & \textcolor{red}{\textbf{  0.24}} & \textcolor{blue}{\textbf{  0.56}} &   0.44 &   0.36 \\ \hline
-DWeuc   &   0.24 &   0.24 & \textcolor{red}{\textbf{  0.23}} &   0.24 & \textcolor{blue}{\textbf{  0.25}} &   0.24 & - &   0.24 &   0.24 & \textcolor{red}{\textbf{  0.23}} \\
-TUeuc   &   0.38 &   0.41 &   0.41 &   0.49 &   0.44 & \textcolor{blue}{\textbf{  0.56}} & \textcolor{red}{\textbf{  0.24}} & - &   0.44 &   0.36 \\ \hline
-EERacu  &   0.46 & \textcolor{blue}{\textbf{  0.50}} &   0.45 &   0.44 & \textcolor{blue}{\textbf{  0.50}} &   0.44 & \textcolor{red}{\textbf{  0.24}} &   0.44 & - &   0.44 \\
-EERent  &   0.37 &   0.41 &   0.36 &   0.38 &   0.39 &   0.36 & \textcolor{red}{\textbf{  0.23}} &   0.36 & \textcolor{blue}{\textbf{  0.44}} & - \\ \end{tabular}}
-\label{stratDistsRedux}
+
 \end{center}
 \end{table}
 

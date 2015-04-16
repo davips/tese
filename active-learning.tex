@@ -86,7 +86,7 @@ seções seguintes juntamente com suas principais características e seus princípio
 Na apresentação das ordens de complexidade, é assumido que todos os cálculos
 possíveis de serem feitos antes do processo de amostragem já foram realizados
 e seus resultados estão disponíveis em memória.
-Essa premissa se baseia no cenário especificado na Seção \ref{cenarios}.
+Essa premissa se baseia no cenário especificado na Seção \ref{cenario}.
 Ele garante a disponibilidade de todos os exemplos antes do início da amostragem.
 Dessa forma apenas o custo computacional entre consultas se configura como potencial
 custo financeiro porque consome o tempo do oráculo.
@@ -258,9 +258,9 @@ M(\bm{x})=P(\bm{z}(\bm{x})|\bm{x})-\max_{\bm{y}\in Y\setminus\{\bm{z}(\bm{x})\}}
 E(\bm{x})=-\log^{-1}|Y|\sum_{\bm{y}\in Y}P(\bm{y}|\bm{x})\log P(\bm{y}|\bm{x})
 \end{equation}
 
-\subsection{Margem simples - SVM}
-A estratégia de amostragem por margem pode ser estendida para espaços de atributos $\mathcal{F}$.
-transformados por uma \ing{função núcleo}{kernel function}.
+\subsection{Margem simples - SVMsim}
+A estratégia de amostragem por margem pode ser estendida para um espaços de
+atributos $\mathcal{F}$ transformado por uma \ing{função núcleo}{kernel function}.
 Essa foi a abordagem de \cite{journals/jmlr/TongK01} para SVMs,
 cuja variante mais empregada é chamada \ing{margem simples}{simple margin} (SVMsim).
 %  If asking each query is expensive relative to computing time then using either the MaxMin or Ratio
@@ -271,7 +271,7 @@ que divide linearmente o espaço $\mathcal{F}$.
 %  algoritmo: learn an SVM on the existing labeled data and choose as the next instance to
 %  query the instance that comes closest to the hyperplane in F.
 
-\subsection{Balanceamento exploração-prospecção - SVM}
+\subsection{Balanceamento exploração-prospecção - SVMbal}
 A natureza puramente prospectiva da amostragem por margem simples tem o viés de enfocar
 prioritariamente a fronteira de decisão, deixando de explorar as demais regiões do espaço
 $\mathcal{F}$.

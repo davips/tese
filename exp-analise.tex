@@ -1,4 +1,41 @@
 \section{Análise comparativa}\label{comparativa}
+
+mostrando strats redundantes:
+árvore boa com todas strats (folhas vizinhas com variantes da mesma strat -> justifica dists)
+dists  com todas strats
+dists
+
+(classificador=aprendiz exceto para SVMmultis e QBC,
+pois há aplicações que precisam ser usáveis desde as primeiras iterações)
+desempenho geral, mesmo que o algoritmo seja inadequado à base,
+afinal, na prática, é difícil o usuário escolher sem rótulos;
+cada par base-algoritmo é considerado um problema:
+usuário indiferente ao classificador
+ALC
+plot,plotrank,fried?
+árvore má (em certos nichos (=aprendizes), não usar certas estratégias -> justifica próx. exp.)
+
+desempenho em experimento controlado para a estratégia isoladamente,
+e não a relação entre base e algoritmo;
+cada base é um problema:
+usuário ciente do classificador mais adequado (=melhor passivo) para cada base
+ALC
+plot,plotrank,fried?
+Entretanto, essa situação é irreal. Além disso, segundo REF, alg. bom com muitos exemplos
+pode não ser bom com poucos, então ... -> justifca próx. exp.
+
+(classificador independente do aprendiz,
+pois há aplicações que têm um orçamento fixo para a construção do conjunto de
+treinamento definitivo, para depois entrarem em operação)
+desempenho num cenário mais realista, é desejado usar o melhor par algoritmo-estratégia,
+porém sem se ater ao algoritmo do aprendiz após a rotulação;
+cada base é um problema:
+classificador é escolhido por 5-fold CV no conjunto de 100 exemplos rotulados
+Acc
+qual \% em que aprendiz e classificador coincidem? Há pares aprendiz-classificador mágicos?
+
+
+
 Há aplicações em que suas particularidades ou preferências do especialista determinam
 previamente o algoritmo de aprendizado. \ano{exemplos?}
 Por outro lado, há aplicações, possivelmente a maioria, em que a escolha é livre
@@ -462,3 +499,5 @@ o mesmo algoritmo que venceu na passiva}
 
 \ano{faz sentido testar com o melhor classif porque o user vai ter os rotulos pra poder escolher o melhor,
 mas isso soh vale pra agnosticas: Rnd, Clu, ATUman, ATUmah e ATUeuc}
+
+
