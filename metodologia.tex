@@ -141,10 +141,6 @@ Cada algoritmo de aprendizado tem, intrinsecamente, um viés próprio \ano{REF}.
 É natural esperar que esse viés influencie no desempenho das estratégias gnósticas
 ou que o aprendizado seja afetado pela sequência de consultas gerada por uma
 determinada estratégia agnóstica.
-Também pode ser um fator relevante que, no aprendizado passivo,
-algoritmos com boa performance com poucos dados podem ter baixa
-performance com muitos dados
-\citep{journals/sigkdd/AttenbergP10,journals/jmlr/PerlichPS03}.
 Dessa forma, diferentes algoritmos de aprendizado
 precisam ser adotados quando alguma comparação entre estratégias é pretendida.
 
@@ -243,11 +239,13 @@ nos experimentos deste trabalho.
 \subsection{EERent e EERacu}
 Neste trabalho, seguindo a escolha do artigo original,
 optou-se pela entropia como função objetivo.
-\ano{verificar se ficaram mesmo as duas}
-Adicionalmente, a acurácia balanceada (Seção \ref{metricas})
-foi adotada como uma variação do método,
+Adicionalmente, a acurácia balanceada foi adotada como uma variação do método,
 visando agir diretamente nas medidas multiclasse de interesse apresentadas na
 Seção \ref{metricas}.
+Trata-se de uma métrica multiclasse com menos propensão a ter valores próximos
+ou iguais a zero do que a medida kappa, ampliando o alcance da medida de
+informatividade (Seção \ref{metricas}).
+\ano{explicitar essa dedução na Seção \ref{metricas}}
 Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteração devido ao
 alto custo computacional da estratégia.
 

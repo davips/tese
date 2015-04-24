@@ -1,0 +1,22 @@
+\node[line width=0.3ex, decision] {$\frac{\#exemplos}{\#atrib.}$}
+child {node [outcome] {C4.5w: 7\\
+CIELM: 6\\
+NB: 1\\
+SVM: 1} edge from parent node [cond] {$\leq 8$}}
+child {node [decision] {$\frac{\%major.}{\%minor.}$}
+child {node [decision] {\#classes}
+child {node [outcome] {5NN: 19\\
+NB: 14\\
+C4.5w: 4\\
+RFw: 2\\
+SVM: 2\\
+CIELM: 2} edge from parent node [cond] {$\leq 3$}}
+child {node [outcome] {NB: 5\\
+C4.5w: 4\\
+5NN: 2} edge from parent node [cond] {$> 3$}}edge from parent node [cond] {$\leq 4$}}
+child {node [outcome] {CIELM: 9\\
+NB: 6\\
+SVM: 5\\
+5NN: 2\\
+RFw: 2\\
+C4.5w: 1} edge from parent node [cond] {$> 4$}}edge from parent node [cond] {$> 8$}};

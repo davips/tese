@@ -1,9 +1,27 @@
 \node[line width=0.3ex, decision] {algoritmo}
-child {node [outcome] {Mar: 60\\
-Ent: 40\\
-\textbf{SGmulti}: 36\\
-EERent: 28\\
-demais:: 65} edge from parent node [cond] {RFw}}
+child {node [decision] {$\frac{\%major.}{\%minor.}$}
+child {node [decision] {\#atributos}
+child {node [outcome] {EERent: 7\\
+\textbf{ATUmah}: 6\\
+\textbf{HTUeuc}: 5\\
+TUman: 5\\
+TUeuc: 5\\
+\textbf{HTUmah}: 5\\
+TUmah: 4\\
+demais:: 18} edge from parent node [cond] {$\leq51$}}
+child {node [outcome] {TUman: 6\\
+TUeuc: 6\\
+\textbf{HTUman}: 5\\
+\textbf{HTUeuc}: 4\\
+demais:: 10} edge from parent node [cond] {$>51$}}edge from parent node [cond] {$\leq10$}}
+child {node [outcome] {Ent: 7\\
+Mar: 6\\
+TUeuc: 4\\
+DWmah: 3\\
+EERent: 2\\
+TUmah: 2\\
+\textbf{ATUeuc}: 2\\
+demais:: 12} edge from parent node [cond] {$>10$}}edge from parent node [cond] {5NN}}
 child {node [decision] {\%minor.}
 child {node [outcome] {SVMsim: 10\\
 SVMbal: 10\\
@@ -43,29 +61,6 @@ TUeuc: 5\\
 Ent: 4\\
 \textbf{ATUmah}: 4\\
 demais:: 20} edge from parent node [cond] {$>10$}}edge from parent node [cond] {CIELM}}
-child {node [decision] {$\frac{\%major.}{\%minor.}$}
-child {node [decision] {\#atributos}
-child {node [outcome] {EERent: 7\\
-\textbf{ATUmah}: 6\\
-\textbf{HTUeuc}: 5\\
-TUman: 5\\
-TUeuc: 5\\
-\textbf{HTUmah}: 5\\
-TUmah: 4\\
-demais:: 18} edge from parent node [cond] {$\leq51$}}
-child {node [outcome] {TUman: 6\\
-TUeuc: 6\\
-\textbf{HTUman}: 5\\
-\textbf{HTUeuc}: 4\\
-demais:: 10} edge from parent node [cond] {$>51$}}edge from parent node [cond] {$\leq10$}}
-child {node [outcome] {Ent: 7\\
-Mar: 6\\
-TUeuc: 4\\
-DWmah: 3\\
-EERent: 2\\
-TUmah: 2\\
-\textbf{ATUeuc}: 2\\
-demais:: 12} edge from parent node [cond] {$>10$}}edge from parent node [cond] {5NN}}
 child {node [outcome] {EERent: 15\\
 \textbf{ATUman}: 10\\
 \textbf{ATUeuc}: 10\\
@@ -77,6 +72,11 @@ DWeuc: 6\\
 \textbf{HTUeuc}: 5\\
 EERacc: 5\\
 demais:: 37} edge from parent node [cond] {NB}}
+child {node [outcome] {Mar: 60\\
+Ent: 40\\
+\textbf{SGmulti}: 36\\
+EERent: 28\\
+demais:: 65} edge from parent node [cond] {RFw}}
 child {node [outcome] {EERent: 30\\
 SVMsim: 18\\
 \textbf{HTUmah}: 15\\

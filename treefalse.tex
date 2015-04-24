@@ -1,7 +1,219 @@
 \node[line width=0.3ex, decision] {algoritmo}
-child {node [outcome] {EERent \\$117$: $24\%$} edge from parent node [cond] {5NN}}
-child {node [outcome] {EERent \\$95$: $29\%$} edge from parent node [cond] {C4.5w}}
-child {node [outcome] {TUmah \\$100$: $41\%$} edge from parent node [cond] {CIELM}}
-child {node [outcome] {EERent \\$95$: $35\%$} edge from parent node [cond] {NB}}
-child {node [outcome] {TUmah \\$84$: $51\%$} edge from parent node [cond] {RFw}}
-child {node [outcome] {EERent \\$87$: $36\%$} edge from parent node [cond] {SVM}};
+child {node [decision] {\%nominais}
+child {node [decision] {\%major.}
+child {node [decision] {\#atributos}
+child {node [decision] {\#exemplos}
+child {node [outcome] {Rnd: 3\\
+EERent: 2} edge from parent node [cond] {$\leq248$}}
+child {node [outcome] {\textbf{ATUmah}: 4\\
+TUmah: 2\\
+DWmah: 1\\
+DWman: 1\\
+Mar: 1\\
+\textbf{ATUeuc}: 1} edge from parent node [cond] {$>248$}}edge from parent node [cond] {$\leq6$}}
+child {node [decision] {\#atributos}
+child {node [outcome] {\textbf{HTUeuc}: 12\\
+EERent: 4\\
+TUmah: 4\\
+SVMbal: 4\\
+EERacc: 3\\
+TUeuc: 3\\
+demais: 6} edge from parent node [cond] {$\leq57$}}
+child {node [decision] {\#exemplos}
+child {node [outcome] {\textbf{HTUeuc}: 3\\
+TUeuc: 2\\
+demais: 1} edge from parent node [cond] {$\leq226$}}
+child {node [outcome] {\textbf{ATUman}: 4\\
+TUeuc: 1} edge from parent node [cond] {$>226$}}edge from parent node [cond] {$>57$}}edge from parent node [cond] {$>6$}}edge from parent node [cond] {$\leq78$}}
+child {node [decision] {\#exemplos}
+child {node [outcome] {Ent: 5\\
+demais: 1} edge from parent node [cond] {$\leq2468$}}
+child {node [outcome] {Ent: 2\\
+QBCRFw: 2\\
+DWmah: 1} edge from parent node [cond] {$>2468$}}edge from parent node [cond] {$>78$}}edge from parent node [cond] {$\leq13$}}
+child {node [decision] {\%major.}
+child {node [decision] {$\frac{\%major.}{\%minor.}$}
+child {node [outcome] {TUeuc: 2\\
+DWman: 2\\
+Mar: 2} edge from parent node [cond] {$\leq1$}}
+child {node [outcome] {Rnd: 3\\
+DWman: 2\\
+TUman: 2\\
+DWeuc: 2\\
+demais: 1} edge from parent node [cond] {$>1$}}edge from parent node [cond] {$\leq67$}}
+child {node [outcome] {SVMsim: 5\\
+demais: 11} edge from parent node [cond] {$>67$}}edge from parent node [cond] {$>13$}}edge from parent node [cond] {5NN}}
+child {node [decision] {$\frac{\%major.}{\%minor.}$}
+child {node [decision] {\%major.}
+child {node [outcome] {\textbf{ATUman}: 5\\
+\textbf{HTUmah}: 4\\
+TUmah: 2\\
+demais: 1} edge from parent node [cond] {$\leq27$}}
+child {node [decision] {\%minor.}
+child {node [decision] {\%minor.}
+child {node [outcome] {SVMbal: 9\\
+EERent: 5\\
+QBCRFw: 3\\
+TUman: 2\\
+\textbf{ATUeuc}: 2\\
+demais: 3} edge from parent node [cond] {$\leq27$}}
+child {node [outcome] {TUeuc: 3\\
+SVMbal: 2\\
+\textbf{ATUeuc}: 2\\
+EERent: 1\\
+EERacc: 1\\
+DWeuc: 1} edge from parent node [cond] {$>27$}}edge from parent node [cond] {$\leq32$}}
+child {node [decision] {$\frac{\%major.}{\%minor.}$}
+child {node [outcome] {QBCRFw: 4\\
+\textbf{HTUman}: 2\\
+EERent: 2} edge from parent node [cond] {$\leq1$}}
+child {node [outcome] {EERent: 6\\
+\textbf{HTUeuc}: 3\\
+QBCRFw: 3\\
+TUman: 3\\
+DWmah: 2\\
+SVMsim: 2\\
+\textbf{HTUmah}: 2\\
+\textbf{HTUman}: 2\\
+demais: 3} edge from parent node [cond] {$>1$}}edge from parent node [cond] {$>32$}}edge from parent node [cond] {$>27$}}edge from parent node [cond] {$\leq13$}}
+child {node [outcome] {SVMsim: 14\\
+demais: 28} edge from parent node [cond] {$>13$}}edge from parent node [cond] {C4.5w}}
+child {node [decision] {\%minor.}
+child {node [outcome] {SVMbal: 4\\
+DWmah: 4\\
+\textbf{ATUman}: 2\\
+demais: 1} edge from parent node [cond] {$\leq3$}}
+child {node [decision] {\#classes}
+child {node [decision] {$\frac{\#exemplos}{\#atrib.}$}
+child {node [outcome] {TUeuc: 3\\
+\textbf{SGmulti}: 2\\
+EERacc: 2} edge from parent node [cond] {$\leq5$}}
+child {node [decision] {\#exemplos}
+child {node [outcome] {TUeuc: 5\\
+DWeuc: 2\\
+demais: 1} edge from parent node [cond] {$\leq172$}}
+child {node [outcome] {DWeuc: 12\\
+Ent: 9\\
+DWman: 8\\
+TUmah: 8\\
+demais: 8} edge from parent node [cond] {$>172$}}edge from parent node [cond] {$>5$}}edge from parent node [cond] {$\leq3$}}
+child {node [outcome] {TUmah: 5\\
+Ent: 3\\
+TUman: 3\\
+\textbf{ATUmah}: 2\\
+Mar: 2\\
+DWeuc: 2\\
+TUeuc: 2\\
+SVMbal: 2\\
+demais: 2} edge from parent node [cond] {$>3$}}edge from parent node [cond] {$>3$}}edge from parent node [cond] {CIELM}}
+child {node [decision] {\%nominais}
+child {node [decision] {\%major.}
+child {node [decision] {\%major.}
+child {node [decision] {$\frac{\#exemplos}{\#atrib.}$}
+child {node [decision] {$\frac{\%major.}{\%minor.}$}
+child {node [outcome] {Rnd: 2\\
+TUman: 2\\
+DWeuc: 2\\
+EERent: 1\\
+TUmah: 1\\
+EERacc: 1\\
+SVMbal: 1\\
+\textbf{ATUeuc}: 1} edge from parent node [cond] {$\leq1$}}
+child {node [outcome] {SVMbal: 6\\
+EERent: 3\\
+\textbf{HTUeuc}: 2\\
+SVMsim: 2\\
+Mar: 2\\
+demais: 2} edge from parent node [cond] {$>1$}}edge from parent node [cond] {$\leq100$}}
+child {node [outcome] {\textbf{ATUeuc}: 3\\
+EERent: 3\\
+EERacc: 2\\
+demais: 1} edge from parent node [cond] {$>100$}}edge from parent node [cond] {$\leq53$}}
+child {node [outcome] {DWmah: 4\\
+\textbf{HTUeuc}: 3\\
+EERent: 3\\
+\textbf{ATUman}: 2\\
+demais: 2} edge from parent node [cond] {$>53$}}edge from parent node [cond] {$\leq65$}}
+child {node [decision] {\#atributos}
+child {node [outcome] {\textbf{ATUmah}: 5\\
+\textbf{ATUman}: 4\\
+EERent: 2\\
+DWeuc: 2\\
+SVMbal: 2\\
+demais: 1} edge from parent node [cond] {$\leq21$}}
+child {node [outcome] {\textbf{ATUman}: 3\\
+EERacc: 2\\
+QBCRFw: 1\\
+Clu: 1} edge from parent node [cond] {$>21$}}edge from parent node [cond] {$>65$}}edge from parent node [cond] {$\leq15$}}
+child {node [outcome] {DWman: 4\\
+DWeuc: 4\\
+EERent: 3\\
+DWmah: 2\\
+QBCRFw: 2\\
+TUeuc: 2\\
+\textbf{HTUman}: 2\\
+demais: 1} edge from parent node [cond] {$>15$}}edge from parent node [cond] {NB}}
+child {node [decision] {$\frac{\%major.}{\%minor.}$}
+child {node [decision] {\%major.}
+child {node [decision] {$\frac{\#exemplos}{\#atrib.}$}
+child {node [decision] {\%major.}
+child {node [decision] {\%nominais}
+child {node [outcome] {Mar: 26\\
+Ent: 6\\
+demais: 3} edge from parent node [cond] {$\leq0$}}
+child {node [outcome] {Mar: 9\\
+EERacc: 3\\
+Clu: 2\\
+demais: 1} edge from parent node [cond] {$>0$}}edge from parent node [cond] {$\leq67$}}
+child {node [outcome] {Ent: 5\\
+EERacc: 3\\
+Clu: 2\\
+\textbf{HTUman}: 2\\
+demais: 1} edge from parent node [cond] {$>67$}}edge from parent node [cond] {$\leq85$}}
+child {node [outcome] {EERent: 10\\
+\textbf{HTUmah}: 2\\
+Mar: 2\\
+demais: 3} edge from parent node [cond] {$>85$}}edge from parent node [cond] {$\leq79$}}
+child {node [outcome] {Ent: 4\\
+DWman: 1} edge from parent node [cond] {$>79$}}edge from parent node [cond] {$\leq27$}}
+child {node [outcome] {\textbf{ATUman}: 3\\
+\textbf{ATUeuc}: 2\\
+Ent: 1\\
+TUman: 1\\
+DWeuc: 1} edge from parent node [cond] {$>27$}}edge from parent node [cond] {RFw}}
+child {node [decision] {\%major.}
+child {node [decision] {\%minor.}
+child {node [outcome] {Mar: 5\\
+EERent: 2} edge from parent node [cond] {$\leq9$}}
+child {node [outcome] {TUman: 3\\
+EERent: 2} edge from parent node [cond] {$>9$}}edge from parent node [cond] {$\leq26$}}
+child {node [decision] {\%major.}
+child {node [decision] {\#atributos}
+child {node [decision] {\#exemplos}
+child {node [outcome] {\textbf{HTUmah}: 3\\
+SVMsim: 2\\
+QBCRFw: 2\\
+EERent: 1\\
+Clu: 1} edge from parent node [cond] {$\leq172$}}
+child {node [outcome] {EERent: 14\\
+SVMsim: 7\\
+\textbf{HTUeuc}: 5\\
+Rnd: 4\\
+DWmah: 2\\
+\textbf{HTUmah}: 2\\
+QBCRFw: 2\\
+Clu: 2\\
+DWeuc: 2\\
+TUeuc: 2\\
+SVMbal: 2\\
+demais: 4} edge from parent node [cond] {$>172$}}edge from parent node [cond] {$\leq50$}}
+child {node [outcome] {EERent: 3\\
+\textbf{ATUman}: 2\\
+DWman: 2\\
+EERacc: 2\\
+demais: 2} edge from parent node [cond] {$>50$}}edge from parent node [cond] {$\leq78$}}
+child {node [outcome] {DWeuc: 4\\
+SVMbal: 3\\
+\textbf{ATUeuc}: 3\\
+\textbf{ATUmah}: 2\\
+SVMsim: 2} edge from parent node [cond] {$>78$}}edge from parent node [cond] {$>26$}}edge from parent node [cond] {SVM}};

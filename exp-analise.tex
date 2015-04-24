@@ -1,68 +1,33 @@
 \section{Análise comparativa}\label{comparativa}
-
-mostrando strats redundantes:
-árvore boa com todas strats (folhas vizinhas com variantes da mesma strat -> justifica dists)
-dists  com todas strats
-dists
-
-(classificador=aprendiz exceto para SVMmultis e QBC,
-pois há aplicações que precisam ser usáveis desde as primeiras iterações)
-desempenho geral, mesmo que o algoritmo seja inadequado à base,
-afinal, na prática, é difícil o usuário escolher sem rótulos;
-cada par base-algoritmo é considerado um problema:
-usuário indiferente ao classificador
-ALC
-plot,plotrank,fried?
-árvore má (em certos nichos (=aprendizes), não usar certas estratégias -> justifica próx. exp.)
-
-desempenho em experimento controlado para a estratégia isoladamente,
-e não a relação entre base e algoritmo;
-cada base é um problema:
-usuário ciente do classificador mais adequado (=melhor passivo) para cada base
-ALC
-plot,plotrank,fried?
-Entretanto, essa situação é irreal. Além disso, segundo REF, alg. bom com muitos exemplos
-pode não ser bom com poucos, então ... -> justifca próx. exp.
-
-(classificador independente do aprendiz,
-pois há aplicações que têm um orçamento fixo para a construção do conjunto de
-treinamento definitivo, para depois entrarem em operação)
-desempenho num cenário mais realista, é desejado usar o melhor par algoritmo-estratégia,
-porém sem se ater ao algoritmo do aprendiz após a rotulação;
-cada base é um problema:
-classificador é escolhido por 5-fold CV no conjunto de 100 exemplos rotulados
-Acc
-qual \% em que aprendiz e classificador coincidem? Há pares aprendiz-classificador mágicos?
-
-
-
-Há aplicações em que suas particularidades ou preferências do especialista determinam
+Há aplicações cujas particularidades ou preferências do especialista determinam
 previamente o algoritmo de aprendizado. \ano{exemplos?}
-Por outro lado, há aplicações, possivelmente a maioria, em que a escolha é livre
-e concretizada idealmente a partir do momento em que o conjunto de treinamento é
-suficientemente grande para a realização de uma validação cruzada \ano{ref?}.
-Para simular esses dois cenários de forma concisa e
-devido à presença de estratégias específicas de um único tipo de aprendiz
-(QBC, SVMS e SVMB),
-% (QBC, EMC, SVMS e SVMB),
-a comparação de estratégias está dividida em três partes:
-\begin{itemize}
- \item \textbf{comparação com algoritmos variados} - compreende algoritmos não vinculados a nenhuma estratégia
- (5NN, C4.5w, CIELM e NB); incidentalmente, esse critério remove os algoritmos que aparecem
- nos extremos da contagem de posições, deixando a contagem de primeiros
-e últimos lugares mais equilibrada, entre $21$ e $27$ e entre $19$ e $28$, respectivamente;
- \item \textbf{comparação RFw} - por ser um comitê, o RF viabiliza o uso da estratégia QBC;
-  nessa comparação é possível avaliar a existência de benefícios em aplicá-la frente
-  às estratégias de uso geral; é possível também observar quais estratégias são adequadas
-  para esse algoritmo;
-  \item \textbf{comparação SVM} - de forma análoga à \textit{comparação RFw},
-  porém com duas estratégias específicas; e,
-%   \item \textbf{comparação ELM} - de forma análoga à \textit{comparação RFw},
-%   porém com o diferencial de revelar de forma pioneira a viabilidade de se aplicar
-%   aprendizado ativo e a estratégia específica com ELMs.
-  \end{itemize}
+Nessas aplicações, o algoritmo do classificador coincide com o algoritmo do aprendiz.
+Por outro lado, há aplicações em que a escolha do algoritmo é livre e, definido o
+aprendiz (ou sua ausência), a escolha do classificador se dá idealmente a partir do
+momento em que o conjunto de treinamento se torne suficientemente grande para
+a realização de uma validação cruzada \ano{ref?}.
+Para simular esses dois cenários de forma concisa,
+a comparação de estratégias está dividida da seguinte maneira:
+\begin{enumerate}
+  \item \textbf{algoritmo pré-definido} -
+  cada combinação base-algoritmo é um teste e cada estratégia é uma abordagem sob comparação;
+  o desempenho é medido durante a evolução do aprendiz.
+  \item \textbf{algoritmo definido após rotulação} -
+  cada base é um teste e cada par estratégia-aprendiz é uma abordagem sob comparação;
+  o desempenho é medido com o melhor classificador obtido após a rotulação.
+\end{enumerate}
 
-\subsection{Comparação com algoritmos variados}\label{cdiversa}
+\subsection{Cenário com algoritmo pré-definido}\label{predefinido}
+\ano{detalhes do exp aqui ou na metodologia ou nos dois?:
+ALC kappa}
+
+No cenário em que o algoritmo a ser adotado pelo aprendiz e pelo classificador é
+pré-definido, supõe-se que a aplicação impõe
+o algoritmo a ser usado devido à natureza do problema ou devido a restrições do sistema; ou,
+o especialista recorre à experiência pessoal ou faz uma escolha arbitrária.
+Assim, todas as combinações base-algoritmo foram consideradas possíveis numa aplicação real
+e puderam ser adotadas como testes no experimento.
+
 % http://research.cs.wisc.edu/techreports/2009/TR1648.pdf
 Estratégias são normalmente avaliadas por meio de curvas de aprendizado,
 que são os gráficos da medida de interesse em função da quantidade de consultas
@@ -71,9 +36,9 @@ que são os gráficos da medida de interesse em função da quantidade de consultas
 % uncertainty sampling and random sampling.
 % The reported results are for a logistic regression model averaged over ten folds
 % using cross-validation.
-O comportamento típico da curva de aprendizado ativo seguido por todas as diferentes estratégias
+O comportamento típico da curva de aprendizado ativo seguido pelas diferentes estratégias
 é ilustrado na Figura \ref{curvas}
-Apesar da pouca discernibilidade das curvas, a exibição delas para todas as estratégias permite notar
+Apesar da pouca discernibilidade das curvas, a exibição delas permite notar
 que elas têm a mesma forma logarítmica, com o valor kappa divergindo na medida em que novos
 exemplos são consultados.
 \input plot
@@ -81,7 +46,7 @@ Se todas as bases tivessem a mesma quantidade de exemplos
 e o aprendizado prosseguisse, as curvas se encontrariam novamente,
 pois tendem ao desempenho passivo.
 
-É possível observar que a curva da DWeuc se destaca negativamente,
+É possível observar que a curva de SVMbal se destaca negativamente,
 mas comparações de curvas neste gráfico são imprecisas devido aos diferentes
 pesos que as bases podem ter:
 bases mais difíceis tendem a ter um valor mais baixo para kappa e acabam
@@ -90,33 +55,35 @@ Uma forma de neutralização da desigualdade de nível de dificuldade entre as base
 de ranqueamento das médias\footnote{Além das médias,
 um gráfico das medianas também foi elaborado e teve um comportamento praticamente igual.
 % com leves perturbações irrelevantes
-Por motivos de espaço ele foi omitido.}, conforme mostrado na Figura \ref{curvasrank}.
+Por motivos de espaço ele foi omitido.}, conforme mostrado na Figura \ref{curvasrank},
+que confirma o mau desempenho de SVMbal e QBCRFw - as duas estratégias de aprendiz fixo.
 \input rankplot
-O fato de nem todas as estratégias agnósticas terem sido favorecidas sugere que a ausência
-de premissas baseadas no viés do aprendiz não é condição preponderante para um bom
-desempenho em algoritmos de aprendizado variados, como  Rnd e Clu que permaneceram
-debaixo da colocação média ($5.5$) por praticamente todo o intervalo de consultas.
+Os aprendizes fixos (SVM e RFw) podem gerar consultas desfavoráveis aos outros algoritmos
+empregados como classificador (5NN, C4.5w, CIELM e NB).
+De forma mais ampla, pode-se esperar que estratégias gnósticas não tenham um desempenho
+constante ao longo de todos os seis aprendizes em cada base.
+Essa hipótese seria mais provável se as estratégias agnósticas (Rnd, Clu e ATUmah) tivessem obtido
+resultados acima da média, porém Rnd e Clu que permaneceram
+abaixo da colocação média ($5.5$) por praticamente todo o intervalo de consultas.
+ATUmah se manteve próxima da média, porém com mais vantagem na primeira metade do orçamento.
+Assim, é mais provável que a própria natureza das estratégias seja inferior para o dado conjunto de bases.
 
-Conforme esperado, DWeuc teve o pior desempenho por concentrar as consultas apenas
-nas regiões mais densas e de fronteira, deixando de explorar adequadamente o espaço de exemplos.
-DWeuc é a estratégia Mar ponderada pela densidade, logo, dada a superioridade de Mar,
-a ponderação por densidade pode ser considerada bastante prejudicial quando não leva em
-conta os exemplos rotulados.
-Por outro lado, as extensões de DW (TU, ATU e GATU) superam as demais, pois ponderam inversamente pela
-densidade de exemplos rotulados evitando, assim, as regiões densamente rotuladas.
-SGmulti, por sua vez, se manteve próximo à colocação média.
-Um evento importante entre as melhores curvas é a inversão entre a estratégia gnóstica
-TUmah e sua versão agnóstica ATUmah após aproximadamente $90$ exemplos.
+% DWeuc é a estratégia Mar ponderada pela densidade, logo, dada a superioridade de Mar,
+% a ponderação por densidade pode ser considerada bastante prejudicial quando não leva em
+% conta os exemplos rotulados.
+% Por outro lado, as extensões de DW (TU, ATU e GATU) superam as demais, pois ponderam inversamente pela
+% densidade de exemplos rotulados evitando, assim, as regiões densamente rotuladas.
+SGmulti, por sua vez, se manteve estável, pouco acima da colocação média.
+Um evento importante entre as melhores curvas é a inversão entre a estratégia agnóstica
+ATUmah e Mar após aproximadamente $50$ exemplos.
 Essa inversão coincide com a intuição de que consultas exploratórias sejam vantajosas no início do
 aprendizado, enquanto que consultas prospectivas passem a ser proveitosas mais tardiamente.
-Assim, uma estratégia como a GATUmah, capaz de migrar entre agnosticidade e gnosticidade,
-pode ter um bom desempenho tanto no início quanto no restante da curva de aprendizado.
-A ascensão de Mar também é um indicativo de que a prospecção é prejudicial no início
-e vantajosa com o avanço do aprendizado.
-A diferença entre EERacu e EERent é um indício de que atacar diretamente a função objetivo
-não é tão eficaz quanto o uso da medida de entropia.
-Nas análises seguintes, as estratégias DWeuc - por ser claramente superada pelas suas extensões - e
-EERacu - por ser melhor representada pela proposta original da EER - foram omitidas.
+Assim, estratégias como HTUmah e TUmah, capazes de combinar agnosticidade e gnosticidade,
+podem ter um bom desempenho tanto no início quanto no restante da curva de aprendizado
+conforme evidenciado por suas curvas.
+A curva ascendente de Mar vista isoladamente também é um indicativo de que a prospecção pura
+é prejudicial no início e vantajosa com o avanço do aprendizado.
+Por fim, EERent mostrou-se como uma das melhores opções pela estabilidade e colocação de sua curva.
 
 Para confirmar as conclusões com segurança estatística, os níveis de confiança
 ($p \in \{0,01; 0,05; 0,10\}$), na Tabela \ref{stratsALCKappaFriedAllReduxall}, indicam
@@ -228,7 +195,7 @@ Com relação à minimização de risco financeiro,
 novamente as estratégias propostas também se mostraram viáveis,
 vencendo as mesmas estratégias que TUmah, porém com maior significância estatística.
 
-\subsection{Comparação RFw}\label{crf}
+\subsection{Cenário com definição de algoritmo após rotulação}\label{crf}
 A estratégia específica QBC perdeu de todas, exceto GATUman e Rnd,
 conforme Tabela \ref{stratsALCKappaFriedRFwRedux}.
 GATUman também teve um desempenho significativamente negativo.
@@ -383,13 +350,12 @@ e o segundo caso também resulta em torno de $95$ metaexemplos, porém para cada a
 totalizando $595$.
 % Apesar de ilustrativa, a árvore pode não ser segura do ponto de vista de tomada de
 % decisão devido ao baixo grau de pureza das folhas.
-\usetikzlibrary{trees}
-\input arvorebest
-\input arvore
-\input arvorebestperd
-\input arvoreperd
+% \input arvorebest
+% \input arvore
+% \input arvorebestperd
+% \input arvoreperd
 
-\ref{tree}
+% \ref{tree}
 A amostragem aleatória aparece apenas na folha que representa o uso do 5NN nas quatro bases que têm
 uma proporção de atributos nominais não muito alta (igual ou abaixo de $77$),
 poucos atributos em geral (igual ou abaixo de $6$) e não muitos exemplos (igual ou abaixo de $1078$).
@@ -397,7 +363,7 @@ Assim, pode-se concluir que não optar pelo aprendizado ativo raramente é a melho
 Num nicho similar, porém com muitos exemplos (acima de $1078$), HTUmah é a mais indicada.
 ATUmah
 
-\ref{treeBest}
+% \ref{treeBest}
 O algoritmo NB produz estimativas de distribuição de probabilidade excessivamente confiantes
 que podem ser amenizadas por um \ing{comitê por amostragem}{bagging} \citep{conf/icml/RoyM01}.
 Estratégias que dependem dessas estimativas podem ser prejudicadas.
@@ -419,14 +385,20 @@ probabilidade de todos os exemplos da reserva ameniza o efeito do excesso de con
 % % }
 % \end{itemize}
 
-\section{Cenário realista: Amostragem gnóstica com viés independente}\label{ind}
+\section{algoritmo definido após rotulação}\label{ind}
+algoritmos com boa performance com poucos dados podem ter baixa
+performance com muitos dados
+\citep{journals/sigkdd/AttenbergP10,journals/jmlr/PerlichPS03}.
+
+
 Numa aplicação real, a disponibilidade de rótulos permite uma escolha mais adequada
 do algoritmo de aprendizado.
 Assim, estratégias agnósticas e aquelas cujo aprendiz possa ser desvinculado da escolha do
 algoritmo de aprendizado definitivo da aplicação se mostram desejáveis.
-As estratégias agnósticas adiam naturalmente a escolha do algoritmo para depois da etapa de rotulação.
-Entretanto, elas são desprovidas da capacidade de prospecção advinda do víes de aprendizado inerente
-a todo aprendiz.
+As estratégias agnósticas adiam naturalmente a escolha do algoritmo para depois da
+etapa de rotulação.
+Entretanto, elas são desprovidas da capacidade de prospecção advinda do víes de
+aprendizado inerente a todo aprendiz.
 As gnósticas, por sua vez, dependem desse viés desde o início da amostragem ativa.
 Apesar disso, é possível adotar um aprendiz compatível com a estratégia e que tenha um bom
 desempenho geral; depois de obtidos os rótulos, o algoritmo definitivo seria escolhido via validação
@@ -501,3 +473,36 @@ o mesmo algoritmo que venceu na passiva}
 mas isso soh vale pra agnosticas: Rnd, Clu, ATUman, ATUmah e ATUeuc}
 
 
+% Existem algumas combinações menos favoráveis dentre as bases e os algoritmos selecionados.
+% Algumas delas são perceptíveis na Figura \ref{treebadleas}.
+% A árvore indica a contagem de derrotas de cada algoritmo de acordo com a acurácia
+% passiva balanceada.
+% Uma baixa proporção de exemplos por atributos ($\frac{\#exemplos}{\#atrib.} \leq 8$),
+% por exemplo, desfavorece C4.5w e CIELM mais fortemente.
+% % \afterpage{\clearpage\begin{landscape}
+% \begin{figure}
+% \tikzset{
+% every node/.style={font=\scriptsize,black, thin},
+% decision/.style={shape=rectangle, minimum height=1cm, text width=1.7cm,
+% text centered, rounded corners=1ex, draw},
+% outcome/.style={ shape=rectangle, fill=red!15, draw, text width=2cm, text justified},
+% decision tree/.style={sibling distance=3cm, level distance=2cm},
+% cond/.style={blue, yshift=-2mm, shape=rectangle, text centered},
+% }
+% \begin{center}
+% \caption{Possíveis nichos de inadequação base-algoritmo.
+% \textit{Mínimo de dez exemplos por folha.}}
+% \begin{tikzpicture} [edge from parent/.style={->,above,draw,sloped,midway,gray!30,ultra thick},
+% text width=2.7cm, align=flush center, grow cyclic,
+% level 1/.style={level distance=3.2cm,sibling angle=45},
+% level 2/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
+% level 3/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
+% level 4/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
+% level 5/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
+% ]
+% \input{treeLearnerKappaperd}
+% \label{treebadleas}
+% \end{tikzpicture}
+% \end{center}
+% \end{figure}
+% % \end{landscape}\clearpage}

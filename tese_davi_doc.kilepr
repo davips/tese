@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=experimentos.tex
+lastDocument=rankplot.tex
 masterDocument=
 name=Tese
 pkg_extIsRegExp=false
@@ -15,6 +15,16 @@ src_extensions=.tex .ltx .latex .dtx .ins
 [Tools]
 MakeIndex=
 QuickBuild=
+
+[document-settings,item:../ucipp/uci/metaTreeLearnertrue.arff]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=None
+Indentation Mode=normal
+Mode=
+ReadWrite=true
 
 [document-settings,item:active-learning.tex]
 Bookmarks=
@@ -76,7 +86,7 @@ Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:arvore.tex]
+[document-settings,item:arvorealg.tex]
 Bookmarks=
 Encoding=ISO-8859-1
 FoldedColumns=
@@ -270,6 +280,26 @@ FoldedLines=
 Highlighting=LaTeX
 Indentation Mode=normal
 Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:kappa1mahamediaallRank.plot]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=None
+Indentation Mode=normal
+Mode=
+ReadWrite=false
+
+[document-settings,item:kappamahmediaallRank.plot]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=None
+Indentation Mode=normal
+Mode=
 ReadWrite=true
 
 [document-settings,item:kappamediaParesReduxRank.plot]
@@ -522,6 +552,16 @@ Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
+[document-settings,item:treeBestfalse.tex]
+Bookmarks=
+Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
 [document-settings,item:treeBesttrue.tex]
 Bookmarks=
 Encoding=ISO-8859-1
@@ -542,12 +582,22 @@ Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
-[item:active-learning.tex]
+[item:../ucipp/uci/metaTreeLearnertrue.arff]
 archive=true
 column=0
 encoding=ISO-8859-1
+highlight=None
+line=0
+mode=
+open=false
+order=-1
+
+[item:active-learning.tex]
+archive=true
+column=18
+encoding=ISO-8859-1
 highlight=LaTeX
-line=96
+line=442
 mode=LaTeX
 open=false
 order=5
@@ -569,7 +619,7 @@ encoding=ISO-8859-15
 highlight=LaTeX
 line=0
 mode=LaTeX
-open=true
+open=false
 order=3
 
 [item:apendice3.tex]
@@ -602,22 +652,22 @@ mode=LaTeX
 open=false
 order=-1
 
-[item:arvore.tex]
+[item:arvorealg.tex]
 archive=true
-column=0
+column=68
 encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=15
 mode=LaTeX
 open=false
 order=4
 
 [item:arvorebest.tex]
 archive=true
-column=0
+column=25
 encoding=ISO-8859-1
 highlight=LaTeX
-line=25
+line=12
 mode=LaTeX
 open=false
 order=3
@@ -634,10 +684,10 @@ order=2
 
 [item:arvoreperd.tex]
 archive=true
-column=15
+column=43
 encoding=ISO-8859-1
 highlight=LaTeX
-line=23
+line=6
 mode=LaTeX
 open=false
 order=1
@@ -714,10 +764,10 @@ order=0
 
 [item:exp-analise.tex]
 archive=true
-column=56
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=28
+line=59
 mode=LaTeX
 open=true
 order=0
@@ -744,12 +794,12 @@ order=2
 
 [item:experimentos.tex]
 archive=true
-column=0
+column=40
 encoding=ISO-8859-1
 highlight=LaTeX
-line=148
+line=170
 mode=LaTeX
-open=true
+open=false
 order=2
 
 [item:imagens/fluxo-esquema.tex]
@@ -802,6 +852,26 @@ mode=LaTeX
 open=false
 order=2
 
+[item:kappa1mahamediaallRank.plot]
+archive=true
+column=0
+encoding=ISO-8859-1
+highlight=None
+line=0
+mode=
+open=false
+order=-1
+
+[item:kappamahmediaallRank.plot]
+archive=true
+column=0
+encoding=ISO-8859-1
+highlight=None
+line=0
+mode=
+open=false
+order=-1
+
 [item:kappamediaParesReduxRank.plot]
 archive=true
 column=75
@@ -844,10 +914,10 @@ order=0
 
 [item:metodologia.tex]
 archive=true
-column=26
+column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=239
+line=143
 mode=LaTeX
 open=false
 order=6
@@ -874,12 +944,12 @@ order=-1
 
 [item:plot.tex]
 archive=true
-column=0
+column=159
 encoding=ISO-8859-1
 highlight=LaTeX
-line=7
+line=15
 mode=LaTeX
-open=false
+open=true
 order=1
 
 [item:plotRisco.tex]
@@ -904,20 +974,20 @@ order=3
 
 [item:rankplot.tex]
 archive=true
-column=16
+column=151
 encoding=ISO-8859-1
 highlight=LaTeX
-line=54
+line=11
 mode=LaTeX
 open=true
-order=1
+order=2
 
 [item:rankplotRisco.tex]
 archive=true
 column=0
 encoding=ISO-8859-1
 highlight=LaTeX
-line=1
+line=23
 mode=LaTeX
 open=false
 order=-1
@@ -1052,6 +1122,16 @@ mode=LaTeX
 open=false
 order=-1
 
+[item:treeBestfalse.tex]
+archive=true
+column=49
+encoding=ISO-8859-1
+highlight=LaTeX
+line=88
+mode=LaTeX
+open=false
+order=-1
+
 [item:treeBesttrue.tex]
 archive=true
 column=112
@@ -1072,9 +1152,15 @@ mode=LaTeX
 open=false
 order=5
 
-[view-settings,view=0,item:active-learning.tex]
+[view-settings,view=0,item:../ucipp/uci/metaTreeLearnertrue.arff]
 CursorColumn=0
-CursorLine=96
+CursorLine=0
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:active-learning.tex]
+CursorColumn=18
+CursorLine=442
 JumpList=
 ViMarks=
 
@@ -1108,15 +1194,15 @@ CursorLine=2
 JumpList=
 ViMarks=
 
-[view-settings,view=0,item:arvore.tex]
-CursorColumn=0
-CursorLine=0
+[view-settings,view=0,item:arvorealg.tex]
+CursorColumn=68
+CursorLine=15
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:arvorebest.tex]
-CursorColumn=0
-CursorLine=25
+CursorColumn=25
+CursorLine=12
 JumpList=
 ViMarks=
 
@@ -1127,8 +1213,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:arvoreperd.tex]
-CursorColumn=15
-CursorLine=23
+CursorColumn=43
+CursorLine=6
 JumpList=
 ViMarks=
 
@@ -1175,8 +1261,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-analise.tex]
-CursorColumn=56
-CursorLine=28
+CursorColumn=0
+CursorLine=59
 JumpList=
 ViMarks=
 
@@ -1193,8 +1279,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:experimentos.tex]
-CursorColumn=0
-CursorLine=148
+CursorColumn=40
+CursorLine=170
 JumpList=
 ViMarks=
 
@@ -1224,6 +1310,18 @@ CursorLine=145
 JumpList=
 ViMarks=
 
+[view-settings,view=0,item:kappa1mahamediaallRank.plot]
+CursorColumn=0
+CursorLine=0
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:kappamahmediaallRank.plot]
+CursorColumn=0
+CursorLine=0
+JumpList=
+ViMarks=
+
 [view-settings,view=0,item:kappamediaParesReduxRank.plot]
 CursorColumn=75
 CursorLine=0
@@ -1249,8 +1347,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:metodologia.tex]
-CursorColumn=26
-CursorLine=239
+CursorColumn=0
+CursorLine=143
 JumpList=
 ViMarks=
 
@@ -1267,8 +1365,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:plot.tex]
-CursorColumn=0
-CursorLine=7
+CursorColumn=159
+CursorLine=15
 JumpList=
 ViMarks=
 
@@ -1285,14 +1383,14 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:rankplot.tex]
-CursorColumn=16
-CursorLine=54
+CursorColumn=151
+CursorLine=11
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:rankplotRisco.tex]
 CursorColumn=0
-CursorLine=1
+CursorLine=23
 JumpList=
 ViMarks=
 
@@ -1371,6 +1469,12 @@ ViMarks=
 [view-settings,view=0,item:tree.tex]
 CursorColumn=0
 CursorLine=32
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:treeBestfalse.tex]
+CursorColumn=49
+CursorLine=88
 JumpList=
 ViMarks=
 
