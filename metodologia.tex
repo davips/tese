@@ -334,7 +334,8 @@ que foi adotada neste trabalho.
 Ela tem a importante propriedade de remeter à medida original em problemas binários.
 Por fim, ela permite realizar a comparação por dois pontos de vista:
 interestratégias e em relação ao acaso.
-\ano{colocar fórmula da kappa? já incluir pseudoALC na fórmula?}
+\ano{colocar fórmula da kappa? já incluir pseudoALC na fórmula? explicar depois da formula que
+a ALC pro kappa se torna o kappa médio}
 
 Outro ponto de vista importante é em relação ao desempenho passivo.
 Sendo ele dado por apenas um valor para todos os exemplos, não existe
@@ -342,15 +343,14 @@ a possibilidade de se calcular uma ALC.
 Assim, deve ser definido um momento na curva de aprendizado como o
 limite do orçamento disponível e deve ser avaliado o modelo induzido até então.
 \green{baseline p/ AccBal é $1/|Y|$ ?}
-Nesse caso, foi adotada a acurácia balanceada \citep{journals/bmcbi/MassoV10}
-por ter um significado mais próximo
-da usual medida de acurácia quando se comparam classificadores.
-Assim como a kappa multiclasse, ela é adequada para problemas multiclasse desbalanceados.
 O orçamento escolhido foi $\cent=\frac{|\mathcal{U}|}{2}$
 % metade dos exemplos disponíveis
 nas trinta e nove bases com menos de quatrocentos exemplos (Tabela \ref{tab:nm})
 e  $\cent=200$ nas bases restantes.
 % duzentos exemplos
+
+Outra medida possível é a acurácia balanceada \citep{journals/bmcbi/MassoV10}.
+Assim como a kappa multiclasse, ela é adequada para problemas multiclasse desbalanceados.
 
 \ano{colocar fórmula da accbal?}
 

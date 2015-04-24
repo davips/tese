@@ -49,9 +49,9 @@ pois tendem ao desempenho passivo.
 É possível observar que a curva de SVMbal se destaca negativamente,
 mas comparações de curvas neste gráfico são imprecisas devido aos diferentes
 pesos que as bases podem ter:
-bases mais difíceis tendem a ter um valor mais baixo para kappa e acabam
+bases mais difíceis, por exemplo, tendem a ter um valor mais baixo para kappa e acabam
 sub-representadas.
-Uma forma de neutralização da desigualdade de nível de dificuldade entre as bases é a adoção
+Uma forma de neutralização desse tipo de desigualdade entre as bases é a adoção
 de ranqueamento das médias\footnote{Além das médias,
 um gráfico das medianas também foi elaborado e teve um comportamento praticamente igual.
 % com leves perturbações irrelevantes
@@ -67,6 +67,7 @@ resultados acima da média, porém Rnd e Clu que permaneceram
 abaixo da colocação média ($5.5$) por praticamente todo o intervalo de consultas.
 ATUmah se manteve próxima da média, porém com mais vantagem na primeira metade do orçamento.
 Assim, é mais provável que a própria natureza das estratégias seja inferior para o dado conjunto de bases.
+\ano{muito especulativo}
 
 % DWeuc é a estratégia Mar ponderada pela densidade, logo, dada a superioridade de Mar,
 % a ponderação por densidade pode ser considerada bastante prejudicial quando não leva em
@@ -81,59 +82,67 @@ aprendizado, enquanto que consultas prospectivas passem a ser proveitosas mais t
 Assim, estratégias como HTUmah e TUmah, capazes de combinar agnosticidade e gnosticidade,
 podem ter um bom desempenho tanto no início quanto no restante da curva de aprendizado
 conforme evidenciado por suas curvas.
-A curva ascendente de Mar vista isoladamente também é um indicativo de que a prospecção pura
+A curva ascendente de Mar, quando vista isoladamente, também é um indicativo de que a prospecção pura
 é prejudicial no início e vantajosa com o avanço do aprendizado.
 Por fim, EERent mostrou-se como uma das melhores opções pela estabilidade e colocação de sua curva.
 
 Para confirmar as conclusões com segurança estatística, os níveis de confiança
-($p \in \{0,01; 0,05; 0,10\}$), na Tabela \ref{stratsALCKappaFriedAllReduxall}, indicam
+($p \in \{0,01; 0,05; 0,10\}$) na Tabela \ref{stratsALCKappaFriedAllReduxall} indicam
 quando uma estratégia na linha é melhor que a outra na coluna.
-O critério de vitória é baseado na comparação dos valores da ALC-kappa para todas as bases.
+O critério de vitória é baseado na comparação dos valores da kappa médio para todas as bases.
 A medida foi calculada com $200$ exemplos nas bases de tamanho suficiente
 e $|\mathcal{U}|$ nas demais.
 % \input stratsmahALCKappaFriedAllReduxall
 \begin{table}[h]
-\caption{Um contra um para as estratégias (376 testes).
-Medida: ALC-kappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
+\caption{Um contra um para as estratégias (564 testes).
+Medida: kappa médio. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
 
 \begin{center}
-\scalebox{0.94}{\begin{tabular}{lcc|cc|cc|cc}
-                        & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
-1 - Rnd         & - &   &   &   &   &   &   &   \\
-2 - Clu         &   & - &   &   &   &   &   &   \\ \hline
-3 - \textbf{ATUmah}     & * & * & - &   & * &   &   &   \\
-4 - \textbf{GATUmah}    & * & * &   & - & * & . &   &   \\ \hline
-5 - \textbf{SGmulti}    & * &   &   &   & - &   &   &   \\
-6 - Mar         & * & * &   &   & . & - &   &   \\ \hline
-7 - TUmah       & * & * &   &   & * &   & - &   \\
-8 - EERent      & * & * &   &   & * &   &   & - \\ \hline\end{tabular}
+\scalebox{0.82}{
+\begin{tabular}{lcc|cc|cc|cc|cc}
+                   & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+1 - Rnd         & - &   &   &   &   &   &   &   &   &   \\
+2 - Clu         & + & - &   &   &   & * &   &   &   & * \\ \hline
+3 - \textbf{ATUmah}     & * &   & - &   &   & * &   &   &   & * \\
+4 - \textbf{HTUmah}     & * & * & * & - & * & * &   &   &   & * \\ \hline
+5 - \textbf{SGmulti}    & * &   &   &   & - & * &   &   &   & * \\
+6 - QBCRFw      &   &   &   &   &   & - &   &   &   &   \\ \hline
+7 - Mar         & * & * &   &   &   & * & - &   &   & * \\
+8 - TUmah       & * & * & + &   & + & * &   & - &   & * \\ \hline
+9 - EERent      & * & * & * &   & * & * &   &   & - & * \\
+10 - SVMbal     &   &   &   &   &   &   &   &   &   & - \\ \hline
+\end{tabular}
 }
 \quad
-\scalebox{0.91}{\begin{tabular}{lccc}
+\scalebox{0.82}{
+\begin{tabular}{lccc}
 algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{últimos\\lugares} \\
 \hline
-EERent          &       \textcolor{blue}{\textbf{94}}      &       135     &       \textcolor{red}{\textbf{74}}      \\
-TUmah           &       \textbf{80}      &       126     &       41      \\
-Mar             &       72      &       129     &       \textcolor{red}{\textbf{74}}      \\
-HTUmah          &       64      &       \textcolor{blue}{\textbf{106}}     &       \textcolor{blue}{\textbf{23}}      \\
-ATUmah          &       49      &       \textbf{112}     &       \textbf{31}      \\
-SGmulti         &       21      &       166     &       34      \\
-Clu             &       19      &       \textcolor{red}{\textbf{168}}     &       56      \\
-Rnd             &       \textcolor{red}{\textbf{8}}       &       -     &       \textcolor{red}{\textbf{74}}      \\
-\end{tabular}}
+EERent     & \bom{280} & \bom{168} & 121 \\
+\textbf{HTUmah}     & \bomd{251} & \bomd{179} & \bom{88} \\
+Mar        & 235 & 187 & 161 \\
+TUmah      & 233 & 200 & \bomd{119} \\
+\textbf{ATUmah}     & 176 & 207 & 139 \\
+\textbf{SGmulti}    & 152 & 216 & 134 \\
+SVMbal     & 123 & \ruim{334} & \ruim{304} \\
+QBCRFw     & 106 & 311 & 266 \\
+Clu        & 103 & 227 & 164 \\
+Rnd        & \ruim{71} & - & 225 \\
+\end{tabular}
+}
 \label{stratsALCKappaFriedAllReduxall}
 \end{center}
 \end{table}
 
-Como um indicativo da viabilidade do aprendizado ativo em geral, Rnd perde de todas exceto Clu.
-Ainda assim, o princípio teórico de Clu, que garante um desempenho que não seja pior que a
-amostragem aleatória, manteve-se válido.
-Dentre as melhores estratégias, a proposta GATUmah é a preferível, pois além de se equiparar
-às outras ela foi superior à Mar - ainda que com baixo nível de confiança ($p=0,10$).
-A menor quantidade de derrotas para Rnd e de últimos lugares são duas vantagens das duas propostas
-baseadas na TUmah, pois indicam o melhor desempenho frente ao não uso de aprendizado ativo
-e um menor risco de se obter o pior desempenho.
-SGmulti superou apenas a aleatória.
+Como um indicativo da viabilidade do aprendizado ativo em geral, Rnd perde de todas exceto QBCRFw
+e SVMbal.
+Clu superou a amostragem aleatória, respeitando a garantia teórica de que não é inferior a ela.
+Dentre as melhores estratégias,
+a proposta HTUmah obteve vitórias maior significância estatística que sua principal contendente TUmah
+e se equiparou a EERent.
+Dentre as agnósticas selecionadas ATUmah é a preferível, também por superar suas contendentes
+significativamente.
+SGmulti obteve um desempenho próximo ao de ATUmah.
 
 % Se forem consideradas apenas as primeiras 100 consultas -
 % %150 conf/emnlp/SettlesC08
@@ -148,17 +157,17 @@ SGmulti superou apenas a aleatória.
 Em aplicações reais, entretanto, a estabilidade do algoritmo pode ser mais importante
 do que o desempenho preditivo médio, pois uma grande variabilidade pode colocar o
 orçamento sob o risco de ser gasto sem que seja atingido um desempenho adequado e pode levar a custos
-de rotulação imprevisíveis.
+excedentes de rotulação imprevisíveis.
 Assim, a estabilidade da estratégia tem fundamental importância para a análise do risco financeiro
-da aplicação. É importante enfatizar que o processo de rotulação ocorre apenas uma vez em uma
-dada reserva de exemplos até o término do orçamento, impossibilitando novas tentativas.
+da aplicação. É importante enfatizar que o processo de rotulação é irreversível,
+impossibilitando a experimentação de mais de uma estratégia.
 
 De forma análoga às curvas apresentadas para o valor médio de kappa e o ranqueamento
 correspondente, dois conjuntos de curvas baseadas no desvio padrão do valor de kappa foram
 construídos visando ilustrar o comportamento da variância preditiva a cada instante ao longo
 de sucessivos valores de orçamento.
-É possível observar, na Figura \ref{curvasdesvio}, que as estratégias ATUmah e GATUmah
-seguidas de TUmah detêm os menores valores de desvio padrão durante a maior parte do
+É possível observar, na Figura \ref{curvasdesvio}, que as estratégias ATUmah, HTUmah
+e EERent detêm os menores valores de desvio padrão durante a maior parte do
 processo de rotulação.
 \input plotRisco
 O mesmo ocorre com os ranqueamentos apresentados na Figura \ref{curvasrankdesvio},
@@ -171,17 +180,20 @@ A significância estatística das diferenças pode ser verificada na Tabela
 \ref{stratsALCKappaFriedAllRiscoReduxall}.
 % \input stratsmahALCKappaFriedAllRiscoReduxall
 \begin{table}[h]
-\caption{Um contra um para as estratégias. Medida: desvio padrão da ALC-kappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
-\begin{center}\begin{tabular}{lcc|cc|cc|cc}
-                                 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
-1 - Rnd                       & - &   &   &   &   &   &   &   \\
-2 - Clu                         &   & - &   &   &   &   &   &   \\ \hline
-3 - \textbf{ATUmah}     & * & *  & - &   & *  & * &  & *   \\
-4 - \textbf{GATUmah}    & * & * &   & - & * & * &   & * \\ \hline
-5 - \textbf{SGmulti}    &   &   &   &    & - &   &   &   \\
-6 - Mar                         &   &   &   &   &   & - &   &   \\ \hline
-7 - TUmah                       & + & * &   &   & + & * & - & . \\
-8 - EERent                      &   &   &   &   &   &   &   & - \\ \hline\end{tabular}
+\caption{Um contra um para as estratégias. Medida: desvio padrão do kappa médio. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
+\begin{center}
+\begin{tabular}{lcc|cc|cc|cc|cc}
+                                  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+1 - Rnd                        & - &   &    &   &    &   &    &    &   &   \\
+2 - Clu                         &   & - &    &   &    &   &    &    &   &   \\ \hline
+3 - \textbf{ATUmah}     & *& * & -  &   & * &   & * &    & * & * \\
+4 - \textbf{HTUmah}     & * & * &   & - & * &   & * &  +& * & * \\ \hline
+5 - \textbf{SGmulti}       &   &   &    &   & - &   &    &   &   &   \\
+6 - QBCRFw                 & * & * &    &   & * & - & * &   & * & * \\ \hline
+7 - Mar                        &   &   &    &   &    &   &  - &    &   &   \\
+8 - TUmah                   & * & * &    &   & * &   & * &  - & *& * \\ \hline
+9 - EERent                   &   & * &    &   &    &   &    &    & - &   \\
+10 - SVMbal                 &   &   &    &   &    &   &    &    &   & - \\ \hline\end{tabular}
 % calculado pelo R
 \label{stratsALCKappaFriedAllRiscoReduxall}
 \end{center}
