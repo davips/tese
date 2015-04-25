@@ -166,19 +166,21 @@ De forma análoga às curvas apresentadas para o valor médio de kappa e o ranqueam
 correspondente, dois conjuntos de curvas baseadas no desvio padrão do valor de kappa foram
 construídos visando ilustrar o comportamento da variância preditiva a cada instante ao longo
 de sucessivos valores de orçamento.
-É possível observar, na Figura \ref{curvasdesvio}, que as estratégias ATUmah, HTUmah
-e EERent detêm os menores valores de desvio padrão durante a maior parte do
-processo de rotulação.
-\input plotRisco
-O mesmo ocorre com os ranqueamentos apresentados na Figura \ref{curvasrankdesvio},
-porém com EERent alternando com TUmah.
+É possível observar, na Figura \ref{curvasrankdesvio}, que as estratégias ATUmah, HTUmah,
+TUmah e EERent detêm as melhores colocações no ranqueamento médio dos menores valores de desvio
+padrão durante a maior parte do processo de rotulação.
 \input rankplotRisco
-A curva de SGmulti ficou abaixo do ranqueamento médio ($4,5$).
-Uma propriedade das curvas é a clara tendência de estabilização durante o treinamento,
+\input plotRisco
+O mesmo ocorre com os ranqueamentos apresentados na Figura \ref{curvasdesvio}.
+Nesse gráfico, a distância entre a melhor e a pior curva se mantém em torno de $0,01$,
+indicando que, embora algumas sejam mais estáveis, a faixa ocupada pelas curvas é estreita.
+porém com EERent alternando com TUmah.
+A curva de SGmulti ficou em torno do ranqueamento médio ($5,5$).
+
+Uma propriedade das curvas é a tendência de estabilização durante o treinamento,
 indicando que em baixos orçamentos a escolha de estratégias mais estáveis é prioritária.
 A significância estatística das diferenças pode ser verificada na Tabela
 \ref{stratsALCKappaFriedAllRiscoReduxall}.
-% \input stratsmahALCKappaFriedAllRiscoReduxall
 \begin{table}[h]
 \caption{Um contra um para as estratégias. Medida: desvio padrão do kappa médio. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
 \begin{center}
@@ -199,13 +201,79 @@ A significância estatística das diferenças pode ser verificada na Tabela
 \end{center}
 \end{table}
 
-Finalmente, pode-se concluir que, segundo o conjunto de bases e algoritmos utilizados,
-as versões agnóstica e híbrida propostas (ATUmah e GATUmah) são viáveis enquanto alternativas
-à TUmah, com pequena vantagem para GATUmah em acurácia quando considerada
-a quantidade de estratégias estatisticamente inferiores a elas.
+Finalmente, pode-se concluir que a versão híbrida proposta (HTUmah) é superior a TUmah
+para o conjunto de bases e algoritmos utilizados.
+ATUmah é viável enquanto alternativa agnóstica.
+SGmulti obteve um desempenho mediano,
+logo ela pode ser uma candidata a viés de amostragem alternativo num sistema de recomendação.
 Com relação à minimização de risco financeiro, 
 novamente as estratégias propostas também se mostraram viáveis,
-vencendo as mesmas estratégias que TUmah, porém com maior significância estatística.
+com HTUmah sendo a mais estável - vencendo TUmah com significância estatística.
+
+
+
+
+A principal dificuldade do cenário explorado nesta seção é, possivelmente, a existência de algumas
+combinações menos favoráveis entre as bases e os algoritmos selecionados.
+Algumas delas são perceptíveis na Figura \ref{treebadleas}.
+A árvore indica a contagem de derrotas de cada algoritmo de acordo com a medida kappa.
+Pequenas reservas de exemplos ($\#\leq142,4$),
+por exemplo, desfavorecem CIELM mais fortemente.
+% \afterpage{\clearpage\begin{landscape}
+\begin{figure}
+\tikzset{
+every node/.style={font=\scriptsize,black, thin},
+decision/.style={shape=rectangle, minimum height=1cm, text width=1.7cm,
+text centered, rounded corners=1ex, draw},
+outcome/.style={ shape=rectangle, fill=red!15, draw, text width=2cm, text justified},
+decision tree/.style={sibling distance=3cm, level distance=2cm},
+cond/.style={blue, yshift=-2mm, shape=rectangle, text centered},
+}
+\begin{center}
+\caption{Possíveis nichos de inadequação base-algoritmo.
+\textit{Mínimo de dez exemplos por folha.}}
+\begin{tikzpicture} [edge from parent/.style={->,above,draw,sloped,midway,gray!30,ultra thick},
+text width=2.7cm, align=flush center, grow cyclic,
+level 1/.style={level distance=3.2cm,sibling angle=45},
+level 2/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
+level 3/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
+level 4/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
+level 5/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
+]
+\input{treeLearnerKappaperd}
+\label{treebadleas}
+\end{tikzpicture}
+\end{center}
+\end{figure}
+% \end{landscape}\clearpage}
+
+% % \afterpage{\clearpage\begin{landscape}
+% \begin{figure}
+% \tikzset{
+% every node/.style={font=\scriptsize,black, thin},
+% decision/.style={shape=rectangle, minimum height=1cm, text width=1.7cm,
+% text centered, rounded corners=1ex, draw},
+% outcome/.style={ shape=rectangle, fill=red!15, draw, text width=2cm, text justified},
+% decision tree/.style={sibling distance=3cm, level distance=2cm},
+% cond/.style={blue, yshift=-2mm, shape=rectangle, text centered},
+% }
+% \begin{center}
+% \caption{Possíveis nichos de inadequação base-estratégia-algoritmo.
+% \textit{Mínimo de dez exemplos por folha.}}
+% \begin{tikzpicture} [edge from parent/.style={->,above,draw,sloped,midway,gray!30,ultra thick},
+% text width=2.7cm, align=flush center, grow cyclic,
+% level 1/.style={level distance=3.2cm,sibling angle=180},
+% level 2/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
+% level 3/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
+% level 4/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
+% level 5/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
+% ]
+% \input{treeALCKappaperd}
+% \label{treegoodleas}
+% \end{tikzpicture}
+% \end{center}
+% \end{figure}
+% % \end{landscape}\clearpage}
 
 \subsection{Cenário com definição de algoritmo após rotulação}\label{crf}
 A estratégia específica QBC perdeu de todas, exceto GATUman e Rnd,
@@ -485,36 +553,3 @@ o mesmo algoritmo que venceu na passiva}
 mas isso soh vale pra agnosticas: Rnd, Clu, ATUman, ATUmah e ATUeuc}
 
 
-% Existem algumas combinações menos favoráveis dentre as bases e os algoritmos selecionados.
-% Algumas delas são perceptíveis na Figura \ref{treebadleas}.
-% A árvore indica a contagem de derrotas de cada algoritmo de acordo com a acurácia
-% passiva balanceada.
-% Uma baixa proporção de exemplos por atributos ($\frac{\#exemplos}{\#atrib.} \leq 8$),
-% por exemplo, desfavorece C4.5w e CIELM mais fortemente.
-% % \afterpage{\clearpage\begin{landscape}
-% \begin{figure}
-% \tikzset{
-% every node/.style={font=\scriptsize,black, thin},
-% decision/.style={shape=rectangle, minimum height=1cm, text width=1.7cm,
-% text centered, rounded corners=1ex, draw},
-% outcome/.style={ shape=rectangle, fill=red!15, draw, text width=2cm, text justified},
-% decision tree/.style={sibling distance=3cm, level distance=2cm},
-% cond/.style={blue, yshift=-2mm, shape=rectangle, text centered},
-% }
-% \begin{center}
-% \caption{Possíveis nichos de inadequação base-algoritmo.
-% \textit{Mínimo de dez exemplos por folha.}}
-% \begin{tikzpicture} [edge from parent/.style={->,above,draw,sloped,midway,gray!30,ultra thick},
-% text width=2.7cm, align=flush center, grow cyclic,
-% level 1/.style={level distance=3.2cm,sibling angle=45},
-% level 2/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
-% level 3/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
-% level 4/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
-% level 5/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
-% ]
-% \input{treeLearnerKappaperd}
-% \label{treebadleas}
-% \end{tikzpicture}
-% \end{center}
-% \end{figure}
-% % \end{landscape}\clearpage}
