@@ -1,0 +1,74 @@
+\chapter{Contexto} \label{contexto}
+Neste capítulo, são introduzidos os temas pertinentes a esta tese.
+Na Seção \ref{apsup},
+a classificação em aprendizado de máquina é apresentada.
+O assunto central, que engloba o aprendizado ativo e suas principais estratégias,
+é introduzido nas seções \ref{aprendizado-ativo} e \ref{estrategias} respectivamente.
+A Seção \ref{notacao} antecede a exposição das estratégias visando
+definir a notação adotada na descrição delas e no restante do documento.
+Na Seção \ref{elmorig}, as \elms são especificamente detalhadas por serem os algoritmos
+de aprendizado mais recentes dentre os empregados, pela sua ausência na literatura de
+aprendizado ativo e pela adaptação de uma estratégia específica para ela (Capítulo \ref{propostas}).
+Finalmente, na Seção \ref{meta}, é feita uma breve revisão sobre meta-aprendizado.
+\ano{os outros classificadores vão ser mencionados
+neste capítulo ou só a partir do cap. de metodologia?}
+% O foco deste trabalho está no problema de se lidar com a variedade
+% existente de estratégias de aprendizado ativo e suas eventuais
+% afinidades com diferentes domínios de aplicação e algoritmos de aprendizado.
+% 
+% Com esse intuito,
+% vários algoritmos comumente usados para classificação foram adotados.
+% Adicionalmente,
+% um tipo de algoritmo, até onde alcança o conhecimento do autor,
+% nunca utilizado para aprendizado ativo foi adotado.
+% Esse algoritmo, chamado de \elm, é descrito na Seção \ref{elm}
+% juntamente com algumas de suas variações.
+% Complementarmente à tarefa de escolha manual da estratégia mais adequada para um
+% dado problema, um esquema automático de recomendação de estratégias
+% baseado em meta-aprendizado foi empregado - abordagem possivelmente sem
+% precedentes na literatura.
+% Dessa forma, uma introdução ao meta-aprendizado é o assunto da
+% Seção \ref{meta}.
+
+\section{Classificação}\label{apsup}
+Algumas habilidades humanas vêm claramente programadas geneticamente
+e outras são apenas a execução de passos memorizados,
+como é, respectivamente, o caso da amamentação e o trabalho efetuado numa
+determinada posição de uma linha de montagem industrial.
+Apesar do amplo escopo de ação desses dois tipos de conhecimento,
+ainda resta um vasto espectro de novas habilidades adquiríveis
+sem que seja necessária uma programação prévia.
+Dois exemplos desse espectro são a alfabetização e
+o reconhecimento de novos objetos.
+Trata-se de habilidades aprendidas por humanos em que é difícil
+identificar os algoritmos nos quais se baseiam.
+A identificação da categoria de determinado objeto de interesse
+é parte importante das potencialidades
+de agentes inteligentes e é chamada de \textit{classificação}.
+Essa, por sua vez, depende de um \textit{modelo} baseado nos
+dados fornecidos por um supervisor.
+A indução desse modelo ocorre por meio de um processo de \textit{aprendizado}.
+
+\textit{Aprendizado de máquina} é a área que engloba algoritmos capazes de
+aprender - construir modelos - sem
+programação explícita \citep{journals/cacm/Valiant84}.
+Diversas tarefas como \ano{tarefa de máquina 1, tarefa2, ... REFERENCIA}
+têm sido bem sucedidas atualmente.
+Entretanto, durante a construção do modelo, é desejável saber
+que parte dos dados é relevante.
+Esse é um problema em aberto que pode ser entendido como uma busca
+pela melhor maneira de amostragem dos dados
+na etapa que antecede o treinamento do algoritmo.
+A motivação para essa busca pode frequentemente advir
+da intratabilidade de um excesso de dados
+ou da escassez de recursos para manutenção de um especialista no
+papel de supervisor.
+Ambos os casos podem se beneficiar do tipo de
+aprendizado denominado \textit{ativo} - apresentado
+na Seção \ref{aprendizado-ativo}.
+
+ \input active-learning
+ \input elm
+ \input meta
+\section{Considerações}
+ 

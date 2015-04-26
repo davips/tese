@@ -1,0 +1,188 @@
+\chapter{Aprendizado Meta-ativo}\label{aml}
+\esb{O mais próximo de meta que encontrei na literatura foi a combinação MAB de estratégias:
+http://arxiv.org/pdf/1309.6830.pdf}
+
+\tar{parece claro pelos exps anteriores que algumas estratégias simplesmente não aceitam
+certos aprendizes (ainda falta explicitar isso lá, apontando caso a caso e justificando
+teoricamente, para evitar que seja dito que ocorreu overfitting quando essa info
+for usada no metaap),
+então isso facilitaria um metaap que indique pares strat/aprendiz,pois
+reduziria a quantidade de combinações possíveis}
+
+\ano{ainda é preciso ver se ranking supera ranking medio (default)}
+
+\ano{possibilidades: um experimento para cada learner separadamente;
+sortear budget no exp acima;
+sortear learners num experimento só;}
+
+
+
+
+
+\tar{LOO é usado; então para ter confiança est. pode-se adotar o teste de McNemar}
+
+\tar{rodei meta multirrotulo pra vários metaclassif:
+c45=0.50 Maj=0.46}
+
+\tar{vou rodar meta monorrotulo pra vários metaclassif com trios lea-bud-dataset sem
+roubar:
+c45=0.19 Maj=0.14}
+
+\ano{resume livro de meta-ap.; cita Marcilio, statlog;
+falar do desafio de nao usar informacoes sobre as classes nas metafeatures
+que existe em metaAL e não em metaPassiveL}
+
+\ano{como a predição da melhor não vence a majoritaria preciso usar ranking
+(ainda posso testar algumas variações, como fixar
+cada um dos learners possíveis)}
+
+
+\ano{Acho que NFL se refere à impossibilidade de aprendizado sem viés
+no caso de ap. ativo trata-se mais de amostragem do que de aprendizado;
+as estrategias agnósticas são um exemplo de pura amostragem;
+para o AL ser enxergado como um problema de aprendizado é
+preciso enxergá-lo como um problema de classificar cada exemplo como
+``consultar'' ou ``não consultar'';}
+
+\ano{isso acima poderia até se tornar um ensemble de AL que trabalha em cima de exemplos
+transformados pelas diferentes estratégias
+- um classificador único que aprenderia de vários datasets
+quais exemplos são bons de consultar,
+mas infelizmente é totalmente inviável implementar isso agora;
+ele seria treinado com a sequencia otima de exemplos-transformados de
+cada base: os primeiros seriam os positivos e últimos seriam os negativos.
+)}
+
+\tar{meta-aprendizado pra recomendar quando não usar pode ter maior acurácia.}
+
+\ano{diferenciar do meta-aprendizado ativo do Prudêncio}
+
+Multiarmed bandit problem
+http://www.ualberta.ca/~szepesva/Thesis/varun08.thesis.pdf
+
+\section{Recomendação de estratégias}\label{recom}
+Um sistema de recomendação baseado em meta-aprendizado tem a função de sugerir
+o algoritmo e parâmetros mais apropriados, ou um ranqueamento das opções disponíveis,
+para uma determinada base de dados \citep{books/daglib/0022052}.
+As medidas escolhidas para caracterização das bases foram obtidas da literatura
+de meta-aprendizado tanto supervisionado quanto não supervisionado.
+Devido à impossibilidade de se prever o intervalo dos valores e definir
+o particionamento dele, optou-se por substituir o esquema de histogramas
+pelos valores mínimo, máximo, médio e razão entre mínimo e máximo.
+Medidas de agrupamento também foram incluídas visando identificar possíveis afinidades
+de algumas bases com a estratégia de amostragem por agrupamento.
+\begin{table}
+\caption{Descrição dos meta-atributos.}
+\begin{tabular}{c|c|c}
+\textbf{meta-atributo} & \textbf{descrição}&\textbf{fórmula} \\ \hline
+\makecell{$\av_{min}$,$\av_{max}$\\$\av_{min/max}$,$\av_{avg}$} &
+\makecell{média (mínima, máxima,\\razão entre ambas e média)} & formula? \\ \hline
+\makecell{$\sd_{min}$,$\sd_{max}$\\$\sd_{min/max}$,$\sd_{avg}$} &
+\makecell{desvio padrão (\textit{idem})} & formula? \\ \hline
+\makecell{$\en_{min}$,$\en_{max}$\\$\en_{min/max}$,$\en_{avg}$} &
+\makecell{entropia (\textit{idem})} & formula? \\ \hline
+\makecell{$\co_{min}$,$\co_{max}$\\$\co_{min/max}$,$\co_{avg}$} &
+\makecell{correlação entre pares\\de atributos (\textit{idem})} & formula? \\ \hline
+\makecell{$\sk_{min}$,$\sk_{max}$\\$\sk_{min/max}$,$\sk_{avg}$} &
+\makecell{assimetria (\textit{idem})} & formula? \\ \hline
+\makecell{$\ku_{min}$,$\ku_{max}$,\\$\ku_{min/max}$,$\ku_{avg}$} &
+curtose (\textit{idem}) & formula? \\ \hline
+\makecell{$\val_{min}$,$\val_{max}$,\\$\val_{min/max}$,$\val_{avg}$} &
+\makecell{quantidade de valores\\nominais (\textit{idem})} &
+$\val=\{|a| \mid \forall a\in A,\nom(a)=1\}$\\ \hline
+% Rnd & \makecell{exploratória\\aleatória} & \makecell{agnóstica}&autônoma&nenhuma&$\mathcal{O}(0)$\\ \hline
+\end{tabular}
+\end{table}
+
+% "AH-conect.-Y", "AH-Dunn-Y", "AH-silhueta-Y", "AH-conect.-1.5Y", "AH-Dunn-1.5Y",
+% "AH-silhueta-1.5Y",
+%       "AH-conect.-2Y", "AH-Dunn-2Y", "AH-silhueta-2Y", "kM-conect.-Y", "kM-Dunn-Y",
+% "kM-silhueta-Y", "kM-conect.-1.5Y", "kM-Dunn-1.5Y",
+%       "kM-silhueta-1.5Y", "kM-conect.-2Y", "kM-Dunn-2Y", "kM-silhueta-2Y").
+%    val nonHumanNumAttsNames = "\"#classes\",\"#atributos\",\"#exemplos\"," +
+%       "\"#exemplos/#atributos\",\"%nominais\",\"log(#exs)\",\"log(#exs/#atrs)\"," +
+
+metafeat = correl spearm entre queries de: Ageucl, Agmanh e Agmaha
+
+c45    5nn   maj
+3buds
+0.252 0.227 0.283 qtd de grupos = 94 qtd de metaexemplos: 1974 Winner nenhum*
+0.30   0.33  0.283 qtd de grupos = 94 qtd de metaexemplos: 1974 Winner lea
+0.276 0.316 0.283 qtd de grupos = 94 qtd de metaexemplos: 1974 Winner 3atts*
+0.300 0.347 0.283 qtd de grupos = 94 qtd de metaexemplos: 1974 Winner ambos
+2buds
+0.246 0.228 0.285 qtd de grupos = 94 qtd de metaexemplos: 1316 Winner nenhum*
+0.314 0.327 0.285 qtd de grupos = 94 qtd de metaexemplos: 1316 Winner lea
+0.286 0.305 0.285 qtd de grupos = 94 qtd de metaexemplos: 1316 Winner 3atts*
+0.307 0.339 0.285 qtd de grupos = 94 qtd de metaexemplos: 1316 Winner ambos
+1bud
+0.252 0.223 0.305 qtd de grupos = 94 qtd de metaexemplos: 658 Winner nenhum*
+0.280 0.321 0.305 qtd de grupos = 94 qtd de metaexemplos: 658 Winner lea
+0.324 0.307 0.305 qtd de grupos = 94 qtd de metaexemplos: 658 Winner 3atts*
+0.328 0.328 0.305 qtd de grupos = 94 qtd de metaexemplos: 658 Winner ambos
+*-> errado, pois gera exemplos repetidos com classes diferentes
+
+
+\esb{devido à escassez de metaexemplos, LOO foi adotado em conjunto com treinamento
+em grupos de exemplos}
+
+\ano{recomendação de estratégia para base,
+budget e aprendiz dados [e qtd inicial de rótulos?]}
+
+\ano{escolhe uma dentre várias}
+
+\ano{escolhe cada uma contra random}
+
+\ano{mostra quando random é a melhor (interessante)}
+
+\ano{mostra quando random é a melhor ou empata}
+
+\ano{recomendação de aprendiz
+(NB,C45,etc. e ''não-use essa estrat.'' ou ''use aleatório'')
+para uma dada estratégia}
+
+\tar{metaap pra decidir entre AG, LU ou TU}
+
+\ano{sucesso garantido: recomendar strat por tempo de consulta estimado.
+seria muito óbvio?}
+
+Critério de empate:
+Um algoritmo é considerado adequado se ele não for
+pior que o melhor de todos com significância estatística
+\cite{books/daglib/0022052}.
+
+
+\tar{mais metafeatures:
+ só usa atributos nominais (NB,...)
+2- só usa atributos numéricos (SVM, ELM, ...)
+3- sofre com atributos irrelevantes (5NN ou medir impacto de adicionar atts irrelevantes)
+4- seleciona atributos internamente (árvores)
+5- fornece boas estimativas de probabilidade (medir entropia média pra saber)
+6- é baseado em distância (5NN)
+7- fronteira de decisao horiz e vertical (arvore)}
+
+\ano{\citep{conf/ijcnn/SoutoPSACLS08}, sobre clustering,
+usam ranking médio como default:
+Method SRC
+Default 0.59 +- 0.37
+Meta-Leaner 0.75 +- 0.21
+;
+``melhoram`` statlog, aplicando log}
+
+\citep{kalousis2002algorithm} pg. 43 tem metafeatures (inclusive histograma10,
+mas como as faixas ideais são imprevisíveis, resolvi isso colocando max, min, avg e min/max)
+Posso colocar ou omitir a informação de distribuição das classes; ela normalmente não
+é conhecida na prática.
+
+\section{Meta-estratégia}
+
+\ano{vai que o tempo de phd se multiplica:
+testar com outros meta-classificadores; Meta-estratégia dinâmica}
+
+\section{Experimentos e Resultados}
+\ano{citar programa R para a extração de parte dos meta-atributos \citep{team2010r}}
+
+\section{Considerações}
+
+
+

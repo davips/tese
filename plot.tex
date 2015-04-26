@@ -1,0 +1,32 @@
+\begin{figure}
+\begin{center}
+\caption{Curvas de aprendizado.
+\textit{Suavizadas por média móvel com largura de $20$ exemplos.
+O valor
+% (média ou desvio padrão, dependendo da figura)
+para cada base é calculado baseado nas cinco execuções de validação cruzada.
+Inclui apenas resultados para as bases com mais de 200 exemplos.}}
+\label{curvas}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[xlabel=consultas, ylabel=kappa (média), legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=300, yticklabel style={/pgf/number format/fixed}]
+% budget Rnd Clu ATUeuc ATUman ATUmah HTUeuc HTUman HTUmah SGmulti QBCRFw Mar TUeuc TUman TUmah EERent SVMbal
+
+\addplot+[solid, blue, mark=*,   mark phase=143, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Mar] {Kappamahamediaall.plot};\addlegendentry{Mar}
+\addplot+[solid, green!30!black, mark=square*,   mark phase=62, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent] {Kappamahamediaall.plot};\addlegendentry{EERent}
+\addplot+[solid, gray, mark=square,   mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUmah] {Kappamahamediaall.plot};\addlegendentry{TUmah}
+
+\addplot+[solid, thick, violet, mark=10-pointed star,   mark phase=84, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=HTUmah] {Kappamahamediaall.plot};\addlegendentry{\textbf{HTUmah}}
+
+\addplot+[solid, thick, red,   mark=x,     mark phase=131, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=SGmulti] {Kappamahamediaall.plot};\addlegendentry{\textbf{SGmulti}}
+\addplot+[dotted, mark=star, ultra thick, orange,  mark repeat=200,  mark phase=25, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUmah] {Kappamahamediaall.plot};\addlegendentry{\textbf{ATUmah}}
+
+\addplot+[dashed, green!50!black, mark=triangle*,   mark phase=47, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Clu] {Kappamahamediaall.plot};\addlegendentry{Clu}
+\addplot+[dashed, olive,            mark=triangle,     mark phase=35, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Rnd] {Kappamahamediaall.plot};\addlegendentry{Rnd}
+\addplot+[solid, thick, gray, mark=diamond,   mark phase=167, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=QBCRFw] {Kappamahamediaall.plot};\addlegendentry{QBCRFw}
+\addplot+[solid, black, mark=pentagon,   mark phase=155, mark options={solid, thick, scale=1.4}, mark repeat=200] table[x=budget, y=SVMbal] {Kappamahamediaall.plot};\addlegendentry{SVMbal}
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{figure}

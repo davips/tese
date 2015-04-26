@@ -1,0 +1,27 @@
+\begin{figure}
+\caption{Curvas de ranqueamento.
+ \textit{Detalhes na Figura \ref{curvas}.}}
+\label{curvasrank}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[xlabel=consultas, ylabel=colocação, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/fixed}]
+
+\addplot+[solid, blue, mark=*,   mark phase=143, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Mar] {KappamahamediaallRank.plot};\addlegendentry{Mar}
+\addplot+[solid, green!30!black, mark=square*,   mark phase=62, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent] {KappamahamediaallRank.plot};\addlegendentry{EERent}
+\addplot+[solid, gray, mark=square,   mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUmah] {KappamahamediaallRank.plot};\addlegendentry{TUmah}
+
+\addplot+[solid, thick, violet, mark=10-pointed star,   mark phase=84, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=HTUmah] {KappamahamediaallRank.plot};\addlegendentry{\textbf{HTUmah}}
+
+\addplot+[solid, thick, red,   mark=x,     mark phase=131, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=SGmulti] {KappamahamediaallRank.plot};\addlegendentry{\textbf{SGmulti}}
+\addplot+[dotted, mark=star, ultra thick, orange,  mark repeat=200,  mark phase=25, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUmah] {KappamahamediaallRank.plot};\addlegendentry{\textbf{ATUmah}}
+
+\addplot+[dashed, green!50!black, mark=triangle*,   mark phase=47, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Clu] {KappamahamediaallRank.plot};\addlegendentry{Clu}
+\addplot+[dashed, olive,            mark=triangle,     mark phase=35, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Rnd] {KappamahamediaallRank.plot};\addlegendentry{Rnd}
+\addplot+[solid, thick, gray, mark=diamond,   mark phase=167, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=QBCRFw] {KappamahamediaallRank.plot};\addlegendentry{QBCRFw}
+\addplot+[solid, black, mark=pentagon,   mark phase=155, mark options={solid, thick, scale=1.4}, mark repeat=200] table[x=budget, y=SVMbal] {KappamahamediaallRank.plot};\addlegendentry{SVMbal}
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{figure}

@@ -1,0 +1,28 @@
+\begin{figure}
+\begin{center}
+\caption{Variabilidade das estratégias.
+\textit{Detalhes na Figura \ref{curvas}.}}
+\label{curvasdesvio}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[xlabel=consultas, ylabel=kappa (desvio padrão), legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=300, yticklabel style={/pgf/number format/fixed}]
+% budget Rnd Clu ATUeuc ATUman ATUmah HTUeuc HTUman HTUmah SGmulti QBCRFw Mar TUeuc TUman TUmah EERent SVMbal
+
+\addplot+[solid, blue, mark=*,   mark phase=143, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Mar] {KappamahamediaallRisco.plot};\addlegendentry{Mar}
+\addplot+[solid, green!30!black, mark=square*,   mark phase=62, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent] {KappamahamediaallRisco.plot};\addlegendentry{EERent}
+\addplot+[solid, gray, mark=square,   mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUmah] {KappamahamediaallRisco.plot};\addlegendentry{TUmah}
+
+\addplot+[solid, thick, violet, mark=10-pointed star,   mark phase=84, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=HTUmah] {KappamahamediaallRisco.plot};\addlegendentry{\textbf{HTUmah}}
+
+\addplot+[solid, thick, red,   mark=x,     mark phase=131, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=SGmulti] {KappamahamediaallRisco.plot};\addlegendentry{\textbf{SGmulti}}
+\addplot+[dotted, mark=star, ultra thick, orange,  mark repeat=200,  mark phase=25, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUmah] {KappamahamediaallRisco.plot};\addlegendentry{\textbf{ATUmah}}
+
+\addplot+[dashed, green!50!black, mark=triangle*,   mark phase=47, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Clu] {KappamahamediaallRisco.plot};\addlegendentry{Clu}
+\addplot+[dashed, olive,            mark=triangle,     mark phase=35, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Rnd] {KappamahamediaallRisco.plot};\addlegendentry{Rnd}
+\addplot+[solid, thick, gray, mark=diamond,   mark phase=167, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=QBCRFw] {KappamahamediaallRisco.plot};\addlegendentry{QBCRFw}
+\addplot+[solid, black, mark=pentagon,   mark phase=155, mark options={solid, thick, scale=1.4}, mark repeat=200] table[x=budget, y=SVMbal] {KappamahamediaallRisco.plot};\addlegendentry{SVMbal}
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{figure}

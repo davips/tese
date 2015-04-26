@@ -1,0 +1,412 @@
+\chapter{Metodologia}\label{metodologia}
+Foi empreendida uma avaliação experimental para identificar os pontos
+críticos na escolha de estratégias e também para comprovação empírica das propostas
+dos capítulos \ref{propostas} e \ref{aml}.
+Para haver solidez estatística e também para uma boa representatividade dos
+variados domínios existentes em aplicações reais, foram selecionadas as
+cem bases de dados mais diversas
+do projeto de \cite{doi/ucipp} que é baseado no repositório UCI \citep{bache2013uci}.
+Porém, apenas noventa e quatro \ano{conferir} bases foram viáveis com relação a
+tempo de processamento e puderam ter seus experimentos terminados.
+O critério de diversidade envolveu manter apenas uma dentre cada grupo de bases de um
+mesmo domínio - com exceção de algumas que tivessem características
+(atributos, classes e número de exemplos)
+suficientemente diferentes ou cuja acurácia passiva fosse suficientemente distinta para pelo
+menos três dos algoritmos de aprendizadomencionados na Seção \ref{learners}.
+
+\ano{ilustrar o uso de banco de dados, a hierarquia de classes das estratégias;
+fluxograma de 4 fases: queries, hits, measures, sumarização (médias/friedmans = latex)}
+
+\tar{demsar usa (0.000, +-0.005)  no exemplo}
+
+% Nesse artigo é discutido o fato do Friedman ignorar as diferenças entre modelos (http://www.r-bloggers.com/beware-the-friedman-test/):
+% @article{zimmerman1993relative,
+%   title={Relative power of the Wilcoxon test, the Friedman test, and repeated-measures ANOVA on ranks},
+%   author={Zimmerman, Donald W and Zumbo, Bruno D},
+%   journal={The Journal of Experimental Education},
+%   volume={62},
+%   number={1},
+%   pages={75--86},
+%   year={1993},
+%   publisher={Taylor \& Francis}
+% }
+
+\section{Descrição do cenário}
+O cenário adotado neste trabalho é baseado em \pool.
+Especificamente, há as seguintes restrições de escopo:
+\begin{itemize}
+ \item consulta pela classe (não por valores de atributos, por exemplo);
+ \item monorrótulo;
+ \item distribuição estacionária;
+ \item custo por erro de classificação uniforme;
+ \item custo por consulta uniforme;
+ \item oráculo único e constante\footnote{Sempre a mesma resposta para um mesmo exemplo.}
+ sujeito a ruído\footnote{Apesar da contradição em atribuir erro a uma entidade
+ denominada \textit{oráculo}, essa concessão deve ser feita tanto pelo fato do supervisor
+ humano ser sujeito à fadiga quanto pela adoção, nesta tese, de bases de dados reais.};
+ \item os domínios dos atributos nominais são previamente conhecidos;
+ \item atributos sem valores faltantes;
+\end{itemize}
+e as seguintes condições que visam rigor experimental, replicabilidade e
+verossimilhança com aplicações reais:
+\begin{itemize}
+ \item consulta \ing{um a um}{on-line};
+ \item toda\footnote{Exceto exemplos duplicados.} a base de dados original é utilizada no
+   processo de validação cruzada\footnote{Algumas estratégias fazem uma amostragem interna,
+   que se renova a cada consulta.};
+ \item um rótulo inicial por classe; e,
+ \item critério de parada determinado pelo orçamento.
+ \end{itemize}
+A decisão de um rótulo inicial por classe visa prover condições mínimas
+para que todas as estratégias tenham uma ponto de partida viável.
+O principal exemplo de condição necessária é a pré-existência de uma fronteira de decisão,
+que só é possível de ser estimada com a presença de alguns rótulos.
+Essa escolha também é compatível com aplicações reais, pois,
+sendo uma atividade dispendiosa, a rotulação requer cautela.
+Por isso, é razoável a obtenção de alguns rótulos antes de se sujeitar aos custos
+da amostragem ativa.
+Uma maneira de se obter um rótulo por classe é por meio do
+ \ing{aprendizado guiado}{guided learning} \citep{conf/kdd/AttenbergP10}.
+ Em diversas aplicações, como a categorização de notícias, o usuário é capaz
+ de encontrar um exemplar para uma dada classe, seja por páginas de busca
+ na \textit{internet} ou por recordação de uma experiência pessoal.
+ Assim, o início da amostragem com um exemplo de cada classe pode ser
+ feito de forma eficiente em aplicações reais.
+ Essa prática tem sido adotada da mesma forma em outros trabalhos
+ \citep{conf/nips/GuoS07, conf/cvpr/BiswasP13, conf/iconip/GuJC14a,
+ }, com variações mais permissivas com relação à quantidade de exemplos
+ \citep{journals/prl/PatraB12} ou substituída por uma amostragem aleatória
+ aplicada até que se encontre um exemplo por classe \citep{chermanaprendizado}.
+
+ \ano{settles diz (no livro?) que o critério de parada normalmente é financeiro}
+ 
+Outra característica do cenário está no desconhecimento do orçamento disponível por parte das estratégias implementadas.
+Isso implica na geração de sequências de consultas não necessariamente ótimas.
+Essa possibilidade, mais teórica do que prática,
+decorre de o fato do processo ativo de amostragem não ser uma
+\textit{cadeia de Markov} de primeira ordem \citep{conf/icml/RoyM01}.
+Uma consulta ótima dependeria de quantas ainda podem ser feitas.
+
+\section{Descrição das bases}
+As bases de dados têm suas características expostas no Apêndice \ref{detalhes}
+(tabelas \ref{tab:datasetsa},
+\ref{tab:datasetsb} e \ref{tab:datasetsc}).
+Para maior clareza do tipo de diversidade das bases, alguns grupos especiais foram
+criados da seguinte forma:
+\begin{itemize}
+ \item bases com mais de quatro vezes mais exemplos na classe
+majoritária do que na minoritária (Tabela \ref{tab:imb})
+ \item bases com mais de cinquenta atributos (Tabela \ref{tab:x})
+ \item bases com mais de cinco classes (Tabela \ref{tab:y})
+ \item bases com mais de mil exemplos (Tabela \ref{tab:n})
+ \item bases com menos de quatrocentos exemplos (Tabela \ref{tab:nm})
+\end{itemize}
+
+\input dataset-tables-reduxes
+
+É possível notar a presença de atributos nominais, por exemplo, na Tabela \ref{tab:datasetsa}.
+Os algoritmos de aprendizado providos pela ferramenta
+Weka \citep{journals/sigkdd/HallFHPRW09}
+fizeram eventual uso de seus próprios filtros internos para lidar com esse tipo de atributo,
+mas as \elms e as estratégias baseadas na métrica de distância de Mahalanobis precisaram ser
+transformadas com a substituição de atributos nominais por numéricos e pela aplicação do
+\ing{filtro de padronização}{z-score} \citep{kreyszig2007advanced}
+para possibilitar os cálculos e para evitar matrizes mal condicionadas - respectivamente.
+
+\ano{exemplos repetidos foram removidos,
+mas mantido um deles com a moda dos rótulos}
+
+\ano{A quantidade de atributos da base Arcene foi reduzida para 998 devido
+a restrições de armazenamento do sistema gerenciador de banco de dados}
+
+\tar{
+Experiments with Random Projection 2000
+% http://cseweb.ucsd.edu/~dasgupta/papers/randomf.pdf
+preferem RP(O(n)) a PCA (O(n3));
+é uma boa justificativa para ELM, e bom para reduzir
+rapidamente as dimensões de bases enormes para o limite de 1000 do mysql.
+ Randomness is now a standard tool in algorithm design;
+ for instance, it is the basis of the only known polynomial-time
+ algorithm for primality testing.
+;;;;;
+if the projected dimension is high enough, then a
+PCA-projected mixture could easily be far better separated
+than its randomly projected counterpart. For this reason
+PCA remains an important tool in the study of Gaussian
+clusters.
+}
+
+\section{Algoritmos de aprendizado}\label{learners}
+Cada algoritmo de aprendizado tem, intrinsecamente, um viés próprio \ano{REF}.
+É natural esperar que esse viés influencie no desempenho das estratégias gnósticas
+ou que o aprendizado seja afetado pela sequência de consultas gerada por uma
+determinada estratégia agnóstica.
+Dessa forma, diferentes algoritmos de aprendizado
+precisam ser adotados quando alguma comparação entre estratégias é pretendida.
+
+Seis algoritmos comumente usados e implementados na biblioteca Weka foram adotados
+inicialmente:
+5-NN\footnote{Cinco vizinhos mais próximos (nome Weka: IBk).},
+C4.5w\footnote{Implementação baseada no algoritmo de árvore de decisão C4.5 (nome Weka: J48).},
+NB\footnote{\textit{Naive Bayes}},
+RF\footnote{\textit{Random Forest}},
+SVM\footnote{\textit{Support Vector Machines}},
+VFDT\footnote{\textit{Very Fast Decision Trees} ou \textit{Hoeffding Trees}}
+\citep{journals/tit/Hart68,
+books/mk/Quinlan93,
+conf/ecml/Lewis98,
+journals/ml/Breiman01,
+hearst1998support,
+conf/kdd/DomingosH00}.
+Adicionalmente, por sua ausência na literatura de aprendizado ativo e características
+distintivas com relação aos outros algoritmos,
+duas variantes das \elms também foram adotadas.
+\ano{duas?}
+
+\subsection{5-NN}
+ponderado pelo complemento da distância euclidiana padronizada \ano{REF pra padronização}
+busca linear ou em KDTree quando $\frac{|\mathcal{U}|}{|A|}\geq10$
+
+\subsection{C4.5w}
+ramificação múltipla (não apenas binária)
+fator de confiança na poda $0,25$ (smaller values incur more pruning)
+mínimo de $\min{10, 2|Y|}$ exemplos por folhas
+poda por substituição pelo nó filho
+estimativa de probabilidades com suavização aditiva \cite{books/daglib/0021593}
+
+\subsection{NB}
+discretização supervisionada baseada na distribuição normal
+
+\subsection{RFw}
+sem poda
+escolha aleatória de $\log_2|A| + 1$ atributos por árvore
+total de dez árvores
+
+\subsection{SVM}
+tipo C-SVC \citep{journals/ml/CortesV95}
+núcleo RBF
+$\gamma=0,5$ %inverse of the radius of influence of support vectors
+% classif/learner g=0.5; SVMmulti g=1
+
+$C=1$ %A low C makes the decision surface smooth, high C aims at classifying all training examples correctly
+cache 200MB
+eps=0,001 %tolerância do critério de parada SVMmulti eps=0,1
+Shrinking(false)
+ProbabilityEstimates(true)
+
+\ano{explicar detalhes da implementação svmlib/weka para multiclasse?}
+
+\subsection{VFDT}
+Valores padrão exceto  graceperiod
+% GracePeriod(math.min(200, pattern.nclasses + newModel.N / 20)
+% Gini
+% erro permitido de 1e-7
+% limiar de desempate de 0,05
+%  Minimum fraction of weight required down at least two branches for info gain splitting  (default = 0.01)
+%  The number of instances (weight) a leaf should observe before allowing naive Bayes to make predictions (NB or NB adaptive only)(default = 0)
+
+\subsection{CIELM}
+nó sigmoide aditivo
+\ano{explicar nr de neurônios}
+
+\ano{http://www.sciencedirect.com/science/article/pii/S0925231207000677
+mostra tabela comparando tempos onde sigmoide additive é bem mais rápida que RBF.
+É uma boa justificativa para se escolher additive nodes.
+mostra tb que CI-elm é melhor que I-elm, BP (e RAN e MRAN) em tempo e acc.
+}
+
+\section{Estratégias}
+Algumas estratégias exigiram configurações específicas ou precisaram de adaptações para
+problemas multiclasse.
+Essas escolhas são detalhadas nesta seção.
+
+\subsection{SVMsim e SVMbal}
+Os códigos originais dos autores das seguintes estratégias \textit{balancedEE}
+% journals/jmlr/BaramEL04
+foram adaptados para contemplar problemas multiclasse por meio da aplicação de
+\ing{rodízio}{round-robin} entre sub-estratégias.
+A cada sub-estratégia foi atribuída uma classe principal,
+na configuração \textit{um para muitos}.
+
+\subsection{QBC}
+\ano{explicar aqui detalhes do RF adotado pra QBC?}
+
+\subsection{Unc e Mar}
+Para contemplar problemas multiclasse,
+a amostragem por margem (Seção \ref{mar}) foi utilizada como substituta
+nos experimentos deste trabalho.
+
+\subsection{EERent e EERacu}
+Neste trabalho, seguindo a escolha do artigo original,
+optou-se pela entropia como função objetivo.
+Adicionalmente, a acurácia balanceada foi adotada como uma variação do método,
+visando agir diretamente nas medidas multiclasse de interesse apresentadas na
+Seção \ref{metricas}.
+Trata-se de uma métrica multiclasse com menos propensão a ter valores próximos
+ou iguais a zero do que a medida kappa, ampliando o alcance da medida de
+informatividade (Seção \ref{metricas}).
+\ano{explicitar essa dedução na Seção \ref{metricas}}
+Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteração devido ao
+alto custo computacional da estratégia.
+
+\subsection{TU}
+\ano{explicar como empreguei mahalanobis nas TUs}
+
+\subsection{Clu}
+A implementação original do autor foi adotada neste trabalho com o mesmo
+algoritmo de agrupamento chamado
+\textit{Ward's average linkage method}\footnote{
+Implementação disponível no Weka \cite{journals/sigkdd/HallFHPRW09}.}
+\ano{como traduzir?}
+
+\section{Experimento preliminar}\label{preliminar}
+Dado o grande número de estratégias, bases de dados e algoritmos de aprendizado envolvidos,
+um experimento reduzido \citep{conf/hais/SantosC14} foi conduzido visando
+a construção de um panorama geral do comportamento das estratégias
+e a definição do dimensionamento mais adequado dos experimentos definitivos
+aos recursos computacionais.
+Apenas dez estratégias e os algoritmos mais rápidos (C4.5, NB, VFDT e 5-NN)
+foram adotados.
+Dez execuções de validação cruzada em dez partições totalizaram cem \pools
+para cada base - conforme sugerido na literatura de classificação
+\cite{conf/pakdd/BouckaertF04}.
+As \pools foram consultados até o ponto em que a acurácia máxima da
+melhor estratégia houvesse sido atingida.
+
+Aproximadamente um mês\footnote{Pausas devido a problemas técnicos incluídas.}
+de experimento foi necessário para apenas a conclusão
+nas vinte e oito menores bases de dados.
+Assim, considerando-se o crescimento exponencial do custo computacional em alguns
+pares \textit{algoritmo de aprendizado}-\textit{estratégia} com o aumento do número
+de classes, atributos e/ou exemplos, foi necessário reduzir o procedimento
+de validação (Seção \ref{validacao}) e antecipar o término das
+consultas.
+
+\section{Avaliação}\label{avaliacao}
+\ano{pro final: quando perde, perde muito feio?}
+
+\subsection{Métricas}\label{metricas}
+\esb{Um cara que usa log no eixo X e usa ``Area under the Learning Curve'': url.
+% http://perso.rd.francetelecom.fr/lemaire/publis/ijcnn\_2\_2011\_camera\_ready.pdf
+}
+
+An Easy to Use Repository for Comparing and Improving Machine Learning Algorithm Usage
+% http://arxiv.org/pdf/1405.7292.pdf
+fala sobre guardar resultados a 'instance level' com as predições do classificadores
+
+
+\ano{talvez o primeiro artigo que fala em "area under the learning curve" (chamando confusamente de AUClog): When will feature feedback help? quantifying the complexity of classification problems (2007)
+O próximo, sem siglas, é do Settles (com f-measure e sem log(x)):
+An analysis of active learning strategies for sequence labeling tasks (2008)
+No "active chalenge 2011",
+que alguns adotam como referência para citar ALC, foi usada a AUC verdadeira e log2(x) no cálculo (igual ao Cawley):
+http://www.causality.inf.ethz.ch/activelearning.php?page=evaluation
+Porém, eles avaliam sem validação cruzada, talvez por limitação do próprio fato de ser uma competição.
+O dataset inteiro é usado uma só vez e o teste é feito em cima de
+"all the samples with unknown labels".
+Isso explica o fato de classificadores semisupervisionados terem alavancado as estratégias na competição.
+Já estou rodando as estratégias agnósticas com 5x5-fold.
+Podemos adotar ALC c/ AUC e log(x) para sumarizar os resultados.
+}
+
+ Uma medida comum na área de aprendizado ativo
+ é a \textit{área debaixo da curva de aprendizado} (Area under the Learning Curve - ALC)
+ \citep{journals/jmlr/GuyonCDL11}.
+ Ela consiste no somatório de alguma medida de desempenho ao longo
+ das consultas.
+ Seu intuito é avaliar o desempenho geral de uma estratégia, ou seja,
+ numa ampla faixa de orçamentos.
+ Assim, a medida se mostra adequada para a tarefa de comparação
+ de estratégias.
+ Ela foi adotada em conjunto com a medida kappa -
+ resultando no valor médio da medida para toda a sequência de consultas.
+
+A medida kappa de Cohen \citep{journals/coling/EugenioG04}
+é utilizada para comparar o grau de consenso entre avaliadores
+tem demonstrado bom poder discriminatório frente a outras medidas
+que sumarizam a matriz de confusão \citep{conf/acivs/DemirkesenC08}.
+Quando aplicada como medida de desempenho de classificação,
+ela assume valor $1$ para acerto total, $0$ para desempenho equivalente ao
+aleatório e $-1$ para erro total.
+Valores intermediários indicam o quão bom ou ruim é o clasificador.
+\cite{conf/pkdd/Shah11} apresenta a versão multiclasse para a medida kappa
+que foi adotada neste trabalho.
+Ela tem a importante propriedade de remeter à medida original em problemas binários.
+Por fim, ela permite realizar a comparação por dois pontos de vista:
+interestratégias e em relação ao acaso.
+\ano{colocar fórmula da kappa? já incluir pseudoALC na fórmula? explicar depois da formula que
+a ALC pro kappa se torna o kappa médio}
+
+Outro ponto de vista importante é em relação ao desempenho passivo.
+Sendo ele dado por apenas um valor para todos os exemplos, não existe
+a possibilidade de se calcular uma ALC.
+Assim, deve ser definido um momento na curva de aprendizado como o
+limite do orçamento disponível e deve ser avaliado o modelo induzido até então.
+\green{baseline p/ AccBal é $1/|Y|$ ?}
+O orçamento escolhido foi $\cent=\frac{|\mathcal{U}|}{2}$
+% metade dos exemplos disponíveis
+nas trinta e nove bases com menos de quatrocentos exemplos (Tabela \ref{tab:nm})
+e  $\cent=200$ nas bases restantes.
+% duzentos exemplos
+
+Outra medida possível é a acurácia balanceada \citep{journals/bmcbi/MassoV10}.
+Assim como a kappa multiclasse, ela é adequada para problemas multiclasse desbalanceados.
+
+\ano{colocar fórmula da accbal?}
+
+
+
+\subsection{Validação}\label{validacao}
+Nos experimentos,
+para viabilidade computacional e conforme literatura de aprendizado ativo \ano{REF}
+foram adotadas cinco execuções de validação cruzada em cinco partes -
+totalizando vinte e cinco \pools para cada base.
+
+\tar{mencionar detalhes de embaralhamento? e seeds de classificador?}
+
+\ano{A survey of cross-validation procedures for model selection (2010)
+{http://www.di.ens.fr/willow/pdfs/2010\_Arlot\_Celisse\_SS.pdf}
+;;;
+tem até review de fast CVs.
+;;;
+According to Breiman and Spector (1992) the best risk estimator is LOO,
+whereas 10-fold CV is more accurate for model selection.
+}
+
+\subsection{Teste estatístico}
+\ano{citar programa do Covões}
+
+explicar critério de empate não arbitrário que inventei, pois na construção da árvore de nichos
+haveria confusão se adotasse apenas os vencedores, por causa da existência de estratégias similares.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ferramentas}\label{sec:ferramentas}
+Foram utilizados um total de 188 núcleos\footnote{\textit{Núcleos} por simplicidade,
+mas na realidade cada computador oferecia diferentes unidades de processamento;
+sendo o outro tipo as \textit{threads} na nomenclatura da Intel.} de processamento:
+\begin{itemize}
+\item 24 núcleos de 2,4GHz da \textit{nuvem} USP;
+\item 108 núcleos de 3,5GHz do \textit{cluster} Biocom;
+\item 24 núcleos de 2,5GHz do servidor GPU do laboratório Biocom;
+\item 8 núcleos de 4GHz da estação de trabalho; e
+\item 8 núcleos de 2,4GHz do \textit{notebook} de trabalho\footnote{Ambos,
+estação e \textit{notebook} vinculados ao orientador do autor deste trabalho.}.
+\end{itemize}
+
+\green{descrever hardware, mysql}
+
+scala
+
+pgfplots
+
+java
+
+mtj
+
+apache commons math
+
+%software/algorithms/hardware
+The library Matrix-Toolkits-Java was used to  interface the reference implementation of LAPACK with Debian default compilation.
+%reference implementation of LAPACK para evitar instabilidade numerica (= matriz singular ocorrer muito cedo)
+Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz
