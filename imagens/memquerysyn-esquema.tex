@@ -1,0 +1,20 @@
+\begin{tikzpicture}[node distance=0, auto, transform shape,remember picture]
+% 	\tikzset{node distance=1, label distance=-5}
+\node (e) [, b] {
+  \begin{tabular}{ccc}
+    \textit{membership}\\
+    \textit{query}\\
+    \textit{synthesis}
+  \end{tabular}
+};
+\node (x)  [left= 1 of e,draw, circle, inner sep=2, thick, top color=orange!30, bottom color=orange!30, middle color=white] {$\langle \bm{x},\_\rangle$};
+\homem [h,] {left=1 of x, label=below:oráculo}
+\node (xy) [left=2 of h,draw, circle, inner sep=2, thick, top color=blue!30, bottom color=blue!30, middle color=white] {$\langle \bm{x},y\rangle$};
+\modelovs [m,, { }] {below = 2 of h.south}
+
+\draw[-, setatr] (h.west) to [out=170,in=10] node[] {} (xy);
+\draw[->, setatr] (xy.south) to [out=-100, in=100] node[] {} (am.north);
+\draw[->, setats] (x.west) to  node[] {} (h.east);
+\draw[-, setats] (e) to  node[] {} (x);
+\draw[->, seta] (cm.north) to [out=90, in=-90] node[] {$\bm{x}$} (e.south);
+\end{tikzpicture}
