@@ -1,41 +1,41 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Experimentos e Resultados}\label{experimentos}
-Neste capítulo são apresentados os experimentos comparativos de estratégias
+Neste capÃ­tulo sÃ£o apresentados os experimentos comparativos de estratÃ©gias
 e seus resultados.
-Na Seção \ref{prep}, é definido o subconjunto de estratégias e algoritmos de aprendizado
+Na SeÃ§Ã£o \ref{prep}, Ã© definido o subconjunto de estratÃ©gias e algoritmos de aprendizado
 mais relevantes para os experimentos.
-Nas demais seções é feita a demonstração de que as estratégias propostas SGmulti e
-agnóstica baseada em densidade (prefixo ATU) são competitivas \ano{são mesmo?}.
-Adicionalmente, constatações relevantes para o problema da escolha de estratégias
-são fornecidas.
-A análise experimental é dividida em duas partes: \ano{rever}
-\textit{comparativa}, na Seção \ref{geral}, em que as estratégias são comparadas
+Nas demais seÃ§Ãµes Ã© feita a demonstraÃ§Ã£o de que as estratÃ©gias propostas SGmulti e
+agnÃ³stica baseada em densidade (prefixo ATU) sÃ£o competitivas \ano{sÃ£o mesmo?}.
+Adicionalmente, constataÃ§Ãµes relevantes para o problema da escolha de estratÃ©gias
+sÃ£o fornecidas.
+A anÃ¡lise experimental Ã© dividida em duas partes: \ano{rever}
+\textit{comparativa}, na SeÃ§Ã£o \ref{geral}, em que as estratÃ©gias sÃ£o comparadas
 entre si;
-e, de \textit{recomendação automática},
-na Seção \ref{isolado}.
+e, de \textit{recomendaÃ§Ã£o automÃ¡tica},
+na SeÃ§Ã£o \ref{isolado}.
 
-\section{Preparação} \label{prep}
-Devido à grande quantidade de fatores envolvidos nos experimentos,
-faz-se necessária uma etapa de preparação em que apenas
-a parcela mais representativa das estratégias e algoritmos de aprendizado
+\section{PreparaÃ§Ã£o} \label{prep}
+Devido Ã  grande quantidade de fatores envolvidos nos experimentos,
+faz-se necessÃ¡ria uma etapa de preparaÃ§Ã£o em que apenas
+a parcela mais representativa das estratÃ©gias e algoritmos de aprendizado
 seja mantida.
 
 \subsection{Diversidade dos algoritmos de aprendizado}\label{algs}
 Uma forma indireta de ilustrar a diversidade entre os modelos gerados pelos diferentes
-vieses dos algoritmos de aprendizado é por meio da dissimilaridade entre suas acurácias.
-Com esse intuito, os valores de similaridade são apresentados na Tabela \ref{passiveDists}
-% aqui tanto faz a medida, mas as tabelas do apendice são de kappa
-de forma análoga à adotada por \cite{brazdil1994analysis}.
+vieses dos algoritmos de aprendizado Ã© por meio da dissimilaridade entre suas acurÃ¡cias.
+Com esse intuito, os valores de similaridade sÃ£o apresentados na Tabela \ref{passiveDists}
+% aqui tanto faz a medida, mas as tabelas do apendice sÃ£o de kappa
+de forma anÃ¡loga Ã  adotada por \cite{brazdil1994analysis}.
 % \input passiveDists
-% Brazdil faz tabela de distâncias pareadas com taxas de erro sendo
-% as dimensões, depois faz decomposição ortogonal para visualizar em duas dimensões.
-% Depois ele faz agrupamento hierárquico.
+% Brazdil faz tabela de distÃ¢ncias pareadas com taxas de erro sendo
+% as dimensÃµes, depois faz decomposiÃ§Ã£o ortogonal para visualizar em duas dimensÃµes.
+% Depois ele faz agrupamento hierÃ¡rquico.
 \begin{table}[h]
-\caption{Similaridade entre algoritmos. Medida: acurácia balanceada.
+\caption{Similaridade entre algoritmos. Medida: acurÃ¡cia balanceada.
 \textit{94 bases de dados.
 O maior e o menor valor de cada linha
-está em \textcolor{blue}{\textbf{azul}} e \textcolor{red}{\textbf{vermelho}}
-respectivamente. Valores iguais ou acima de $0,50$ estão apenas em \textbf{negrito}.}}
+estÃ¡ em \textcolor{blue}{\textbf{azul}} e \textcolor{red}{\textbf{vermelho}}
+respectivamente. Valores iguais ou acima de $0,50$ estÃ£o apenas em \textbf{negrito}.}}
 \begin{center}\begin{tabular}{lcc|cc|cc|cc}
                                 & 5NN & C4.5w & CIELM & NB & RFw & SVM & VFDTw \\5NN    & - &   0.37 & \textcolor{blue}{\textbf{  0.42}} &   0.35 &   0.39 &   0.41 & \textcolor{red}{\textbf{  0.32}} \\
 C4.5w   &   0.37 & - &   0.38 &   0.41 &   0.42 & \textcolor{blue}{\textbf{  0.43}} & \textcolor{red}{\textbf{  0.31}} \\ \hline
@@ -47,43 +47,43 @@ VFDTw   &   0.32 &   0.31 &   0.33 & \textcolor{blue}{\textbf{  0.36}} & \textco
 \end{tabular}\label{passiveDists}
 \end{center}
 \end{table}
-Esses modelos são o resultado de treinamento passivo, ou seja, com todos os
+Esses modelos sÃ£o o resultado de treinamento passivo, ou seja, com todos os
 exemplos da reserva rotulados.
-Considerando-se cada base de dados uma dimensão,
-a similaridade é calculada a partir da distância euclidiana $d(\bm{x},\bm{u})$
+Considerando-se cada base de dados uma dimensÃ£o,
+a similaridade Ã© calculada a partir da distÃ¢ncia euclidiana $d(\bm{x},\bm{u})$
 entre dois vetores $\bm{x},\bm{u} \in \mathbb{R}^{94}$
-de valores da medida kappa multiclasse (Seção \ref{metricas})
-de acordo com a mesma fórmula
-(Equação \ref{eq:sim}) adotada no cálculo de densidade da Seção \ref{dw}.
-Os valores para cada base são apresentados nas tabelas \ref{tab:balaccClassif0},
-\ref{tab:balaccClassif1} e \ref{tab:balaccClassif2} do Apêndice \ref{detalhes}.
+de valores da medida kappa multiclasse (SeÃ§Ã£o \ref{metricas})
+de acordo com a mesma fÃ³rmula
+(EquaÃ§Ã£o \ref{eq:sim}) adotada no cÃ¡lculo de densidade da SeÃ§Ã£o \ref{dw}.
+Os valores para cada base sÃ£o apresentados nas tabelas \ref{tab:balaccClassif0},
+\ref{tab:balaccClassif1} e \ref{tab:balaccClassif2} do ApÃªndice \ref{detalhes}.
 
-% Apesar de passiva, essa é a acurácia com treinamento incremental, desde
-% |Y| um a um até |U| para VFDT; talvez por isso o desempenho tenha sido pior
-O algoritmo mais distinto é VFDTw, pois apresenta os menores valores em relação a
+% Apesar de passiva, essa Ã© a acurÃ¡cia com treinamento incremental, desde
+% |Y| um a um atÃ© |U| para VFDT; talvez por isso o desempenho tenha sido pior
+O algoritmo mais distinto Ã© VFDTw, pois apresenta os menores valores em relaÃ§Ã£o a
 praticamente todos os demais.
-Isso é explicado pelo seu desempenho excessivamente inferior,
-ficando, por exemplo, em último lugar em mais de um terço da bases
-e em primeiro apenas três vezes (Apêndice \ref{detalhes}).
-VFDTw teve o pior desempenho possivelmente por ser o único algoritmo
+Isso Ã© explicado pelo seu desempenho excessivamente inferior,
+ficando, por exemplo, em Ãºltimo lugar em mais de um terÃ§o da bases
+e em primeiro apenas trÃªs vezes (ApÃªndice \ref{detalhes}).
+VFDTw teve o pior desempenho possivelmente por ser o Ãºnico algoritmo
 incremental do conjunto e originalmente ter sido proposto para grandes
 quantidades de exemplos desde o primeiro treinamento.
-Devido a essa inadequação do algoritmo ao cenário, optou-se por excluí-lo dos
+Devido a essa inadequaÃ§Ã£o do algoritmo ao cenÃ¡rio, optou-se por excluÃ­-lo dos
 experimentos.
-% A acurácia passiva foi obtida após o treinamento incremental desde
-% $|Y|$ até $|\mathcal{U}|$ exemplos, simulando o progresso de um aprendizado interativo.
+% A acurÃ¡cia passiva foi obtida apÃ³s o treinamento incremental desde
+% $|Y|$ atÃ© $|\mathcal{U}|$ exemplos, simulando o progresso de um aprendizado interativo.
 
 A maior similaridade ($0,51$) ocorre entre RFw e SVM.
 Esses dois algoritmos coincidem com os algoritmos mais presentes no primeiro lugar
 conforme Tabela \ref{tab:friedClassif}.
-Na comparação um contra um da medida kappa (Tabela \ref{tab:friedClassif}),
+Na comparaÃ§Ã£o um contra um da medida kappa (Tabela \ref{tab:friedClassif}),
 \begin{table}[h]
-\caption{Um contra um e contagem de posições.
+\caption{Um contra um e contagem de posiÃ§Ãµes.
 Medida: kappa.
 \textit{Cada asterisco/cruz/ponto indica quando o algoritmo na linha tem melhor
-desempenho que o algoritmo na coluna com intervalo de confiança de 0.99/0.95/0.90.
+desempenho que o algoritmo na coluna com intervalo de confianÃ§a de 0.99/0.95/0.90.
 O melhor, o segundo melhor e o pior valor de cada linha
-estão em \textcolor{blue}{\textbf{azul}}, \textbf{negrito} e
+estÃ£o em \textcolor{blue}{\textbf{azul}}, \textbf{negrito} e
 \textcolor{red}{\textbf{vermelho}} respectivamente.}}
 \begin{center}
 \begin{tabular}{lcc|cc|cc|cc}
@@ -98,7 +98,7 @@ estão em \textcolor{blue}{\textbf{azul}}, \textbf{negrito} e
 \end{tabular}
 \quad
 \begin{tabular}{lcc}
-algoritmo & \makecell{primeiros\\lugares} & \makecell{últimos\\lugares} \\
+algoritmo & \makecell{primeiros\\lugares} & \makecell{Ãºltimos\\lugares} \\
 \hline
 RFw        &    \textcolor{blue}{\textbf{26}}       &              \textbf{2}       \\
 SVM        &    \textbf{22}       &              \textcolor{blue}{\textbf{1}}       \\
@@ -111,15 +111,15 @@ VFDTw      &    \textcolor{red}{\textbf{3}}        &              \textcolor{red
 \end{tabular}
 \end{center}
 \end{table}
-% Na comparação um contra um da acurácia balanceada (Tabela \ref{tab:friedClassif}),
-% % aqui a acurácia balanceada é mais ilustrativa, pois distribui melhor as vitórias
+% Na comparaÃ§Ã£o um contra um da acurÃ¡cia balanceada (Tabela \ref{tab:friedClassif}),
+% % aqui a acurÃ¡cia balanceada Ã© mais ilustrativa, pois distribui melhor as vitÃ³rias
 % \begin{table}[h]
-% \caption{Um contra um e contagem de posições.
-% Medida: acurácia balanceada.
+% \caption{Um contra um e contagem de posiÃ§Ãµes.
+% Medida: acurÃ¡cia balanceada.
 % \textit{Cada asterisco/cruz/ponto indica quando o algoritmo na linha tem melhor
-% desempenho que o algoritmo na coluna com intervalo de confiança de 0.99/0.95/0.90.
+% desempenho que o algoritmo na coluna com intervalo de confianÃ§a de 0.99/0.95/0.90.
 % O melhor, o segundo melhor e o pior valor de cada linha
-% estão em \textcolor{blue}{\textbf{azul}}, \textbf{negrito} e
+% estÃ£o em \textcolor{blue}{\textbf{azul}}, \textbf{negrito} e
 % \textcolor{red}{\textbf{vermelho}} respectivamente.}}
 % \begin{center}
 % \begin{tabular}{lcc|cc|cc|cc}
@@ -132,7 +132,7 @@ VFDTw      &    \textcolor{red}{\textbf{3}}        &              \textcolor{red
 % 6 - SVM         & . & + &   &+ &   & - \\\end{tabular}
 % \quad
 % \begin{tabular}{lcc}
-% algoritmo & \makecell{primeiros\\lugares} & \makecell{últimos\\lugares} \\
+% algoritmo & \makecell{primeiros\\lugares} & \makecell{Ãºltimos\\lugares} \\
 % \hline
 % RFw        &    \textcolor{blue}{\textbf{22}}       &              \textcolor{blue}{\textbf{4}}       \\
 % SVM        &    \textbf{21}       &              \textbf{8}       \\
@@ -145,17 +145,17 @@ VFDTw      &    \textcolor{red}{\textbf{3}}        &              \textcolor{red
 % \end{center}
 % \end{table}
 RF e SVM vencem os demais e VFDTw perde de quatro algoritmos
-com significância estatística.
-A distribuição das vitórias dos diferentes classificadores ao longo das bases de dados
+com significÃ¢ncia estatÃ­stica.
+A distribuiÃ§Ã£o das vitÃ³rias dos diferentes classificadores ao longo das bases de dados
 confirma a diversidade de vieses de aprendizado.
-Assim, a adoção dos algoritmos escolhidos é mais representativa do que
-o emprego de apenas um único algoritmo arbitrário.
+Assim, a adoÃ§Ã£o dos algoritmos escolhidos Ã© mais representativa do que
+o emprego de apenas um Ãºnico algoritmo arbitrÃ¡rio.
 
 \usetikzlibrary{trees}
-Há também a possibilidade de se procurar por prováveis nichos onde cada algoritmo tenha
+HÃ¡ tambÃ©m a possibilidade de se procurar por provÃ¡veis nichos onde cada algoritmo tenha
 um bom desempenho.
-A árvore da Figura \ref{treegoodleas}, por exemplo, representa a distribuição das vitórias
-de acordo com características triviais das bases de dados.
+A Ã¡rvore da Figura \ref{treegoodleas}, por exemplo, representa a distribuiÃ§Ã£o das vitÃ³rias
+de acordo com caracterÃ­sticas triviais das bases de dados.
 \begin{figure}
 \tikzset{
 every node/.style={font=\scriptsize,black, thin},
@@ -166,13 +166,13 @@ decision tree/.style={sibling distance=3cm, level distance=2cm},
 cond/.style={blue, yshift=-2mm, shape=rectangle, text centered},
 }
 \begin{center}
-\caption{Possíveis nichos de adequação base-algoritmo.
-\ano{explicar detalhes da geração da árvore aqui e referenciar nas próximas}
-\textit{Mínimo de dez exemplos por folha.
-Árvore gerada pelo algoritmo C4.5w.
+\caption{PossÃ­veis nichos de adequaÃ§Ã£o base-algoritmo.
+\ano{explicar detalhes da geraÃ§Ã£o da Ã¡rvore aqui e referenciar nas prÃ³ximas}
+\textit{MÃ­nimo de dez exemplos por folha.
+Ãrvore gerada pelo algoritmo C4.5w.
 Atributos considerados: algoritmo de aprendizado,
-número de classes, número de atributos, número de exemplos,
-proporção entre número de exemplos e número de atributos.
+nÃºmero de classes, nÃºmero de atributos, nÃºmero de exemplos,
+proporÃ§Ã£o entre nÃºmero de exemplos e nÃºmero de atributos.
 }}
 \begin{tikzpicture} [edge from parent/.style={->,above,draw,sloped,midway,gray!30,ultra thick},
 text width=2.7cm, align=flush center, grow cyclic,
@@ -187,41 +187,41 @@ level 5/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling
 \end{tikzpicture}
 \end{center}
 \end{figure}
-É possível notar que a distribuição de vitórias muda consideravelmente em cada caminho
-possível.
-Essa constatação serve de inspiração para o sistema automático de recomendação
-de estratégias de aprendizado ativo, no sentido de sugerir a possibilidade de caracterização
-de bases sem que os rótulos estejam presentes.
+Ã‰ possÃ­vel notar que a distribuiÃ§Ã£o de vitÃ³rias muda consideravelmente em cada caminho
+possÃ­vel.
+Essa constataÃ§Ã£o serve de inspiraÃ§Ã£o para o sistema automÃ¡tico de recomendaÃ§Ã£o
+de estratÃ©gias de aprendizado ativo, no sentido de sugerir a possibilidade de caracterizaÃ§Ã£o
+de bases sem que os rÃ³tulos estejam presentes.
 
 
-\subsection{Diversidade de estratégias}
-É esperado que as estratégias implementadas da literatura e as propostas nesta tese
-tenham desempenho heterogêneo no conjunto de bases de dados escolhido.
-Para confirmação,
-uma árvore com a distribuição de vitórias das estratégias é exposta
+\subsection{Diversidade de estratÃ©gias}
+Ã‰ esperado que as estratÃ©gias implementadas da literatura e as propostas nesta tese
+tenham desempenho heterogÃªneo no conjunto de bases de dados escolhido.
+Para confirmaÃ§Ã£o,
+uma Ã¡rvore com a distribuiÃ§Ã£o de vitÃ³rias das estratÃ©gias Ã© exposta
 na Figura \ref{treeALCKappa}.
-Os nomes de estratégias propostas estão em negrito.
-Nas análises seguintes, uma abreviação de estratégia seguida de asterisco indica o conjunto
+Os nomes de estratÃ©gias propostas estÃ£o em negrito.
+Nas anÃ¡lises seguintes, uma abreviaÃ§Ã£o de estratÃ©gia seguida de asterisco indica o conjunto
 de todas as suas variantes.
 \usetikzlibrary{trees}
-% \input{arvorealg} a árvore de algs ficou horrivel.
+% \input{arvorealg} a Ã¡rvore de algs ficou horrivel.
 % \input{arvorebest}
 \input{arvore}
 % Em cada base, o algoritmo com o pior desempenho passivo foi dispensado
-% visando minimizar a ocorrência de testes deficientes,
-% pois existem combinações base-algoritmo inadequadas.
+% visando minimizar a ocorrÃªncia de testes deficientes,
+% pois existem combinaÃ§Ãµes base-algoritmo inadequadas.
 
-Pode-se observar que a estratégia dominante difere conforme o caminho seguido na árvore,
+Pode-se observar que a estratÃ©gia dominante difere conforme o caminho seguido na Ã¡rvore,
 confirmando a expectativa de heterogeneidade.
-Outra característica importante é o metaatributo \textit{algoritmo} situar-se como nó raiz,
-sugerindo seu papel determinante no sucesso da estratégia e,
-consequentemente, a existência de afinidades entre estratégias e algoritmos.
+Outra caracterÃ­stica importante Ã© o metaatributo \textit{algoritmo} situar-se como nÃ³ raiz,
+sugerindo seu papel determinante no sucesso da estratÃ©gia e,
+consequentemente, a existÃªncia de afinidades entre estratÃ©gias e algoritmos.
 
 Por outro lado,
-também é esperada alguma correlação entre estratégias similares, por exemplo,
-entre Ent e Mar na folha posicionada acima do nó raiz.
+tambÃ©m Ã© esperada alguma correlaÃ§Ã£o entre estratÃ©gias similares, por exemplo,
+entre Ent e Mar na folha posicionada acima do nÃ³ raiz.
 Similarmente, algumas variantes dos conjuntos ATU*, DW*, HTU*, SVM* e TU*
-também têm ocorrências significativas em folhas coincidentes.
+tambÃ©m tÃªm ocorrÃªncias significativas em folhas coincidentes.
 % , como:
 % \begin{itemize}
 %  \item os pares DWeuc-DWmah, EERent-EERacc e SVMsim-SVMbal no caminho\\
@@ -231,19 +231,19 @@ também têm ocorrências significativas em folhas coincidentes.
 % \item HTUmah-HTUeuc nos caminhos\\ $(algoritmo=5NN)$ e
 % $(algoritmo=SVM) \rightarrow (26 < \%major.\leq 78)$.
 % \end{itemize}
-Assim, há a possibilidade de remoção de estratégias muito similares
-visando a facilitação do experimento de análise comparativa,
-embora, no experimento posterior de \ano{identificação de nichos de aplicação e de} recomendação
-automática, essas estratégias tenham passado a ser \ano{reconsideradas}.
+Assim, hÃ¡ a possibilidade de remoÃ§Ã£o de estratÃ©gias muito similares
+visando a facilitaÃ§Ã£o do experimento de anÃ¡lise comparativa,
+embora, no experimento posterior de \ano{identificaÃ§Ã£o de nichos de aplicaÃ§Ã£o e de} recomendaÃ§Ã£o
+automÃ¡tica, essas estratÃ©gias tenham passado a ser \ano{reconsideradas}.
 
-Analogamente à comparação na Seção \ref{algs},
-as similaridades entre estratégias foram calculadas
-por meio da distância $d(\bm{x},\bm{u}) \mid \bm{x},\bm{u} \in \mathbb{R}^{564}$
+Analogamente Ã  comparaÃ§Ã£o na SeÃ§Ã£o \ref{algs},
+as similaridades entre estratÃ©gias foram calculadas
+por meio da distÃ¢ncia $d(\bm{x},\bm{u}) \mid \bm{x},\bm{u} \in \mathbb{R}^{564}$
 entre medidas kappa ao longo das $94$ bases e $6$ algoritmos.
-Elas são apresentadas na Tabela \ref{stratDists}.
+Elas sÃ£o apresentadas na Tabela \ref{stratDists}.
 \afterpage{\clearpage\begin{landscape}
 \begin{table}[h]
-\caption{Similaridade entre estratégias. Medida: ALC da acurácia balanceada.
+\caption{Similaridade entre estratÃ©gias. Medida: ALC da acurÃ¡cia balanceada.
 \textit{Detalhes na Tabela \ref{passiveDists}.}}
 \begin{center}\scalebox{0.77}{
 \begin{tabular}{lcc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc}
@@ -274,30 +274,30 @@ SVMsim  &   0.30 &   0.30 &   0.29 &   0.30 &   0.30 &   0.29 &   0.29 &   0.29 
 \end{center}
 \end{table}
 \end{landscape}\clearpage}
-As estratégias mais exploratórias (Rnd, Clu, ATU* e SGmulti)
-tiveram entre si um grau de similaridade acima da média
+As estratÃ©gias mais exploratÃ³rias (Rnd, Clu, ATU* e SGmulti)
+tiveram entre si um grau de similaridade acima da mÃ©dia
 (valor de $0,64$ para as duas primeiras e entre $0,48$ e $0,50$ para as restantes,
-desconsiderando variantes da mesma estratégia entre si).
-Entretanto, Rnd, Clu e SGmulti foram mantidas pelo seu valor referencial e histórico.
-Uma similaridade maior pode ser notada dentro dos três conjuntos de variantes
+desconsiderando variantes da mesma estratÃ©gia entre si).
+Entretanto, Rnd, Clu e SGmulti foram mantidas pelo seu valor referencial e histÃ³rico.
+Uma similaridade maior pode ser notada dentro dos trÃªs conjuntos de variantes
 ATU*, HTU* e TU* (entre $0,64$ e $0,76$), logo,
-é possível manter apenas uma das métricas de distância sem impactar
-significativamente a representatividade das estratégias.
-Assim, as variantes baseadas nas distâncias euclidiana e de Manhattan
-foram excluídas por serem mais similares às demais variantes do que as baseadas na
-distância de Mahalanobis de acordo com a Tabela \ref{stratDists}:
+Ã© possÃ­vel manter apenas uma das mÃ©tricas de distÃ¢ncia sem impactar
+significativamente a representatividade das estratÃ©gias.
+Assim, as variantes baseadas nas distÃ¢ncias euclidiana e de Manhattan
+foram excluÃ­das por serem mais similares Ã s demais variantes do que as baseadas na
+distÃ¢ncia de Mahalanobis de acordo com a Tabela \ref{stratDists}:
 \begin{itemize}
 \item TUeuc: $0,74$ e $0,64$, TUman: $0,74$ e $0,66$, \textbf{TUmah}: $0,66$ e $0,64$;
 \item ATUeuc: $0,76$ e $0,70$, ATUman: $0,76$ e $0,70$, \textbf{ATUmah}: $0,70$ e $0,70$;
 \item HTUeuc: $0,71$ e $0,64$, e HTUman: $0,71$ e $0,66$, \textbf{HTUmah}: $0,64$ e $0,66$,
  \end{itemize}
-Além disso, a intrínseca independência de escala da distância de Mahalanobis é uma
-característica que teoricamente a torna menos vinculada ao formato dos atributos.
+AlÃ©m disso, a intrÃ­nseca independÃªncia de escala da distÃ¢ncia de Mahalanobis Ã© uma
+caracterÃ­stica que teoricamente a torna menos vinculada ao formato dos atributos.
 
-Dentre as estratégias baseadas em simples medida de informatividade
+Dentre as estratÃ©gias baseadas em simples medida de informatividade
 (Unc, Ent e Mar), apenas Mar foi mantida devido
-à sua considerável similaridade com Ent ($0,62$),
-por ser equivalente em problemas binários e mais adequada a problemas multiclasse que Unc
+Ã  sua considerÃ¡vel similaridade com Ent ($0,62$),
+por ser equivalente em problemas binÃ¡rios e mais adequada a problemas multiclasse que Unc
 e por seu desempenho superior\footnote{\label{note1}Detalhes nas tabelas
 \ref{strats0a5NN}, \ref{strats1a5NN}, \ref{strats2a5NN},
 \ref{strats0b5NN}, \ref{strats1b5NN}, \ref{strats2b5NN},
@@ -311,24 +311,24 @@ e por seu desempenho superior\footnote{\label{note1}Detalhes nas tabelas
 \ref{strats0bRFw}, \ref{strats1bRFw}, \ref{strats2bRFw},
 \ref{strats0aSVM}, \ref{strats1aSVM}, \ref{strats2aSVM},
 \ref{strats0bSVM}, \ref{strats1bSVM} e \ref{strats2bSVM}
-do Apêndice \ref{detalhes}.}.
-As variantes DW* são as mais dissimilares (entre $0,22$ e $0,26$) devido a seu desempenho
+do ApÃªndice \ref{detalhes}.}.
+As variantes DW* sÃ£o as mais dissimilares (entre $0,22$ e $0,26$) devido a seu desempenho
 geral excessivamente inferior\footref{note1}.
 Por esse motivo, e principalmente por serem melhor representadas pelas suas sucessoras TU*,
 nenhuma delas foi mantida.
-% Analogamente à escolha feita com as outras estratégias baseadas em distância,
+% Analogamente Ã  escolha feita com as outras estratÃ©gias baseadas em distÃ¢ncia,
 % apenas a de Mahalanobis foi mantida.
 Finalmente,
 SVMbal foi mantida em detrimento de SVMsim, por ser similar, sua sucessora e ter
 um desempenho melhor\footref{note1}; e,
 EERacc foi eliminada por ser inferior a EERent, pois
-a acurácia como função objetivo não foi bem sucedida quando comparada à medida
-de entropia - função utilizada no trabalho original\footref{note1}.
-\ano{descrever no apêndice como fazer pra descobrir essas conclusões das tabelas,
+a acurÃ¡cia como funÃ§Ã£o objetivo nÃ£o foi bem sucedida quando comparada Ã  medida
+de entropia - funÃ§Ã£o utilizada no trabalho original\footref{note1}.
+\ano{descrever no apÃªndice como fazer pra descobrir essas conclusÃµes das tabelas,
 talvez com friedman}
-O grupo reduzido de dez estratégias é apresentado na Tabela \ref{stratDistsRedux}.
+O grupo reduzido de dez estratÃ©gias Ã© apresentado na Tabela \ref{stratDistsRedux}.
 \begin{table}[h]
-\caption{Similaridade entre estratégias selecionadas.  Medida: ALC da acurácia balanceada.
+\caption{Similaridade entre estratÃ©gias selecionadas.  Medida: ALC da acurÃ¡cia balanceada.
 \textit{Detalhes na Tabela \ref{passiveDists}.}}
 \begin{center}
 \scalebox{0.94}{
@@ -349,17 +349,15 @@ SVMbal  &   0.33 &   0.34 &   0.33 &   0.33 &   0.32 & \textcolor{blue}{\textbf{
 }
 \end{center}
 \end{table}
-Note-se que os critérios adotados na eliminação de abordagens não se configuram como
+Note-se que os critÃ©rios adotados na eliminaÃ§Ã£o de abordagens nÃ£o se configuram como
 sobre ajustamento aos conjuntos de dados, pois apesar de serem coincidentemente inferiores,
 as eliminadas foram preteridas em favor das alternativas mais adequadas:
-implementação usual (EERent), sucessoras (TU* e SVMbal) e
-mais genéricas (distância de Mahalanobis).
+implementaÃ§Ã£o usual (EERent), sucessoras (TU* e SVMbal) e
+mais genÃ©ricas (distÃ¢ncia de Mahalanobis).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input exp-analise
 
 
-não é do conhecimento do autor a existência de trabalhos que empreguem a medida de distância
+nÃ£o Ã© do conhecimento do autor a existÃªncia de trabalhos que empreguem a medida de distÃ¢ncia
 de Mahalanobis.
-
-

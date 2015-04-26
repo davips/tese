@@ -1,13 +1,13 @@
 \inputencoding{latin1}
-\chapter{Cen·rios}\label{cenarios}
+\chapter{Cen√°rios}\label{cenarios}
 \ano{revisar completamente}
 
-Existem trÍs principais cen·rios na literatura de aprendizado ativo \citep{settles2010active}:
-\textit{membership query synthesis}\footnote{[sÌntese de consulta por associaÁ„o ou consulta de
+Existem tr√™s principais cen√°rios na literatura de aprendizado ativo \citep{settles2010active}:
+\textit{membership query synthesis}\footnote{[s√≠ntese de consulta por associa√ß√£o ou consulta de
 exemplos sintetizados]};
 amostragem baseada em \textit{\pool}; e
 \textit{amostragem seletiva baseada em fluxo}\footnote{[\textit{stream-based selective sampling}]}.
-Eles se dividem nos cen·rios apresentados com as respectivas estratÈgias na Tabela
+Eles se dividem nos cen√°rios apresentados com as respectivas estrat√©gias na Tabela
 \ref{tab:compara-cenarios-ativos}.
 % \setlength{\tabcolsep}{0pt}
 % \left|{\mathcal{U}}\right|$
@@ -20,10 +20,10 @@ Eles se dividem nos cen·rios apresentados com as respectivas estratÈgias na Tabe
 %   \multicolumn{4}{c|}{2012} &
 %   \multicolumn{4}{c|}{2013} \\
   \hline
-  \textbf{cen·rio} & \textbf{caracterÌstica} & \textbf{estratÈgias} \\
-                   & \textbf{do repositÛrio} & \textbf{aplic·veis} \ano{colocar direto os nomes das estratÈgias} \\
+  \textbf{cen√°rio} & \textbf{caracter√≠stica} & \textbf{estrat√©gias} \\
+                   & \textbf{do reposit√≥rio} & \textbf{aplic√°veis} \ano{colocar direto os nomes das estrat√©gias} \\
   \hline
-  \textit{membership query} & $|\mathcal{U}|=0$ & \textit{n„o h· amostragem} \\
+  \textit{membership query} & $|\mathcal{U}|=0$ & \textit{n√£o h√° amostragem} \\
   \textit{synthesis}        &                   &  \\
   \hline
   amostragem seletiva baseada & $|\mathcal{U}|=1$ & informatividade isolada \\
@@ -39,7 +39,7 @@ Eles se dividem nos cen·rios apresentados com as respectivas estratÈgias na Tabe
   \hline
 \end{tabular}
 \end{center}
-\caption{ComparaÁ„o de cen·rios de aprendizado ativo.}
+\caption{Compara√ß√£o de cen√°rios de aprendizado ativo.}
 \label{tab:compara-cenarios-ativos}
 \end{table}
 
@@ -47,108 +47,108 @@ Eles se dividem nos cen·rios apresentados com as respectivas estratÈgias na Tabe
 \section*{\textit{Membership query synthesis}}
 \ano{procurar por ? em todo o documento}
 
-No cen·rio de \textit{membership query synthesis}, exemplos s„o criados pelo
+No cen√°rio de \textit{membership query synthesis}, exemplos s√£o criados pelo
 algoritmo de aprendizado \citep{angluin1988queries}.
-A criaÁ„o de um exemplo È ilustrada na Figura \ref{fig:memquerysyn}.
-Ele È feito de maneira a otimizar a busca da hipÛtese ideal dentro do
-\textit{version space}\footnote{[espaÁo de versıes]} conforme definido por
+A cria√ß√£o de um exemplo √© ilustrada na Figura \ref{fig:memquerysyn}.
+Ele √© feito de maneira a otimizar a busca da hip√≥tese ideal dentro do
+\textit{version space}\footnote{[espa√ßo de vers√µes]} conforme definido por
 \cite{mitchell1997machine} embora nem
-sempre sejam criados exemplos que efetivamente ocorreriam na aplicaÁ„o - alguns n„o seriam
-pertencentes ‡ distribuiÁ„o natural dos dados.
-Trata-se de uma abordagem vi·vel para problemas de domÌnio finito cujos atributos tenham valores
-semanticamente interpret·veis pelo or·culo.
-A interpretabilidade È importante para que um or·culo humano seja capaz de ponderar a respeito
+sempre sejam criados exemplos que efetivamente ocorreriam na aplica√ß√£o - alguns n√£o seriam
+pertencentes √† distribui√ß√£o natural dos dados.
+Trata-se de uma abordagem vi√°vel para problemas de dom√≠nio finito cujos atributos tenham valores
+semanticamente interpret√°veis pelo or√°culo.
+A interpretabilidade √© importante para que um or√°culo humano seja capaz de ponderar a respeito
 dos
-exemplos que lhe s„o apresentados.
-Assim, aplicaÁıes como reconhecimento de escrita ou processamento de linguagem natural podem ser
-inadequadas para um aprendizado baseado na sÌntese de exemplos.
-No caso do reconhecimento de escrita, h· pelo menos um relato de caracteres hÌbridos terem sido
-gerados pelo aprendiz ativo de forma que n„o pudessem ser reconhecidos - e eventualmente
+exemplos que lhe s√£o apresentados.
+Assim, aplica√ß√µes como reconhecimento de escrita ou processamento de linguagem natural podem ser
+inadequadas para um aprendizado baseado na s√≠ntese de exemplos.
+No caso do reconhecimento de escrita, h√° pelo menos um relato de caracteres h√≠bridos terem sido
+gerados pelo aprendiz ativo de forma que n√£o pudessem ser reconhecidos - e eventualmente
 rotulados
-- por humanos \citep{settles2010active,baum1992query}. Em outros domÌnios em que o or·culo n„o È
-humano, como um teste quÌmico ou um robÙ seguindo coordenadas, \textit{membership querysynthesis}
+- por humanos \citep{settles2010active,baum1992query}. Em outros dom√≠nios em que o or√°culo n√£o √©
+humano, como um teste qu√≠mico ou um rob√¥ seguindo coordenadas, \textit{membership querysynthesis}
 mostra-se uma abordagem promissora \citep{cohn1996active}.
 
 \begin{figure} %[H]
     \centering
     \scalebox{.75}{\input{imagens/memquerysyn-esquema.tex}}
-    \caption{\textit{Membership query synthesis}: as consultas ao or·culo s„o criadas sob medida.}
+    \caption{\textit{Membership query synthesis}: as consultas ao or√°culo s√£o criadas sob medida.}
     \label{fig:memquerysyn}
 \end{figure}
 
 \section*{\textit{Pool-based sampling}}
-Muitos problemas proveem grande quantidade de exemplos de uma sÛ vez. Eles s„o a motivaÁ„o da
+Muitos problemas proveem grande quantidade de exemplos de uma s√≥ vez. Eles s√£o a motiva√ß√£o da
 \textit{pool-based sampling} \citep{lewis1994heterogeneous}.
-Esse tipo de amostragem assume que h· apenas uma pequena parcela de exemplos rotulados e que
-normalmente È possÌvel analisar todos os exemplos n„o rotulados a qualquer momento, pois estariam
-disponÌveis num repositÛrio conforme pode ser visto na Figura \ref{fig:poolbased}.
-Uma an·lise tÌpica consiste em extrair alguma medida informativa de cada exemplo.
+Esse tipo de amostragem assume que h√° apenas uma pequena parcela de exemplos rotulados e que
+normalmente √© poss√≠vel analisar todos os exemplos n√£o rotulados a qualquer momento, pois estariam
+dispon√≠veis num reposit√≥rio conforme pode ser visto na Figura \ref{fig:poolbased}.
+Uma an√°lise t√≠pica consiste em extrair alguma medida informativa de cada exemplo.
 
 \begin{figure} %[H]
     \centering
     \input{imagens/poolbased-esquema.tex}
-    \caption{\textit{Pool-based sampling}: o aprendiz ativo tem livre acesso ao repositÛrio.}
+    \caption{\textit{Pool-based sampling}: o aprendiz ativo tem livre acesso ao reposit√≥rio.}
     \label{fig:poolbased}
 \end{figure}
 
-Muitas aplicaÁıes s„o adequadas a esse cen·rio, sendo que a classificaÁ„o de textos
-\citep{mccallum1998employing} tem recebido maior destaque por requerer esforÁo humano na
-rotulaÁ„o
+Muitas aplica√ß√µes s√£o adequadas a esse cen√°rio, sendo que a classifica√ß√£o de textos
+\citep{mccallum1998employing} tem recebido maior destaque por requerer esfor√ßo humano na
+rotula√ß√£o
 dos textos.
-Um exemplo de aplicaÁ„o em que o or·culo È uma m·quina, È caso do meta-aprendizado para escolha
+Um exemplo de aplica√ß√£o em que o or√°culo √© uma m√°quina, √© caso do meta-aprendizado para escolha
 do
 melhor algoritmo para cada tipo de base de dados.
-Nesse caso, cada base corresponde a um meta-exemplo e o rÛtulo indica qual o algoritmo de aprendizado mais
+Nesse caso, cada base corresponde a um meta-exemplo e o r√≥tulo indica qual o algoritmo de aprendizado mais
 adequado para ela.
-Por isso, o rÛtulo È obtido apenas depois de todos os classificadores terem sido treinados e
+Por isso, o r√≥tulo √© obtido apenas depois de todos os classificadores terem sido treinados e
 testados nela.
-AlÈm disso, essas bases podem ser muito volumosas, reforÁando a necessidade de aplicaÁ„o do
+Al√©m disso, essas bases podem ser muito volumosas, refor√ßando a necessidade de aplica√ß√£o do
 aprendizado ativo
-na seleÁ„o dos metaexemplos tal como feito por \cite{prudencio2007active}.
+na sele√ß√£o dos metaexemplos tal como feito por \cite{prudencio2007active}.
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \section*{Amostragem seletiva baseada em fluxo} \label{sec:cenario_fluxo}
-Os fluxos de dados, conforme definiÁ„o da SeÁ„o \ref{sec:fluxo:def}, precisam ser tratados dentro
-de limitaÁıes de tempo de processamento e de espaÁo em memÛria.
-Logo, a manipulaÁ„o de um repositÛrio, ainda que ajustado ‡ memÛria disponÌvel, pode ser invi·vel
-devido ‡ necessidade de uma r·pida resposta a cada um dos exemplos que chegam incessantemente.
-Nesse tipo de configuraÁ„o se situa a amostragem seletiva baseada em fluxo
-\citep{cohn1994improving}. %essa citacao do settles n„o faz l· muito sentido
-Nela, exemplos s„o obtidos um a um de um fluxo e imediatamente descartados ou enviados para o
-or·culo.
-Optou-se neste documento por complementar o nome desse cen·rio com o termo \textit{estrito}.
-A consequÍncia dessa polÌtica de consulta ``agora ou nunca'' È um uso minimalista de recursos
-computacionais durante o processo decisÛrio a respeito da necessidade de rotulaÁ„o de cada
+Os fluxos de dados, conforme defini√ß√£o da Se√ß√£o \ref{sec:fluxo:def}, precisam ser tratados dentro
+de limita√ß√µes de tempo de processamento e de espa√ßo em mem√≥ria.
+Logo, a manipula√ß√£o de um reposit√≥rio, ainda que ajustado √† mem√≥ria dispon√≠vel, pode ser invi√°vel
+devido √† necessidade de uma r√°pida resposta a cada um dos exemplos que chegam incessantemente.
+Nesse tipo de configura√ß√£o se situa a amostragem seletiva baseada em fluxo
+\citep{cohn1994improving}. %essa citacao do settles n√£o faz l√° muito sentido
+Nela, exemplos s√£o obtidos um a um de um fluxo e imediatamente descartados ou enviados para o
+or√°culo.
+Optou-se neste documento por complementar o nome desse cen√°rio com o termo \textit{estrito}.
+A consequ√™ncia dessa pol√≠tica de consulta ``agora ou nunca'' √© um uso minimalista de recursos
+computacionais durante o processo decis√≥rio a respeito da necessidade de rotula√ß√£o de cada
 exemplo.
-A amostragem baseada em fluxo È ilustrada na Figura \ref{fig:fluxoquery}.
+A amostragem baseada em fluxo √© ilustrada na Figura \ref{fig:fluxoquery}.
 
 \begin{figure} %[H]
     \centering
     \input{imagens/fluxo-esquema.tex}
-    \caption{Amostragem seletiva baseada em fluxo: todo novo exemplo n„o consultado precisa ser
+    \caption{Amostragem seletiva baseada em fluxo: todo novo exemplo n√£o consultado precisa ser
 descartado.}
     \label{fig:fluxoquery}
 \end{figure}
 
-… importante observar a diferenciaÁ„o feita por \cite{zliobaite2011active} entre
+√â importante observar a diferencia√ß√£o feita por \cite{zliobaite2011active} entre
 \textit{aprendizado ativo online}\footnote{[\textit{online active learning}]
 }
  e \textit{aprendizado ativo em fluxo de dados}\footnote{[\textit{active learning in
 datastreams}]
 }
-- embora ambos sejam aplic·veis em ambientes com
-\underline{relevantes restriÁıes}\footnote{As restriÁıes s„o relevantes conforme explicado na
-SeÁ„o
+- embora ambos sejam aplic√°veis em ambientes com
+\underline{relevantes restri√ß√µes}\footnote{As restri√ß√µes s√£o relevantes conforme explicado na
+Se√ß√£o
 \ref{sec:fluxo:def}.
 } de recursos:
-em fluxos de dados È esperada a ocorrÍncia de mudanÁas de conceito.
+em fluxos de dados √© esperada a ocorr√™ncia de mudan√ßas de conceito.
 
-Uma variaÁ„o da amostragem baseada em fluxo
-È o cen·rio em que ele È composto por \textit{blocos de dados}\footnote{[\textit{data chunks}]
-} (ou seja, \textit{n„o estrito}).
+Uma varia√ß√£o da amostragem baseada em fluxo
+√© o cen√°rio em que ele √© composto por \textit{blocos de dados}\footnote{[\textit{data chunks}]
+} (ou seja, \textit{n√£o estrito}).
 Isso permite o tratamento de cada bloco com uma \textit{pool-based sampling}.
-… o caso do trabalho de \cite{zhu2007active}.
-Esse cen·rio exige adaptaÁıes nas formas convencionais de consulta e juntamente com elas È
-apresentado na SeÁ„o \ref{sec:panorama}.
+√â o caso do trabalho de \cite{zhu2007active}.
+Esse cen√°rio exige adapta√ß√µes nas formas convencionais de consulta e juntamente com elas √©
+apresentado na Se√ß√£o \ref{sec:panorama}.

@@ -1,88 +1,88 @@
 \chapter{Aprendizado Meta-ativo}\label{aml}
-\esb{O mais prÛximo de meta que encontrei na literatura foi a combinaÁ„o MAB de estratÈgias:
+\esb{O mais pr√≥ximo de meta que encontrei na literatura foi a combina√ß√£o MAB de estrat√©gias:
 http://arxiv.org/pdf/1309.6830.pdf}
 
-\tar{parece claro pelos exps anteriores que algumas estratÈgias simplesmente n„o aceitam
-certos aprendizes (ainda falta explicitar isso l·, apontando caso a caso e justificando
+\tar{parece claro pelos exps anteriores que algumas estrat√©gias simplesmente n√£o aceitam
+certos aprendizes (ainda falta explicitar isso l√°, apontando caso a caso e justificando
 teoricamente, para evitar que seja dito que ocorreu overfitting quando essa info
 for usada no metaap),
-ent„o isso facilitaria um metaap que indique pares strat/aprendiz,pois
-reduziria a quantidade de combinaÁıes possÌveis}
+ent√£o isso facilitaria um metaap que indique pares strat/aprendiz,pois
+reduziria a quantidade de combina√ß√µes poss√≠veis}
 
-\ano{ainda È preciso ver se ranking supera ranking medio (default)}
+\ano{ainda √© preciso ver se ranking supera ranking medio (default)}
 
 \ano{possibilidades: um experimento para cada learner separadamente;
 sortear budget no exp acima;
-sortear learners num experimento sÛ;}
+sortear learners num experimento s√≥;}
 
 
 
 
 
-\tar{LOO È usado; ent„o para ter confianÁa est. pode-se adotar o teste de McNemar}
+\tar{LOO √© usado; ent√£o para ter confian√ßa est. pode-se adotar o teste de McNemar}
 
-\tar{rodei meta multirrotulo pra v·rios metaclassif:
+\tar{rodei meta multirrotulo pra v√°rios metaclassif:
 c45=0.50 Maj=0.46}
 
-\tar{vou rodar meta monorrotulo pra v·rios metaclassif com trios lea-bud-dataset sem
+\tar{vou rodar meta monorrotulo pra v√°rios metaclassif com trios lea-bud-dataset sem
 roubar:
 c45=0.19 Maj=0.14}
 
 \ano{resume livro de meta-ap.; cita Marcilio, statlog;
 falar do desafio de nao usar informacoes sobre as classes nas metafeatures
-que existe em metaAL e n„o em metaPassiveL}
+que existe em metaAL e n√£o em metaPassiveL}
 
-\ano{como a prediÁ„o da melhor n„o vence a majoritaria preciso usar ranking
-(ainda posso testar algumas variaÁıes, como fixar
-cada um dos learners possÌveis)}
+\ano{como a predi√ß√£o da melhor n√£o vence a majoritaria preciso usar ranking
+(ainda posso testar algumas varia√ß√µes, como fixar
+cada um dos learners poss√≠veis)}
 
 
-\ano{Acho que NFL se refere ‡ impossibilidade de aprendizado sem viÈs
+\ano{Acho que NFL se refere √† impossibilidade de aprendizado sem vi√©s
 no caso de ap. ativo trata-se mais de amostragem do que de aprendizado;
-as estrategias agnÛsticas s„o um exemplo de pura amostragem;
-para o AL ser enxergado como um problema de aprendizado È
-preciso enxerg·-lo como um problema de classificar cada exemplo como
-``consultar'' ou ``n„o consultar'';}
+as estrategias agn√≥sticas s√£o um exemplo de pura amostragem;
+para o AL ser enxergado como um problema de aprendizado √©
+preciso enxerg√°-lo como um problema de classificar cada exemplo como
+``consultar'' ou ``n√£o consultar'';}
 
-\ano{isso acima poderia atÈ se tornar um ensemble de AL que trabalha em cima de exemplos
-transformados pelas diferentes estratÈgias
-- um classificador ˙nico que aprenderia de v·rios datasets
-quais exemplos s„o bons de consultar,
-mas infelizmente È totalmente invi·vel implementar isso agora;
+\ano{isso acima poderia at√© se tornar um ensemble de AL que trabalha em cima de exemplos
+transformados pelas diferentes estrat√©gias
+- um classificador √∫nico que aprenderia de v√°rios datasets
+quais exemplos s√£o bons de consultar,
+mas infelizmente √© totalmente invi√°vel implementar isso agora;
 ele seria treinado com a sequencia otima de exemplos-transformados de
-cada base: os primeiros seriam os positivos e ˙ltimos seriam os negativos.
+cada base: os primeiros seriam os positivos e √∫ltimos seriam os negativos.
 )}
 
-\tar{meta-aprendizado pra recomendar quando n„o usar pode ter maior acur·cia.}
+\tar{meta-aprendizado pra recomendar quando n√£o usar pode ter maior acur√°cia.}
 
-\ano{diferenciar do meta-aprendizado ativo do PrudÍncio}
+\ano{diferenciar do meta-aprendizado ativo do Prud√™ncio}
 
 Multiarmed bandit problem
 http://www.ualberta.ca/~szepesva/Thesis/varun08.thesis.pdf
 
-\section{RecomendaÁ„o de estratÈgias}\label{recom}
-Um sistema de recomendaÁ„o baseado em meta-aprendizado tem a funÁ„o de sugerir
-o algoritmo e par‚metros mais apropriados, ou um ranqueamento das opÁıes disponÌveis,
+\section{Recomenda√ß√£o de estrat√©gias}\label{recom}
+Um sistema de recomenda√ß√£o baseado em meta-aprendizado tem a fun√ß√£o de sugerir
+o algoritmo e par√¢metros mais apropriados, ou um ranqueamento das op√ß√µes dispon√≠veis,
 para uma determinada base de dados \citep{books/daglib/0022052}.
-As medidas escolhidas para caracterizaÁ„o das bases foram obtidas da literatura
-de meta-aprendizado tanto supervisionado quanto n„o supervisionado.
-Devido ‡ impossibilidade de se prever o intervalo dos valores e definir
+As medidas escolhidas para caracteriza√ß√£o das bases foram obtidas da literatura
+de meta-aprendizado tanto supervisionado quanto n√£o supervisionado.
+Devido √† impossibilidade de se prever o intervalo dos valores e definir
 o particionamento dele, optou-se por substituir o esquema de histogramas
-pelos valores mÌnimo, m·ximo, mÈdio e raz„o entre mÌnimo e m·ximo.
-Medidas de agrupamento tambÈm foram incluÌdas visando identificar possÌveis afinidades
-de algumas bases com a estratÈgia de amostragem por agrupamento.
+pelos valores m√≠nimo, m√°ximo, m√©dio e raz√£o entre m√≠nimo e m√°ximo.
+Medidas de agrupamento tamb√©m foram inclu√≠das visando identificar poss√≠veis afinidades
+de algumas bases com a estrat√©gia de amostragem por agrupamento.
 \begin{table}
-\caption{DescriÁ„o dos meta-atributos.}
+\caption{Descri√ß√£o dos meta-atributos.}
 \begin{tabular}{c|c|c}
-\textbf{meta-atributo} & \textbf{descriÁ„o}&\textbf{fÛrmula} \\ \hline
+\textbf{meta-atributo} & \textbf{descri√ß√£o}&\textbf{f√≥rmula} \\ \hline
 \makecell{$\av_{min}$,$\av_{max}$\\$\av_{min/max}$,$\av_{avg}$} &
-\makecell{mÈdia (mÌnima, m·xima,\\raz„o entre ambas e mÈdia)} & formula? \\ \hline
+\makecell{m√©dia (m√≠nima, m√°xima,\\raz√£o entre ambas e m√©dia)} & formula? \\ \hline
 \makecell{$\sd_{min}$,$\sd_{max}$\\$\sd_{min/max}$,$\sd_{avg}$} &
-\makecell{desvio padr„o (\textit{idem})} & formula? \\ \hline
+\makecell{desvio padr√£o (\textit{idem})} & formula? \\ \hline
 \makecell{$\en_{min}$,$\en_{max}$\\$\en_{min/max}$,$\en_{avg}$} &
 \makecell{entropia (\textit{idem})} & formula? \\ \hline
 \makecell{$\co_{min}$,$\co_{max}$\\$\co_{min/max}$,$\co_{avg}$} &
-\makecell{correlaÁ„o entre pares\\de atributos (\textit{idem})} & formula? \\ \hline
+\makecell{correla√ß√£o entre pares\\de atributos (\textit{idem})} & formula? \\ \hline
 \makecell{$\sk_{min}$,$\sk_{max}$\\$\sk_{min/max}$,$\sk_{avg}$} &
 \makecell{assimetria (\textit{idem})} & formula? \\ \hline
 \makecell{$\ku_{min}$,$\ku_{max}$,\\$\ku_{min/max}$,$\ku_{avg}$} &
@@ -90,7 +90,7 @@ curtose (\textit{idem}) & formula? \\ \hline
 \makecell{$\val_{min}$,$\val_{max}$,\\$\val_{min/max}$,$\val_{avg}$} &
 \makecell{quantidade de valores\\nominais (\textit{idem})} &
 $\val=\{|a| \mid \forall a\in A,\nom(a)=1\}$\\ \hline
-% Rnd & \makecell{exploratÛria\\aleatÛria} & \makecell{agnÛstica}&autÙnoma&nenhuma&$\mathcal{O}(0)$\\ \hline
+% Rnd & \makecell{explorat√≥ria\\aleat√≥ria} & \makecell{agn√≥stica}&aut√¥noma&nenhuma&$\mathcal{O}(0)$\\ \hline
 \end{tabular}
 \end{table}
 
@@ -123,46 +123,46 @@ c45    5nn   maj
 *-> errado, pois gera exemplos repetidos com classes diferentes
 
 
-\esb{devido ‡ escassez de metaexemplos, LOO foi adotado em conjunto com treinamento
+\esb{devido √† escassez de metaexemplos, LOO foi adotado em conjunto com treinamento
 em grupos de exemplos}
 
-\ano{recomendaÁ„o de estratÈgia para base,
-budget e aprendiz dados [e qtd inicial de rÛtulos?]}
+\ano{recomenda√ß√£o de estrat√©gia para base,
+budget e aprendiz dados [e qtd inicial de r√≥tulos?]}
 
-\ano{escolhe uma dentre v·rias}
+\ano{escolhe uma dentre v√°rias}
 
 \ano{escolhe cada uma contra random}
 
-\ano{mostra quando random È a melhor (interessante)}
+\ano{mostra quando random √© a melhor (interessante)}
 
-\ano{mostra quando random È a melhor ou empata}
+\ano{mostra quando random √© a melhor ou empata}
 
-\ano{recomendaÁ„o de aprendiz
-(NB,C45,etc. e ''n„o-use essa estrat.'' ou ''use aleatÛrio'')
-para uma dada estratÈgia}
+\ano{recomenda√ß√£o de aprendiz
+(NB,C45,etc. e ''n√£o-use essa estrat.'' ou ''use aleat√≥rio'')
+para uma dada estrat√©gia}
 
 \tar{metaap pra decidir entre AG, LU ou TU}
 
 \ano{sucesso garantido: recomendar strat por tempo de consulta estimado.
-seria muito Ûbvio?}
+seria muito √≥bvio?}
 
-CritÈrio de empate:
-Um algoritmo È considerado adequado se ele n„o for
-pior que o melhor de todos com signific‚ncia estatÌstica
+Crit√©rio de empate:
+Um algoritmo √© considerado adequado se ele n√£o for
+pior que o melhor de todos com signific√¢ncia estat√≠stica
 \cite{books/daglib/0022052}.
 
 
 \tar{mais metafeatures:
- sÛ usa atributos nominais (NB,...)
-2- sÛ usa atributos numÈricos (SVM, ELM, ...)
+ s√≥ usa atributos nominais (NB,...)
+2- s√≥ usa atributos num√©ricos (SVM, ELM, ...)
 3- sofre com atributos irrelevantes (5NN ou medir impacto de adicionar atts irrelevantes)
-4- seleciona atributos internamente (·rvores)
-5- fornece boas estimativas de probabilidade (medir entropia mÈdia pra saber)
-6- È baseado em dist‚ncia (5NN)
+4- seleciona atributos internamente (√°rvores)
+5- fornece boas estimativas de probabilidade (medir entropia m√©dia pra saber)
+6- √© baseado em dist√¢ncia (5NN)
 7- fronteira de decisao horiz e vertical (arvore)}
 
 \ano{\citep{conf/ijcnn/SoutoPSACLS08}, sobre clustering,
-usam ranking mÈdio como default:
+usam ranking m√©dio como default:
 Method SRC
 Default 0.59 +- 0.37
 Meta-Leaner 0.75 +- 0.21
@@ -170,19 +170,16 @@ Meta-Leaner 0.75 +- 0.21
 ``melhoram`` statlog, aplicando log}
 
 \citep{kalousis2002algorithm} pg. 43 tem metafeatures (inclusive histograma10,
-mas como as faixas ideais s„o imprevisÌveis, resolvi isso colocando max, min, avg e min/max)
-Posso colocar ou omitir a informaÁ„o de distribuiÁ„o das classes; ela normalmente n„o
-È conhecida na pr·tica.
+mas como as faixas ideais s√£o imprevis√≠veis, resolvi isso colocando max, min, avg e min/max)
+Posso colocar ou omitir a informa√ß√£o de distribui√ß√£o das classes; ela normalmente n√£o
+√© conhecida na pr√°tica.
 
-\section{Meta-estratÈgia}
+\section{Meta-estrat√©gia}
 
 \ano{vai que o tempo de phd se multiplica:
-testar com outros meta-classificadores; Meta-estratÈgia din‚mica}
+testar com outros meta-classificadores; Meta-estrat√©gia din√¢mica}
 
 \section{Experimentos e Resultados}
-\ano{citar programa R para a extraÁ„o de parte dos meta-atributos \citep{team2010r}}
+\ano{citar programa R para a extra√ß√£o de parte dos meta-atributos \citep{team2010r}}
 
-\section{ConsideraÁıes}
-
-
-
+\section{Considera√ß√µes}

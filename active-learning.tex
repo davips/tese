@@ -1,103 +1,103 @@
 \section{Aprendizado Ativo} \label{aprendizado-ativo}
-\ing{Aprendizado ativo}{Active learning} È o estudo de m·quinas
+\ing{Aprendizado ativo}{Active learning} √© o estudo de m√°quinas
 de aprendizado capazes de se aprimorar fazendo perguntas \citep{series/synthesis/2012Settles}.
-A origem do termo remete ‡ Pedagogia, especificamente ‡ forma de ensino centrada no aluno.
-A ideia b·sica È aproveitar a individualidade de cada aluno e seu prÛprio ritmo de aprendizado.
+A origem do termo remete √† Pedagogia, especificamente √† forma de ensino centrada no aluno.
+A ideia b√°sica √© aproveitar a individualidade de cada aluno e seu pr√≥prio ritmo de aprendizado.
 Assim, ele pode ser auxiliado pelo professor nos aspectos em que experimenta maior dificuldade.
-Esse tipo ativo de aprendizado humano - com foco no aluno - tem mostrado evidÍncias
-de sua efic·cia \citep{michael2006s}.
-Analogamente, guardadas as devidas proporÁıes,
-pode-se traÁar um paralelo com o aprendizado de m·quina:
-um algoritmo pode usufruir de uma atenÁ„o seletiva que
-priorize os exemplos mais difÌceis para ele em um dado momento.
+Esse tipo ativo de aprendizado humano - com foco no aluno - tem mostrado evid√™ncias
+de sua efic√°cia \citep{michael2006s}.
+Analogamente, guardadas as devidas propor√ß√µes,
+pode-se tra√ßar um paralelo com o aprendizado de m√°quina:
+um algoritmo pode usufruir de uma aten√ß√£o seletiva que
+priorize os exemplos mais dif√≠ceis para ele em um dado momento.
 
-Em sua forma mais geral, como esboÁado por \cite{forman2012programmer},
-o aprendizado de m·quina ativo pode lanÁar m„o de todo conhecimento que um professor
-humano seja capaz de transmitir dentro das limitaÁıes de configurabilidade do sistema.
-Alguns pontos de configuraÁ„o seriam, por exemplo:
-reescrita do cÛdigo\footnote{CÛdigo escrito na linguagem de
-programaÁ„o que implementa o sistema ou em alguma linguagem especÌfica do domÌnio.}
-de extraÁ„o de atributos visando maior separabilidade entre as
- classes; composiÁ„o de expressıes regulares para extrair termos adequados de textos tÈcnicos;
-e, criaÁ„o de regras de classificaÁ„o.
-Outras informaÁıes, mais diretamente obtenÌveis do supervisor humano incluiriam
+Em sua forma mais geral, como esbo√ßado por \cite{forman2012programmer},
+o aprendizado de m√°quina ativo pode lan√ßar m√£o de todo conhecimento que um professor
+humano seja capaz de transmitir dentro das limita√ß√µes de configurabilidade do sistema.
+Alguns pontos de configura√ß√£o seriam, por exemplo:
+reescrita do c√≥digo\footnote{C√≥digo escrito na linguagem de
+programa√ß√£o que implementa o sistema ou em alguma linguagem espec√≠fica do dom√≠nio.}
+de extra√ß√£o de atributos visando maior separabilidade entre as
+ classes; composi√ß√£o de express√µes regulares para extrair termos adequados de textos t√©cnicos;
+e, cria√ß√£o de regras de classifica√ß√£o.
+Outras informa√ß√µes, mais diretamente obten√≠veis do supervisor humano incluiriam
  valores de atributos, classes associadas com atributos, exemplos completos sob demanda e outros.
-Em linhas gerais, sua aquisiÁ„o deve ser guiada por duas noÁıes
+Em linhas gerais, sua aquisi√ß√£o deve ser guiada por duas no√ß√µes
  \citep{krishnapuram2011cost}:
-preferir aquela para a qual o estado corrente do modelo È incerto e
+preferir aquela para a qual o estado corrente do modelo √© incerto e
 preferir aquela estimada como a mais relevante.
 
-Dentre as perguntas que as m·quinas de aprendizado ativo s„o capazes de
-elaborar, a mais direta È ``\textit{Qual È a classe do exemplo $\bm{x}$?}''.
-Dado que a obtenÁ„o de um rÛtulo confi·vel normalmente È um processo custoso,
-o problema de se decidir qual seria o melhor $\bm{x}$ È a
-motivaÁ„o basilar desta tese.
+Dentre as perguntas que as m√°quinas de aprendizado ativo s√£o capazes de
+elaborar, a mais direta √© ``\textit{Qual √© a classe do exemplo $\bm{x}$?}''.
+Dado que a obten√ß√£o de um r√≥tulo confi√°vel normalmente √© um processo custoso,
+o problema de se decidir qual seria o melhor $\bm{x}$ √© a
+motiva√ß√£o basilar desta tese.
 Adicionalmente,
-a quantidade de exemplos disponÌveis pode ser abundante e o esforÁo humano disponÌvel limitado -
+a quantidade de exemplos dispon√≠veis pode ser abundante e o esfor√ßo humano dispon√≠vel limitado -
 do professor, no caso da analogia com o aprendizado humano.
 Dessa forma, apenas uma parcela criteriosamente escolhida dos exemplos deve
 ser rotulada, ou \textit{consultada}, na terminologia de aprendizado ativo.
-Essa abordagem se d· em oposiÁ„o ao
+Essa abordagem se d√° em oposi√ß√£o ao
 \ing{aprendizado por exemplos}{learning by example} convencional
-\citep{journals/cacm/Valiant84}, tambÈm chamado de \novo{passivo}.
+\citep{journals/cacm/Valiant84}, tamb√©m chamado de \novo{passivo}.
 No aprendizado passivo,
-procura-se pelo maior conjunto de treinamento possÌvel ou realiza-se
-uma amostragem aleatÛria.
-No primeiro caso, o custo de rotulaÁ„o pode se tornar proibitivo; no segundo caso,
-a decis„o quanto ‡ relev‚ncia dos exemplos È deixada ao acaso.
-Em ambos os casos, dependendo da aplicaÁ„o,
-a construÁ„o do conjunto de treinamento pode ser crÌtica.
-Por exemplo, quando a consulta de um exemplo envolve reaÁıes quÌmicas
-destrutivas, È desej·vel fazer o mÌnimo possÌvel de consultas visando um reduzido
+procura-se pelo maior conjunto de treinamento poss√≠vel ou realiza-se
+uma amostragem aleat√≥ria.
+No primeiro caso, o custo de rotula√ß√£o pode se tornar proibitivo; no segundo caso,
+a decis√£o quanto √† relev√¢ncia dos exemplos √© deixada ao acaso.
+Em ambos os casos, dependendo da aplica√ß√£o,
+a constru√ß√£o do conjunto de treinamento pode ser cr√≠tica.
+Por exemplo, quando a consulta de um exemplo envolve rea√ß√µes qu√≠micas
+destrutivas, √© desej√°vel fazer o m√≠nimo poss√≠vel de consultas visando um reduzido
 custo material.
-Similarmente, se o mecanismo rotulador, normalmente chamado de \novo{or·culo},
-for um especialista humano ou mesmo um robÙ \citep{journals/etai/BryantMOKRK01},
-È desej·vel parcimÙnia nas consultas para n„o se incorrer num esforÁo elevado de
-atenÁ„o humana ou movimento mec‚nico.
-Assim, um direcionamento adequado do esforÁo de aprendizado tem como resultado um
-processo de rotulaÁ„o mais econÙmico.
-A variedade de abordagens existentes para esse direcionamento È assunto da
-SeÁ„o \ref{estrategias}.
-A notaÁ„o necess·ria È definida na SeÁ„o \ref{notacao}
+Similarmente, se o mecanismo rotulador, normalmente chamado de \novo{or√°culo},
+for um especialista humano ou mesmo um rob√¥ \citep{journals/etai/BryantMOKRK01},
+√© desej√°vel parcim√¥nia nas consultas para n√£o se incorrer num esfor√ßo elevado de
+aten√ß√£o humana ou movimento mec√¢nico.
+Assim, um direcionamento adequado do esfor√ßo de aprendizado tem como resultado um
+processo de rotula√ß√£o mais econ√¥mico.
+A variedade de abordagens existentes para esse direcionamento √© assunto da
+Se√ß√£o \ref{estrategias}.
+A nota√ß√£o necess√°ria √© definida na Se√ß√£o \ref{notacao}
 
 \input notacao
 
-\section{EstratÈgias de consulta}\label{estrategias}
-Na literatura de aprendizado ativo h· diversos sub-casos, cen·rios e estratÈgias.
-O sub-caso e o cen·rio de aprendizado ativo mais comuns na literatura,
-e onde se situa a presente tese, s„o a busca por rÛtulos e
-o cen·rio baseado em \pool, respectivamente - os
-cen·rios alternativos s„o apresentados no ApÍndice \ref{cenarios}.
-No caso das estratÈgias,
-elas s„o frequentemente baseadas em diferentes concepÁıes de relev‚ncia de
+\section{Estrat√©gias de consulta}\label{estrategias}
+Na literatura de aprendizado ativo h√° diversos sub-casos, cen√°rios e estrat√©gias.
+O sub-caso e o cen√°rio de aprendizado ativo mais comuns na literatura,
+e onde se situa a presente tese, s√£o a busca por r√≥tulos e
+o cen√°rio baseado em \pool, respectivamente - os
+cen√°rios alternativos s√£o apresentados no Ap√™ndice \ref{cenarios}.
+No caso das estrat√©gias,
+elas s√£o frequentemente baseadas em diferentes concep√ß√µes de relev√¢ncia de
 exemplos ou mesmo diferentes teorias do aprendizado.
 A amostragem por incerteza,
-por exemplo, assume que os exemplos e seus rÛtulos pertencem a uma
-distribuiÁ„o de probabilidades;
-% - em linha com a teoria do aprendizado estatÌstico \citep{books/daglib/0097035};
-a amostragem por busca no espaÁo de hipÛteses, por sua vez, assume a existÍncia
-de hipÛteses integrantes de um \ing{\versionspace}{version space} \citep{books/daglib/0087929}
-que enquadram ou n„o cada exemplo.
-EstratÈgias agnÛsticas \citep{journals/jcss/BalcanBL09}, por outro lado,
-s„o independentes de algoritmo de aprendizado.
+por exemplo, assume que os exemplos e seus r√≥tulos pertencem a uma
+distribui√ß√£o de probabilidades;
+% - em linha com a teoria do aprendizado estat√≠stico \citep{books/daglib/0097035};
+a amostragem por busca no espa√ßo de hip√≥teses, por sua vez, assume a exist√™ncia
+de hip√≥teses integrantes de um \ing{\versionspace}{version space} \citep{books/daglib/0087929}
+que enquadram ou n√£o cada exemplo.
+Estrat√©gias agn√≥sticas \citep{journals/jcss/BalcanBL09}, por outro lado,
+s√£o independentes de algoritmo de aprendizado.
 Essa diversidade de embasamentos configura-se praticamente como um conjunto de paradigmas
-de amostragem ativa cujos principais representantes s„o apresentados nas
-seÁıes seguintes juntamente com suas principais caracterÌsticas e seus princÌpios de funcionamento.
-Na apresentaÁ„o das ordens de complexidade, È assumido que todos os c·lculos
-possÌveis de serem feitos antes do processo de amostragem j· foram realizados
-e seus resultados est„o disponÌveis em memÛria.
-Essa premissa se baseia no cen·rio especificado na SeÁ„o \ref{cenario}.
-Ele garante a disponibilidade de todos os exemplos antes do inÌcio da amostragem.
+de amostragem ativa cujos principais representantes s√£o apresentados nas
+se√ß√µes seguintes juntamente com suas principais caracter√≠sticas e seus princ√≠pios de funcionamento.
+Na apresenta√ß√£o das ordens de complexidade, √© assumido que todos os c√°lculos
+poss√≠veis de serem feitos antes do processo de amostragem j√° foram realizados
+e seus resultados est√£o dispon√≠veis em mem√≥ria.
+Essa premissa se baseia no cen√°rio especificado na Se√ß√£o \ref{cenario}.
+Ele garante a disponibilidade de todos os exemplos antes do in√≠cio da amostragem.
 Dessa forma apenas o custo computacional entre consultas se configura como potencial
-custo financeiro porque consome o tempo do or·culo.
+custo financeiro porque consome o tempo do or√°culo.
 
-\tar{h· mais alguma adaptaÁ„o para adotar algum learn ou strat}
-
-
+\tar{h√° mais alguma adapta√ß√£o para adotar algum learn ou strat}
 
 
 
-% Retomando na Figura \ref{fig:fronteira-vs-aleatoria} o exemplo de espaÁo de atributos de duas dimensıes do CapÌtulo \ref{cap:intro}, È possÌvel observar o efeito esperado do aprendizado ativo: apenas os exemplos mais difÌceis s„o consultados - aqueles mais prÛximos da fronteira de decis„o.
+
+
+% Retomando na Figura \ref{fig:fronteira-vs-aleatoria} o exemplo de espa√ßo de atributos de duas dimens√µes do Cap√≠tulo \ref{cap:intro}, √© poss√≠vel observar o efeito esperado do aprendizado ativo: apenas os exemplos mais dif√≠ceis s√£o consultados - aqueles mais pr√≥ximos da fronteira de decis√£o.
 % \begin{figure}
 % \begin{center}
 % \begin{tikzpicture}
@@ -117,21 +117,21 @@ custo financeiro porque consome o tempo do or·culo.
 % \addplot[thick, mark=none, teal, dashed] plot coordinates {(34,1.45) (59,1.9)}; \addlegendentry{futura fronteira}
 % \end{axis}
 % \end{tikzpicture}
-% \caption{A consulta de exemplos de fronteira tende a ser mais proveitosa do que a amostragem aleatÛria. [os rÛtulos dos exemplos n„o consultados s„o desconhecidos, mas s„o mostrados para fins ilustrativos]}
+% \caption{A consulta de exemplos de fronteira tende a ser mais proveitosa do que a amostragem aleat√≥ria. [os r√≥tulos dos exemplos n√£o consultados s√£o desconhecidos, mas s√£o mostrados para fins ilustrativos]}
 % \label{fig:fronteira-vs-aleatoria}
 % \end{center}
 % \end{figure}
 
 
 % \begin{algorithm}
-% \caption{SeleÁ„o do classificador com melhor acur·cia recente.}
+% \caption{Sele√ß√£o do classificador com melhor acur√°cia recente.}
 % \label{alg:sbe}
 % \Entrada{
 % \begin{itemize}
 %  \item um fluxo de dados $D$ de exemplos;
-%  \item um tamanho de amostra $w$ para a medida de acur·cia;
+%  \item um tamanho de amostra $w$ para a medida de acur√°cia;
 %  \item uma lista $C$ de classificadores;
-%  \item um par de funÁıes $treina(c,\langle x,y \rangle)$ e $testa(c,\langle x,y \rangle): \langle C,\langle X,Y \rangle \rangle \rightarrow \{1=acerto,0=erro\}$ aplic·veis a um classificador $c$ dado um par exemplo/rÛtulo $\langle x,y \rangle$;
+%  \item um par de fun√ß√µes $treina(c,\langle x,y \rangle)$ e $testa(c,\langle x,y \rangle): \langle C,\langle X,Y \rangle \rangle \rightarrow \{1=acerto,0=erro\}$ aplic√°veis a um classificador $c$ dado um par exemplo/r√≥tulo $\langle x,y \rangle$;
 % \item uma lista vazia $C_{selecionados}$ de classificadores.
 % \end{itemize}
 % }
@@ -168,43 +168,43 @@ custo financeiro porque consome o tempo do or·culo.
 % }
 % \end{algorithm}
 %
-% Uma consequÍncia imediata È a menor necessidade de \textit{consultas} ao mecanismo rotulador e, possivelmente, uma maior acur·cia.
-% Dessa maneira, o aprendizado ativo È indicado nas situaÁıes em que o processo de rotulaÁ„o È custoso em termos de tempo ou de recursos fÌsicos.
-% Isso È desej·vel quando existe uma \textbf{cota}\footnote{[\textit{budget}]}: somente uma parcela do conjunto pode ser rotulada, ela normalmente È definida como um percentual do total de exemplos disponÌveis.
+% Uma consequ√™ncia imediata √© a menor necessidade de \textit{consultas} ao mecanismo rotulador e, possivelmente, uma maior acur√°cia.
+% Dessa maneira, o aprendizado ativo √© indicado nas situa√ß√µes em que o processo de rotula√ß√£o √© custoso em termos de tempo ou de recursos f√≠sicos.
+% Isso √© desej√°vel quando existe uma \textbf{cota}\footnote{[\textit{budget}]}: somente uma parcela do conjunto pode ser rotulada, ela normalmente √© definida como um percentual do total de exemplos dispon√≠veis.
 %
 %
 %
 %
 %
 %
-% … possÌvel observar na Figura \ref{fig:ap-ativo} um esquema de aprendizado ativo.
+% √â poss√≠vel observar na Figura \ref{fig:ap-ativo} um esquema de aprendizado ativo.
 % \begin{figure} %[H]
 %     \centering
 %     \input{imagens/aprendizado-ativo-esquema.tex}
-%     \caption{Esquema de aprendizado ativo: as consultas ao or·culo dependem da estratÈgia adotada e da medida de informatividade $m(\bm{x})$ em que ela se baseia. [um modelo probabilÌstico È dado como exemplo de classificador base]}
+%     \caption{Esquema de aprendizado ativo: as consultas ao or√°culo dependem da estrat√©gia adotada e da medida de informatividade $m(\bm{x})$ em que ela se baseia. [um modelo probabil√≠stico √© dado como exemplo de classificador base]}
 %     \label{fig:ap-ativo}
 % \end{figure}
-% Cada exemplo $\bm{x}$ È obtido do conjunto de dados n„o rotulados
-% $\mathcal{U}$ e apresentado a um modelo $\theta$ que seja probabilÌstico, que gere saÌdas similares diretamente proporcionais a probabilidades ou que forneÁa alguma outra maneira de se estimar seu grau de confianÁa.
-% Com base no grau de confianÁa, È possÌvel calcular a medida de informatividade de cada exemplo.
-% Esse grau de confianÁa permite o c·lculo da medida de \textit{informatividade}.
+% Cada exemplo $\bm{x}$ √© obtido do conjunto de dados n√£o rotulados
+% $\mathcal{U}$ e apresentado a um modelo $\theta$ que seja probabil√≠stico, que gere sa√≠das similares diretamente proporcionais a probabilidades ou que forne√ßa alguma outra maneira de se estimar seu grau de confian√ßa.
+% Com base no grau de confian√ßa, √© poss√≠vel calcular a medida de informatividade de cada exemplo.
+% Esse grau de confian√ßa permite o c√°lculo da medida de \textit{informatividade}.
 %
-% A medida de \textbf{informatividade} $m(\bm{x})$ È a base da tomada de decis„o da estratÈgia de consulta e pode ser implementada de diversas maneiras conforme explicado na SeÁ„o \ref{sec:isolada}.
-% Uma vez definida a medida de informatividade, uma estratÈgia de consulta precisa ser definida; diferentes estratÈgias s„o estudadas na SeÁ„o \ref{sec:estrategias}.
+% A medida de \textbf{informatividade} $m(\bm{x})$ √© a base da tomada de decis√£o da estrat√©gia de consulta e pode ser implementada de diversas maneiras conforme explicado na Se√ß√£o \ref{sec:isolada}.
+% Uma vez definida a medida de informatividade, uma estrat√©gia de consulta precisa ser definida; diferentes estrat√©gias s√£o estudadas na Se√ß√£o \ref{sec:estrategias}.
 
 
 
-\green{apontar par‚metros escolhidos neste trabalho para as estratÈgias,
+\green{apontar par√¢metros escolhidos neste trabalho para as estrat√©gias,
 quando houver}
 
-\subsection{Amostragem aleatÛria}
-A amostragem aleatÛria corresponde ao aprendizado passivo aplicado a apenas
+\subsection{Amostragem aleat√≥ria}
+A amostragem aleat√≥ria corresponde ao aprendizado passivo aplicado a apenas
 uma parte dos exemplos.
-N„o h· uma ordem de preferÍncia ou critÈrio para a realizaÁ„o das
+N√£o h√° uma ordem de prefer√™ncia ou crit√©rio para a realiza√ß√£o das
 consultas - apenas a aleatoriedade.
-Suas principais caracterÌsticas s„o: ser totalmente exploratÛria, ou seja,
-n„o enfoca nenhuma regi„o especial do espaÁo de exemplos; e,
-ser agnÛstica, pois n„o requer um aprendiz.
+Suas principais caracter√≠sticas s√£o: ser totalmente explorat√≥ria, ou seja,
+n√£o enfoca nenhuma regi√£o especial do espa√ßo de exemplos; e,
+ser agn√≥stica, pois n√£o requer um aprendiz.
 Seu custo computacional pode ser considerado nulo.
 
 \subsection{Amostragem por incerteza}\label{unc}
@@ -212,28 +212,28 @@ Seu custo computacional pode ser considerado nulo.
 Provavelmente a mais simples medida de informatividade
 % $Inf(\bm{x})$
 para se decidir quando selecionar um exemplo $\bm{x}$
-(ou grupo de exemplos, na proposta original) È a m·xima probabilidade a posteriori
-dada por um modelo probabilÌstico \citep{journals/sigir/Lewis95a}:
+(ou grupo de exemplos, na proposta original) √© a m√°xima probabilidade a posteriori
+dada por um modelo probabil√≠stico \citep{journals/sigir/Lewis95a}:
 \begin{equation}
 P_{max}(\bm{x})=\max_{\bm{y}\in Y}P(\bm{y}|\bm{x})
 \end{equation}
-Classificadores n„o probabilÌsticos e com saÌdas numÈricas podem simular uma
-distribuiÁ„o de probabilidades por meio da aplicaÁ„o da funÁ„o sigmoide logÌstica
+Classificadores n√£o probabil√≠sticos e com sa√≠das num√©ricas podem simular uma
+distribui√ß√£o de probabilidades por meio da aplica√ß√£o da fun√ß√£o sigmoide log√≠stica
 $g=\frac{1}{1+e^{-\bm{x}}}$
 \ano{qual seria uma boa ref para sigmoide?}:
 \begin{equation} \label{eqprob}
  P(y_o=1|\bm{x}) = \frac{g(f_o(\bm{x}))}{\sum_{1 \leq p \leq |Y|}g(f_p(\bm{x})) }
 \end{equation}
 
-Onde $f_o(\bm{x})$ È a funÁ„o preditiva da classe $o$ para o exemplo $\bm{x}$;
-valores prÛximos de $1$ indicam pertinÍncia ‡ classe e prÛximos de $0$, o oposto.
+Onde $f_o(\bm{x})$ √© a fun√ß√£o preditiva da classe $o$ para o exemplo $\bm{x}$;
+valores pr√≥ximos de $1$ indicam pertin√™ncia √† classe e pr√≥ximos de $0$, o oposto.
 
-A estratÈgia de amostragem por incerteza consiste em consultar o exemplo
+A estrat√©gia de amostragem por incerteza consiste em consultar o exemplo
 mais informativo $\bm{x}^*$,
 ou seja, aquele com a menor $P_{max}(\bm{x})$,
-com o intuito de se explorar a fronteira de decis„o no espaÁo de exemplos, conforme
-EquaÁ„o \ref{equnc}.
-A complexidade dessa estratÈgia È $\mathcal{O}(1)$ - equivalente
+com o intuito de se explorar a fronteira de decis√£o no espa√ßo de exemplos, conforme
+Equa√ß√£o \ref{equnc}.
+A complexidade dessa estrat√©gia √© $\mathcal{O}(1)$ - equivalente
 a apenas um treinamento por consulta.
 \begin{equation} \label{equnc}
  \bm{x}^*= \argmin_{\bm{x}\in\mathcal{U}}P_{max}(\bm{x})
@@ -241,13 +241,13 @@ a apenas um treinamento por consulta.
 
 
 \subsection{Amostragem por margem ou entropia}\label{mar}
-Em problemas multiclasse, o menor $P_{max}(\bm{x})$ pode n„o indicar o exemplo
-mais controverso, pois pode existir um exemplo com duas ou mais classes igualmente prov·veis,
-porÈm com maior $P_{max}(\bm{x})$.
-A medida da margem, apresentada nas EquaÁıes \ref{eqz} e \ref{eqmar},
-evita esse problema utilizando o valor da diferenÁa entre as duas maiores probabilidades.
-Outra possibilidade È a medida de entropia normalizada
-\citep{journals/bioinformatics/LewinSA0P04}, apresentada na EquaÁ„o \ref{eqent}.
+Em problemas multiclasse, o menor $P_{max}(\bm{x})$ pode n√£o indicar o exemplo
+mais controverso, pois pode existir um exemplo com duas ou mais classes igualmente prov√°veis,
+por√©m com maior $P_{max}(\bm{x})$.
+A medida da margem, apresentada nas Equa√ß√µes \ref{eqz} e \ref{eqmar},
+evita esse problema utilizando o valor da diferen√ßa entre as duas maiores probabilidades.
+Outra possibilidade √© a medida de entropia normalizada
+\citep{journals/bioinformatics/LewinSA0P04}, apresentada na Equa√ß√£o \ref{eqent}.
 \begin{eqnarray} \label{eqz}
 \bm{z}(\bm{x})=\argmax_{\bm{y}\in Y}P(\bm{y}|\bm{x})
 \\
@@ -259,47 +259,47 @@ E(\bm{x})=-\log^{-1}|Y|\sum_{\bm{y}\in Y}P(\bm{y}|\bm{x})\log P(\bm{y}|\bm{x})
 \end{equation}
 
 \subsection{Margem simples - SVMsim}
-A estratÈgia de amostragem por margem pode ser estendida para um espaÁos de
-atributos $\mathcal{F}$ transformado por uma \ing{funÁ„o n˙cleo}{kernel function}.
+A estrat√©gia de amostragem por margem pode ser estendida para um espa√ßos de
+atributos $\mathcal{F}$ transformado por uma \ing{fun√ß√£o n√∫cleo}{kernel function}.
 Essa foi a abordagem de \cite{journals/jmlr/TongK01} para SVMs,
-cuja variante mais empregada È chamada \ing{margem simples}{simple margin} (SVMsim).
+cuja variante mais empregada √© chamada \ing{margem simples}{simple margin} (SVMsim).
 %  If asking each query is expensive relative to computing time then using either the MaxMin or Ratio
 % may be preferable. However, ifthe cost ofasking each query is relatively cheap and more emphasis
 % is placed upon fast feedback then the Simple method may be more suitable.
-Ela consiste em selecionar o exemplo mais prÛximo do hiperplano que È a fronteira de decis„o
-que divide linearmente o espaÁo $\mathcal{F}$.
+Ela consiste em selecionar o exemplo mais pr√≥ximo do hiperplano que √© a fronteira de decis√£o
+que divide linearmente o espa√ßo $\mathcal{F}$.
 %  algoritmo: learn an SVM on the existing labeled data and choose as the next instance to
 %  query the instance that comes closest to the hyperplane in F.
 
-\subsection{Balanceamento exploraÁ„o-prospecÁ„o - SVMbal}
-A natureza puramente prospectiva da amostragem por margem simples tem o viÈs de enfocar
-prioritariamente a fronteira de decis„o, deixando de explorar as demais regiıes do espaÁo
+\subsection{Balanceamento explora√ß√£o-prospec√ß√£o - SVMbal}
+A natureza puramente prospectiva da amostragem por margem simples tem o vi√©s de enfocar
+prioritariamente a fronteira de decis√£o, deixando de explorar as demais regi√µes do espa√ßo
 $\mathcal{F}$.
-Por esse motivo, \cite{conf/icdm/OsugiKS05} propuseram um balanceamento entre prospecÁ„o
-e a exploraÁ„o realizada pelo algoritmo de se escolher \ing{primeiro os mais distantes pelo n˙cleo}
+Por esse motivo, \cite{conf/icdm/OsugiKS05} propuseram um balanceamento entre prospec√ß√£o
+e a explora√ß√£o realizada pelo algoritmo de se escolher \ing{primeiro os mais distantes pelo n√∫cleo}
 {Kernel Farthest First} (KFF).
-A heurÌstica de se adotar os mais distantes primeiro, sem a transformaÁ„o pelo n˙cleo,
-foi usada previamente para calcular agrupamentos aproximadamente Ûtimos
+A heur√≠stica de se adotar os mais distantes primeiro, sem a transforma√ß√£o pelo n√∫cleo,
+foi usada previamente para calcular agrupamentos aproximadamente √≥timos
 \citep{Hochbaum1985}.
 
-O algoritmo de balanceamento exploraÁ„o-prospecÁ„o (SVMbal) inicia com a aplicaÁ„o do KFF.
-Seu primeiro exemplo È aleatÛrio e o segundo È seu par mais distante.
+O algoritmo de balanceamento explora√ß√£o-prospec√ß√£o (SVMbal) inicia com a aplica√ß√£o do KFF.
+Seu primeiro exemplo √© aleat√≥rio e o segundo √© seu par mais distante.
 Esse par consiste no conjunto inicial que vai ser estendido com exemplos,
 um a um, da mesma maneira que o segundo foi escolhido.
-Esse processo exploratÛrio È alternado com a estratÈgia de margem simples
-de acordo com uma probabilidade definida em funÁ„o da dist‚ncia entre as prediÁıes
+Esse processo explorat√≥rio √© alternado com a estrat√©gia de margem simples
+de acordo com uma probabilidade definida em fun√ß√£o da dist√¢ncia entre as predi√ß√µes
 % para todos os exemplos
-antes e depois da ˙ltima consulta.
+antes e depois da √∫ltima consulta.
 
-\subsection{Consulta por comitÍ}\label{qbc}
-ComitÍs
-% tambÈm chamados de classificadores baseados em \textit{ensemble},
-s„o combinaÁıes de modelos com o objetivo de superar as prediÁıes de modelos ˙nicos.
+\subsection{Consulta por comit√™}\label{qbc}
+Comit√™s
+% tamb√©m chamados de classificadores baseados em \textit{ensemble},
+s√£o combina√ß√µes de modelos com o objetivo de superar as predi√ß√µes de modelos √∫nicos.
 A \ing{consulta por grupo de amostras}{query by bagging} e
 a \ing{consulta por grupo de amostras impulsionador}{query by boosting}
-s„o dois exemplos de \ing{consulta por comitÍ}{Query By Committee} - QBC
+s√£o dois exemplos de \ing{consulta por comit√™}{Query By Committee} - QBC
 \citep{conf/icml/AbeM98}.
-Dependendo do tipo de saÌda fornecida pelo modelo, diferentes medidas de desacordo
+Dependendo do tipo de sa√≠da fornecida pelo modelo, diferentes medidas de desacordo
 podem ser usadas,
 % The possibility to take measures about the \textbf{disagreement between concurrent hypotheses},
 % rather than a single model probability output, is the main feature of this strategy.
@@ -326,87 +326,87 @@ podem ser usadas,
 % They have been described as good measures to achieve accurate class probability estimates
 %mccallum1998employing}.
 
-A divergÍncia de Jensen-Shannon \cite{journals/tit/Lin91} È uma medida da teoria da informaÁ„o
-que compara distribuiÁıes de probabilidade, comumente usada em comitÍs para
+A diverg√™ncia de Jensen-Shannon \cite{journals/tit/Lin91} √© uma medida da teoria da informa√ß√£o
+que compara distribui√ß√µes de probabilidade, comumente usada em comit√™s para
 avaliar o grau de desacordo entre os membros \cite{Melville:2004:DEA:1015330.1015385}.
-A divergÍncia n„o-ponderada de Jensen-Shannon È definida em termos da entropia das distribuiÁıes
-na EquaÁ„o \ref{js}.
+A diverg√™ncia n√£o-ponderada de Jensen-Shannon √© definida em termos da entropia das distribui√ß√µes
+na Equa√ß√£o \ref{js}.
 \begin{equation}\label{js}
  JS(\{\theta^{(m)} \forall m \in Y\}) = E(\sum_{m \in Y}{P(\theta^{(m)},\bm{x})}) - \sum_m{E(P(\theta^{(m)},\bm{x})})
 \end{equation}
-Onde $\theta^{(m)}$ È o modelo numerado $m$.
-Quanto maior o valor de $JS$, mais distante os membros est„o de um consenso.
+Onde $\theta^{(m)}$ √© o modelo numerado $m$.
+Quanto maior o valor de $JS$, mais distante os membros est√£o de um consenso.
 Assim, o exemplo com o maior valor deve ser consultado primeiro.
-A complexidade computacional È $\mathcal{O}(1)$,
-se o comitÍ for visto como um ˙nico algoritmo de aprendizado;
-ou $\mathcal{O}(M)$, se o n˙mero de membros $M$ for considerado.
+A complexidade computacional √© $\mathcal{O}(1)$,
+se o comit√™ for visto como um √∫nico algoritmo de aprendizado;
+ou $\mathcal{O}(M)$, se o n√∫mero de membros $M$ for considerado.
 
-\subsection{Busca no espaÁo de hipÛteses}\label{sgnet}
-… possÌvel fazer uma amostragem ativa baseada na perspectiva do espaÁo de hipÛteses.
-A intuiÁ„o dessa abordagem È que os exemplos mais importantes residem na regi„o onde
-as hipÛteses se contradizem.
+\subsection{Busca no espa√ßo de hip√≥teses}\label{sgnet}
+√â poss√≠vel fazer uma amostragem ativa baseada na perspectiva do espa√ßo de hip√≥teses.
+A intui√ß√£o dessa abordagem √© que os exemplos mais importantes residem na regi√£o onde
+as hip√≥teses se contradizem.
 Isso equivale a consultar os exemplos que reduziriam o \versionspace 
 \citep{books/daglib/0087929} depois de inseridos no conjunto de treinamento.
-A busca no espaÁo de hipÛteses È feita pelo acompanhamento das hipÛteses
-mais especÌficas e as mais gerais pertencentes aos conjuntos $S$ e $G$ de todas as hipÛteses possÌveis,
+A busca no espa√ßo de hip√≥teses √© feita pelo acompanhamento das hip√≥teses
+mais espec√≠ficas e as mais gerais pertencentes aos conjuntos $S$ e $G$ de todas as hip√≥teses poss√≠veis,
 denominadas $h_S \in S$ e $h_G \in G$, respectivamente.
 \tar{colocar figura? para esse texto confuso fazer sentido e evitar formalismo do mittchel}
-Uma caracterÌstica distintiva desse paradigma com relaÁ„o aos demais neste capÌtulo È
-seu \textbf{modelo de decis„o bin·rio}: todos os exemplos controversos s„o considerados
+Uma caracter√≠stica distintiva desse paradigma com rela√ß√£o aos demais neste cap√≠tulo √©
+seu \textbf{modelo de decis√£o bin√°rio}: todos os exemplos controversos s√£o considerados
 igualmente informativos,
 podendo ser consultados em qualquer ordem ou em lotes.
 
 \textit{SG-network} \cite{journals/ml/CohnAL94},
-tambÈm chamado de CAL \citep{journals/tcs/Dasgupta11} em referÍncia a seus proponentes,
-È baseado na busca no espaÁo de hipÛteses e foi um dos primeiros algoritmos de aprendizado ativo.
-Ele faz uma aproximaÁ„o para ser capaz de induzir os modelos especÌfico
-$\theta_S$ e geral $\theta_G$, pois a quantidade de hipÛteses possÌvel pode ser infinita.
-A aproximaÁ„o È feita pela geraÁ„o ou amostragem de \ing{exemplos de fundo}{background instances}
-e rotulaÁ„o artificial deles de acordo com a meta desejada de treinamento:
+tamb√©m chamado de CAL \citep{journals/tcs/Dasgupta11} em refer√™ncia a seus proponentes,
+√© baseado na busca no espa√ßo de hip√≥teses e foi um dos primeiros algoritmos de aprendizado ativo.
+Ele faz uma aproxima√ß√£o para ser capaz de induzir os modelos espec√≠fico
+$\theta_S$ e geral $\theta_G$, pois a quantidade de hip√≥teses poss√≠vel pode ser infinita.
+A aproxima√ß√£o √© feita pela gera√ß√£o ou amostragem de \ing{exemplos de fundo}{background instances}
+e rotula√ß√£o artificial deles de acordo com a meta desejada de treinamento:
 especificidade ou generalidade.
 Depois de criados os modelos iniciais, eventuais exemplos que causem desacordo entre $\theta_S$ e $\theta_G$
-s„o selecionados para consulta.
+s√£o selecionados para consulta.
 Duas redes \ing{perceptron multicamadas}{multilayer perceptron} \citep{haykin2004comprehensive}
 foram empregadas no trabalho original,
 mas qualquer classificador apto a lidar com exemplos ponderados poderia ser usado.
-A ordem de complexidade das estratÈgias desse paradigma È $\mathcal{O}(|Y|)$.
+A ordem de complexidade das estrat√©gias desse paradigma √© $\mathcal{O}(|Y|)$.
 
-\ano{TODO: ampliar ou descartar infos adicionais que est„o no tex}
+\ano{TODO: ampliar ou descartar infos adicionais que est√£o no tex}
 %  \red{infos dos txts sobre SG-network cohn1994improving:}
 % \esb{Se concentra em membership queries, cita angluin86 e valiant84.
 % Em problemas formais, como encontrar uma fronteira no "unit line interval"
 %  requer O(1/e ln(1/e))
-% exemplos de treinamento aleatÛrios para se atingir um erro 'e'.
-% Se for permitida a sÌntese de membership queries, 'e' pode ser atingido em O(ln(1/e)).
-% Formaliza o aprendiz capaz de determinar a regi„o de incerteza e nomeia como
+% exemplos de treinamento aleat√≥rios para se atingir um erro 'e'.
+% Se for permitida a s√≠ntese de membership queries, 'e' pode ser atingido em O(ln(1/e)).
+% Formaliza o aprendiz capaz de determinar a regi√£o de incerteza e nomeia como
 % Selective Sampling.
-% Pode-se calcular a regi„o de inc. em lotes para reduzir a complexidade.
+% Pode-se calcular a regi√£o de inc. em lotes para reduzir a complexidade.
 % Apresenta primeiro "a naive neural network querying algorithm":
-% 0.1 < o < 0.9 = exemplo na regi„o de incerteza
-% judd88 diferencia configuraÁ„o de arquitetura da MLP.
-% Uma ˙nica rede pode descrever apenas um conceito, ou seja, uma pequena parte da regi„o de incerteza,
-% principalmente porque a MLP tende a ser excessivamente confiante em diversas partes do espaÁo de
+% 0.1 < o < 0.9 = exemplo na regi√£o de incerteza
+% judd88 diferencia configura√ß√£o de arquitetura da MLP.
+% Uma √∫nica rede pode descrever apenas um conceito, ou seja, uma pequena parte da regi√£o de incerteza,
+% principalmente porque a MLP tende a ser excessivamente confiante em diversas partes do espa√ßo de
 % atributos.
-% Os tamanhos dos conjuntos S e G crescem exponencialmente com o n˙mero de exemplos. O mesmo È v·lida
-% para a quantidade de configuraÁıes de redes.
-% Propıe a SG-network baseado em busca do version-space do mitchel82.
+% Os tamanhos dos conjuntos S e G crescem exponencialmente com o n√∫mero de exemplos. O mesmo √© v√°lida
+% para a quantidade de configura√ß√µes de redes.
+% Prop√µe a SG-network baseado em busca do version-space do mitchel82.
 % Usa o conceito de "partial ordering in generality of the concepts".
 % The version space (space of plausible queries) is reduced with every query.
-% Ver algoritmo na p·gina 10.
-% Eles propıe mesclar s e G numa sÛ rede.
-% Na pr·tica, em conjuntos grandes, È mais eficiente retreinar a rede do zero quando novos exemplos
-% s„o adicionados.
+% Ver algoritmo na p√°gina 10.
+% Eles prop√µe mesclar s e G numa s√≥ rede.
+% Na pr√°tica, em conjuntos grandes, √© mais eficiente retreinar a rede do zero quando novos exemplos
+% s√£o adicionados.
 % Experimentos:
-% o problema do (par de) tri‚ngulo
+% o problema do (par de) tri√¢ngulo
 % --------------------
 % topologia 2-8-3-1
 % 
 % 12 redes treinadas inicialmente com 10, 20, ..., 150 pontos.
 % Compara com random e com naive mlp.
-% Plota o espaÁo de par‚metros com a fronteira de decis„o criada pela rede comparada com a
-%  fronteira real (h· tambÈm os exemplos + e - espalhados inutilmente).
+% Plota o espa√ßo de par√¢metros com a fronteira de decis√£o criada pela rede comparada com a
+%  fronteira real (h√° tamb√©m os exemplos + e - espalhados inutilmente).
 % Plota error X queries.
-% Compararou erros com diferenÁa significativa com mais de 90% de confianÁa.
+% Compararou erros com diferen√ßa significativa com mais de 90% de confian√ßa.
 % }
 % \red{-------------------------- fim das info}
 
@@ -414,61 +414,61 @@ A ordem de complexidade das estratÈgias desse paradigma È $\mathcal{O}(|Y|)$.
 
 
 \subsection{\Eer}
-A estratÈgia de reduÁ„o de erro adotada neste trabalho È baseada no
-\ing{exemplo de reduÁ„o de entropia}{entropy reduction example} proposto por
+A estrat√©gia de redu√ß√£o de erro adotada neste trabalho √© baseada no
+\ing{exemplo de redu√ß√£o de entropia}{entropy reduction example} proposto por
 \cite{conf/ijcai/GuoG07}.
-… um mÈtodo que busca pelo exemplo que mais reduz a entropia na prediÁ„o geral
+√â um m√©todo que busca pelo exemplo que mais reduz a entropia na predi√ß√£o geral
 do modelo para todo o conjunto de dados;
-considera, assim, implicitamente a informaÁ„o sobre eventuais agrupamentos subjacentes,
+considera, assim, implicitamente a informa√ß√£o sobre eventuais agrupamentos subjacentes,
 evitando depender apenas dos escassos exemplos rotulados.
-% Essa variante de estratÈgias de reduÁ„o de erro foi adotada dado que uma performance superior ‡
+% Essa variante de estrat√©gias de redu√ß√£o de erro foi adotada dado que uma performance superior √†
 % original foi reportada pelos autores.
 
 Para cada exemplo candidato com vetor descritivo $\bm{x}$
 obtido da reserva $\mathcal{U}$,
-sua classe mais prov·vel,
-representada pelo vetor preditivo $\bm{y}'$, È calculada de forma
+sua classe mais prov√°vel,
+representada pelo vetor preditivo $\bm{y}'$, √© calculada de forma
 otimista:
 \begin{equation}
  \bm{y}' = \argmin_{\bm{y}}{\sum_{\bm{u} \in \mathcal{U}} O(\bm{x}, \theta_{\mathcal{L}\cup
 \{\langle\bm{u},y\rangle\}})}
 \end{equation}
-onde $O$ È a funÁ„o objetivo.
-A complexidade computacional È $\mathcal{O}(|Y||\mathcal{U}|^2)$.
-% \ano{est· correto colocar duas vari·veis com potÍncias diferentes em $\mathcal{O}$?}
-ApÛs cada consulta, caso a classe real seja diferente da esperada,
-o mÈtodo recorre ‡ estratÈgia de amostragem por incerteza (SeÁ„o \ref{unc})
-como medida de contingÍncia.
-No artigo original, optou-se pela entropia como funÁ„o objetivo.
-Outras medidas tambÈm podem ser adequadas, dependendo da meta,
-como a acur·cia balanceada ou kappa multiclasse (SeÁ„o \ref{metricas}).
+onde $O$ √© a fun√ß√£o objetivo.
+A complexidade computacional √© $\mathcal{O}(|Y||\mathcal{U}|^2)$.
+% \ano{est√° correto colocar duas vari√°veis com pot√™ncias diferentes em $\mathcal{O}$?}
+Ap√≥s cada consulta, caso a classe real seja diferente da esperada,
+o m√©todo recorre √† estrat√©gia de amostragem por incerteza (Se√ß√£o \ref{unc})
+como medida de conting√™ncia.
+No artigo original, optou-se pela entropia como fun√ß√£o objetivo.
+Outras medidas tamb√©m podem ser adequadas, dependendo da meta,
+como a acur√°cia balanceada ou kappa multiclasse (Se√ß√£o \ref{metricas}).
 
 \subsection{Impacto esperado no modelo}
 \ano{EER e EMC fazem amostragem de 100}
 O futuro impacto de um exemplo sobre o modelo,
-chamado de \ing{mudanÁa esperada no modelo}{expected model change} (EMC),
-È uma indicaÁ„o de sua possÌvel contribuiÁ„o para o aprendizado.
-A maneira proposta por \cite{conf/nips/SettlesCR07} È chamada
+chamado de \ing{mudan√ßa esperada no modelo}{expected model change} (EMC),
+√© uma indica√ß√£o de sua poss√≠vel contribui√ß√£o para o aprendizado.
+A maneira proposta por \cite{conf/nips/SettlesCR07} √© chamada
 de \ing{comprimento esperado do gradiente}{expected gradient length} (EGL).
-Ela se aplica a modelos baseados na tÈcnica de gradiente descendente \citep{haykin2004comprehensive}:
+Ela se aplica a modelos baseados na t√©cnica de gradiente descendente \citep{haykin2004comprehensive}:
 deve ser escolhido para treinamento o exemplo capaz de contribuir com uma descida de maior magnitude
 na curva de erro.
-Como o rÛtulo n„o È sabido de antem„o,
-usa-se a soma das contribuiÁıes de cada rÛtulo ponderada pelas respectivas probabilidades condicionais.
+Como o r√≥tulo n√£o √© sabido de antem√£o,
+usa-se a soma das contribui√ß√µes de cada r√≥tulo ponderada pelas respectivas probabilidades condicionais.
 
-\ano{colocar fÛrmula?}
+\ano{colocar f√≥rmula?}
 
 \subsection{Amostragem ponderada por densidade}\label{dw}
-A proposta geral das amostragens ponderadas por densidade È o uso da medida de
-\textit{densidade de informaÁ„o}, que atribui diferentes pesos ‡ medida de
-informatividade conforme o nÌvel de concentraÁ„o de exemplos n„o rotulados no entorno de $\bm{x}$
+A proposta geral das amostragens ponderadas por densidade √© o uso da medida de
+\textit{densidade de informa√ß√£o}, que atribui diferentes pesos √† medida de
+informatividade conforme o n√≠vel de concentra√ß√£o de exemplos n√£o rotulados no entorno de $\bm{x}$
 \citep{settles2008curious}:
 \begin{equation}\label{eqid}
  ID(\bm{x}) = Inf(\bm{x})\frac{1}{|\mathcal{U}|} \sum_{\bm{u} \in \mathcal{U}} sim(\bm{x},\bm{u})
 \end{equation}
-Seu desdobramento natural È a \textit{utilidade de treinamento},
-que È a densidade de informaÁ„o inversamente ponderada pela concentraÁ„o de exemplos rotulados,
-resultando num afastamento das regiıes mais consultadas
+Seu desdobramento natural √© a \textit{utilidade de treinamento},
+que √© a densidade de informa√ß√£o inversamente ponderada pela concentra√ß√£o de exemplos rotulados,
+resultando num afastamento das regi√µes mais consultadas
 \citep{journals/coling/FujiiITT98}:
 \begin{equation}\label{eqtu}
  TU(\bm{x}) = ID(\bm{x}) (\sum_{\bm{l} \in \mathcal{L}} sim(\bm{x},\bm{l}))^{-1}
@@ -477,63 +477,63 @@ resultando num afastamento das regiıes mais consultadas
 
 Qualquer medida de similaridade $sim(\bm{x},\bm{u})$
 e de informatividade $Inf(\bm{x})$ podem ser adotadas.
-Neste trabalho, $Inf(\bm{x}) = 1 - M$ e trÍs medidas de dist‚ncia $d(\bm{x},\bm{u})$
+Neste trabalho, $Inf(\bm{x}) = 1 - M$ e tr√™s medidas de dist√¢ncia $d(\bm{x},\bm{u})$
 (euclidiana, Manhattan e Mahalanobis) foram transformadas em medidas de similaridade
-$sim(\bm{x},\bm{u})$ pela fÛrmula \ref{eq:sim}.
+$sim(\bm{x},\bm{u})$ pela f√≥rmula \ref{eq:sim}.
 \begin{equation}\label{eq:sim}
  sim(\bm{x},\bm{u}) = \frac{1}{1 + d(\bm{x},\bm{u})}
 \end{equation}
 
-A ordem de complexidade È $\mathcal{O}(1)$, se os $|\mathcal{U}|^2$ c·lculos de dist‚ncia forem
-devidamente armazenados em memÛria para futuro acesso r·pido.
+A ordem de complexidade √© $\mathcal{O}(1)$, se os $|\mathcal{U}|^2$ c√°lculos de dist√¢ncia forem
+devidamente armazenados em mem√≥ria para futuro acesso r√°pido.
 
-\ano{expoentes ponderadores nem s„o mencionados}
+\ano{expoentes ponderadores nem s√£o mencionados}
 
 \subsection{Amostragem por agrupamento}
 O processo de aprendizado pode explorar agrupamentos naturais na \pool,
-pois s„o independentes da existÍncia de rÛtulos.
-Essa abordagem È uma alternativa ‡ realizaÁ„o de consultas que enfocam a fronteira de decis„o ou
-o manejo de hipÛteses citados anteriormente.
-Uma importante representante desse paradigma È a \textit{amostragem hier·rquica}
+pois s√£o independentes da exist√™ncia de r√≥tulos.
+Essa abordagem √© uma alternativa √† realiza√ß√£o de consultas que enfocam a fronteira de decis√£o ou
+o manejo de hip√≥teses citados anteriormente.
+Uma importante representante desse paradigma √© a \textit{amostragem hier√°rquica}
 proposta por \cite{journals/tcs/Dasgupta11} baseada em
-agrupamento hier·rquico \citep{journals/cj/Murtagh83}.
-O mÈtodo de agrupamento hier·rquico organiza os exemplos numa hierarquia que pode
-ser representada por uma ·rvore.
-Cada nÛ folha simboliza um exemplo e cada nÛ pai representa uma relaÁ„o de
+agrupamento hier√°rquico \citep{journals/cj/Murtagh83}.
+O m√©todo de agrupamento hier√°rquico organiza os exemplos numa hierarquia que pode
+ser representada por uma √°rvore.
+Cada n√≥ folha simboliza um exemplo e cada n√≥ pai representa uma rela√ß√£o de
 proximidade/similaridade entre seus filhos.
-Os filhos, por sua vez, podem ser exemplos isolados ou novas relaÁıes.
-Qualquer nÛ tem o potencial de ser visto como o grupo dos exemplos representados
-pelos nÛs folhas mais abaixo na hierarquia.
-Na ·rvore como um todo, as diferentes podas possÌveis definem a organizaÁ„o em grupos.
+Os filhos, por sua vez, podem ser exemplos isolados ou novas rela√ß√µes.
+Qualquer n√≥ tem o potencial de ser visto como o grupo dos exemplos representados
+pelos n√≥s folhas mais abaixo na hierarquia.
+Na √°rvore como um todo, as diferentes podas poss√≠veis definem a organiza√ß√£o em grupos.
 \ano{por figura?}
 
-A amostragem hier·rquica faz uso da ·rvore para definir a relev‚ncia dos exemplos.
-Eles tÍm maior probabilidade de serem consultados se pertencerem aos grupos
+A amostragem hier√°rquica faz uso da √°rvore para definir a relev√¢ncia dos exemplos.
+Eles t√™m maior probabilidade de serem consultados se pertencerem aos grupos
 mais impuros e representativos.
-A implementaÁ„o original do autor fez uso do algoritmo de agrupamento chamado
+A implementa√ß√£o original do autor fez uso do algoritmo de agrupamento chamado
 \textit{Ward's average linkage method}.
 \ano{como traduzir?}
 
 \tar{dar mais detalhes? replicar o algoritmo(ele tem formulas por todo o artigo))?
-essa abordagem È complexa}.
+essa abordagem √© complexa}.
 
 \ano{Aplicar Ward no Weka. Gerar SVG e citar
 http://www.trex.uqam.ca/view.php
 usando em alguma base 2D interessante. Gerar com e sem ramos proporcionais.
 Gravei SVGs no PC de casa.}
-\ano{feature: agnÛstica}
+\ano{feature: agn√≥stica}
 
-% \ano{Desvantagem do cluster-based:        È pesado, mesmo que o aprendiz seja leve}
+% \ano{Desvantagem do cluster-based:        √© pesado, mesmo que o aprendiz seja leve}
 
-% Em classificadores probabilÌsticos, como È o caso do \textit{Naive Bayes} \citep{duda2001pattern},
-% ¡rvores de decis„o \citep{quinlan1993c4}, $k$-vizinhos mais prÛximos \citep{aha1991instance} e m·quinas de vetores de suporte \citep{cristianini2000introduction} tambÈm tÍm sido usados para a estratÈgia de \textit{uncertainty sampling}.
-% A medida de incerteza, nesses casos, pode ser respectivamente: a pureza do nÛ, a proporÁ„o de vizinhos positivos e a dist‚ncia exemplo-fronteira \citep{settles2010active}.
+% Em classificadores probabil√≠sticos, como √© o caso do \textit{Naive Bayes} \citep{duda2001pattern},
+% √Årvores de decis√£o \citep{quinlan1993c4}, $k$-vizinhos mais pr√≥ximos \citep{aha1991instance} e m√°quinas de vetores de suporte \citep{cristianini2000introduction} tamb√©m t√™m sido usados para a estrat√©gia de \textit{uncertainty sampling}.
+% A medida de incerteza, nesses casos, pode ser respectivamente: a pureza do n√≥, a propor√ß√£o de vizinhos positivos e a dist√¢ncia exemplo-fronteira \citep{settles2010active}.
 % 
-% DecomposiÁ„o viÈs-vari‚ncia do erro.
-% RuÌdo intrÌnseco È o erro esperado do preditor bayesiano Ûtimo\cite{zhang2012empirical}.
-% ViÈs È o desvio sistem·tico normalmente esperado ao longo de diferentes experimentos
+% Decomposi√ß√£o vi√©s-vari√¢ncia do erro.
+% Ru√≠do intr√≠nseco √© o erro esperado do preditor bayesiano √≥timo\cite{zhang2012empirical}.
+% Vi√©s √© o desvio sistem√°tico normalmente esperado ao longo de diferentes experimentos
 % (diferentes conjuntos de treinamento).
-% Vari‚ncia È a variabilidade esperada em torno do viÈs dados diferentes experimentos.
+% Vari√¢ncia √© a variabilidade esperada em torno do vi√©s dados diferentes experimentos.
 % \begin{figure}
 % \begin{center}
 % \begin{tikzpicture}
@@ -543,7 +543,7 @@ Gravei SVGs no PC de casa.}
 % }; \addlegendentry{positivo}
 % \addplot[only marks,mark=text,text mark=\T{?},mark options={gray,scale=1}] plot coordinates {
 %     (51.6,1.76) (48,1.55) (36,1.55) (38,1.61) (43,1.5)
-% }; \addlegendentry{n„o rotulado}
+% }; \addlegendentry{n√£o rotulado}
 % \addplot[only marks,mark=text,text mark=\Q{$-$},mark options={red,scale=1}] plot coordinates {
 %     (30,1.60)
 % }; \addlegendentry{negativo}
@@ -567,7 +567,7 @@ Gravei SVGs no PC de casa.}
 % % \node[small dot,pin=45:{$\boldsymbol{x_a}$}] at (160,110) {};
 % \end{axis}
 % \end{tikzpicture}
-% \caption{O exemplo mais controverso ($\boldsymbol{x_a}$), ou seja, o mais prÛximo da fronteira, nem sempre È o mais representativo da distribuiÁ„o dos dados.}
+% \caption{O exemplo mais controverso ($\boldsymbol{x_a}$), ou seja, o mais pr√≥ximo da fronteira, nem sempre √© o mais representativo da distribui√ß√£o dos dados.}
 % \label{fig:incerteza_vs_importancia}
 % \end{center}
 % \end{figure}
@@ -575,16 +575,16 @@ Gravei SVGs no PC de casa.}
 % % \subsection{Notas}
 % 
 
-\subsection{Outras estratÈgias}
-\ano{N„o implementei Variance reduction pois exige um sistema muito complexo
-e com otimizaÁıes e ainda assim È ordens de magnitude mais lento que  Unc. Sampl.}
+\subsection{Outras estrat√©gias}
+\ano{N√£o implementei Variance reduction pois exige um sistema muito complexo
+e com otimiza√ß√µes e ainda assim √© ordens de magnitude mais lento que  Unc. Sampl.}
 % % Variance Reduction
-% Uma forma indireta de se fazer a minimizaÁ„o do erro de generalizaÁ„o
-%  È a \textbf{reduÁ„o da vari‚ncia}\footnote{[\textit{variance reduction}]
+% Uma forma indireta de se fazer a minimiza√ß√£o do erro de generaliza√ß√£o
+%  √© a \textbf{redu√ß√£o da vari√¢ncia}\footnote{[\textit{variance reduction}]
 % }.
 % Apesar do enfoque diferente, a ordem de complexidade continua sendo um
-% problema, pois depende quadraticamente do n˙mero de par‚metros do modelo.
-% Mesmo quando se reduz essa complexidade por amostragem, reduÁ„o de
+% problema, pois depende quadraticamente do n√∫mero de par√¢metros do modelo.
+% Mesmo quando se reduz essa complexidade por amostragem, redu√ß√£o de
 %  dimensionalidade, etc., essa abordagem, assim como outras de medidas conjuntas, permanece empiricamente muito mais lenta que medidas isoladas como \textit{uncertainty sampling} \citep{settles2010active}.
 
 % os experimentos.
@@ -592,29 +592,29 @@ e com otimizaÁıes e ainda assim È ordens de magnitude mais lento que  Unc. Sampl
 \tar{outras - mencionar as que ficaram de fora (Beygelzimmer)}
 
 
-\subsection{ConsideraÁıes}
+\subsection{Considera√ß√µes}
 \ano{a ordem de complexidade muda se o learner for incremental ou batch}
 
 \ano{deixar aqui apenas as da literatura, depois repeti-las junto com as propostas numa outra tabela
 no prox capitulo}
 
 \begin{table}
-\caption{CaracterÌsticas de cada estratÈgia.
-\textit{A ordem de complexidade È dada conforme a quantidade de exemplos
-a aprender para viabilizar cada consulta. \ano{È aceito O(0)?}}
+\caption{Caracter√≠sticas de cada estrat√©gia.
+\textit{A ordem de complexidade √© dada conforme a quantidade de exemplos
+a aprender para viabilizar cada consulta. \ano{√© aceito O(0)?}}
 }
 \scalebox{0.88}{
 \begin{tabular}{c|c|c|c|c|c}
-\textbf{estratÈgia} & \textbf{\makecell{forma\\ de busca}}&\textbf{\makecell{presenÁa \\de aprendiz}} & \textbf{\makecell{definiÁ„o da \\sequÍncia de \\consultas}} & \textbf{\makecell{dependÍncia\\entre\\consultas}}&\textbf{\makecell{ordem de\\complexidade}}\\ \hline
-Rnd & \makecell{exploratÛria\\aleatÛria} & \makecell{agnÛstica}&autÙnoma&nenhuma&$\mathcal{O}(0)$\\ \hline
-Clu&\makecell{balanceada:\\exploratÛria e\\prospectiva}& agnÛstica&interativa&total&\makecell{n„o\\especificada}\\ \hline
-\makecell{Unc/Mar/Ent\\QBC/DW}&prospectiva&gnÛstica&interativa&total&$\mathcal{O}(1)$\\ \hline
-SVMsim&prospectiva&\makecell{gnÛstica\\(aprendiz\\especÌfico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
-SVMbal&\makecell{alternada:\\exploratÛria e\\prospectiva}&\makecell{gnÛstica\\(aprendiz\\especÌfico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
-SGmulti&\makecell{exploratÛria\\limitada e\\aleatÛria}&gnÛstica&interativa&total&$\mathcal{O}(|Y|)$\\ \hline
-EGL&prospectiva&\makecell{gnÛstica\\(aprendiz\\especÌfico)}&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|)$\\ \hline
-EER&prospectiva&gnÛstica&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|^2)$\\ \hline
-TU&\makecell{balanceada:\\exploratÛria e\\prospectiva}&gnÛstica&interativa&\makecell{apÛs etapa\\exploratÛria}&$\mathcal{O}(1)$\\ \hline
+\textbf{estrat√©gia} & \textbf{\makecell{forma\\ de busca}}&\textbf{\makecell{presen√ßa \\de aprendiz}} & \textbf{\makecell{defini√ß√£o da \\sequ√™ncia de \\consultas}} & \textbf{\makecell{depend√™ncia\\entre\\consultas}}&\textbf{\makecell{ordem de\\complexidade}}\\ \hline
+Rnd & \makecell{explorat√≥ria\\aleat√≥ria} & \makecell{agn√≥stica}&aut√¥noma&nenhuma&$\mathcal{O}(0)$\\ \hline
+Clu&\makecell{balanceada:\\explorat√≥ria e\\prospectiva}& agn√≥stica&interativa&total&\makecell{n√£o\\especificada}\\ \hline
+\makecell{Unc/Mar/Ent\\QBC/DW}&prospectiva&gn√≥stica&interativa&total&$\mathcal{O}(1)$\\ \hline
+SVMsim&prospectiva&\makecell{gn√≥stica\\(aprendiz\\espec√≠fico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
+SVMbal&\makecell{alternada:\\explorat√≥ria e\\prospectiva}&\makecell{gn√≥stica\\(aprendiz\\espec√≠fico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
+SGmulti&\makecell{explorat√≥ria\\limitada e\\aleat√≥ria}&gn√≥stica&interativa&total&$\mathcal{O}(|Y|)$\\ \hline
+EGL&prospectiva&\makecell{gn√≥stica\\(aprendiz\\espec√≠fico)}&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|)$\\ \hline
+EER&prospectiva&gn√≥stica&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|^2)$\\ \hline
+TU&\makecell{balanceada:\\explorat√≥ria e\\prospectiva}&gn√≥stica&interativa&\makecell{ap√≥s etapa\\explorat√≥ria}&$\mathcal{O}(1)$\\ \hline
 \end{tabular}
 }
 \label{stratsparcial}
@@ -622,19 +622,19 @@ TU&\makecell{balanceada:\\exploratÛria e\\prospectiva}&gnÛstica&interativa&\make
 
 \ano{diferenciar de aprendizado semisuperv. colocar algoritmos se der tempo}
 
-\esb{apresenta cada uma com uma figura padr„o ilustrando sua particularidade}
+\esb{apresenta cada uma com uma figura padr√£o ilustrando sua particularidade}
 
-\tar{usar semisupervised somente na fase de prediÁ„o n„o faria muito sentido.
+\tar{usar semisupervised somente na fase de predi√ß√£o n√£o faria muito sentido.
 usar semisupervised no learner faz sentido pelo fato de se ter tantos exemplos
-unlabeled ‡ disposiÁ„o}
+unlabeled √† disposi√ß√£o}
 
-\tar{citar relaÁ„o com crowd sourcing/labeling?}
+\tar{citar rela√ß√£o com crowd sourcing/labeling?}
 
 
 \ano{TODO: ver tex}
 % \citep{conf/ijcnn/SalperwyckL11}
 % Learning with few examples: An empirical study on leading classifiers 2011
-% associa AL com incremental learning, mas n„o È sobre AL
+% associa AL com incremental learning, mas n√£o √© sobre AL
 % faz ALC com AUC e log2
 % investiga tipos de AL especificos para poucos exemplos
 % compara ?bastante? datasets:
@@ -671,4 +671,3 @@ unlabeled ‡ disposiÁ„o}
 % dimension, and any fixed data distribution, for any given passive learning algorithm there is an
 % active learning algorithm with asymptotically superior label complexity for every nontrivial target
 % concept!
-

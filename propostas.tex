@@ -1,199 +1,198 @@
 \chapter{Propostas} \label{propostas}
-\esb{quando a pessoa n„o sabe que algoritmo de aprendizado È adequado ‡ base,
-È melhor ela adotar uma estratÈgia agnÛstica,
-assim ela n„o compromete sua amostragem e pode,
-posteriormente, quando j· tiver os rÛtulos,
+\esb{quando a pessoa n√£o sabe que algoritmo de aprendizado √© adequado √† base,
+√© melhor ela adotar uma estrat√©gia agn√≥stica,
+assim ela n√£o compromete sua amostragem e pode,
+posteriormente, quando j√° tiver os r√≥tulos,
 escolher o melhor algoritmo de aprendizado de forma mais apropriada.}
 
 
-O tema desta tese È o uso efetivo do aprendizado de m·quina ativo por meio de escolhas
-adequadas diante da diversidade existente de estratÈgias.
+O tema desta tese √© o uso efetivo do aprendizado de m√°quina ativo por meio de escolhas
+adequadas diante da diversidade existente de estrat√©gias.
 
-\esb{esboÁa a estrutura conjunta deste e dos prÛximos 4 capÌtulos;
-explica que a contribuiÁ„o se divide em trÍs partes: an·lise comparativa,
+\esb{esbo√ßa a estrutura conjunta deste e dos pr√≥ximos 4 cap√≠tulos;
+explica que a contribui√ß√£o se divide em tr√™s partes: an√°lise comparativa,
 viabilidade de ap. ativo pra ELM e meta-aprendizado; os detalhes
-s„o dados em seus respectivos capÌtulos e a metodologia geral
+s√£o dados em seus respectivos cap√≠tulos e a metodologia geral
 vem antes}
 
 \ano{revisar totalmente conforme nova estrutura de capitulos}
 
-Neste capÌtulo s„o apresentadas as contribuiÁıes e trabalhos derivados da pesquisa
+Neste cap√≠tulo s√£o apresentadas as contribui√ß√µes e trabalhos derivados da pesquisa
 realizada.
 Foi desenvolvida uma biblioteca \citep{doi/ml} de interface com o
 \textit{software} Weka
-que serviu de base para as implementaÁıes mencionadas nas prÛximas seÁıes.
+que serviu de base para as implementa√ß√µes mencionadas nas pr√≥ximas se√ß√µes.
 
-\tar{mencionar em cada seÁ„o o artigo em que foi ou vai ser publicado o tema}
+\tar{mencionar em cada se√ß√£o o artigo em que foi ou vai ser publicado o tema}
 
 \ano{agDW* levam vantagem talvez porque com classificadores hard (NB, C45?, ...)
-a estimativa de informatividade (a estimativa da distribuiÁ„o de probabilidade)
-fica prejudicada pela presenÁa do learner.
-… preciso comparar classificador a classifcador.}
+a estimativa de informatividade (a estimativa da distribui√ß√£o de probabilidade)
+fica prejudicada pela presen√ßa do learner.
+√â preciso comparar classificador a classifcador.}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 \esb{pra onde vai isso?}
-A implementaÁ„o dos algoritmos aqui propostos e de existentes na literatura
-culminou em uma biblioteca extensÌvel de cÛdigo aberto especÌfica para aprendizado ativo.
-Ela est· disponÌvel publicamente para fins de pesquisa e replicabilidade \citep{doi/al}.
+A implementa√ß√£o dos algoritmos aqui propostos e de existentes na literatura
+culminou em uma biblioteca extens√≠vel de c√≥digo aberto espec√≠fica para aprendizado ativo.
+Ela est√° dispon√≠vel publicamente para fins de pesquisa e replicabilidade \citep{doi/al}.
 
 
-\section{Busca no espaÁo de hipÛteses multiclasse}
-Conforme explicado na SeÁ„o \ref{sgnet},
-È possÌvel fazer uma amostragem ativa dentro
-da perspectiva do espaÁo de hipÛteses.
-Entretanto, a abordagem original exposta na SeÁ„o \ref{sgnet}
-contempla apenas problemas de classificaÁ„o bin·ria.
-Para contornar essa limitaÁ„o, uma adaptaÁ„o chamada \textit{SGmulti}
+\section{Busca no espa√ßo de hip√≥teses multiclasse}
+Conforme explicado na Se√ß√£o \ref{sgnet},
+√© poss√≠vel fazer uma amostragem ativa dentro
+da perspectiva do espa√ßo de hip√≥teses.
+Entretanto, a abordagem original exposta na Se√ß√£o \ref{sgnet}
+contempla apenas problemas de classifica√ß√£o bin√°ria.
+Para contornar essa limita√ß√£o, uma adapta√ß√£o chamada \textit{SGmulti}
 foi proposta \citep{conf/hais/SantosC14}.
 
 Diferentemente da abordagem original onde existe uma classe positiva
-que define um modelo mais geral e um mais especÌfico,
-na proposta de adaptaÁ„o um modelo especÌfico È induzido para cada classe.
-Cada modelo, assim, tem uma aproximaÁ„o da hipÛtese mais geral
-($\theta_G$) e a conjunÁ„o de todos os modelos contÈm
-aproximaÁıes das hipÛteses mais especÌficas de cada classe ($\theta_S$).
-Isso È feito por meio da rotulaÁ„o artificial de todos os exemplos presentes
+que define um modelo mais geral e um mais espec√≠fico,
+na proposta de adapta√ß√£o um modelo espec√≠fico √© induzido para cada classe.
+Cada modelo, assim, tem uma aproxima√ß√£o da hip√≥tese mais geral
+($\theta_G$) e a conjun√ß√£o de todos os modelos cont√©m
+aproxima√ß√µes das hip√≥teses mais espec√≠ficas de cada classe ($\theta_S$).
+Isso √© feito por meio da rotula√ß√£o artificial de todos os exemplos presentes
 na reserva de acordo com a meta de cada modelo,
-que È apresentar a hipÛtese mais geral para uma dada classe.
+que √© apresentar a hip√≥tese mais geral para uma dada classe.
 Uma vez gerados os modelos com os exemplos artificiais,
-os exemplos para consulta passam a ser amostrados da regi„o de desacordo
+os exemplos para consulta passam a ser amostrados da regi√£o de desacordo
 entre todos os modelos.
 
-A ordem de complexidade do \textit{SG-multi} È $\mathcal{O}(|Y|)$.
+A ordem de complexidade do \textit{SG-multi} √© $\mathcal{O}(|Y|)$.
 
-\ano{mesclar descriÁ„o abaixo que È mais formal com a descriÁ„o acima?}
+\ano{mesclar descri√ß√£o abaixo que √© mais formal com a descri√ß√£o acima?}
 
 Para cada classe $c \in Y$, existe um par modelo/conjunto de treinamento
 $\langle\theta^c,\mathcal{L}^c\rangle$
-devidamente projetado para representar a hipÛtese mais geral
-$h^c_G$ com relaÁ„o ‡ classe $c$.
+devidamente projetado para representar a hip√≥tese mais geral
+$h^c_G$ com rela√ß√£o √† classe $c$.
 Inicialmente, todos os exemplos
 $\langle\bm{x},y,w\rangle \in \mathcal{L}^c$
-s„o os mesmos exemplos da reserva, exceto por duas diferenÁas:
-eles s„o rotulados como positivos para a classe correspondente
-($y=c$) e lhes s„o atribuÌdos pesos com apenas uma pequena fraÁ„o
-do peso dos exemplos que j· tÍm suas classes reveladas
+s√£o os mesmos exemplos da reserva, exceto por duas diferen√ßas:
+eles s√£o rotulados como positivos para a classe correspondente
+($y=c$) e lhes s√£o atribu√≠dos pesos com apenas uma pequena fra√ß√£o
+do peso dos exemplos que j√° t√™m suas classes reveladas
 ($w << 1$),
 como sugerido recentemente na literatura \cite{series/synthesis/2012Settles}.
 O valor adotado para o peso neste trabalho foi
 $w=\frac{1}{|Y||\mathcal{U}|}$,
-pois ele assegura que a soma de toda a influÍncia dos exemplos de fundo
-seja menor que o peso de um ˙nico exemplo real.
+pois ele assegura que a soma de toda a influ√™ncia dos exemplos de fundo
+seja menor que o peso de um √∫nico exemplo real.
 Essa medida evita que os exemplos de fundo se sobreponham aos
-exemplos reais no inÌcio do processo de rotulaÁ„o - momento de escassez
+exemplos reais no in√≠cio do processo de rotula√ß√£o - momento de escassez
 de exemplos reais.
 
-A funÁ„o de prediÁ„o $f(\theta_c, \bm{x})$ retorna
-a classe mais prov·vel de um dado exemplo $\bm{x}$
+A fun√ß√£o de predi√ß√£o $f(\theta_c, \bm{x})$ retorna
+a classe mais prov√°vel de um dado exemplo $\bm{x}$
 de acordo com o modelo fornecido $\theta_c$.
-… possÌvel encontrar um exemplo controverso $\bm{x}^*$ \ano{sem consenso}
-comparando as saÌdas de todas as diferentes funÁıes de prediÁ„o.
-Cada funÁ„o de prediÁ„o representa o conceito mais geral
+√â poss√≠vel encontrar um exemplo controverso $\bm{x}^*$ \ano{sem consenso}
+comparando as sa√≠das de todas as diferentes fun√ß√µes de predi√ß√£o.
+Cada fun√ß√£o de predi√ß√£o representa o conceito mais geral
 de cada classe:
 \[
   \forall a,b \in Y, a \neq b, \exists \bm{x}^* \mid f(\theta_a,\bm{x}^*) \neq f(\theta_b,\bm{x}^*)
 \]
 
-Assim que um exemplo da regi„o de desacordo $\bm{x}^*$ È consultado
+Assim que um exemplo da regi√£o de desacordo $\bm{x}^*$ √© consultado
 ele substitui seu exemplo de fundo correspondente em todos os conjuntos
-de treinamento com seu rÛtulo real e peso integral:
+de treinamento com seu r√≥tulo real e peso integral:
  \[
   \mathcal{L}_c \leftarrow (\mathcal{L}_c - \{\langle\bm{x}^*,c,w\rangle\}) \cup
 \{\langle\bm{x}^*,c,1\rangle\} \forall c \in Y
  \]
 
 
-\section{VariaÁıes da amostragem ponderada por densidade}
+\section{Varia√ß√µes da amostragem ponderada por densidade}
 
 \ano{as variantes se justificam mais por sua natureza e papel nos experimentos do
-que por um suposto avanÁo no estado da arte; È assim porque existem muitas estratÈgias
+que por um suposto avan√ßo no estado da arte; √© assim porque existem muitas estrat√©gias
 mais recentes que precisariam ser comparadas com elas}
 
-\subsection{AgnÛstica}\label{ag}
-A estratÈgia DW pondera a incerteza de forma a afastar as consultas
-dos exemplos j· rotulados e a aproxim·-las das maiores concentraÁıes de exemplos
-n„o rotulados. Essa caracterÌstica faz com que os exemplos tendam a ser consultados
-na regi„o de fronteira e arredores, mesmo que todos os exemplos
-estejam associados a um mesmo nÌvel de incerteza.
+\subsection{Agn√≥stica}\label{ag}
+A estrat√©gia DW pondera a incerteza de forma a afastar as consultas
+dos exemplos j√° rotulados e a aproxim√°-las das maiores concentra√ß√µes de exemplos
+n√£o rotulados. Essa caracter√≠stica faz com que os exemplos tendam a ser consultados
+na regi√£o de fronteira e arredores, mesmo que todos os exemplos
+estejam associados a um mesmo n√≠vel de incerteza.
 Isso significa que o classificador e sua medida de incerteza representam um papel que
 pode ser redundante, de ajuste fino ou eventualmente contraproducente.
-Essa possibilidade de redund‚ncia aliada ‡ ideia de agnosticismo da amostragem baseada
-em agrupamento motivou a adaptaÁ„o da amostragem ponderada por densidade por meio
-da remoÁ„o da medida de incerteza da fÛrmula inicial previamente apresentada
-nas equaÁıes \ref{eqid} e \ref{eqtu}.
-A nova fÛrmula È apresentada na EquaÁ„o \ref{eq:agtu}.
+Essa possibilidade de redund√¢ncia aliada √† ideia de agnosticismo da amostragem baseada
+em agrupamento motivou a adapta√ß√£o da amostragem ponderada por densidade por meio
+da remo√ß√£o da medida de incerteza da f√≥rmula inicial previamente apresentada
+nas equa√ß√µes \ref{eqid} e \ref{eqtu}.
+A nova f√≥rmula √© apresentada na Equa√ß√£o \ref{eq:agtu}.
 \begin{equation}\label{eq:agtu}
  TU(\bm{x}) =
  \frac{1}{|\mathcal{U}|} \sum_{\bm{u} \in \mathcal{U}} sim(\bm{x},\bm{u})
  (\sum_{\bm{l} \in \mathcal{L}} sim(\bm{x},\bm{l}))^{-1}
 \end{equation}
-Assim, possivelmente sem grande impacto na acur·cia,
-pode-se adiar a escolha do algoritmo de aprendizado para depois da obtenÁ„o dos rÛtulos.
-Em determinadas aplicaÁıes tambÈm pode ser ˙til a possibilidade de se conhecer toda
-a sequÍncia de consultas antes da interaÁ„o com o or·culo comeÁar.
-Frequentemente, o n˙mero de consultas È conhecido de antem„o \citep{settles2010active};
-isso permite, por exemplo, que elas sejam repartidas entre v·rios or·culos que podem
+Assim, possivelmente sem grande impacto na acur√°cia,
+pode-se adiar a escolha do algoritmo de aprendizado para depois da obten√ß√£o dos r√≥tulos.
+Em determinadas aplica√ß√µes tamb√©m pode ser √∫til a possibilidade de se conhecer toda
+a sequ√™ncia de consultas antes da intera√ß√£o com o or√°culo come√ßar.
+Frequentemente, o n√∫mero de consultas √© conhecido de antem√£o \citep{settles2010active};
+isso permite, por exemplo, que elas sejam repartidas entre v√°rios or√°culos que podem
 trabalhar de forma independente dos demais.
-Essa possibilidade de paralelizaÁ„o n„o existe na estratÈgia de agrupamento hier·rquico,
-pois ela faz uso dos rÛtulos para determinar a pureza de cada grupo.
-Outra vantagem È a inexistÍncia de tempo de espera interconsultas.
+Essa possibilidade de paraleliza√ß√£o n√£o existe na estrat√©gia de agrupamento hier√°rquico,
+pois ela faz uso dos r√≥tulos para determinar a pureza de cada grupo.
+Outra vantagem √© a inexist√™ncia de tempo de espera interconsultas.
 
-\subsection{HÌbrida}\label{htu}
-% \ano{uma amostragem balanceada tem mais chance de estar sendo exploratÛria?}
-A abordagem agnÛstica baseada em densidade È de natureza exploratÛria,
-pois enfoca as regiıes mais desconhecidas (sem rÛtulos) do espaÁo de exemplos.
-Pela ausÍncia de aprendiz, n„o h· uma fronteira de decis„o a se considerar.
-Logo, n„o È possÌvel realizar consultas de car·ter prospectivo - ou o ajuste fino citado
-na SeÁ„o \ref{ag}, ou seja,
-que ataquem diretamente os exemplos mais crÌticos de forma an·loga a uma busca bin·ria.
-Como a premissa de fronteira ˙nica da busca bin·ria n„o pode ser garantida e
-a amostragem puramente exploratÛria se assemelha a uma busca exaustiva,
-È natural supor que o equilÌbrio entre exploraÁ„o e prospecÁ„o seja proveitoso.
-A estratÈgia TU embute ambas as abordagens em sua fÛrmula, mas n„o
+\subsection{H√≠brida}\label{htu}
+% \ano{uma amostragem balanceada tem mais chance de estar sendo explorat√≥ria?}
+A abordagem agn√≥stica baseada em densidade √© de natureza explorat√≥ria,
+pois enfoca as regi√µes mais desconhecidas (sem r√≥tulos) do espa√ßo de exemplos.
+Pela aus√™ncia de aprendiz, n√£o h√° uma fronteira de decis√£o a se considerar.
+Logo, n√£o √© poss√≠vel realizar consultas de car√°ter prospectivo - ou o ajuste fino citado
+na Se√ß√£o \ref{ag}, ou seja,
+que ataquem diretamente os exemplos mais cr√≠ticos de forma an√°loga a uma busca bin√°ria.
+Como a premissa de fronteira √∫nica da busca bin√°ria n√£o pode ser garantida e
+a amostragem puramente explorat√≥ria se assemelha a uma busca exaustiva,
+√© natural supor que o equil√≠brio entre explora√ß√£o e prospec√ß√£o seja proveitoso.
+A estrat√©gia TU embute ambas as abordagens em sua f√≥rmula, mas n√£o
 permite que elas ajam separadamente.
 Diferentemente,
-a nova estratÈgia (HTU) procura alternar a estratÈgia TU com a amostragem
-puramente exploratÛria (ATU) de acordo com o nÌvel de contribuiÁ„o corrente
-da componente exploratÛria em TU.
-O nÌvel de contribuiÁ„o È estimado por meio do c·culo da correlaÁ„o de
+a nova estrat√©gia (HTU) procura alternar a estrat√©gia TU com a amostragem
+puramente explorat√≥ria (ATU) de acordo com o n√≠vel de contribui√ß√£o corrente
+da componente explorat√≥ria em TU.
+O n√≠vel de contribui√ß√£o √© estimado por meio do c√°culo da correla√ß√£o de
 Pearson \citep{books/daglib/0000786} entre as medidas de informatividade de
 TU e ATU para toda a reserva de exemplos.
-Uma correlaÁ„o acima de $0,999$, valor arbitr·rio prÛximo de $1$,
-indica uma baixa contribuiÁ„o da componente exploratÛria,
-sugerindo que a presenÁa do aprendiz passa a ser relevante ou
-que o aprendizado atingiu o nÌvel de ajuste fino.
-Espera-se que o emprego do aprendiz apenas nos perÌodos de relev‚ncia
-reduza sua influÍncia negativa durante a fase inicial de aprendizado,
-ou por todo o aprendizado, no caso de algoritmos que gerem modelos imprÛprios
-para prospecÁ„o no dado problema eventualmente empregados equivocadamente
-pelo usu·rio.
+Uma correla√ß√£o acima de $0,999$, valor arbitr√°rio pr√≥ximo de $1$,
+indica uma baixa contribui√ß√£o da componente explorat√≥ria,
+sugerindo que a presen√ßa do aprendiz passa a ser relevante ou
+que o aprendizado atingiu o n√≠vel de ajuste fino.
+Espera-se que o emprego do aprendiz apenas nos per√≠odos de relev√¢ncia
+reduza sua influ√™ncia negativa durante a fase inicial de aprendizado,
+ou por todo o aprendizado, no caso de algoritmos que gerem modelos impr√≥prios
+para prospec√ß√£o no dado problema eventualmente empregados equivocadamente
+pelo usu√°rio.
 \ano{algoritmo}
 
 \input exp-elm
  
-\section{ConsideraÁıes}
+\section{Considera√ß√µes}
 \begin{table}
-\caption{CaracterÌsticas de cada estratÈgia.
-\textit{A ordem de complexidade È dada conforme a quantidade de exemplos
-a aprender para viabilizar cada consulta. \ano{È aceito O(0)?}}
+\caption{Caracter√≠sticas de cada estrat√©gia.
+\textit{A ordem de complexidade √© dada conforme a quantidade de exemplos
+a aprender para viabilizar cada consulta. \ano{√© aceito O(0)?}}
 }
 \scalebox{0.88}{
 \begin{tabular}{c|c|c|c|c|c}
-\textbf{estratÈgia} & \textbf{\makecell{forma\\ de busca}}&\textbf{\makecell{presenÁa \\de aprendiz}} & \textbf{\makecell{definiÁ„o da \\sequÍncia de \\consultas}} & \textbf{\makecell{dependÍncia\\entre\\consultas}}&\textbf{\makecell{ordem de\\complexidade}}\\ \hline
-Rnd & \makecell{exploratÛria\\aleatÛria} & \makecell{agnÛstica}&autÙnoma&nenhuma&$\mathcal{O}(0)$\\ \hline
-Clu&\makecell{balanceada:\\exploratÛria e\\prospectiva}& agnÛstica&interativa&total&\makecell{n„o\\especificada}\\ \hline
-\makecell{Unc/Mar/Ent\\QBC/DW}&prospectiva&gnÛstica&interativa&total&$\mathcal{O}(1)$\\ \hline
-SVMS&prospectiva&\makecell{gnÛstica\\(aprendiz\\especÌfico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
-SVMB&\makecell{alternada:\\exploratÛria e\\prospectiva}&\makecell{gnÛstica\\(aprendiz\\especÌfico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
-EGL&prospectiva&\makecell{gnÛstica\\(aprendiz\\especÌfico)}&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|)$\\ \hline
-EER&prospectiva&gnÛstica&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|^2)$\\ \hline
-SGmulti&\makecell{exploratÛria\\limitada e\\aleatÛria}&gnÛstica&interativa&total&$\mathcal{O}(|Y|)$\\ \hline
-TU&\makecell{balanceada:\\exploratÛria e\\prospectiva}&gnÛstica&interativa&\makecell{apÛs etapa\\exploratÛria}&$\mathcal{O}(1)$\\ \hline
-ATU&\makecell{exploratÛria\\ponderada}&agnÛstica&autÙnoma&nenhuma&$\mathcal{O}(0)$\\ \hline
-GATU&\makecell{em fases:\\exploratÛria e\\prospectiva}&\makecell{em fases:\\agnÛstica e\\gnÛstica}&interativa&\makecell{apÛs etapa\\exploratÛria}&$\mathcal{O}(1)$\\ \hline
-GATU&\makecell{alternada:\\exploratÛria e\\prospectiva}&\makecell{alternada:\\agnÛstica e\\gnÛstica}&interativa&frequente&$\mathcal{O}(1)$\\ \hline
+\textbf{estrat√©gia} & \textbf{\makecell{forma\\ de busca}}&\textbf{\makecell{presen√ßa \\de aprendiz}} & \textbf{\makecell{defini√ß√£o da \\sequ√™ncia de \\consultas}} & \textbf{\makecell{depend√™ncia\\entre\\consultas}}&\textbf{\makecell{ordem de\\complexidade}}\\ \hline
+Rnd & \makecell{explorat√≥ria\\aleat√≥ria} & \makecell{agn√≥stica}&aut√¥noma&nenhuma&$\mathcal{O}(0)$\\ \hline
+Clu&\makecell{balanceada:\\explorat√≥ria e\\prospectiva}& agn√≥stica&interativa&total&\makecell{n√£o\\especificada}\\ \hline
+\makecell{Unc/Mar/Ent\\QBC/DW}&prospectiva&gn√≥stica&interativa&total&$\mathcal{O}(1)$\\ \hline
+SVMS&prospectiva&\makecell{gn√≥stica\\(aprendiz\\espec√≠fico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
+SVMB&\makecell{alternada:\\explorat√≥ria e\\prospectiva}&\makecell{gn√≥stica\\(aprendiz\\espec√≠fico)}&interativa&total&$\mathcal{O}(|\mathcal{U}||\mathcal{L}|)$\\ \hline
+EGL&prospectiva&\makecell{gn√≥stica\\(aprendiz\\espec√≠fico)}&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|)$\\ \hline
+EER&prospectiva&gn√≥stica&interativa&total&$\mathcal{O}(|Y||\mathcal{U}|^2)$\\ \hline
+SGmulti&\makecell{explorat√≥ria\\limitada e\\aleat√≥ria}&gn√≥stica&interativa&total&$\mathcal{O}(|Y|)$\\ \hline
+TU&\makecell{balanceada:\\explorat√≥ria e\\prospectiva}&gn√≥stica&interativa&\makecell{ap√≥s etapa\\explorat√≥ria}&$\mathcal{O}(1)$\\ \hline
+ATU&\makecell{explorat√≥ria\\ponderada}&agn√≥stica&aut√¥noma&nenhuma&$\mathcal{O}(0)$\\ \hline
+GATU&\makecell{em fases:\\explorat√≥ria e\\prospectiva}&\makecell{em fases:\\agn√≥stica e\\gn√≥stica}&interativa&\makecell{ap√≥s etapa\\explorat√≥ria}&$\mathcal{O}(1)$\\ \hline
+GATU&\makecell{alternada:\\explorat√≥ria e\\prospectiva}&\makecell{alternada:\\agn√≥stica e\\gn√≥stica}&interativa&frequente&$\mathcal{O}(1)$\\ \hline
 \end{tabular}
 }
 \label{stratscompleta}
 \end{table}
-
