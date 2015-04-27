@@ -1,4 +1,5 @@
 \documentclass[12pt,twoside]{book}
+ 
 \usepackage{scrextend}
 % \usepackage{cite}
 % \usepackage[pdftex]{graphicx}
@@ -33,8 +34,9 @@
 %portugues
 \usepackage[ruled,linesnumbered,vlined]{algorithm2e}
 \usepackage{fancyhdr}
-
-\usepackage{ textcomp }
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
 
 %\renewcommand{\listalgorithmcfname}{Lista de Algoritmos}%
 %\renewcommand{\algorithmcfname}{Algoritmo}%
@@ -184,7 +186,10 @@
 % }
 
 \usepackage{amssymb}
+% \inputencoding{utf8x}
+% \usepackage[utf8x]{ucs}
 \input{imagens/macros-pgf.tex}
+
 % \usepackage{glosstex}
 \usepackage[printonlyused,withpage]{acronym}
 
@@ -196,6 +201,7 @@
 \usepackage{pdflscape}
 \usepackage{afterpage}
 \usepackage{capt-of}
+
 
 \begin{document}
 \definecolor{darkgreen}{rgb}{0.0, 0.4, 0.0}
