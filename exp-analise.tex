@@ -41,7 +41,7 @@ O comportamento típico da curva de aprendizado ativo seguido pelas diferentes e
 Apesar da pouca discernibilidade das curvas, a exibição delas permite notar
 que elas têm a mesma forma logarítmica, com o valor kappa divergindo na medida em que novos
 exemplos são consultados.
-\input plot
+%\input plot
 Se todas as bases tivessem a mesma quantidade de exemplos
 e o aprendizado prosseguisse, as curvas se encontrariam novamente,
 pois tendem ao desempenho passivo.
@@ -57,7 +57,7 @@ um gráfico das medianas também foi elaborado e teve um comportamento praticame
 % com leves perturbações irrelevantes
 Por motivos de espaço ele foi omitido.}, conforme mostrado na Figura \ref{curvasrank},
 que confirma o mau desempenho de SVMbal e QBCRFw - as duas estratégias de aprendiz fixo.
-\input rankplot
+%\input rankplot
 Os aprendizes fixos (SVM e RFw) podem gerar consultas desfavoráveis aos outros algoritmos
 empregados como classificador (5NN, C4.5w, CIELM e NB).
 De forma mais ampla, pode-se esperar que estratégias gnósticas não tenham um desempenho
@@ -169,8 +169,8 @@ de sucessivos valores de orçamento.
 É possível observar, na Figura \ref{curvasrankdesvio}, que as estratégias ATUmah, HTUmah,
 TUmah e EERent detêm as melhores colocações no ranqueamento médio dos menores valores de desvio
 padrão durante a maior parte do processo de rotulação.
-\input rankplotRisco
-\input plotRisco
+%\input rankplotRisco
+%\input plotRisco
 O mesmo ocorre com os ranqueamentos apresentados na Figura \ref{curvasdesvio}.
 Nesse gráfico, a distância entre a melhor e a pior curva se mantém em torno de $0,01$,
 indicando que, embora algumas sejam mais estáveis, a faixa ocupada pelas curvas é estreita.
