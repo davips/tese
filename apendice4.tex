@@ -7,26 +7,26 @@ Supondo-se uma \textbf{distribuição estacionária}, ou seja, um conceito imut�
 pode-se deduzir com certeza o rótulo de qualquer novo exemplo apenas pela sua
 informação de localização com relação à fronteira: se pertencente à área interna ou externa.
 
-\pgfplotsset{width=12cm,compat=1.5.1}
-\begin{figure}
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[axis y line=left, xmin=35, xmax=100, ymin=1.45, ymax=1.9, axis x line=bottom, grid, xlabel=peso (kg),   ylabel=altura (m)]
-\addplot[only marks,mark=text,text mark=\C{$+$},mark options={blue,scale=1}] plot coordinates {
-    (65,1.8) (53,1.7) (63,1.6) (72,1.65) (60,1.55) (62,1.68) (64,1.78) (63.5,1.74) (80,1.7) (77,1.71)
-}; \addlegendentry{doente}
-\addplot[only marks,mark=text,text mark=\Q{$-$},mark options={red,scale=1}] plot coordinates {
-    (40.2,1.6) (41.3,1.65) (42.2,1.70) (50,1.80) (80,1.54) (83,1.66) (85,1.63) (93,1.7)
-}; \addlegendentry{saudável}
-\addplot[thick, mark=none, teal] plot coordinates {
-    (57,1.86) (40,1.5) (70,1.55) (95,1.8) (57,1.86)
-};
-\end{axis}
-\end{tikzpicture}
-\caption{Exemplo de fronteira de decisão.}
-\label{fig:fronteiras}
-\end{center}
-\end{figure}
+% \pgfplotsset{width=12cm,compat=1.5.1}
+% \begin{figure}
+% \begin{center}
+% \begin{tikzpicture}
+% \begin{axis}[axis y line=left, xmin=35, xmax=100, ymin=1.45, ymax=1.9, axis x line=bottom, grid, xlabel=peso (kg),   ylabel=altura (m)]
+% \addplot[only marks,mark=text,text mark=\C{$+$},mark options={blue,scale=1}] plot coordinates {
+%     (65,1.8) (53,1.7) (63,1.6) (72,1.65) (60,1.55) (62,1.68) (64,1.78) (63.5,1.74) (80,1.7) (77,1.71)
+% }; \addlegendentry{doente}
+% \addplot[only marks,mark=text,text mark=\Q{$-$},mark options={red,scale=1}] plot coordinates {
+%     (40.2,1.6) (41.3,1.65) (42.2,1.70) (50,1.80) (80,1.54) (83,1.66) (85,1.63) (93,1.7)
+% }; \addlegendentry{saudável}
+% \addplot[thick, mark=none, teal] plot coordinates {
+%     (57,1.86) (40,1.5) (70,1.55) (95,1.8) (57,1.86)
+% };
+% \end{axis}
+% \end{tikzpicture}
+% \caption{Exemplo de fronteira de decisão.}
+% \label{fig:fronteiras}
+% \end{center}
+% \end{figure}
 
 
 \textbf{Hipótese} é um conjunto de restrições nos atributos normalmente denominado pela
