@@ -1,118 +1,118 @@
 \newpage
 \section{Meta-aprendizado} \label{meta}
-Um sistema de classificação baseado em aprendizado de máquina depende
-de um modelo que é induzido por algoritmos de aprendizado (Seção \ref{contexto}).
-Diante da infinidade de vieses possíveis de aprendizado,
-muitos algoritmos têm sido propostos e alguns são frequentemente
-empregados de forma generalizada na solução dos mais diversos problemas,
-como é o caso das redes neurais artificiais \citep{haykin2004comprehensive}.
-Entretanto, nenhum algoritmo pode ser adequado a todos os domínios,
-pois um desempenho positivo em algumas situações de aprendizado
+Um sistema de classificaÃ§Ã£o baseado em aprendizado de mÃ¡quina depende
+de um modelo que Ã© induzido por algoritmos de aprendizado (SeÃ§Ã£o \ref{contexto}).
+Diante da infinidade de vieses possÃ­veis de aprendizado,
+muitos algoritmos tÃªm sido propostos e alguns sÃ£o frequentemente
+empregados de forma generalizada na soluÃ§Ã£o dos mais diversos problemas,
+como Ã© o caso das redes neurais artificiais \citep{haykin2004comprehensive}.
+Entretanto, nenhum algoritmo pode ser adequado a todos os domÃ­nios,
+pois um desempenho positivo em algumas situaÃ§Ãµes de aprendizado
 precisa ser compensado por um igual grau de desempenho negativo
 em outras \citep{conf/icml/Schaffer94}.
-Isso decorre da existência de um viés necessário na forma de representação
-(árvores de decisão e neurônios artificiais entre outras)
-e busca de hipóteses sobre um dado problema (busca gulosa e otimização de funções entre outros).
-A existência do viés de aprendizado é essencial para a capacidade de generalização
+Isso decorre da existÃªncia de um viÃ©s necessÃ¡rio na forma de representaÃ§Ã£o
+(Ã¡rvores de decisÃ£o e neurÃ´nios artificiais entre outras)
+e busca de hipÃ³teses sobre um dado problema (busca gulosa e otimizaÃ§Ã£o de funÃ§Ãµes entre outros).
+A existÃªncia do viÃ©s de aprendizado Ã© essencial para a capacidade de generalizaÃ§Ã£o
 do algoritmo \citep{Mitchell:1980}.
 
-Dessa forma, um sistema de aprendizado de máquina requer
+Dessa forma, um sistema de aprendizado de mÃ¡quina requer
 uma escolha criteriosa de qual algoritmo deve ser empregado.
 % deva <- errado(?)
 % \cite{wolpert1996lack},
-Normalmente, o problema da escolha do algoritmo é resolvido
-por um especialista em aprendizado de máquina que se baseia em conhecimentos
-sobre os dados e sobre os algoritmos disponíveis
+Normalmente, o problema da escolha do algoritmo Ã© resolvido
+por um especialista em aprendizado de mÃ¡quina que se baseia em conhecimentos
+sobre os dados e sobre os algoritmos disponÃ­veis
 para escolher manualmente o melhor.
-Essa escolha é feita segundo alguma métrica de desempenho
+Essa escolha Ã© feita segundo alguma mÃ©trica de desempenho
 \cite{books/daglib/0022052}.
-Uma maneira de se evitar a escolha manual é a adoção de algum tipo
-de \textit{meta-aprendizado}, que é o estudo do aperfeiçoamento dos
-algoritmos de aprendizado por meio da experiência.
-Esse aperfeiçoamento se dá no nível \textit{meta},
-que é um nível acima do aprendizado convencional, chamado de nível \textit{base}
+Uma maneira de se evitar a escolha manual Ã© a adoÃ§Ã£o de algum tipo
+de \textit{meta-aprendizado}, que Ã© o estudo do aperfeiÃ§oamento dos
+algoritmos de aprendizado por meio da experiÃªncia.
+Esse aperfeiÃ§oamento se dÃ¡ no nÃ­vel \textit{meta},
+que Ã© um nÃ­vel acima do aprendizado convencional, chamado de nÃ­vel \textit{base}
 \citep{journals/air/VilaltaD02}.
-No nível base, o viés de aprendizado é fixo, enquanto que
-no nível meta o viés normalmente é escolhido dinamicamente.
+No nÃ­vel base, o viÃ©s de aprendizado Ã© fixo, enquanto que
+no nÃ­vel meta o viÃ©s normalmente Ã© escolhido dinamicamente.
 Existem diferentes formas de meta-aprendizado.
-As mais relevantes são apresentadas nas seções seguintes.
-A Seção \ref{direta}, em especial, descreve a abordagem mais aplicável ao problema de
-recomendação de estratégias de aprendizado ativo.
+As mais relevantes sÃ£o apresentadas nas seÃ§Ãµes seguintes.
+A SeÃ§Ã£o \ref{direta}, em especial, descreve a abordagem mais aplicÃ¡vel ao problema de
+recomendaÃ§Ã£o de estratÃ©gias de aprendizado ativo.
 Dependendo do conjunto de meta-atributos escolhidos,
-ela permite caracterizar as bases de dados com poucos rótulos ou na ausência deles.
+ela permite caracterizar as bases de dados com poucos rÃ³tulos ou na ausÃªncia deles.
 
-\subsection{Generalização em pilha}
-Na \ing{generalização em pilha}{stacked generalization}
+\subsection{GeneralizaÃ§Ã£o em pilha}
+Na \ing{generalizaÃ§Ã£o em pilha}{stacked generalization}
 \citep{journals/nn/Wolpert92} o meta-aprendiz lida com uma metabase
 que consiste de um conjunto de treinamento transformado por
-aprendizes no nível base.
-O resultado dessa transformação são metaexemplos cujos valores dos atributos
-são as predições de cada modelo base.
-Uma particularidade dessa abordagem é o viés estático,
-pois ocorre uma combinação de algoritmos ao invés de uma seleção.
+aprendizes no nÃ­vel base.
+O resultado dessa transformaÃ§Ã£o sÃ£o metaexemplos cujos valores dos atributos
+sÃ£o as prediÃ§Ãµes de cada modelo base.
+Uma particularidade dessa abordagem Ã© o viÃ©s estÃ¡tico,
+pois ocorre uma combinaÃ§Ã£o de algoritmos ao invÃ©s de uma seleÃ§Ã£o.
 
-\subsection{Caracterização por modelos}
-A própria estrutura dos modelos do nível base pode ser explorada na construção dos
+\subsection{CaracterizaÃ§Ã£o por modelos}
+A prÃ³pria estrutura dos modelos do nÃ­vel base pode ser explorada na construÃ§Ã£o dos
 metaexemplos.
-Uma representante da \textit{caracterização por modelos} é a
-\ing{indução de modelos tipados de ordem maior}{typed higher-order induction}.
+Uma representante da \textit{caracterizaÃ§Ã£o por modelos} Ã© a
+\ing{induÃ§Ã£o de modelos tipados de ordem maior}{typed higher-order induction}.
 Ela gera - de acordo com exemplo dado no trabalho de
-\cite{conf/ilp/BensusanGK00} - uma árvore de decisão para cada
+\cite{conf/ilp/BensusanGK00} - uma Ã¡rvore de decisÃ£o para cada
 base de dados.
-As árvores são completamente representadas por estruturas complexas
-que servem de metaexemplos que são aprendidos por algoritmos especialmente
+As Ã¡rvores sÃ£o completamente representadas por estruturas complexas
+que servem de metaexemplos que sÃ£o aprendidos por algoritmos especialmente
 desenvolvidos para esse tipo de tarefa.
 
-\subsection{Marcadores de referência}
-Os \ing{marcadores de referência}{landmarkers} \citep{pfahringer2000tell}
-são um conjunto diverso de algoritmos simples usados como referência para
+\subsection{Marcadores de referÃªncia}
+Os \ing{marcadores de referÃªncia}{landmarkers} \citep{pfahringer2000tell}
+sÃ£o um conjunto diverso de algoritmos simples usados como referÃªncia para
 algoritmos mais complexos.
-A acurácia de cada um dos modelos associados fornece o valor de um meta-atributo.
-Embora não diretamente aplicável, o conceito da geração de meta-atributos por meio
-de processamentos que representem uma simplificação da tarefa base pode
-ser adaptável ao cenário de aprendizado ativo conforme definido na Seção \ref{recom}.
+A acurÃ¡cia de cada um dos modelos associados fornece o valor de um meta-atributo.
+Embora nÃ£o diretamente aplicÃ¡vel, o conceito da geraÃ§Ã£o de meta-atributos por meio
+de processamentos que representem uma simplificaÃ§Ã£o da tarefa base pode
+ser adaptÃ¡vel ao cenÃ¡rio de aprendizado ativo conforme definido na SeÃ§Ã£o \ref{recom}.
 
-\subsection{Caracterização direta}\label{direta}
-A caracterização direta consiste na obtenção de medidas diretamente dos exemplos
-que compõem uma base de dados, ou seja, sem o intermédio de um algoritmo
+\subsection{CaracterizaÃ§Ã£o direta}\label{direta}
+A caracterizaÃ§Ã£o direta consiste na obtenÃ§Ã£o de medidas diretamente dos exemplos
+que compÃµem uma base de dados, ou seja, sem o intermÃ©dio de um algoritmo
 de aprendizado.
-A primeira caracterização de bases de dados foi feita por \cite{conf/ijcai/RendellST87}
-com o intuito de predizer acurácia e tempo de processamento.
-Ela era baseada no número de exemplos e de atributos.
-O próximo conjunto de meta-atributos, proposto no projeto STATLOG
+A primeira caracterizaÃ§Ã£o de bases de dados foi feita por \cite{conf/ijcai/RendellST87}
+com o intuito de predizer acurÃ¡cia e tempo de processamento.
+Ela era baseada no nÃºmero de exemplos e de atributos.
+O prÃ³ximo conjunto de meta-atributos, proposto no projeto STATLOG
 \citep{brazdil1994analysis}, era composto de quinze medidas:
-% mitchie 1994 pode ser a referência certa do STATLOG?
+% mitchie 1994 pode ser a referÃªncia certa do STATLOG?
 \begin{itemize}
- \item número de exemplos, atributos binários e não binários e classes;
- \item entropia das classes, informação mútua entre classe e atributos e razão sinal-ruído;
- \item entropia, curtose, assimetria, correlação e razão entre os desvios padrão entre atributos;
- \item primeira correlação canônica e variância pelo primeiro discriminante canônico.
+ \item nÃºmero de exemplos, atributos binÃ¡rios e nÃ£o binÃ¡rios e classes;
+ \item entropia das classes, informaÃ§Ã£o mÃºtua entre classe e atributos e razÃ£o sinal-ruÃ­do;
+ \item entropia, curtose, assimetria, correlaÃ§Ã£o e razÃ£o entre os desvios padrÃ£o entre atributos;
+ \item primeira correlaÃ§Ã£o canÃ´nica e variÃ¢ncia pelo primeiro discriminante canÃ´nico.
 \end{itemize}
-Variações desse conjunto são propostas em trabalhos posteriores
+VariaÃ§Ãµes desse conjunto sÃ£o propostas em trabalhos posteriores
 \citep{books/daglib/0022052},
-como a adoção de histogramas para evitar a perda de informações que ocorre quando
-se adota a média das medidas nos diferentes atributos base \citep{kalousis2002algorithm};
-ou a binarização de medidas, como o grau de dispersão do atributo alvo em
-tarefas de regressão \citep{journals/ijon/GomesPSRC12}.
-Também há trabalhos direcionados a: otimização \citep{journals/ijhis/KandaCHS11},
-fluxos de dados \citep{journals/ijon/RossiCSS14}, predição de ranqueamentos
-\citep{conf/iberamia/SouzaCS10} e detecção de ruído \citep{Garcia2015}.
-Finalmente, há trabalhos que visam a recomendação automática de algoritmos
-não supervisionados.
-Essa tarefa é mais próxima da recomendação de estratégias de aprendizado ativo
-pela ausência de rótulos, diferentemente de muitas medidas dos conjuntos
+como a adoÃ§Ã£o de histogramas para evitar a perda de informaÃ§Ãµes que ocorre quando
+se adota a mÃ©dia das medidas nos diferentes atributos base \citep{kalousis2002algorithm};
+ou a binarizaÃ§Ã£o de medidas, como o grau de dispersÃ£o do atributo alvo em
+tarefas de regressÃ£o \citep{journals/ijon/GomesPSRC12}.
+TambÃ©m hÃ¡ trabalhos direcionados a: otimizaÃ§Ã£o \citep{journals/ijhis/KandaCHS11},
+fluxos de dados \citep{journals/ijon/RossiCSS14}, prediÃ§Ã£o de ranqueamentos
+\citep{conf/iberamia/SouzaCS10} e detecÃ§Ã£o de ruÃ­do \citep{Garcia2015}.
+Finalmente, hÃ¡ trabalhos que visam a recomendaÃ§Ã£o automÃ¡tica de algoritmos
+nÃ£o supervisionados.
+Essa tarefa Ã© mais prÃ³xima da recomendaÃ§Ã£o de estratÃ©gias de aprendizado ativo
+pela ausÃªncia de rÃ³tulos, diferentemente de muitas medidas dos conjuntos
 citados anteriormente que dependem do atributo alvo, ou seja,
-da existência de rótulos.
-Assim, dentro do contexto desta tese, a caracterização não supervisionada
-de bases de dados, apesar de não voltada originalmente ao problema
-de seleção de estratégias, se mostra compatível.
-Esse tipo de caracterização inclui medidas como o grau de normalidade da distribuição e
+da existÃªncia de rÃ³tulos.
+Assim, dentro do contexto desta tese, a caracterizaÃ§Ã£o nÃ£o supervisionada
+de bases de dados, apesar de nÃ£o voltada originalmente ao problema
+de seleÃ§Ã£o de estratÃ©gias, se mostra compatÃ­vel.
+Esse tipo de caracterizaÃ§Ã£o inclui medidas como o grau de normalidade da distribuiÃ§Ã£o e
 o percentual de pontos aberrantes e de atributos mais relevantes
 \citep{conf/ijcnn/SoutoPSACLS08,Ferrari2015181}.
 
 
-As medidas adotadas na presente pesquisa são apresentadas em maior detalhe na
-Seção \ref{recom}.
+As medidas adotadas na presente pesquisa sÃ£o apresentadas em maior detalhe na
+SeÃ§Ã£o \ref{recom}.
 
 % kalousis2002algorithm -
 %Algorithm selection via meta-learning - pg9 formaliza ap. sup. pra eu colocar no cap contexto

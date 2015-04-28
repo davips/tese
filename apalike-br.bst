@@ -382,8 +382,8 @@ FUNCTION {format.pages}
     { pages multi.page.check
 	%{ "pages" pages n.dashify tie.or.space.connect }
 	%{ "page" pages tie.or.space.connect }
-	{ "páginas" pages n.dashify tie.or.space.connect }
-	{ "página" pages tie.or.space.connect }
+	{ "p{\'a}ginas" pages n.dashify tie.or.space.connect }
+	{ "p{\'a}gina" pages tie.or.space.connect }
       if$
     }
   if$
@@ -449,7 +449,7 @@ FUNCTION {format.thesis.type}
 FUNCTION {format.tr.number}
 { type empty$
    % { "Technical Report" }
-    { "Relatório Técnico" }
+    { "Relat{\'o}rio T{\'e}cnico" }
     'type
   if$
   number empty$
