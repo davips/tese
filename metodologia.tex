@@ -1,25 +1,25 @@
 \chapter{Metodologia}\label{metodologia}
-Foi empreendida uma avalia√ß√£o experimental para identificar os pontos
-cr√≠ticos na escolha de estrat√©gias e tamb√©m para comprova√ß√£o emp√≠rica das propostas
-dos cap√≠tulos \ref{propostas} e \ref{aml}.
-Para haver solidez estat√≠stica e tamb√©m para uma boa representatividade dos
-variados dom√≠nios existentes em aplica√ß√µes reais, foram selecionadas as
+Foi empreendida uma avaliaÁ„o experimental para identificar os pontos
+crÌticos na escolha de estratÈgias e tambÈm para comprovaÁ„o empÌrica das propostas
+dos capÌtulos \ref{propostas} e \ref{aml}.
+Para haver solidez estatÌstica e tambÈm para uma boa representatividade dos
+variados domÌnios existentes em aplicaÁıes reais, foram selecionadas as
 cem bases de dados mais diversas
-do projeto de \cite{doi/ucipp} que √© baseado no reposit√≥rio UCI \citep{bache2013uci}.
-Por√©m, apenas noventa e quatro \ano{conferir} bases foram vi√°veis com rela√ß√£o a
+do projeto de \cite{doi/ucipp} que È baseado no repositÛrio UCI \citep{bache2013uci}.
+PorÈm, apenas noventa e quatro \ano{conferir} bases foram vi·veis com relaÁ„o a
 tempo de processamento e puderam ter seus experimentos terminados.
-O crit√©rio de diversidade envolveu manter apenas uma dentre cada grupo de bases de um
-mesmo dom√≠nio - com exce√ß√£o de algumas que tivessem caracter√≠sticas
-(atributos, classes e n√∫mero de exemplos)
-suficientemente diferentes ou cuja acur√°cia passiva fosse suficientemente distinta para pelo
-menos tr√™s dos algoritmos de aprendizadomencionados na Se√ß√£o \ref{learners}.
+O critÈrio de diversidade envolveu manter apenas uma dentre cada grupo de bases de um
+mesmo domÌnio - com exceÁ„o de algumas que tivessem caracterÌsticas
+(atributos, classes e n˙mero de exemplos)
+suficientemente diferentes ou cuja acur·cia passiva fosse suficientemente distinta para pelo
+menos trÍs dos algoritmos de aprendizadomencionados na SeÁ„o \ref{learners}.
 
-\ano{ilustrar o uso de banco de dados, a hierarquia de classes das estrat√©gias;
-fluxograma de 4 fases: queries, hits, measures, sumariza√ß√£o (m√©dias/friedmans = latex)}
+\ano{ilustrar o uso de banco de dados, a hierarquia de classes das estratÈgias;
+fluxograma de 4 fases: queries, hits, measures, sumarizaÁ„o (mÈdias/friedmans = latex)}
 
 \tar{demsar usa (0.000, +-0.005)  no exemplo}
 
-% Nesse artigo √© discutido o fato do Friedman ignorar as diferen√ßas entre modelos (http://www.r-bloggers.com/beware-the-friedman-test/):
+% Nesse artigo È discutido o fato do Friedman ignorar as diferenÁas entre modelos (http://www.r-bloggers.com/beware-the-friedman-test/):
 % @article{zimmerman1993relative,
 %   title={Relative power of the Wilcoxon test, the Friedman test, and repeated-measures ANOVA on ranks},
 %   author={Zimmerman, Donald W and Zumbo, Bruno D},
@@ -31,71 +31,71 @@ fluxograma de 4 fases: queries, hits, measures, sumariza√ß√£o (m√©dias/friedmans
 %   publisher={Taylor \& Francis}
 % }
 
-\section{Descri√ß√£o do cen√°rio}
-O cen√°rio adotado neste trabalho √© baseado em \pool.
-Especificamente, h√° as seguintes restri√ß√µes de escopo:
+\section{DescriÁ„o do cen·rio}
+O cen·rio adotado neste trabalho È baseado em \pool.
+Especificamente, h· as seguintes restriÁıes de escopo:
 \begin{itemize}
- \item consulta pela classe (n√£o por valores de atributos, por exemplo);
- \item monorr√≥tulo;
- \item distribui√ß√£o estacion√°ria;
- \item custo por erro de classifica√ß√£o uniforme;
+ \item consulta pela classe (n„o por valores de atributos, por exemplo);
+ \item monorrÛtulo;
+ \item distribuiÁ„o estacion·ria;
+ \item custo por erro de classificaÁ„o uniforme;
  \item custo por consulta uniforme;
- \item or√°culo √∫nico e constante\footnote{Sempre a mesma resposta para um mesmo exemplo.}
- sujeito a ru√≠do\footnote{Apesar da contradi√ß√£o em atribuir erro a uma entidade
- denominada \textit{or√°culo}, essa concess√£o deve ser feita tanto pelo fato do supervisor
- humano ser sujeito √† fadiga quanto pela ado√ß√£o, nesta tese, de bases de dados reais.};
- \item os dom√≠nios dos atributos nominais s√£o previamente conhecidos;
+ \item or·culo ˙nico e constante\footnote{Sempre a mesma resposta para um mesmo exemplo.}
+ sujeito a ruÌdo\footnote{Apesar da contradiÁ„o em atribuir erro a uma entidade
+ denominada \textit{or·culo}, essa concess„o deve ser feita tanto pelo fato do supervisor
+ humano ser sujeito ‡ fadiga quanto pela adoÁ„o, nesta tese, de bases de dados reais.};
+ \item os domÌnios dos atributos nominais s„o previamente conhecidos;
  \item atributos sem valores faltantes;
 \end{itemize}
-e as seguintes condi√ß√µes que visam rigor experimental, replicabilidade e
-verossimilhan√ßa com aplica√ß√µes reais:
+e as seguintes condiÁıes que visam rigor experimental, replicabilidade e
+verossimilhanÁa com aplicaÁıes reais:
 \begin{itemize}
  \item consulta \ing{um a um}{on-line};
- \item toda\footnote{Exceto exemplos duplicados.} a base de dados original √© utilizada no
-   processo de valida√ß√£o cruzada\footnote{Algumas estrat√©gias fazem uma amostragem interna,
+ \item toda\footnote{Exceto exemplos duplicados.} a base de dados original È utilizada no
+   processo de validaÁ„o cruzada\footnote{Algumas estratÈgias fazem uma amostragem interna,
    que se renova a cada consulta.};
- \item um r√≥tulo inicial por classe; e,
- \item crit√©rio de parada determinado pelo or√ßamento.
+ \item um rÛtulo inicial por classe; e,
+ \item critÈrio de parada determinado pelo orÁamento.
  \end{itemize}
-A decis√£o de um r√≥tulo inicial por classe visa prover condi√ß√µes m√≠nimas
-para que todas as estrat√©gias tenham uma ponto de partida vi√°vel.
-O principal exemplo de condi√ß√£o necess√°ria √© a pr√©-exist√™ncia de uma fronteira de decis√£o,
-que s√≥ √© poss√≠vel de ser estimada com a presen√ßa de alguns r√≥tulos.
-Essa escolha tamb√©m √© compat√≠vel com aplica√ß√µes reais, pois,
-sendo uma atividade dispendiosa, a rotula√ß√£o requer cautela.
-Por isso, √© razo√°vel a obten√ß√£o de alguns r√≥tulos antes de se sujeitar aos custos
+A decis„o de um rÛtulo inicial por classe visa prover condiÁıes mÌnimas
+para que todas as estratÈgias tenham uma ponto de partida vi·vel.
+O principal exemplo de condiÁ„o necess·ria È a prÈ-existÍncia de uma fronteira de decis„o,
+que sÛ È possÌvel de ser estimada com a presenÁa de alguns rÛtulos.
+Essa escolha tambÈm È compatÌvel com aplicaÁıes reais, pois,
+sendo uma atividade dispendiosa, a rotulaÁ„o requer cautela.
+Por isso, È razo·vel a obtenÁ„o de alguns rÛtulos antes de se sujeitar aos custos
 da amostragem ativa.
-Uma maneira de se obter um r√≥tulo por classe √© por meio do
+Uma maneira de se obter um rÛtulo por classe È por meio do
  \ing{aprendizado guiado}{guided learning} \citep{conf/kdd/AttenbergP10}.
- Em diversas aplica√ß√µes, como a categoriza√ß√£o de not√≠cias, o usu√°rio √© capaz
- de encontrar um exemplar para uma dada classe, seja por p√°ginas de busca
- na \textit{internet} ou por recorda√ß√£o de uma experi√™ncia pessoal.
- Assim, o in√≠cio da amostragem com um exemplo de cada classe pode ser
- feito de forma eficiente em aplica√ß√µes reais.
- Essa pr√°tica tem sido adotada da mesma forma em outros trabalhos
+ Em diversas aplicaÁıes, como a categorizaÁ„o de notÌcias, o usu·rio È capaz
+ de encontrar um exemplar para uma dada classe, seja por p·ginas de busca
+ na \textit{internet} ou por recordaÁ„o de uma experiÍncia pessoal.
+ Assim, o inÌcio da amostragem com um exemplo de cada classe pode ser
+ feito de forma eficiente em aplicaÁıes reais.
+ Essa pr·tica tem sido adotada da mesma forma em outros trabalhos
  \citep{conf/nips/GuoS07, conf/cvpr/BiswasP13, conf/iconip/GuJC14a,
- }, com varia√ß√µes mais permissivas com rela√ß√£o √† quantidade de exemplos
- \citep{journals/prl/PatraB12} ou substitu√≠da por uma amostragem aleat√≥ria
- aplicada at√© que se encontre um exemplo por classe \citep{chermanaprendizado}.
+ }, com variaÁıes mais permissivas com relaÁ„o ‡ quantidade de exemplos
+ \citep{journals/prl/PatraB12} ou substituÌda por uma amostragem aleatÛria
+ aplicada atÈ que se encontre um exemplo por classe \citep{chermanaprendizado}.
 
- \ano{settles diz (no livro?) que o crit√©rio de parada normalmente √© financeiro}
+ \ano{settles diz (no livro?) que o critÈrio de parada normalmente È financeiro}
  
-Outra caracter√≠stica do cen√°rio est√° no desconhecimento do or√ßamento dispon√≠vel por parte das estrat√©gias implementadas.
-Isso implica na gera√ß√£o de sequ√™ncias de consultas n√£o necessariamente √≥timas.
-Essa possibilidade, mais te√≥rica do que pr√°tica,
-decorre de o fato do processo ativo de amostragem n√£o ser uma
+Outra caracterÌstica do cen·rio est· no desconhecimento do orÁamento disponÌvel por parte das estratÈgias implementadas.
+Isso implica na geraÁ„o de sequÍncias de consultas n„o necessariamente Ûtimas.
+Essa possibilidade, mais teÛrica do que pr·tica,
+decorre de o fato do processo ativo de amostragem n„o ser uma
 \textit{cadeia de Markov} de primeira ordem \citep{conf/icml/RoyM01}.
-Uma consulta √≥tima dependeria de quantas ainda podem ser feitas.
+Uma consulta Ûtima dependeria de quantas ainda podem ser feitas.
 
-\section{Descri√ß√£o das bases}
-As bases de dados t√™m suas caracter√≠sticas expostas no Ap√™ndice \ref{detalhes}
+\section{DescriÁ„o das bases}
+As bases de dados tÍm suas caracterÌsticas expostas no ApÍndice \ref{detalhes}
 (tabelas \ref{tab:datasetsa},
 \ref{tab:datasetsb} e \ref{tab:datasetsc}).
 Para maior clareza do tipo de diversidade das bases, alguns grupos especiais foram
 criados da seguinte forma:
 \begin{itemize}
  \item bases com mais de quatro vezes mais exemplos na classe
-majorit√°ria do que na minorit√°ria (Tabela \ref{tab:imb})
+majorit·ria do que na minorit·ria (Tabela \ref{tab:imb})
  \item bases com mais de cinquenta atributos (Tabela \ref{tab:x})
  \item bases com mais de cinco classes (Tabela \ref{tab:y})
  \item bases com mais de mil exemplos (Tabela \ref{tab:n})
@@ -104,27 +104,27 @@ majorit√°ria do que na minorit√°ria (Tabela \ref{tab:imb})
 
 \input dataset-tables-reduxes
 
-√â poss√≠vel notar a presen√ßa de atributos nominais, por exemplo, na Tabela \ref{tab:datasetsa}.
+… possÌvel notar a presenÁa de atributos nominais, por exemplo, na Tabela \ref{tab:datasetsa}.
 Os algoritmos de aprendizado providos pela ferramenta
 Weka \citep{journals/sigkdd/HallFHPRW09}
-fizeram eventual uso de seus pr√≥prios filtros internos para lidar com esse tipo de atributo,
-mas as \elms e as estrat√©gias baseadas na m√©trica de dist√¢ncia de Mahalanobis precisaram ser
-transformadas com a substitui√ß√£o de atributos nominais por num√©ricos e pela aplica√ß√£o do
-\ing{filtro de padroniza√ß√£o}{z-score} \citep{kreyszig2007advanced}
-para possibilitar os c√°lculos e para evitar matrizes mal condicionadas - respectivamente.
+fizeram eventual uso de seus prÛprios filtros internos para lidar com esse tipo de atributo,
+mas as \elms e as estratÈgias baseadas na mÈtrica de dist‚ncia de Mahalanobis precisaram ser
+transformadas com a substituiÁ„o de atributos nominais por numÈricos e pela aplicaÁ„o do
+\ing{filtro de padronizaÁ„o}{z-score} \citep{kreyszig2007advanced}
+para possibilitar os c·lculos e para evitar matrizes mal condicionadas - respectivamente.
 
 \ano{exemplos repetidos foram removidos,
-mas mantido um deles com a moda dos r√≥tulos}
+mas mantido um deles com a moda dos rÛtulos}
 
 \ano{A quantidade de atributos da base Arcene foi reduzida para 998 devido
-a restri√ß√µes de armazenamento do sistema gerenciador de banco de dados}
+a restriÁıes de armazenamento do sistema gerenciador de banco de dados}
 
 \tar{
 Experiments with Random Projection 2000
 % http://cseweb.ucsd.edu/~dasgupta/papers/randomf.pdf
 preferem RP(O(n)) a PCA (O(n3));
-√© uma boa justificativa para ELM, e bom para reduzir
-rapidamente as dimens√µes de bases enormes para o limite de 1000 do mysql.
+È uma boa justificativa para ELM, e bom para reduzir
+rapidamente as dimensıes de bases enormes para o limite de 1000 do mysql.
  Randomness is now a standard tool in algorithm design;
  for instance, it is the basis of the only known polynomial-time
  algorithm for primality testing.
@@ -137,17 +137,17 @@ clusters.
 }
 
 \section{Algoritmos de aprendizado}\label{learners}
-Cada algoritmo de aprendizado tem, intrinsecamente, um vi√©s pr√≥prio \ano{REF}.
-√â natural esperar que esse vi√©s influencie no desempenho das estrat√©gias gn√≥sticas
-ou que o aprendizado seja afetado pela sequ√™ncia de consultas gerada por uma
-determinada estrat√©gia agn√≥stica.
+Cada algoritmo de aprendizado tem, intrinsecamente, um viÈs prÛprio \ano{REF}.
+… natural esperar que esse viÈs influencie no desempenho das estratÈgias gnÛsticas
+ou que o aprendizado seja afetado pela sequÍncia de consultas gerada por uma
+determinada estratÈgia agnÛstica.
 Dessa forma, diferentes algoritmos de aprendizado
-precisam ser adotados quando alguma compara√ß√£o entre estrat√©gias √© pretendida.
+precisam ser adotados quando alguma comparaÁ„o entre estratÈgias È pretendida.
 
 Seis algoritmos comumente usados e implementados na biblioteca Weka foram adotados
 inicialmente:
-5-NN\footnote{Cinco vizinhos mais pr√≥ximos (nome Weka: IBk).},
-C4.5w\footnote{Implementa√ß√£o baseada no algoritmo de √°rvore de decis√£o C4.5 (nome Weka: J48).},
+5-NN\footnote{Cinco vizinhos mais prÛximos (nome Weka: IBk).},
+C4.5w\footnote{ImplementaÁ„o baseada no algoritmo de ·rvore de decis„o C4.5 (nome Weka: J48).},
 NB\footnote{\textit{Naive Bayes}},
 RF\footnote{\textit{Random Forest}},
 SVM\footnote{\textit{Support Vector Machines}},
@@ -158,46 +158,46 @@ conf/ecml/Lewis98,
 journals/ml/Breiman01,
 hearst1998support,
 conf/kdd/DomingosH00}.
-Adicionalmente, por sua aus√™ncia na literatura de aprendizado ativo e caracter√≠sticas
-distintivas com rela√ß√£o aos outros algoritmos,
-duas variantes das \elms tamb√©m foram adotadas.
+Adicionalmente, por sua ausÍncia na literatura de aprendizado ativo e caracterÌsticas
+distintivas com relaÁ„o aos outros algoritmos,
+duas variantes das \elms tambÈm foram adotadas.
 \ano{duas?}
 
 \subsection{5-NN}
-ponderado pelo complemento da dist√¢ncia euclidiana padronizada \ano{REF pra padroniza√ß√£o}
+ponderado pelo complemento da dist‚ncia euclidiana padronizada \ano{REF pra padronizaÁ„o}
 busca linear ou em KDTree quando $\frac{|\mathcal{U}|}{|A|}\geq10$
 
 \subsection{C4.5w}
-ramifica√ß√£o m√∫ltipla (n√£o apenas bin√°ria)
-fator de confian√ßa na poda $0,25$ (smaller values incur more pruning)
-m√≠nimo de $\min{10, 2|Y|}$ exemplos por folhas
-poda por substitui√ß√£o pelo n√≥ filho
-estimativa de probabilidades com suaviza√ß√£o aditiva \cite{books/daglib/0021593}
+ramificaÁ„o m˙ltipla (n„o apenas bin·ria)
+fator de confianÁa na poda $0,25$ (smaller values incur more pruning)
+mÌnimo de $\min{10, 2|Y|}$ exemplos por folhas
+poda por substituiÁ„o pelo nÛ filho
+estimativa de probabilidades com suavizaÁ„o aditiva \cite{books/daglib/0021593}
 
 \subsection{NB}
-discretiza√ß√£o supervisionada baseada na distribui√ß√£o normal
+discretizaÁ„o supervisionada baseada na distribuiÁ„o normal
 
 \subsection{RFw}
 sem poda
-escolha aleat√≥ria de $\log_2|A| + 1$ atributos por √°rvore
-total de dez √°rvores
+escolha aleatÛria de $\log_2|A| + 1$ atributos por ·rvore
+total de dez ·rvores
 
 \subsection{SVM}
 tipo C-SVC \citep{journals/ml/CortesV95}
-n√∫cleo RBF
+n˙cleo RBF
 $\gamma=0,5$ %inverse of the radius of influence of support vectors
 % classif/learner g=0.5; SVMmulti g=1
 
 $C=1$ %A low C makes the decision surface smooth, high C aims at classifying all training examples correctly
 cache 200MB
-eps=0,001 %toler√¢ncia do crit√©rio de parada SVMmulti eps=0,1
+eps=0,001 %toler‚ncia do critÈrio de parada SVMmulti eps=0,1
 Shrinking(false)
 ProbabilityEstimates(true)
 
-\ano{explicar detalhes da implementa√ß√£o svmlib/weka para multiclasse?}
+\ano{explicar detalhes da implementaÁ„o svmlib/weka para multiclasse?}
 
 \subsection{VFDT}
-Valores padr√£o exceto  graceperiod
+Valores padr„o exceto  graceperiod
 % GracePeriod(math.min(200, pattern.nclasses + newModel.N / 20)
 % Gini
 % erro permitido de 1e-7
@@ -206,160 +206,160 @@ Valores padr√£o exceto  graceperiod
 %  The number of instances (weight) a leaf should observe before allowing naive Bayes to make predictions (NB or NB adaptive only)(default = 0)
 
 \subsection{CIELM}
-n√≥ sigmoide aditivo
-\ano{explicar nr de neur√¥nios}
+nÛ sigmoide aditivo
+\ano{explicar nr de neurÙnios}
 
 \ano{http://www.sciencedirect.com/science/article/pii/S0925231207000677
-mostra tabela comparando tempos onde sigmoide additive √© bem mais r√°pida que RBF.
-√â uma boa justificativa para se escolher additive nodes.
-mostra tb que CI-elm √© melhor que I-elm, BP (e RAN e MRAN) em tempo e acc.
+mostra tabela comparando tempos onde sigmoide additive È bem mais r·pida que RBF.
+… uma boa justificativa para se escolher additive nodes.
+mostra tb que CI-elm È melhor que I-elm, BP (e RAN e MRAN) em tempo e acc.
 }
 
-\section{Estrat√©gias}
-Algumas estrat√©gias exigiram configura√ß√µes espec√≠ficas ou precisaram de adapta√ß√µes para
+\section{EstratÈgias}
+Algumas estratÈgias exigiram configuraÁıes especÌficas ou precisaram de adaptaÁıes para
 problemas multiclasse.
-Essas escolhas s√£o detalhadas nesta se√ß√£o.
+Essas escolhas s„o detalhadas nesta seÁ„o.
 
 \subsection{SVMsim e SVMbal}
-Os c√≥digos originais dos autores das seguintes estrat√©gias \textit{balancedEE}
+Os cÛdigos originais dos autores das seguintes estratÈgias \textit{balancedEE}
 % journals/jmlr/BaramEL04
-foram adaptados para contemplar problemas multiclasse por meio da aplica√ß√£o de
-\ing{rod√≠zio}{round-robin} entre sub-estrat√©gias.
-A cada sub-estrat√©gia foi atribu√≠da uma classe principal,
-na configura√ß√£o \textit{um para muitos}.
+foram adaptados para contemplar problemas multiclasse por meio da aplicaÁ„o de
+\ing{rodÌzio}{round-robin} entre sub-estratÈgias.
+A cada sub-estratÈgia foi atribuÌda uma classe principal,
+na configuraÁ„o \textit{um para muitos}.
 
 \subsection{QBC}
 \ano{explicar aqui detalhes do RF adotado pra QBC?}
 
 \subsection{Unc e Mar}
 Para contemplar problemas multiclasse,
-a amostragem por margem (Se√ß√£o \ref{mar}) foi utilizada como substituta
+a amostragem por margem (SeÁ„o \ref{mar}) foi utilizada como substituta
 nos experimentos deste trabalho.
 
 \subsection{EERent e EERacu}
 Neste trabalho, seguindo a escolha do artigo original,
-optou-se pela entropia como fun√ß√£o objetivo.
-Adicionalmente, a acur√°cia balanceada foi adotada como uma varia√ß√£o do m√©todo,
+optou-se pela entropia como funÁ„o objetivo.
+Adicionalmente, a acur·cia balanceada foi adotada como uma variaÁ„o do mÈtodo,
 visando agir diretamente nas medidas multiclasse de interesse apresentadas na
-Se√ß√£o \ref{metricas}.
-Trata-se de uma m√©trica multiclasse com menos propens√£o a ter valores pr√≥ximos
+SeÁ„o \ref{metricas}.
+Trata-se de uma mÈtrica multiclasse com menos propens„o a ter valores prÛximos
 ou iguais a zero do que a medida kappa, ampliando o alcance da medida de
-informatividade (Se√ß√£o \ref{metricas}).
-\ano{explicitar essa dedu√ß√£o na Se√ß√£o \ref{metricas}}
-Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada itera√ß√£o devido ao
-alto custo computacional da estrat√©gia.
+informatividade (SeÁ„o \ref{metricas}).
+\ano{explicitar essa deduÁ„o na SeÁ„o \ref{metricas}}
+Apenas cem exemplos foram amostrados de $\mathcal{U}$ em cada iteraÁ„o devido ao
+alto custo computacional da estratÈgia.
 
 \subsection{TU}
 \ano{explicar como empreguei mahalanobis nas TUs}
 
 \subsection{Clu}
-A implementa√ß√£o original do autor foi adotada neste trabalho com o mesmo
+A implementaÁ„o original do autor foi adotada neste trabalho com o mesmo
 algoritmo de agrupamento chamado
 \textit{Ward's average linkage method}\footnote{
-Implementa√ß√£o dispon√≠vel no Weka \cite{journals/sigkdd/HallFHPRW09}.}
+ImplementaÁ„o disponÌvel no Weka \cite{journals/sigkdd/HallFHPRW09}.}
 \ano{como traduzir?}
 
 \section{Experimento preliminar}\label{preliminar}
-Dado o grande n√∫mero de estrat√©gias, bases de dados e algoritmos de aprendizado envolvidos,
+Dado o grande n˙mero de estratÈgias, bases de dados e algoritmos de aprendizado envolvidos,
 um experimento reduzido \citep{conf/hais/SantosC14} foi conduzido visando
-a constru√ß√£o de um panorama geral do comportamento das estrat√©gias
-e a defini√ß√£o do dimensionamento mais adequado dos experimentos definitivos
+a construÁ„o de um panorama geral do comportamento das estratÈgias
+e a definiÁ„o do dimensionamento mais adequado dos experimentos definitivos
 aos recursos computacionais.
-Apenas dez estrat√©gias e os algoritmos mais r√°pidos (C4.5, NB, VFDT e 5-NN)
+Apenas dez estratÈgias e os algoritmos mais r·pidos (C4.5, NB, VFDT e 5-NN)
 foram adotados.
-Dez execu√ß√µes de valida√ß√£o cruzada em dez parti√ß√µes totalizaram cem \pools
-para cada base - conforme sugerido na literatura de classifica√ß√£o
+Dez execuÁıes de validaÁ„o cruzada em dez partiÁıes totalizaram cem \pools
+para cada base - conforme sugerido na literatura de classificaÁ„o
 \cite{conf/pakdd/BouckaertF04}.
-As \pools foram consultados at√© o ponto em que a acur√°cia m√°xima da
-melhor estrat√©gia houvesse sido atingida.
+As \pools foram consultados atÈ o ponto em que a acur·cia m·xima da
+melhor estratÈgia houvesse sido atingida.
 
-Aproximadamente um m√™s\footnote{Pausas devido a problemas t√©cnicos inclu√≠das.}
-de experimento foi necess√°rio para apenas a conclus√£o
+Aproximadamente um mÍs\footnote{Pausas devido a problemas tÈcnicos incluÌdas.}
+de experimento foi necess·rio para apenas a conclus„o
 nas vinte e oito menores bases de dados.
 Assim, considerando-se o crescimento exponencial do custo computacional em alguns
-pares \textit{algoritmo de aprendizado}-\textit{estrat√©gia} com o aumento do n√∫mero
-de classes, atributos e/ou exemplos, foi necess√°rio reduzir o procedimento
-de valida√ß√£o (Se√ß√£o \ref{validacao}) e antecipar o t√©rmino das
+pares \textit{algoritmo de aprendizado}-\textit{estratÈgia} com o aumento do n˙mero
+de classes, atributos e/ou exemplos, foi necess·rio reduzir o procedimento
+de validaÁ„o (SeÁ„o \ref{validacao}) e antecipar o tÈrmino das
 consultas.
 
-\section{Avalia√ß√£o}\label{avaliacao}
+\section{AvaliaÁ„o}\label{avaliacao}
 \ano{pro final: quando perde, perde muito feio?}
 
-\subsection{M√©tricas}\label{metricas}
+\subsection{MÈtricas}\label{metricas}
 \esb{Um cara que usa log no eixo X e usa ``Area under the Learning Curve'': url.
 % http://perso.rd.francetelecom.fr/lemaire/publis/ijcnn\_2\_2011\_camera\_ready.pdf
 }
 
 An Easy to Use Repository for Comparing and Improving Machine Learning Algorithm Usage
 % http://arxiv.org/pdf/1405.7292.pdf
-fala sobre guardar resultados a 'instance level' com as predi√ß√µes do classificadores
+fala sobre guardar resultados a 'instance level' com as prediÁıes do classificadores
 
 
 \ano{talvez o primeiro artigo que fala em "area under the learning curve" (chamando confusamente de AUClog): When will feature feedback help? quantifying the complexity of classification problems (2007)
-O pr√≥ximo, sem siglas, √© do Settles (com f-measure e sem log(x)):
+O prÛximo, sem siglas, È do Settles (com f-measure e sem log(x)):
 An analysis of active learning strategies for sequence labeling tasks (2008)
 No "active chalenge 2011",
-que alguns adotam como refer√™ncia para citar ALC, foi usada a AUC verdadeira e log2(x) no c√°lculo (igual ao Cawley):
+que alguns adotam como referÍncia para citar ALC, foi usada a AUC verdadeira e log2(x) no c·lculo (igual ao Cawley):
 http://www.causality.inf.ethz.ch/activelearning.php?page=evaluation
-Por√©m, eles avaliam sem valida√ß√£o cruzada, talvez por limita√ß√£o do pr√≥prio fato de ser uma competi√ß√£o.
-O dataset inteiro √© usado uma s√≥ vez e o teste √© feito em cima de
+PorÈm, eles avaliam sem validaÁ„o cruzada, talvez por limitaÁ„o do prÛprio fato de ser uma competiÁ„o.
+O dataset inteiro È usado uma sÛ vez e o teste È feito em cima de
 "all the samples with unknown labels".
-Isso explica o fato de classificadores semisupervisionados terem alavancado as estrat√©gias na competi√ß√£o.
-J√° estou rodando as estrat√©gias agn√≥sticas com 5x5-fold.
+Isso explica o fato de classificadores semisupervisionados terem alavancado as estratÈgias na competiÁ„o.
+J· estou rodando as estratÈgias agnÛsticas com 5x5-fold.
 Podemos adotar ALC c/ AUC e log(x) para sumarizar os resultados.
 }
 
- Uma medida comum na √°rea de aprendizado ativo
- √© a \textit{√°rea debaixo da curva de aprendizado} (Area under the Learning Curve - ALC)
+ Uma medida comum na ·rea de aprendizado ativo
+ È a \textit{·rea debaixo da curva de aprendizado} (Area under the Learning Curve - ALC)
  \citep{journals/jmlr/GuyonCDL11}.
- Ela consiste no somat√≥rio de alguma medida de desempenho ao longo
+ Ela consiste no somatÛrio de alguma medida de desempenho ao longo
  das consultas.
- Seu intuito √© avaliar o desempenho geral de uma estrat√©gia, ou seja,
- numa ampla faixa de or√ßamentos.
- Assim, a medida se mostra adequada para a tarefa de compara√ß√£o
- de estrat√©gias.
+ Seu intuito È avaliar o desempenho geral de uma estratÈgia, ou seja,
+ numa ampla faixa de orÁamentos.
+ Assim, a medida se mostra adequada para a tarefa de comparaÁ„o
+ de estratÈgias.
  Ela foi adotada em conjunto com a medida kappa -
- resultando no valor m√©dio da medida para toda a sequ√™ncia de consultas.
+ resultando no valor mÈdio da medida para toda a sequÍncia de consultas.
 
 A medida kappa de Cohen \citep{journals/coling/EugenioG04}
-√© utilizada para comparar o grau de consenso entre avaliadores
-tem demonstrado bom poder discriminat√≥rio frente a outras medidas
-que sumarizam a matriz de confus√£o \citep{conf/acivs/DemirkesenC08}.
-Quando aplicada como medida de desempenho de classifica√ß√£o,
+È utilizada para comparar o grau de consenso entre avaliadores
+tem demonstrado bom poder discriminatÛrio frente a outras medidas
+que sumarizam a matriz de confus„o \citep{conf/acivs/DemirkesenC08}.
+Quando aplicada como medida de desempenho de classificaÁ„o,
 ela assume valor $1$ para acerto total, $0$ para desempenho equivalente ao
-aleat√≥rio e $-1$ para erro total.
-Valores intermedi√°rios indicam o qu√£o bom ou ruim √© o clasificador.
-\cite{conf/pkdd/Shah11} apresenta a vers√£o multiclasse para a medida kappa
+aleatÛrio e $-1$ para erro total.
+Valores intermedi·rios indicam o qu„o bom ou ruim È o clasificador.
+\cite{conf/pkdd/Shah11} apresenta a vers„o multiclasse para a medida kappa
 que foi adotada neste trabalho.
-Ela tem a importante propriedade de remeter √† medida original em problemas bin√°rios.
-Por fim, ela permite realizar a compara√ß√£o por dois pontos de vista:
-interestrat√©gias e em rela√ß√£o ao acaso.
-\ano{colocar f√≥rmula da kappa? j√° incluir pseudoALC na f√≥rmula? explicar depois da formula que
-a ALC pro kappa se torna o kappa m√©dio}
+Ela tem a importante propriedade de remeter ‡ medida original em problemas bin·rios.
+Por fim, ela permite realizar a comparaÁ„o por dois pontos de vista:
+interestratÈgias e em relaÁ„o ao acaso.
+\ano{colocar fÛrmula da kappa? j· incluir pseudoALC na fÛrmula? explicar depois da formula que
+a ALC pro kappa se torna o kappa mÈdio}
 
-Outro ponto de vista importante √© em rela√ß√£o ao desempenho passivo.
-Sendo ele dado por apenas um valor para todos os exemplos, n√£o existe
+Outro ponto de vista importante È em relaÁ„o ao desempenho passivo.
+Sendo ele dado por apenas um valor para todos os exemplos, n„o existe
 a possibilidade de se calcular uma ALC.
 Assim, deve ser definido um momento na curva de aprendizado como o
-limite do or√ßamento dispon√≠vel e deve ser avaliado o modelo induzido at√© ent√£o.
-\green{baseline p/ AccBal √© $1/|Y|$ ?}
-O or√ßamento escolhido foi $\cent=\frac{|\mathcal{U}|}{2}$
-% metade dos exemplos dispon√≠veis
+limite do orÁamento disponÌvel e deve ser avaliado o modelo induzido atÈ ent„o.
+\green{baseline p/ AccBal È $1/|Y|$ ?}
+O orÁamento escolhido foi $\cent=\frac{|\mathcal{U}|}{2}$
+% metade dos exemplos disponÌveis
 nas trinta e nove bases com menos de quatrocentos exemplos (Tabela \ref{tab:nm})
 e  $\cent=200$ nas bases restantes.
 % duzentos exemplos
 
-Outra medida poss√≠vel √© a acur√°cia balanceada \citep{journals/bmcbi/MassoV10}.
-Assim como a kappa multiclasse, ela √© adequada para problemas multiclasse desbalanceados.
+Outra medida possÌvel È a acur·cia balanceada \citep{journals/bmcbi/MassoV10}.
+Assim como a kappa multiclasse, ela È adequada para problemas multiclasse desbalanceados.
 
-\ano{colocar f√≥rmula da accbal?}
+\ano{colocar fÛrmula da accbal?}
 
 
 
-\subsection{Valida√ß√£o}\label{validacao}
+\subsection{ValidaÁ„o}\label{validacao}
 Nos experimentos,
 para viabilidade computacional e conforme literatura de aprendizado ativo \ano{REF}
-foram adotadas cinco execu√ß√µes de valida√ß√£o cruzada em cinco partes -
+foram adotadas cinco execuÁıes de validaÁ„o cruzada em cinco partes -
 totalizando vinte e cinco \pools para cada base.
 
 \tar{mencionar detalhes de embaralhamento? e seeds de classificador?}
@@ -367,31 +367,31 @@ totalizando vinte e cinco \pools para cada base.
 \ano{A survey of cross-validation procedures for model selection (2010)
 {http://www.di.ens.fr/willow/pdfs/2010\_Arlot\_Celisse\_SS.pdf}
 ;;;
-tem at√© review de fast CVs.
+tem atÈ review de fast CVs.
 ;;;
 According to Breiman and Spector (1992) the best risk estimator is LOO,
 whereas 10-fold CV is more accurate for model selection.
 }
 
-\subsection{Teste estat√≠stico}
-\ano{citar programa do Cov√µes}
+\subsection{Teste estatÌstico}
+\ano{citar programa do Covıes}
 
-explicar crit√©rio de empate n√£o arbitr√°rio que inventei, pois na constru√ß√£o da √°rvore de nichos
-haveria confus√£o se adotasse apenas os vencedores, por causa da exist√™ncia de estrat√©gias similares.
+explicar critÈrio de empate n„o arbitr·rio que inventei, pois na construÁ„o da ·rvore de nichos
+haveria confus„o se adotasse apenas os vencedores, por causa da existÍncia de estratÈgias similares.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ferramentas}\label{sec:ferramentas}
-Foram utilizados um total de 188 n√∫cleos\footnote{\textit{N√∫cleos} por simplicidade,
+Foram utilizados um total de 188 n˙cleos\footnote{\textit{N˙cleos} por simplicidade,
 mas na realidade cada computador oferecia diferentes unidades de processamento;
 sendo o outro tipo as \textit{threads} na nomenclatura da Intel.} de processamento:
 \begin{itemize}
-\item 24 n√∫cleos de 2,4GHz da \textit{nuvem} USP;
-\item 108 n√∫cleos de 3,5GHz do \textit{cluster} Biocom;
-\item 24 n√∫cleos de 2,5GHz do servidor GPU do laborat√≥rio Biocom;
-\item 8 n√∫cleos de 4GHz da esta√ß√£o de trabalho; e
-\item 8 n√∫cleos de 2,4GHz do \textit{notebook} de trabalho\footnote{Ambos,
-esta√ß√£o e \textit{notebook} vinculados ao orientador do autor deste trabalho.}.
+\item 24 n˙cleos de 2,4GHz da \textit{nuvem} USP;
+\item 108 n˙cleos de 3,5GHz do \textit{cluster} Biocom;
+\item 24 n˙cleos de 2,5GHz do servidor GPU do laboratÛrio Biocom;
+\item 8 n˙cleos de 4GHz da estaÁ„o de trabalho; e
+\item 8 n˙cleos de 2,4GHz do \textit{notebook} de trabalho\footnote{Ambos,
+estaÁ„o e \textit{notebook} vinculados ao orientador do autor deste trabalho.}.
 \end{itemize}
 
 \green{descrever hardware, mysql}

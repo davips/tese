@@ -1,103 +1,101 @@
-\section{An√°lise comparativa}\label{comparativa}
-H√° aplica√ß√µes cujas particularidades ou prefer√™ncias do especialista determinam
+\section{An·lise comparativa}\label{comparativa}
+H· aplicaÁıes cujas particularidades ou preferÍncias do especialista determinam
 previamente o algoritmo de aprendizado. \ano{exemplos?}
-Nessas aplica√ß√µes, o algoritmo do classificador coincide com o algoritmo do aprendiz.
-Por outro lado, h√° aplica√ß√µes em que a escolha do algoritmo √© livre e, definido o
-aprendiz (ou sua aus√™ncia), a escolha do classificador se d√° idealmente a partir do
+Nessas aplicaÁıes, o algoritmo do classificador coincide com o algoritmo do aprendiz.
+Por outro lado, h· aplicaÁıes em que a escolha do algoritmo È livre e, definido o
+aprendiz (ou sua ausÍncia), a escolha do classificador se d· idealmente a partir do
 momento em que o conjunto de treinamento se torne suficientemente grande para
-a realiza√ß√£o de uma valida√ß√£o cruzada \ano{ref?}.
-Para simular esses dois cen√°rios de forma concisa,
-a compara√ß√£o de estrat√©gias est√° dividida da seguinte maneira:
+a realizaÁ„o de uma validaÁ„o cruzada \ano{ref?}.
+Para simular esses dois cen·rios de forma concisa,
+a comparaÁ„o de estratÈgias est· dividida da seguinte maneira:
 \begin{enumerate}
-  \item \textbf{algoritmo pr√©-definido} -
-  cada combina√ß√£o base-algoritmo √© um teste e cada estrat√©gia √© uma abordagem sob compara√ß√£o;
-  o desempenho √© medido durante a evolu√ß√£o do aprendiz.
-  \item \textbf{algoritmo definido ap√≥s rotula√ß√£o} -
-  cada base √© um teste e cada par estrat√©gia-aprendiz √© uma abordagem sob compara√ß√£o;
-  o desempenho √© medido com o melhor classificador obtido ap√≥s a rotula√ß√£o.
+  \item \textbf{algoritmo prÈ-definido} -
+  cada combinaÁ„o base-algoritmo È um teste e cada estratÈgia È uma abordagem sob comparaÁ„o;
+  o desempenho È medido durante a evoluÁ„o do aprendiz.
+  \item \textbf{algoritmo definido apÛs rotulaÁ„o} -
+  cada base È um teste e cada par estratÈgia-aprendiz È uma abordagem sob comparaÁ„o;
+  o desempenho È medido com o melhor classificador obtido apÛs a rotulaÁ„o.
 \end{enumerate}
 
-\subsection{Cen√°rio com algoritmo pr√©-definido}\label{predefinido}
+\subsection{Cen·rio com algoritmo prÈ-definido}\label{predefinido}
 \ano{detalhes do exp aqui ou na metodologia ou nos dois?:
 ALC kappa}
 
-No cen√°rio em que o algoritmo a ser adotado pelo aprendiz e pelo classificador √©
-pr√©-definido, sup√µe-se que a aplica√ß√£o imp√µe
-o algoritmo a ser usado devido √† natureza do problema ou devido a restri√ß√µes do sistema; ou,
-o especialista recorre √† experi√™ncia pessoal ou faz uma escolha arbitr√°ria.
-Assim, todas as combina√ß√µes base-algoritmo foram consideradas poss√≠veis numa aplica√ß√£o real
+No cen·rio em que o algoritmo a ser adotado pelo aprendiz e pelo classificador È
+prÈ-definido, supıe-se que a aplicaÁ„o impıe
+o algoritmo a ser usado devido ‡ natureza do problema ou devido a restriÁıes do sistema; ou,
+o especialista recorre ‡ experiÍncia pessoal ou faz uma escolha arbitr·ria.
+Assim, todas as combinaÁıes base-algoritmo foram consideradas possÌveis numa aplicaÁ„o real
 e puderam ser adotadas como testes no experimento.
 
 % http://research.cs.wisc.edu/techreports/2009/TR1648.pdf
-Estrat√©gias s√£o normalmente avaliadas por meio de curvas de aprendizado,
-que s√£o os gr√°ficos da medida de interesse em fun√ß√£o da quantidade de consultas
+EstratÈgias s„o normalmente avaliadas por meio de curvas de aprendizado,
+que s„o os gr·ficos da medida de interesse em funÁ„o da quantidade de consultas
 \citep{settles2010active}.
 % Figure 3 presents learning curves for the first 100 instances labeled using
 % uncertainty sampling and random sampling.
 % The reported results are for a logistic regression model averaged over ten folds
 % using cross-validation.
-O comportamento t√≠pico da curva de aprendizado ativo seguido pelas diferentes estrat√©gias
-√© ilustrado na Figura \ref{curvas}
-Apesar da pouca discernibilidade das curvas, a exibi√ß√£o delas permite notar
-que elas t√™m a mesma forma logar√≠tmica, com o valor kappa divergindo na medida em que novos
-exemplos s√£o consultados.
+O comportamento tÌpico da curva de aprendizado ativo seguido pelas diferentes estratÈgias
+È ilustrado na Figura \ref{curvas}
+Apesar da pouca discernibilidade das curvas, a exibiÁ„o delas permite notar
+que elas tÍm a mesma forma logarÌtmica, com o valor kappa divergindo na medida em que novos
+exemplos s„o consultados.
 \input plot
 Se todas as bases tivessem a mesma quantidade de exemplos
 e o aprendizado prosseguisse, as curvas se encontrariam novamente,
 pois tendem ao desempenho passivo.
 
-√â poss√≠vel observar que a curva de SVMbal se destaca negativamente,
-mas compara√ß√µes de curvas neste gr√°fico s√£o imprecisas devido aos diferentes
+… possÌvel observar que a curva de SVMbal se destaca negativamente,
+mas comparaÁıes de curvas neste gr·fico s„o imprecisas devido aos diferentes
 pesos que as bases podem ter:
-bases mais dif√≠ceis, por exemplo, tendem a ter um valor mais baixo para kappa e acabam
+bases mais difÌceis, por exemplo, tendem a ter um valor mais baixo para kappa e acabam
 sub-representadas.
-Uma forma de neutraliza√ß√£o desse tipo de desigualdade entre as bases √© a ado√ß√£o
-de ranqueamento das m√©dias\footnote{Al√©m das m√©dias,
-um gr√°fico das medianas tamb√©m foi elaborado e teve um comportamento praticamente igual.
-% com leves perturba√ß√µes irrelevantes
-Por motivos de espa√ßo ele foi omitido.}, conforme mostrado na Figura \ref{curvasrank},
-que confirma o mau desempenho de SVMbal e QBCRFw - as duas estrat√©gias de aprendiz fixo.
+Uma forma de neutralizaÁ„o desse tipo de desigualdade entre as bases È a adoÁ„o
+de ranqueamento das mÈdias\footnote{AlÈm das mÈdias,
+um gr·fico das medianas tambÈm foi elaborado e teve um comportamento praticamente igual.
+% com leves perturbaÁıes irrelevantes
+Por motivos de espaÁo ele foi omitido.}, conforme mostrado na Figura \ref{curvasrank},
+que confirma o mau desempenho de SVMbal e QBCRFw - as duas estratÈgias de aprendiz fixo.
 \input rankplot
-Os aprendizes fixos (SVM e RFw) podem gerar consultas desfavor√°veis aos outros algoritmos
+Os aprendizes fixos (SVM e RFw) podem gerar consultas desfavor·veis aos outros algoritmos
 empregados como classificador (5NN, C4.5w, CIELM e NB).
-De forma mais ampla, pode-se esperar que estrat√©gias gn√≥sticas n√£o tenham um desempenho
+De forma mais ampla, pode-se esperar que estratÈgias gnÛsticas n„o tenham um desempenho
 constante ao longo de todos os seis aprendizes em cada base.
-Essa hip√≥tese seria mais prov√°vel se as estrat√©gias agn√≥sticas (Rnd, Clu e ATUmah) tivessem obtido
-resultados acima da m√©dia, por√©m Rnd e Clu que permaneceram
-abaixo da coloca√ß√£o m√©dia ($5.5$) por praticamente todo o intervalo de consultas.
-ATUmah se manteve pr√≥xima da m√©dia, por√©m com mais vantagem na primeira metade do or√ßamento.
-Assim, √© mais prov√°vel que a pr√≥pria natureza das estrat√©gias seja inferior para o dado conjunto de bases.
+Essa hipÛtese seria mais prov·vel se as estratÈgias agnÛsticas (Rnd, Clu e ATUmah) tivessem obtido
+resultados acima da mÈdia, porÈm Rnd e Clu que permaneceram
+abaixo da colocaÁ„o mÈdia ($5.5$) por praticamente todo o intervalo de consultas.
+ATUmah se manteve prÛxima da mÈdia, porÈm com mais vantagem na primeira metade do orÁamento.
+Assim, È mais prov·vel que a prÛpria natureza das estratÈgias seja inferior para o dado conjunto de bases.
 \ano{muito especulativo}
 
-% DWeuc √© a estrat√©gia Mar ponderada pela densidade, logo, dada a superioridade de Mar,
-% a pondera√ß√£o por densidade pode ser considerada bastante prejudicial quando n√£o leva em
+% DWeuc È a estratÈgia Mar ponderada pela densidade, logo, dada a superioridade de Mar,
+% a ponderaÁ„o por densidade pode ser considerada bastante prejudicial quando n„o leva em
 % conta os exemplos rotulados.
-% Por outro lado, as extens√µes de DW (TU, ATU e GATU) superam as demais, pois ponderam inversamente pela
-% densidade de exemplos rotulados evitando, assim, as regi√µes densamente rotuladas.
-SGmulti, por sua vez, se manteve est√°vel, pouco acima da coloca√ß√£o m√©dia.
-Um evento importante entre as melhores curvas √© a invers√£o entre a estrat√©gia agn√≥stica
-ATUmah e Mar ap√≥s aproximadamente $50$ exemplos.
-Essa invers√£o coincide com a intui√ß√£o de que consultas explorat√≥rias sejam vantajosas
-no in√≠cio do aprendizado, enquanto que consultas prospectivas passem a ser proveitosas
-mais tardiamente.
-Assim, estrat√©gias como HTUmah e TUmah, capazes de combinar agnosticidade e
-gnosticidade, podem ter um bom desempenho tanto no in√≠cio quanto no restante da
-curva de aprendizado conforme evidenciado pelos gr√°ficos obtidos.
-A curva ascendente de Mar, quando vista isoladamente, tamb√©m √© um indicativo de
-que a prospec√ß√£o pura √© prejudicial no in√≠cio e vantajosa com o avan√ßo do aprendizado.
-Por fim, EERent mostrou-se como uma das melhores op√ß√µes pela estabilidade e coloca√ß√£o
-de sua curva.
+% Por outro lado, as extensıes de DW (TU, ATU e GATU) superam as demais, pois ponderam inversamente pela
+% densidade de exemplos rotulados evitando, assim, as regiıes densamente rotuladas.
+SGmulti, por sua vez, se manteve est·vel, pouco acima da colocaÁ„o mÈdia.
+Um evento importante entre as melhores curvas È a invers„o entre a estratÈgia agnÛstica
+ATUmah e Mar apÛs aproximadamente $50$ exemplos.
+Essa invers„o coincide com a intuiÁ„o de que consultas exploratÛrias sejam vantajosas no inÌcio do
+aprendizado, enquanto que consultas prospectivas passem a ser proveitosas mais tardiamente.
+Assim, estratÈgias como HTUmah e TUmah, capazes de combinar agnosticidade e gnosticidade,
+podem ter um bom desempenho tanto no inÌcio quanto no restante da curva de aprendizado
+conforme evidenciado por suas curvas.
+A curva ascendente de Mar, quando vista isoladamente, tambÈm È um indicativo de que a prospecÁ„o pura
+È prejudicial no inÌcio e vantajosa com o avanÁo do aprendizado.
+Por fim, EERent mostrou-se como uma das melhores opÁıes pela estabilidade e colocaÁ„o de sua curva.
 
-Para confirmar as conclus√µes com seguran√ßa estat√≠stica, os n√≠veis de confian√ßa
+Para confirmar as conclusıes com seguranÁa estatÌstica, os nÌveis de confianÁa
 ($p \in \{0,01; 0,05; 0,10\}$) na Tabela \ref{stratsALCKappaFriedAllReduxall} indicam
-quando uma estrat√©gia na linha √© melhor que a outra na coluna.
-O crit√©rio de vit√≥ria √© baseado na compara√ß√£o dos valores da kappa m√©dio para todas as bases.
+quando uma estratÈgia na linha È melhor que a outra na coluna.
+O critÈrio de vitÛria È baseado na comparaÁ„o dos valores da kappa mÈdio para todas as bases.
 A medida foi calculada com $200$ exemplos nas bases de tamanho suficiente
 e $|\mathcal{U}|$ nas demais.
 % \input stratsmahALCKappaFriedAllReduxall
 \begin{table}[h]
-\caption{Um contra um para as estrat√©gias (564 testes).
-Medida: kappa m√©dio. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
+\caption{Um contra um para as estratÈgias (564 testes).
+Medida: kappa mÈdio. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
 
 \begin{center}
 \scalebox{0.82}{
@@ -118,7 +116,7 @@ Medida: kappa m√©dio. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
 \quad
 \scalebox{0.82}{
 \begin{tabular}{lccc}
-algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{√∫ltimos\\lugares} \\
+algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{˙ltimos\\lugares} \\
 \hline
 EERent     & \bom{280} & \bom{168} & 121 \\
 \textbf{HTUmah}     & \bomd{251} & \bomd{179} & \bom{88} \\
@@ -138,53 +136,53 @@ Rnd        & \ruim{71} & - & 225 \\
 
 Como um indicativo da viabilidade do aprendizado ativo em geral, Rnd perde de todas exceto QBCRFw
 e SVMbal.
-Clu superou a amostragem aleat√≥ria, respeitando a garantia te√≥rica de que n√£o √© inferior a ela.
-Dentre as melhores estrat√©gias,
-a proposta HTUmah obteve vit√≥rias maior signific√¢ncia estat√≠stica que sua principal contendente TUmah
+Clu superou a amostragem aleatÛria, respeitando a garantia teÛrica de que n„o È inferior a ela.
+Dentre as melhores estratÈgias,
+a proposta HTUmah obteve vitÛrias maior signific‚ncia estatÌstica que sua principal contendente TUmah
 e se equiparou a EERent.
-Dentre as agn√≥sticas selecionadas ATUmah √© a prefer√≠vel, tamb√©m por superar suas contendentes
+Dentre as agnÛsticas selecionadas ATUmah È a preferÌvel, tambÈm por superar suas contendentes
 significativamente.
-SGmulti obteve um desempenho pr√≥ximo ao de ATUmah.
+SGmulti obteve um desempenho prÛximo ao de ATUmah.
 
 % Se forem consideradas apenas as primeiras 100 consultas -
 % %150 conf/emnlp/SettlesC08
-% valor arbitr√°rio frequentemente adotado em outros trabalhos
+% valor arbitr·rio frequentemente adotado em outros trabalhos
 % \citep{journals/pieee/CrawfordTY13,chermanaprendizado,conf/nips/SettlesCR07,conf/icml/RoyM01} -
-% A compara√ß√£o passa a ser como na Tabela \ref{stratsALCKappaFriedAllReduxHalf}.
+% A comparaÁ„o passa a ser como na Tabela \ref{stratsALCKappaFriedAllReduxHalf}.
 % \input stratsmanALCKappaFriedAllReduxall
 % \input stratseucALCKappaFriedAllReduxall
 % conforme Tabela \ref{stratsALCKappaFriedAllReduxHalf}.
-% $50$ exemplos: quantidade m√°xima antes que o tamanho das bases permita ALCs de tamanhos diferentes
+% $50$ exemplos: quantidade m·xima antes que o tamanho das bases permita ALCs de tamanhos diferentes
 % - conforme Tabela \ref{stratsALCKappaFriedAllRedux50}.
-Em aplica√ß√µes reais, entretanto, a estabilidade do algoritmo pode ser mais importante
-do que o desempenho preditivo m√©dio, pois uma grande variabilidade pode colocar o
-or√ßamento sob o risco de ser gasto sem que seja atingido um desempenho adequado e pode levar a custos
-excedentes de rotula√ß√£o imprevis√≠veis.
-Assim, a estabilidade da estrat√©gia tem fundamental import√¢ncia para a an√°lise do risco financeiro
-da aplica√ß√£o. √â importante enfatizar que o processo de rotula√ß√£o √© irrevers√≠vel,
-impossibilitando a experimenta√ß√£o de mais de uma estrat√©gia.
+Em aplicaÁıes reais, entretanto, a estabilidade do algoritmo pode ser mais importante
+do que o desempenho preditivo mÈdio, pois uma grande variabilidade pode colocar o
+orÁamento sob o risco de ser gasto sem que seja atingido um desempenho adequado e pode levar a custos
+excedentes de rotulaÁ„o imprevisÌveis.
+Assim, a estabilidade da estratÈgia tem fundamental import‚ncia para a an·lise do risco financeiro
+da aplicaÁ„o. … importante enfatizar que o processo de rotulaÁ„o È irreversÌvel,
+impossibilitando a experimentaÁ„o de mais de uma estratÈgia.
 
-De forma an√°loga √†s curvas apresentadas para o valor m√©dio de kappa e o ranqueamento
-correspondente, dois conjuntos de curvas baseadas no desvio padr√£o do valor de kappa foram
-constru√≠dos visando ilustrar o comportamento da vari√¢ncia preditiva a cada instante ao longo
-de sucessivos valores de or√ßamento.
-√â poss√≠vel observar, na Figura \ref{curvasrankdesvio}, que as estrat√©gias ATUmah, HTUmah,
-TUmah e EERent det√™m as melhores coloca√ß√µes no ranqueamento m√©dio dos menores valores de desvio
-padr√£o durante a maior parte do processo de rotula√ß√£o.
+De forma an·loga ‡s curvas apresentadas para o valor mÈdio de kappa e o ranqueamento
+correspondente, dois conjuntos de curvas baseadas no desvio padr„o do valor de kappa foram
+construÌdos visando ilustrar o comportamento da vari‚ncia preditiva a cada instante ao longo
+de sucessivos valores de orÁamento.
+… possÌvel observar, na Figura \ref{curvasrankdesvio}, que as estratÈgias ATUmah, HTUmah,
+TUmah e EERent detÍm as melhores colocaÁıes no ranqueamento mÈdio dos menores valores de desvio
+padr„o durante a maior parte do processo de rotulaÁ„o.
 \input rankplotRisco
 \input plotRisco
 O mesmo ocorre com os ranqueamentos apresentados na Figura \ref{curvasdesvio}.
-Nesse gr√°fico, a dist√¢ncia entre a melhor e a pior curva se mant√©m em torno de $0,01$,
-indicando que, embora algumas sejam mais est√°veis, a faixa ocupada pelas curvas √© estreita.
-por√©m com EERent alternando com TUmah.
-A curva de SGmulti ficou em torno do ranqueamento m√©dio ($5,5$).
+Nesse gr·fico, a dist‚ncia entre a melhor e a pior curva se mantÈm em torno de $0,01$,
+indicando que, embora algumas sejam mais est·veis, a faixa ocupada pelas curvas È estreita.
+porÈm com EERent alternando com TUmah.
+A curva de SGmulti ficou em torno do ranqueamento mÈdio ($5,5$).
 
-Uma propriedade das curvas √© a tend√™ncia de estabiliza√ß√£o durante o treinamento,
-indicando que em baixos or√ßamentos a escolha de estrat√©gias mais est√°veis √© priorit√°ria.
-A signific√¢ncia estat√≠stica das diferen√ßas pode ser verificada na Tabela
+Uma propriedade das curvas È a tendÍncia de estabilizaÁ„o durante o treinamento,
+indicando que em baixos orÁamentos a escolha de estratÈgias mais est·veis È priorit·ria.
+A signific‚ncia estatÌstica das diferenÁas pode ser verificada na Tabela
 \ref{stratsALCKappaFriedAllRiscoReduxall}.
 \begin{table}[h]
-\caption{Um contra um para as estrat√©gias. Medida: desvio padr√£o do kappa m√©dio. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
+\caption{Um contra um para as estratÈgias. Medida: desvio padr„o do kappa mÈdio. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
 \begin{center}
 \begin{tabular}{lcc|cc|cc|cc|cc}
                                   & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
@@ -203,22 +201,22 @@ A signific√¢ncia estat√≠stica das diferen√ßas pode ser verificada na Tabela
 \end{center}
 \end{table}
 
-Finalmente, pode-se concluir que a vers√£o h√≠brida proposta (HTUmah) √© superior a TUmah
+Finalmente, pode-se concluir que a vers„o hÌbrida proposta (HTUmah) È superior a TUmah
 para o conjunto de bases e algoritmos utilizados.
-ATUmah √© vi√°vel enquanto alternativa agn√≥stica.
+ATUmah È vi·vel enquanto alternativa agnÛstica.
 SGmulti obteve um desempenho mediano,
-logo ela pode ser uma candidata a vi√©s de amostragem alternativo num sistema de recomenda√ß√£o.
-Com rela√ß√£o √† minimiza√ß√£o de risco financeiro, 
-novamente as estrat√©gias propostas tamb√©m se mostraram vi√°veis,
-com HTUmah sendo a mais est√°vel - vencendo TUmah com signific√¢ncia estat√≠stica.
+logo ela pode ser uma candidata a viÈs de amostragem alternativo num sistema de recomendaÁ„o.
+Com relaÁ„o ‡ minimizaÁ„o de risco financeiro, 
+novamente as estratÈgias propostas tambÈm se mostraram vi·veis,
+com HTUmah sendo a mais est·vel - vencendo TUmah com signific‚ncia estatÌstica.
 
 
 
 
-A principal dificuldade do cen√°rio explorado nesta se√ß√£o √©, possivelmente, a exist√™ncia de algumas
-combina√ß√µes menos favor√°veis entre as bases e os algoritmos selecionados.
-Algumas delas s√£o percept√≠veis na Figura \ref{treebadleas}.
-A √°rvore indica a contagem de derrotas de cada algoritmo de acordo com a medida kappa.
+A principal dificuldade do cen·rio explorado nesta seÁ„o È, possivelmente, a existÍncia de algumas
+combinaÁıes menos favor·veis entre as bases e os algoritmos selecionados.
+Algumas delas s„o perceptÌveis na Figura \ref{treebadleas}.
+A ·rvore indica a contagem de derrotas de cada algoritmo de acordo com a medida kappa.
 Pequenas reservas de exemplos ($\#\leq142,4$),
 por exemplo, desfavorecem CIELM mais fortemente.
 % \afterpage{\clearpage\begin{landscape}
@@ -232,8 +230,8 @@ decision tree/.style={sibling distance=3cm, level distance=2cm},
 cond/.style={blue, yshift=-2mm, shape=rectangle, text centered},
 }
 \begin{center}
-\caption{Poss√≠veis nichos de inadequa√ß√£o base-algoritmo.
-\textit{M√≠nimo de dez exemplos por folha.}}
+\caption{PossÌveis nichos de inadequaÁ„o base-algoritmo.
+\textit{MÌnimo de dez exemplos por folha.}}
 \begin{tikzpicture} [edge from parent/.style={->,above,draw,sloped,midway,gray!30,ultra thick},
 text width=2.7cm, align=flush center, grow cyclic,
 level 1/.style={level distance=3.2cm,sibling angle=45},
@@ -260,8 +258,8 @@ decision tree/.style={sibling distance=3cm, level distance=2cm},
 cond/.style={blue, yshift=-2mm, shape=rectangle, text centered},
 }
 \begin{center}
-\caption{Poss√≠veis nichos de inadequa√ß√£o base-estrat√©gia-algoritmo.
-\textit{M√≠nimo de dez exemplos por folha.}}
+\caption{PossÌveis nichos de inadequaÁ„o base-estratÈgia-algoritmo.
+\textit{MÌnimo de dez exemplos por folha.}}
 \begin{tikzpicture} [edge from parent/.style={->,above,draw,sloped,midway,gray!30,ultra thick},
 text width=2.7cm, align=flush center, grow cyclic,
 level 1/.style={level distance=3.2cm,sibling angle=180},
@@ -277,15 +275,15 @@ level 5/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling
 \end{figure}
 % % \end{landscape}\clearpage}
 essa arvore acima justifica o cenario abaixo 
-\subsection{Cen√°rio com defini√ß√£o de algoritmo ap√≥s rotula√ß√£o}\label{crf}
-A estrat√©gia espec√≠fica QBC perdeu de todas, exceto GATUman e Rnd,
+\subsection{Cen·rio com definiÁ„o de algoritmo apÛs rotulaÁ„o}\label{crf}
+A estratÈgia especÌfica QBC perdeu de todas, exceto GATUman e Rnd,
 conforme Tabela \ref{stratsALCKappaFriedRFwRedux}.
-GATUman tamb√©m teve um desempenho significativamente negativo.
-Com o algoritmo RFw, as estrat√©gias mais explorat√≥rias ficaram em desvantagem,
-com TUman vencendo todas, exceto Mar, que √© uma estrat√©gia puramente
+GATUman tambÈm teve um desempenho significativamente negativo.
+Com o algoritmo RFw, as estratÈgias mais exploratÛrias ficaram em desvantagem,
+com TUman vencendo todas, exceto Mar, que È uma estratÈgia puramente
 prospectiva.
-SGmulti, Mar e EERent tamb√©m tiveram algum destaque, em oposi√ß√£o ao ocorrido
-na compara√ß√£o de estrat√©gias com algoritmos variados.
+SGmulti, Mar e EERent tambÈm tiveram algum destaque, em oposiÁ„o ao ocorrido
+na comparaÁ„o de estratÈgias com algoritmos variados.
 
 \begin{table}[h]
 \caption{Um contra um (RFw). Medida: ALCKappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
@@ -303,7 +301,7 @@ na compara√ß√£o de estrat√©gias com algoritmos variados.
 9 - QBC         &   &   &   &   &   &   &   &   & - \\\end{tabular}
 \quad
 \begin{tabular}{lccc}
-algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{√∫ltimos\\lugares} \\
+algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{˙ltimos\\lugares} \\
 \hline
 TUmah      & \bom{50} & \bomd{13} & 2 \\
 Mar        & \bomd{19} & 14 & 2 \\
@@ -323,10 +321,10 @@ Clu        & \ruim{1} & 25 & \bomd{1} \\
 \input{stratsfriedKappa}
 
 
-\subsection{Compara√ß√£o SVM}\label{csvm}
+\subsection{ComparaÁ„o SVM}\label{csvm}
 Diferentemente do que ocorreu com RFw, a SVM favoreceu GATUman.
-EERent apareceu como a melhor op√ß√£o, vencendo praticamente todas.
-As estrat√©gias espec√≠ficas n√£o tiveram tantas derrotas quanto a QBC na Se√ß√£o \ref{crf}
+EERent apareceu como a melhor opÁ„o, vencendo praticamente todas.
+As estratÈgias especÌficas n„o tiveram tantas derrotas quanto a QBC na SeÁ„o \ref{crf}
 \begin{table}[h]
 \caption{Um contra um (SVM). Medida: ALCKappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
 \begin{center}
@@ -344,7 +342,7 @@ As estrat√©gias espec√≠ficas n√£o tiveram tantas derrotas quanto a QBC na Se√ß√£
 10 - SVMRBFsim  &   &   &   &   &   &   &   &   &   & - \\ \hline\end{tabular}
 \quad
 \begin{tabular}{lccc}
-algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{√∫ltimos\\lugares} \\
+algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{˙ltimos\\lugares} \\
 \hline
 EERent     & \bom{32} & \bom{19} & \bom{2} \\
 SVMsim     & \bomd{17} & 48 & \ruim{23} \\
@@ -363,17 +361,17 @@ Rnd        & \ruim{0} & - & 11 \\
 \end{table}
 
 
-% \subsection{Compara√ß√£o ELM}\label{celm}
-% Similarmente ao ocorrido com a QBC, a estrat√©gia espec√≠fica da ELM (EMC)
-% perdeu de todas incluindo a amostragem aleat√≥ria.
-% Isso sugere que a proposta n√£o √© vi√°vel.
-% Por√©m, segundo a compara√ß√£o de classificadores da Se√ß√£o \ref{algs},
+% \subsection{ComparaÁ„o ELM}\label{celm}
+% Similarmente ao ocorrido com a QBC, a estratÈgia especÌfica da ELM (EMC)
+% perdeu de todas incluindo a amostragem aleatÛria.
+% Isso sugere que a proposta n„o È vi·vel.
+% PorÈm, segundo a comparaÁ„o de classificadores da SeÁ„o \ref{algs},
 % a ELM teve apenas quatro primeiros lugares dentre as $94$ bases de dados.
-% √â poss√≠vel que a sele√ß√£o de modelos via PRESS tenha influenciado negativamente
-% as predi√ß√µes e consequentemente prejudicado a estimativa de mudan√ßa no modelo.
-% TUmah, EERent e Mar venceram as tr√™s estrat√©gias agn√≥sticas com diferentes
-% graus de signific√¢ncia estat√≠stica.
-% SGmulti superou apenas as estrat√©gias Rnd e Clu.
+% … possÌvel que a seleÁ„o de modelos via PRESS tenha influenciado negativamente
+% as prediÁıes e consequentemente prejudicado a estimativa de mudanÁa no modelo.
+% TUmah, EERent e Mar venceram as trÍs estratÈgias agnÛsticas com diferentes
+% graus de signific‚ncia estatÌstica.
+% SGmulti superou apenas as estratÈgias Rnd e Clu.
 % \begin{table}[h]
 % \caption{Um contra um (ELM). Medida: ALCKappa. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
 % \begin{center}\begin{tabular}{lcc|cc|cc|cc|c}
@@ -389,7 +387,7 @@ Rnd        & \ruim{0} & - & 11 \\
 % 9 - EMC         &   &   &   &   &   &   &   &   & - \\\end{tabular}
 % \quad
 % \begin{tabular}{lccc}
-% algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{√∫ltimos\\lugares} \\
+% algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{˙ltimos\\lugares} \\
 % \hline
 % TUmah      & 28 & 36 & 3 \\
 % EERent     & 18 & 25 & 3 \\
@@ -405,114 +403,114 @@ Rnd        & \ruim{0} & - & 11 \\
 % \end{center}
 % \end{table}
 
-\subsection{S√≠ntese das compara√ß√µes}\label{sintese}
-Estrat√©gias agn√≥sticas t√™m a vantagem de dispensar o aprendiz.
+\subsection{SÌntese das comparaÁıes}\label{sintese}
+EstratÈgias agnÛsticas tÍm a vantagem de dispensar o aprendiz.
 Assim, elas evitam o risco de uma escolha inadequada de algoritmo de aprendizado
 para um dado problema.
-Consequentemente, ATUmah seria a prefer√≠vel no caso de algoritmos variados.
+Consequentemente, ATUmah seria a preferÌvel no caso de algoritmos variados.
 Entretanto, os resultados dos quatro experimentos apontam para diferentes melhores
-estrat√©gias.
-Apesar de ATUmah n√£o ter sido pior que a amostragem aleat√≥ria em nenhum deles,
+estratÈgias.
+Apesar de ATUmah n„o ter sido pior que a amostragem aleatÛria em nenhum deles,
 ela perde de Mar, TUmah e EERent em alguns casos.
 Logo, se for desejado o melhor desempenho para um dado algoritmo,
-ent√£o √© preciso recorrer a algum procedimento que minimize a chance de
-uma escolha inadequada de estrat√©gia.
-Al√©m do algoritmo, o or√ßamento dispon√≠vel e as caracter√≠sticas de cada base tamb√©m
-podem favorecer ou prejudicar certas estrat√©gias.
+ent„o È preciso recorrer a algum procedimento que minimize a chance de
+uma escolha inadequada de estratÈgia.
+AlÈm do algoritmo, o orÁamento disponÌvel e as caracterÌsticas de cada base tambÈm
+podem favorecer ou prejudicar certas estratÈgias.
 
-Nesta se√ß√£o, as estrat√©gias s√£o comparadas com o objetivo de identificar nichos
-em que umas possam se sobressair em rela√ß√£o √†s outras.
+Nesta seÁ„o, as estratÈgias s„o comparadas com o objetivo de identificar nichos
+em que umas possam se sobressair em relaÁ„o ‡s outras.
 Cada nicho corresponde a um algoritmo e um conjunto de bases de dados similares entre si.
 
-Nas √°rvores exibidas nas figuras \ref{treeBest} e \ref{tree},
-√© poss√≠vel observar o papel central do algoritmo de aprendizado sobre
-a estrat√©gia de aprendizado ativo, pois √© a primeira regra em ambas as √°rvores.
-Elas simulam dois cen√°rios com rela√ß√£o √† escolha do algoritmo: quando o mais adequado √© conhecido
-(\ref{treeBest}) e quando ele √© arbitr√°rio (\ref{tree}).
+Nas ·rvores exibidas nas figuras \ref{treeBest} e \ref{tree},
+È possÌvel observar o papel central do algoritmo de aprendizado sobre
+a estratÈgia de aprendizado ativo, pois È a primeira regra em ambas as ·rvores.
+Elas simulam dois cen·rios com relaÁ„o ‡ escolha do algoritmo: quando o mais adequado È conhecido
+(\ref{treeBest}) e quando ele È arbitr·rio (\ref{tree}).
 O primeiro caso resulta em $95$ metaexemplos devido a um empate,
-e o segundo caso tamb√©m resulta em torno de $95$ metaexemplos, por√©m para cada algoritmo,
+e o segundo caso tambÈm resulta em torno de $95$ metaexemplos, porÈm para cada algoritmo,
 totalizando $595$.
-% Apesar de ilustrativa, a √°rvore pode n√£o ser segura do ponto de vista de tomada de
-% decis√£o devido ao baixo grau de pureza das folhas.
+% Apesar de ilustrativa, a ·rvore pode n„o ser segura do ponto de vista de tomada de
+% decis„o devido ao baixo grau de pureza das folhas.
 % \input arvorebest
 % \input arvore
 % \input arvorebestperd
 % \input arvoreperd
 
 % \ref{tree}
-A amostragem aleat√≥ria aparece apenas na folha que representa o uso do 5NN nas quatro bases que t√™m
-uma propor√ß√£o de atributos nominais n√£o muito alta (igual ou abaixo de $77$),
-poucos atributos em geral (igual ou abaixo de $6$) e n√£o muitos exemplos (igual ou abaixo de $1078$).
-Assim, pode-se concluir que n√£o optar pelo aprendizado ativo raramente √© a melhor estrat√©gia.
-Num nicho similar, por√©m com muitos exemplos (acima de $1078$), HTUmah √© a mais indicada.
+A amostragem aleatÛria aparece apenas na folha que representa o uso do 5NN nas quatro bases que tÍm
+uma proporÁ„o de atributos nominais n„o muito alta (igual ou abaixo de $77$),
+poucos atributos em geral (igual ou abaixo de $6$) e n„o muitos exemplos (igual ou abaixo de $1078$).
+Assim, pode-se concluir que n„o optar pelo aprendizado ativo raramente È a melhor estratÈgia.
+Num nicho similar, porÈm com muitos exemplos (acima de $1078$), HTUmah È a mais indicada.
 ATUmah
 
 % \ref{treeBest}
-O algoritmo NB produz estimativas de distribui√ß√£o de probabilidade excessivamente confiantes
-que podem ser amenizadas por um \ing{comit√™ por amostragem}{bagging} \citep{conf/icml/RoyM01}.
-Estrat√©gias que dependem dessas estimativas podem ser prejudicadas.
-ATUmah por ser agn√≥stica √© independente dessas estimativas e aparece como n√≥
+O algoritmo NB produz estimativas de distribuiÁ„o de probabilidade excessivamente confiantes
+que podem ser amenizadas por um \ing{comitÍ por amostragem}{bagging} \citep{conf/icml/RoyM01}.
+EstratÈgias que dependem dessas estimativas podem ser prejudicadas.
+ATUmah por ser agnÛstica È independente dessas estimativas e aparece como nÛ
 folha para esse algoritmo de aprendizado.
-EERent tamb√©m aparece e √© gn√≥stico,
+EERent tambÈm aparece e È gnÛstico,
 mas seu uso da soma das entropias das estimativas de
-probabilidade de todos os exemplos da reserva ameniza o efeito do excesso de confian√ßa.
+probabilidade de todos os exemplos da reserva ameniza o efeito do excesso de confianÁa.
 
-% Algumas ramifica√ß√µes aceitam explica√ß√µes plaus√≠veis:
+% Algumas ramificaÁıes aceitam explicaÁıes plausÌveis:
 % \begin{itemize}
 %  \item
 % 
 % % \esb{When Does Active Learning Work?
-% % confirma que atributos n√£o-discretizados favorecem AL,
+% % confirma que atributos n„o-discretizados favorecem AL,
 % % isso justifica z-score para qq classificador ?
 % % (ao menos RF, SVM, log reg. e QDA usados no artigo).
 % % usa apenas QBC, entropia e random.
 % % }
 % \end{itemize}
 
-\section{algoritmo definido ap√≥s rotula√ß√£o}\label{ind}
+\section{algoritmo definido apÛs rotulaÁ„o}\label{ind}
 algoritmos com boa performance com poucos dados podem ter baixa
 performance com muitos dados
 \citep{journals/sigkdd/AttenbergP10,journals/jmlr/PerlichPS03}.
 
 
-Numa aplica√ß√£o real, a disponibilidade de r√≥tulos permite uma escolha mais adequada
+Numa aplicaÁ„o real, a disponibilidade de rÛtulos permite uma escolha mais adequada
 do algoritmo de aprendizado.
-Assim, estrat√©gias agn√≥sticas e aquelas cujo aprendiz possa ser desvinculado da escolha do
-algoritmo de aprendizado definitivo da aplica√ß√£o se mostram desej√°veis.
-As estrat√©gias agn√≥sticas adiam naturalmente a escolha do algoritmo para depois da
-etapa de rotula√ß√£o.
-Entretanto, elas s√£o desprovidas da capacidade de prospec√ß√£o advinda do v√≠es de
+Assim, estratÈgias agnÛsticas e aquelas cujo aprendiz possa ser desvinculado da escolha do
+algoritmo de aprendizado definitivo da aplicaÁ„o se mostram desej·veis.
+As estratÈgias agnÛsticas adiam naturalmente a escolha do algoritmo para depois da
+etapa de rotulaÁ„o.
+Entretanto, elas s„o desprovidas da capacidade de prospecÁ„o advinda do vÌes de
 aprendizado inerente a todo aprendiz.
-As gn√≥sticas, por sua vez, dependem desse vi√©s desde o in√≠cio da amostragem ativa.
-Apesar disso, √© poss√≠vel adotar um aprendiz compat√≠vel com a estrat√©gia e que tenha um bom
-desempenho geral; depois de obtidos os r√≥tulos, o algoritmo definitivo seria escolhido via valida√ß√£o
+As gnÛsticas, por sua vez, dependem desse viÈs desde o inÌcio da amostragem ativa.
+Apesar disso, È possÌvel adotar um aprendiz compatÌvel com a estratÈgia e que tenha um bom
+desempenho geral; depois de obtidos os rÛtulos, o algoritmo definitivo seria escolhido via validaÁ„o
 cruzada.
 
-O experimento desta se√ß√£o foi formulado para avaliar a viabilidade da independ√™ncia do aprendiz
-enquanto alternativa √†s estrat√©gias agn√≥sticas, simulando uma aplica√ß√£o real.
+O experimento desta seÁ„o foi formulado para avaliar a viabilidade da independÍncia do aprendiz
+enquanto alternativa ‡s estratÈgias agnÛsticas, simulando uma aplicaÁ„o real.
 
 A medida de desempenho (ALC-kappa) 
 
-Nas √°rvores das figuras \ref{treeBestdesf} e  \ref{treedesf},
+Nas ·rvores das figuras \ref{treeBestdesf} e  \ref{treedesf},
 TUmah, por exemplo, pode ser entendido como uma escolha arriscada
-quando o algoritmo √© o 5NN ou aceita apenas atributos nominais, ou seja, requer discretiza√ß√£o.
+quando o algoritmo È o 5NN ou aceita apenas atributos nominais, ou seja, requer discretizaÁ„o.
 
-\esb{neste exp, a necessidade de aplica√ß√£o de filtro √© separada, ex.: o learner precisa,
-mas n√£o obriga o classif a usar ou viceversa;
-a mesma ideia foi estendida para a rela√ß√£o estrat-learner, embora pudesse ter sido
-feito no experimento anterior (posso aproveitar os resultados daqui l√°,
-mas faltaria rodar os hits que n√£o coincidem com o bestlearner):
-a estrat√©gia precisa (maha), mas n√£o obriga o learner a usar  ou viceversa}
+\esb{neste exp, a necessidade de aplicaÁ„o de filtro È separada, ex.: o learner precisa,
+mas n„o obriga o classif a usar ou viceversa;
+a mesma ideia foi estendida para a relaÁ„o estrat-learner, embora pudesse ter sido
+feito no experimento anterior (posso aproveitar os resultados daqui l·,
+mas faltaria rodar os hits que n„o coincidem com o bestlearner):
+a estratÈgia precisa (maha), mas n„o obriga o learner a usar  ou viceversa}
 
-\section{Tempo de espera toler√°vel}
-\ano{para o tempo n√£o √© necess√°rio separar por classificador; basta um fried}
+\section{Tempo de espera toler·vel}
+\ano{para o tempo n„o È necess·rio separar por classificador; basta um fried}
 
 \ano{EER venceu demais. no tempo ele vai perder de todas?}
 
-N√£o √© poss√≠vel auferir tempo durante experimentos de desempenho porque eles s√£o
+N„o È possÌvel auferir tempo durante experimentos de desempenho porque eles s„o
 paralelizados e compartilham cache de processador.
 
-limite de espera pra usu√°rio web √© 15s, √© o m√°ximo aceit√°vel
+limite de espera pra usu·rio web È 15s, È o m·ximo aceit·vel
 \citep{conf/amcis/Nah03}
 
 % Miller (1968) argued for the 2-second rule based on the theory of limitations in human short-
@@ -532,25 +530,25 @@ limite de espera pra usu√°rio web √© 15s, √© o m√°ximo aceit√°vel
 % the download
 
 \esb{
-√© melhor comparar tempos minimos do que tempos medios;
+È melhor comparar tempos minimos do que tempos medios;
 pode haver outlier para cima,
-mas para baixo h√° o limite onde todas as otimiza√ß√µes de hardware j√°
-foram atingidas e a aus√™ncia de outros processos √© total.
-Assim, trata-se de uma grandeza mais compar√°vel entre algoritmos. (ref?)
+mas para baixo h· o limite onde todas as otimizaÁıes de hardware j·
+foram atingidas e a ausÍncia de outros processos È total.
+Assim, trata-se de uma grandeza mais compar·vel entre algoritmos. (ref?)
 }
 
-\tar{rodar um classif. r√°pido de treino e um
-r√°pido de teste em todas as bases, registrar tempo m√©dio de consulta de cada
-estrat√©gia e gerar friedman (espera-se real√ßar vantagem dos agn√≥sticos)}
+\tar{rodar um classif. r·pido de treino e um
+r·pido de teste em todas as bases, registrar tempo mÈdio de consulta de cada
+estratÈgia e gerar friedman (espera-se realÁar vantagem dos agnÛsticos)}
 
 % 
-% e uma faixa de or√ßamentos:
+% e uma faixa de orÁamentos:
 % \begin{itemize}
-%  \item or√ßamento baixo: $|Y|<\cent\leq min(\frac{|\mathcal{U}|}{2},100)$
-%  \item or√ßamento alto: $min(\frac{|\mathcal{U}|}{2},100)<\cent\leq min(|\mathcal{U}|,200)$
+%  \item orÁamento baixo: $|Y|<\cent\leq min(\frac{|\mathcal{U}|}{2},100)$
+%  \item orÁamento alto: $min(\frac{|\mathcal{U}|}{2},100)<\cent\leq min(|\mathcal{U}|,200)$
 % \end{itemize}
 
-\esb{pra provar que o algoritmo √© determinante, basta demonstrar qtas vezes o melhor par contem
+\esb{pra provar que o algoritmo È determinante, basta demonstrar qtas vezes o melhor par contem
 o mesmo algoritmo que venceu na passiva}
 
 \ano{faz sentido testar com o melhor classif porque o user vai ter os rotulos pra poder escolher o melhor,

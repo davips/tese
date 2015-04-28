@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=experimentos.tex
+lastDocument=rankplot.tex
 masterDocument=
 name=Tese
 pkg_extIsRegExp=false
@@ -18,7 +18,7 @@ QuickBuild=
 
 [document-settings,item:../ucipp/uci/metaTreeLearnertrue.arff]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=None
@@ -28,7 +28,7 @@ ReadWrite=true
 
 [document-settings,item:active-learning.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -38,7 +38,7 @@ ReadWrite=true
 
 [document-settings,item:apendice1.tex]
 Bookmarks=
-Encoding=UTF-85
+Encoding=ISO-8859-15
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -48,7 +48,7 @@ ReadWrite=true
 
 [document-settings,item:apendice2.tex]
 Bookmarks=
-Encoding=UTF-85
+Encoding=ISO-8859-15
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -58,7 +58,7 @@ ReadWrite=true
 
 [document-settings,item:apendice3.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -68,7 +68,7 @@ ReadWrite=true
 
 [document-settings,item:apendice4.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -86,19 +86,9 @@ Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:arvore.tex]
-Bookmarks=
-Encoding=UTF-8
-FoldedColumns=
-FoldedLines=
-Highlighting=LaTeX
-Indentation Mode=normal
-Mode=LaTeX
-ReadWrite=true
-
 [document-settings,item:arvorealg.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -108,7 +98,7 @@ ReadWrite=true
 
 [document-settings,item:arvorebest.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -118,7 +108,7 @@ ReadWrite=true
 
 [document-settings,item:arvorebestperd.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -128,7 +118,7 @@ ReadWrite=true
 
 [document-settings,item:arvoreperd.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -138,7 +128,7 @@ ReadWrite=true
 
 [document-settings,item:bibliografia.bib]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=BibTeX
@@ -148,7 +138,7 @@ ReadWrite=true
 
 [document-settings,item:capa.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -158,7 +148,7 @@ ReadWrite=true
 
 [document-settings,item:classifsTab.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -168,7 +158,7 @@ ReadWrite=true
 
 [document-settings,item:conclusao.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -178,17 +168,7 @@ ReadWrite=true
 
 [document-settings,item:contexto.tex]
 Bookmarks=
-Encoding=UTF-8
-FoldedColumns=
-FoldedLines=
-Highlighting=LaTeX
-Indentation Mode=normal
-Mode=LaTeX
-ReadWrite=true
-
-[document-settings,item:dataset-tables-reduxes.tex]
-Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -198,7 +178,7 @@ ReadWrite=true
 
 [document-settings,item:dataset-tables.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -208,7 +188,7 @@ ReadWrite=true
 
 [document-settings,item:elm.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -218,7 +198,7 @@ ReadWrite=true
 
 [document-settings,item:exp-analise.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -228,7 +208,7 @@ ReadWrite=true
 
 [document-settings,item:exp-elm.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -238,7 +218,7 @@ ReadWrite=true
 
 [document-settings,item:exp-meta.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -248,7 +228,7 @@ ReadWrite=true
 
 [document-settings,item:experimentos.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -258,7 +238,7 @@ ReadWrite=true
 
 [document-settings,item:imagens/fluxo-esquema.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 Highlighting=LaTeX
 Indentation Mode=
 Mode=LaTeX
@@ -266,7 +246,7 @@ ReadWrite=true
 
 [document-settings,item:imagens/macros-pgf.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -276,7 +256,7 @@ ReadWrite=true
 
 [document-settings,item:imagens/memquerysyn-esquema.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 Highlighting=LaTeX
 Indentation Mode=
 Mode=LaTeX
@@ -284,7 +264,7 @@ ReadWrite=true
 
 [document-settings,item:imagens/poolbased-esquema.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -294,7 +274,7 @@ ReadWrite=true
 
 [document-settings,item:introducao.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -304,7 +284,7 @@ ReadWrite=true
 
 [document-settings,item:kappa1mahamediaallRank.plot]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=None
@@ -314,7 +294,7 @@ ReadWrite=false
 
 [document-settings,item:kappamahmediaallRank.plot]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=None
@@ -324,7 +304,7 @@ ReadWrite=true
 
 [document-settings,item:kappamediaParesReduxRank.plot]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=None
@@ -334,7 +314,7 @@ ReadWrite=true
 
 [document-settings,item:kappamediaallReduxRank.plot]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=None
@@ -344,7 +324,7 @@ ReadWrite=true
 
 [document-settings,item:macros.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -354,7 +334,7 @@ ReadWrite=true
 
 [document-settings,item:meta.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -364,7 +344,7 @@ ReadWrite=true
 
 [document-settings,item:metodologia.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -374,7 +354,7 @@ ReadWrite=true
 
 [document-settings,item:notacao.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -384,7 +364,7 @@ ReadWrite=true
 
 [document-settings,item:passiveDists-old.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -394,7 +374,7 @@ ReadWrite=true
 
 [document-settings,item:plot.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -404,7 +384,7 @@ ReadWrite=true
 
 [document-settings,item:plotRisco.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -414,7 +394,7 @@ ReadWrite=true
 
 [document-settings,item:propostas.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-15
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -424,7 +404,7 @@ ReadWrite=true
 
 [document-settings,item:rankplot.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -434,7 +414,7 @@ ReadWrite=true
 
 [document-settings,item:rankplotRisco.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -444,7 +424,7 @@ ReadWrite=true
 
 [document-settings,item:resumo.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -454,7 +434,7 @@ ReadWrite=true
 
 [document-settings,item:stratDists.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -464,7 +444,7 @@ ReadWrite=false
 
 [document-settings,item:stratDistsRedux.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -474,7 +454,7 @@ ReadWrite=true
 
 [document-settings,item:stratsALCKappa5NN.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -484,7 +464,7 @@ ReadWrite=true
 
 [document-settings,item:stratsALCKappaFriedSVMRedux.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -494,7 +474,7 @@ ReadWrite=true
 
 [document-settings,item:stratsALCKappaFriedbest.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -504,7 +484,7 @@ ReadWrite=true
 
 [document-settings,item:stratsALCKappaNB.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -514,7 +494,7 @@ ReadWrite=true
 
 [document-settings,item:stratsALCKappaRFRedux.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -524,7 +504,7 @@ ReadWrite=true
 
 [document-settings,item:stratsmahALCKappaFriedAllReduxall.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -534,7 +514,7 @@ ReadWrite=true
 
 [document-settings,item:stratsmahALCKappaFriedAllRiscoReduxall.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -544,7 +524,7 @@ ReadWrite=true
 
 [document-settings,item:tese.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -554,7 +534,7 @@ ReadWrite=true
 
 [document-settings,item:topologia.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -564,27 +544,7 @@ ReadWrite=true
 
 [document-settings,item:tree.tex]
 Bookmarks=
-Encoding=UTF-8
-FoldedColumns=
-FoldedLines=
-Highlighting=LaTeX
-Indentation Mode=normal
-Mode=LaTeX
-ReadWrite=true
-
-[document-settings,item:treeALCKappa.tex]
-Bookmarks=
-Encoding=UTF-8
-FoldedColumns=
-FoldedLines=
-Highlighting=LaTeX
-Indentation Mode=normal
-Mode=LaTeX
-ReadWrite=true
-
-[document-settings,item:treeALCKappaperd.tex]
-Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -594,7 +554,7 @@ ReadWrite=true
 
 [document-settings,item:treeBestfalse.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -604,7 +564,7 @@ ReadWrite=true
 
 [document-settings,item:treeBesttrue.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -614,7 +574,7 @@ ReadWrite=true
 
 [document-settings,item:treetrue.tex]
 Bookmarks=
-Encoding=UTF-8
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -625,7 +585,7 @@ ReadWrite=true
 [item:../ucipp/uci/metaTreeLearnertrue.arff]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=None
 line=0
 mode=
@@ -634,18 +594,18 @@ order=-1
 
 [item:active-learning.tex]
 archive=true
-column=42
-encoding=UTF-8
+column=18
+encoding=ISO-8859-1
 highlight=LaTeX
-line=1
+line=442
 mode=LaTeX
-open=true
+open=false
 order=5
 
 [item:apendice1.tex]
 archive=true
 column=101
-encoding=UTF-85
+encoding=ISO-8859-15
 highlight=LaTeX
 line=100
 mode=LaTeX
@@ -655,9 +615,9 @@ order=9
 [item:apendice2.tex]
 archive=true
 column=0
-encoding=UTF-85
+encoding=ISO-8859-15
 highlight=LaTeX
-line=15
+line=0
 mode=LaTeX
 open=false
 order=3
@@ -665,7 +625,7 @@ order=3
 [item:apendice3.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=1
 mode=LaTeX
@@ -675,7 +635,7 @@ order=4
 [item:apendice4.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=71
 mode=LaTeX
@@ -692,20 +652,10 @@ mode=LaTeX
 open=false
 order=-1
 
-[item:arvore.tex]
-archive=true
-column=0
-encoding=UTF-8
-highlight=LaTeX
-line=15
-mode=LaTeX
-open=false
-order=-1
-
 [item:arvorealg.tex]
 archive=true
 column=68
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=15
 mode=LaTeX
@@ -714,10 +664,10 @@ order=4
 
 [item:arvorebest.tex]
 archive=true
-column=0
-encoding=UTF-8
+column=25
+encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=12
 mode=LaTeX
 open=false
 order=3
@@ -725,7 +675,7 @@ order=3
 [item:arvorebestperd.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=2
 mode=LaTeX
@@ -735,7 +685,7 @@ order=2
 [item:arvoreperd.tex]
 archive=true
 column=43
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=6
 mode=LaTeX
@@ -745,7 +695,7 @@ order=1
 [item:bibliografia.bib]
 archive=true
 column=3
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=BibTeX
 line=1796
 mode=BibTeX
@@ -755,7 +705,7 @@ order=1
 [item:capa.tex]
 archive=true
 column=6
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=15
 mode=LaTeX
@@ -765,7 +715,7 @@ order=3
 [item:classifsTab.tex]
 archive=true
 column=64
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=13
 mode=LaTeX
@@ -775,7 +725,7 @@ order=-1
 [item:conclusao.tex]
 archive=true
 column=60
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=3
 mode=LaTeX
@@ -784,28 +734,18 @@ order=-1
 
 [item:contexto.tex]
 archive=true
-column=18
-encoding=UTF-8
+column=1
+encoding=ISO-8859-1
 highlight=LaTeX
-line=1
+line=73
 mode=LaTeX
-open=true
-order=4
-
-[item:dataset-tables-reduxes.tex]
-archive=true
-column=0
-encoding=UTF-8
-highlight=LaTeX
-line=0
-mode=LaTeX
-open=true
-order=11
+open=false
+order=0
 
 [item:dataset-tables.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=5
 mode=LaTeX
@@ -814,20 +754,20 @@ order=-1
 
 [item:elm.tex]
 archive=true
-column=11
-encoding=UTF-8
+column=0
+encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=242
 mode=LaTeX
-open=true
-order=7
+open=false
+order=0
 
 [item:exp-analise.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
-line=1
+line=59
 mode=LaTeX
 open=true
 order=0
@@ -835,7 +775,7 @@ order=0
 [item:exp-elm.tex]
 archive=true
 column=30
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=33
 mode=LaTeX
@@ -845,7 +785,7 @@ order=3
 [item:exp-meta.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=188
 mode=LaTeX
@@ -854,18 +794,18 @@ order=2
 
 [item:experimentos.tex]
 archive=true
-column=0
-encoding=UTF-8
+column=40
+encoding=ISO-8859-1
 highlight=LaTeX
-line=218
+line=170
 mode=LaTeX
-open=true
-order=12
+open=false
+order=2
 
 [item:imagens/fluxo-esquema.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=25
 mode=LaTeX
@@ -874,10 +814,10 @@ order=5
 
 [item:imagens/macros-pgf.tex]
 archive=true
-column=1
-encoding=UTF-8
+column=0
+encoding=ISO-8859-1
 highlight=LaTeX
-line=2
+line=4
 mode=LaTeX
 open=false
 order=3
@@ -885,7 +825,7 @@ order=3
 [item:imagens/memquerysyn-esquema.tex]
 archive=true
 column=15
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=12
 mode=LaTeX
@@ -895,7 +835,7 @@ order=4
 [item:imagens/poolbased-esquema.tex]
 archive=true
 column=20
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=12
 mode=LaTeX
@@ -904,18 +844,18 @@ order=3
 
 [item:introducao.tex]
 archive=true
-column=19
-encoding=UTF-8
+column=31
+encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=145
 mode=LaTeX
-open=true
-order=3
+open=false
+order=2
 
 [item:kappa1mahamediaallRank.plot]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=None
 line=0
 mode=
@@ -925,7 +865,7 @@ order=-1
 [item:kappamahmediaallRank.plot]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=None
 line=0
 mode=
@@ -935,7 +875,7 @@ order=-1
 [item:kappamediaParesReduxRank.plot]
 archive=true
 column=75
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=None
 line=0
 mode=
@@ -945,7 +885,7 @@ order=-1
 [item:kappamediaallReduxRank.plot]
 archive=true
 column=79
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=None
 line=0
 mode=
@@ -955,7 +895,7 @@ order=6
 [item:macros.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=22
 mode=LaTeX
@@ -964,38 +904,38 @@ order=3
 
 [item:meta.tex]
 archive=true
-column=25
-encoding=UTF-8
+column=35
+encoding=ISO-8859-1
 highlight=LaTeX
-line=2
+line=108
 mode=LaTeX
-open=true
-order=8
+open=false
+order=0
 
 [item:metodologia.tex]
 archive=true
-column=27
-encoding=UTF-8
+column=0
+encoding=ISO-8859-1
 highlight=LaTeX
-line=1
+line=143
 mode=LaTeX
-open=true
-order=10
+open=false
+order=6
 
 [item:notacao.tex]
 archive=true
-column=29
-encoding=UTF-8
+column=41
+encoding=ISO-8859-1
 highlight=LaTeX
-line=0
+line=23
 mode=LaTeX
-open=true
-order=6
+open=false
+order=1
 
 [item:passiveDists-old.tex]
 archive=true
 column=59
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=8
 mode=LaTeX
@@ -1004,20 +944,20 @@ order=-1
 
 [item:plot.tex]
 archive=true
-column=0
-encoding=UTF-8
+column=159
+encoding=ISO-8859-1
 highlight=LaTeX
-line=12
+line=15
 mode=LaTeX
-open=false
+open=true
 order=1
 
 [item:plotRisco.tex]
 archive=true
-column=14
-encoding=UTF-8
+column=4
+encoding=ISO-8859-1
 highlight=LaTeX
-line=2
+line=17
 mode=LaTeX
 open=false
 order=-1
@@ -1025,47 +965,47 @@ order=-1
 [item:propostas.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-15
 highlight=LaTeX
-line=5
+line=168
 mode=LaTeX
-open=true
-order=9
+open=false
+order=3
 
 [item:rankplot.tex]
 archive=true
-column=160
-encoding=UTF-8
+column=151
+encoding=ISO-8859-1
 highlight=LaTeX
-line=20
+line=11
 mode=LaTeX
-open=false
+open=true
 order=2
 
 [item:rankplotRisco.tex]
 archive=true
-column=14
-encoding=UTF-8
+column=0
+encoding=ISO-8859-1
 highlight=LaTeX
-line=1
+line=23
 mode=LaTeX
 open=false
 order=-1
 
 [item:resumo.tex]
 archive=true
-column=26
-encoding=UTF-8
+column=0
+encoding=ISO-8859-1
 highlight=LaTeX
-line=1
+line=56
 mode=LaTeX
-open=true
+open=false
 order=2
 
 [item:stratDists.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=2
 mode=LaTeX
@@ -1075,7 +1015,7 @@ order=-1
 [item:stratDistsRedux.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=2
 mode=LaTeX
@@ -1085,7 +1025,7 @@ order=-1
 [item:stratsALCKappa5NN.tex]
 archive=true
 column=13
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=33
 mode=LaTeX
@@ -1095,7 +1035,7 @@ order=-1
 [item:stratsALCKappaFriedSVMRedux.tex]
 archive=true
 column=11
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=16
 mode=LaTeX
@@ -1105,7 +1045,7 @@ order=2
 [item:stratsALCKappaFriedbest.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=4
 mode=LaTeX
@@ -1115,7 +1055,7 @@ order=-1
 [item:stratsALCKappaNB.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=0
 mode=LaTeX
@@ -1125,7 +1065,7 @@ order=-1
 [item:stratsALCKappaRFRedux.tex]
 archive=true
 column=1
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=4
 mode=LaTeX
@@ -1135,7 +1075,7 @@ order=-1
 [item:stratsmahALCKappaFriedAllReduxall.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=2
 mode=LaTeX
@@ -1145,7 +1085,7 @@ order=3
 [item:stratsmahALCKappaFriedAllRiscoReduxall.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=0
 mode=LaTeX
@@ -1155,17 +1095,17 @@ order=2
 [item:tese.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
-line=213
+line=263
 mode=LaTeX
-open=true
-order=1
+open=false
+order=2
 
 [item:topologia.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=0
 mode=LaTeX
@@ -1175,29 +1115,9 @@ order=-1
 [item:tree.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=32
-mode=LaTeX
-open=false
-order=-1
-
-[item:treeALCKappa.tex]
-archive=true
-column=10
-encoding=UTF-8
-highlight=LaTeX
-line=248
-mode=LaTeX
-open=false
-order=-1
-
-[item:treeALCKappaperd.tex]
-archive=true
-column=1
-encoding=UTF-8
-highlight=LaTeX
-line=298
 mode=LaTeX
 open=false
 order=-1
@@ -1205,7 +1125,7 @@ order=-1
 [item:treeBestfalse.tex]
 archive=true
 column=49
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=88
 mode=LaTeX
@@ -1215,7 +1135,7 @@ order=-1
 [item:treeBesttrue.tex]
 archive=true
 column=112
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=26
 mode=LaTeX
@@ -1225,7 +1145,7 @@ order=4
 [item:treetrue.tex]
 archive=true
 column=0
-encoding=UTF-8
+encoding=ISO-8859-1
 highlight=LaTeX
 line=31
 mode=LaTeX
@@ -1239,8 +1159,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:active-learning.tex]
-CursorColumn=42
-CursorLine=1
+CursorColumn=18
+CursorLine=442
 JumpList=
 ViMarks=
 
@@ -1252,7 +1172,7 @@ ViMarks=
 
 [view-settings,view=0,item:apendice2.tex]
 CursorColumn=0
-CursorLine=15
+CursorLine=0
 JumpList=
 ViMarks=
 
@@ -1274,12 +1194,6 @@ CursorLine=2
 JumpList=
 ViMarks=
 
-[view-settings,view=0,item:arvore.tex]
-CursorColumn=0
-CursorLine=15
-JumpList=
-ViMarks=
-
 [view-settings,view=0,item:arvorealg.tex]
 CursorColumn=68
 CursorLine=15
@@ -1287,8 +1201,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:arvorebest.tex]
-CursorColumn=0
-CursorLine=0
+CursorColumn=25
+CursorLine=12
 JumpList=
 ViMarks=
 
@@ -1329,14 +1243,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:contexto.tex]
-CursorColumn=18
-CursorLine=1
-JumpList=
-ViMarks=
-
-[view-settings,view=0,item:dataset-tables-reduxes.tex]
-CursorColumn=0
-CursorLine=0
+CursorColumn=1
+CursorLine=73
 JumpList=
 ViMarks=
 
@@ -1347,14 +1255,14 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:elm.tex]
-CursorColumn=11
-CursorLine=0
+CursorColumn=0
+CursorLine=242
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:exp-analise.tex]
 CursorColumn=0
-CursorLine=1
+CursorLine=59
 JumpList=
 ViMarks=
 
@@ -1371,8 +1279,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:experimentos.tex]
-CursorColumn=0
-CursorLine=218
+CursorColumn=40
+CursorLine=170
 JumpList=
 ViMarks=
 
@@ -1381,8 +1289,8 @@ CursorColumn=0
 CursorLine=25
 
 [view-settings,view=0,item:imagens/macros-pgf.tex]
-CursorColumn=1
-CursorLine=2
+CursorColumn=0
+CursorLine=4
 JumpList=
 ViMarks=
 
@@ -1397,8 +1305,8 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:introducao.tex]
-CursorColumn=19
-CursorLine=0
+CursorColumn=31
+CursorLine=145
 JumpList=
 ViMarks=
 
@@ -1433,20 +1341,20 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:meta.tex]
-CursorColumn=25
-CursorLine=2
+CursorColumn=35
+CursorLine=108
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:metodologia.tex]
-CursorColumn=27
-CursorLine=1
+CursorColumn=0
+CursorLine=143
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:notacao.tex]
-CursorColumn=29
-CursorLine=0
+CursorColumn=41
+CursorLine=23
 JumpList=
 ViMarks=
 
@@ -1457,38 +1365,38 @@ JumpList=
 ViMarks=
 
 [view-settings,view=0,item:plot.tex]
-CursorColumn=0
-CursorLine=12
+CursorColumn=159
+CursorLine=15
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:plotRisco.tex]
-CursorColumn=14
-CursorLine=2
+CursorColumn=4
+CursorLine=17
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:propostas.tex]
 CursorColumn=0
-CursorLine=5
+CursorLine=168
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:rankplot.tex]
-CursorColumn=160
-CursorLine=20
+CursorColumn=151
+CursorLine=11
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:rankplotRisco.tex]
-CursorColumn=14
-CursorLine=1
+CursorColumn=0
+CursorLine=23
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:resumo.tex]
-CursorColumn=26
-CursorLine=1
+CursorColumn=0
+CursorLine=56
 JumpList=
 ViMarks=
 
@@ -1548,7 +1456,7 @@ ViMarks=
 
 [view-settings,view=0,item:tese.tex]
 CursorColumn=0
-CursorLine=213
+CursorLine=263
 JumpList=
 ViMarks=
 
@@ -1561,18 +1469,6 @@ ViMarks=
 [view-settings,view=0,item:tree.tex]
 CursorColumn=0
 CursorLine=32
-JumpList=
-ViMarks=
-
-[view-settings,view=0,item:treeALCKappa.tex]
-CursorColumn=10
-CursorLine=248
-JumpList=
-ViMarks=
-
-[view-settings,view=0,item:treeALCKappaperd.tex]
-CursorColumn=1
-CursorLine=298
 JumpList=
 ViMarks=
 

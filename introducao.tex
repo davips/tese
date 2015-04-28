@@ -1,70 +1,70 @@
-\chapter{Introdu√ß√£o} \label{cap:intro}
-Atualmente, o aprendizado de m√°quina permeia o cotidiano humano
-provendo aux√≠lio em tarefas diversas.
-\ano{citar algumas(gps,digita√ß√£o,fala))? precisa de ref?}
-Seu bom desempenho, na tarefa de classifica√ß√£o, depende da exist√™ncia de:
+\chapter{IntroduÁ„o} \label{cap:intro}
+Atualmente, o aprendizado de m·quina permeia o cotidiano humano
+provendo auxÌlio em tarefas diversas.
+\ano{citar algumas(gps,digitaÁ„o,fala))? precisa de ref?}
+Seu bom desempenho, na tarefa de classificaÁ„o, depende da existÍncia de:
 \begin{itemize}
- \item \textbf{amostragem} de dados de qualidade para constru√ß√£o de um acervo \ano{acervo?};
- \item um processo de \textbf{categoriza√ß√£o} desses dados que exponha conhecimento
+ \item \textbf{amostragem} de dados de qualidade para construÁ„o de um acervo \ano{acervo?};
+ \item um processo de \textbf{categorizaÁ„o} desses dados que exponha conhecimento
  suficiente para a tarefa desejada; e,
  \item um algoritmo de \textbf{aprendizado} adequado.
 \end{itemize}
-Enquanto a \textit{categoriza√ß√£o} dos dados √© normalmente
+Enquanto a \textit{categorizaÁ„o} dos dados È normalmente
 realizada por um supervisor humano que atribui categorias/classes para cada objeto/exemplo
 de interesse contido nos dados,
 a forma de \textit{amostragem} de exemplos
-e a determina√ß√£o do algoritmo de \textit{aprendizado} dependem de
+e a determinaÁ„o do algoritmo de \textit{aprendizado} dependem de
 um segundo especialista,
-com conhecimento espec√≠fico da √°rea de aprendizado de m√°quina.
+com conhecimento especÌfico da ·rea de aprendizado de m·quina.
 
 \ano{citar problemas? fadiga ...}
 
 O segundo especialista pode resolver o problema da escolha do algoritmo
-recorrendo √† sua experi√™ncia pessoal ou adotando algum sistema autom√°tico de
-recomenda√ß√£o como o \textit{meta-aprendizado} conforme descrito no
-Cap√≠tulo \ref{meta}.
-Ambas as abordagens, manual e autom√°tica,
-s√£o aplic√°veis apenas no cen√°rio em que o acervo, chamado de conjunto de treinamento,
-j√° est√° constru√≠do.
+recorrendo ‡ sua experiÍncia pessoal ou adotando algum sistema autom·tico de
+recomendaÁ„o como o \textit{meta-aprendizado} conforme descrito no
+CapÌtulo \ref{meta}.
+Ambas as abordagens, manual e autom·tica,
+s„o aplic·veis apenas no cen·rio em que o acervo, chamado de conjunto de treinamento,
+j· est· construÌdo.
 Consequentemente, a escolha do processo de amostragem,
 denominado \textit{aprendizado ativo},
-precede a determina√ß√£o do algoritmo de aprendizado.
-\ano{isso contradiz o cen√°rio em que o aprendiz √© definido de antem√£o,
-que √© parte dos experimentos}
+precede a determinaÁ„o do algoritmo de aprendizado.
+\ano{isso contradiz o cen·rio em que o aprendiz È definido de antem„o,
+que È parte dos experimentos}
 
 Da mesma forma que existe o problema da escolha do algoritmo de aprendizado
-mais apropriado, existe o problema da escolha da melhor estrat√©gia de
+mais apropriado, existe o problema da escolha da melhor estratÈgia de
 aprendizado ativo.
-O segundo problema √© mais complexo, tendo-se em vista que o sucesso
-da estrat√©gia escolhida s√≥ pode ser determinado ap√≥s ter-se incorrido
-em custos financeiros com a atividade de supervis√£o - que √© realizada
-frequentemente por um humano, chamado genericamente de \textit{or√°culo}.
-% Est√° impl√≠cita na sele√ß√£o de dados de qualidade a economia em tempo de processamento e
-% de supervis√£o, dado que apenas a parcela reduzida de exemplos mais relevantes
-% √© enviada para a an√°lise do or√°culo e processada pelo algoritmo de aprendizado.
+O segundo problema È mais complexo, tendo-se em vista que o sucesso
+da estratÈgia escolhida sÛ pode ser determinado apÛs ter-se incorrido
+em custos financeiros com a atividade de supervis„o - que È realizada
+frequentemente por um humano, chamado genericamente de \textit{or·culo}.
+% Est· implÌcita na seleÁ„o de dados de qualidade a economia em tempo de processamento e
+% de supervis„o, dado que apenas a parcela reduzida de exemplos mais relevantes
+% È enviada para a an·lise do or·culo e processada pelo algoritmo de aprendizado.
 % Como agravante, a quantidade global de dados duplica a cada dois anos
 % \citep{journals/sigkdd/ZliobaiteBGGGMM12}, apontando
-% para uma tend√™ncia que torna intrat√°vel a supervis√£o e aprendizado exaustivos
-% em muitas aplica√ß√µes.
+% para uma tendÍncia que torna intrat·vel a supervis„o e aprendizado exaustivos
+% em muitas aplicaÁıes.
 % 
-% Por outro lado, aplica√ß√µes em que o or√°culo √© um processo qu√≠mico, por exemplo,
-% envolvem consumo de material ou a destrui√ß√£o dos exemplos consultados.
-% Apesar de n√£o envolver a manuten√ß√£o dispendiosa de um or√°culo humano
-% e possivelmente n√£o requerer uma filtragem massiva de exemplos,
+% Por outro lado, aplicaÁıes em que o or·culo È um processo quÌmico, por exemplo,
+% envolvem consumo de material ou a destruiÁ„o dos exemplos consultados.
+% Apesar de n„o envolver a manutenÁ„o dispendiosa de um or·culo humano
+% e possivelmente n„o requerer uma filtragem massiva de exemplos,
 % cada consulta tem um custo associado.
-Dessa forma, √© preciso adotar uma estrat√©gia
-com base em previs√µes de desempenho ou de acordo com caracter√≠sticas da base
+Dessa forma, È preciso adotar uma estratÈgia
+com base em previsıes de desempenho ou de acordo com caracterÌsticas da base
 de dados.
-Na pr√°tica, essa escolha tem sido quase arbitr√°ria, tendendo a se concentrar
-no uso da estrat√©gia mais simples (amostragem por incerteza).
-Essa prefer√™ncia foi reportada numa competi√ß√£o de aprendizado ativo,
-onde tamb√©m prevaleceu a aus√™ncia de estrat√©gias possivelmente mais efetivas
+Na pr·tica, essa escolha tem sido quase arbitr·ria, tendendo a se concentrar
+no uso da estratÈgia mais simples (amostragem por incerteza).
+Essa preferÍncia foi reportada numa competiÁ„o de aprendizado ativo,
+onde tambÈm prevaleceu a ausÍncia de estratÈgias possivelmente mais efetivas
 como as baseadas em densidade conforme
 Figura \ref{compet}.
-\ano{√© mesmo mais efetiva? por qu√™?}
+\ano{È mesmo mais efetiva? por quÍ?}
 \begin{figure}
-\caption{Frequ√™ncia de uso de estrat√©gias na competi√ß√£o de aprendizado ativo
-(alguns participantes adotaram mais de uma estrat√©gia).
+\caption{FrequÍncia de uso de estratÈgias na competiÁ„o de aprendizado ativo
+(alguns participantes adotaram mais de uma estratÈgia).
 \textit{Adaptado de \citep{journals/jmlr/GuyonCDL11}.}}
 \label{compet}
 \begin{center}
@@ -78,11 +78,11 @@ Figura \ref{compet}.
     ytick={1,2,3,4,5,6,7},
     yticklabels={
     {amostragem por incerteza},
-    {amostragem aleat√≥ria},
-    {consulta por comit√™},
+    {amostragem aleatÛria},
+    {consulta por comitÍ},
     {aprendizado passivo},
-    {redu√ß√£o do erro esperado},
-    {mudan√ßa esperada no modelo},
+    {reduÁ„o do erro esperado},
+    {mudanÁa esperada no modelo},
     {outras}
     },
 %         enlarge y limits=0.4,
@@ -108,89 +108,89 @@ Figura \ref{compet}.
 % challenge:
 % global_score = (ALC-Arand)/(Amax-Arand)       Amax = 1
 % semi-supervised learning is needed to achieve good performance in the first part of the learning curve
-% (usar ou n√£o semisupervised √© um problema √† parte, que faz parter do learner, n√£o da estrat√©gia; classificadores semisupervisionados s√£o melhores, mas n√£o √© isso que se est√° avaliando quando se comparam estrat√©gias; ensembles, feature selection e SMOTE tamb√©m ajudam e nem por isso precisam ser empregados na compara√ß√£o de estrat√©gias)
+% (usar ou n„o semisupervised È um problema ‡ parte, que faz parter do learner, n„o da estratÈgia; classificadores semisupervisionados s„o melhores, mas n„o È isso que se est· avaliando quando se comparam estratÈgias; ensembles, feature selection e SMOTE tambÈm ajudam e nem por isso precisam ser empregados na comparaÁ„o de estratÈgias)
 
 
-Em conson√¢ncia com esse panorama,
-est√° a aus√™ncia de estudos comparativos
+Em conson‚ncia com esse panorama,
+est· a ausÍncia de estudos comparativos
 abrangentes que possam guiar o especialista na fase de amostragem.
-% - at√© onde o conhecimento do autor permite dizer - 
-\ano{AL √© uma √°rea com enfoque pr√°tico, pois visa diretamente a redu√ß√£o de custos.
-Provavelmente por esse motivo, a pesquisa em AL √© normalmente direcionada a
-aplica√ß√µes espec√≠ficas e n√£o a experimentos comparativos abrangentes.}
+% - atÈ onde o conhecimento do autor permite dizer - 
+\ano{AL È uma ·rea com enfoque pr·tico, pois visa diretamente a reduÁ„o de custos.
+Provavelmente por esse motivo, a pesquisa em AL È normalmente direcionada a
+aplicaÁıes especÌficas e n„o a experimentos comparativos abrangentes.}
 
 
 \esb{comenta possiveis deficiencias ou
 lacunas das estrategias existentes (pensando nas que vou propor),
 apresenta melhorias propostas;
-apresenta recomenda√ß√£o de classificador e/ou estrat√©gia;
-apresenta hip√≥teses principal e secund√°rias.
+apresenta recomendaÁ„o de classificador e/ou estratÈgia;
+apresenta hipÛteses principal e secund·rias.
 Falar ainda dos objetivos da tese, que estao bem ligados as hipoteses}
 
-Hip√≥teses secund√°rias
-Estrat√©gias baseadas em densidade s√£o vi√°veis \ano{muito fraca essa palavra?} sem um aprendiz
+HipÛteses secund·rias
+EstratÈgias baseadas em densidade s„o vi·veis \ano{muito fraca essa palavra?} sem um aprendiz
 objetivo: contornar o problema de escolha do algoritmo de aprendizado antes
-da obten√ß√£o dos r√≥tulos (transformando uma estrat√©gia eficaz em agn√≥stica)
+da obtenÁ„o dos rÛtulos (transformando uma estratÈgia eficaz em agnÛstica)
 
-√â poss√≠vel definir a estrat√©gia mais adequada \ano{muito forte essas duas palavras?} por meio de recomenda√ß√£o autom√°tica
-objetivo: resolver o problema de escolha da estrat√©gia quando o algoritmo de
-aprendizado √© dado previamente pela aplica√ß√£o (com recomenda√ß√£o autom√°tica)
-
-
+… possÌvel definir a estratÈgia mais adequada \ano{muito forte essas duas palavras?} por meio de recomendaÁ„o autom·tica
+objetivo: resolver o problema de escolha da estratÈgia quando o algoritmo de
+aprendizado È dado previamente pela aplicaÁ„o (com recomendaÁ„o autom·tica)
 
 
-\section{Contribui√ß√£o}\label{contribuicao}
+
+
+\section{ContribuiÁ„o}\label{contribuicao}
 \esb{cita os artigos/software publicados e submetidos; menciona
-metodologia, compara com Everton e de que forma organiza a √°rea}
+metodologia, compara com Everton e de que forma organiza a ·rea}
 
-\section{Cen√°rio}\label{cenario}
-Existem tr√™s principais cen√°rios na literatura de aprendizado ativo
+\section{Cen·rio}\label{cenario}
+Existem trÍs principais cen·rios na literatura de aprendizado ativo
 \citep{settles2010active}:
-\textit{s√≠ntese de consulta por associa√ß√£o} ou
+\textit{sÌntese de consulta por associaÁ„o} ou
 \ing{consulta de exemplos sintetizados}{membership query synthesis};
 \ing{amostragem baseada em \pool}{pool-based sampling}; e
 \ing{amostragem seletiva baseada em fluxo}{stream-based selective sampling}.
-Mais detalhes s√£o apresentados no Ap√™ndice \ref{cenarios}.
-O cen√°rio adotado neste trabalho √© baseado em \pool.
-Especificamente, h√° as seguintes restri√ß√µes de escopo:
+Mais detalhes s„o apresentados no ApÍndice \ref{cenarios}.
+O cen·rio adotado neste trabalho È baseado em \pool.
+Especificamente, h· as seguintes restriÁıes de escopo:
 \begin{itemize}
- \item consulta pela classe (n√£o por valores de atributos, por exemplo);
- \item monorr√≥tulo;
- \item distribui√ß√£o estacion√°ria;
- \item custo por erro de classifica√ß√£o uniforme;
+ \item consulta pela classe (n„o por valores de atributos, por exemplo);
+ \item monorrÛtulo;
+ \item distribuiÁ„o estacion·ria;
+ \item custo por erro de classificaÁ„o uniforme;
  \item custo por consulta uniforme;
- \item or√°culo √∫nico e constante sujeito a ru√≠do;
- \item os dom√≠nios dos atributos nominais s√£o previamente conhecidos;
+ \item or·culo ˙nico e constante sujeito a ruÌdo;
+ \item os domÌnios dos atributos nominais s„o previamente conhecidos;
  \item atributos sem valores faltantes;
  \item consulta \ing{um a um}{on-line}.
 \end{itemize}
 
 \section{Estrutura do documento}\label{estrutura}
-O contexto da pesquisa, a nota√ß√£o matem√°tica e a terminologia adotadas e a revis√£o da literatura das √°reas
-envolvidas neste trabalho s√£o apresentados no Cap√≠tulo \ref{contexto}.
-No Cap√≠tulo \ref{propostas},
-s√£o apresentadas as propostas de algoritmos.
-O Cap√≠tulo \ref{metodologia} cont√©m os m√©todos de avalia√ß√£o e detalhes de
-implementa√ß√£o comuns a todos os experimentos descritos neste documento.
-Essa avalia√ß√£o emp√≠rica e seus resultados associados s√£o apresentados
-no Cap√≠tulo \ref{experimentos}.
+O contexto da pesquisa, a notaÁ„o matem·tica e a terminologia adotadas e a revis„o da literatura das ·reas
+envolvidas neste trabalho s„o apresentados no CapÌtulo \ref{contexto}.
+No CapÌtulo \ref{propostas},
+s„o apresentadas as propostas de algoritmos.
+O CapÌtulo \ref{metodologia} contÈm os mÈtodos de avaliaÁ„o e detalhes de
+implementaÁ„o comuns a todos os experimentos descritos neste documento.
+Essa avaliaÁ„o empÌrica e seus resultados associados s„o apresentados
+no CapÌtulo \ref{experimentos}.
 Adicionalmente, uma abordagem baseada em meta-aprendizado
-√© proposta e avaliada no Cap√≠tulo \ref{aml}.
-Por fim, uma an√°lise geral unificada das contribui√ß√µes da tese e
-desdobramentos futuros s√£o apresentados no
-Cap√≠tulo \ref{conclusao}.
-Detalhes sobre os cen√°rios de aprendizado ativo, resultados,
-formata√ß√£o, estilo e terminologia podem ser encontrados nos ap√™ndices \ano{ <- revisar}.
+È proposta e avaliada no CapÌtulo \ref{aml}.
+Por fim, uma an·lise geral unificada das contribuiÁıes da tese e
+desdobramentos futuros s„o apresentados no
+CapÌtulo \ref{conclusao}.
+Detalhes sobre os cen·rios de aprendizado ativo, resultados,
+formataÁ„o, estilo e terminologia podem ser encontrados nos apÍndices \ano{ <- revisar}.
 
-\ano{mencionar apendice de rev. sistem√°tica? outros aps?}
+\ano{mencionar apendice de rev. sistem·tica? outros aps?}
 
 %
-% No Cap√≠tulo \ref{cap:classificacao}, √© apresentada a nota√ß√£o utilizada neste trabalho juntamente com um texto introdut√≥rio sobre aprendizado supervisionado para contextualizar as duas revis√µes bibliogr√°ficas que o seguem: a primeira sobre \textit{ensembles} e a segunda sobre \textit{fluxos de dados}.
-% Ao final, \textit{ensembles} voltados especificamente a fluxos de dados s√£o revisados.
+% No CapÌtulo \ref{cap:classificacao}, È apresentada a notaÁ„o utilizada neste trabalho juntamente com um texto introdutÛrio sobre aprendizado supervisionado para contextualizar as duas revisıes bibliogr·ficas que o seguem: a primeira sobre \textit{ensembles} e a segunda sobre \textit{fluxos de dados}.
+% Ao final, \textit{ensembles} voltados especificamente a fluxos de dados s„o revisados.
 %
-% No Cap√≠tulo \ref{cap:aprendizado-ativo}, o \textit{aprendizado ativo} √© descrito em detalhes a respeito dos cen√°rios mais comuns e das estrat√©gias normalmente adotadas.
-% Os trabalhos recentes nos quais se baseia diretamente a linha investigativa adotada s√£o explicitados na Se√ß√£o \ref{sec:panorama}.
+% No CapÌtulo \ref{cap:aprendizado-ativo}, o \textit{aprendizado ativo} È descrito em detalhes a respeito dos cen·rios mais comuns e das estratÈgias normalmente adotadas.
+% Os trabalhos recentes nos quais se baseia diretamente a linha investigativa adotada s„o explicitados na SeÁ„o \ref{sec:panorama}.
 %
-% O plano de trabalho √© apresentado no Cap√≠tulo \ref{cap:plano} e contempla a situa√ß√£o atual do aluno no programa de doutorado, os recursos dispon√≠veis, as hip√≥teses formuladas, a metodologia e o cronograma.
+% O plano de trabalho È apresentado no CapÌtulo \ref{cap:plano} e contempla a situaÁ„o atual do aluno no programa de doutorado, os recursos disponÌveis, as hipÛteses formuladas, a metodologia e o cronograma.
 %
-% Finalmente, no Cap√≠tulo \ref{cap:experimentos}, s√£o mostrados experimentos ilustrativos da mudan√ßa de conceito e da diversidade de comportamento entre diferentes classificadores.
+% Finalmente, no CapÌtulo \ref{cap:experimentos}, s„o mostrados experimentos ilustrativos da mudanÁa de conceito e da diversidade de comportamento entre diferentes classificadores.

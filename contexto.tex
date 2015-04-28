@@ -1,74 +1,74 @@
 \chapter{Contexto} \label{contexto}
-Neste capÃ­tulo, sÃ£o introduzidos os temas pertinentes a esta tese.
-Na SeÃ§Ã£o \ref{apsup},
-a classificaÃ§Ã£o em aprendizado de mÃ¡quina Ã© apresentada.
-O assunto central, que engloba o aprendizado ativo e suas principais estratÃ©gias,
-Ã© introduzido nas seÃ§Ãµes \ref{aprendizado-ativo} e \ref{estrategias} respectivamente.
-A SeÃ§Ã£o \ref{notacao} antecede a exposiÃ§Ã£o das estratÃ©gias visando
-definir a notaÃ§Ã£o adotada na descriÃ§Ã£o delas e no restante do documento.
-Na SeÃ§Ã£o \ref{elmorig}, as \elms sÃ£o especificamente detalhadas por serem os algoritmos
-de aprendizado mais recentes dentre os empregados, pela sua ausÃªncia na literatura de
-aprendizado ativo e pela adaptaÃ§Ã£o de uma estratÃ©gia especÃ­fica para ela (CapÃ­tulo \ref{propostas}).
-Finalmente, na SeÃ§Ã£o \ref{meta}, Ã© feita uma breve revisÃ£o sobre meta-aprendizado.
-\ano{os outros classificadores vÃ£o ser mencionados
-neste capÃ­tulo ou sÃ³ a partir do cap. de metodologia?}
-% O foco deste trabalho estÃ¡ no problema de se lidar com a variedade
-% existente de estratÃ©gias de aprendizado ativo e suas eventuais
-% afinidades com diferentes domÃ­nios de aplicaÃ§Ã£o e algoritmos de aprendizado.
+Neste capítulo, são introduzidos os temas pertinentes a esta tese.
+Na Seção \ref{apsup},
+a classificação em aprendizado de máquina é apresentada.
+O assunto central, que engloba o aprendizado ativo e suas principais estratégias,
+é introduzido nas seções \ref{aprendizado-ativo} e \ref{estrategias} respectivamente.
+A Seção \ref{notacao} antecede a exposição das estratégias visando
+definir a notação adotada na descrição delas e no restante do documento.
+Na Seção \ref{elmorig}, as \elms são especificamente detalhadas por serem os algoritmos
+de aprendizado mais recentes dentre os empregados, pela sua ausência na literatura de
+aprendizado ativo e pela adaptação de uma estratégia específica para ela (Capítulo \ref{propostas}).
+Finalmente, na Seção \ref{meta}, é feita uma breve revisão sobre meta-aprendizado.
+\ano{os outros classificadores vão ser mencionados
+neste capítulo ou só a partir do cap. de metodologia?}
+% O foco deste trabalho está no problema de se lidar com a variedade
+% existente de estratégias de aprendizado ativo e suas eventuais
+% afinidades com diferentes domínios de aplicação e algoritmos de aprendizado.
 % 
 % Com esse intuito,
-% vÃ¡rios algoritmos comumente usados para classificaÃ§Ã£o foram adotados.
+% vários algoritmos comumente usados para classificação foram adotados.
 % Adicionalmente,
-% um tipo de algoritmo, atÃ© onde alcanÃ§a o conhecimento do autor,
+% um tipo de algoritmo, até onde alcança o conhecimento do autor,
 % nunca utilizado para aprendizado ativo foi adotado.
-% Esse algoritmo, chamado de \elm, Ã© descrito na SeÃ§Ã£o \ref{elm}
-% juntamente com algumas de suas variaÃ§Ãµes.
-% Complementarmente Ã  tarefa de escolha manual da estratÃ©gia mais adequada para um
-% dado problema, um esquema automÃ¡tico de recomendaÃ§Ã£o de estratÃ©gias
+% Esse algoritmo, chamado de \elm, é descrito na Seção \ref{elm}
+% juntamente com algumas de suas variações.
+% Complementarmente à tarefa de escolha manual da estratégia mais adequada para um
+% dado problema, um esquema automático de recomendação de estratégias
 % baseado em meta-aprendizado foi empregado - abordagem possivelmente sem
 % precedentes na literatura.
-% Dessa forma, uma introduÃ§Ã£o ao meta-aprendizado Ã© o assunto da
-% SeÃ§Ã£o \ref{meta}.
+% Dessa forma, uma introdução ao meta-aprendizado é o assunto da
+% Seção \ref{meta}.
 
-\section{ClassificaÃ§Ã£o}\label{apsup}
-Algumas habilidades humanas vÃªm claramente programadas geneticamente
-e outras sÃ£o apenas a execuÃ§Ã£o de passos memorizados,
-como Ã©, respectivamente, o caso da amamentaÃ§Ã£o e o trabalho efetuado numa
-determinada posiÃ§Ã£o de uma linha de montagem industrial.
-Apesar do amplo escopo de aÃ§Ã£o desses dois tipos de conhecimento,
-ainda resta um vasto espectro de novas habilidades adquirÃ­veis
-sem que seja necessÃ¡ria uma programaÃ§Ã£o prÃ©via.
-Dois exemplos desse espectro sÃ£o a alfabetizaÃ§Ã£o e
+\section{Classificação}\label{apsup}
+Algumas habilidades humanas vêm claramente programadas geneticamente
+e outras são apenas a execução de passos memorizados,
+como é, respectivamente, o caso da amamentação e o trabalho efetuado numa
+determinada posição de uma linha de montagem industrial.
+Apesar do amplo escopo de ação desses dois tipos de conhecimento,
+ainda resta um vasto espectro de novas habilidades adquiríveis
+sem que seja necessária uma programação prévia.
+Dois exemplos desse espectro são a alfabetização e
 o reconhecimento de novos objetos.
-Trata-se de habilidades aprendidas por humanos em que Ã© difÃ­cil
+Trata-se de habilidades aprendidas por humanos em que é difícil
 identificar os algoritmos nos quais se baseiam.
-A identificaÃ§Ã£o da categoria de determinado objeto de interesse
-Ã© parte importante das potencialidades
-de agentes inteligentes e Ã© chamada de \textit{classificaÃ§Ã£o}.
+A identificação da categoria de determinado objeto de interesse
+é parte importante das potencialidades
+de agentes inteligentes e é chamada de \textit{classificação}.
 Essa, por sua vez, depende de um \textit{modelo} baseado nos
 dados fornecidos por um supervisor.
-A induÃ§Ã£o desse modelo ocorre por meio de um processo de \textit{aprendizado}.
+A indução desse modelo ocorre por meio de um processo de \textit{aprendizado}.
 
-\textit{Aprendizado de mÃ¡quina} Ã© a Ã¡rea que engloba algoritmos capazes de
+\textit{Aprendizado de máquina} é a área que engloba algoritmos capazes de
 aprender - construir modelos - sem
-programaÃ§Ã£o explÃ­cita \citep{journals/cacm/Valiant84}.
-Diversas tarefas como \ano{tarefa de mÃ¡quina 1, tarefa2, ... REFERENCIA}
-tÃªm sido bem sucedidas atualmente.
-Entretanto, durante a construÃ§Ã£o do modelo, Ã© desejÃ¡vel saber
-que parte dos dados Ã© relevante.
-Esse Ã© um problema em aberto que pode ser entendido como uma busca
+programação explícita \citep{journals/cacm/Valiant84}.
+Diversas tarefas como \ano{tarefa de máquina 1, tarefa2, ... REFERENCIA}
+têm sido bem sucedidas atualmente.
+Entretanto, durante a construção do modelo, é desejável saber
+que parte dos dados é relevante.
+Esse é um problema em aberto que pode ser entendido como uma busca
 pela melhor maneira de amostragem dos dados
 na etapa que antecede o treinamento do algoritmo.
-A motivaÃ§Ã£o para essa busca pode frequentemente advir
+A motivação para essa busca pode frequentemente advir
 da intratabilidade de um excesso de dados
-ou da escassez de recursos para manutenÃ§Ã£o de um especialista no
+ou da escassez de recursos para manutenção de um especialista no
 papel de supervisor.
 Ambos os casos podem se beneficiar do tipo de
 aprendizado denominado \textit{ativo} - apresentado
-na SeÃ§Ã£o \ref{aprendizado-ativo}.
+na Seção \ref{aprendizado-ativo}.
 
  \input active-learning
  \input elm
  \input meta
-\section{ConsideraÃ§Ãµes}
+\section{Considerações}
  
