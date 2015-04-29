@@ -1,4 +1,7 @@
 \documentclass[12pt,twoside]{book}
+\usepackage[utf8]{inputenc}
+% \inputencoding{latin1}
+
 \usepackage{scrextend}
 % \usepackage{cite}
 % \usepackage[pdftex]{graphicx}
@@ -136,13 +139,13 @@
     \dp0=0in\ht0=0in\box0}}
 
 \include{macros}
-% \usepackage{parallel} % para as equações de medidas multilabel
+% \usepackage{parallel} % para as equacoes de medidas multilabel
 
 %%%%%%%%%%%%%%%% FORMATACAO DE PALAVRAS %%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\nf }[1] % nome de ferramenta
     {\textsc{#1}}
-\newcommand{\pe }[1] % termo em inglês
+\newcommand{\pe }[1] % termo em ingles
     {\textit{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -197,7 +200,6 @@
 \usepackage{afterpage}
 \usepackage{capt-of}
 
-\inputencoding{latin1}
 
 \begin{document}
 \definecolor{darkgreen}{rgb}{0.0, 0.4, 0.0}
@@ -207,8 +209,6 @@
 \newcommand{\autor}{\meunome}
 \newcommand{\orientador}{\meuorientador}
 \newcommand{\nota}{Tese apresentada ao Instituto de Ciências Matemáticas e de Computação - ICMC-USP, para o Exame de Qualificação, como parte dos requisitos necessários à obtenção do título de \meugrau\xspace em Ciências de Computação e Matemática Computacional.}
-%\newcommand{\nota}{Monografia apresentada à disciplina de Metodologia de Pesquisa Científica em Inteligência Artificial, no Instituto de Ciências Matemáticas e de Computação - ICMC-USP, como parte dos requisitos necessários à obtenção dos créditos relacionados à disciplina.}
-
 \newcommand{\data}{\minhadata}
 \newcommand{\comentario}{\minhabolsa}
 \input{capa}

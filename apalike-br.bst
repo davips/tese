@@ -347,8 +347,8 @@ FUNCTION {format.edition}
 { edition empty$
     { "" }
     { output.state mid.sentence =
-	{ edition "l" change.case$ "ª edição" * }
-	{ edition "t" change.case$ "ª edição" * }
+	{ edition "l" change.case$ "Âª ediÃ§Ã£o" * }
+	{ edition "t" change.case$ "Âª ediÃ§Ã£o" * }
       if$
     }
   if$
@@ -382,8 +382,8 @@ FUNCTION {format.pages}
     { pages multi.page.check
 	%{ "pages" pages n.dashify tie.or.space.connect }
 	%{ "page" pages tie.or.space.connect }
-	{ "páginas" pages n.dashify tie.or.space.connect }
-	{ "página" pages tie.or.space.connect }
+	{ "pÃ¡ginas" pages n.dashify tie.or.space.connect }
+	{ "pÃ¡gina" pages tie.or.space.connect }
       if$
     }
   if$
@@ -449,7 +449,7 @@ FUNCTION {format.thesis.type}
 FUNCTION {format.tr.number}
 { type empty$
    % { "Technical Report" }
-    { "Relatório Técnico" }
+    { "RelatÃ³rio TÃ©cnico" }
     'type
   if$
   number empty$
@@ -667,7 +667,7 @@ FUNCTION {mastersthesis}
   format.title "title" output.check
   new.block
   % "Master's thesis" format.thesis.type output.nonnull
-  "Dissertação de Mestrado" format.thesis.type output.nonnull
+  "DissertaÃ§Ã£o de Mestrado" format.thesis.type output.nonnull
   school "school" output.check
   address output
   new.block
