@@ -2,10 +2,10 @@
 \ano{revisar completamente}
 
 
-fronteira de decis„o conforme mostrado na Figura \ref{fig:fronteiras}.
-Supondo-se uma \textbf{distribuiÁ„o estacion·ria}, ou seja, um conceito imut·vel,
-pode-se deduzir com certeza o rÛtulo de qualquer novo exemplo apenas pela sua
-informaÁ„o de localizaÁ„o com relaÁ„o ‡ fronteira: se pertencente ‡ ·rea interna ou externa.
+fronteira de decis√£o conforme mostrado na Figura \ref{fig:fronteiras}.
+Supondo-se uma \textbf{distribui√ß√£o estacion√°ria}, ou seja, um conceito imut√°vel,
+pode-se deduzir com certeza o r√≥tulo de qualquer novo exemplo apenas pela sua
+informa√ß√£o de localiza√ß√£o com rela√ß√£o √† fronteira: se pertencente √† √°rea interna ou externa.
 
 \pgfplotsset{width=12cm,compat=1.5.1}
 \begin{figure}
@@ -17,72 +17,72 @@ informaÁ„o de localizaÁ„o com relaÁ„o ‡ fronteira: se pertencente ‡ ·rea interna
 }; \addlegendentry{doente}
 \addplot[only marks,mark=text,text mark=\Q{$-$},mark options={red,scale=1}] plot coordinates {
     (40.2,1.6) (41.3,1.65) (42.2,1.70) (50,1.80) (80,1.54) (83,1.66) (85,1.63) (93,1.7)
-}; \addlegendentry{saud·vel}
+}; \addlegendentry{saud√°vel}
 \addplot[thick, mark=none, teal] plot coordinates {
     (57,1.86) (40,1.5) (70,1.55) (95,1.8) (57,1.86)
 };
 \end{axis}
 \end{tikzpicture}
-\caption{Exemplo de fronteira de decis„o.}
+\caption{Exemplo de fronteira de decis√£o.}
 \label{fig:fronteiras}
 \end{center}
 \end{figure}
 
 
-\textbf{HipÛtese} È um conjunto de restriÁıes nos atributos normalmente denominado pela
+\textbf{Hip√≥tese} √© um conjunto de restri√ß√µes nos atributos normalmente denominado pela
 letra $h$ \citep{mitchell1997machine}.
-%definiÁ„o do livro, eu acho que pode haver outros tipos de hipoteses,
-% como por exemplo, restriÁıes num espaÁo de par‚metros.
-Essas restriÁıes delimitam um subconjunto de todos os exemplos possÌveis,
+%defini√ß√£o do livro, eu acho que pode haver outros tipos de hipoteses,
+% como por exemplo, restri√ß√µes num espa√ßo de par√¢metros.
+Essas restri√ß√µes delimitam um subconjunto de todos os exemplos poss√≠veis,
 pois determinam quais valores cada atributo aceita.
-As restriÁıes s„o as necess·rias justamente para que o subconjunto seja somente de exemplos
+As restri√ß√µes s√£o as necess√°rias justamente para que o subconjunto seja somente de exemplos
 positivos.
-Reunindo-se todas as hipÛteses possÌveis, tem-se o espaÁo de hipÛteses $H$.
-Se houver pelo menos um atributo contÌnuo (ou discreto com um n˙mero infinito de valores),
-infinitas hipÛteses s„o possÌveis.
-Em qualquer caso, evidentemente, podem existir hipÛteses diferentes, porÈm equivalentes.
+Reunindo-se todas as hip√≥teses poss√≠veis, tem-se o espa√ßo de hip√≥teses $H$.
+Se houver pelo menos um atributo cont√≠nuo (ou discreto com um n√∫mero infinito de valores),
+infinitas hip√≥teses s√£o poss√≠veis.
+Em qualquer caso, evidentemente, podem existir hip√≥teses diferentes, por√©m equivalentes.
 Assim, pode-se dizer que $H = \{h_i | \forall i \in \mathbb{N}^+\}$.
 % (ou seria  $\mathcal{H}$ ??)
-Cada $h$ pode ser descrita como uma funÁ„o do mesmo tipo que $c$, mas que aceita apenas
+Cada $h$ pode ser descrita como uma fun√ß√£o do mesmo tipo que $c$, mas que aceita apenas
 elementos do conjunto $\mathcal{D} \subseteq X$ de todos os exemplos que efetivamente se
-manifestam em uma determinada aplicaÁ„o:
+manifestam em uma determinada aplica√ß√£o:
 \begin{equation}
 h: \mathcal{D} \rightarrow \{-,+\}
 \end{equation}
 
 
-A tarefa de \textit{aprendizado de conceito}, dado um conjunto de exemplos L CONTIDO EM XxY? $\mathcal{L}:\{\langle \bm{x}_1, c(\bm{x}_1) \rangle, \langle \bm{x}_2, c(\bm{x}_2) \rangle, ... \}$, tem como objetivo encontrar uma hipÛtese $h \in H,$ tal que
+A tarefa de \textit{aprendizado de conceito}, dado um conjunto de exemplos L CONTIDO EM XxY? $\mathcal{L}:\{\langle \bm{x}_1, c(\bm{x}_1) \rangle, \langle \bm{x}_2, c(\bm{x}_2) \rangle, ... \}$, tem como objetivo encontrar uma hip√≥tese $h \in H,$ tal que
 \begin{equation}
  h(\bm{x}) = c(\bm{x}), \forall \bm{x} \in \mathcal{D}
 \end{equation}
-PorÈm, como tem-se apenas o conjunto $\mathcal{L}$, È preciso assumir que ele È representativo de $\mathcal{D}$.
-Esse È o princÌpio do aprendizado indutivo: È possÌvel \textbf{predizer} a classe de novos exemplos baseando-se num conjunto de \textbf{treinamento}.
-Logo, o resultado da induÁ„o È um \textbf{modelo} de representaÁ„o (DENOMINADO $\theta$) de parte da realidade; capaz de ser usado na generalizaÁ„o de fatos conhecidos para novas situaÁıes.
+Por√©m, como tem-se apenas o conjunto $\mathcal{L}$, √© preciso assumir que ele √© representativo de $\mathcal{D}$.
+Esse √© o princ√≠pio do aprendizado indutivo: √© poss√≠vel \textbf{predizer} a classe de novos exemplos baseando-se num conjunto de \textbf{treinamento}.
+Logo, o resultado da indu√ß√£o √© um \textbf{modelo} de representa√ß√£o (DENOMINADO $\theta$) de parte da realidade; capaz de ser usado na generaliza√ß√£o de fatos conhecidos para novas situa√ß√µes.
 
-AlÈm de depender de $\mathcal{L}$, a hipÛtese $h$ depende da \textit{linguagem de representaÁ„o} e
-do \textit{viÈs de busca}.
-Ambas s„o definidas pelo algoritmo de aprendizado.
-O modelo $\theta$ È descrito pela linguagem de representaÁ„o,
-pois ela È a forma de se representar o conhecimento adquirido -
-·rvores de decis„o, neurÙnios artificiais etc. \citep{quinlan1993c4,haykin1994neural}.
-O \textit{viÈs de busca}, por sua vez, È a forma do processo de construÁ„o do modelo dentro da linguagem -
-heurÌstica gulosa, otimizaÁ„o de funÁıes etc.
-Da mesma forma, os par‚metros do algoritmo tambÈm influenciam a elaboraÁ„o de $h$.
+Al√©m de depender de $\mathcal{L}$, a hip√≥tese $h$ depende da \textit{linguagem de representa√ß√£o} e
+do \textit{vi√©s de busca}.
+Ambas s√£o definidas pelo algoritmo de aprendizado.
+O modelo $\theta$ √© descrito pela linguagem de representa√ß√£o,
+pois ela √© a forma de se representar o conhecimento adquirido -
+√°rvores de decis√£o, neur√¥nios artificiais etc. \citep{quinlan1993c4,haykin1994neural}.
+O \textit{vi√©s de busca}, por sua vez, √© a forma do processo de constru√ß√£o do modelo dentro da linguagem -
+heur√≠stica gulosa, otimiza√ß√£o de fun√ß√µes etc.
+Da mesma forma, os par√¢metros do algoritmo tamb√©m influenciam a elabora√ß√£o de $h$.
 Esses fatores fazem com que o aprendizado de qualquer modelo seja enviesado.
 
-Em muitos casos, para se gerar $\mathcal{L}$, pode-se amostrar para rotulaÁ„o apenas
-parte de um conjunto de exemplos n„o rotulados $\mathcal{U}$ tendo em vista
-restriÁıes de custo.
-A ordem de escolha dos exemplos de treinamento, quando n„o È fortuita ou
-intencionalmente aleatÛria, tambÈm È caracterizada por um viÈs.
-Esse viÈs È caracterÌstico do aprendizado ativo abordado no
-CapÌtulo \ref{cap:aprendizado-ativo} e È um dos pontos de investigaÁ„o propostos
-no CapÌtulo \ref{cap:plano} enquanto influÍncia na construÁ„o de $h$.
+Em muitos casos, para se gerar $\mathcal{L}$, pode-se amostrar para rotula√ß√£o apenas
+parte de um conjunto de exemplos n√£o rotulados $\mathcal{U}$ tendo em vista
+restri√ß√µes de custo.
+A ordem de escolha dos exemplos de treinamento, quando n√£o √© fortuita ou
+intencionalmente aleat√≥ria, tamb√©m √© caracterizada por um vi√©s.
+Esse vi√©s √© caracter√≠stico do aprendizado ativo abordado no
+Cap√≠tulo \ref{cap:aprendizado-ativo} e √© um dos pontos de investiga√ß√£o propostos
+no Cap√≠tulo \ref{cap:plano} enquanto influ√™ncia na constru√ß√£o de $h$.
 
 
-% \e{\textbf{preciso definir} conjunto de validaÁ„o . . .  classificador}
+% \e{\textbf{preciso definir} conjunto de valida√ß√£o . . .  classificador}
 %
 % \e{\textbf{preciso definir} conhecimento . . . }
 %
-% \e{\textbf{preciso definir} vari‚ncia. . .   }
+% \e{\textbf{preciso definir} vari√¢ncia. . .   }
 
