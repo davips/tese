@@ -1,4 +1,9 @@
 \section{Análise comparativa}\label{comparativa}
+\esb{em todos exp, a necessidade de aplicação de filtro é separada, ex.: o learner precisa,
+mas não obriga o classif a usar ou viceversa;
+a mesma ideia foi estendida para a relação estrat-learner,
+a estratégia precisa (maha), mas não obriga o learner a usar  ou viceversa}
+
 Há aplicações cujas particularidades ou preferências do especialista determinam
 previamente o algoritmo de aprendizado. \ano{exemplos?}
 Nessas aplicações, o algoritmo do classificador coincide com o algoritmo do aprendiz.
@@ -245,6 +250,8 @@ level 5/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling
 % \end{landscape}\clearpage}
 
 \subsection{Síntese das comparações}\label{sintese}
+\ano{rever}
+\tar{fazer uma sintese pra cada uma das duas comparações ou fazer uma sintese só no fim de tudo?}
 Estratégias agnósticas têm a vantagem de dispensar o aprendiz.
 Assim, elas evitam o risco de uma escolha inadequada de algoritmo de aprendizado
 para um dado problema.
@@ -311,11 +318,15 @@ probabilidade de todos os exemplos da reserva ameniza o efeito do excesso de con
 \section{algoritmo definido após rotulação}\label{ind}
 Numa aplicação real, a disponibilidade de rótulos permite uma escolha mais adequada
 do algoritmo de aprendizado.
-Na Figura \ref{treegoodstrats}, embora a árvore contenha uma presença expressiva das
-piores estratégias em todos os nós, como as variantes DW*,
+Na Figura \ref{treegoodstrats}, embora a árvore de nichos de inadequação contenha uma
+previsível presença expressiva das piores estratégias em todos os nós, como as variantes DW*,
 algumas estratégias bem sucedidas no primeiro experimento aparecem com a maior frequência
 de derrotas em alguns nós, como é o caso de EERent no caminho
-(fronteira=flexível) $\rightarrow$ (algoritmo=CIELM) $\rightarrow$ ($\#atributos \leq 18$).
+(fronteira=flexível) $\rightarrow$ (algoritmo=CIELM) $\rightarrow$ ($\#atributos \leq 18$)
+com 24 derrotas.
+Assim, mesmo estratégias com um bom desempenho geral podem ser contraindicadas em
+bases ou aprendizes com determinadas características - dificultando a definição prévia
+do par estratégia-algoritmo mais adequado.
 % \afterpage{\clearpage\begin{landscape}
 \begin{figure}
 \tikzset{
@@ -343,50 +354,46 @@ level 5/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling
 \end{center}
 \end{figure}
 % % \end{landscape}\clearpage}
-
-Algoritmos com boa performance em treinamento com poucos dados podem ter baixa
-performance com muitos dados \citep{journals/sigkdd/AttenbergP10,journals/jmlr/PerlichPS03}.
-Logo, mesmo que o usuário disponha de informações sobre o domínio da aplicação,
-elas podem não se aplicar ao seu conjunto específico de exemplos cujo tamanho foi restringido pelo
-orçamento.
-
-
+Mesmo que o usuário disponha de informações auxiliares sobre o domínio da aplicação,
+elas podem não se aplicar ao seu conjunto específico de exemplos cujo tamanho foi restringido
+pelo orçamento, pois algoritmos com boa performance em treinamento com poucos
+dados podem ter baixa performance com muitos dados
+\citep{journals/sigkdd/AttenbergP10,journals/jmlr/PerlichPS03}.
 Assim, estratégias agnósticas e aquelas cujo aprendiz possa ser desvinculado da escolha do
 algoritmo de aprendizado definitivo da aplicação se mostram desejáveis.
+
 As estratégias agnósticas adiam naturalmente a escolha do algoritmo para depois da
 etapa de rotulação.
 Entretanto, elas são desprovidas da capacidade de prospecção advinda do víes de
 aprendizado inerente a todo aprendiz.
-As gnósticas, por sua vez, dependem desse viés desde o início da amostragem ativa.
-Apesar disso, é possível adotar um aprendiz compatível com a estratégia e que tenha um bom
-desempenho geral; depois de obtidos os rótulos, o algoritmo definitivo seria escolhido via validação
-cruzada.
+As estratégias gnósticas, por sua vez, dependem desse viés desde o início da amostragem ativa.
+Apesar disso, é possível adotar um aprendiz compatível com a estratégia e do qual
+se espera um bom desempenho geral.
+Assim, depois de obtidos os rótulos, o algoritmo definitivo seria escolhido via validação cruzada.
 
-O experimento desta seção foi formulado para avaliar a viabilidade da independência do aprendiz
-enquanto alternativa às estratégias agnósticas, simulando uma aplicação real.
+O experimento desta seção foi formulado para avaliar a viabilidade de se contornar o
+problema da escolha do aprendiz e identificar pares estratégia-aprendiz com melhor
+desempenho geral ou por nicho.
+Para isso, foram comparadas todas as combinações possíveis.
+A avaliação de cada par foi feita após o término do processo de rotulação,
+com base no modelo gerado por um algoritmo de aprendizado desvinculado do mesmo,
+escoplhido por validação cruzada e simulando o papel de classificador final do sistema.
+A comparação dos pares estratégia-aprendiz se dá por três pontos de vista:
+curvas de ranqueamento; tabelas um contra um e contagem de colocações; e,
+árvore de nichos de adequação.
 
-A medida de desempenho (ALC-kappa) 
+As curvas de ranqueamento dos XXX melhores pares estratégia-aprendiz são exibidas
+na Figura \ref{}
 
-Nas árvores das figuras \ref{treeBestdesf} e  \ref{treedesf},
-TUmah, por exemplo, pode ser entendido como uma escolha arriscada
-quando o algoritmo é o 5NN ou aceita apenas atributos nominais, ou seja, requer discretização.
-
-\esb{neste exp, a necessidade de aplicação de filtro é separada, ex.: o learner precisa,
-mas não obriga o classif a usar ou viceversa;
-a mesma ideia foi estendida para a relação estrat-learner, embora pudesse ter sido
-feito no experimento anterior (posso aproveitar os resultados daqui lá,
-mas faltaria rodar os hits que não coincidem com o bestlearner):
-a estratégia precisa (maha), mas não obriga o learner a usar  ou viceversa}
-
-\section{Tempo de espera tolerável}
+\section{Tempo de espera tolerável (fazer se der tempo depois de ter terminado meta)}
 \ano{para o tempo não é necessário separar por classificador; basta um fried}
 
 \ano{EER venceu demais. no tempo ele vai perder de todas?}
 
-Não é possível auferir tempo durante experimentos de desempenho porque eles são
-paralelizados e compartilham cache de processador.
+\esb{Não foi possível auferir tempo durante experimentos de desempenho porque eles são
+paralelizados e compartilham cache de processador.}
 
-limite de espera pra usuário web é 15s, é o máximo aceitável
+\tar{limite de espera pra usuário web é 15s, é o máximo aceitável}
 \citep{conf/amcis/Nah03}
 
 % Miller (1968) argued for the 2-second rule based on the theory of limitations in human short-
