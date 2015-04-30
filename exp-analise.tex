@@ -318,6 +318,7 @@ probabilidade de todos os exemplos da reserva ameniza o efeito do excesso de con
 \section{algoritmo definido após rotulação}\label{ind}
 Numa aplicação real, a disponibilidade de rótulos permite uma escolha mais adequada
 do algoritmo de aprendizado.
+\ano{relembrar que U=100, o valor comum na literatura e para não ficar com menos de 75 bases}
 Na Figura \ref{treegoodstrats}, embora a árvore de nichos de inadequação contenha uma
 previsível presença expressiva das piores estratégias em todos os nós, como as variantes DW*,
 algumas estratégias bem sucedidas no primeiro experimento aparecem com a maior frequência
@@ -377,13 +378,14 @@ desempenho geral ou por nicho.
 Para isso, foram comparadas todas as combinações possíveis.
 A avaliação de cada par foi feita após o término do processo de rotulação,
 com base no modelo gerado por um algoritmo de aprendizado desvinculado do mesmo,
-escoplhido por validação cruzada e simulando o papel de classificador final do sistema.
+escolhido por validação cruzada e simulando o papel de classificador final do sistema.
 A comparação dos pares estratégia-aprendiz se dá por três pontos de vista:
 curvas de ranqueamento; tabelas um contra um e contagem de colocações; e,
 árvore de nichos de adequação.
 
 As curvas de ranqueamento dos XXX melhores pares estratégia-aprendiz são exibidas
 na Figura \ref{}
+\input{arvorePares}
 
 \section{Tempo de espera tolerável (fazer se der tempo depois de ter terminado meta)}
 \ano{para o tempo não é necessário separar por classificador; basta um fried}
