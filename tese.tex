@@ -1,4 +1,6 @@
 \documentclass[12pt,twoside]{book}
+\usepackage{etex}
+\usepackage{afterpage}
 \usepackage[utf8]{inputenc}
 % \inputencoding{latin1}
 
@@ -159,33 +161,6 @@
 \definecolor{cinzaclaro}{rgb}{0.84,0.84,0.84}
 \newcommand{\e}{\colorbox{cinzaclaro}}
 
-
-%inkscape svg auto refresh - adicionar -shell-escape na chamada de pdflatex
-% \newcommand{\executeiffilenewer}[3]{
-% \ifnum\pdfstrcmp{\pdffilemoddate{#1}}
-% {\pdffilemoddate{#2}}>0
-% {\immediate\write18{#3}}\fi
-% }
-% \newcommand{\includesvg}[1]{
-% \executeiffilenewer{#1.svg}{#1.pdf}
-% {inkscape -z -D --file=#1.svg
-% --export-pdf=#1.pdf --export-latex}
-% \input{#1.pdf_tex}
-% }
-
-% \pgfdeclareplotmark{v}{%
-%   \pgfpathmoveto{\pgfpoint{-\pgfplotmarksize}{\pgfplotmarksize}}
-%   \pgfpathlineto{\pgfpoint{0pt}{0pt}}
-%   \pgfpathlineto{\pgfpoint{\pgfplotmarksize}{\pgfplotmarksize}}
-%   \pgfusepathqstroke
-% }
-% \pgfdeclareplotmark{^}{%
-%   \pgfpathmoveto{\pgfpoint{-\pgfplotmarksize}{-\pgfplotmarksize}}
-%   \pgfpathlineto{\pgfpoint{0pt}{0pt}}
-%   \pgfpathlineto{\pgfpoint{\pgfplotmarksize}{-\pgfplotmarksize}}
-%   \pgfusepathqstroke
-% }
-
 \usepackage{amssymb}
 \input{imagens/macros-pgf.tex}
 \usetikzlibrary{external}
@@ -200,7 +175,6 @@
 \usepackage{icomma}
 
 \usepackage{pdflscape}
-\usepackage{afterpage}
 \usepackage{capt-of}
 
 
