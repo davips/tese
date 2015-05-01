@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=apendice3.tex
+lastDocument=exp-analise.tex
 masterDocument=
 name=tese
 pkg_extIsRegExp=false
@@ -19,6 +19,46 @@ QuickBuild=
 [document-settings,item:apendice3.tex]
 Bookmarks=
 Encoding=UTF-8
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:exp-analise.tex]
+Bookmarks=
+Encoding=UTF-8
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:imagens/macros-pgf.tex]
+Bookmarks=
+Encoding=UTF-8
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:plotPares.tex]
+Bookmarks=
+Encoding=UTF-8
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:stratstabALCKappa5NN.tex]
+Bookmarks=
+Encoding=ISO-8859-1
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -113,7 +153,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=0
 mode=LaTeX
-open=true
+open=false
 order=0
 
 [item:apendice4.tex]
@@ -288,13 +328,13 @@ order=-1
 
 [item:exp-analise.tex]
 archive=true
-column=7471104
-encoding=
-highlight=
-line=0
-mode=
-open=false
-order=-1
+column=11
+encoding=UTF-8
+highlight=LaTeX
+line=387
+mode=LaTeX
+open=true
+order=3
 
 [item:exp-elm.tex]
 archive=true
@@ -325,6 +365,16 @@ line=0
 mode=
 open=false
 order=-1
+
+[item:imagens/macros-pgf.tex]
+archive=true
+column=16
+encoding=UTF-8
+highlight=LaTeX
+line=4
+mode=LaTeX
+open=true
+order=2
 
 [item:introducao.tex]
 archive=true
@@ -439,12 +489,12 @@ order=-1
 [item:plotPares.tex]
 archive=true
 column=0
-encoding=
-highlight=
+encoding=UTF-8
+highlight=LaTeX
 line=0
-mode=
-open=false
-order=-1
+mode=LaTeX
+open=true
+order=0
 
 [item:plotRisco.tex]
 archive=true
@@ -1579,12 +1629,12 @@ order=-1
 [item:stratstabALCKappa5NN.tex]
 archive=true
 column=0
-encoding=
-highlight=
-line=0
-mode=
-open=false
-order=-1
+encoding=ISO-8859-1
+highlight=LaTeX
+line=239
+mode=LaTeX
+open=true
+order=1
 
 [item:stratstabALCKappaC4.5w.tex]
 archive=true
@@ -1879,5 +1929,29 @@ order=-1
 [view-settings,view=0,item:apendice3.tex]
 CursorColumn=0
 CursorLine=0
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:exp-analise.tex]
+CursorColumn=11
+CursorLine=387
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:imagens/macros-pgf.tex]
+CursorColumn=16
+CursorLine=4
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:plotPares.tex]
+CursorColumn=0
+CursorLine=0
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:stratstabALCKappa5NN.tex]
+CursorColumn=0
+CursorLine=239
 JumpList=
 ViMarks=
