@@ -1,3 +1,7 @@
+*.dep
+*.dpth
+*.pdf
+*.auxlock
 *.backup
 *~
 *.kate-swp
