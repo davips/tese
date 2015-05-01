@@ -249,71 +249,90 @@ level 5/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling
 \end{figure}
 % \end{landscape}\clearpage}
 
-\subsection{Síntese das comparações}\label{sintese}
-\ano{rever}
-\tar{fazer uma sintese pra cada uma das duas comparações ou fazer uma sintese só no fim de tudo?}
-Estratégias agnósticas têm a vantagem de dispensar o aprendiz.
-Assim, elas evitam o risco de uma escolha inadequada de algoritmo de aprendizado
-para um dado problema.
-Consequentemente, ATUmah seria a preferível no caso de algoritmos variados.
-Entretanto, os resultados dos quatro experimentos apontam para diferentes melhores
-estratégias.
-Apesar de ATUmah não ter sido pior que a amostragem aleatória em nenhum deles,
-ela perde de Mar, TUmah e EERent em alguns casos.
-Logo, se for desejado o melhor desempenho para um dado algoritmo,
-então é preciso recorrer a algum procedimento que minimize a chance de
-uma escolha inadequada de estratégia.
-Além do algoritmo, o orçamento disponível e as características de cada base também
-podem favorecer ou prejudicar certas estratégias.
+As curvas de ranqueamento dos dez melhores\footnote{Melhor conforme o maior valor de cada curva.}
+pares estratégia-aprendiz são exibidas
+na Figura \ref{plotPares}. Adicionalmente, a melhor curva de cada algoritmo não contemplado
+entre os melhores pares é apresentada juntamente com suas demais curvas em pontilhado.
+As curvas em pontilhado de um mesmo algoritmo se mantêm próximas.
+Isso é mais claramente ilustrado pelas curvas dos pares com CIELM.
+É notável que, quando usado com um algoritmo mais adequado, por exemplo,
+o RFw no casos das bases adotadas, SGmulti e Clu se tornam mais competitivos.
 
-Nesta seção, as estratégias são comparadas com o objetivo de identificar nichos
-em que umas possam se sobressair em relação às outras.
-Cada nicho corresponde a um algoritmo e um conjunto de bases de dados similares entre si.
+\ano{colocar tabela fried e contagens}
+\begin{figure}[!h]
+   \setlength{\unitlength}{1.0cm}
+   \centering
+     \includegraphics[scale=1]{plotPares.pdf}
+   \caption{curvas de ranqueamento dos pares}
+   \label{plotPares}
+\end{figure}
 
-Nas árvores exibidas nas figuras \ref{treeBest} e \ref{tree},
-é possível observar o papel central do algoritmo de aprendizado sobre
-a estratégia de aprendizado ativo, pois é a primeira regra em ambas as árvores.
-Elas simulam dois cenários com relação à escolha do algoritmo: quando o mais adequado é conhecido
-(\ref{treeBest}) e quando ele é arbitrário (\ref{tree}).
-O primeiro caso resulta em $95$ metaexemplos devido a um empate,
-e o segundo caso também resulta em torno de $95$ metaexemplos, porém para cada algoritmo,
-totalizando $595$.
-% Apesar de ilustrativa, a árvore pode não ser segura do ponto de vista de tomada de
-% decisão devido ao baixo grau de pureza das folhas.
-% \input arvorebest
-% \input arvore
-% \input arvorebestperd
-% \input arvoreperd
 
-% \ref{tree}
-A amostragem aleatória aparece apenas na folha que representa o uso do 5NN nas quatro bases que têm
-uma proporção de atributos nominais não muito alta (igual ou abaixo de $77$),
-poucos atributos em geral (igual ou abaixo de $6$) e não muitos exemplos (igual ou abaixo de $1078$).
-Assim, pode-se concluir que não optar pelo aprendizado ativo raramente é a melhor estratégia.
-Num nicho similar, porém com muitos exemplos (acima de $1078$), HTUmah é a mais indicada.
-ATUmah
-
-% \ref{treeBest}
-O algoritmo NB produz estimativas de distribuição de probabilidade excessivamente confiantes
-que podem ser amenizadas por um \ing{comitê por amostragem}{bagging} \citep{conf/icml/RoyM01}.
-Estratégias que dependem dessas estimativas podem ser prejudicadas.
-ATUmah por ser agnóstica é independente dessas estimativas e aparece como nó
-folha para esse algoritmo de aprendizado.
-EERent também aparece e é gnóstico,
-mas seu uso da soma das entropias das estimativas de
-probabilidade de todos os exemplos da reserva ameniza o efeito do excesso de confiança.
-
-% Algumas ramificações aceitam explicações plausíveis:
-% \begin{itemize}
-%  \item
+% \subsection{Síntese das comparações}\label{sintese}
+% \ano{rever}
+% \tar{fazer uma sintese pra cada uma das duas comparações ou fazer uma sintese só no fim de tudo?}
+% Estratégias agnósticas têm a vantagem de dispensar o aprendiz.
+% Assim, elas evitam o risco de uma escolha inadequada de algoritmo de aprendizado
+% para um dado problema.
+% Consequentemente, ATUmah seria a preferível no caso de algoritmos variados.
+% Entretanto, os resultados dos quatro experimentos apontam para diferentes melhores
+% estratégias.
+% Apesar de ATUmah não ter sido pior que a amostragem aleatória em nenhum deles,
+% ela perde de Mar, TUmah e EERent em alguns casos.
+% Logo, se for desejado o melhor desempenho para um dado algoritmo,
+% então é preciso recorrer a algum procedimento que minimize a chance de
+% uma escolha inadequada de estratégia.
+% Além do algoritmo, o orçamento disponível e as características de cada base também
+% podem favorecer ou prejudicar certas estratégias.
 % 
-% % \esb{When Does Active Learning Work?
-% % confirma que atributos não-discretizados favorecem AL,
-% % isso justifica z-score para qq classificador ?
-% % (ao menos RF, SVM, log reg. e QDA usados no artigo).
-% % usa apenas QBC, entropia e random.
-% % }
-% \end{itemize}
+% Nesta seção, as estratégias são comparadas com o objetivo de identificar nichos
+% em que umas possam se sobressair em relação às outras.
+% Cada nicho corresponde a um algoritmo e um conjunto de bases de dados similares entre si.
+% 
+% Nas árvores exibidas nas figuras \ref{treeBest} e \ref{tree},
+% é possível observar o papel central do algoritmo de aprendizado sobre
+% a estratégia de aprendizado ativo, pois é a primeira regra em ambas as árvores.
+% Elas simulam dois cenários com relação à escolha do algoritmo: quando o mais adequado é conhecido
+% (\ref{treeBest}) e quando ele é arbitrário (\ref{tree}).
+% O primeiro caso resulta em $95$ metaexemplos devido a um empate,
+% e o segundo caso também resulta em torno de $95$ metaexemplos, porém para cada algoritmo,
+% totalizando $595$.
+% % Apesar de ilustrativa, a árvore pode não ser segura do ponto de vista de tomada de
+% % decisão devido ao baixo grau de pureza das folhas.
+% % \input arvorebest
+% % \input arvore
+% % \input arvorebestperd
+% % \input arvoreperd
+% 
+% % \ref{tree}
+% A amostragem aleatória aparece apenas na folha que representa o uso do 5NN nas quatro bases que têm
+% uma proporção de atributos nominais não muito alta (igual ou abaixo de $77$),
+% poucos atributos em geral (igual ou abaixo de $6$) e não muitos exemplos (igual ou abaixo de $1078$).
+% Assim, pode-se concluir que não optar pelo aprendizado ativo raramente é a melhor estratégia.
+% Num nicho similar, porém com muitos exemplos (acima de $1078$), HTUmah é a mais indicada.
+% ATUmah
+% 
+% % \ref{treeBest}
+% O algoritmo NB produz estimativas de distribuição de probabilidade excessivamente confiantes
+% que podem ser amenizadas por um \ing{comitê por amostragem}{bagging} \citep{conf/icml/RoyM01}.
+% Estratégias que dependem dessas estimativas podem ser prejudicadas.
+% ATUmah por ser agnóstica é independente dessas estimativas e aparece como nó
+% folha para esse algoritmo de aprendizado.
+% EERent também aparece e é gnóstico,
+% mas seu uso da soma das entropias das estimativas de
+% probabilidade de todos os exemplos da reserva ameniza o efeito do excesso de confiança.
+% 
+% % Algumas ramificações aceitam explicações plausíveis:
+% % \begin{itemize}
+% %  \item
+% % 
+% % % \esb{When Does Active Learning Work?
+% % % confirma que atributos não-discretizados favorecem AL,
+% % % isso justifica z-score para qq classificador ?
+% % % (ao menos RF, SVM, log reg. e QDA usados no artigo).
+% % % usa apenas QBC, entropia e random.
+% % % }
+% % \end{itemize}
 
 \section{algoritmo definido após rotulação}\label{ind}
 Numa aplicação real, a disponibilidade de rótulos permite uma escolha mais adequada
@@ -379,73 +398,56 @@ Para isso, foram comparadas todas as combinações possíveis.
 A avaliação de cada par foi feita após o término do processo de rotulação,
 com base no modelo gerado por um algoritmo de aprendizado desvinculado do mesmo,
 escolhido por validação cruzada e simulando o papel de classificador final do sistema.
-A comparação dos pares estratégia-aprendiz se dá por três pontos de vista:
-curvas de ranqueamento; tabelas um contra um e contagem de colocações; e,
-árvore de nichos de adequação.
-
-As curvas de ranqueamento dos dez melhores pares estratégia-aprendiz são exibidas
-na Figura \ref{}
-
-\begin{figure}[!h]
-   \setlength{\unitlength}{1.0cm}
-   \centering
-     \includegraphics[scale=1]{plotPares.pdf}
-   \caption{saoldhfasdfh}
-   \label{plotPares}
-\end{figure}
+A comparação dos pares estratégia-aprendiz se dá por dois pontos de vista:
+tabelas um contra um e contagem de colocações; e, árvore de nichos de adequação.
 
 \input arvorePares
 
-\section{Tempo de espera tolerável (fazer se der tempo depois de ter terminado meta)}
-\ano{para o tempo não é necessário separar por classificador; basta um fried}
-
-\ano{EER venceu demais. no tempo ele vai perder de todas?}
-
-\esb{Não foi possível auferir tempo durante experimentos de desempenho porque eles são
-paralelizados e compartilham cache de processador.}
-
-\tar{limite de espera pra usuário web é 15s, é o máximo aceitável}
-\citep{conf/amcis/Nah03}
-
-% Miller (1968) argued for the 2-second rule based on the theory of limitations in human short-
-% term memory. According to Miller, short-term memory plays a critical role in human information
-% processing; interference with short-term memory can occur when an individual senses an awareness of
-% waiting after approximately 2 seconds. Thus, to stay uninterrupted in information processing, the 2-
-% second guideline is recommended. For tasks where uninterrupted focus is critical, Nielsen (1995)
-% suggests that computer response should be kept within one second.
+% \section{Tempo de espera tolerável (fazer se der tempo depois de ter terminado meta)}
+% \ano{para o tempo não é necessário separar por classificador; basta um fried}
 % 
+% \ano{EER venceu demais. no tempo ele vai perder de todas?}
 % 
-% From this study, we found that Web users expect a response in about 2 seconds for simple
-% information retrieval tasks on the Web.
-% A 2-second response is needed to ensure 'smooth' interactions
-% between the WWW and the users.  The findings from this
-% study also suggest that the upper bound for Web users' TWT is 15 seconds when
-% the system does not provide any indication or feedback concerning
-% the download
-
-\esb{
-é melhor comparar tempos minimos do que tempos medios;
-pode haver outlier para cima,
-mas para baixo há o limite onde todas as otimizações de hardware já
-foram atingidas e a ausência de outros processos é total.
-Assim, trata-se de uma grandeza mais comparável entre algoritmos. (ref?)
-}
-
-\tar{rodar um classif. rápido de treino e um
-rápido de teste em todas as bases, registrar tempo médio de consulta de cada
-estratégia e gerar friedman (espera-se realçar vantagem dos agnósticos)}
-
+% \esb{Não foi possível auferir tempo durante experimentos de desempenho porque eles são
+% paralelizados e compartilham cache de processador.}
 % 
-% e uma faixa de orçamentos:
-% \begin{itemize}
-%  \item orçamento baixo: $|Y|<\cent\leq min(\frac{|\mathcal{U}|}{2},100)$
-%  \item orçamento alto: $min(\frac{|\mathcal{U}|}{2},100)<\cent\leq min(|\mathcal{U}|,200)$
-% \end{itemize}
-
-\esb{pra provar que o algoritmo é determinante, basta demonstrar qtas vezes o melhor par contem
-o mesmo algoritmo que venceu na passiva}
-
-\ano{faz sentido testar com o melhor classif porque o user vai ter os rotulos pra poder escolher o melhor,
-mas isso soh vale pra agnosticas: Rnd, Clu, ATUman, ATUmah e ATUeuc}
-
-
+% \tar{limite de espera pra usuário web é 15s, é o máximo aceitável}
+% \citep{conf/amcis/Nah03}
+% 
+% % Miller (1968) argued for the 2-second rule based on the theory of limitations in human short-
+% % term memory. According to Miller, short-term memory plays a critical role in human information
+% % processing; interference with short-term memory can occur when an individual senses an awareness of
+% % waiting after approximately 2 seconds. Thus, to stay uninterrupted in information processing, the 2-
+% % second guideline is recommended. For tasks where uninterrupted focus is critical, Nielsen (1995)
+% % suggests that computer response should be kept within one second.
+% % 
+% % 
+% % From this study, we found that Web users expect a response in about 2 seconds for simple
+% % information retrieval tasks on the Web.
+% % A 2-second response is needed to ensure 'smooth' interactions
+% % between the WWW and the users.  The findings from this
+% % study also suggest that the upper bound for Web users' TWT is 15 seconds when
+% % the system does not provide any indication or feedback concerning
+% % the download
+% 
+% \esb{
+% é melhor comparar tempos minimos do que tempos medios;
+% pode haver outlier para cima,
+% mas para baixo há o limite onde todas as otimizações de hardware já
+% foram atingidas e a ausência de outros processos é total.
+% Assim, trata-se de uma grandeza mais comparável entre algoritmos. (ref?)
+% }
+% 
+% \tar{rodar um classif. rápido de treino e um
+% rápido de teste em todas as bases, registrar tempo médio de consulta de cada
+% estratégia e gerar friedman (espera-se realçar vantagem dos agnósticos)}
+% 
+% % 
+% % e uma faixa de orçamentos:
+% % \begin{itemize}
+% %  \item orçamento baixo: $|Y|<\cent\leq min(\frac{|\mathcal{U}|}{2},100)$
+% %  \item orçamento alto: $min(\frac{|\mathcal{U}|}{2},100)<\cent\leq min(|\mathcal{U}|,200)$
+% % \end{itemize}
+% 
+% \esb{pra provar que o algoritmo é determinante, basta demonstrar qtas vezes o melhor par contem
+% o mesmo algoritmo que venceu na passiva}
