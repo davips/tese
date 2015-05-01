@@ -1,6 +1,8 @@
 \usepackage{pgfplots,bm}
 \usetikzlibrary{plotmarks}
 \usetikzlibrary{scopes,shapes,shadows,calc,arrows,shapes.symbols,automata,decorations.pathmorphing,backgrounds,fit,positioning}
+\usepgfplotslibrary{external}
+\tikzexternalize
 
 % styles for flowcharts
 \tikzstyle{d} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
@@ -178,7 +180,7 @@
 				\node (c#1) [b, right of=f#1, label=-90:$\textit{version space}$] {
   \begin{tabular}{ll}
     $\bf{x}$ que melhor define \\
-    hipóteses válidas
+    hipÃ³teses vÃ¡lidas
   \end{tabular}
 };
 				\draw[->,setatr] (a#1) -- node (1,1)[] {} (f#1);
