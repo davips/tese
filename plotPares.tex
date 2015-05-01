@@ -1,5 +1,6 @@
 \begin{figure}
 \caption{Curvas de ranqueamento dos pares.
+My pgf version is: \pgfversion
  \textit{Detalhes na Figura \ref{curvas}.}}
 \label{curvasrank}
 \begin{center}
@@ -8,15 +9,15 @@
 scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/fixed}]
 
 \addplot+[solid, blue, mark=*,   mark phase=143, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Mar-RFw ] {kappaallmediaParesRank.tex};\addlegendentry{Mar-RFw}
-\addplot+[dotted, gray, no marks] table[x=budget, y=SGmulti-RFw ] {kappaallmediaParesRank.tex};
+\addplot+[solid, thick, red,   mark=x,     mark phase=131, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=SGmulti-RFw ] {kappaallmediaParesRank.tex};\addlegendentry{SGmulti-RFw}
 \addplot+[solid, green!30!black, mark=square*,   mark phase=62, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent-RFw ] {kappaallmediaParesRank.tex};\addlegendentry{EERent-RFw}
-\addplot+[dotted, gray, no marks] table[x=budget, y=HTUeuc-5NN ] {kappaallmediaParesRank.tex};
+\addplot+[solid, thick, violet, mark=10-pointed star,   mark phase=84, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=HTUeuc-5NN ] {kappaallmediaParesRank.tex};\addlegendentry{HTUeuc-5NN}
 \addplot+[dotted, gray, no marks] table[x=budget, y=HTUmah-5NN ] {kappaallmediaParesRank.tex};
-\addplot+[dotted, gray, no marks] table[x=budget, y=ATUeuc-5NN ] {kappaallmediaParesRank.tex};
+\addplot+[dotted, mark=star, ultra thick, orange,  mark repeat=200,  mark phase=25, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUeuc-5NN ] {kappaallmediaParesRank.tex};\addlegendentry{ATUeuc-5NN}
 \addplot+[dotted, gray, no marks] table[x=budget, y=ATUmah-5NN ] {kappaallmediaParesRank.tex};
 \addplot+[dotted, gray, no marks] table[x=budget, y=ATUman-5NN ] {kappaallmediaParesRank.tex};
 \addplot+[dotted, gray, no marks] table[x=budget, y=HTUman-5NN ] {kappaallmediaParesRank.tex};
-\addplot+[dotted, gray, no marks] table[x=budget, y=Clu-RFw ] {kappaallmediaParesRank.tex};
+\addplot+[dashed, green!50!black, mark=triangle*,   mark phase=47, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Clu-RFw ] {kappaallmediaParesRank.tex};\addlegendentry{Clu-RFw}
 \addplot+[dotted, gray, no marks] table[x=budget, y=TUman-RFw ] {kappaallmediaParesRank.tex};
 \addplot+[dotted, gray, no marks] table[x=budget, y=HTUman-RFw ] {kappaallmediaParesRank.tex};
 \addplot+[solid, gray, mark=square,   mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUmah-5NN ] {kappaallmediaParesRank.tex};\addlegendentry{TUmah-5NN}
@@ -26,12 +27,12 @@ scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/
 \addplot+[dotted, gray, no marks] table[x=budget, y=EERent-5NN ] {kappaallmediaParesRank.tex};
 \addplot+[dotted, gray, no marks] table[x=budget, y=TUmah-RFw ] {kappaallmediaParesRank.tex};
 \addplot+[dotted, gray, no marks] table[x=budget, y=HTUeuc-RFw ] {kappaallmediaParesRank.tex};
-\addplot+[dotted, gray, no marks] table[x=budget, y=Rnd-5NN ] {kappaallmediaParesRank.tex};
+\addplot+[dashed, olive, mark=triangle, mark phase=35, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Rnd-5NN ] {kappaallmediaParesRank.tex};\addlegendentry{Rnd-5NN}
 \addplot+[dotted, gray, no marks] table[x=budget, y=SGmulti-5NN ] {kappaallmediaParesRank.tex};
 \addplot+[dotted, gray, no marks] table[x=budget, y=TUeuc-5NN ] {kappaallmediaParesRank.tex};
 \addplot+[dotted, gray, no marks] table[x=budget, y=ATUman-RFw ] {kappaallmediaParesRank.tex};
 \addplot+[dotted, gray, no marks] table[x=budget, y=Clu-5NN ] {kappaallmediaParesRank.tex};
-\addplot+[dotted, gray, no marks] table[x=budget, y=QBCRFw-5NN ] {kappaallmediaParesRank.tex};
+\addplot+[solid, thick, gray, mark=diamond,   mark phase=167, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=QBCRFw-5NN ] {kappaallmediaParesRank.tex};\addlegendentry{QBCRFw-5NN}
 \addplot+[dotted, gray, no marks] table[x=budget, y=Rnd-RFw ] {kappaallmediaParesRank.tex};
 \addplot+[dotted, gray, no marks] table[x=budget, y=ATUeuc-RFw ] {kappaallmediaParesRank.tex};
 \addplot+[dotted, gray, no marks] table[x=budget, y=ATUmah-RFw ] {kappaallmediaParesRank.tex};
@@ -44,7 +45,7 @@ scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/
 \addplot+[dotted, gray, no marks] table[x=budget, y=HTUman-SVM ] {kappaallmediaParesRank.tex};
 \addplot+[dotted, gray, no marks] table[x=budget, y=Mar-5NN ] {kappaallmediaParesRank.tex};
 \addplot+[dotted, gray, no marks] table[x=budget, y=Mar-SVM ] {kappaallmediaParesRank.tex};
-\addplot+[dotted, gray, no marks] table[x=budget, y=SVMbal-5NN ] {kappaallmediaParesRank.tex};
+\addplot+[solid, black, mark=pentagon,   mark phase=155, mark options={solid, thick, scale=1.4}, mark repeat=200] table[x=budget, y=SVMbal-5NN ] {kappaallmediaParesRank.tex};\addlegendentry{SVMbal-5NN}
 \addplot+[dotted, gray, no marks] table[x=budget, y=QBCRFw-RFw ] {kappaallmediaParesRank.tex};
 \addplot+[dotted, gray, no marks] table[x=budget, y=EERent-NB ] {kappaallmediaParesRank.tex};
 \addplot+[dotted, gray, no marks] table[x=budget, y=SVMbal-RFw ] {kappaallmediaParesRank.tex};
