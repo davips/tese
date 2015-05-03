@@ -16,7 +16,27 @@ src_extensions=.tex .ltx .latex .dtx .ins
 MakeIndex=
 QuickBuild=
 
+[document-settings,item:active-learning.tex]
+Bookmarks=
+Encoding=UTF-8
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
 [document-settings,item:apendice3.tex]
+Bookmarks=
+Encoding=UTF-8
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:arvorePares.tex]
 Bookmarks=
 Encoding=UTF-8
 FoldedColumns=
@@ -35,6 +55,16 @@ Highlighting=LaTeX
 Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
+
+[document-settings,item:experimentos.tex]
+Bookmarks=
+Encoding=UTF-8
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=false
 
 [document-settings,item:imagens/macros-pgf.tex]
 Bookmarks=
@@ -56,9 +86,69 @@ Indentation Mode=normal
 Mode=LaTeX
 ReadWrite=true
 
+[document-settings,item:propostas.tex]
+Bookmarks=
+Encoding=UTF-8
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:stratsALCKappaAllReduxhalf.tex]
+Bookmarks=
+Encoding=UTF-8
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:stratsALCKappaFriedAllReduxhalf.tex]
+Bookmarks=
+Encoding=UTF-8
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
 [document-settings,item:stratstabALCKappa5NN.tex]
 Bookmarks=
 Encoding=ISO-8859-1
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:stratstabALCKappaSVM.tex]
+Bookmarks=
+Encoding=UTF-8
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:tese.tex]
+Bookmarks=
+Encoding=UTF-8
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:treeALCKappa.tex]
+Bookmarks=
+Encoding=UTF-8
 FoldedColumns=
 FoldedLines=
 Highlighting=LaTeX
@@ -119,12 +209,12 @@ order=-1
 [item:active-learning.tex]
 archive=true
 column=0
-encoding=
-highlight=
-line=0
-mode=
+encoding=UTF-8
+highlight=LaTeX
+line=30
+mode=LaTeX
 open=false
-order=-1
+order=2
 
 [item:apendice1.tex]
 archive=true
@@ -189,10 +279,10 @@ order=-1
 [item:arvorePares.tex]
 archive=true
 column=0
-encoding=
-highlight=
-line=0
-mode=
+encoding=UTF-8
+highlight=LaTeX
+line=30
+mode=LaTeX
 open=false
 order=-1
 
@@ -328,13 +418,13 @@ order=-1
 
 [item:exp-analise.tex]
 archive=true
-column=11
+column=71
 encoding=UTF-8
 highlight=LaTeX
-line=387
+line=367
 mode=LaTeX
 open=true
-order=3
+order=2
 
 [item:exp-elm.tex]
 archive=true
@@ -359,10 +449,10 @@ order=-1
 [item:experimentos.tex]
 archive=true
 column=0
-encoding=
-highlight=
-line=0
-mode=
+encoding=UTF-8
+highlight=LaTeX
+line=153
+mode=LaTeX
 open=false
 order=-1
 
@@ -373,7 +463,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=4
 mode=LaTeX
-open=true
+open=false
 order=2
 
 [item:introducao.tex]
@@ -491,7 +581,7 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=0
+line=7
 mode=LaTeX
 open=true
 order=0
@@ -509,10 +599,10 @@ order=-1
 [item:propostas.tex]
 archive=true
 column=0
-encoding=
-highlight=
-line=0
-mode=
+encoding=UTF-8
+highlight=LaTeX
+line=70
+mode=LaTeX
 open=false
 order=-1
 
@@ -616,16 +706,6 @@ mode=
 open=false
 order=-1
 
-[item:stratsALCKappaAllReduxHalf.tex]
-archive=true
-column=0
-encoding=
-highlight=
-line=0
-mode=
-open=false
-order=-1
-
 [item:stratsALCKappaAllReduxall.tex]
 archive=true
 column=7890292
@@ -638,11 +718,11 @@ order=-1
 
 [item:stratsALCKappaAllReduxhalf.tex]
 archive=true
-column=6356992
-encoding=
-highlight=
+column=0
+encoding=UTF-8
+highlight=LaTeX
 line=0
-mode=
+mode=LaTeX
 open=false
 order=-1
 
@@ -776,16 +856,6 @@ mode=
 open=false
 order=-1
 
-[item:stratsALCKappaFriedAllReduxHalf.tex]
-archive=true
-column=7864320
-encoding=
-highlight=
-line=0
-mode=
-open=false
-order=-1
-
 [item:stratsALCKappaFriedAllReduxall.tex]
 archive=true
 column=0
@@ -798,11 +868,11 @@ order=-1
 
 [item:stratsALCKappaFriedAllReduxhalf.tex]
 archive=true
-column=0
-encoding=
-highlight=
-line=0
-mode=
+column=11
+encoding=UTF-8
+highlight=LaTeX
+line=15
+mode=LaTeX
 open=false
 order=-1
 
@@ -989,16 +1059,6 @@ order=-1
 [item:stratsALCKappaFriedRFRiscoRedux.tex]
 archive=true
 column=3014656
-encoding=
-highlight=
-line=0
-mode=
-open=false
-order=-1
-
-[item:stratsALCKappaFriedRFwRedux.log]
-archive=true
-column=0
 encoding=
 highlight=
 line=0
@@ -1633,7 +1693,7 @@ encoding=ISO-8859-1
 highlight=LaTeX
 line=239
 mode=LaTeX
-open=true
+open=false
 order=1
 
 [item:stratstabALCKappaC4.5w.tex]
@@ -1678,11 +1738,11 @@ order=-1
 
 [item:stratstabALCKappaSVM.tex]
 archive=true
-column=4485205
-encoding=
-highlight=
+column=0
+encoding=UTF-8
+highlight=LaTeX
 line=0
-mode=
+mode=LaTeX
 open=false
 order=-1
 
@@ -1748,13 +1808,13 @@ order=-1
 
 [item:tese.tex]
 archive=true
-column=6881394
-encoding=
-highlight=
-line=0
-mode=
-open=false
-order=-1
+column=0
+encoding=UTF-8
+highlight=LaTeX
+line=234
+mode=LaTeX
+open=true
+order=1
 
 [item:topologia.tex]
 archive=true
@@ -1788,13 +1848,13 @@ order=-1
 
 [item:treeALCKappa.tex]
 archive=true
-column=4485205
-encoding=
-highlight=
-line=0
-mode=
-open=false
-order=-1
+column=11
+encoding=UTF-8
+highlight=LaTeX
+line=13
+mode=LaTeX
+open=true
+order=3
 
 [item:treeALCKappaBest.tex]
 archive=true
@@ -1926,15 +1986,33 @@ mode=
 open=false
 order=-1
 
+[view-settings,view=0,item:active-learning.tex]
+CursorColumn=0
+CursorLine=30
+JumpList=
+ViMarks=
+
 [view-settings,view=0,item:apendice3.tex]
 CursorColumn=0
 CursorLine=0
 JumpList=
 ViMarks=
 
+[view-settings,view=0,item:arvorePares.tex]
+CursorColumn=0
+CursorLine=30
+JumpList=
+ViMarks=
+
 [view-settings,view=0,item:exp-analise.tex]
-CursorColumn=11
-CursorLine=387
+CursorColumn=71
+CursorLine=367
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:experimentos.tex]
+CursorColumn=0
+CursorLine=153
 JumpList=
 ViMarks=
 
@@ -1946,12 +2024,48 @@ ViMarks=
 
 [view-settings,view=0,item:plotPares.tex]
 CursorColumn=0
+CursorLine=7
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:propostas.tex]
+CursorColumn=0
+CursorLine=70
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:stratsALCKappaAllReduxhalf.tex]
+CursorColumn=0
 CursorLine=0
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:stratsALCKappaFriedAllReduxhalf.tex]
+CursorColumn=11
+CursorLine=15
 JumpList=
 ViMarks=
 
 [view-settings,view=0,item:stratstabALCKappa5NN.tex]
 CursorColumn=0
 CursorLine=239
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:stratstabALCKappaSVM.tex]
+CursorColumn=0
+CursorLine=0
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:tese.tex]
+CursorColumn=0
+CursorLine=234
+JumpList=
+ViMarks=
+
+[view-settings,view=0,item:treeALCKappa.tex]
+CursorColumn=11
+CursorLine=13
 JumpList=
 ViMarks=

@@ -19,6 +19,7 @@ scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/
 \addplot+[dashed, olive, thick, mark=triangle, mark phase=25, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Rnd-5NN ] {kappaallmediaParesRank.tex};\addlegendentry{Rnd-5NN}
 \addplot+[solid, thick, gray, mark=diamond,   mark phase=167, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=QBCRFw-5NN ] {kappaallmediaParesRank.tex};\addlegendentry{QBCRFw-5NN}
 \addplot+[solid, black, mark=pentagon,   mark phase=155, mark options={solid, thick, scale=1.4}, mark repeat=200] table[x=budget, y=SVMbal-5NN ] {kappaallmediaParesRank.tex};\addlegendentry{SVMbal-5NN}
+
 \addplot+[solid, black, mark=text, text mark=svm,   mark phase=140, mark options={solid, scale=1}, mark repeat=200] table[x=budget, y=TUman-SVM ] {kappaallmediaParesRank.tex};\addlegendentry{TUman-SVM}
 \addplot+[solid, black, mark=text, text mark=nb,   mark phase=45, mark options={solid, scale=1}, mark repeat=200] table[x=budget, y=EERent-NB] {kappaallmediaParesRank.tex};\addlegendentry{EERent-NB}
 \addplot+[solid, black, mark=text, text mark=c45,   mark phase=10, mark options={solid, scale=1}, mark repeat=200] table[x=budget, y=EERent-C4.5w] {kappaallmediaParesRank.tex};\addlegendentry{EERent-C4.5w}
