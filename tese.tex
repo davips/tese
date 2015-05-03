@@ -225,16 +225,18 @@ My pgf version is: \pgfversion
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter \ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}}
 
+\usetikzlibrary{trees}
+
 %Capitulos
 \input introducao
-% \input contexto
-% \input propostas
-% \input metodologia
-% \input experimentos
-\usetikzlibrary{trees}
+\input contexto
+\input propostas
+\input metodologia
+\input experimentos
 \input exp-analise
-% \input exp-meta
-% \input conclusao
+\input exp-meta
+\input conclusao
+
 \appendix
 \input apendice1
 \input apendice2
