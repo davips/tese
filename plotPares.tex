@@ -1,10 +1,8 @@
-%\documentclass[class=minimal,border=0pt]{standalone}
-%\pagestyle{empty}
-%\thispagestyle{empty}
-%\usepackage[utf8]{inputenc}
-%% \inputencoding{latin1}
-%\input{imagens/macros-pgf.tex}
-%\begin{document}
+\begin{figure}
+\caption{Curvas de ranqueamento dos pares.
+ \textit{Detalhes na Figura \ref{curvas}.}}
+\label{curvasrank}
+\begin{center}
 \begin{tikzpicture}[scale=1]
 \begin{axis}[xlabel=consultas, ylabel=colocação, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
 scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/fixed}]
@@ -120,4 +118,5 @@ scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/
 
 \end{axis}
 \end{tikzpicture}
-%\end{document}
+\end{center}
+\end{figure}
