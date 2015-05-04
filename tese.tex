@@ -173,6 +173,7 @@
 
 \usepackage{pdflscape}
 \usepackage{capt-of}
+ \tikzexternalize
 \begin{document}
 \definecolor{darkgreen}{rgb}{0.0, 0.4, 0.0}
 \pagestyle{empty}
@@ -183,9 +184,9 @@
 \newcommand{\nota}{Tese apresentada ao Instituto de Ciências Matemáticas e de Computação - ICMC-USP, para o Exame de Qualificação, como parte dos requisitos necessários à obtenção do título de \meugrau\xspace em Ciências de Computação e Matemática Computacional.}
 \newcommand{\data}{\minhadata}
 \newcommand{\comentario}{\minhabolsa}
-
+\tikzexternaldisable
  \input{capa}
- \tikzexternalize
+\tikzexternalenable
 \pagestyle{plain}
 \onehalfspacing
 \input{resumo}
