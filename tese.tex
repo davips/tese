@@ -163,9 +163,6 @@
 
 \usepackage{amssymb}
 \input{imagens/macros-pgf.tex}
-\usetikzlibrary{external}
-\tikzexternalize
-
 % \usepackage{glosstex}
 \usepackage[printonlyused,withpage]{acronym}
 
@@ -177,8 +174,6 @@
 \usepackage{pdflscape}
 \usepackage{capt-of}
 \begin{document}
-My pgf version is: \pgfversion
-% 
 \definecolor{darkgreen}{rgb}{0.0, 0.4, 0.0}
 \pagestyle{empty}
 \pagenumbering{roman}
@@ -188,7 +183,8 @@ My pgf version is: \pgfversion
 \newcommand{\nota}{Tese apresentada ao Instituto de Ciências Matemáticas e de Computação - ICMC-USP, para o Exame de Qualificação, como parte dos requisitos necessários à obtenção do título de \meugrau\xspace em Ciências de Computação e Matemática Computacional.}
 \newcommand{\data}{\minhadata}
 \newcommand{\comentario}{\minhabolsa}
-\input{capa}
+
+ \input{capa}
 \pagestyle{plain}
 \onehalfspacing
 \input{resumo}
