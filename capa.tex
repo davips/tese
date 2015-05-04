@@ -1,10 +1,17 @@
-\tikzexternaldisable
 \begin{titlepage}
-\includepdf[scale=1.06]{SECAO-POSGRAD_87_Modelo_Capa_DO_CCMC_ORIGINAL1.pdf}
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[inner sep=0pt,scale=1.06] at (current page.center) {
+      \includegraphics[page=1]{SECAO-POSGRAD_87_Modelo_Capa_DO_CCMC_ORIGINAL1.pdf}
+    };
+  \end{tikzpicture}
+
   \cleardoublepage
   \newpage
   \clearpage
-\includepdf[scale=1.06]{SECAO-POSGRAD_87_Modelo_Capa_DO_CCMC_ORIGINAL2.pdf}
-\cleardoublepage
+
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[inner sep=0pt,scale=1.06] at (current page.center) {
+      \includegraphics[page=1]{SECAO-POSGRAD_87_Modelo_Capa_DO_CCMC_ORIGINAL2.pdf}
+     };
+  \end{tikzpicture}
 \end{titlepage}
-\tikzexternalenable
