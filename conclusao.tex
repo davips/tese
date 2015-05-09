@@ -2,3 +2,20 @@
 \chapter{Conclusão}\label{conclusao}
 
 \esb{unifica resumidamente os resultados de maneira coerente}
+
+desdobramentos futuros
+Foi visto que em 69\% (65\% pra 50qs e 88bs) das vezes
+(embora possivelmente incluindo pares inadequados strat-dataset,
+mas isso não é um problema sério) (65\% se todos aprendizes forem comparados com o classif do Rnd e 83\%
+se for um classif aleatório)
+a desvinculação é proveitosa.
+No futuro, é possível propor uma estratégia sincretista, que reavalie a adequação do aprendiz
+aos dados a cada nova consulta.
+% tentei brevemente isso, mas não deu certo; é preciso investigar melhor a quantidade inicial ideal de queries para
+% iniciar as avaliações.
+Provavelmente, a afinidade apren-strat é mais importante que isso,
+por exemplo, Mar vai bem com RFw, mesmo que o classificador ideal para a base seja NB.
+Assim, pode ser necessário desvincular não só após a rotulação, mas durante o aprendizado,
+caso predições sejam solicitadas. Elas não seriam enviadas ao aprendiz, mas sim ao
+classificador apropriado ao momento.
+% talvez por isso tenham dado errado as tentativas breves acima.

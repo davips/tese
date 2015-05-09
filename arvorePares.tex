@@ -46,14 +46,14 @@ level 5/.style={level distance=3cm,sibling angle=45},
 
 
 \begin{table}[h]
-\caption{\ano{só é possível calcular friedman até 28 ou 30 pares!!} 
-Contagem 3 primeiros/últimos
-75 tests.
---------Kappa---------------
-271 total de vencedores
-229 total de perdedores
-% Medida: kappa médio. \textit{Legenda na Tabela \ref{tab:friedClassif}.}
-}
+% \caption{\ano{só é possível calcular friedman até 28 ou 30 pares!!} 
+% Contagem 3 primeiros/últimos
+% 75/88 tests.
+% --------Kappa---------------
+% 271 total de vencedores
+% 229 total de perdedores
+% % Medida: kappa médio. \textit{Legenda na Tabela \ref{tab:friedClassif}.}
+% }
 \begin{center}
 \scalebox{0.5}{
 \begin{tabular}{lccc}
@@ -153,7 +153,203 @@ DWmah-5NN  & 0 & 52 & 4 \\
 Mar-SVM    & 0 & 31 & 2 \\
 SGmulti-SVM & 0 & 59 & 1 \\
 \end{tabular}
-}
+\quad
+\begin{tabular}{lccc}
+algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{últimos\\lugares} \\
+\hline
+               
+Mar-RFw    & 13 & 26 & 1 \\
+TUeuc-RFw  & 12 & 16 & 0 \\
+TUman-RFw  & 11 & 15 & 0 \\
+HTUman-RFw & 10 & 19 & 0 \\
+EERent-SVM & 10 & 39 & 1 \\
+TUman-CIELM & 9 & 25 & 0 \\
+HTUman-CIELM & 9 & 23 & 0 \\
+Ent-RFw    & 8 & 36 & 2 \\
+ATUman     & 8 & 23 & 0 \\
+HTUmah-RFw & 7 & 19 & 0 \\
+HTUeuc-RFw & 7 & 20 & 0 \\
+TUeuc-C4.5w & 7 & 27 & 0 \\
+HTUman-SVM & 7 & 22 & 0 \\
+TUmah-RFw  & 6 & 16 & 2 \\
+HTUman-5NN & 6 & 21 & 0 \\
+HTUeuc-CIELM & 5 & 24 & 0 \\
+HTUman-C4.5w & 5 & 22 & 0 \\
+EERent-5NN & 5 & 34 & 1 \\
+HTUmah-SVM & 5 & 31 & 0 \\
+DWman-RFw  & 4 & 55 & 3 \\
+HTUman-NB  & 4 & 25 & 0 \\
+HTUeuc-C4.5w & 4 & 22 & 0 \\
+DWman-5NN  & 4 & 58 & 8 \\
+Mar-5NN    & 4 & 50 & 5 \\
+Ent-5NN    & 4 & 51 & 7 \\
+ATUeuc     & 4 & 24 & 0 \\
+EERacc-RFw & 3 & 28 & 0 \\
+DWmah-RFw  & 3 & 53 & 1 \\
+DWeuc-RFw  & 3 & 55 & 3 \\
+SGmulti-RFw & 3 & 22 & 0 \\
+TUmah-NB   & 3 & 30 & 1 \\
+Mar-NB     & 3 & 46 & 2 \\
+TUmah-CIELM & 3 & 26 & 0 \\
+TUman-C4.5w & 3 & 24 & 0 \\
+DWeuc-C4.5w & 3 & 72 & 19 \\
+EERacc-5NN & 3 & 60 & 4 \\
+TUeuc-5NN  & 3 & 36 & 2 \\
+TUman-SVM  & 3 & 33 & 0 \\
+QBCRFw-RFw & 3 & 32 & 0 \\
+TUman-NB   & 2 & 34 & 0 \\
+TUeuc-NB   & 2 & 30 & 0 \\
+DWman-NB   & 2 & 60 & 5 \\
+Ent-NB     & 2 & 46 & 4 \\
+SGmulti-NB & 2 & 45 & 0 \\
+HTUmah-NB  & 2 & 29 & 0 \\
+HTUeuc-NB  & 2 & 25 & 0 \\
+TUeuc-CIELM & 2 & 26 & 0 \\
+HTUmah-CIELM & 2 & 27 & 1 \\
+TUmah-C4.5w & 2 & 28 & 1 \\
+Mar-C4.5w  & 2 & 55 & 2 \\
+TUmah-5NN  & 2 & 35 & 3 \\
+DWeuc-5NN  & 2 & 58 & 4 \\
+HTUmah-5NN & 2 & 27 & 1 \\
+HTUeuc-5NN & 2 & 23 & 0 \\
+SVMbal     & 2 & 56 & 4 \\
+TUmah-SVM  & 2 & 41 & 2 \\
+TUeuc-SVM  & 2 & 38 & 1 \\
+Mar-SVM    & 2 & 54 & 8 \\
+HTUeuc-SVM & 2 & 27 & 0 \\
+ATUmah     & 2 & 28 & 1 \\
+EERent-NB  & 1 & 38 & 0 \\
+EERacc-NB  & 1 & 50 & 3 \\
+DWmah-NB   & 1 & 57 & 3 \\
+DWeuc-NB   & 1 & 63 & 7 \\
+EERent-CIELM & 1 & 48 & 3 \\
+DWmah-CIELM & 1 & 74 & 19 \\
+DWman-CIELM & 1 & 71 & 14 \\
+DWeuc-CIELM & 1 & 65 & 17 \\
+Mar-CIELM  & 1 & 38 & 2 \\
+Ent-CIELM  & 1 & 49 & 3 \\
+DWmah-C4.5w & 1 & 74 & 22 \\
+Ent-C4.5w  & 1 & 57 & 2 \\
+TUman-5NN  & 1 & 36 & 1 \\
+DWmah-5NN  & 1 & 68 & 4 \\
+SVMsim     & 1 & 55 & 8 \\
+DWmah-SVM  & 1 & 59 & 8 \\
+DWman-SVM  & 1 & 61 & 4 \\
+Ent-SVM    & 1 & 62 & 13 \\
+SGmulti-SVM & 1 & 75 & 1 \\
+Clu        & 1 & 35 & 1 \\
+Rnd        & 1 & 88 & 1 \\
+EERent-RFw & 0 & 25 & 0 \\
+EERacc-CIELM & 0 & 56 & 2 \\
+SGmulti-CIELM & 0 & 35 & 0 \\
+EERent-C4.5w & 0 & 35 & 1 \\
+EERacc-C4.5w & 0 & 44 & 1 \\
+DWman-C4.5w & 0 & 75 & 21 \\
+SGmulti-C4.5w & 0 & 43 & 1 \\
+HTUmah-C4.5w & 0 & 27 & 3 \\
+SGmulti-5NN & 0 & 73 & 1 \\
+EERacc-SVM & 0 & 41 & 0 \\
+DWeuc-SVM  & 0 & 60 & 4 \\
+\end{tabular}
+\begin{tabular}{lccc}
+algoritmo & \makecell{primeiros\\lugares} & \makecell{derrotas\\para Rnd}  & \makecell{últimos\\lugares} \\
+\hline
+               
+SGmulti-RFw & 3 & 9 & 0 \\
+HTUmah-RFw & 3 & 7 & 0 \\
+TUeuc-RFw  & 2 & 4 & 0 \\
+Ent-RFw    & 2 & 7 & 1 \\
+HTUeuc-RFw & 2 & 10 & 1 \\
+TUeuc-NB   & 2 & 7 & 0 \\
+DWmah-NB   & 2 & 11 & 0 \\
+DWman-NB   & 2 & 10 & 1 \\
+TUman-C4.5w & 2 & 10 & 1 \\
+Mar-C4.5w  & 2 & 8 & 0 \\
+DWmah-5NN  & 2 & 13 & 1 \\
+DWman-5NN  & 2 & 12 & 0 \\
+TUmah-SVM  & 2 & 10 & 2 \\
+HTUmah-SVM & 2 & 5 & 1 \\
+HTUman-SVM & 2 & 6 & 0 \\
+HTUeuc-SVM & 2 & 5 & 0 \\
+EERent-RFw & 1 & 6 & 0 \\
+TUmah-RFw  & 1 & 6 & 0 \\
+TUman-RFw  & 1 & 4 & 0 \\
+DWmah-RFw  & 1 & 10 & 0 \\
+DWman-RFw  & 1 & 10 & 0 \\
+DWeuc-RFw  & 1 & 10 & 1 \\
+Mar-RFw    & 1 & 7 & 1 \\
+EERent-NB  & 1 & 9 & 0 \\
+HTUmah-NB  & 1 & 7 & 0 \\
+HTUeuc-NB  & 1 & 7 & 0 \\
+EERent-CIELM & 1 & 11 & 1 \\
+TUeuc-CIELM & 1 & 8 & 0 \\
+EERacc-C4.5w & 1 & 8 & 0 \\
+HTUmah-C4.5w & 1 & 8 & 1 \\
+TUmah-5NN  & 1 & 11 & 2 \\
+TUman-5NN  & 1 & 8 & 0 \\
+Ent-5NN    & 1 & 11 & 5 \\
+SVMbal     & 1 & 9 & 0 \\
+EERent-SVM & 1 & 10 & 1 \\
+TUman-SVM  & 1 & 6 & 0 \\
+TUeuc-SVM  & 1 & 8 & 1 \\
+DWman-SVM  & 1 & 11 & 0 \\
+Mar-SVM    & 1 & 9 & 1 \\
+EERacc-RFw & 0 & 8 & 0 \\
+HTUman-RFw & 0 & 8 & 0 \\
+EERacc-NB  & 0 & 11 & 2 \\
+TUmah-NB   & 0 & 7 & 0 \\
+TUman-NB   & 0 & 10 & 0 \\
+DWeuc-NB   & 0 & 11 & 1 \\
+Mar-NB     & 0 & 9 & 0 \\
+Ent-NB     & 0 & 10 & 0 \\
+SGmulti-NB & 0 & 8 & 0 \\
+HTUman-NB  & 0 & 9 & 0 \\
+EERacc-CIELM & 0 & 13 & 0 \\
+TUmah-CIELM & 0 & 9 & 0 \\
+TUman-CIELM & 0 & 9 & 0 \\
+DWmah-CIELM & 0 & 17 & 5 \\
+DWman-CIELM & 0 & 15 & 4 \\
+DWeuc-CIELM & 0 & 15 & 6 \\
+Mar-CIELM  & 0 & 11 & 0 \\
+Ent-CIELM  & 0 & 10 & 1 \\
+SGmulti-CIELM & 0 & 10 & 0 \\
+HTUmah-CIELM & 0 & 9 & 0 \\
+HTUman-CIELM & 0 & 10 & 0 \\
+HTUeuc-CIELM & 0 & 10 & 0 \\
+EERent-C4.5w & 0 & 7 & 0 \\
+TUmah-C4.5w & 0 & 10 & 0 \\
+TUeuc-C4.5w & 0 & 7 & 0 \\
+DWmah-C4.5w & 0 & 15 & 3 \\
+DWman-C4.5w & 0 & 16 & 1 \\
+DWeuc-C4.5w & 0 & 16 & 3 \\
+Ent-C4.5w  & 0 & 11 & 0 \\
+SGmulti-C4.5w & 0 & 9 & 0 \\
+HTUman-C4.5w & 0 & 8 & 0 \\
+HTUeuc-C4.5w & 0 & 8 & 0 \\
+EERent-5NN & 0 & 13 & 0 \\
+EERacc-5NN & 0 & 16 & 1 \\
+TUeuc-5NN  & 0 & 10 & 0 \\
+DWeuc-5NN  & 0 & 15 & 0 \\
+Mar-5NN    & 0 & 12 & 5 \\
+SGmulti-5NN & 0 & 18 & 0 \\
+HTUmah-5NN & 0 & 7 & 0 \\
+HTUman-5NN & 0 & 10 & 0 \\
+HTUeuc-5NN & 0 & 8 & 0 \\
+SVMsim     & 0 & 10 & 1 \\
+EERacc-SVM & 0 & 8 & 0 \\
+DWmah-SVM  & 0 & 14 & 3 \\
+DWeuc-SVM  & 0 & 12 & 0 \\
+Ent-SVM    & 0 & 10 & 1 \\
+QBCRFw-RFw & 0 & 7 & 0 \\
+SGmulti-SVM & 0 & 13 & 0 \\
+ATUmah     & 0 & 7 & 0 \\
+ATUman     & 0 & 10 & 0 \\
+ATUeuc     & 0 & 10 & 0 \\
+Clu        & 0 & 9 & 0 \\
+Rnd        & 0 & 19 & 0 \\
+\end{tabular}
+
+         }
 \label{contaFriedPares}
 \end{center}
 \end{table}
