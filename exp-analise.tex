@@ -51,7 +51,8 @@ Se todas as bases tivessem a mesma quantidade de exemplos
 e o aprendizado prosseguisse, as curvas se encontrariam novamente,
 pois tendem ao desempenho passivo.
 
-É possível observar que a curva de SVMbal se destaca negativamente,
+É possível observar, por exemplo,
+que a curva de SVMbal se destaca negativamente,
 mas comparações de curvas neste gráfico são imprecisas devido aos diferentes
 pesos que as bases podem ter:
 bases mais difíceis, por exemplo, tendem a ter um valor mais baixo para kappa e acabam
@@ -94,7 +95,7 @@ Por fim, EERent mostrou-se como uma das melhores opções pela estabilidade e co
 Para confirmar as conclusões com segurança estatística, os níveis de confiança
 ($p \in \{0,01; 0,05; 0,10\}$) na Tabela \ref{stratsALCKappaFriedAllReduxall} indicam
 quando uma estratégia na linha é melhor que a outra na coluna.
-O critério de vitória é baseado na comparação dos valores da kappa médio para todas as bases.
+O critério de vitória é baseado na comparação dos valores kappa médio para todas as bases.
 A medida foi calculada com $200$ exemplos nas bases de tamanho suficiente
 e $|\mathcal{U}|$ nas demais.
 % \input stratsmahALCKappaFriedAllReduxall
@@ -143,7 +144,7 @@ Como um indicativo da viabilidade do aprendizado ativo em geral, Rnd perde de to
 e SVMbal.
 Clu superou a amostragem aleatória, respeitando a garantia teórica de que não é inferior a ela.
 Dentre as melhores estratégias,
-a proposta HTUmah obteve vitórias maior significância estatística que sua principal contendente TUmah
+a proposta HTUmah obteve vitórias com maior significância estatística que sua principal contendente TUmah
 e se equiparou a EERent.
 Dentre as agnósticas selecionadas ATUmah é a preferível, também por superar suas contendentes
 significativamente.

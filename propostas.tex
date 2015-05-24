@@ -133,7 +133,7 @@ Em determinadas aplicações também pode ser útil a possibilidade de se conhec
 a sequência de consultas antes da interação com o oráculo começar.
 Frequentemente, o número de consultas é conhecido de antemão \citep{settles2010active};
 isso permite, por exemplo, que elas sejam repartidas entre vários oráculos que podem
-trabalhar de forma independente dos demais.
+trabalhar de forma independente entre si.
 Essa possibilidade de paralelização não existe na estratégia de agrupamento hierárquico,
 pois ela faz uso dos rótulos para determinar a pureza de cada grupo.
 Outra vantagem é a inexistência de tempo de espera interconsultas.
@@ -143,9 +143,11 @@ Outra vantagem é a inexistência de tempo de espera interconsultas.
 A abordagem agnóstica baseada em densidade é de natureza exploratória,
 pois enfoca as regiões mais desconhecidas (sem rótulos) do espaço de exemplos.
 Pela ausência de aprendiz, não há uma fronteira de decisão a se considerar.
-Logo, não é possível realizar consultas de caráter prospectivo - ou o ajuste fino citado
-na Seção \ref{ag}, ou seja,
-que ataquem diretamente os exemplos mais críticos de forma análoga a uma busca binária.
+A adoção de outros tipos de prospecção, como a de Clu, 
+implicaria na interdependência entre consultas.
+Logo, não é possível realizar consultas de caráter prospectivo 
+que ataquem diretamente os exemplos mais críticos de forma análoga a uma 
+busca binária.
 Como a premissa de fronteira única da busca binária não pode ser garantida e
 a amostragem puramente exploratória se assemelha a uma busca exaustiva,
 é natural supor que o equilíbrio entre exploração e prospecção seja proveitoso.
@@ -157,7 +159,8 @@ puramente exploratória (ATU) de acordo com o nível de contribuição corrente
 da componente exploratória em TU.
 O nível de contribuição é estimado por meio do cáculo da correlação de
 Pearson \citep{books/daglib/0000786} entre as medidas de informatividade de
-TU e ATU para toda a reserva de exemplos.
+TU e Mar (a componente gnóstica de 
+TU) para toda a reserva de exemplos.
 Uma correlação acima de $0,999$, valor arbitrário próximo de $1$,
 indica uma baixa contribuição da componente exploratória,
 sugerindo que a presença do aprendiz passa a ser relevante ou
