@@ -1,0 +1,380 @@
+%   Situação do trabalho = pre-defesa/pos-defesa (exceto para qualificação)
+\documentclass[doutorado, pos-defesa, spanish, english, brazil, versalete, sumario=tradicional]{packages/icmc}
+\hyphenation{ca-ro}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\newcommand{\VerbL}{0.52\textwidth}
+\newcommand{\LatL}{0.42\textwidth}
+\usepackage{standalone}
+\usepackage{enumitem}
+\usepackage{titletoc}
+% Informações de dados para CAPA e FOLHA DE ROSTO
+\tituloPT{Seleção e controle do viés de aprendizado ativo}
+\tituloEN{Selection and control of the active learning bias}
+\autor[Santos, D. P.]{Davi Pereira dos Santos}
+\genero{M}
+\orientador[Orientador]{Prof. Dr.}{André Carlos Ponce de Leon Ferreira de Carvalho}
+\curso{CCMC}
+% \data{08}{03}{2016}
+% conter no máximo 500 palavras; conter no mínimo 1 e no máximo 5 palavras-chave
+\textoresumo[brazil]{
+A área de aprendizado de máquina passa por uma grande expansão em seu universo de aplicações.
+Algoritmos de indução de modelos preditivos têm sido responsáveis pela realização de tarefas que eram inviáveis ou consideradas exclusividade do campo de ação humano até recentemente.
+Contudo, ainda é necessária a supervisão humana durante a construção de conjuntos de treinamento, como é o caso da tarefa de classificação.
+Tal construção se dá por meio da rotulação manual de cada exemplo, atribuindo a ele pelo menos uma classe.
+Esse processo, por ser manual, pode ter um custo elevado se for necessário muitas vezes.
+
+Uma técnica sob investigação corrente, capaz de mitigar custos de rotulação, é o aprendizado ativo.
+Dado um orçamento limitado, o objetivo de uma estratégia de amostragem ativa é direcionar o esforço de treinamento para os exemplos essenciais.
+Existem diversas abordagens efetivas de selecionar ativamente os exemplos mais importantes para consulta ao supervisor.
+Entretanto, não é possível, sem incorrer em custos adicionais, testá-las de antemão quanto à sua efetividade numa dada aplicação.
+Ainda mais crítica é a necessidade de que seja escolhido um algoritmo de aprendizado para integrar a estratégia de aprendizado ativo antes que se disponha de um conjunto de treinamento completo.
+
+Para lidar com esses desafios, esta tese apresenta como principais contribuições: 
+uma estratégia baseada na inibição do algoritmo de aprendizado nos momentos menos propícios ao seu funcionamento; e, 
+a experimentação da seleção de algoritmos de aprendizado, estratégias ativas de consulta ou pares estratégia-algoritmo baseada em meta-aprendizado, visando a experimentação de formas de escolha antes e durante o processo de rotulação.
+A estratégia de amostragem proposta é demonstrada competitiva empiricamente.
+Adicionalmente, experimentos iniciais com meta-aprendizado indicam a possibilidade de sua aplicação em aprendizado ativo, embora tenha sido identificado que investigações mais extensivas e aprofundadas sejam necessárias para apurar sua real efetividade prática.
+
+Importantes contribuições metodológicas são descritas neste documento, incluindo uma análise frequentemente negligenciada pela literatura da área: o risco devido à variabilidade dos algoritmos.
+Por fim, uma das principais contribuições deste trabalho são as curvas e faixas de ranqueamento, capazes de sumarizar, num único gráfico, experimentos de uma grande coleção de conjuntos de dados.
+
+}{Aprendizado de máquina, Aprendizado ativo, Meta-aprendizado}
+\textoresumo[english]{
+The machine learning area undergoes a major expansion in its universe of applications.
+Algorithms for the induction of predictive models have made it possible to carry out tasks that were once considered unfeasible or restricted to be solved by humans.
+However, human supervision is still needed to build training sets, for instance, in the classification task.
+Such building is usually performed by manual labeling of each instance, providing it, at least, one class.
+This process has a high cost due to its manual nature.
+
+A current technique under research, able to mitigate labeling costs, is called active learning.
+The goal of an active learning strategy is to manage the training effort to focus on the most relevant instances, within a budget.
+Several effective sampling approaches having been proposed.
+However, when one needs to choose the proper strategy for a given problem, they are impossible to test beforehand without incurring into additional costs.
+Even more critical is the need to choose a learning algorithm to integrate the active learning strategy before the existence of a complete training set.
+
+This thesis presents two major contributions to cope with such challenges:
+a strategy based on the learning algorithm inhibition when it is prone to inaccurate predictions; and, 
+an attempt to automatically select the learning algorithms, active querying strategies or pairs strategy-algorithm, based on meta-learning.
+This attempt tries to verify the feasibility of such kind of decision making before and during the learning process.
+
+The proposed sampling approach is empirically shown to be competitive.
+Additionally, meta-learning experiments show that it can be applied to active learning, although more a extensive investigation is still needed to assess its real practical effectivity.
+
+Important methodological contributions are made in this document, including an often neglected analysis in the literature of active learning: the risk due to the algorithms variability.
+A major methodological contribution, called ranking curves, is presented.
+
+}{Machine learning, Active learning, Meta learning}    
+\definecolor{blue}{RGB}{41,5,195}
+\makeatletter
+\hypersetup{
+%      	pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2/ICMC-USP},
+		pdfkeywords={\palavraschave}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      	% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ELEMENTOS PRÉ-TEXTUAIS
+%\incluifichacatalografica*{tex/fichaCatalografica.pdf}
+\incluifichacatalografica{237} 
+\textodedicatoria*{tex/pre-textual/dedicatoria}
+\textoagradecimentos*{tex/pre-textual/agradecimentos}
+\textoepigrafe*{tex/pre-textual/epigrafe}
+\incluilistadefiguras
+\incluilistadetabelas
+\incluilistadequadros
+\incluilistadealgoritmos
+% \incluilistadecodigos
+\incluilistadesiglas
+\incluilistadesimbolos
+
+\input{tex/macros}
+\usepackage{threeparttable}
+\usepackage{array}
+\usepackage{arydshln}
+
+% \makeatletter
+% \renewcommand{\epigraphhead}[2][95]{%
+%   \def\@epitemp{\begin{minipage}{\epigraphwidth}#2\end{minipage}}
+%   \def\ps@epigraph{\let\@mkboth\@gobbletwo
+%     \@epipos
+%     \if@epirhs
+%       \def\@oddhead{\hfil\begin{picture}(0,0)
+%                          \put(0,-#1){\makebox(0,0)[r]{\@epitemp}}
+%                          \end{picture}}
+%     \else
+%       \if@epicenter
+%         \def\@oddhead{\hfil\begin{picture}(0,0)
+%                            \put(0,-#1){\makebox(0,0)[b]{\@epitemp}}
+%                            \end{picture}\hfil}
+%       \else
+%         \def\@oddhead{\begin{picture}(0,0)
+%                            \put(0,-#1){\makebox(0,0)[l]{\@epitemp}}
+%                            \end{picture}\hfil}
+%       \fi
+%     \fi
+%     \let\@evenhead\@oddhead
+%     \def\@oddfoot{\reset@font\hfil\changefont\thepage\hfil}
+%     \let\@evenfoot\@oddfoot}
+%   \thispagestyle{epigraph}}
+% \makeatother
+\begin{document}
+\pgfplotsset{compat=1.11}
+\setlength\dashlinedash{0.5pt}
+\setlength\dashlinegap{2pt}
+\setlength\arrayrulewidth{0.5pt}
+\SetKwProg{algalg}{função}{}{}
+\SetKwProg{algalging}{function}{}{}
+\SetKwFunction{amostragem}{amostragem}{}
+\SetKwFunction{sgmulti}{SGmulti}{}
+\SetKwFunction{best}{melhor}{}
+\SetKwFunction{avalia}{induz}{}
+\SetKwFunction{vc}{val.cruzada}{}
+\SetKwFor{paracada}{para cada}{faça}{fim}
+\SetKwFunction{treina}{treina}{}
+\SetKwFunction{recomenda}{recomenda}{}
+\SetKwFunction{htu}{HTU}{}
+% \maxtocdepth{subsection}
+\textual
+\definecolor{darkgreen}{rgb}{0.0, 0.4, 0.0}
+
+\chapter{Introdução} \label{intro}
+% Whenever a theory appears to you as the only possible one, take this as a sign that you have neither understood the theory nor the problem which it was intended to solve.
+\input{tex/introducao}
+
+\chapter{Contexto} \label{contexto}
+\epigraph{
+\textit{\ldots no matter how many instances of white swans we may have observed, this does not justify the conclusion that \emph{all} swans are white.
+}}{Karl Popper\footnotemark[1]}
+\setcounter{footnote}{1}
+\footnotetext[1]{\aspas{\ldots não importa quantos exemplos de cisne branco tenhamos observado, isso não justifica a conclusão de que \emph{todos} os cisnes sejam brancos.} - \citeonline{popper1959survey}, sobre o problema da indução na ciência e a necessidade do princípio da falseabilidade.} 
+\input{tex/contexto}
+
+\chapter{Propostas} \label{propostas} \thispagestyle{empty}
+\epigraph{
+\textit{Fast is busy, controlling, aggressive\ldots analytical\ldots\phantom{1ooooooo}
+Slow is\ldots calm, careful\ldots intuitive\ldots patient\ldots\phantom{1ooooo}
+% It is about\ldots meaningful connections - with people, culture, work, food, everything.|
+[The ideal] philosophy can be summed up in a single word: balance. 
+% 
+}}{Carl Honoré\footnotemark[1]}
+\setcounter{footnote}{1}
+\footnotetext[1]{\aspas{Rápido é ocupado, controlador, agressivo\ldots~ analítico\ldots~
+Lento é\ldots~ tranquilo, cuidadoso\ldots~ intuitivo\ldots~
+paciente\ldots~
+% Trata-se de\ldots~ conexões com significado - com pessoas, cultura, trabalho, comida, tudo. |
+A filosofia [ideal] pode ser resumida em uma única palavra: equilíbrio.
+} - \citeonline {honore2006praise}, sobre o culto à velocidade e o benefício da lentidão para uma vida com mais significado.}
+\input{tex/propostas}
+
+\chapter{Metodologia} \label{metodologia} \thispagestyle{empty}
+\epigraph{
+\textit{Bien loin que l'objet précède le point de vue, on dirait que c'est le point de vue qui crée l'objet}\ldots
+}{Ferdinand de Saussure\footnotemark[1]}
+\setcounter{footnote}{1}
+\footnotetext[1]{\aspas{Bem longe de dizer que o objeto precede o ponto de vista, diríamos que é o ponto de vista que cria o objeto\ldots}
+- \citeonline{saussure1972curso}, sobre as peculiaridades metodológicas em sua área de estudo.}
+% Bien loin que l'objet précède le point de vue, on dirait que c'est le point de vue qui crée l'objet, et d'ailleurs rien ne nous dit d'avance que l'une de ces manières de considérer le fait en question soit antérieure ou supérieure aux autres.\cite{godel1957sources}
+% Bem longe de dizer que o objeto precede o ponto de vista, diríamos que é o ponto de vista que cria o objeto; aliás, nada nos diz de antemão que uma dessas maneiras de considerar o fato em questão seja anterior ou superior às outras.
+\input{tex/metodologia}
+ 
+\chapter{Resultados} \label{experimentos} \thispagestyle{empty}
+\epigraph{
+\textit{Kleinere Laboratoriums-Explosionen werden bei der Natur des Stoffes, mit dem wir arbeiten, nie zu vermeiden sein.}}{Sigmund Freud\footnotemark[1]}
+\setcounter{footnote}{1}
+\footnotetext[1]{\aspas{Pela natureza da matéria com que trabalhamos, nunca será possível evitar pequenas explosões de laboratório.} - Freud numa carta a Jung, dando conselhos profissionais e amorosos.}
+\input{tex/experimentos}
+
+\chapter{Conclusão} \label{conclusao} \thispagestyle{empty}
+\epigraph{
+\scalebox{0.85}{\texttt{
+\begin{tabular}{l}
+um dia os sóis\\[-0.25cm]
+\phantom{oooooooo}acabam\\
+\phantom{ooo}e nada mais\\[-0.25cm]
+\phantom{ooo}existe\\
+\\
+\phantom{oooo}um dia o Sol\\[-0.25cm]
+\phantom{ooooooo}não nasce\\
+\phantom{ooooooo}um dia o Sol\\[-0.25cm]
+\phantom{ooooooooo}se apaga\\
+\phantom{ooooooooo}um dia \textit{ou} não\\[-0.25cm]
+\phantom{oooooooooo}acordo\\
+\phantom{oooooooooo}um dia virá\\[-0.25cm]
+\phantom{ooooooooo}antes\\
+\phantom{ooooooooo}e antes desse\\[-0.25cm]
+\phantom{ooooooo}um outro\\
+\phantom{ooooooo}o outro e por\\[-0.25cm]
+\phantom{oooo}diante\\
+\phantom{oooo}e outro e outro\\[-0.24cm]
+e hoje\footnotemark[1]
+\end{tabular}
+}}
+}{ }
+\setcounter{footnote}{1}
+\footnotetext[1]{17/04/2014 - Baseado no conto \textit{The last question} de Isaac Asimov \cite{asimov2007last}.}
+\input{tex/conclusao}
+
+\bookmarksetup{startatroot}
+\postextual
+\bibliography{references}
+\input{tex/glossario}
+\glsaddall % Comando para incluir todas as definições do arquivo glossario.tex
+\printglossaries
+
+\begin{apendicesenv}
+% \newpage
+
+\chapter{Comitês como aprendizes ativos}\label{apexpcom}
+\input tex/exp-comites
+
+\chapter{Dependência entre conjuntos de dados}\label{apflu}
+\input apflu
+
+\chapter{Meta-aprendizado} \label{apmeta}
+\input{tex/meta}
+
+\chapter{Ferramentas}\label{apfer}
+Com relação ao desenvolvimento de código e infraestrutura, mais de 25 mil linhas de código em quase 300 arquivos foram escritas ou adaptadas entre as sucessivas versões dos programas implementados.
+Uma forma de quantificar a escalabilidade desse sistema é a base de dados resultante, com mais de 40 milhões de consultas registradas.
+No momento de maior volume experimental, o sistema gerenciador do banco de dados precisou suportar conexões vindas de quase 2000 processos de rotulação ocorrendo simultaneamente em aproximadamente 200 computadores situados em localizações distintas, terminando com um espaço ocupado de 34GiB em disco.
+\simbolo{GiB}{giga \textit{bytes}}
+
+Diversos recursos computacionais foram utilizados para a realização dos experimentos.
+A maioria foi disponibilizada apenas na fase final.
+Os seguintes recursos foram empregados, em ordem de tempo de contribuição, do maior para o menor:
+\begin{itemize}
+\item \textit{notebook} de trabalho com 8 núcleos de 2,4GHz;
+\item \textit{cluster} Biocom com 120 núcleos de 3,5GHz;
+\item servidor GPU do laboratório Biocom com 24 núcleos de 2,5GHz;
+\item estação de trabalho
+% \footnote{Ambos, estação e \textit{notebook} vinculados ao orientador do autor deste trabalho.}
+com 8 núcleos de 4GHz;
+\item \textit{nuvem} USP com 24 núcleos de 2,4GHz; e,
+\item \textit{cluster} Euler, em parte da fase final dos experimentos, com 2080 núcleos de 2,8GHz.
+\end{itemize}
+% Intel(R) Core(TM) i7-3630QM CPU @ 2,40GHz
+
+Os seguintes programas foram utilizados (o número de versão é dado entre parênteses), em ordem de relevância nos experimentos, da maior para a menor:
+\begin{itemize}
+   \item sistema operacional GNU-Linux Debian (7.0 e 8.2);
+   \item banco de dados MySQL/\textit{connector} (5.5/5.1);
+   \item compilador da linguagem Java/JVM HotSpot(TM) (1.7/24.80);
+   \item compilador da linguagem Scala/ScalaTest (2.11/2.2);
+   \item biblioteca de aprendizado de máquina e interface gráfica Weka (3.7.11);
+   \item biblioteca de álgebra linear \textit{Matrix Toolkits Java} (1.0);
+   \item biblioteca de álgebra linear LAPACK (implementação de referência 3);
+   \item biblioteca de matemática Apache Commons io/math (1.3/3.3);
+   \item biblioteca de parseamento para Scala (1.0);
+   \item interpretador da linguagem R (3.1.1) - \cite{team2014r}; 
+   \item biblioteca Python \textit{scikit learn} \cite{scikit-learn};
+   \item SQLite-JDBC (3.7); e,
+   \item compilador GHC da linguagem Haskell (7.8) - \cite{jones2003haskell}.
+\end{itemize}
+
+\chapter{Conjuntos de dados} \label{apdatasets}
+As tabelas \ref{tab:datasetsa} e \ref{tab:datasetsb} contêm a lista de conjuntos de dados adotados nos experimentos definitivos.
+Suas principais características são apresentadas: tamanho médio da reserva de exemplos durante a validação cruzada ($|\mathcal{U}|$), quantidade de classes ($|Y|$), quantidade de atributos, quantidade de atributos nominais, proporção da classe majoritária e proporção da classe minoritária.
+\input{tex/dataset-tables}
+% \chapter{Desempenho passivo} \label{appassivos}
+% \ano{nao sei de onde veio essa tab, mas acho que preciso rodar um passiva direito quando for dar uma noção do quanto de aprendizado ocorreu em 100 consultas}
+% \ano{melhor acrescentar RFw e RoF}
+% \input{tex/classifsTab}
+% \chapter{Resultados adicionais} \label{apresadi}
+% \input{tex/apresultados}
+\end{apendicesenv}
+
+
+\begin{anexosenv}
+\chapter{Atividades complementares}\label{anc}
+Algumas atividades foram realizadas paralelamente ao doutorado.
+A mais relevante é apresentada a seguir.
+
+\paragraph*{Acompanhamento do processo de corte de árvores no campus}
+Diante do frenesi sobre o \textit{aquecimento global}, pouco nos importamos com assuntos mais prioritários, como o \textit{aquecimento local}, a poluição (do ar, sonora e visual) local, entre outros.
+Apesar de ser morada da maior concentração de doutores do Brasil, a cidade de São Carlos prossegue impermeabilizando ou desprotegendo o solo; removendo os resquícios de mata nativa culminando numa urbanização baseada em asfalto e cimento.
+Às vezes, bloquetes, grama e palmeiras são um paliativo de baixo custo de manutenção que visa apenas a permeabilidade.
+Nos remanescentes das fazendas, árvores não nativas também são removidas.
+
+No campus I da USP, por exemplo, com o objetivo de evitar danos por queda de galhos, está previsto o corte inicial de 111 árvores consideradas de risco - de um total de aproximadamente 600 analisadas segundo laudo do IPT\footnote{O processo de licenciamento ambiental (número 29578/2013) encontra-se na Secretaria de Meio Ambiente da Prefeitura de São Carlos e a lista de árvores a remover também encontra-se na prefeitura da USP.}.
+Dependendo do porte da árvore cortada, devem ser plantadas quatro, seis ou oito em compensação.
+O replantio obrigatório estava previsto até fev/2016, totalizando 610 árvores preferencialmente nativas em qualquer dos campi. Até onde os frequentadores do campus I podem perceber, se houve um replantio significativo, ele deve ter ocorrido apenas no campus II.
+
+Deixo registrado nas páginas seguintes, algumas fotos recentes e uma tentativa de poesia.
+
+\newpage
+
+\begin{landscape}
+\begin{figure}
+\centering
+\includegraphics[height=14.6cm]{elast}
+\caption*{Foto panorâmica em metades: a seringueira-falsa à esquerda da lanchonete foi cortada ao final de 2015, seguindo o destino de sua semelhante que situava-se à direita e já não aparece na foto. Como resultado, os laboratórios do prédio à esquerda agora precisam de cortinas e seus frequentadores perderam a oportunidade de observar os pássaros que se abrigavam nos galhos da árvore.}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}
+\centering
+\includegraphics[height=14.7cm]{praca}
+\caption*{Foto panorâmica em metades: fileira remanescente na praça e outras árvores.}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}
+\centering
+\includegraphics[height=15.2cm]{figue}
+\caption*{A figueira estável e mais desenvolvida foi removida, enquanto que a figueira mais inclinada (à direita da foto) foi mantida. Dois dias antes do depósito deste documento, havia profissionais realizando  levantamento topográfico na área. Faz pensar em qual seria o real critério do corte.}
+\end{figure}
+\end{landscape}
+
+\newpage
+\textbf{Compro Libras Arbóreas}
+\begin{alltt}
+          compro libras arbóreas
+       2500lb            de madeira viva
+            
+               primeiro
+               a do figo
+               bem verdadeira
+               
+               restam na praça               
+               seringueiras-falsas    uma fila
+               e a viúva, abstrata,
+              matemática, 
+              à dentilhada valsa
+              bem resistia
+
+              \textit{F. elastica}
+              \textit{ferrea} fosse
+              menos brilharia
+              a \textit{cementicia} viga
+
+              latina ironia
+              viga: \textit{Arbos},     \textit{concreta}  
+\end{alltt}
+
+
+
+
+\chapter{Resultados detalhados} \label{anresdet}
+Os valores de ALC-$\mu_\kappa$ para todas as estratégias e conjuntos de dados são apresentados para cada algoritmo de aprendizado de máquina:
+\begin{itemize}
+   \item 5NN - tabelas \ref{stab5NNw0} e \ref{stab5NNw1};
+   \item C4.5w - tabelas \ref{stabC4.520} e \ref{stabC4.521};
+   \item NB - tabelas \ref{stabNB0} e \ref{stabNB1};
+   \item SVM - tabelas \ref{stabSVM0} e \ref{stabSVM1};
+   \item RFw - tabelas \ref{stabRFw0} e \ref{stabRFw1}; e,
+   \item RoF - tabelas \ref{stabRoF0} e \ref{stabRoF1}.
+\end{itemize}
+\input{tex/apresdet}
+
+\end{anexosenv}
+\end{document}

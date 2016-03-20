@@ -1,0 +1,24 @@
+\node[line width=0.3ex, decision] {$\qnom_{min}$ }
+child {node [decision] {${\mu}_{min}$}
+child {node [outcome] {
+5NNw: 27\\
+NB: 7\\
+SVM: 0\\
+C4.5w: 0} edge from parent node [cond] {$\leq0,5$}}
+child {node [decision] {$\qexeatt$}
+child {node [outcome] {
+5NNw: 10\\
+SVM: 0\\
+NB: 0\\
+C4.5w: 0} edge from parent node [cond] {$\leq39,4$}}
+child {node [outcome] {
+C4.5w: 10\\
+5NNw: 6\\
+NB: 3\\
+SVM: 2} edge from parent node [cond] {$>39,4$}}edge from parent node [cond] {$>0,5$}}edge from parent node [cond] {$\leq1$}}
+child {node [outcome] {
+NB: 15\\
+C4.5w: 5\\
+5NNw: 3\\
+SVM: 2} edge from parent node [cond] {$>1$}}
+;

@@ -1,0 +1,29 @@
+\node[line width=0.3ex, decision] {\#classes}
+child {node [decision] {\#atributos}
+child {node [decision] {\%nominais}
+child {node [outcome] {
+SVM: 10\\
+CIELM: 10\\
+NB: 4\\
+RFw: 4\\
+C4.5w: 4\\
+5NN: 2} edge from parent node [cond] {$\leq16,7$}}
+child {node [outcome] {
+C4.5w: 6\\
+RFw: 3\\
+CIELM: 3\\
+5NN: 2\\
+SVM: 1} edge from parent node [cond] {$>16,7$}}edge from parent node [cond] {$\leq33$}}
+child {node [outcome] {
+SVM: 6\\
+RFw: 5\\
+5NN: 3\\
+NB: 1\\
+CIELM: 1} edge from parent node [cond] {$>33$}}edge from parent node [cond] {$\leq3$}}
+child {node [outcome] {
+RFw: 15\\
+5NN: 7\\
+SVM: 5\\
+NB: 4\\
+CIELM: 2\\
+C4.5w: 1} edge from parent node [cond] {$>3$}};

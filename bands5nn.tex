@@ -1,0 +1,36 @@
+\documentclass[tikz]{standalone}
+\input{header}
+\begin{document}
+\begin{tikzpicture}[scale=1]                                             
+\begin{axis}[ymin=2.5,ymax=7.2,y tick label style={/pgf/number format/.cd,fixed,fixed zerofill,precision=1,/tikz/.cd},ylabel=colocação média,width=50,height=148,grid = both, scale only axis, width=200, y dir=reverse, yticklabel style={/pgf/number format/fixed}, legend style={at={(0.95,0.5)}, anchor=west},legend cell align=left]
+\addplot+[eerst, mark phase=20] table[x=budget, y=EERent-5NNw] {images/5nn-Rank.tex};\addlegendentry{EERent}
+\addplot+[htust, mark phase=23] table[x=budget, y=HTUeuc-5NNw] {images/5nn-Rank.tex};\addlegendentry{\textbf{HTUeuc}}
+\addplot+[atust, mark phase=25] table[x=budget, y=ATUeuc-5NNw] {images/5nn-Rank.tex};\addlegendentry{\textbf{ATUeuc}}
+\addplot+[tust, mark phase=40] table[x=budget, y=TUeuc-5NNw] {images/5nn-Rank.tex};\addlegendentry{TUeuc}
+\addplot+[marst, mark phase=20] table[x=budget, y=Mar-5NNw] {images/5nn-Rank.tex};\addlegendentry{Mar}
+\addplot+[sgst, mark phase=28] table[x=budget, y=SGmulti-5NNw] {images/5nn-Rank.tex};\addlegendentry{\textit{SGmulti}}
+\addplot+[hsst, mark phase=10] table[x=budget, y=Clu-5NNw] {images/5nn-Rank.tex};\addlegendentry{HS}
+\addplot+[rndst, mark phase=30] table[x=budget, y=Rnd-5NNw] {images/5nn-Rank.tex};\addlegendentry{Rnd}
+\addplot+[dwst, mark phase=9] table[x=budget, y=DWeuc-5NNw] {images/5nn-Rank.tex};\addlegendentry{DWeuc}
+% \addplot[name path=metaa, no marks] table[x=budget, y=minMetaPCTr-a ] {images/5nn-Rank.tex};
+\addplot[transparent, name path=knna, no marks] table[x=budget, y=min5NNw] {images/5nn-Rank.tex};
+% \addplot[transparent, name path=nba, no marks] table[x=budget, y=minNB] {images/5nn-Rank.tex};
+% \addplot[transparent, name path=c45a, no marks] table[x=budget, y=minC4.52] {images/5nn-Rank.tex};
+% \addplot[transparent, name path=svma, no marks] table[x=budget, y=minSVM] {images/5nn-Rank.tex};
+% \addplot[black, name path=metab, no marks, transparent] table[x=budget, y=maxMetaPCTr-a] {images/5nn-Rank.tex};
+\addplot[name path=knnb, no marks, transparent] table[x=budget, y=max5NNw] {images/5nn-Rank.tex};
+% \addplot[name path=nbb, no marks, transparent] table[x=budget, y=maxNB] {images/5nn-Rank.tex};
+% \addplot[name path=c45b, no marks, transparent] table[x=budget, y=maxC4.52] {images/5nn-Rank.tex};
+% \addplot[name path=svmb, no marks, transparent] table[x=budget, y=maxSVM] {images/5nn-Rank.tex};
+% \addplot[opacity=0.1, red] fill between[of=metaa and metab];
+\addplot[opacity=0.14, blue] fill between[of=knna and knnb];
+% \addplot[opacity=0.1, brown] fill between[of=nba and nbb];
+% \addplot[opacity=0.1, green] fill between[of=c45a and c45b];
+% \addplot[opacity=0.1, red] fill between[of=svma and svmb];
+\node[] at (250,25) {\textcolor{blue}{5NN}};
+% \node[] at (-2,123) {\textcolor{brown}{NB}};
+% \node[] at (80,223) {\textcolor{teal}{C4.5w}};
+% \node[] at (65,367) {\textcolor{red}{SVM}};
+\end{axis}
+\end{tikzpicture}
+\end{document}

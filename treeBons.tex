@@ -1,0 +1,22 @@
+\documentclass[tikz]{standalone}
+\input{header}
+\begin{document}
+\tikzset{
+every node/.style={font=\scriptsize,black, thin},
+decision/.style={shape=rectangle, minimum height=1cm, text width=1.1cm,
+text centered, rounded corners=1ex, draw},
+outcome/.style={ shape=rectangle, fill=blue!15, draw, text width=1.4cm, text justified},
+decision tree/.style={sibling distance=3cm, level distance=2cm},
+cond/.style={blue, yshift=-2mm, shape=rectangle, text centered},
+}
+\begin{tikzpicture} [edge from parent/.style={->,above,draw,sloped,midway,gray!30,ultra thick},
+text width=2.7cm, align=flush center, grow cyclic,
+level 1/.style={level distance=2.4cm,sibling angle=180},
+level 2/.style={text width=2cm, font=\footnotesize, level distance=3cm,sibling angle=240},
+level 3/.style={text width=2cm, font=\footnotesize, level distance=3cm,sibling angle=60},
+level 4/.style={text width=2cm, font=\footnotesize, level distance=3cm,sibling angle=90},
+level 5/.style={text width=2cm, font=\footnotesize, level distance=3cm,sibling angle=60},
+]
+\input attsBons
+\end{tikzpicture}
+\end{document}

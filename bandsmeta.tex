@@ -1,0 +1,35 @@
+\documentclass[tikz]{standalone}
+\input{header}
+\begin{document}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[ymax=40,ymin=12, xlabel=consultas, ylabel=colocação média, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=250, y dir=reverse, yticklabel style={/pgf/number format/fixed},legend cell align=left]
+
+\addplot+[htust,mark phase=20]table[x=budget,y=HTUeuc-Meta-PCTr-a]{images/meta-Rank.tex};\addlegendentry{\textbf{HTUeuc}-\textbf{metaPCT}}
+
+\addplot+[solid, very thick, red, mark=square,   mark phase=20, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent-SVM] {images/meta-Rank.tex};\addlegendentry{EERent-SVM}
+
+\addplot[densely dashdotted, very thick, blue, mark=*,   mark phase=10, mark options={solid, scale=1}, mark repeat=200] table[x=budget, y=ATUeuc-5NNw] {images/meta-Rank.tex}; \addlegendentry{\textbf{ATUeuc}-5NNw}
+
+\addplot+[htu2st,mark phase=40]table[x=budget,y=HTUeuc-Meta-defr-a]{images/meta-Rank.tex};\addlegendentry{\textbf{HTUeuc}-metaDef}
+
+\addplot[mark repeat=200,mark phase=40,mark=triangle, mark options={solid, scale=1.4}, thin, loosely dashed, name path=metadb, gray] table[x=budget, y=maxdefr+a] {images/meta-Rank.tex};\addlegendentry{Limite inf. metaDef}
+
+\addplot[transparent, name path=metaa, no marks] table[x=budget, y=minPCTr+a ] {images/meta-Rank.tex};
+\addplot[transparent, name path=knna, no marks] table[x=budget, y=min5NNw] {images/meta-Rank.tex};
+\addplot[transparent, name path=svma, no marks] table[x=budget, y=minSVM] {images/meta-Rank.tex};
+
+\addplot[name path=svmb, no marks, transparent] table[x=budget, y=maxSVM] {images/meta-Rank.tex};
+\addplot[name path=knnb, no marks, transparent] table[x=budget, y=max5NNw] {images/meta-Rank.tex};
+\addplot[name path=metab, no marks, transparent] table[x=budget, y=maxPCTr+a] {images/meta-Rank.tex};
+ 
+\addplot[opacity=0.15, green] fill between[of=metaa and metab];
+\addplot[opacity=0.15, blue] fill between[of=knna and knnb];
+\addplot[opacity=0.15, red] fill between[of=svma and svmb];
+
+\node[] at (640,75) {\textcolor{teal}{\footnotesize metaPCT}};
+\node[] at (225,140) {\textcolor{blue}{5NN}};
+\node[] at (375,235) {\textcolor{red}{SVM}};
+\end{axis}
+\end{tikzpicture}
+\end{document}

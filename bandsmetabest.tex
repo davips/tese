@@ -1,0 +1,61 @@
+\documentclass[tikz]{standalone}
+\input{header}
+\begin{document}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[ymax=40, ymin=4, xlabel=consultas, ylabel=colocação média, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=200, y dir=reverse, yticklabel style={/pgf/number format/fixed},legend cell align=left]
+
+\addplot+[densely dotted, very thick, brown, mark=square*,   mark phase=70, mark options={solid,scale=1.4}, mark repeat=200] table[x=budget, y=HTUeuc-Meta-best] {images/meta-Rankbest.tex};\addlegendentry{\textbf{HTUeuc}-metaBest}
+
+\addplot+[loosely dotted, very thick, brown, mark=square*,   mark phase=70, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=SGmulti-Meta-best] {images/meta-Rankbest.tex};\addlegendentry{\textbf{SGmulti}-metaBest}
+
+\addplot+[htust,mark phase=20]table[x=budget,y=HTUeuc-Meta-PCTr-a]{images/meta-Rankbest.tex};\addlegendentry{\textbf{HTUeuc}-\textbf{metaPCT}}
+
+\addplot+[solid, very thick, red, mark=square,   mark phase=20, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent-SVM] {images/meta-Rankbest.tex};\addlegendentry{EERent-SVM}
+% 
+% 
+\addplot[densely dashdotted, very thick, blue, mark=*,   mark phase=10, mark options={solid, scale=1}, mark repeat=200] table[x=budget, y=ATUeuc-5NNw] {images/meta-Rankbest.tex}; \addlegendentry{\textbf{ATUeuc}-5NNw}
+%  
+
+% \addplot+[eerst, mark phase=20] table[x=budget, y=EERent-SVM] {images/meta-Rankbest.tex};\addlegendentry{EERent-SVM}
+% \addplot+[atust, mark phase=10] table[x=budget, y=ATUeuc-5NNw] {images/meta-Rankbest.tex};\addlegendentry{ATUeuc-5NNw}
+% \addplot+[eer2st, mark phase=30] table[x=budget, y=EERent-NB] {images/meta-Rankbest.tex};\addlegendentry{EERent-NB}
+
+% \addplot+[tust, mark phase=40] table[x=budget, y=TUeuc] {images/meta-RankRiscomedia.tex};\addlegendentry{TUeuc}
+% \addplot+[marst, mark phase=20] table[x=budget, y=Mar] {images/meta-RankRiscomedia.tex};\addlegendentry{Mar}
+% \addplot+[sgst, mark phase=28] table[x=budget, y=SGmulti] {images/meta-RankRiscomedia.tex};\addlegendentry{SGmulti}
+% \addplot+[hsst, mark phase=10] table[x=budget, y=Clu] {images/meta-RankRiscomedia.tex};\addlegendentry{HS}
+% \addplot+[rndst, mark phase=30] table[x=budget, y=Rnd] {images/meta-RankRiscomedia.tex};\addlegendentry{Rnd}
+% \addplot+[dwst, mark phase=12] table[x=budget, y=DWeuc] {images/meta-Rankmedia.tex};\addlegendentry{DWeuc}
+
+
+\addplot[transparent, name path=metaa, no marks] table[x=budget, y=minPCTr+a ] {images/meta-Rankbest.tex};
+\addplot[transparent, name path=mba, no marks] table[x=budget, y=minbest ] {images/meta-Rankbest.tex};
+\addplot[transparent, name path=knna, no marks] table[x=budget, y=min5NNw] {images/meta-Rankbest.tex};
+% \addplot[transparent, name path=nba, no marks] table[x=budget, y=minNB] {images/meta-Rankbest.tex};
+% \addplot[transparent, name path=c45a, no marks] table[x=budget, y=minC4.52] {images/meta-Rankbest.tex};
+\addplot[transparent, name path=svma, no marks] table[x=budget, y=minSVM] {images/meta-Rankbest.tex};
+
+% \addplot[name path=nbb, no marks, transparent] table[x=budget, y=maxNB] {images/meta-Rankbest.tex};
+% \addplot[name path=c45b, no marks, transparent] table[x=budget, y=maxC4.52] {images/meta-Rankbest.tex};
+\addplot[name path=svmb, no marks, transparent] table[x=budget, y=maxSVM] {images/meta-Rankbest.tex};
+\addplot[name path=knnb, no marks, transparent] table[x=budget, y=max5NNw] {images/meta-Rankbest.tex};
+\addplot[name path=metab, no marks, transparent] table[x=budget, y=maxPCTr+a] {images/meta-Rankbest.tex};
+\addplot[name path=mbb, no marks, transparent] table[x=budget, y=maxbest] {images/meta-Rankbest.tex};
+ 
+\addplot[opacity=0.18, green] fill between[of=metaa and metab];
+% \addplot[opacity=0.1, green] fill between[of=metada and metadb];
+\addplot[opacity=0.13, blue] fill between[of=knna and knnb];
+\addplot[opacity=0.13, brown] fill between[of=mba and mbb];
+% \addplot[opacity=0.1, green] fill between[of=c45a and c45b];
+\addplot[opacity=0.13, red] fill between[of=svma and svmb];
+
+\node[] at (640,188) {\textcolor{teal}{\footnotesize metaPCT}};
+\node[] at (640,80) {\textcolor{brown}{\footnotesize metaBest}};
+\node[] at (220,245) {\textcolor{blue}{5NN}};
+% \node[] at (2,70) {\textcolor{brown}{NB}};
+% \node[] at (90,140) {\textcolor{teal}{C4.5w}};
+\node[] at (380,320) {\textcolor{red}{SVM}};
+\end{axis}
+\end{tikzpicture}
+\end{document}

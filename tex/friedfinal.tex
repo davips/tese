@@ -1,0 +1,49 @@
+\begin{table}
+\parbox[t][]{.47\linewidth}{\vspace{0pt}
+	\flushleft
+	\caption[Significância estatística das diferenças (RFw - ALC-$\mu_{\kappa}$).]{Significância estatística das diferenças (RFw). Medida: ALC-$\mu_{\kappa}$. \textit{Legenda na Tabela \ref{exfried}.}}
+	\label{friedmedioe}
+	\scalebox{0.87}{
+	\begin{tabular}{lccccccccc}
+\toprule
+% \multicolumn{1}{c}{ }&\multicolumn{1}{c}{ }&\multicolumn{1}{c}{ }&\multicolumn{1}{c}{ }&\multicolumn{1}{c}{ }&\multicolumn{1}{c}{ }&\multicolumn{1}{c}{ }&\multicolumn{1}{c}{ }&\multicolumn{1}{c}{ }&\multicolumn{1}{c}{}  \\
+\scriptsize\textbf{Estratégia}						& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
+\midrule
+1 - \textbf{ATUeuc} & - &  & . &  &  &  &  &  &  \\
+2 - HS &  & - & * &  &  &  &  &  &  \\
+3 - DWeuc &  &  & - &  &  &  &  &  &  \\
+4 - EERent & * & * & * & - & * &  & * &  & * \\
+5 - \textbf{HTUeuc} & . &  & * &  & - &  &  &  &  \\
+6 - Mar & * & * & * &  & * & - & * &  & * \\
+7 - Rnd &  &  & + &  &  &  & - &  &  \\
+8 - \textit{SGmulti} & * & * & * &  & * &  & * & - & + \\
+9 - TUeuc & + &  & * &  &  &  & . &  & - \\
+\bottomrule
+\end{tabular}
+	}
+}
+\hfill
+% sts.zipWithIndex.zip(s.split("\n").map(_.split(" +").toList).filter(x => x.size>1 && !x.last.contains("[")).toList.map(_.map(_.replace("\"","")).drop(2).mkString(" & ")+" \\\\")) map {case ((st,i),txt) => 1+i +" - " + st + " & " + txt + (if((1+i)%2==0)"\\hline"else"")} foreach println
+\parbox[t][]{.48\linewidth}{\vspace{0pt}
+	\flushright
+	\caption[Contagem de colocações (RFw - ALC-$\mu_{\kappa}$).]{Contagem de colocações (RFw). Medida: ALC-$\mu_{\kappa}$. \textit{Detalhes na Tabela \ref{exconta}.}}	
+	\label{contamedioe}
+	\scalebox{0.87}{
+	\begin{tabular}{lccc}
+		\toprule
+		\scriptsize\textbf{Estratégia} & \scriptsize\makecell{\textbf{Primeiras }\\\textbf{colocações}} & \scriptsize\makecell{\textbf{Derrotas} \\ \textbf{para Rnd}}  & \scriptsize\makecell{\textbf{Últimas}\\\textbf{colocações}} \\
+		\midrule             
+Mar        & \bom{49} & \bomd{14} & \bom{1} \\[1.5pt]
+\textit{SGmulti}    & \bomd{10} & \bom{7} & \bom{1} \\[1pt]
+EERent     & 8 & 17 & \bomd{2} \\[1pt]
+\textbf{ATUeuc}     & 7 & 47 & 13 \\[1pt]
+\textbf{HTUeuc}     & 6 & 38 & \bomd{2} \\[1pt]
+Rnd        & 4 & - & 15 \\[1pt]
+TUeuc      & 3 & 37 & 4 \\[1pt]
+HS        & 3 & 25 & 0 \\[1pt]
+DWeuc      & \ruim{1} & \ruim{65} & \ruim{52} \\
+		\bottomrule
+	\end{tabular}
+	}
+}
+\end{table}

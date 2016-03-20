@@ -1,0 +1,124 @@
+\begin{figure}
+\caption{Curvas de ranqueamento dos pares.
+ \textit{Detalhes na Figura \ref{curvas}.}}
+\label{curvasrank}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[xlabel=consultas, ylabel=colocação, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/fixed}]
+
+\addplot+[solid, blue, mark=*,   mark phase=143, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Mar-RFw ] {images/kappaallmediaParesRank.plot};\addlegendentry{Mar-RFw}
+\addplot+[solid, thick, red,   mark=x,     mark phase=131, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=SGmulti-RFw ] {images/kappaallmediaParesRank.plot};\addlegendentry{SGmulti-RFw}
+\addplot+[solid, green!30!black, mark=square*,   mark phase=62, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent-RFw ] {images/kappaallmediaParesRank.plot};\addlegendentry{EERent-RFw}
+\addplot+[solid, thick, violet, mark=10-pointed star,   mark phase=35, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=HTUeuc-5NN ] {images/kappaallmediaParesRank.plot};\addlegendentry{HTUeuc-5NN}
+\addplot+[dotted, mark=star, ultra thick, orange,  mark repeat=200,  mark phase=30, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUeuc-5NN ] {images/kappaallmediaParesRank.plot};\addlegendentry{ATUeuc-5NN}
+\addplot+[dashed, green!50!black, mark=triangle*,   mark phase=47, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Clu-RFw ] {images/kappaallmediaParesRank.plot};\addlegendentry{Clu-RFw}
+\addplot+[solid, gray, mark=square,   mark phase=20, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUmah-5NN ] {images/kappaallmediaParesRank.plot};\addlegendentry{TUmah-5NN}
+\addplot+[dashed, olive, thick, mark=triangle, mark phase=25, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Rnd-5NN ] {images/kappaallmediaParesRank.plot};\addlegendentry{Rnd-5NN}
+\addplot+[solid, thick, gray, mark=diamond,   mark phase=167, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=QBCRFw-5NN ] {images/kappaallmediaParesRank.plot};\addlegendentry{QBCRFw-5NN}
+\addplot+[solid, black, mark=pentagon,   mark phase=155, mark options={solid, thick, scale=1.4}, mark repeat=200] table[x=budget, y=SVMbal-5NN ] {images/kappaallmediaParesRank.plot};\addlegendentry{SVMbal-5NN}
+
+\addplot+[solid, black, mark=text, text mark=svm,   mark phase=140, mark options={solid, scale=1}, mark repeat=200] table[x=budget, y=TUman-SVM ] {images/kappaallmediaParesRank.plot};\addlegendentry{TUman-SVM}
+\addplot+[solid, black, mark=text, text mark=nb,   mark phase=45, mark options={solid, scale=1}, mark repeat=200] table[x=budget, y=EERent-NB] {images/kappaallmediaParesRank.plot};\addlegendentry{EERent-NB}
+\addplot+[solid, black, mark=text, text mark=c45,   mark phase=10, mark options={solid, scale=1}, mark repeat=200] table[x=budget, y=EERent-C4.5] {images/kappaallmediaParesRank.plot};\addlegendentry{EERent-C4.5}
+% \addplot+[solid, black, mark=text, text mark=cielm,   mark phase=100, mark options={solid, scale=1}, mark repeat=200] table[x=budget, y=HTUmah-CIELM] {images/kappaallmediaParesRank.plot};\addlegendentry{HTUmah-CIELM}
+
+\addplot+[dotted, gray, no marks] table[x=budget, y=HTUmah-5NN ] {images/kappaallmediaParesRank.plot};\addlegendentry{outras}
+% ATUeuc-5NN
+\addplot+[dotted, gray, no marks] table[x=budget, y=ATUmah-5NN ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=ATUman-5NN ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=HTUman-5NN ] {images/kappaallmediaParesRank.plot};
+% Clu-RFw
+\addplot+[dotted, gray, no marks] table[x=budget, y=TUman-RFw ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=HTUman-RFw ] {images/kappaallmediaParesRank.plot};
+% TUmah-5NN
+\addplot+[dotted, gray, no marks] table[x=budget, y=TUman-5NN ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=HTUmah-RFw ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=TUeuc-RFw ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=EERent-5NN ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=TUmah-RFw ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=HTUeuc-RFw ] {images/kappaallmediaParesRank.plot};
+% Rnd-5NN
+\addplot+[dotted, gray, no marks] table[x=budget, y=SGmulti-5NN ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=TUeuc-5NN ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=ATUman-RFw ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=Clu-5NN ] {images/kappaallmediaParesRank.plot};
+% QBCRFw-5NN
+\addplot+[dotted, gray, no marks] table[x=budget, y=Rnd-RFw ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=ATUeuc-RFw ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=ATUmah-RFw ] {images/kappaallmediaParesRank.plot};
+% TUman-SVM
+\addplot+[dotted, gray, no marks] table[x=budget, y=HTUeuc-SVM ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=EERent-SVM ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=TUeuc-SVM ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=TUmah-SVM ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=HTUmah-SVM ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=HTUman-SVM ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=Mar-5NN ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=Mar-SVM ] {images/kappaallmediaParesRank.plot};
+% % SVMbal-5NN
+\addplot+[dotted, gray, no marks] table[x=budget, y=QBCRFw-RFw ] {images/kappaallmediaParesRank.plot};
+% EERent-NB
+\addplot+[dotted, gray, no marks] table[x=budget, y=SVMbal-RFw ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=HTUeuc-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=ATUman-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=TUman-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=ATUeuc-SVM ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=ATUmah-SVM ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=ATUman-SVM ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=ATUeuc-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=TUmah-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=HTUman-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=ATUmah-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=TUeuc-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=Clu-SVM ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=HTUmah-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=QBCRFw-SVM ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=Clu-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=Mar-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=QBCRFw-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=SGmulti-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=SVMbal-SVM ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=SVMbal-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=Rnd-NB ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=Rnd-SVM ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=SGmulti-SVM ] {images/kappaallmediaParesRank.plot};
+% EERent-C4.5
+\addplot+[dotted, gray, no marks] table[x=budget, y=QBCRFw-C4.5 ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=HTUman-C4.5 ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=HTUmah-C4.5 ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=HTUeuc-C4.5 ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=TUman-C4.5 ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=TUmah-C4.5 ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=ATUman-C4.5 ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=ATUmah-C4.5 ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=ATUeuc-C4.5 ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=TUeuc-C4.5 ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=Clu-C4.5 ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=SGmulti-C4.5 ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=Mar-C4.5 ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=SVMbal-C4.5 ] {images/kappaallmediaParesRank.plot};
+\addplot+[dotted, gray, no marks] table[x=budget, y=Rnd-C4.5 ] {images/kappaallmediaParesRank.plot};
+
+
+
+% \addplot+[dotted, gray, no marks] table[x=budget, y=HTUmah-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=ATUmah-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=TUmah-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=HTUman-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=ATUman-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=ATUeuc-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=HTUeuc-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=SGmulti-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=TUman-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=TUeuc-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=Clu-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=Rnd-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=Mar-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=EERent-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=SVMbal-CIELM ] {images/kappaallmediaParesRank.plot};
+% \addplot+[dotted, gray, no marks] table[x=budget, y=QBCRFw-CIELM ] {images/kappaallmediaParesRank.plot};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{figure}

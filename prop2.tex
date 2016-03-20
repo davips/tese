@@ -1,0 +1,22 @@
+\documentclass[tikz]{standalone}
+% \usepackage[french]{babel}
+% \selectlanguage{french}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{pgfplots}
+\begin{document}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[width=200, ymin=0.5, ymax=1.1, xlabel=consultas, ylabel=função-critério, legend style={at={(0.95,0.5)}, anchor=west}, grid = both, scale only axis, yticklabel style={/pgf/number format/fixed}]
+
+\addplot+[dotted, mark=star, ultra thick, orange,  mark repeat=200,  mark phase=105, mark options=
+{solid, scale=1.9}] table[x=budget, y=ATU] {images/domina2.tex};\addlegendentry{ATU}
+
+\addplot+[solid, blue, mark=*, mark repeat=200, mark phase=105, mark options=
+{solid, scale=1.4}] table[x=budget, y=Mar] {images/domina2.tex};\addlegendentry{Mar}
+
+% \addplot+[dashed, black, mark=square, mark repeat=200, mark phase=105, mark options=
+% {solid, scale=1.4}] table[x=budget, y=TU] {images/domina2.tex};\addlegendentry{TU}
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,44 @@
+\begin{table}
+\parbox[t][]{.48\linewidth}{\vspace{0pt}
+	\flushleft
+\caption[Significância estatística das diferenças (ALC-$\sigma_{\kappa}$).]{Diferenças estatisticamente significativas. Medida: ALC-$\sigma_{\kappa}$. \textit{Legenda na Tabela \ref{exfried}.}}
+\label{friedmediorisco}
+\scalebox{0.9}{
+\begin{tabular}{lccccccccc}
+\toprule
+\scriptsize	\textbf{Estratégia}	& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
+ 			\midrule
+1 - \textbf{ATUeuc} & - & * & * & * &  & * & * & * & * \\[0.75pt]
+2 - HS &  & - &  &  &  &  &  &  &  \\[0.75pt]
+3 - DWeuc &  &  & - &  &  &  &  &  &  \\[0.75pt]
+4 - EERent &  &  &  & - &  & + &  &  &  \\[0.75pt]
+5 - \textbf{HTUeuc} &  & * & * & * & - & * & * & * & * \\[0.75pt]
+6 - Mar &  &  &  &  &  & - &  &  &  \\[0.75pt]
+7 - Rnd &  &  &  &  &  &  & - &  &  \\[0.75pt]
+8 - \textit{SGmulti} &  &  &  &  &  &  &  & - &  \\[0.75pt]
+9 - TUeuc &  &  &  &  &  & * &  &  & - \\\bottomrule
+\end{tabular}
+}}
+\hfill
+% sts.zipWithIndex.zip(s.split("\n").map(_.split(" +").toList).filter(x => x.size>1 && !x.last.contains("[")).toList.map(_.map(_.replace("\"","")).drop(2).mkString(" & ")+" \\\\")) map {case ((st,i),txt) => 1+i +" - " + st + " & " + txt + (if((1+i)%2==0)"\\hline"else"")} foreach println
+\parbox[t][]{.48\linewidth}{\vspace{0pt}
+	\flushright
+\caption[Contagem de colocações (ALC-$\sigma_{\kappa}$).]{Contagem de colocações. Medida: ALC-$\sigma_{\kappa}$. \textit{Legenda na Tabela \ref{exfried}.}}
+\label{contamediorisco}
+\scalebox{0.9}{
+\begin{tabular}{lccc}
+		\toprule
+		\scriptsize\textbf{Estratégia} & \scriptsize\makecell{\textbf{Primeiras }\\\textbf{colocações}} & \scriptsize\makecell{\textbf{Derrotas} \\ \textbf{para Rnd}}  & \scriptsize\makecell{\textbf{Últimas}\\\textbf{colocações}} \\
+		\midrule             
+\textbf{ATUeuc     }& \bom{78} & \bom{118} & \bom{13} \\
+DWeuc      & \bomd{67} & 181 & \ruim{91} \\
+\textbf{HTUeuc     }& 55 & \bomd{130} & \bomd{24} \\
+EERent     & 43 & 172 & 44 \\
+TUeuc      & 35 & 167 & 44 \\
+Mar        & 29 & \ruim{205} & 60 \\
+HS        & 29 & 187 & 34 \\
+Rnd        & 24 & - & 34 \\
+\textit{SGmulti}    & \ruim{15} & \bomd{130} & 33 \\\bottomrule
+\end{tabular}
+}}
+\end{table}

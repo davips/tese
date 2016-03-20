@@ -1,0 +1,312 @@
+A pesquisa realizada exige a apresentação dos temas pertinentes e as definições adotadas no presente documento, incluindo notação e terminologia.
+A contextualização se inicia na Seção \ref{cla}, onde a tarefa de classificação, no contexto de aprendizado de máquina, é apresentada em termos gerais.
+O assunto central desta tese, que engloba o aprendizado ativo e suas principais estratégias, é introduzido nas seções \ref{aprendizado-ativo} e \ref{secestrategias}.
+Finalmente, na Seção \ref{contcons}, são feitas considerações a respeito dos temas abordados e uma comparação objetiva entre as estratégias.
+
+\section{Classificação}\label{cla}
+% Algumas habilidades humanas vêm claramente programadas geneticamente,
+% como a amamentação \cite{gunther1955instinct}.
+% Outras são apenas a execução de uma lista de passos memorizados, como o trabalho efetuado numa determinada posição de uma linha de montagem industrial.
+% Apesar do amplo escopo de ação desses dois tipos de conhecimento (genético e memorizado), existem ainda outras habilidades adquiríveis sem que seja necessária uma programação prévia.
+% O reconhecimento de novos objetos, por exemplo, é uma tarefa aprendida por humanos em que é difícil depreender os algoritmos nos quais ela se baseia.
+A atividade de identificação da categoria de um determinado objeto de interesse é chamada \textit{classificação}.
+Ela é a tarefa que pode se beneficiar mais amplamente dos resultados da presente pesquisa.
+Seus principais conceitos são apresentados nas seções seguintes juntamente com a forma de representação adotada neste texto.
+% \ref{defmod}, \ref{defcla}, \ref{defatr} e \ref{defpro}.
+Essa exposição tem o objetivo de facilitar consultas posteriores sobre terminologia durante a leitura dos demais capítulos.
+As escolhas de alguns símbolos são baseadas no livro de \citeonline{series/synthesis/2012Settles}.
+
+\subsection{Modelo}\label{defmod}
+\simbolo{\theta}{modelo induzido}
+\simbolo{\theta_{\mathcal{L}'}}{modelo induzido com exemplos do conjunto $\mathcal{L}'$}
+\simbolo{\Theta}{conjunto de modelos possíveis}
+O aprendizado de um determinado conceito pode ser visto como uma busca dentro do espaço de hipóteses representado pelo conjunto $\Theta$ de modelos de representação possíveis.
+Assim, a tarefa de classificação induz um modelo $\theta \in \Theta$ baseado num conjunto de dados de treinamento, cujos rótulos foram previamente fornecidos por um especialista no domínio do problema (Seção \ref{motiv}).
+Os algoritmos de aprendizado são considerados determinísticos, por simplicidade.
+% Na notação adotada nesta tese, o subscrito $(t), t \in \mathbb{N}$, representa a apresentação de cada novo exemplo do conjunto de treinamento e, consequentemente, o tamanho deste no momento.
+% O uso de parênteses visa diferenciá-lo mais claramente do subscrito convencional de vetores que indica o valor para uma dada posição, por exemplo, quando $\bm{v} = (4,3,2,1)$, $v_3=2$; ao passo que $\bm{v}_{(t)}$ representaria um vetor (todos os valores) no momento $t$.
+% Esse subscrito somente é usado quando o contexto exige situar o aprendizado no tempo, na medida em que a quantidade de exemplos aumenta um a um.
+
+% A área que engloba algoritmos capazes de aprender, não apenas para classificação, é chamada \textit{aprendizado de máquina} (aprendizado).
+% Uma de suas metas é a construção de modelos sem programação explícita \cite{journals/cacm/Valiant84}.
+% Diversas tarefas como bioinformática \cite{journals/bmcbi/WangLLXHXL14},
+% visão computacional \cite{conf/nips/KrizhevskySH12} e
+% recomendação de conteúdo \cite{reference/rsh/RicciRS11}
+% têm sido bem sucedidas atualmente.
+Antes da construção de cada modelo $\theta$, é desejável saber qual parte dos dados é relevante.
+Esse é um problema em aberto que pode ser entendido como uma busca pela melhor maneira de se amostrarem os dados.
+A motivação para essa busca pode frequentemente advir da intratabilidade de um excesso de dados ou da escassez de recursos para manutenção de um especialista no papel de supervisor.
+Ambos os casos podem se beneficiar do tipo de aprendizado denominado \textit{ativo}; que será apresentado na Seção \ref{aprendizado-ativo}.
+
+\subsection{Classe}\label{defcla}
+% \simbolo{c \in C}{classe e respectivo conjunto}
+\simbolo{y \in Y}{classe e conjunto de classes possíveis}
+Neste texto, o termo \textit{classificador} refere-se ao modelo $\theta$ mais recente induzido pelo algoritmo de aprendizado, quando o objetivo é a predição de classes - diferentemente de quando o objetivo é a estimação de probabilidades, por exemplo, cujos valores de retorno são contínuos.
+A classe $y$ de um exemplo é um dos elementos do limitado conjunto $Y$ de classes de um dado problema.
+% vetor binário $\bm{y}$ pertencente ao conjunto de classes possíveis $Y$ formalmente definido pela Equação \ref{ydef}.
+% \begin{equation}\label{ydef}
+%  Y = \{\bm{y} \mid y_o=1, y_p=0 \forall o \neq p, 1 \leq p \leq |C|\}
+% \end{equation}
+% Essa representação binária, por exemplo, $\Y=\{(0,0,1),(0,1,0),(1,0,0)\}$,
+% corresponde à representação \ing{um-de-n}{one-hot encoding} \cite{Harris:2007:DDC}.
+% O vetor $\bm{y}=(0,1,0)$ é um exemplo de representação de classe,
+% chamado no texto apenas de \textit{classe} por conveniência.
+
+\subsection{Atributos}\label{defatr}
+\simbolo{\bm{x} \in X}{tupla/vetor de atributos e conjunto de tuplas válidas}
+\simbolo{\phi}{função de indução de modelos}
+\simbolo{A \in \mathcal{A}}{conjunto de valores válidos do atributo $A$ e conjunto de atributos existentes}
+\simbolo{\mathcal{L}}{conjunto de exemplos rotulados}
+\simbolo{\mathcal{\bar{L}}}{conjunto de exemplos rotulados ponderados}
+\simbolo{\mathcal{U}}{reserva de exemplos}
+\simbolo{V_i}{sequência de valores ocorridos para $x_i, \bm{x} \in \mathcal{U}$}
+Um exemplo não rotulado é dado por uma tupla de \textit{atributos}\footnote{Neste texto, os \textit{atributos} de um exemplo não incluem a classe do exemplo, exceto quando explicitado como \textit{atributo alvo}.} $\bm{x}$ pertencente ao conjunto $X$ de tuplas válidas - ou \textit{vetores} válidos, se o contexto exigir e assumindo uma binarização prévia dos atributos nominais, caso existam.
+Dessa forma, a representação de um exemplo rotulado é um par
+%  \ano{dupla/tupla?}
+$\langle \bm{x}, y \rangle \in X\times Y$.
+Dado um subconjunto contido em $X \times Y$, cada algoritmo de aprendizado tem sua própria 
+função de indução de modelos\footnote{A notação $2^B$ representa o conjunto de todos os subconjuntos de $B$ - chamado \textit{potência} ou \textit{de partes} \cite{devlin2012joy}.}
+$\phi\colon 2^{X\times Y} \rightarrow \Theta$.
+
+% No contexto teórico uso a palavra 'problema' para restringir o conceito à matemática da coisa. É também importante para a definição formal do 'problema de aprendizado ativo' mais à frente.
+Cada atributo é representado por um conjunto de valores $A \in \mathcal{A}$, onde $\mathcal{A}$ é o conjunto de atributos do problema.
+Este é dado pela Equação \ref{eqa}, onde $\dime{\bm{x}'}$ indica a dimensão de qualquer $\bm{x}'\in X$.
+\begin{equation}\label{eqa}
+\mathcal{A} = \{\{x_i \mid \bm{x} \in X\} 
+\mid
+1 \leq i \leq \dime{\bm{x}'}\}
+\end{equation}
+Assim, cada conjunto de valores $A$ contém os valores que cada atributo de $\bm{x}$ pode assumir.
+Por exemplo, sendo o primeiro atributo $A=\{\textit{alto},\textit{medio},\textit{baixo}\}$,
+é possível que $x_1=medio$; ou, sendo o segundo atributo $A' = \mathbb{R}$, $x_2=3,7$.
+Diferentemente, $V_i$ é a 
+sequência - ou vetor, dependendo do contexto - de todos os valores ocorridos para o atributo correspondente à componente $x_i$ de todos os exemplos da reserva $\mathcal{U} \subset X$ - conforme Equação \ref{eqv}.
+\begin{equation}\label{eqv}
+   V_i = \langle x_i \mid \bm{x} \in \mathcal{U} \rangle
+\end{equation}
+A reserva de exemplos ($\mathcal{U}$) consiste no conjunto de exemplos não rotulados disponíveis numa dada aplicação.
+O tipo do atributo é dado pela função $\nom\colon \mathcal{A}\rightarrow\{0,1\}$ que retorna $1$ para atributos nominais e $0$ para atributos numéricos.
+O conjunto de exemplos rotulados é representado por $\mathcal{L}$.
+Eventualmente, nas situações em que seja necessário atribuir pesos aos exemplos, cada exemplo é representado por uma tripla $\langle \bm{x}, y, w \rangle, 0 \leq w \leq 1$.
+Nesse caso, o \textit{conjunto rotulado de exemplos ponderados} é dado pelo símbolo $\mathcal{\bar{L}}$.
+
+\simbolo{\mathcal{F}}{espaço de atributos transformado}
+O termo \textit{espaço de atributos} representa um espaço em $\mathbb{R}^{|\mathcal{A}|}$ onde cada exemplo pode ser situado.
+Essa definição pressupõe a binarização de atributos nominais, quando necessário.
+Ela difere do \textit{espaço de parâmetros} $\mathcal{F}$ que é um espaço de atributos transformado, cujo exemplo típico de coordenadas é o conjunto de pesos de uma rede neural \cite{haykin2004comprehensive}.
+
+\subsection{Valores de retorno}\label{defpro}
+\simbolo{P_{\theta} (\bm{y}\mid\bm{x})}{probabilidade de ocorrência da classe $y$ dado $\bm{x}$ - segundo o modelo $\theta$}
+\simbolo{\bm{P}_{\sim\theta} (\bm{x})}{vetor com a distribuição de probabilidades para $\bm{x}$ - segundo o modelo $\theta$}
+\simbolo{\hat{y}_{\theta}(\bm{x})}{classe mais provável do exemplo $\bm{x}$ de acordo com modelo $\theta$}
+\simbolo{\info(\bm{x})}{medida de informatividade de $\bm{x}$}
+\simbolo{f_i(\bm{x})}{função preditiva da classe $y_i$}
+\simbolo{g}{função sigmoide logística}
+Dado um exemplo $\bm{x}$, e supondo que o modelo $\theta$ permita a estimação da probabilidade $P_{\theta}$ de $\bm{x}$ ter a classe $y$,
+a classe mais provável $\hat{y}_\theta$ é obtida pela Equação \ref{p}.
+\begin{equation}\label{p}
+  \hat{y}_\theta(\bm{x}) = \argmax_{y} P_{\theta} (y\mid\bm{x})
+\end{equation}
+$P_{\theta}$ é a base de grande parte das medidas de \textit{informatividade} $\info(\bm{x})$ empregadas pelas estratégias.
+Entretanto, modelos não probabilísticos podem retornar valores numéricos que não representam uma distribuição de probabilidades.
+Esses valores são resultado de uma função preditiva $f_y(\bm{x})$:
+valores próximos de $1$ indicam pertinência à classe $y$.
+Classificadores cujos modelos retornam valores fora do intervalo $[0;1]$ podem fazer uso da função sigmoide logística exibida na Equação \ref{eqsig} para cada classe $y$ \cite{von2006crc}.
+\begin{equation}\label{eqsig}
+   g_y(\bm{x})=\frac{1}{1+e^{-f_y(\bm{x})}}
+\end{equation}
+
+$\bm{P}_{\sim\theta}$ representa a sequência com a distribuição de probabilidade das classes para um dado exemplo $\bm{x}$.
+Por exemplo, $\bm{P}_{\sim\theta}(\bm{x})=\langle 0; 0,5; 0,4; 0,1\rangle, |Y|=4$.
+
+\simbolo{R_{\theta}(\mathcal{N})}{matriz de confusão para o conjunto de teste $\mathcal{N}$ de acordo com o modelo $\theta$}
+\simbolo{r(R_{\theta})}{acurácia convencional para a matriz de confusão $R_{\theta}$}
+\simbolo{\bm{e}(R_{\theta})}{vetor de ocorrências esperadas na matriz de confusão $R_{\theta}$}
+\simbolo{\bm{p}(R_{\theta})}{vetor de ocorrências preditas na matriz de confusão $R_{\theta}$}
+\simbolo{o(\bm{x})}{função/oráculo que revela o rótulo do exemplo $\bm{x}$}
+A matriz de confusão $R_{\theta}\colon 2^{X \times Y} \rightarrow \mathbb{R}^{|Y|\times|Y|}$ possibilita o cálculo de importantes medidas de desempenho \cite{stehman1997selecting}.
+Ela representa uma tabela de frequências de classes preditas para cada classe esperada.
+Supondo um conjunto de teste $\mathcal{N}$, a matriz de confusão seria denotada por  $R_{\theta}(\mathcal{N})$, porém, dependendo do contexto, o parâmetro $\theta$ e o conjunto de teste $\mathcal{N}$ podem ser omitidos.
+A notação para a acurácia convencional é representada, neste texto, por $r(R_{\theta})$.
+Os vetores de ocorrências esperadas e preditas são dados, respectivamente, por $\bm{e}(R_{\theta})$ e $\bm{p}(R_{\theta})$.
+A verdadeira classe de um exemplo é revelada pela função oráculo $o\colon X \rightarrow Y$.
+
+\subsection{Validação}
+\simbolo{\mathcal{P}_i(\mathcal{L})}{partição $i$ do conjunto $\mathcal{L}$}
+\simbolo{k}{número de partições da validação cruzada}
+\simbolo{\kappa(S)}{índice kappa multiclasse para a matriz de confusão S}
+\simbolo{\mathcal{M}}{conjunto de exemplos de treinamento ou reserva para aprendizado ativo}
+\simbolo{\mathcal{N}}{conjunto de exemplos separados para teste}
+\simbolo{S}{matriz de confusão cumulativa}
+Para a aplicação de validação cruzada (Capítulo \ref{metodologia}), $\mathcal{L}$ é dividido em $k$ partições.
+Assume-se, por simplicidade, que $|\mathcal{L}|$ é divisível por $k$.
+Assim, $\mathcal{P}_i(\mathcal{L})$ representa a partição de índice $i$ conforme condições \ref{c1}, \ref{c2}, \ref{c3} e \ref{c4}.
+\begin{equation}\label{c1}
+  \bigcup\limits_{1 \leq i \leq k} \mathcal{P}_i(\mathcal{L}) = \mathcal{L}
+\end{equation}
+\begin{equation}\label{c2}
+  \mathcal{P}_i(\mathcal{L}) \neq \varnothing, 1 \leq i \leq k
+\end{equation}
+\begin{equation}\label{c3}
+   |\mathcal{P}(\mathcal{L})| = \frac{|\mathcal{L}|}{k}
+\end{equation}
+\begin{equation}\label{c4}
+  \mathcal{P}_i(\mathcal{L}) \cap \mathcal{P}_j(\mathcal{L}) \neq \varnothing \Rightarrow \mathcal{P}_i(\mathcal{L})=\mathcal{P}_j(\mathcal{L})
+\end{equation}
+O Algoritmo \ref{algvc} descreve o procedimento de validação cruzada para a medida de desempenho adotada nesta tese (Seção \ref{newhtu}).
+\begin{algoritmo}
+\caption{Validação cruzada.}
+\label{algvc}
+\small
+\Entrada{
+ \\ $k$ - número de partições da validação cruzada
+ \\ $\phi: 2^{X\times Y} \to \Theta$ - função indutora (algoritmo de aprendizado ou estratégia de amostragem ativa)
+ \\ $\mathcal{L}$  - conjunto de dados rotulados
+}
+\Resultado{
+ \\ $\kappa$ - índice kappa (Seção \ref{medidas})
+}
+  \algalg{\vc{$k$, $\phi$, $\mathcal{L}$}} {
+  $S \leftarrow 0_{|Y|,|Y|}$ \come{matriz de confusão cumulativa} \\
+  \paracada {$i, 1 \leq i \leq k$} {
+      $\mathcal{M}=\bigcup\limits_{j\neq i}\mathcal{P}_j(\mathcal{L})$ \come{exemplos disponíveis}\\
+      $\mathcal{N}=\mathcal{P}_i(\mathcal{L})$ \come{exemplos reservados para teste}\\
+      $\theta = \phi(\mathcal{M})$ \\
+      $S \leftarrow S + R_\theta(\mathcal{N})$
+    }
+    \Retorna $\kappa(S)$
+  }
+\end{algoritmo}
+
+  
+
+
+
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+ % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+%  verificar se tudo isso aparece nas tabelas de simbolos e siglas
+% 
+% exemplo a ser consultado $\hat{\bm{x}}$
+% 
+% $M(\bm{x})$ margem
+% 
+% $E(\bm{x})$ entropia
+% 
+% $JS$
+% 
+%  número de membros $M$
+%  
+%  $S$ e $G$
+% de todas as hipóteses possíveis,
+% denominadas $h_S \in S$ e $h_G \in G$, respectivamente.
+% 
+% modelos específico
+% $\theta_S^{(m)}$ e geral $\theta_G$
+% 
+% classe mais provável,
+% representada pelo vetor preditivo $\bm{y}'$
+% 
+% $O$ é a função objetivo
+% 
+% Rnd
+% 
+% Unc
+% 
+% Mar
+% 
+% SVMsim
+% 
+% SVMbal
+% 
+% KFF
+% 
+% QBC
+% 
+% QBCRFw
+% 
+% SG-network
+% 
+% SGmulti/CAL
+% 
+% EER
+% 
+% Inf
+% 
+% sim
+% 
+% d
+
+
+%   \begin{equation}
+% h\colon \mathcal{D} \rightarrow \{-,+\}
+% \end{equation}
+
+\subsection{Algoritmos de aprendizado}\label{algs}
+Os algoritmos de aprendizado relevantes para esta tese serão mencionados no Capítulo \ref{metodologia} juntamente com os valores adotados para seus parâmetros.
+
+\section{Aprendizado ativo} \label{aprendizado-ativo}
+\input tex/active-learning
+
+\section{Considerações}\label{contcons}
+Neste capítulo, os assuntos que contextualizam esta tese foram revisados:
+classificação, aprendizado ativo e suas estratégias.
+Outro assunto relevante por integrar a proposta de \textit{aprendizado meta-ativo} é o \textit{meta-aprendizado}, cuja revisão bibliográfica é resumida no Apêndice \ref{apmeta}.
+
+A literatura de aprendizado ativo é vasta.
+Logo, a revisão bibliográfica das estratégias é invariavelmente incompleta.
+Porém, a variedade de abordagens contidas na presente revisão é suficiente para a finalidade de teste das hipóteses desta tese.
+Essa diversidade proporcionou diferentes níveis de adequação entre estratégias, algoritmos de aprendizado e conjuntos de dados (conforme será apresentado no Capítulo \ref{experimentos}).
+
+Por fim, o Quadro \ref{stratsparcial} contém uma síntese das estratégias e suas características, conforme descrito a seguir.
+\begin{itemize}
+   \item Forma de \textbf{busca}: define se a consulta favorece abrangência ou eficiência; se ambas as metas são balanceadas de acordo com um critério simples ou combinadas de maneira alternada; e, se cada consulta se restringe apenas a parte dos dados.
+   \item \textbf{Aprendiz}: indica se a estratégia tem ou não aprendiz e, caso tenha, se o algoritmo de aprendizado é fixo, específico da estratégia.
+   \item \textbf{Dependência} entre consultas: define se o oráculo é necessário durante a amostragem ou pode ser consultado quando todos os exemplos relevantes já tiverem sido definidos pela estratégia.
+   \item Ordem de \textbf{complexidade}: custo computacional considerando a quantidade de exemplos a aprender por consulta.
+\end{itemize}
+
+
+\begin{quadro}
+\caption[Características de cada estratégia.]{Características de cada estratégia.}
+\label{stratsparcial}
+\centering
+\begin{threeparttable}
+\begin{tabular}{|l|p{3cm}|p{2cm}|l|p{3.2cm}|}
+\hline
+\textbf{Estratégia}		& \textbf{Busca}		&\textbf{Aprendiz}  & \textbf{Dependência}		&\textbf{Complexidade}  \\ \hline
+Rnd\tnote{a}			& {exploratória\phantom{oo} aleatória} 		& ausente			& nenhuma							&dispensa treinamento  \\ \hline
+% ATU\tnote{k}			&{exploratória}		& sem aprendiz				& nenhuma 							&$\mathcal{O}(0)$  \\ \hline
+HS\tnote{b}			&{balanceada exploratória prospectiva}	& ausente		& total							&dispensa treinamento\tnote{*}  \\ \hline
+Mar/Ent\tnote{a} /QBC\tnote{c}	& prospectiva					& presente		& total							&$\mathcal{O}(1)$  \\ \hline
+DW\tnote{d}			& prospectiva					& presente		& total							&$\mathcal{O}(1)$  \\ \hline
+EER\tnote{e}			& prospectiva					& presente	& total							&$\mathcal{O}(|Y||\mathcal{U}|^2)$  \\ \hline
+TU\tnote{f}			&{balanceada exploratória prospectiva}	& presente		& total							&$\mathcal{O}(1)$  \\ \hline
+SGnetwork\tnote{g}		&{limitada exploratória aleatória}	& presente			& total							&$\mathcal{O}(1)$  \\ \hline
+% SGmulti\tnote{g}		&{limitada exploratória aleatória}	& presente			& total							&$\mathcal{O}(|Y|)$  \\ \hline
+SVMsim\tnote{h}			& prospectiva					&{presente \phantom{oooo} específico}	& total							&$\mathcal{O}(|\mathcal{L}||\mathcal{U}|)$  \\ \hline
+EGL\tnote{i}			& prospectiva					&{presente \phantom{oooo} específico}	& total							&$\mathcal{O}(|Y||\mathcal{U}|)$  \\ \hline
+SVMbal\tnote{j}			&{combinada exploratória prospectiva}&{presente \phantom{oooo} específico}			& total							&$\mathcal{O}(|\mathcal{L}||\mathcal{U}|)$  \\ \hline
+% HTU\tnote{k}			&{combinada exploratória prospectiva}&{combinação \phantom{oo} ausente\phantom{oooo} presente}	&{total}			&$\mathcal{O}(1)$  \\ 
+\end{tabular}
+\begin{tablenotes}
+\item [*] Na ausência de aprendiz não há treinamento, porém HS tem sua própria complexidade a ser considerada.
+\item [a] Amostragem aleatória, por margem ou entropia \cite{series/synthesis/2012Settles}.
+\item [b] Amostragem hierárquica \cite{journals/tcs/Dasgupta11}.
+\item [c] Consulta por comitê \cite{conf/icml/AbeM98}.
+\item [d] Amostragem ponderada por densidade \cite{settles2008curious}.
+\item [e] Redução esperada do erro \cite{conf/ijcai/GuoG07}.
+\item [f] Amostragem ponderada por densidade e utilidade de treinamento \cite{settles2010active,journals/coling/FujiiITT98}.
+\item [g] SGnetwork \cite{journals/ml/CohnAL94}.
+% \item [h] SGmulti \cite{conf/hais/SantosC14}.
+\item [h] Margem simples \cite{journals/jmlr/TongK01}.
+\item [i] Comprimento esperado do gradiente \cite{conf/nips/SettlesCR07}.
+\item [j] Balanceamento exploração-prospecção \cite{conf/icdm/OsugiKS05}.
+% \item [k] Amostragem ponderada por densidade sem aprendiz e híbrida \cite{bracis15}.
+\end{tablenotes}
+\end{threeparttable}
+\end{quadro}
+
+As propostas desta tese são apresentadas no próximo capítulo.

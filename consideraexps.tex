@@ -1,0 +1,30 @@
+Em geral, o emprego de estratégias de amostragem ativa mostrou-se efetivo no aumento da acurácia preditiva, apesar das dúvidas levantadas em parte da literatura \cite{journals/corr/EvansAA14a,journals/sigkdd/AttenbergP10}.
+% They have a restricted scope, such as focus on strategies for a particular 
+% classification algorithm \cite{journals/ml/ScheinU07}, 
+% specific tasks \cite{conf/emnlp/SettlesC08} or 
+% a single family of strategies \cite{conf/ecml/KornerW06}.
+% % http://arxiv.org/pdf/1408.1319.pdf
+% In a recent comparison, active learning failed in \textit{more often than not}, according to\cite{journals/corr/EvansAA14a} .
+% The authors used two strategies (Uncertainty Sampling and QBC) and
+% four algorithms (Logistic Regression, Quadratic Discriminant Analysis,
+% Random Forest and Support Vector Machines).
+% Therefore, we believe more comprehensive studies and experiments attesting the active learning feasibility are necessary.
+Especificamente, os experimentos permitiram: verificar a existência de relações entre conjuntos de dados, estratégias e algoritmos;
+testar, no nível base, a hipótese da possibilidade de inibição e controle do tipo de algoritmo empregado como aprendiz;
+e, comprovar que os metamodelos induzidos representam o conceito do problema de recomendação automática de forma a superar a acurácia preditiva das referências, tanto no nível meta quanto no nível base.
+O algoritmo adotado como aprendiz mostrou-se de fundamental importância para o desempenho de cada par estratégia-algoritmo (Seção \ref{poralg}).
+
+Em termos de custo computacional/de esforço humano, da regularidade no desempenho e de acurácia preditiva e sua variabilidade, as estratégias propostas (ATU e HTU) mostraram-se competitivas com relação a seus pares.
+A proposta de adaptação (SGmulti) não obteve um bom desempenho geral, mas obteve o menor número de derrotas para a amostragem aleatória.
+Segundo o experimento adicional, registrado apenas no Apêndice \ref{apexpcom}, SGmulti obteve um desempenho acima da média quando utilizada com RFw enquanto aprendiz.
+Trata-se de um resultado relevante, pois  esse algoritmo tem sido reportado entre aqueles com o melhor desempenho preditivo \cite{journals/jmlr/DelgadoCBA14}.
+
+Além das abordagens propostas, uma das estratégias que obtiveram melhor desempenho foi EER.
+No entanto, sua complexidade computacional é a mais elevada, tornando-a inadequada em aplicações que tenham restrição de tempo de processamento, como a dependência da interação com um supervisor humano.
+
+Com relação a meta-aprendizado, sua aplicação em aprendizado ativo mostrou-se efetiva na recomendação de algoritmos e pares estratégia-algoritmo.
+Outras modalidades também foram investigadas, sendo que a recomendação de  estratégias mostrou-se a mais promissora.
+
+Finalmente, conclui-se que, possivelmente, cada algoritmo de aprendizado seja uma questão à parte em aprendizado ativo, devendo ter uma análise prioritária no momento da definição do sistema de aprendizado.
+Por sua vez, a escolha da estratégia depende, inicialmente, dos detalhes do cenário da aplicação, principalmente: se ela requer a disponibilidade do oráculo; se ele é sujeito à fadiga; e, se existe a necessidade de um modelo capaz de realizar predições antes do término do processo de rotulação.
+A delimitação adequada dos possíveis candidatos aos papéis dessas duas importantes componentes, estratégia e algoritmo, é fundamental para o sucesso do aprendizado de máquina ativo e do sistema de recomendação automática, caso seja adotado.

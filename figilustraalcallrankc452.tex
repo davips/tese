@@ -1,0 +1,91 @@
+\documentclass[tikz]{standalone}
+\usepackage{lmodern,mathptmx,amsmath}
+\usepackage{pbox}
+\usepackage{marvosym}
+\usepackage{bm}
+\usepackage{wasysym}
+\usepackage{makecell}
+\usepackage{graphicx}
+\usepackage{icomma}
+\usepackage{afterpage}
+\usepackage{pdflscape}
+\usepackage{rotating}
+\usepackage{pgfplots}
+% \usepackage[T1]{fontenc}
+% \usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\usepackage{amsopn}
+\usepackage{amsfonts}
+\usepackage{amsthm, amsfonts, amssymb}
+\usepackage{fontspec}
+\usepgfplotslibrary{fillbetween}
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[Mapping=tex-text]{Latin Modern Roman}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\DeclareMathOperator*{\unidist}{U}
+\DeclareMathOperator*{\cov}{cov}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\sk}{sk}
+\DeclareMathOperator*{\ku}{ku}
+\DeclareMathOperator*{\qnc}{\#nc}
+\DeclareMathOperator*{\qnom}{\#no}
+\DeclareMathOperator*{\qnum}{\#nu}
+\DeclareMathOperator*{\qatt}{\#at}
+\DeclareMathOperator*{\qexe}{\#ex}
+\DeclareMathOperator*{\qexeatt}{\#ea}
+\DeclareMathOperator*{\lgqexe}{lgex}
+\DeclareMathOperator*{\lgqexeatt}{lgea}
+\DeclareMathOperator*{\nom}{isnom}
+\DeclareMathOperator*{\pno}{\%no}
+\DeclareMathOperator*{\en}{en}
+\DeclareMathOperator*{\corr}{cr}
+\DeclareMathOperator*{\cn}{cn}
+\DeclareMathOperator*{\cnk}{cnk}
+\DeclareMathOperator*{\si}{si}
+\DeclareMathOperator*{\sik}{sik}
+\DeclareMathOperator*{\du}{du}
+\DeclareMathOperator*{\duk}{duk}
+\DeclareMathOperator*{\dime}{dim}
+\DeclareMathOperator*{\info}{Inf_\theta}
+\DeclareMathOperator*{\stratID}{ID_\theta}
+\DeclareMathOperator*{\stratIDTU}{ID_{TU}_\theta}
+\DeclareMathOperator*{\JS}{JS}
+\DeclareMathOperator*{\at}{\bm{a}}
+\DeclareMathOperator*{\simi}{sim}
+\DeclareMathOperator*{\limiar}{limite}
+\DeclareMathOperator*{\limiaring}{max}
+\pgfplotsset{marst/.style={solid, violet, mark=*, mark options={solid, scale=1.4}, mark repeat=60}}
+\pgfplotsset{sgst/.style={solid, thick, orange, mark=x, mark options={solid, scale=2}, mark repeat=60}}
+\pgfplotsset{eerst/.style={solid, red, mark=square*, mark options={solid, scale=1.4}, mark repeat=60}}
+\pgfplotsset{hsst/.style={dashed, black, mark=triangle*, mark options={solid, scale=1.4}, mark repeat=60}}
+\pgfplotsset{tust/.style={solid, gray, mark=square, mark options={solid, scale=1.4}, mark repeat=60]}}
+\pgfplotsset{rndst/.style={loosely dashed, olive, mark=triangle, mark options={solid, scale=1.4}, mark repeat=60}}
+\pgfplotsset{atust/.style={dotted, mark=star, ultra thick, blue,  mark repeat=50, mark options={solid, scale=1.9}, mark repeat=60}}
+\pgfplotsset{htust/.style={solid, thick, green!50!black, mark=10-pointed star, mark options={solid, scale=1.9}, mark repeat=60}}
+\pgfplotsset{dwst/.style={solid, thick, gray, mark=diamond, mark options={solid, scale=1.4}, mark repeat=60}}
+\pgfplotsset{eer2st/.style={solid, brown, mark=pentagon, mark options={solid, thick, scale=1.4}, mark repeat=60}}
+\pgfplotsset{htu2st/.style={dotted, blue, mark=triangle, mark options={solid, scale=1.5}, mark repeat=60}}
+\pgfplotsset{defst/.style={loosely dashed, thick, blue, no marks}}
+\begin{document}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[xlabel=consultas, ylabel=colocação média, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=200, y dir=reverse, yticklabel style={/pgf/number format/fixed},legend cell align=left]
+
+\addplot+[eerst, mark phase=20] table[x=budget, y=EERent-C4.52] {images/ilustranbbc452-Rank.tex};\addlegendentry{EERent-C4.52}
+\addplot+[marst, mark phase=20] table[x=budget, y=EERent-NB] {images/ilustranbbc452-Rank.tex};\addlegendentry{EERent-NB}
+
+\addplot[transparent, name path=nba, no marks] table[x=budget, y=minNB] {images/ilustranbbc452-Rank.tex};
+\addplot[transparent, name path=c45a, no marks] table[x=budget, y=minC4.52] {images/ilustranbbc452-Rank.tex};
+
+\addplot[name path=nbb, no marks, transparent] table[x=budget, y=maxNB] {images/ilustranbbc452-Rank.tex};
+\addplot[name path=c45b, no marks, transparent] table[x=budget, y=maxC4.52] {images/ilustranbbc452-Rank.tex};
+ 
+\addplot[opacity=0.2, brown] fill between[of=nba and nbb];
+\addplot[opacity=0.2, green] fill between[of=c45a and c45b];
+
+\node[] at (20,103) {\textcolor{brown}{NB}};
+\node[] at (80,243) {\textcolor{teal}{C4.5w}};
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,86 @@
+\documentclass[tikz]{standalone}
+\usepackage{lmodern,mathptmx,amsmath}
+\usepackage{pbox}
+\usepackage{marvosym}
+\usepackage{bm}
+\usepackage{wasysym}
+\usepackage{makecell}
+\usepackage{graphicx}
+\usepackage{icomma}
+\usepackage{afterpage}
+\usepackage{pdflscape}
+\usepackage{rotating}
+\usepackage{pgfplots}
+% \usepackage[T1]{fontenc}
+% \usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\usepackage{amsopn}
+\usepackage{amsfonts}
+\usepackage{amsthm, amsfonts, amssymb}
+\usepackage{fontspec}
+\usepgfplotslibrary{fillbetween}
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[Mapping=tex-text]{Latin Modern Roman}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\DeclareMathOperator*{\unidist}{U}
+\DeclareMathOperator*{\cov}{cov}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\sk}{sk}
+\DeclareMathOperator*{\ku}{ku}
+\DeclareMathOperator*{\qnc}{\#nc}
+\DeclareMathOperator*{\qnom}{\#no}
+\DeclareMathOperator*{\qnum}{\#nu}
+\DeclareMathOperator*{\qatt}{\#at}
+\DeclareMathOperator*{\qexe}{\#ex}
+\DeclareMathOperator*{\qexeatt}{\#ea}
+\DeclareMathOperator*{\lgqexe}{lgex}
+\DeclareMathOperator*{\lgqexeatt}{lgea}
+\DeclareMathOperator*{\nom}{isnom}
+\DeclareMathOperator*{\pno}{\%no}
+\DeclareMathOperator*{\en}{en}
+\DeclareMathOperator*{\corr}{cr}
+\DeclareMathOperator*{\cn}{cn}
+\DeclareMathOperator*{\cnk}{cnk}
+\DeclareMathOperator*{\si}{si}
+\DeclareMathOperator*{\sik}{sik}
+\DeclareMathOperator*{\du}{du}
+\DeclareMathOperator*{\duk}{duk}
+\DeclareMathOperator*{\dime}{dim}
+\DeclareMathOperator*{\info}{Inf_\theta}
+\DeclareMathOperator*{\stratID}{ID_\theta}
+\DeclareMathOperator*{\stratIDTU}{ID_{TU}_\theta}
+\DeclareMathOperator*{\JS}{JS}
+\DeclareMathOperator*{\at}{\bm{a}}
+\DeclareMathOperator*{\simi}{sim}
+\DeclareMathOperator*{\limiar}{limite}
+\DeclareMathOperator*{\limiaring}{max}
+\pgfplotsset{marst/.style={solid, violet, mark=*, mark options={solid, scale=1.4}, mark repeat=60}}
+\pgfplotsset{sgst/.style={solid, thick, orange, mark=x, mark options={solid, scale=2}, mark repeat=60}}
+\pgfplotsset{eerst/.style={solid, red, mark=square*, mark options={solid, scale=1.4}, mark repeat=60}}
+\pgfplotsset{hsst/.style={dashed, black, mark=triangle*, mark options={solid, scale=1.4}, mark repeat=60}}
+\pgfplotsset{tust/.style={solid, gray, mark=square, mark options={solid, scale=1.4}, mark repeat=60]}}
+\pgfplotsset{rndst/.style={loosely dashed, olive, mark=triangle, mark options={solid, scale=1.4}, mark repeat=60}}
+\pgfplotsset{atust/.style={dotted, mark=star, ultra thick, blue,  mark repeat=50, mark options={solid, scale=1.9}, mark repeat=60}}
+\pgfplotsset{htust/.style={solid, thick, green!50!black, mark=10-pointed star, mark options={solid, scale=1.9}, mark repeat=60}}
+\pgfplotsset{dwst/.style={solid, thick, gray, mark=diamond, mark options={solid, scale=1.4}, mark repeat=60}}
+\pgfplotsset{eer2st/.style={solid, brown, mark=pentagon, mark options={solid, thick, scale=1.4}, mark repeat=60}}
+\pgfplotsset{htu2st/.style={dotted, blue, mark=triangle, mark options={solid, scale=1.5}, mark repeat=60}}
+\pgfplotsset{defst/.style={loosely dashed, thick, blue, no marks}}
+\begin{document}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[xlabel=consultas, ylabel=colocação média, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=200, y dir=reverse, yticklabel style={/pgf/number format/fixed},legend cell align=left]
+
+\addplot+[eerst, mark phase=20] table[x=budget, y=EERent] {images/5nn-nbb-c452-rbf-Rankmedia.tex};\addlegendentry{EERent}
+\addplot+[htust, mark phase=23] table[x=budget, y=HTUeuc] {images/5nn-nbb-c452-rbf-Rankmedia.tex};\addlegendentry{\textbf{HTUeuc}}
+\addplot+[atust, mark phase=25] table[x=budget, y=ATUeuc] {images/5nn-nbb-c452-rbf-Rankmedia.tex};\addlegendentry{\textbf{ATUeuc}}
+\addplot+[tust, mark phase=40] table[x=budget, y=TUeuc] {images/5nn-nbb-c452-rbf-Rankmedia.tex};\addlegendentry{TUeuc}
+\addplot+[marst, mark phase=20] table[x=budget, y=Mar] {images/5nn-nbb-c452-rbf-Rankmedia.tex};\addlegendentry{Mar}
+\addplot+[sgst, mark phase=28] table[x=budget, y=SGmulti] {images/5nn-nbb-c452-rbf-Rankmedia.tex};\addlegendentry{\textit{SGmulti}}
+\addplot+[hsst, mark phase=10] table[x=budget, y=Clu] {images/5nn-nbb-c452-rbf-Rankmedia.tex};\addlegendentry{HS}
+\addplot+[rndst, mark phase=30] table[x=budget, y=Rnd] {images/5nn-nbb-c452-rbf-Rankmedia.tex};\addlegendentry{Rnd}
+\addplot+[dwst, mark phase=9] table[x=budget, y=DWeuc] {images/5nn-nbb-c452-rbf-Rankmedia.tex};\addlegendentry{DWeuc}
+\end{axis}
+\end{tikzpicture}
+\end{document}

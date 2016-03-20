@@ -1,446 +1,150 @@
+\documentclass[tikz]{standalone}
+\input{header}
+\begin{document}
+\tikzset{
+every node/.style={font=\scriptsize,black, thin},
+decision/.style={shape=rectangle, minimum height=1cm, text width=1.7cm,
+text centered, rounded corners=1ex, draw},
+outcome/.style={ shape=rectangle, fill=blue!15, draw, text width=2.6cm, text justified},
+decision tree/.style={sibling distance=3cm, level distance=2cm},
+cond/.style={blue, yshift=-2mm, shape=rectangle, text centered},
+}
+\begin{tikzpicture} [edge from parent/.style={->,above,draw,sloped,midway,gray!30,ultra thick},
+text width=2.7cm, align=flush center, grow cyclic,
+level 1/.style={level distance=3.4cm,sibling angle=90},
+level 2/.style={text width=2cm, font=\footnotesize, level distance=3.8cm,sibling angle=90},
+level 3/.style={text width=2cm, font=\footnotesize, level distance=3.6cm,sibling angle=60},
+level 4/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
+level 5/.style={text width=2cm, font=\footnotesize, level distance=3.2cm,sibling angle=60},
+]
 \node[line width=0.3ex, decision] {algoritmo}
-child {node [decision] {\#classes}
-child {node [decision] {\%nominais}
-child {node [decision] {$\frac{\#exemplos}{\#atrib.}$}
+child {node [decision] {$\frac{\%major.}{\%minor.}$}
 child {node [outcome] {
-\textbf{HTUman}: 9\\
-EERent: 9\\
-\textbf{ATUman}: 8\\
-\textbf{HTUeuc}: 7\\
-\textbf{ATUeuc}: 7\\
-\textbf{HTUmah}: 5\\
-Ent: 4\\
-\textbf{ATUmah}: 4\\
-SVMsim: 3\\
-% QBCRFw: 3\\
-% TUman: 3\\
-% TUmah: 3\\
-% DWman: 3\\
-% Clu: 3\\
-% TUeuc: 3\\
-% Mar: 3\\
-% EERacc: 2\\
-% SVMbal: 2\\
-% DWmah: 1\\
-% Rnd: 0\\
-% DWeuc: 0\\
-% \textbf{SGmulti}: 0\\
-demais: 26} edge from parent node [cond] {$\leq40.1$}}
-child {node [outcome] {
-\textbf{ATUmah}: 12\\
-\textbf{HTUmah}: 11\\
-\textbf{ATUeuc}: 9\\
-EERent: 8\\
-TUmah: 7\\
-\textbf{HTUeuc}: 6\\
-DWmah: 5\\
-EERacc: 4\\
-% DWman: 4\\
-% Rnd: 4\\
-% Mar: 4\\
-% \textbf{SGmulti}: 4\\
-% \textbf{ATUman}: 3\\
-% DWeuc: 3\\
-% Ent: 2\\
-% \textbf{HTUman}: 2\\
-% TUman: 2\\
-% SVMsim: 1\\
-% SVMbal: 1\\
-% QBCRFw: 0\\
-% Clu: 0\\
-% TUeuc: 0\\
-demais: 30} edge from parent node [cond] {$>40.1$}}edge from parent node [cond] {$\leq0$}}
-child {node [outcome] {
-SVMbal: 7\\
-DWman: 7\\
-SVMsim: 5\\
-DWmah: 5\\
-\textbf{HTUman}: 5\\
-\textbf{ATUman}: 4\\
-TUman: 4\\
-EERent: 4\\
-DWeuc: 4\\
-Mar: 4\\
-% \textbf{ATUmah}: 3\\
-% TUeuc: 3\\
-% \textbf{ATUeuc}: 3\\
-% Ent: 2\\
-% QBCRFw: 2\\
-% Rnd: 2\\
-% \textbf{SGmulti}: 2\\
-% \textbf{HTUeuc}: 1\\
-% EERacc: 1\\
-% Clu: 1\\
-% \textbf{HTUmah}: 1\\
-% TUmah: 0\\
-demais: 21} edge from parent node [cond] {$>0$}}edge from parent node [cond] {$\leq5$}}
-child {node [outcome] {
-TUman: 8\\
-TUeuc: 7\\
-\textbf{ATUman}: 5\\
-\textbf{HTUman}: 5\\
-TUmah: 5\\
-\textbf{ATUeuc}: 5\\
-% \textbf{HTUeuc}: 3\\
-% EERent: 3\\
-% Ent: 2\\
-% DWmah: 2\\
-% Mar: 2\\
-% DWman: 1\\
-% \textbf{ATUmah}: 1\\
-% DWeuc: 1\\
-% \textbf{HTUmah}: 1\\
-% SVMsim: 0\\
-% EERacc: 0\\
-% QBCRFw: 0\\
-% SVMbal: 0\\
-% Clu: 0\\
-% Rnd: 0\\
-% \textbf{SGmulti}: 0\\
-demais: 16} edge from parent node [cond] {$>5$}}edge from parent node [cond] {5NN}}
-child {node [decision] {\%major.}
-child {node [decision] {\#exemplos}
-child {node [outcome] {
-\textbf{HTUeuc}: 9\\
-TUman: 9\\
-EERent: 9\\
-QBCRFw: 8\\
-TUmah: 8\\
-TUeuc: 7\\
-\textbf{HTUman}: 6\\
-\textbf{HTUmah}: 6\\
-Ent: 5\\
-% DWmah: 5\\
-% Mar: 5\\
-% SVMbal: 4\\
-% SVMsim: 3\\
-% DWman: 3\\
-% \textbf{ATUmah}: 3\\
-% EERacc: 2\\
-% Clu: 2\\
-% DWeuc: 2\\
-% \textbf{ATUeuc}: 2\\
-% \textbf{ATUman}: 0\\
-% Rnd: 0\\
-% \textbf{SGmulti}: 0\\
-demais: 31} edge from parent node [cond] {$\leq432$}}
-child {node [outcome] {
-\textbf{HTUman}: 24\\
-\textbf{ATUman}: 12\\
-TUman: 12\\
-QBCRFw: 9\\
-\textbf{HTUmah}: 8\\
-\textbf{HTUeuc}: 6\\
-EERent: 6\\
-% TUmah: 6\\
-% TUeuc: 4\\
-% \textbf{ATUeuc}: 4\\
-% SVMbal: 3\\
-% DWeuc: 3\\
-% SVMsim: 2\\
-% DWman: 2\\
-% Mar: 2\\
-% EERacc: 1\\
-% Ent: 1\\
-% DWmah: 1\\
-% \textbf{ATUmah}: 1\\
-% \textbf{SGmulti}: 1\\
-% Clu: 0\\
-% Rnd: 0\\
-demais: 31} edge from parent node [cond] {$>432$}}edge from parent node [cond] {$\leq67.1$}}
-child {node [outcome] {
-SVMsim: 14\\
-QBCRFw: 14\\
-SVMbal: 13\\
-EERent: 6\\
-\textbf{ATUmah}: 5\\
-EERacc: 3\\
-% Clu: 3\\
-% TUeuc: 3\\
-% \textbf{HTUmah}: 3\\
-% \textbf{ATUeuc}: 3\\
-% \textbf{HTUeuc}: 2\\
-% \textbf{ATUman}: 2\\
-% TUmah: 2\\
-% DWman: 2\\
-% Ent: 1\\
-% DWeuc: 1\\
-% Mar: 1\\
-% \textbf{SGmulti}: 1\\
-% DWmah: 0\\
-% \textbf{HTUman}: 0\\
-% TUman: 0\\
-% Rnd: 0\\
-demais: 24} edge from parent node [cond] {$>67.1$}}edge from parent node [cond] {C4.5w}}
-child {node [decision] {\#exemplos}
-child {node [decision] {\#atributos}
-child {node [outcome] {
-DWman: 11\\
-DWmah: 10\\
-DWeuc: 9\\
-Ent: 7\\
-Mar: 7\\
-% TUeuc: 4\\
-% TUman: 3\\
-% TUmah: 3\\
-% QBCRFw: 2\\
-% EERent: 2\\
-% SVMsim: 1\\
-% EERacc: 1\\
-% SVMbal: 1\\
-% \textbf{HTUeuc}: 0\\
-% \textbf{ATUman}: 0\\
-% \textbf{HTUman}: 0\\
-% Clu: 0\\
-% Rnd: 0\\
-% \textbf{ATUmah}: 0\\
-% \textbf{SGmulti}: 0\\
-% \textbf{HTUmah}: 0\\
-% \textbf{ATUeuc}: 0\\
-demais: 17} edge from parent node [cond] {$\leq6$}}
-child {node [decision] {\%nominais}
-child {node [outcome] {
-TUmah: 16\\
-TUeuc: 13\\
-Ent: 10\\
+\textbf{ATUman}: 20\\
+\textbf{HTUman}: 17\\
+\textbf{ATUeuc}: 17\\
+\textbf{HTUeuc}: 16\\
+TUeuc: 12\\
+Mar: 11\\
 TUman: 10\\
-Mar: 9\\
-DWmah: 6\\
-SVMbal: 6\\
-DWman: 6\\
-\textbf{ATUmah}: 6\\
-% DWeuc: 6\\
-% \textbf{HTUmah}: 6\\
-% SVMsim: 5\\
-% \textbf{ATUman}: 5\\
-% \textbf{HTUman}: 5\\
-% EERacc: 4\\
-% EERent: 2\\
-% \textbf{SGmulti}: 2\\
-% \textbf{HTUeuc}: 1\\
-% Rnd: 1\\
-% \textbf{ATUeuc}: 1\\
-% QBCRFw: 0\\
-% Clu: 0\\
-demais: 38} edge from parent node [cond] {$\leq0$}}
-child {node [outcome] {
-DWeuc: 7\\
-Ent: 6\\
-Mar: 6\\
-TUmah: 5\\
-DWman: 5\\
-% DWmah: 4\\
-% TUman: 4\\
-% TUeuc: 4\\
-% \textbf{ATUman}: 3\\
-% \textbf{HTUman}: 3\\
-% SVMbal: 3\\
-% \textbf{ATUmah}: 2\\
-% \textbf{HTUmah}: 2\\
-% SVMsim: 1\\
-% \textbf{HTUeuc}: 0\\
-% EERacc: 0\\
-% QBCRFw: 0\\
-% EERent: 0\\
-% Clu: 0\\
-% Rnd: 0\\
-% \textbf{SGmulti}: 0\\
-% \textbf{ATUeuc}: 0\\
-demais: 26} edge from parent node [cond] {$>0$}}edge from parent node [cond] {$>6$}}edge from parent node [cond] {$>213.6$}}
-child {node [outcome] {
-TUeuc: 10\\
-TUmah: 7\\
-\textbf{HTUeuc}: 6\\
-TUman: 5\\
-\textbf{ATUeuc}: 5\\
-Ent: 4\\
-DWeuc: 4\\
-DWman: 3\\
-% Mar: 3\\
-% DWmah: 2\\
-% \textbf{ATUmah}: 2\\
-% \textbf{SGmulti}: 2\\
-% \textbf{HTUmah}: 2\\
-% SVMsim: 1\\
-% EERacc: 1\\
-% \textbf{ATUman}: 1\\
-% QBCRFw: 1\\
-% \textbf{HTUman}: 1\\
-% Clu: 1\\
-% Rnd: 1\\
-% SVMbal: 0\\
-% EERent: 0\\
-demais: 18} edge from parent node [cond] {$\leq213.6$}}
-edge from parent node [cond] {CIELM}}
-child {node [decision] {\%nominais}
-child {node [decision] {\%minor.}
-child {node [decision] {\%minor.}
-child {node [outcome] {
-EERent: 13\\
-SVMbal: 9\\
-SVMsim: 6\\
-DWmah: 6\\
-\textbf{ATUman}: 5\\
-QBCRFw: 5\\
-\textbf{HTUman}: 5\\
-DWman: 5\\
-DWeuc: 5\\
-% EERacc: 4\\
-% \textbf{ATUmah}: 4\\
-% \textbf{SGmulti}: 4\\
-% Clu: 3\\
-% Rnd: 3\\
-% \textbf{ATUeuc}: 3\\
-% \textbf{HTUeuc}: 2\\
-% TUeuc: 2\\
-% TUman: 1\\
-% Mar: 1\\
-% \textbf{HTUmah}: 1\\
-% Ent: 0\\
-% TUmah: 0\\
-demais: 28} edge from parent node [cond] {$\leq9.7$}}
-child {node [outcome] {
-\textbf{ATUman}: 7\\
-TUman: 7\\
-\textbf{ATUeuc}: 7\\
-\textbf{HTUeuc}: 6\\
-\textbf{ATUmah}: 6\\
-SVMsim: 5\\
-DWeuc: 5\\
-\textbf{HTUmah}: 5\\
-DWmah: 4\\
-% \textbf{HTUman}: 4\\
-% SVMbal: 4\\
+DWman: 8\\
+EERacc: 7\\
 % EERent: 3\\
-% TUeuc: 3\\
-% Ent: 2\\
-% TUmah: 2\\
-% DWman: 2\\
-% Clu: 2\\
-% QBCRFw: 1\\
-% EERacc: 0\\
-% Rnd: 0\\
-% Mar: 0\\
-% \textbf{SGmulti}: 0\\
-demais: 23} edge from parent node [cond] {$>9.7$}}edge from parent node [cond] {$\leq33.3$}}
-child {node [outcome] {
-EERent: 10\\
-Ent: 6\\
-Mar: 6\\
-DWmah: 5\\
-\textbf{ATUeuc}: 5\\
-\textbf{ATUmah}: 4\\
-EERacc: 3\\
-\textbf{ATUman}: 3\\
-SVMbal: 3\\
-% \textbf{HTUeuc}: 2\\
-% QBCRFw: 2\\
-% TUman: 2\\
-% TUmah: 2\\
 % Rnd: 2\\
-% TUeuc: 2\\
 % \textbf{SGmulti}: 2\\
-% \textbf{HTUmah}: 2\\
-% SVMsim: 1\\
-% DWeuc: 1\\
-% \textbf{HTUman}: 0\\
-% DWman: 0\\
-% Clu: 0\\
-demais: 18} edge from parent node [cond] {$>33.3$}}edge from parent node [cond] {$\leq16.7$}}
+% HS: 1\\
+demais ($\leq 3$): 14} edge from parent node [cond] {$\leq1,1$}}
+child {node [decision] {\%major.}
 child {node [outcome] {
-TUman: 6\\
-DWeuc: 6\\
-\textbf{HTUman}: 5\\
-Ent: 4\\
-DWmah: 4\\
-EERent: 4\\
-DWman: 4\\
-TUeuc: 4\\
-Mar: 4\\
-% SVMsim: 3\\
-% \textbf{HTUeuc}: 3\\
-% TUmah: 3\\
-% \textbf{HTUmah}: 3\\
-% EERacc: 1\\
-% \textbf{ATUman}: 1\\
-% QBCRFw: 1\\
-% \textbf{ATUeuc}: 1\\
-% SVMbal: 0\\
-% Clu: 0\\
-% Rnd: 0\\
-% \textbf{ATUmah}: 0\\
-% \textbf{SGmulti}: 0\\
-demais: 16} edge from parent node [cond] {$>16.7$}}edge from parent node [cond] {NB}}
+\textbf{HTUeuc}: 36\\
+\textbf{ATUeuc}: 33\\
+\textbf{HTUman}: 26\\
+EERent: 26\\
+\textbf{ATUman}: 24\\
+DWman: 14\\
+TUman: 12\\
+Rnd: 9\\
+\textit{SGmulti}: 9\\
+% TUeuc: 8\\
+% HS: 4\\
+% DWeuc: 3\\
+% EERacc: 2\\
+% Mar: 1\\
+demais ($\leq 8$): 18} edge from parent node [cond] {$\leq55,9$}}
 child {node [outcome] {
-Mar: 71\\
-\textbf{SGmulti}: 47\\
-Ent: 43\\
-EERent: 42\\
-% EERacc: 24\\
-% Clu: 6\\
-% \textbf{HTUmah}: 6\\
-% TUman: 5\\
-% Rnd: 5\\
-% \textbf{ATUman}: 4\\
-% \textbf{HTUman}: 4\\
-% TUmah: 4\\
-% \textbf{ATUeuc}: 4\\
-% \textbf{HTUeuc}: 3\\
-% DWmah: 3\\
-% DWman: 3\\
-% \textbf{ATUmah}: 3\\
-% SVMsim: 2\\
-% SVMbal: 2\\
-% TUeuc: 1\\
-% DWeuc: 1\\
-% QBCRFw: 0\\
-demais: 80} edge from parent node [cond] {RFw}}
-child {node [decision] {\#atributos}
-child {node [outcome] {
-SVMsim: 10\\
-\textbf{HTUeuc}: 9\\
-\textbf{HTUmah}: 9\\
-EERent: 7\\
-\textbf{HTUman}: 5\\
-SVMbal: 5\\
-QBCRFw: 4\\
-Clu: 4\\
-% \textbf{ATUman}: 3\\
-% TUman: 3\\
-% Mar: 3\\
-% \textbf{ATUeuc}: 3\\
-% Ent: 2\\
-% TUmah: 2\\
-% TUeuc: 2\\
-% DWeuc: 2\\
-% EERacc: 1\\
-% DWmah: 1\\
-% DWman: 1\\
-% Rnd: 1\\
-% \textbf{ATUmah}: 1\\
-% \textbf{SGmulti}: 0\\
-demais: 25} edge from parent node [cond] {$\leq7$}}
-child {node [outcome] {
-EERent: 37\\
-\textbf{HTUmah}: 15\\
-SVMsim: 13\\
-EERacc: 13\\
-\textbf{HTUman}: 12\\
-TUmah: 10\\
-\textbf{HTUeuc}: 9\\
-SVMbal: 9\\
-% DWmah: 8\\
-% TUman: 8\\
-% DWman: 8\\
-% DWeuc: 8\\
-% \textbf{ATUeuc}: 8\\
-% Clu: 7\\
+\textbf{ATUeuc}: 40\\
+\textbf{HTUeuc}: 31\\
+\textbf{ATUman}: 31\\
+\textbf{HTUman}: 29\\
+EERent: 27\\
+DWman: 19\\
+DWeuc: 13\\
+TUman: 12\\
+% Mar: 8\\
 % TUeuc: 7\\
-% Mar: 7\\
-% \textbf{SGmulti}: 7\\
-% \textbf{ATUmah}: 6\\
-% \textbf{ATUman}: 4\\
-% QBCRFw: 4\\
-% Rnd: 4\\
-% Ent: 2\\
-demais: 88} edge from parent node [cond] {$>7$}}edge from parent node [cond] {SVM}};
+% EERacc: 4\\
+% Rnd: 1\\
+% \textbf{SGmulti}: 1\\
+demais ($\leq 8$): 31} edge from parent node [cond] {$>55,9$}}edge from parent node [cond] {$>1,1$}}edge from parent node [cond] {5NNw}}
+child {node [decision] {\%nominais}
+child {node [outcome] {
+EERent: 67\\
+\textbf{ATUman}: 44\\
+\textbf{ATUeuc}: 42\\
+HS: 29\\
+DWman: 28\\
+\textbf{HTUeuc}: 27\\
+DWeuc: 27\\
+\textbf{HTUman}: 26\\
+Mar: 25\\
+TUman: 18\\
+\textit{SGmulti}: 17\\
+% TUeuc: 14\\
+% Rnd: 11\\
+demais ($\leq 14$): 41} edge from parent node [cond] {$\leq0$}}
+child {node [outcome] {
+TUman: 24\\
+DWman: 16\\
+TUeuc: 16\\
+DWeuc: 16\\
+\textbf{HTUeuc}: 15\\
+\textbf{ATUman}: 11\\
+\textbf{HTUman}: 11\\
+Mar: 10\\
+EERent: 8\\
+\textbf{ATUeuc}: 7\\
+% EERacc: 5\\
+% HS: 4\\
+% Rnd: 2\\
+demais ($\leq 5$): 17} edge from parent node [cond] {$>0$}}edge from parent node [cond] {NB}}
+child {node [decision] {$\frac{\%major.}{\%minor.}$}
+child {node [outcome] {
+\textbf{HTUman}: 87\\
+\textbf{ATUman}: 76\\
+\textbf{ATUeuc}: 62\\
+\textbf{HTUeuc}: 52\\
+TUman: 32\\
+TUeuc: 21\\
+EERent: 16\\
+DWman: 15\\
+DWeuc: 12\\
+Mar: 12\\
+% \textbf{SGmulti}: 11\\
+% HS: 10\\
+% EERacc: 9\\
+% Rnd: 7\\
+demais ($\leq 11$): 37} edge from parent node [cond] {$\leq8,4$}}
+child {node [outcome] {
+EERent: 21\\
+TUeuc: 13\\
+\textbf{HTUeuc}: 12\\
+TUman: 12\\
+\textbf{ATUman}: 10\\
+\textbf{ATUeuc}: 10\\
+HS: 9\\
+EERacc: 8\\
+\textbf{HTUman}: 7\\
+Mar: 5\\
+% DWeuc: 4\\
+% Rnd: 3\\
+% \textbf{SGmulti}: 3\\
+demais ($\leq 4$): 14} edge from parent node [cond] {$>8,4$}}edge from parent node [cond] {C4.5w}}
+child {node [outcome] {
+EERent: 111\\
+EERacc: 53\\
+HS: 52\\
+\textit{SGmulti}: 47\\
+\textbf{HTUeuc}: 42\\
+Rnd: 41\\
+DWman: 30\\
+\textbf{HTUman}: 27\\
+DWeuc: 27\\
+\textbf{ATUeuc}: 27\\
+TUman: 26\\
+Mar: 26\\
+% TUeuc: 22\\
+% \textbf{ATUman}: 18\\
+demais ($\leq 22$): 40} edge from parent node [cond] {SVM}}
+;
+\end{tikzpicture}
+\end{document}

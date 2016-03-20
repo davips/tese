@@ -1,0 +1,201 @@
+Na literatura de aprendizado ativo, muitas abordagens têm sido propostas para a realização de consultas relevantes junto ao oráculo.
+O principal aspecto dessa área, explorado neste trabalho, é a pouca atenção dada  
+à relevância dos algoritmos de aprendizado enquanto aprendizes, especialmente se consideradas as especificidades de cada estratégia de amostragem e cada conjunto de dados.
+Foi necessária, portanto, uma investigação dos fatores que influenciam o \textit{viés de aprendizado ativo}, tais como a presença e tipo do \textit{viés de aprendizado} do algoritmo e o \textit{viés de amostragem} da estratégia.
+
+A investigação conduzida resultou nesta tese, que mostra ser possível atingir melhores desempenhos preditivos de acordo com as propriedades do conjunto de dados e o momento em que se situe o processo de aprendizado.
+O meio proposto é uma escolha (ou inibição) mais criteriosa,
+% manual, se feita por meio da árvore impressa nos experimentos; semiautomática, se feita por meio da recomendação de ranqueamento; ou automática, se feita por meio da recomendação do melhor algoritmo.
+preferencialmente automática, do tipo do viés de aprendizado, da estratégia ou de ambos.
+
+O desenvolvimento da pesquisa requereu trabalho conceitual, de criação, de implementação e metodológico.
+O autor deixa neste parágrafo registrada a extensão do esforço empreendido no desenvolvimento e a carga computacional resultante dos experimentos.
+Embora os experimentos realizados nesta pesquisa tenham tido um elevado custo computacional, sua real finalidade é a economia em termos de esforço humano, provavelmente mais custoso que a energia consumida.
+Nesse aspecto, este trabalho pode ser considerado um projeto bem sucedido, no mínimo, pela confirmação da efetividade do aprendizado ativo em geral.
+Além disso, a pesquisa também resulta em benefícios intangíveis, que estão além da mera aplicabilidade prática de seus resultados. Durante a pesquisa, 13 estratégias e variações foram estudadas, implementadas e propostas, totalizando 22 alternativas, se considerados os parâmetros explorados.
+Uma coleção com 90 conjuntos de dados foi elaborada visando, tanto quanto possível, um embasamento estatístico confiável para as observações feitas.
+Foram realizados experimentos no nível base, aprendizado de máquina convencional, e no nível meta, para o meta-aprendizado.
+Quatro algoritmos de aprendizado, com vieses e desempenhos preditivos variados,
+%demonstrados como distintos, 
+e dois comitês foram empregados no nível base.
+No nível meta, duas medidas de referência e quatro comitês foram utilizados.
+O esforço de implementação e custo computacional podem ser resumidos pelo número de 40 milhões de consultas registradas; rotuladas por um incansável oráculo, que felizmente era simulado - mais detalhes são dados no Apêndice \ref{apfer}. Numa aplicação real, essa tarefa seria atribuída a um especialista no domínio correspondente.
+
+Por fim, esta pesquisa enfrentou algumas dificuldades, listadas na Seção \ref{difi}, que não impediram o atingimento das metas.
+As contribuições, cristalizadas pela comprovação das hipóteses formuladas, são apresentadas nas seções \ref{metas} e \ref{conchipoteses}, respectivamente.
+Adicionalmente, algumas limitações e possibilidades de trabalhos futuros foram identificadas e apresentadas nas seções \ref{limitacoes} e \ref{futuro}, respectivamente.
+
+\section{Dificuldades}\label{difi}
+Embora essencial para aumentar a generalidade dos resultados, o tamanho da coleção organizada criou uma dificuldade sem relatos prévios na pesquisa bibliográfica realizada.
+Normalmente, as estratégias são testadas em poucos conjuntos (Seção \ref{motiv}) frequentemente acompanhados da ilustração individual de suas respectivas curvas de aprendizado.
+Durante a pesquisa que resultou no presente trabalho, houve diversas tentativas de sumarização de todas as curvas no mesmo gráfico, como: normalização de medidas ou mesmo de compatibilização entre diferentes limites de orçamento; contagem de vitórias; e, neutralização das especificidades de cada conjunto de dados por meio da subtração do desempenho de estratégias de referência (Rnd, limites teóricos superior e inferior etc.) - entre outras. 
+Finalmente, as curvas de ranqueamento, propostas na Seção \ref{sec:curvas}, se mostraram a solução mais direta do ponto de vista conceitual, desde que todos os conjuntos de dados fossem consultados com o mesmo limite de orçamento.
+Uma limitação desse tipo de curva, de certa forma positiva, é requerer que muitos conjuntos sejam adotados - o oposto da limitação das curvas convencionais, para as quais apenas poucos conjuntos podem ser viavelmente representados.
+
+Há uma tendência ao emprego da ALC na literatura (\textit{Area Under the Learning Curve} - Seção \ref{medidas}).
+Contudo, não há consenso sobre a medida que a deva compor.
+Esse problema também ocorre em outras áreas que envolvam a tarefa de classificação.
+Optou-se pelo índice $\kappa$ (kappa multiclasse - Seção \ref{newhtu}) devido à sua interpretabilidade e à sua dependência de poucos dados, permitindo que apenas a matriz de confusão fosse armazenada.
+Os dados necessários para o cálculo de medidas como a \sigla{AUC}{\textit{Area Under the ROC Curve}} \cite{lobo2008auc} fariam com que a base de dados excedesse o espaço disponível em disco.
+A alternativa, que seria registrar o valor da AUC e descartar dos demais dados, aumentaria o custo computacional, não seria adequada para todos os algoritmos adotados e não permitiria a troca para outras medidas de desempenho posteriormente.
+
+O cálculo da distância de Mahalanobis mostrou-se proibitivamente custoso, fazendo com que essa métrica fosse adotada apenas no experimento de recomendação de métricas de distância (Seção \ref{recdist}).
+Provavelmente, o uso de toda a reserva de exemplos para seu cálculo não tenha sido uma boa escolha.
+
+Por fim, as bibliotecas de estratégias implementadas por terceiros se mostraram muito modestas, com poucas, ou pouco relevantes, abordagens implementadas.
+Essas bibliotecas compreendem um grupo heterogêneo de linguagens de programação e de cenários de aprendizado ativo.
+Alguns exemplos encontram-se na página de Burr Settles na \textit{internet}\footnote{\url{http://active-learning.net} - Acessado em 07/01/2016.}.
+A única implementação de terceiros efetivamente utilizada nos experimentos foi a referente à estratégia HS.
+Apesar disso, seu uso também requereu uma implementação, parcial, que fornecesse o pré-processamento da reserva de exemplos na forma de agrupamento hierárquico (Seção \ref{metohs}).
+
+\section{Metas atingidas}\label{metas}
+Um sumário dos objetivos desta tese de doutorado, delineados previamente na Seção \ref{intropropostas}, e seus respectivos resultados obtidos nos experimentos realizados são descritos a seguir:
+\begin{itemize}
+   \item \textbf{Identificação da existência de relações de adequação entre nichos de problemas e estratégias:} a presença dessas relações foi identificada por meio da análise qualitativa de árvores de decisão baseadas em meta-atributos humanamente interpretáveis; adicionalmente, foi constatado que a escolha do algoritmo de aprendizado precede as demais variáveis na determinação do sucesso da estratégia (Seção \ref{poralg}).
+   \item \textbf{Desenvolvimento de uma estratégia capaz de suprimir, sob demanda, a influência do aprendiz:} a estratégia HTU foi proposta como uma alternativa para controlar a atuação do aprendiz na estratégia baseada em densidade, TU; ela se mostrou competitiva frente às demais estratégias consideradas e apresentou propriedades relevantes, como estabilidade, segurança e custo computacional interconsultas \textit{humanamente tolerável} (Seção \ref{cuscomp}) - características que permitem redução nos custos de esforço humano.
+   \item \textbf{Desenvolvimento de um aprendiz meta-ativo:} a abordagem de recomendação automática proposta, chamada \textit{aprendizado meta-ativo}, \textit{superou}\footnote{A validade da avaliação do sucesso do meta-aprendizado é limitada pela metodologia empregada. Algumas análises posteriores (Apêndice \ref{apflu}) apontam no sentido de ser necessário maior rigor experimental.}, no nível base, o uso de um único algoritmo de aprendizado específico e mostrou-se viável, no nível meta, com diversos algoritmos no papel de meta-aprendizes (principalmente PCT, RoF e RFw).
+   Além da recomendação automática de algoritmos de aprendizado no contexto de aprendizado ativo, outras modalidades de recomendação também se mostraram promissoras (dentro das limitações metodológicas constatadas posteriormente), como a recomendação de estratégias e pares estratégia-algoritmo.
+\end{itemize}
+Tais resultados incluíram a comprovação das hipóteses, conforme descrito a seguir, na Seção \ref{conchipoteses}.
+
+\section{Hipóteses comprovadas}\label{conchipoteses}
+
+A hipótese principal, de que, em tarefas de classificação, relações entre conjuntos de dados, algoritmos de aprendizado ativo e estratégias de amostragem ativa podem ser exploradas visando um maior desempenho preditivo frente à escolha arbitrária é válida, dentro das limitações experimentais.
+Essa conclusão se baseia na comparação de medidas relevantes de acurácia como: a ALC da medida $\mu_\kappa$; a correlação entre ranqueamentos preditos e esperados; e, a acurácia ordinária, a acurácia balanceada e a medida $\kappa$ no nível meta.
+
+Da mesma forma, a hipótese secundária, de que o aprendiz pode ser automaticamente inibido ou substituído com vantagem durante o aprendizado, também foi demonstrada válida.
+Essa conclusão se baseia na comparação da estratégia HTU com sua antecessora na literatura, cuja presença do aprendiz é constante, e também com estratégias representantes de outros paradigmas.
+Também contribui para a validade da hipótese os resultados favoráveis da comparação do meta-aprendiz, ativado antes da 1\textordfeminine~e depois da 50\textordfeminine~consulta, com as outras estratégias no nível base e com valores de referência no nível meta.
+
+As seguintes afirmações foram empiricamente verificadas, segundo a metodologia empregada e considerados os conjuntos de dados, o conjunto específico de estratégias e os algoritmos adotados.
+\begin{enumerate}
+\item HTUeuc tem o desempenho mais consistente, ou seja, é a mais segura em termos financeiros/de esforço humano.
+\item ATUeuc e HTUeuc apresentam a menor variabilidade de desempenho preditivo ($\sigma_\kappa$).
+\item Dentre as estratégias com melhor desempenho, ATUeuc e HTUeuc possuem o menor custo computacional entre consultas e, consequentemente, de esforço humano.
+\item A recomendação automática de algoritmos aumenta o desempenho da estratégia.
+% \item O meta-aprendiz induz modelos preditivos que representam o conceito subjacente à tarefa de recomendação automática de algoritmos de aprendizado para aprendizado ativo, com precisão suficiente para superar referências relevantes.
+\item Diferentes algoritmos podem gerar metaclassificadores com desempenhos preditivos similares, seguindo a abordagem de recomendação automática proposta.
+\item Embora requeira uma metodologia experimental mais rigorosa (Apêndice \ref{apflu}), a recomendação automática de algoritmos, estratégias ou pares estratégia-algoritmo inicialmente mostrou-se viável.
+\end{enumerate}
+Quanto às outras modalidades de recomendação automática, foi observado que pesquisas adicionais ainda são necessárias para que se possa chegar a conclusões melhor fundamentadas.
+
+\section{Limitações}\label{limitacoes}
+
+Durante e após a pesquisa realizada nesta tese, algumas limitações foram identificadas.
+Elas não puderam ser superadas devido a diversos fatores, como baixa prioridade, percepção ou aparecimento tardio, impossibilidade prática, ausência de consenso, limitação intrínseca, entre outros.
+% O desempenho do algoritmo na segunda metade da curva é afetado pela qualidade das consultas realizadas na primeira metade.
+% Logo, seria ideal, para a segunda metade, construir um conjunto de metaexemplos em que as consultas sejam geradas com base em uma primeira metade construída pelo algoritmo recomendado ou pelo melhor.
+% Porém, a forma adotada foi gerar as duas metades de consultas com o mesmo algoritmo.
+% Requereria 2n execuções: para a primeira metade, como usual, mais n execuções para a segunda metade (n algoritmos).
+% Da forma feita, foram n execuções: n pra curva toda mais 0.
+
+Uma limitação comum de trabalhos na literatura de classificação também está presente neste.
+Cada domínio de aplicação tem um modelo de custos de erro de classificação mais adequado e, consequentemente, requer uma medida de avaliação de desempenho apropriada.
+Logo, a adoção uniforme da medida de desempenho no nível base ($\kappa$) para todos os conjuntos de dados configura-se como uma limitação metodológica.
+Uma investigação aprofundada do domínio de cada conjunto de dados seria capaz de identificar a medida mais apropriada para cada conjunto, de acordo com as melhores práticas na literatura para o domínio do problema em questão.
+A solução ideal seria que cada conjunto de dados pré-processado fosse disponibilizado com essa informação. Entretanto, em muitos casos não há um critério para isso.
+
+A subamostragem mencionada na Seção \ref{despred} reduziu a reserva para 100 exemplos, visando maior tratabilidade computacional de EER (estratégia baseada na redução do erro esperado).
+Tal decisão pode ter beneficiado essa estratégia.
+Era esperada uma maior similaridade entre o comportamento de EER e o das outras estratégias não agnósticas.
+Assim, idealmente, todas as estratégias deveriam compartilhar dessa manipulação na reserva para garantir uma comparação em iguais condições.
+Embora essa parte da metodologia pudesse ser melhorada, seu provável impacto foi aumentar a competitividade de EER, limitando-se a reduzir a visibilidade do sucesso das propostas.
+
+\citeonline{journals/pr/Lughofer12} publicou uma estratégia híbrida baseada em agrupamento da qual o autor deste documento não tomou conhecimento em tempo hábil para uma devida comparação com HTU.
+Embora a comparação com aquela e as diversas outras estratégias não contempladas pelos experimentos pudesse enriquecer este trabalho, a sua ausência não impactou seriamente os resultados, pois o objetivo deste trabalho se concentrou mais nos problemas de escolha no cenário de aprendizado ativo, como a estratégia e o tipo ou o momento de inibição de algoritmos de aprendizado, do que no desempenho de estratégias específicas.
+
+Uma limitação importante de HTU é seu parâmetro $\rho_{\limiar}$.
+Apesar da superioridade de seu desempenho ter sido demonstrada experimentalmente,
+a validade do princípio de funcionamento motivador de sua proposta não foi comprovada.
+Seria necessário comparar HTU com uma estratégia híbrida aleatória ou conforme alguma heurística pré-definida, ou seja, com outros critérios de alternância entre ATU e TU que servissem de referência.
+Um indício de que a medida de correlação de Pearson talvez não quantifique a grandeza desejada, como o nível de contribuição da componente exploratória, é que, na maioria dos casos testados, $\rho_{\limiar}<0$ levou a desempenhos melhores do que $\rho_{\limiar}>0$  - conforme apresentado previamente na Figura \ref{hist}.
+Isso precisaria ser investigado em mais detalhes, pois contradiz a motivação da proposta.
+
+O cenário adotado é artificial, caso sejam considerados alguns aspectos de aplicações reais.
+Um desses aspectos é sobre os exemplos duplicados, ou seja, com os valores dos atributos coincidentes, mas com rótulos conflitantes.
+Eles foram evitados nos experimentos para melhor isolamento do objeto de estudo (Capítulo \ref{metodologia}), apesar de serem um tópico ativo de pesquisa \cite{journals/datamine/IpeirotisPSW14,conf/kdd/ShengPI08}.
+
+As estratégias DW, TU, ATU e HTU poderiam ter tido um melhor desempenho se os coeficientes de ponderação houvessem sido ajustados de acordo com alguma heurística, pois eles balanceiam a importância da densidade e do aprendiz.
+Nos experimentos, esses parâmetros foram arbitrariamente mantidos com o valor 1.
+
+\citeonline{conf/ijcnn/SoutoPSACLS08} reportaram resultados sobre recomendação de algoritmos de agrupamento possivelmente mais efetivos, embora trate-se de outro domínio e outro aparato experimental.
+Segundo esses autores, as predições do meta-aprendiz atingiram um valor médio de correlação 0,75 contra o valor 0,59, de referência.
+O conjunto de meta-atributos proposto por eles poderia ter sido adotado.
+% Method SRC
+% Default 0.59 +- 0.37
+% Meta-Leaner 0.75 +- 0.21
+
+Um dos pressupostos do sistema de recomendação automática proposto é que o conjunto inicial de treinamento seria pequeno demais para que fosse possível realizar uma seleção de modelos que visasse a escolha do melhor algoritmo de aprendizado.
+Realmente, a quantidade de apenas $|Y|$ exemplos antes do início do processo de rotulação inviabiliza qualquer tentativa de seleção via validação cruzada.
+Entretanto, após 50 consultas, a possibilidade de seleção do melhor algoritmo por meio de validação cruzada poderia ter sido verificada e comparada com a seleção automática.
+Ainda que 50 exemplos venham a ser insuficientes, espera-se que, em algum ponto da curva de aprendizado, dado o crescimento do conjunto de treinamento, a convencional seleção por meio de validação cruzada se torne preferível à seleção automática.
+Trata-se, assim, de uma referência a ser adotada em futuras comparações. 
+Quanto maior o orçamento, mais importante se torna essa referência.
+
+Por fim,
+uma limitação metodológica, presente também em outros trabalhos, diz respeito à escolha ideal da coleção de conjuntos de dados.
+Mesmo com o procedimento de eliminação de conjuntos muito similares, a dependência remanescente entre conjuntos teve uma influência quantificável nos resultados.
+Essa influência é analisada no Apêndice \ref{apflu}.
+Resumidamente, as medidas de desempenho foram elevadas, em parte, por conta dessa parcial \textit{dependência entre amostras} (conjuntos de dados similares).
+Apesar disso, a recomendação automática na parcela mais independente da coleção também superou a referência, mas em muito menor grau.
+Embora a presença de domínios similares tenha facilitado a tarefa de recomendação, isso não reduz a necessidade prática do sistema de recomendação - apenas sugere que ele seja, naturalmente, mais efetivo em coleções que contenham conjuntos cujos domínios sejam próximos ao do conjunto que se pretenda rotular.
+Diante dessa redução na generalidade dos resultados obtidos, \destaque{ainda não é possível afirmar com segurança que meta-aprendizado seja a melhor forma de resolver os problemas de escolha envolvidos no aprendizado ativo.} 
+
+\section{Desdobramentos Futuros}\label{futuro}
+Um aprofundamento nas análises dos experimentos ainda é necessário.
+Trata-se de uma abordagem cujo princípio de funcionamento e efetividade requerem análises ainda mais rigorosas do que aquelas empregadas neste documento.
+Por exemplo, na Figura \ref{dsscorr} do Apêndice \ref{apflu}, é possível identificar os conjuntos de dados mais difíceis para a tarefa de recomendação de algoritmos de aprendizado.
+Os motivos de cada dificuldade podem abrir possibilidades de melhoria nas propostas de recomendação automática, caso sejam identificados; ou, podem indicar não tratar-se de um assunto prioritário de pesquisa.
+Uma análise inicial indica que foram favorecidos justamente os conjuntos que dispuseram da presença de outros conjuntos do mesmo domínio no metaconjunto de treinamento.
+Logo, a coleção, mesmo sendo diversa, na realidade não continha conjuntos cuja extração de meta-atributos pudesse ser útil no aproveitamento de conhecimento entre domínios.
+
+% o desempenho geral dos algoritmos se torna menos distinguível à medida que o aprendizado avança, conforme visto previamente na Figura \ref{curvasrankbands} no intervalo de consultas considerado. 
+
+O autor desta tese considera a exploração das potenciais abordagens situadas na intersecção entre as áreas de aprendizado ativo e meta-aprendizado ainda em seus primórdios, pois abrange uma lacuna literária a ser preenchida.
+De fato, há margem para melhorias significativas conforme sugere a Figura \ref{curvasrankbandsmetabest}.
+\begin{figure}[]
+\centering
+	\includestandalone[mode=buildmissing]{bandsmetabest}
+	\caption[Curvas de ranqueamento com meta-aprendiz e recomendação perfeita.]{Curvas de ranqueamento - incluindo recomendação perfeita. Medida comparada: $\mu_{\kappa}$. \textit{Detalhes na Figura \ref{curvasrankbands}.}}
+	\label{curvasrankbandsmetabest}
+\end{figure}
+Nessa figura, é possível observar a faixa de colocações obtidas pelas estratégias quando dispõem do meta-aprendiz perfeito (metaBest), isto é, aquele que é capaz de predizer, com acesso desleal às metaclasses, sempre o melhor algoritmo nas duas metades do intervalo de consultas.
+Até mesmo o limite inferior da faixa, que normalmente corresponde à pior estratégia, foi capaz de superar as demais abordagens por praticamente todo o período.
+Embora a faixa de metaBest certamente seja fruto de sobreajuste aos dados, ela permite verificar que a curva de metaPCT não é pressionada pelo limite do que é teoricamente possível.
+
+A opção por dois momentos de recomendação automática, um para cada metade do período de consultas, foi arbitrária.
+A existência de um vale precisamente em torno do momento de transição (metade do orçamento, $\cent=50$)
+sugere que o momento ideal para a reconsideração do melhor algoritmo varie de um conjunto de dados para outro - esse comportamento já havia se manifestado nos experimentos da Seção \ref{desmetap}.
+Por exemplo, na vigésima consulta, a curva de metaBest começa a ceder colocações; conforme a quantidade de consultas aumenta, maior a quantidade de conjuntos de dados em que algoritmos distintos do inicialmente escolhido tornam-se os mais adequados.
+Dado que a troca de algoritmo foi definida para ocorrer apenas naquele ponto (50\textordfeminine\xspace consulta), é somente a partir dali que as estratégias puderam usufruir de um algoritmo mais adequado para o intervalo de consultas corrente.
+Essa constatação poderia ser explorada adicionando-se mais momentos em que o algoritmo de recomendação pudesse reconsiderar a escolha do algoritmo do aprendiz.
+No caso limite, o algoritmo do aprendiz poderia ser reconsiderado dinamicamente a cada consulta, tal como a abordagem de \citeonline{rossi2014meta} em fluxos de dados; porém, com um custo computacional $\cent$ vezes maior na etapa de treinamento do algoritmo de recomendação.
+Dessa forma, uma extensão natural do trabalho seria a recomendação automática constante, isto é, a cada nova consulta.
+O limite teórico aumentaria consideravelmente para as curvas que fossem obtidas com essa eventual extensão do trabalho.
+
+Um conjunto reduzido com apenas os meta-atributos mais relevantes pode ser investigado, de forma a aumentar a acurácia preditiva.
+Seria interessante também, conforme sugestão da Banca, investigar qual o padrão dos conjuntos de dados que fazem com que seja preferível a amostragem aleatória.
+
+Outro desdobramento, mais imediato, seria a implementação da \textit{metaestratégia} e, possivelmente, do \textit{metapar estratégia-algoritmo}, para que a viabilidade dessas modalidades pudesse ser confirmada também no nível base, por meio de comparações das ALCs e das curvas de ranqueamento.
+
+Por fim, outra possibilidade de meta-aprendizado aplicado a aprendizado ativo é a recomendação de parâmetros de estratégias.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\input tex/nota

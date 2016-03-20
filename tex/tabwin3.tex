@@ -1,0 +1,35 @@
+\begin{table}
+\caption{Um contra um para todos os algoritmos de aprendizado. Medida: kappa médio. \textit{Legenda na Tabela \ref{tab:friedClassif}.}}
+\centering
+\scalebox{0.82}{
+\begin{tabular}{lcc|cc|cc|cc|c}
+ 			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
+1 - \textbf{ATUeuc}	& - & * & * &   &   & * & * & * & * \\
+2 - Clu  	&   & - & * &   &   & * & * &   &   \\ \hline
+3 - DWeuc	&   &   & - &   &   &   &   &   &   \\
+4 - EERent	&   & * & * & - &   & * & * & * & * \\ \hline
+5 - \textbf{HTUeuc}	&   & * & * &   & - & * & * & * & * \\
+6 - Mar  	&   &   & * &   &   & - &   &   &   \\ \hline
+7 - Rnd  	&   &   & * &   &   &   & - &   &   \\
+8 - \textbf{SGmulti}	&   &   & * &   &   &   &   & - &   \\ \hline
+9 - TUeuc	&   &   & * &   &   & * & * &   & - \\
+\end{tabular}
+}
+\quad
+\scalebox{0.82}{
+\begin{tabular}{lccc}
+algoritmo & \makecell{primeiras\\colocações} & \makecell{derrotas\\para Rnd}  & \makecell{últimas\\colocações} \\
+\hline               
+HTUeuc     & \bom{197} & 109 & \bom{61} \\
+ATUeuc     & \bomd{190} & 96 & 74 \\
+EERent     & 189 & \bomd{92} & \bomd{65} \\
+TUeuc      & 131 & 148 & 113 \\
+Clu        & 95 & 129 & 95 \\
+Mar        & 80 & 187 & 172 \\
+SGmulti    & 75 & \bom{88} & 127 \\
+DWeuc      & 73 & \ruim{242} & \ruim{227} \\
+Rnd        & \ruim{66} & - & 165 \\
+\end{tabular}
+}
+\label{friedmedio}
+\end{table}

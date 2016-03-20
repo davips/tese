@@ -1,0 +1,86 @@
+\documentclass[tikz]{standalone}
+\input{header}
+\begin{document}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[
+% ymax=40,ymin=12,
+xlabel=consultas, ylabel=colocação média, legend style={at={(0.95,0.5)}, anchor=west,cells={align=left}}, grid = both,
+scale only axis, width=310, y dir=reverse, yticklabel style={/pgf/number format/fixed},legend cell align=left]
+
+\addplot+[marst, dashed, mark phase=22] table[x=budget, y=Mar-RFw] {fimPlotdados.tex};\addlegendentry{Mar-RFw}
+\addplot+[htust, dotted, mark phase=5] table[x=budget, y=HTUeuc-RoF] {fimPlotdados.tex};\addlegendentry{\textbf{HTUeuc}-RoF\\Limite sup. metaDef}
+\addplot+[htust, mark phase=53] table[x=budget, y=HTUeuc-Meta-PCTr-a] {fimPlotdados.tex};\addlegendentry{\textbf{HTUeuc-metaPCT}}
+\addplot+[sgst, mark phase=56, dashed] table[x=budget, y=SGmulti-RFw] {fimPlotdados.tex};\addlegendentry{\textit{SGmulti}-RFw}
+\addplot+[htust, dashed, mark phase=17] table[x=budget, y=HTUeuc-RFw] {fimPlotdados.tex};\addlegendentry{\textbf{HTUeuc}-RFw}
+\addplot+[marst, mark phase=60] table[x=budget, y=Mar-Meta-PCTr-a] {fimPlotdados.tex};\addlegendentry{Mar-\textbf{metaPCT}}
+\addplot+[eerst, mark phase=47] table[x=budget, y=EERent-Meta-PCTr-a] {fimPlotdados.tex};\addlegendentry{EERent-\textbf{metaPCT}}
+\addplot+[sgst, mark phase=56, dotted] table[x=budget, y=SGmulti-RoF] {fimPlotdados.tex};\addlegendentry{\textit{SGmulti}-RoF}
+\addplot+[sgst, mark phase=56] table[x=budget, y=SGmulti-Meta-PCTr-a] {fimPlotdados.tex};\addlegendentry{\textit{SGmulti}-\textbf{metaPCT}}
+
+% \addplot+[eerst, mark phase=20] table[x=budget, y=EERent-Meta-best] {fimPlotdados.tex};\addlegendentry{EERent}
+% \addplot+[htust, mark phase=23] table[x=budget, y=HTUeuc-Meta-best] {fimPlotdados.tex};\addlegendentry{\textbf{HTUeuc}}
+% \addplot+[marst, mark phase=20] table[x=budget, y=Mar-Meta-best] {fimPlotdados.tex};\addlegendentry{Mar}
+% \addplot+[sgst, mark phase=28] table[x=budget, y=SGmulti-Meta-best] {fimPlotdados.tex};\addlegendentry{\textit{SGmulti}}
+
+% \addplot+[eerst, mark phase=20] table[x=budget, y=EERent-Meta-defr-a] {fimPlotdados.tex};\addlegendentry{EERent}
+% \addplot+[htust, mark phase=23] table[x=budget, y=HTUeuc-Meta-defr-a] {fimPlotdados.tex};\addlegendentry{\textbf{HTUeuc}}
+% \addplot+[marst, mark phase=20] table[x=budget, y=Mar-Meta-defr-a] {fimPlotdados.tex};\addlegendentry{Mar}
+% \addplot+[sgst, mark phase=28] table[x=budget, y=SGmulti-Meta-defr-a] {fimPlotdados.tex};\addlegendentry{\textit{SGmulti}}
+
+
+% \addplot+[eerst, mark phase=20] table[x=budget, y=EERent-RoF] {fimPlotdados.tex};\addlegendentry{EERent}
+% \addplot+[marst, mark phase=20] table[x=budget, y=Mar-RoF] {fimPlotdados.tex};\addlegendentry{Mar}
+% \addplot+[sgst, mark phase=32] table[x=budget, y=SGmulti-RoF] {fimPlotdados.tex};\addlegendentry{\textit{SGmulti}}
+
+% \addplot+[htust, dotted, mark phase=2, transparent] table[x=budget, y=HTUeuc-RoF] {fimPlotdados.tex};\addlegendentry{Limite sup. metaDef}
+
+% \addplot+[eerst, mark phase=15] table[x=budget, y=EERent-RFw] {fimPlotdados.tex};\addlegendentry{EERent}
+% \addplot+[sgst, mark phase=67] table[x=budget, y=SGmulti-RFw] {fimPlotdados.tex};\addlegendentry{\textit{SGmulti}}
+
+
+% \addplot+[densely dotted, very thick, brown, mark=square*,   mark phase=70, mark options={solid,scale=1.4}, mark repeat=200] table[x=budget, y=HTUeuc-Meta-best] {fimPlotdados.tex};\addlegendentry{\textbf{HTUeuc}-metaBest}
+% 
+% \addplot+[loosely dotted, very thick, brown, mark=square*,   mark phase=70, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=SGmulti-Meta-best] {fimPlotdados.tex};\addlegendentry{\textbf{SGmulti}-metaBest}
+% 
+% \addplot+[htust,mark phase=20]table[x=budget,y=HTUeuc-Meta-PCTr-a]{fimPlotdados.tex};\addlegendentry{\textbf{HTUeuc}-\textbf{metaPCT}}
+% 
+% \addplot+[solid, very thick, red, mark=square,   mark phase=20, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent-RFw] {fimPlotdados.tex};\addlegendentry{EERent-RFw}
+% 
+% % \addplot[densely dashdotted, very thick, blue, mark=*,   mark phase=10, mark options={solid, scale=1}, mark repeat=200] table[x=budget, y=ATUeuc-RoF] {fimPlotdados.tex}; \addlegendentry{\textbf{ATUeuc}-RoF}
+% 
+% \addplot+[htu2st,mark phase=40]table[x=budget,y=HTUeuc-Meta-defr-a]{fimPlotdados.tex};\addlegendentry{\textbf{HTUeuc}-metaDef}
+% 
+
+% \addplot[mark repeat=200,mark phase=40,mark=triangle, mark options={solid, scale=1.4}, thin, densely dotted, name path=metadb, black] table[x=budget, y=mindefr+a] {fimPlotdados.tex};\addlegendentry{Limite sup. metaDef}
+
+\addplot[mark repeat=200,mark phase=40,mark=triangle, mark options={solid, scale=1.4}, thin, loosely dashed, name path=metadb, gray] table[x=budget, y=maxdefr+a] {fimPlotdados.tex};\addlegendentry{Limite inf. metaDef}
+% 
+\addplot[transparent, name path=rofa, no marks] table[x=budget, y=minRoF] {fimPlotdados.tex};
+\addplot[transparent, name path=rfa, no marks] table[x=budget, y=minRFw] {fimPlotdados.tex};
+\addplot[transparent, name path=metaa, no marks] table[x=budget, y=minPCTr+a ] {fimPlotdados.tex};
+% \addplot[transparent, name path=mba, no marks] table[x=budget, y=minbest ] {fimPlotdados.tex};
+% \addplot[transparent, name path=mda, no marks] table[x=budget, y=mindefr+a ] {fimPlotdados.tex};
+% 
+\addplot[name path=rfb, no marks, transparent] table[x=budget, y=maxRFw] {fimPlotdados.tex};
+\addplot[name path=rofb, no marks, transparent] table[x=budget, y=maxRoF] {fimPlotdados.tex};
+\addplot[name path=metab, no marks, transparent] table[x=budget, y=maxPCTr+a] {fimPlotdados.tex};
+%  \addplot[name path=mbb, no marks, transparent] table[x=budget, y=maxbest] {fimPlotdados.tex};
+% \addplot[name path=mdb, no marks, transparent] table[x=budget, y=maxdefr+a] {fimPlotdados.tex};
+% 
+% \addplot[opacity=0.07, green] fill between[of=mba and mbb];
+% \addplot[opacity=0.07, green] fill between[of=mda and mdb];
+\addplot[opacity=0.12, green, pattern=crosshatch] fill between[of=metaa and metab];
+\addplot[opacity=0.10, blue] fill between[of=rofa and rofb];
+\addplot[opacity=0.10, red] fill between[of=rfa and rfb];
+% 
+% \node[] at (640,80) {\textcolor{brown}{\footnotesize metaBest}};
+\node[] at (850,180) {\textcolor{teal}{\footnotesize metaPCT}};
+
+% \node[] at (25,20) {};
+\path(9,51)node[blue](A){\scriptsize x}(-55,28)node(B){\textcolor{blue}{\footnotesize RoF}};
+\draw[{<}-{},blue,bend left](A)to(B){};
+
+\node[] at (140,178) {\textcolor{red}{\footnotesize RFw}};
+\end{axis}
+\end{tikzpicture}
+\end{document}

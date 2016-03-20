@@ -1,0 +1,95 @@
+Um sistema de classificação baseado em aprendizado de máquina depende de um modelo induzido por um algoritmo (Seção \ref{contexto}).
+%\textbf{Para que ocorra o aprendizado, o algoritmo de aprendizado de máquina deve apresentar um viés de aprendizado, que engloba um viés de busca, definindo como ocorre a busca por um modelo de boa acurácia preditiva, e um viés de representação, que restringe a forma como o modelo pode ser representado.}
+Diante da infinidade de vieses de aprendizado possíveis, muitos algoritmos de aprendizado têm sido propostos e alguns são frequentemente empregados de forma generalizada na solução dos mais diversos problemas, como é o caso das redes neurais artificiais \cite{haykin2004comprehensive}.
+Entretanto, nenhum algoritmo pode ser adequado a todos os domínios.
+Equivalentemente, um desempenho positivo em algumas situações de aprendizado precisa ser compensado por um igual grau de desempenho negativo em outras \cite{journals/tec/DolpertM97,conf/icml/Schaffer94}.
+Isso decorre da existência de um viés necessário na forma de representação
+(árvores de decisão e redes neurais artificiais, entre outras) e de uma busca de hipóteses sobre um dado problema (busca gulosa e otimização de funções, entre outras).
+A existência do viés de aprendizado é essencial para a capacidade de generalização do algoritmo \cite{Mitchell:1980}.
+
+Dessa forma, um sistema de aprendizado de máquina requer uma escolha criteriosa de qual algoritmo deva ser empregado.
+% \cite{wolpert1996lack},
+Normalmente, o problema da escolha do algoritmo é resolvido por um especialista em aprendizado de máquina. Ele utiliza conhecimentos sobre os dados e sobre os algoritmos disponíveis para escolher manualmente o melhor.
+Essa escolha é feita segundo alguma métrica de desempenho e as relações que ela estabelece entre algoritmos e conjuntos de dados \cite{books/daglib/0022052}.
+Uma maneira de evitar a escolha manual é a adoção de um sistema de recomendação automática.
+Nos últimos anos, esses sistemas de recomendação têm sido gerados por meio de uma técnica denominada \textit{meta-aprendizado}.
+Segundo \citeonline{journals/air/VilaltaD02}, meta-aprendizado é o estudo do aperfeiçoamento dos algoritmos de aprendizado por meio da experiência.
+Trata-se da investigação do desenvolvimento de sistemas de recomendação por meio de experiências passadas.
+% de uso de diferentes algoritmos de aprendizado de máquina, com diferentes vieses, para vários conjuntos de dados.
+Para isso, geralmente é utilizado um algoritmo de aprendizado no 
+%Esse aperfeiçoamento se dá no 
+nível \textit{meta}, que é um nível acima do aprendizado convencional, chamado de nível \textit{base}.
+
+Tanto no nível base quanto no nível meta, o aprendizado tem um viés.
+No nível meta, o modelo induzido seleciona o algoritmo do nível base cujo viés é mais adequado para o dado conjunto de dados.
+%o nível base, o viés de aprendizado é fixo.
+%, enquanto que, no nível meta, o viés normalmente é escolhido dinamicamente.
+
+Existem diferentes formas de meta-aprendizado.
+As utilizadas com mais frequência e mais relevantes para esta tese são apresentadas nas seções seguintes.
+
+A Seção \ref{direta}, em especial, descreve a abordagem mais aplicável ao problema de recomendação de estratégias de amostragem ativa.
+Dependendo do conjunto de meta-atributos escolhidos e do objetivo pretendido, ela permite caracterizar adequadamente os conjuntos de dados com 
+poucos rótulos ou na ausência deles.
+
+\section{Generalização em pilha}
+Na \textit{generalização em pilha}
+\cite{journals/nn/Wolpert92}, o meta-aprendiz lida com um metaconjunto de dados que consiste de um conjunto de treinamento transformado por aprendizes no nível base.
+O resultado dessa transformação são metaexemplos cujos atributos são as predições de cada modelo base.
+Uma particularidade dessa abordagem é seu viés estático, pois ocorre uma combinação de algoritmos ao invés de uma seleção.
+
+\section{Caracterização por modelos}
+A própria estrutura dos modelos do nível base pode ser explorada na construção dos metaexemplos.
+Uma representante da \textit{caracterização por modelos} é a indução de modelos tipados de ordem maior.
+Ela gera - de acordo com exemplo dado no trabalho de
+\citeonline{conf/ilp/BensusanGK00} - uma árvore de decisão para cada
+conjunto de dados.
+As árvores são completamente representadas por estruturas complexas
+que fazem o papel de metaexemplos que podem ser comparados entre si
+e são aprendidos por algoritmos especialmente
+desenvolvidos para esse tipo de tarefa.
+
+\section{Marcadores de referência}
+Os \ing{marcadores de referência}{landmarkers} \cite{pfahringer2000tell}
+são um conjunto de diversos algoritmos simples, de baixo custo computacional, cujos desempenhos são usados como referência para a caracterização de conjuntos de dados.
+A acurácia de cada um dos modelos marcadores de referência utilizados fornece o valor de um meta-atributo.
+Essa geração de meta-atributos ocorre por meio de processamentos que representem uma simplificação da tarefa base.
+Ela é desejável em cenários de recomendação de algoritmos cuja finalidade é evitar que todos os algoritmos candidatos, normalmente computacionalmente custosos, sejam experimentados.
+Logo, não é diretamente aplicável a aprendizado ativo, pois, sem rótulos, não é possível testar os algoritmos marcadores de referência.
+
+\section{Caracterização direta}\label{direta}
+A caracterização direta consiste na extração de medidas simples e de baixo custo computacional diretamente dos exemplos que compõem um conjunto de dados, ou seja, sem o intermédio de um algoritmo de aprendizado.
+A primeira caracterização de conjuntos de dados foi feita por 
+\citeonline{conf/ijcai/RendellST87} com o intuito de predizer acurácia e tempo de processamento.
+Ela era baseada no número de exemplos e de atributos.
+O próximo conjunto de meta-atributos, proposto no projeto STATLOG
+\cite{brazdil1994analysis}, era composto de medidas usuais na literatura atual:
+% mitchie 1994
+\begin{itemize}
+ \item número de exemplos, atributos binários e não binários e classes;
+ \item entropia das classes, informação mútua entre classe e atributos e razão sinal-ruído;
+ \item entropia, curtose, assimetria, correlação e razão entre os desvios padrão entre atributos;
+ \item primeira correlação canônica e variância pelo primeiro discriminante canônico.
+\end{itemize}
+Variações desse conjunto são propostas em trabalhos posteriores
+\cite{books/daglib/0022052}, como a adoção de histogramas para evitar a perda de informações que ocorre quando se adota a média das medidas nos diferentes atributos base \cite{kalousis2002algorithm};
+ou a binarização de medidas, como o grau de dispersão do atributo alvo em
+tarefas de regressão \cite{journals/ijon/GomesPSRC12}.
+Há também trabalhos direcionados a: otimização \cite{journals/ijhis/KandaCHS11}, fluxos de dados \cite{journals/ijon/RossiCSS14}, predição de ranqueamentos
+\cite{conf/iberamia/SouzaCS10} e detecção de ruído \cite{Garcia2015}.
+
+Finalmente, há trabalhos que visam a recomendação automática de algoritmos
+não supervisionados \cite{conf/ijcnn/SoutoPSACLS08,Ferrari2015181}.
+Essa tarefa é mais próxima da recomendação de estratégias de amostragem ativa pela ausência de rótulos, diferentemente de muitas medidas dos conjuntos citados anteriormente, que dependem da presença do atributo alvo, ou seja,
+da existência de rótulos.
+Assim, dentro do contexto desta tese, a caracterização não supervisionada
+de conjuntos de dados, apesar de não voltada originalmente ao problema
+de seleção de estratégias, se mostra compatível.
+% Esse tipo de caracterização inclui medidas como o grau de normalidade da distribuição e o percentual de pontos aberrantes e de atributos mais relevantes
+
+As medidas adotadas como meta-atributos na presente pesquisa foram apresentadas em maior detalhe na Seção \ref{sec:ama}.
+
+% kalousis2002algorithm -
+%Algorithm selection via meta-learning - pg9 formaliza ap. sup. pra eu colocar no cap contexto
+%ele fala de normalizar entropia pela maior possivel log(-) e fala de usa-la como medida de
+%balanceamento

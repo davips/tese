@@ -1,0 +1,37 @@
+\documentclass[tikz]{standalone}
+\input{header}
+\begin{document}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[xlabel=consultas, ylabel=colocação média, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=250, y dir=reverse, yticklabel style={/pgf/number format/fixed},legend cell align=left]
+ 
+\addplot+[eerst, mark phase=20] table[x=budget, y=EERent-SVM] {images/5nn-nbb-c452-rbf-Rank.tex};\addlegendentry{EERent-SVM}
+\addplot+[htust, mark phase=20] table[x=budget, y=HTUeuc-C4.52] {images/5nn-nbb-c452-rbf-Rank.tex};\addlegendentry{\textbf{HTUeuc}-C4.5w}
+\addplot+[atust, mark phase=10] table[x=budget, y=ATUeuc-5NNw] {images/5nn-nbb-c452-rbf-Rank.tex};\addlegendentry{\textbf{ATUeuc}-5NNw}
+\addplot+[eer2st, mark phase=30] table[x=budget, y=EERent-NB] {images/5nn-nbb-c452-rbf-Rank.tex};\addlegendentry{EERent-NB}
+
+% \addplot[name path=metaa, no marks] table[x=budget, y=minMetaPCTr-a ] {images/5nn-nbb-c452-rbf-Rank.tex};
+\addplot[transparent, name path=knna, no marks] table[x=budget, y=min5NNw] {images/5nn-nbb-c452-rbf-Rank.tex};
+\addplot[transparent, name path=nba, no marks] table[x=budget, y=minNB] {images/5nn-nbb-c452-rbf-Rank.tex};
+\addplot[transparent, name path=c45a, no marks] table[x=budget, y=minC4.52] {images/5nn-nbb-c452-rbf-Rank.tex};
+\addplot[transparent, name path=svma, no marks] table[x=budget, y=minSVM] {images/5nn-nbb-c452-rbf-Rank.tex};
+
+% \addplot[black, name path=metab, no marks, transparent] table[x=budget, y=maxMetaPCTr-a] {images/5nn-nbb-c452-rbf-Rank.tex};
+\addplot[name path=knnb, no marks, transparent] table[x=budget, y=max5NNw] {images/5nn-nbb-c452-rbf-Rank.tex};
+\addplot[name path=nbb, no marks, transparent] table[x=budget, y=maxNB] {images/5nn-nbb-c452-rbf-Rank.tex};
+\addplot[name path=c45b, no marks, transparent] table[x=budget, y=maxC4.52] {images/5nn-nbb-c452-rbf-Rank.tex};
+\addplot[name path=svmb, no marks, transparent] table[x=budget, y=maxSVM] {images/5nn-nbb-c452-rbf-Rank.tex};
+ 
+% \addplot[opacity=0.1, red] fill between[of=metaa and metab];
+\addplot[opacity=0.14, blue] fill between[of=knna and knnb];
+\addplot[opacity=0.14, brown] fill between[of=nba and nbb];
+\addplot[opacity=0.14, green] fill between[of=c45a and c45b];
+\addplot[opacity=0.14, red] fill between[of=svma and svmb];
+
+\node[] at (70,30) {\textcolor{blue}{5NN}};
+\node[] at (2,70) {\textcolor{brown}{NB}};
+\node[] at (90,140) {\textcolor{teal}{C4.5w}};
+\node[] at (65,230) {\textcolor{red}{SVM}};
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,28 @@
+\begin{figure}
+\caption{Variabilidade ranqueada das estratégias.
+ \textit{Detalhes na Figura \ref{curvas}.}}
+\label{curvasrankdesvio}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[xlabel=consultas, ylabel=colocação, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/fixed}]
+% budget Rnd Clu ATUeuc ATUman ATUmah HTUeuc HTUman HTUmah SGmulti QBCRFw Mar TUeuc TUman TUmah EERent SVMbal
+
+\addplot+[solid, blue, mark=*,   mark phase=143, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Mar] {images/KappamahamediaallRankRisco.tex};\addlegendentry{Mar}
+\addplot+[solid, green!30!black, mark=square*,   mark phase=62, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent] {images/KappamahamediaallRankRisco.tex};\addlegendentry{EERent}
+\addplot+[solid, gray, mark=square,   mark phase=95, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUmah] {images/KappamahamediaallRankRisco.tex};\addlegendentry{TUmah}
+
+\addplot+[solid, thick, violet, mark=10-pointed star,   mark phase=84, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=HTUmah] {images/KappamahamediaallRankRisco.tex};\addlegendentry{\textbf{HTUmah}}
+
+\addplot+[solid, thick, red,   mark=x,     mark phase=131, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=SGmulti] {images/KappamahamediaallRankRisco.tex};\addlegendentry{\textbf{SGmulti}}
+\addplot+[dotted, mark=star, ultra thick, orange,  mark repeat=200,  mark phase=25, mark options={solid, scale=1.9}, mark repeat=200] table[x=budget, y=ATUmah] {images/KappamahamediaallRankRisco.tex};\addlegendentry{\textbf{ATUmah}}
+
+\addplot+[dashed, green!50!black, mark=triangle*,   mark phase=47, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Clu] {images/KappamahamediaallRankRisco.tex};\addlegendentry{Clu}
+\addplot+[dashed, olive,            mark=triangle,     mark phase=35, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Rnd] {images/KappamahamediaallRankRisco.tex};\addlegendentry{Rnd}
+\addplot+[solid, thick, gray, mark=diamond,   mark phase=167, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=QBCRFw] {images/KappamahamediaallRankRisco.tex};\addlegendentry{QBCRFw}
+\addplot+[solid, black, mark=pentagon,   mark phase=155, mark options={solid, thick, scale=1.4}, mark repeat=200] table[x=budget, y=SVMbal] {images/KappamahamediaallRankRisco.tex};\addlegendentry{SVMbal}'
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{figure}

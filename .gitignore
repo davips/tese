@@ -1,11 +1,18 @@
-tese-figure*
+*.exp
+*.qud
+*.nls
+*.glsdefs
+*.loq
+*.los
+*.mw
+thesis-figure*
 *.dep
 *.dpth
 *.auxlock
 *.backup
 *~
 *.kate-swp
-tese.pdf
+thesis.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

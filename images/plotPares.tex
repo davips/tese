@@ -1,0 +1,219 @@
+% % path fading=myfading
+% % horizontal lines
+% % vertical lines
+% % north east lines
+% % north west lines
+% % grid
+% % crosshatch
+% % dots
+% % crosshatch dots
+% % fivepointed stars
+% % sixpointed stars
+% 
+% % \selectcolormodel{gray}
+% \begin{figure}
+% \caption{Curvas de ranqueamento. Cada faixa indica os limites atingidos pelas estratégias com o algoritmo de AM correspondente.
+%  \textit{Detalhes na Figura \ref{curvas}.}}
+% \label{curvasrank}
+% \begin{center}
+% \begin{tikzpicture}[scale=1]
+% \begin{axis}[xlabel=consultas, ylabel=colocação, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+% scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/fixed}]
+% 
+% \addplot[densely dashdotted, very thick, blue, mark=*,   mark phase=150, mark options={solid, scale=1}, mark repeat=200] table[x=budget, y=Mar-RFw ] {images/kappaallmediaParesRank.plot}; \addlegendentry{Mar-RFw}
+% 
+% \addplot+[densely dotted, very thick, teal, mark=triangle,   mark phase=150, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent-SVM ] {images/kappaallmediaParesRank.plot};\addlegendentry{EERent-SVM}
+% 
+% \addplot+[loosely dotted, very thick, black, mark=star,   mark phase=135, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent-C4.5] {images/kappaallmediaParesRank.plot};\addlegendentry{EERent-C4.5}
+% 
+% \addplot+[solid, very thick, red, mark=square,   mark phase=165, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent-NB] {images/kappaallmediaParesRank.plot};\addlegendentry{EERent-NB}
+% 
+% \addplot[dashed, very thick, violet, mark=10-pointed star,   mark phase=150, mark options={solid, scale=1.4, thin}, mark repeat=200] table[x=budget, y=ATUeuc-5NN ] {images/kappaallmediaParesRank.plot};\addlegendentry{ATUeuc-5NN}
+% 
+% 
+% % piores
+% \addplot[blue,   densely dashdotted, name path=rfb, no marks] table[x=budget, y=ATUmah-RFw ] {images/kappaallmediaParesRank.plot};\addlegendentry{ATUmah-RFw}
+% \addplot[teal,  densely dotted, name path=svmb, no marks] table[x=budget, y=Rnd-SVM ] {images/kappaallmediaParesRank.plot};\addlegendentry{Rnd-SVM}
+% \addplot[black,   loosely dotted, name path=c45b, no marks] table[x=budget, y=Rnd-C4.5] {images/kappaallmediaParesRank.plot};\addlegendentry{Rnd-C4.5}
+% \addplot[red,   name path=nbb, no marks] table[x=budget, y=Rnd-NB] {images/kappaallmediaParesRank.plot};\addlegendentry{Rnd-NB}
+% \addplot[violet,   dashed, name path=knnb, no marks] table[x=budget, y=EERacc-5NN ] {images/kappaallmediaParesRank.plot};\addlegendentry{EERacc-5NN}
+% 
+% 
+% 
+% \addplot[transparent, name path=rfa, no marks] table[x=budget, y=minRFw ] {images/kappaallmediaParesRank.plot};
+% \addplot[transparent, name path=svma, no marks] table[x=budget, y=minSVM ] {images/kappaallmediaParesRank.plot};
+% \addplot[transparent, name path=c45a, no marks] table[x=budget, y=minC4.5 ] {images/kappaallmediaParesRank.plot};
+% \addplot[transparent, name path=nba, no marks] table[x=budget, y=minNB ] {images/kappaallmediaParesRank.plot};
+% \addplot[transparent, name path=knna, no marks] table[x=budget, y=min5NN ] {images/kappaallmediaParesRank.plot};
+% 
+% \addplot[blue,   name path=rfb, no marks, transparent] table[x=budget, y=maxRFw ] {images/kappaallmediaParesRank.plot};
+% \addplot[teal,  name path=svmb, no marks, transparent] table[x=budget, y=maxSVM ] {images/kappaallmediaParesRank.plot};
+% \addplot[black, name path=c45b, no marks, transparent] table[x=budget, y=maxC4.5 ] {images/kappaallmediaParesRank.plot};
+% \addplot[red,   name path=nbb, no marks, transparent] table[x=budget, y=maxNB ] {images/kappaallmediaParesRank.plot};
+% \addplot[violet, name path=knnb, no marks, transparent] table[x=budget, y=max5NN ] {images/kappaallmediaParesRank.plot};
+% 
+% \addplot[opacity=0.1, blue] fill between[of=rfa and rfb];
+% \addplot[opacity=0.1, violet] fill between[of=knna and knnb];
+% \addplot[opacity=0.1, teal] fill between[of=svma and svmb];
+% \addplot[opacity=0.1, red] fill between[of=nba and nbb];
+% \addplot[opacity=0.1, black] fill between[of=c45a and c45b];
+% 
+% \node[] at (-8,60) {\textcolor{violet}{5NN}};
+% \node[] at (-8,115) {\textcolor{blue}{RFw}};
+% \node[] at (-8,200) {\textcolor{red}{NB}};
+% \node[] at (-8,385) {\textcolor{black}{C4.5}};
+% \node[] at (-8,500) {\textcolor{teal}{SVM}};
+% \end{axis}
+% \end{tikzpicture}
+% \end{center}
+% \end{figure}
+% 
+% % bons Mar-RFw EERent-SVM ATUeuc-5NN EERent-NB EERent-C4.5
+% % ruins Rnd-C4.5 EERacc-5NN Rnd-NB Rnd-SVM ATUmah-RFw
+% 
+% % budget minRFw Mar-RFw SGmulti-RFw EERent-RFw EERacc-RFw Clu-RFw TUman-RFw HTUman-RFw TUmah-RFw TUeuc-RFw HTUmah-RFw HTUeuc-RFw Rnd-RFw ATUman-RFw ATUeuc-RFw ATUmah-RFw maxRFw minSVM EERent-SVM HTUeuc-SVM HTUmah-SVM HTUman-SVM TUman-SVM TUmah-SVM TUeuc-SVM EERacc-SVM min5NN ATUeuc-5NN HTUman-5NN ATUman-5NN HTUmah-5NN ATUmah-5NN HTUeuc-5NN Mar-SVM EERent-5NN TUmah-5NN minNB ATUman-SVM ATUeuc-SVM EERent-NB TUman-5NN ATUmah-SVM Clu-SVM SGmulti-NB HTUmah-NB TUeuc-5NN HTUeuc-NB HTUman-NB TUmah-NB minC4.5 TUman-NB EERent-C4.5 TUeuc-NB Clu-5NN HTUman-C4.5 Mar-NB ATUman-NB ATUeuc-NB HTUmah-C4.5 ATUmah-NB Rnd-5NN SGmulti-5NN TUman-C4.5 SGmulti-SVM Rnd-SVM ATUman-C4.5 HTUeuc-C4.5 Mar-5NN TUmah-C4.5 EERacc-NB ATUeuc-C4.5 TUeuc-C4.5 maxSVM Clu-NB ATUmah-C4.5 EERacc-C4.5 Rnd-NB Clu-C4.5 maxNB HTUeuc-Meta5NN SGmulti-C4.5 EERacc-5NN max5NN Rnd-C4.5 maxC4.5
+% 
+% \begin{figure}
+% \caption{Curvas de ranqueamento. Cada faixa indica os limites atingidos pelas estratégias com o algoritmo de AM correspondente.
+%  \textit{Detalhes na Figura \ref{curvas}.}}
+% \label{curvasrank}
+% \begin{center}
+% \begin{tikzpicture}[scale=1]
+% \begin{axis}[ymax=42, xlabel=consultas, ylabel=colocação, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+% scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/fixed}]
+% 
+% \addplot[densely dashdotted, very thick, blue, mark=*,   mark phase=150, mark options={solid, scale=1}, mark repeat=200] table[x=budget, y=Mar-RFw ] {images/kappaallmediaParesRank.plot}; \addlegendentry{Mar-RFw}
+% 
+% 
+% \addplot+[loosely dotted, very thick, black, mark=star,   mark phase=135, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=SGmulti-RFw] {images/kappaallmediaParesRank.plot};\addlegendentry{SGmulti-RFw}
+% 
+% \addplot+[solid, very thick, red, mark=square,   mark phase=165, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=EERent-RFw] {images/kappaallmediaParesRank.plot};\addlegendentry{EERent-RFw}
+% 
+% \addplot[dashed, very thick, violet, mark=10-pointed star,   mark phase=150, mark options={solid, scale=1.4, thin}, mark repeat=200] table[x=budget, y=EERacc-RFw ] {images/kappaallmediaParesRank.plot};\addlegendentry{EERacc-RFw}
+% 
+% \addplot+[densely dotted, very thick, teal, mark=triangle,   mark phase=150, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Clu-RFw] {images/kappaallmediaParesRank.plot};\addlegendentry{Clu-RFw}
+% 
+% 
+% 
+% \addplot[blue,   densely dashdotted, name path=rfb, no marks] table[x=budget, y=TUman-RFw ] {images/kappaallmediaParesRank.plot};\addlegendentry{TUman-RFw}
+% \addplot[teal,  densely dotted, name path=svmb, no marks] table[x=budget, y=HTUman-RFw] {images/kappaallmediaParesRank.plot};\addlegendentry{HTUman-RFw}
+% \addplot[black,   loosely dotted, name path=c45b, no marks] table[x=budget, y=TUmah-RFw] {images/kappaallmediaParesRank.plot};\addlegendentry{TUmah-RFw}
+% \addplot[red,   name path=nbb, no marks] table[x=budget, y=TUeuc-RFw] {images/kappaallmediaParesRank.plot};\addlegendentry{TUeuc-RFw}
+% \addplot[violet,   dashed, name path=knnb, no marks] table[x=budget, y=HTUmah-RFw] {images/kappaallmediaParesRank.plot};\addlegendentry{HTUmah-RFw}
+% 
+% 
+% 
+% \addplot[transparent, name path=rfa, no marks] table[x=budget, y=minRFw ] {images/kappaallmediaParesRank.plot};
+% \addplot[transparent, name path=svma, no marks] table[x=budget, y=minSVM ] {images/kappaallmediaParesRank.plot};
+% \addplot[transparent, name path=c45a, no marks] table[x=budget, y=minC4.5 ] {images/kappaallmediaParesRank.plot};
+% \addplot[transparent, name path=nba, no marks] table[x=budget, y=minNB ] {images/kappaallmediaParesRank.plot};
+% \addplot[transparent, name path=knna, no marks] table[x=budget, y=min5NN ] {images/kappaallmediaParesRank.plot};
+% 
+% \addplot[blue,   name path=rfb, no marks, transparent] table[x=budget, y=maxRFw ] {images/kappaallmediaParesRank.plot}; 
+% \addplot[teal,  name path=svmb, no marks, transparent] table[x=budget, y=maxSVM ] {images/kappaallmediaParesRank.plot};
+% \addplot[black, name path=c45b, no marks, transparent] table[x=budget, y=maxC4.5 ] {images/kappaallmediaParesRank.plot};
+% \addplot[red,   name path=nbb, no marks, transparent] table[x=budget, y=maxNB ] {images/kappaallmediaParesRank.plot};
+% \addplot[violet, name path=knnb, no marks, transparent] table[x=budget, y=max5NN ] {images/kappaallmediaParesRank.plot};
+% 
+% \addplot[opacity=0.1, blue] fill between[of=rfa and rfb];
+% \addplot[opacity=0.1, violet] fill between[of=knna and knnb];
+% \addplot[opacity=0.1, teal] fill between[of=svma and svmb];
+% \addplot[opacity=0.1, red] fill between[of=nba and nbb];
+% \addplot[opacity=0.1, black] fill between[of=c45a and c45b];
+% 
+% \node[] at (100,80) {\textcolor{gray}{RFw}};
+% \node[] at (100,250) {\textcolor{gray}{SVM}};
+% \node[] at (171,280) {\textcolor{gray}{C4.5}};
+% \node[] at (22,200) {\textcolor{gray}{NB}};
+% \node[] at (12,275) {\textcolor{gray}{5NN}};
+% \end{axis}
+% \end{tikzpicture}
+% \end{center}
+% \end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% budget minMeta EERent-Meta EERacc-Meta HTUman-Meta HTUeuc-Meta Clu-Meta ATUman-Meta ATUeuc-Meta ATUmah-Meta maxMeta
+\begin{figure}
+\caption{Curvas de ranqueamento. Cada faixa indica os limites atingidos pelas estratégias com o algoritmo de AM correspondente.
+\ano{ATU vai bem no começo porque não assume um viés de aprendizado, o que é confirmado pelo HTU
+sendo a melhor estratégia com meta. A combinação HTU e meta parece ideal.}
+ \textit{Detalhes na Figura \ref{curvas}.}}
+\label{curvasrank}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[xlabel=consultas, ylabel=colocação, legend style={at={(0.95,0.5)}, anchor=west}, grid = both,
+scale only axis, width=300, y dir=reverse, yticklabel style={/pgf/number format/fixed}]
+
+\addplot[densely dashdotted, very thick, blue, mark=*,   mark phase=150, mark options={solid, scale=1}, mark repeat=200] table[x=budget, y=ATUeuc-5NN] {kappaallmediaParesRank.plot}; \addlegendentry{ATUeuc-5NN}
+
+\addplot+[densely dotted, very thick, teal, mark=triangle,   mark phase=150, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=Mar-MetaPCTr-a] {kappaallmediaParesRank.plot};\addlegendentry{Mar-MetaPCTr-a}
+
+\addplot+[loosely dotted, very thick, black, mark=star,   mark phase=135, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=TUeuc-MetaPCTr-a] {kappaallmediaParesRank.plot};\addlegendentry{TUeuc-MetaPCTr-a}
+
+\addplot+[solid, very thick, red, mark=square,   mark phase=165, mark options={solid, scale=1.4}, mark repeat=200] table[x=budget, y=HTUeuc-Meta5NN] {kappaallmediaParesRank.plot};\addlegendentry{HTUeuc-Meta5NN}
+
+\addplot[dashed, very thick, violet, mark=10-pointed star,   mark phase=150, mark options={solid, scale=1.4, thin}, mark repeat=200] table[x=budget, y=Mar-NB] {kappaallmediaParesRank.plot};\addlegendentry{Mar-NB}
+
+
+\addplot[blue,   densely dashdotted, no marks] table[x=budget, y=Mar-SVM] {kappaallmediaParesRank.plot};\addlegendentry{Mar-SVM}
+\addplot[teal,  densely dotted, no marks] table[x=budget, y=TUeuc-5NN] {kappaallmediaParesRank.plot};\addlegendentry{TUeuc-5NN}
+\addplot[black,   loosely dotted, no marks] table[x=budget, y=TUeuc-C4.5] {kappaallmediaParesRank.plot};\addlegendentry{TUeuc-C4.5}
+\addplot[red,  no marks] table[x=budget, y=Mar-5NN] {kappaallmediaParesRank.plot};\addlegendentry{Mar-5NN}
+\addplot[violet,   dashed, no marks] table[x=budget, y=TUeuc-SVM] {kappaallmediaParesRank.plot};\addlegendentry{TUeuc-SVM}
+
+
+\addplot[transparent, name path=metaa, no marks] table[x=budget, y=minMetaPCTr-a ] {kappaallmediaParesRank.plot};
+% \addplot[transparent, name path=rfa, no marks] table[x=budget, y=minRFw ] {kappaallmediaParesRank.plot};
+\addplot[transparent, name path=svma, no marks] table[x=budget, y=minMetaPCT ] {kappaallmediaParesRank.plot};
+\addplot[transparent, name path=c45a, no marks] table[x=budget, y=minMeta5NN ] {kappaallmediaParesRank.plot};
+\addplot[transparent, name path=nba, no marks] table[x=budget, y=minNB ] {kappaallmediaParesRank.plot};
+\addplot[transparent, name path=knna, no marks] table[x=budget, y=minSVM ] {kappaallmediaParesRank.plot};
+% 
+
+\addplot[black,   name path=metab, no marks, transparent] table[x=budget, y=maxMetaPCTr-a ] {kappaallmediaParesRank.plot};
+% \addplot[blue,   name path=rfb, no marks, transparent] table[x=budget, y=maxRFw ] {kappaallmediaParesRank.plot};
+\addplot[teal,  name path=svmb, no marks, transparent] table[x=budget, y=maxMetaPCT ] {kappaallmediaParesRank.plot};
+\addplot[black, name path=c45b, no marks, transparent] table[x=budget, y=maxMeta5NN ] {kappaallmediaParesRank.plot};
+\addplot[red,   name path=nbb, no marks, transparent] table[x=budget, y=maxNB ] {kappaallmediaParesRank.plot};
+\addplot[violet, name path=knnb, no marks, transparent] table[x=budget, y=maxSVM ] {kappaallmediaParesRank.plot};
+% 
+
+\addplot[opacity=0.1, red] fill between[of=metaa and metab];
+% % \addplot[opacity=0.1, blue] fill between[of=rfa and rfb];
+% \addplot[opacity=0.1, blue] fill between[of=knna and knnb];
+\addplot[opacity=0.1, green] fill between[of=svma and svmb];
+% \addplot[opacity=0.05, red] fill between[of=nba and nbb];
+\addplot[opacity=0.1, gray] fill between[of=c45a and c45b];
+% 
+\node[] at (-8,60) {\textcolor{violet}{5NN}};
+% \node[] at (-8,115) {\textcolor{blue}{RFw}};
+\node[] at (-8,200) {\textcolor{red}{NB}};
+\node[] at (-8,385) {\textcolor{black}{C4.5}};
+\node[] at (-8,500) {\textcolor{teal}{SVM}};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{figure}
