@@ -53,7 +53,7 @@ Um sumário dos objetivos desta tese de doutorado, delineados previamente na Se�
 \begin{itemize}
    \item \textbf{Identificação da existência de relações de adequação entre nichos de problemas e estratégias:} a presença dessas relações foi identificada por meio da análise qualitativa de árvores de decisão baseadas em meta-atributos humanamente interpretáveis; adicionalmente, foi constatado que a escolha do algoritmo de aprendizado precede as demais variáveis na determinação do sucesso da estratégia (Seção \ref{poralg}).
    \item \textbf{Desenvolvimento de uma estratégia capaz de suprimir, sob demanda, a influência do aprendiz:} a estratégia HTU foi proposta como uma alternativa para controlar a atuação do aprendiz na estratégia baseada em densidade, TU; ela se mostrou competitiva frente às demais estratégias consideradas e apresentou propriedades relevantes, como estabilidade, segurança e custo computacional interconsultas \textit{humanamente tolerável} (Seção \ref{cuscomp}) - características que permitem redução nos custos de esforço humano.
-   \item \textbf{Desenvolvimento de um aprendiz meta-ativo:} a abordagem de recomendação automática proposta, chamada \textit{aprendizado meta-ativo}, \textit{superou}\footnote{A validade da avaliação do sucesso do meta-aprendizado é limitada pela metodologia empregada. Algumas análises posteriores (Apêndice \ref{apflu}) apontam no sentido de ser necessário maior rigor experimental.}, no nível base, o uso de um único algoritmo de aprendizado específico e mostrou-se viável, no nível meta, com diversos algoritmos no papel de meta-aprendizes (principalmente PCT, RoF e RFw).
+   \item \textbf{Desenvolvimento de um aprendiz meta-ativo:} a abordagem de recomendação automática proposta, chamada \textit{aprendizado meta-ativo}, \textit{superou}\footnote{A validade da avaliação do sucesso do meta-aprendizado é limitada pelo método experimental empregado. Algumas análises posteriores (Apêndice \ref{apflu}) apontam no sentido de ser necessário maior rigor experimental.}, no nível base, o uso de um único algoritmo de aprendizado específico e mostrou-se viável, no nível meta, com diversos algoritmos no papel de meta-aprendizes (principalmente PCT, RoF e RFw).
    Além da recomendação automática de algoritmos de aprendizado no contexto de aprendizado ativo, outras modalidades de recomendação também se mostraram promissoras (dentro das limitações metodológicas constatadas posteriormente), como a recomendação de estratégias e pares estratégia-algoritmo.
 \end{itemize}
 Tais resultados incluíram a comprovação das hipóteses, conforme descrito a seguir, na Seção \ref{conchipoteses}.
@@ -67,7 +67,7 @@ Da mesma forma, a hipótese secundária, de que o aprendiz pode ser automaticame
 Essa conclusão se baseia na comparação da estratégia HTU com sua antecessora na literatura, cuja presença do aprendiz é constante, e também com estratégias representantes de outros paradigmas.
 Também contribui para a validade da hipótese os resultados favoráveis da comparação do meta-aprendiz, ativado antes da 1\textordfeminine~e depois da 50\textordfeminine~consulta, com as outras estratégias no nível base e com valores de referência no nível meta.
 
-As seguintes afirmações foram empiricamente verificadas, segundo a metodologia empregada e considerados os conjuntos de dados, o conjunto específico de estratégias e os algoritmos adotados.
+As seguintes afirmações foram empiricamente verificadas, segundo o método experimental empregado e considerados os conjuntos de dados, o conjunto específico de estratégias e os algoritmos adotados.
 \begin{enumerate}
 \item HTUeuc tem o desempenho mais consistente, ou seja, é a mais segura em termos financeiros/de esforço humano.
 \item ATUeuc e HTUeuc apresentam a menor variabilidade de desempenho preditivo ($\sigma_\kappa$).
@@ -75,7 +75,7 @@ As seguintes afirmações foram empiricamente verificadas, segundo a metodologia
 \item A recomendação automática de algoritmos aumenta o desempenho da estratégia.
 % \item O meta-aprendiz induz modelos preditivos que representam o conceito subjacente à tarefa de recomendação automática de algoritmos de aprendizado para aprendizado ativo, com precisão suficiente para superar referências relevantes.
 \item Diferentes algoritmos podem gerar metaclassificadores com desempenhos preditivos similares, seguindo a abordagem de recomendação automática proposta.
-\item Embora requeira uma metodologia experimental mais rigorosa (Apêndice \ref{apflu}), a recomendação automática de algoritmos, estratégias ou pares estratégia-algoritmo inicialmente mostrou-se viável.
+\item Embora requeira um método experimental mais rigoroso (Apêndice \ref{apflu}), a recomendação automática de algoritmos, estratégias ou pares estratégia-algoritmo inicialmente mostrou-se viável.
 \end{enumerate}
 Quanto às outras modalidades de recomendação automática, foi observado que pesquisas adicionais ainda são necessárias para que se possa chegar a conclusões melhor fundamentadas.
 
@@ -99,7 +99,7 @@ A subamostragem mencionada na Seção \ref{despred} reduziu a reserva para 100 e
 Tal decisão pode ter beneficiado essa estratégia.
 Era esperada uma maior similaridade entre o comportamento de EER e o das outras estratégias não agnósticas.
 Assim, idealmente, todas as estratégias deveriam compartilhar dessa manipulação na reserva para garantir uma comparação em iguais condições.
-Embora essa parte da metodologia pudesse ser melhorada, seu provável impacto foi aumentar a competitividade de EER, limitando-se a reduzir a visibilidade do sucesso das propostas.
+Embora essa parte do método experimental pudesse ser melhorado, seu provável impacto foi aumentar a competitividade de EER, limitando-se a reduzir a visibilidade do sucesso das propostas.
 
 \citeonline{journals/pr/Lughofer12} publicou uma estratégia híbrida baseada em agrupamento da qual o autor deste documento não tomou conhecimento em tempo hábil para uma devida comparação com HTU.
 Embora a comparação com aquela e as diversas outras estratégias não contempladas pelos experimentos pudesse enriquecer este trabalho, a sua ausência não impactou seriamente os resultados, pois o objetivo deste trabalho se concentrou mais nos problemas de escolha no cenário de aprendizado ativo, como a estratégia e o tipo ou o momento de inibição de algoritmos de aprendizado, do que no desempenho de estratégias específicas.

@@ -63,7 +63,7 @@ Normalmente, ele sabe de antemão as classes menos frequentes e é capaz de enco
 Essa modalidade de amostragem faz maior usufruto da capacidade da inteligência humana enquanto agente supervisor do que a simples rotulação.
 Embora custoso, esse potencial humano pode ser aproveitado no estágio inicial da rotulação e favorecer a posterior amostragem ativa, minimizando as futuras intervenções humanas.
 
-A prática de rotulação prévia em experimentos também tem sido parte da metodologia adotada em outros trabalhos \cite{conf/nips/GuoS07, conf/cvpr/BiswasP13, conf/iconip/GuJC14a}, com variações mais permissivas com relação à quantidade de exemplos \cite{journals/prl/PatraB12} ou substituída por uma amostragem aleatória aplicada até que se encontre um exemplo de cada classe \cite{chermanaprendizado}.
+A prática de rotulação prévia em experimentos também tem sido parte do método experimental adotado em outros trabalhos \cite{conf/nips/GuoS07, conf/cvpr/BiswasP13, conf/iconip/GuJC14a}, com variações mais permissivas com relação à quantidade de exemplos \cite{journals/prl/PatraB12} ou substituída por uma amostragem aleatória aplicada até que se encontre um exemplo de cada classe \cite{chermanaprendizado}.
 
 A limitação a um número fixo de consultas segue a observação de \citeonline{series/synthesis/2012Settles} sobre o critério desejável de parada do processo de aprendizado ativo. 
 Ele relata que, em aplicações reais, normalmente trata-se de uma restrição financeira.
@@ -430,7 +430,7 @@ Seguindo a escolha de \citeonline{conf/ijcnn/SoutoPSACLS08}, a predição pelo \
 O \sigla{Alea}{ranqueamento aleatório} e a \sigla{Maj}{escolha fixada na classe majoritária} também serviram de referência.
 A comparação entre as predições de ranqueamento foi feita por meio do cálculo do coeficiente de correlação de Spearman (Seção \ref{secsimi}).
 O desempenho de classificação foi avaliado pela comparação da medida $\kappa$ e, paralelamente, pelas acurácias ordinária e balanceada na predição de melhor algoritmo de aprendizado.
-A mesma metodologia foi adotada na investigação inicial de outras possibilidades de recomendação: de estratégias de amostragem ativa, de pares estratégia-algoritmo, de métricas de distância para estratégias baseadas em densidade e da própria utilização ou não de aprendizado ativo.
+O mesmo método experimental foi adotado na investigação inicial de outras possibilidades de recomendação: de estratégias de amostragem ativa, de pares estratégia-algoritmo, de métricas de distância para estratégias baseadas em densidade e da própria utilização ou não de aprendizado ativo.
 
 Para verificação da efetividade do sistema de recomendação, o efeito do meta-aprendiz também foi avaliado no nível base.
 O algoritmo para o papel de aprendiz para cada dada estratégia foi escolhido automaticamente e seu desempenho foi comparado diretamente com os demais algoritmos no nível base por meio dos valores de ALC e curvas de aprendizado.
