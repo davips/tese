@@ -409,10 +409,10 @@ order=-1
 
 [item:thesis.tex]
 archive=true
-column=45
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=295
+line=332
 mode=LaTeX
 open=false
 order=1
@@ -546,7 +546,7 @@ JumpList=
 ViMarks=.,329,196,[,329,185,],329,196
 
 [view-settings,view=0,item:thesis.tex]
-CursorColumn=45
-CursorLine=295
+CursorColumn=0
+CursorLine=332
 JumpList=
-ViMarks=.,295,44,[,295,42,],295,44
+ViMarks=.,332,16,[,332,16,],332,16
