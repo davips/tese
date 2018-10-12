@@ -168,13 +168,13 @@ O Algoritmo \ref{algvc} descreve o procedimento de validação cruzada para a me
 }
   \algalg{\vc{$k$, $\phi$, $\mathcal{L}$}} {
   $S \leftarrow 0_{|Y|,|Y|}$ \come{matriz de confusão cumulativa} \\
-  \paracada {$i, 1 \leq i \leq k$} {
+  \ForEach {$i, 1 \leq i \leq k$} {
       $\mathcal{M}=\bigcup\limits_{j\neq i}\mathcal{P}_j(\mathcal{L})$ \come{exemplos disponíveis}\\
       $\mathcal{N}=\mathcal{P}_i(\mathcal{L})$ \come{exemplos reservados para teste}\\
       $\theta = \phi(\mathcal{M})$ \\
       $S \leftarrow S + R_\theta(\mathcal{N})$
     }
-    \Retorna $\kappa(S)$
+    \Return $\kappa(S)$
   }
 \end{algoritmo}
 

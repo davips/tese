@@ -105,15 +105,15 @@ Ele aceita diferentes critérios de consulta (\textit{funções-critério}), des
  \\ $\mathcal{L}'$ - conjunto final de exemplos rotulados
 }
 \alg{\amostragem {$\mathcal{U}$, $\mathcal{L}$, $\phi$, $q$, $\cent$}}{
-\Se{$\cent = 0$}{
-\Retorna $\mathcal{L}$
+\If{$\cent = 0$}{
+\Return $\mathcal{L}$
 }
- \Senao{
+ \Else{
  $\theta = \phi(\mathcal{L})$ \\
 $\bm{\hat{x}} = \argmax\limits_{\bm{x}}[q(\bm{x}, \cdots, \theta)]$  \come{argumentos requeridos por $q$ dependem de cada estratégia}\\
 $\mathcal{L}' = \mathcal{L} \cup \{\langle \bm{\hat{x}} ,o(\bm{\hat{x}}) \rangle \}$ \\
 $\mathcal{U}' = \mathcal{U} \setminus \{\bm{\hat{x}}\}$ \\
-\Retorna \amostragem{$\mathcal{U}'$,$\mathcal{L}'$, $\phi$, $q$, $\cent-1$} \\
+\Return \amostragem{$\mathcal{U}'$,$\mathcal{L}'$, $\phi$, $q$, $\cent-1$} \\
 }
 }
 

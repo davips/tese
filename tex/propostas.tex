@@ -181,12 +181,12 @@ Esse período de inibição pode se estender por todo o aprendizado, no caso de 
 }
 % \algalging{\htu{$\mathcal{U}$, $\mathcal{L}$, $\cent$}}{
 \algalg{\htu{$\mathcal{U}$, $\mathcal{L}$, $\cent$}}{
- \Se{$\cent = 0$}{
+ \If{$\cent = 0$}{
 %  \If{$\cent = 0$}{
 %   \Return $\mathcal{L}$
-  \Retorna $\mathcal{L}$
+  \Return $\mathcal{L}$
  }
- \Senao{
+ \Else{
 %  \Else{
   $\theta = \phi(\mathcal{L})$ \\
   $\mu_{M_\theta}=\frac{1}{|\mathcal{U}|} \sum\limits_{\bm{x} \in \mathcal{U}} M_\theta(\bm{x})$ \\
@@ -195,17 +195,17 @@ Esse período de inibição pode se estender por todo o aprendizado, no caso de 
   $\sigma_{\stratIDTU}=\frac{1}{|\mathcal{U}|} \sum\limits_{\bm{x} \in \mathcal{U}}(\stratIDTU(\bm{x}) - \mu_{\stratIDTU})^2$ \\
 %   $\rho = (\sigma_{M}^2\cdot\sigma_{\stratIDTU}^2)^{-\frac{1}{2}} \sum\limits_{\bm{x} \in \mathcal{U}} (M_\theta(\bm{x}) - \mu_{M})(\stratIDTU_\theta(\bm{x}) - \mu_{\stratIDTU})$ \come{correlation Mar-TU}\\
   $\rho = (\sigma_{M_\theta}^2\cdot\sigma_{\stratIDTU}^2)^{-\frac{1}{2}} \sum\limits_{\bm{x} \in \mathcal{U}} (M_\theta(\bm{x}) - \mu_{M_\theta})(\stratIDTU(\bm{x}) - \mu_{\stratIDTU})$ \come{correlação Mar-TU}\\
-  \Se{$\rho < \rho_{\limiar}$}{  
+  \If{$\rho < \rho_{\limiar}$}{  
 %   \If{$\rho < \rho_{\limiar}$}{  
    $\bm{\hat{x}} \leftarrow \argmax\limits_{\bm{x}}[\stratIDATU(\bm{x})]$ \\
   }
-  \Senao {
+  \Else {
 %   \Else {
    $\bm{\hat{x}} \leftarrow \argmax\limits_{\bm{x}}[\stratIDTU(\bm{x})]$ \\
   }
   $\mathcal{L}' \leftarrow \mathcal{L} \cup \{\langle \bm{\hat{x}}, o(\bm{\hat{x}}) \rangle\}$ \\
   $\mathcal{U}' \leftarrow \mathcal{U} \setminus \{\bm{\hat{x}}\}$ \\
-  \Retorna \htu{$\mathcal{U}'$,$\mathcal{L}'$, $\cent-1$}
+  \Return \htu{$\mathcal{U}'$,$\mathcal{L}'$, $\cent-1$}
 %   \Return \htu{$\mathcal{U}'$,$\mathcal{L}'$, $\cent-1$}
 }}
 \end{algoritmo}
@@ -275,10 +275,10 @@ Por fim, a estratégia SGmulti é descrita pelo Algoritmo \ref{algosgm}.
  \\ $\mathcal{L}'$ - conjunto final de exemplos rotulados
 }
 \algalg{\sgmulti{$\mathcal{U}$, $\mathfrak{\bar{L}}$, $\cent$}}{
-  \Se{$\cent = 0$}{
-   \Retorna $\mathfrak{\bar{L}}$
+  \If{$\cent = 0$}{
+   \Return $\mathfrak{\bar{L}}$
   }
-  \Senao{
+  \Else{
   $\{\mathcal{\bar{L}}_1, \mathcal{\bar{L}}_2, ..., \mathcal{\bar{L}}_{|Y|}\} = \mathfrak{\bar{L}}$ \\
   $\theta_c = \phi(\mathcal{\bar{L}}_c), 1\leq c \leq |Y|$\\
 %   $\forall c \in \{i \mid 1\leq i \leq |Y|\}, \theta_c = \phi(\mathcal{\bar{L}}_c)$\\
@@ -289,7 +289,7 @@ Por fim, a estratégia SGmulti é descrita pelo Algoritmo \ref{algosgm}.
   $\mathfrak{\bar{L}}' = \{(\mathcal{\bar{L}}_c \setminus \{\langle\bm{\hat{x}},c,w\rangle\}) \cup
 \mathcal{\hat{X}} \mid c \in Y$ \}\\
   $\mathcal{U}' = \mathcal{U} \setminus \{\bm{\hat{x}}\}$ \\
-  \Retorna \sgmulti{$\mathcal{U}'$, $\mathfrak{\bar{L}}'$, $\cent-1$}
+  \Return \sgmulti{$\mathcal{U}'$, $\mathfrak{\bar{L}}'$, $\cent-1$}
 }
 }
 \end{algoritmo}
@@ -355,11 +355,11 @@ pode gerar informações imprecisas, dado que algoritmos com bom desempenho em t
   $|\mathcal{L}'|=|Y|, y\neq z \forall \langle \_,y\rangle,\langle \_,z\rangle \in \mathcal{L}'$ \\
   $\mathcal{U}' = \{\bm{x} \mid \langle \bm{x}, \_ \rangle \in \mathcal{L} \setminus \mathcal{L}' \}$ \\
   $\mathcal{Q} = $ \amostragem{$\mathcal{U}'$, $\mathcal{L}'$, $q$, $\cent$} \\
-  \Retorna $\phi(\mathcal{Q})$
+  \Return $\phi(\mathcal{Q})$
 }
-\BlankLine
+
 \algalg{\best{$\Phi$, $\mathcal{L}$, $\cent$, $q$, $k$}} {
-  \Retorna $\argmax\limits_{\phi\in\Phi}[$ \vc{$k$, $\mathcal{L}' \mapsto$ \avalia{$\phi$, $\cent$, $q$, $\mathcal{L}'$}, $\mathcal{L}$} $]$\\  
+  \Return $\argmax\limits_{\phi\in\Phi}[$ \vc{$k$, $\mathcal{L}' \mapsto$ \avalia{$\phi$, $\cent$, $q$, $\mathcal{L}'$}, $\mathcal{L}$} $]$\\  
 }  
 \end{algoritmo}
 
@@ -525,7 +525,7 @@ Na recomendação de estratégias, escolhe-se um algoritmo de antemão e, na rec
 }
 \algalg{\treina{$\Phi$, $\mathfrak{L}$, $\psi$, $\cent$, $q$, $k$, $\mathcal{U}$}}{
   $\Lambda\leftarrow\varnothing$\\
-  \paracada {$\mathcal{L}\in\mathfrak{L}$}{    
+  \ForEach {$\mathcal{L}\in\mathfrak{L}$}{    
     $\gamma=$ \best{$\Phi$, $\mathcal{L}$, $\cent$, $q$, $k$} \come{metaclasse}\\    
     $\bm{\chi} = (\qatt,\qexe,\qnc,\qexeatt,\pno,\lgqexe,\lgqexeatt,\qnom_{min},\qnom_{max},\qnom_{mea},\qnom_{min/max},$ 
     \phantom{$\bm{\chi}= ($}${\mu}_{min},{\mu}_{max},{\mu}_{mea},{\mu}_{min/max},\sigma_{min},\sigma_{max},\sigma_{mea},\sigma_{min/max},$
@@ -537,12 +537,12 @@ Na recomendação de estratégias, escolhe-se um algoritmo de antemão e, na rec
     $\Lambda\leftarrow\Lambda\cup\{\langle \bm{\chi},\gamma\rangle\}$
   }
   $\eta\leftarrow\psi(\Lambda)$ \come{induz metamodelo} \\
-  \Retorna $\eta$
+  \Return $\eta$
 }
 \algalg{\recomenda{$\eta$, $\cent$, $\mathcal{U}$}}{
 	$\bm{\chi}= (\qatt, ...,\si_{h2})$ \come{meta-atributos extraídos de $\mathcal{U}$}\\
 	$\phi \leftarrow \hat{y}_{\eta}(\bm{\chi})$\\
-  \Retorna $\phi$
+  \Return $\phi$
 }
 \end{algoritmo}
 
